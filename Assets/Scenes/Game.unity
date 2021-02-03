@@ -2048,7 +2048,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CustomSkybox
       value: 
-      objectReference: {fileID: 2100000, guid: 12ccb828343c3405fb94289774b51aad, type: 2}
+      objectReference: {fileID: 2100000, guid: b29dda21bb831384595950d83c4230ff, type: 2}
     - target: {fileID: 2309475557531078515, guid: d92d6ed23c665da4e9af441afe85eebb,
         type: 3}
       propertyPath: m_Enabled
