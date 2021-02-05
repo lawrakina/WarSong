@@ -11,6 +11,27 @@ namespace Gui.Battle
 {
     public sealed class LevelGeneratorPanel : BasePanel
     {
+        #region Fields
+
+        private IGeneratorDungeon _generatorDungeon;
+
+        [SerializeField]
+        private Button IntoBattleButton;
+
+        [SerializeField]
+        private Button RandomSeedButton;
+
+        [SerializeField]
+        private Text SeedInputField;
+
+        [SerializeField]
+        private Button GenerateMapButton;
+
+        private IBattleInit _battleInit;
+
+        #endregion
+        
+        
         public void SetReference(IGeneratorDungeon generatorDungeon)
         {
             _generatorDungeon = generatorDungeon;
@@ -37,26 +58,5 @@ namespace Gui.Battle
         {
             _battleInit = battleInit;
         }
-
-
-        #region Fields
-
-        private IGeneratorDungeon _generatorDungeon;
-
-        [SerializeField]
-        private Button IntoBattleButton;
-
-        [SerializeField]
-        private Button RandomSeedButton;
-
-        [SerializeField]
-        private Text SeedInputField;
-
-        [SerializeField]
-        private Button GenerateMapButton;
-
-        private IBattleInit _battleInit;
-
-        #endregion
     }
 }

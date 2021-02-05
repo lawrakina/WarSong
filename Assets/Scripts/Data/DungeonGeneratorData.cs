@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace Controller
+namespace Data
 {
     [CreateAssetMenu(fileName = "DungeonData", menuName = "Data/DungeonData")]
     public class DungeonGeneratorData : ScriptableObject

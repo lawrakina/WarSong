@@ -6,6 +6,14 @@ namespace Controller
 {
     internal class InputController : IInitialization, IExecute
     {
+        #region Fields
+
+        private readonly IUserInputProxy _horizontal;
+        private readonly IUserInputProxy _vertical;
+
+        #endregion
+
+
         #region ClassLiveCycles
 
         public InputController((IUserInputProxy inputHorizontal, IUserInputProxy inputVertical) input)
@@ -34,13 +42,5 @@ namespace Controller
         public void Initialization()
         {
         }
-
-
-        #region Fields
-
-        private readonly IUserInputProxy _horizontal;
-        private readonly IUserInputProxy _vertical;
-
-        #endregion
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Extension;
 using Interface;
+using Leopotam.Ecs;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -43,6 +44,10 @@ namespace Unit.Cameras
 
         #region Properties
 
+        public EcsEntity Entity { get; set; }
+
+        public Transform Transform => gameObject.transform;
+
         public Vector3 OffsetTopPosition()
         {
             return _offetTopPosition;
@@ -56,11 +61,6 @@ namespace Unit.Cameras
         public Vector3 OffsetThirdPosition()
         {
             return _offsetThirdPosition;
-        }
-
-        public Vector3 OffsetThirdRotation()
-        {
-            return _offsetThirdRotation;
         }
 
         public float CameraMoveSpeed => _cameraMoveSpeed;
@@ -90,8 +90,6 @@ namespace Unit.Cameras
                 go.shadowCastingMode = ShadowCastingMode.ShadowsOnly;
             }
         }
-
-        // OnCollisionEnter OnCollisionExit OnTriggerEnter  OnTriggerExit
 
         private void OnCollisionExit(Collision other)
         {

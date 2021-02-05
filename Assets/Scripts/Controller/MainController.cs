@@ -7,11 +7,13 @@ using Enums;
 using Extension;
 using Gui;
 using InputMovement;
+using Interface;
 using JetBrains.Annotations;
 using UniRx;
 using Unit.Cameras;
 using Unit.Player;
 using UnityEngine;
+using EcsBattle = EcsBattle.EcsBattle;
 
 
 namespace Controller
@@ -36,6 +38,9 @@ namespace Controller
 
         [SerializeField]
         private DungeonGeneratorData _generatorData;
+        
+        [SerializeField]
+        private EcsBattleData _ecsBattleData;
 
         [Header("Ui & Windows")]
         [SerializeField]
@@ -48,9 +53,9 @@ namespace Controller
         [SerializeField]
         private EnumMainWindow _activePanelAndWindow;
 
-        [Header("Type of camera and char control")]
-        [SerializeField]
-        private EnumFightCamera _fightCameraType = EnumFightCamera.ThirdPersonView;
+        // [Header("Type of camera and char control")]
+        // [SerializeField]
+        // private EnumFightCamera _fightCameraType = EnumFightCamera.ThirdPersonView;
 
         private IPlayerView _player;
 
@@ -99,8 +104,7 @@ namespace Controller
             _windows.Ctor(_activeWindow, _battleState);
             _ui.Ctor(_activeWindow, _battleState, _charWindow, listOfCharactersController);
 
-            //ввод с экранного джойстика
-            var inputInitialization = new InputInitialization();
+            
 
             //generator levels
             var generatorDungeon = new GeneratorDungeon(_generatorData, _windows.BattleWindow.Content.transform);
@@ -125,25 +129,32 @@ namespace Controller
             positioningCharInMenuController.AddPlayerPosition(
                 _windows.TalentsWindow.CharacterSpawn(), EnumMainWindow.Talents);
 
-            var battleInitialization = new BattleInitialization(generatorDungeon, _battleState, _activeWindow, _player);
+            var battleInitialization = new EcsBattleInitialization(_ecsBattleData, generatorDungeon, _battleState, _activeWindow, _player, fightCamera);
             battleInitialization.Dungeon = generatorDungeon.Dungeon();
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(battleInitialization);
+            
+            var battleController = new BattleController(battleInitialization.BattleEngine());
+            
+            // var battleInitialization = new BattleInitialization(generatorDungeon, _battleState, _activeWindow, _player);
+            // battleInitialization.Dungeon = generatorDungeon.Dungeon();
+            // _ui.BattlePanel.LevelGeneratorPanel.SetReference(battleInitialization);
 
-            _typeCameraAndCharControl = new ReactiveProperty<EnumFightCamera>(_fightCameraType);
-            var battleCameraController =
-                new FightCameraController(_battleState, _player, fightCamera, _typeCameraAndCharControl);
-            var battlePlayerMoveController =
-                new MovePlayerController(_battleState, inputInitialization.GetInput(), _player,
-                    _typeCameraAndCharControl);
-            var inputController = new InputController(inputInitialization.GetInput());
+            // _typeCameraAndCharControl = new ReactiveProperty<EnumFightCamera>(_fightCameraType);
+            // var battleCameraController =
+            //     new FightCameraController(_battleState, _player, fightCamera, _typeCameraAndCharControl);
+            // var battlePlayerMoveController =
+            //     new MovePlayerController(_battleState, inputInitialization.GetInput(), _player,
+            //         _typeCameraAndCharControl);
+            // var inputController = new InputController(inputInitialization.GetInput());
 
             _controllers = new Controllers();
             // _controllers.Add(customizingCharacter);
             _controllers.Add(positioningCharInMenuController);
-            _controllers.Add(battleCameraController);
-            _controllers.Add(inputInitialization);
-            _controllers.Add(battlePlayerMoveController);
-            _controllers.Add(inputController);
+            _controllers.Add(battleController);
+            // _controllers.Add(battleCameraController);
+            // _controllers.Add(inputInitialization);
+            // _controllers.Add(battlePlayerMoveController);
+            // _controllers.Add(inputController);
 
             var offItemMenu = new List<EnumMainWindow>();
             offItemMenu.Add(EnumMainWindow.Equip);
@@ -185,5 +196,20 @@ namespace Controller
         #endregion
 
         #endregion
+    }
+
+    public sealed class BattleController : BaseController, IExecute
+    {
+        private readonly global::EcsBattle.EcsBattle _ecsEngine;
+
+        public BattleController(global::EcsBattle.EcsBattle ecsEngine)
+        {
+            _ecsEngine = ecsEngine;
+        }
+
+        public void Execute(float deltaTime)
+        {
+            _ecsEngine.Execute(deltaTime);
+        }
     }
 }

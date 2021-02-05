@@ -11,6 +11,75 @@ namespace Controller
 {
     public sealed class MovePlayerController : BaseController, IExecute, IFixedExecute, ICleanup
     {
+        #region Fields
+
+        private readonly IBaseUnitView _unitView;
+
+        private Vector3 _inputVector;
+        private readonly IUserInputProxy _horizontalInputProxy;
+        private readonly IUserInputProxy _verticalInputProxy;
+        private Vector3 _direction;
+        private bool _isGoTarget;
+        private GameObject _goTarget;
+        private float _gravityForce;
+        private float _deltaImpulce;
+        private readonly IReactiveProperty<EnumFightCamera> _typeCameraAndCharControl;
+        private readonly IReactiveProperty<EnumBattleWindow> _battleState;
+
+        private delegate void ActionMove(float deltaTime);
+
+        private ActionMove _move;
+
+        #endregion
+
+
+        #region Properties
+
+        private bool IsGrounded =>
+            Physics.Raycast(_unitView.Transform.position + Vector3.up / 2, Vector3.down, out _,
+                1.0f, LayerManager.GroundLayer);
+
+        public GameObject GoTarget
+        {
+            get
+            {
+                if (!_isGoTarget)
+                {
+                    _goTarget = Object.Instantiate(new GameObject(), _unitView.Transform, true);
+                    _goTarget.name = "->DirectionMoving<-";
+                    // Debug.Log($"CreateTargetMovingDirection: {_goTarget}");
+                    _isGoTarget = true;
+                }
+
+                return _goTarget;
+            }
+        }
+
+        #endregion
+
+
+        #region Methods
+
+        private void VerticalOnAxisOnChange(float value)
+        {
+            _inputVector.z = value;
+        }
+
+        private void HorizontalOnAxisOnChange(float value)
+        {
+            _inputVector.x = value;
+        }
+
+        public override void Cleanup()
+        {
+            base.Cleanup();
+
+            _horizontalInputProxy.AxisOnChange -= HorizontalOnAxisOnChange;
+            _verticalInputProxy.AxisOnChange -= VerticalOnAxisOnChange;
+        }
+
+        #endregion
+        
         #region ctor
 
         public MovePlayerController(IReactiveProperty<EnumBattleWindow> battleState,
@@ -103,6 +172,8 @@ namespace Controller
         {
             //MovingPlayer
             GoTarget.transform.localPosition = _direction;
+            
+            //остановился тут
             var target = _unitView.Transform.position - GoTarget.transform.position;
             _unitView.Rigidbody.MovePosition(
                 _unitView.Transform.position -
@@ -145,73 +216,6 @@ namespace Controller
         }
 
 
-        #region Fields
-
-        private readonly IBaseUnitView _unitView;
-
-        private Vector3 _inputVector;
-        private readonly IUserInputProxy _horizontalInputProxy;
-        private readonly IUserInputProxy _verticalInputProxy;
-        private Vector3 _direction;
-        private bool _isGoTarget;
-        private GameObject _goTarget;
-        private float _gravityForce;
-        private float _deltaImpulce;
-        private readonly IReactiveProperty<EnumFightCamera> _typeCameraAndCharControl;
-        private readonly IReactiveProperty<EnumBattleWindow> _battleState;
-
-        private delegate void ActionMove(float deltaTime);
-
-        private ActionMove _move;
-
-        #endregion
-
-
-        #region Properties
-
-        private bool IsGrounded =>
-            Physics.Raycast(_unitView.Transform.position + Vector3.up / 2, Vector3.down, out _,
-                1.0f, LayerManager.GroundLayer);
-
-        public GameObject GoTarget
-        {
-            get
-            {
-                if (!_isGoTarget)
-                {
-                    _goTarget = Object.Instantiate(new GameObject(), _unitView.Transform, true);
-                    _goTarget.name = "->DirectionMoving<-";
-                    // Debug.Log($"CreateTargetMovingDirection: {_goTarget}");
-                    _isGoTarget = true;
-                }
-
-                return _goTarget;
-            }
-        }
-
-        #endregion
-
-
-        #region Methods
-
-        private void VerticalOnAxisOnChange(float value)
-        {
-            _inputVector.z = value;
-        }
-
-        private void HorizontalOnAxisOnChange(float value)
-        {
-            _inputVector.x = value;
-        }
-
-        public override void Cleanup()
-        {
-            base.Cleanup();
-
-            _horizontalInputProxy.AxisOnChange -= HorizontalOnAxisOnChange;
-            _verticalInputProxy.AxisOnChange -= VerticalOnAxisOnChange;
-        }
-
-        #endregion
+        
     }
 }
