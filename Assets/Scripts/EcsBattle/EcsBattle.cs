@@ -50,6 +50,10 @@ namespace EcsBattle
                 .Add(new MovementPlayer2CalculateStepValueSystem());
             _fixedExecute
                 .Add(new MovementPlayer3MoveAndRotateRigidBodySystem());
+            
+            _execute
+                //Animation Player
+                .Add(new AnimationMotionPlayerSystem());
 
             // register one-frame components (order is important), for example:
             // .OneFrame<TestComponent1> ()

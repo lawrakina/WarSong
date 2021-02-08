@@ -1,5 +1,6 @@
 ﻿using EcsBattle.Components;
 using Leopotam.Ecs;
+using Unit;
 using Unit.Player;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace EcsBattle
             player.Get<RigidBodyComponent>().Value = _player.Rigidbody;
             player.Get<MovementSpeed>().Value = _player.CharAttributes.Speed;
             player.Get<RotateSpeed>().Value = _player.CharAttributes.RotateSpeedPlayer;
+            player.Get<AnimatorComponent>().Value = _player.AnimatorParameters;
             
             var goTarget = Object.Instantiate(new GameObject(), _player.Transform, true);
             goTarget.name = "->DirectionMoving<-";

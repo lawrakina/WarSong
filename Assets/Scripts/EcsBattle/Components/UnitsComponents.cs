@@ -1,4 +1,5 @@
 ﻿using Leopotam.Ecs;
+using Unit;
 using UnityEngine;
 
 
@@ -31,5 +32,9 @@ namespace EcsBattle.Components
     public struct GoTargetComponent
     {
         public EcsEntity Value;
+    }
+    public struct AnimatorComponent
+    {
+        public AnimatorParameters Value;
     }
 }
