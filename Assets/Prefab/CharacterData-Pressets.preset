@@ -6,7 +6,7 @@ Preset:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Pressets-CharacterData
+  m_Name: CharacterData-Pressets
   m_TargetType:
     m_NativeTypeID: 114
     m_ManagedTypePPtr: {fileID: 11500000, guid: 3666e134113a40aeb11c29d053f150d6,
@@ -32,7 +32,7 @@ Preset:
       type: 3}
   - target: {fileID: 0}
     propertyPath: ListAttachPoints.Array.size
-    value: 2
+    value: 3
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: ListAttachPoints.Array.data[0].Name
@@ -67,6 +67,18 @@ Preset:
     value: -90
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[0].LocalScale.x
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[0].LocalScale.y
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[0].LocalScale.z
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: ListAttachPoints.Array.data[1].Name
     value: RightOneHandWeapon
     objectReference: {fileID: 0}
@@ -97,6 +109,62 @@ Preset:
   - target: {fileID: 0}
     propertyPath: ListAttachPoints.Array.data[1].LocalRotation.z
     value: 97.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[1].LocalScale.x
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[1].LocalScale.y
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[1].LocalScale.z
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[2].Name
+    value: LeftShild
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[2].Path
+    value: Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Elbow_Attachment_L
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[2].LocalPosition.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[2].LocalPosition.y
+    value: 4.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[2].LocalPosition.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[2].LocalRotation.x
+    value: -90
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[2].LocalRotation.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[2].LocalRotation.z
+    value: -90
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[2].LocalScale.x
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[2].LocalScale.y
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[2].LocalScale.z
+    value: 100
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: humanSkin.Array.size

@@ -32,7 +32,7 @@ namespace Data
             new AttachPoint()
             {
                 Name = StringManager.ATTACH_POINT_LEFT_SHILD,
-                Path = $"Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Elbow_attachment_L",
+                Path = $"Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Elbow_Attachment_L",
                 LocalPosition = new Vector3(0.0f, 4.5f, 0.0f),
                 LocalRotation = new Vector3(-90.0f, 0.0f, -90.0f)
             },
