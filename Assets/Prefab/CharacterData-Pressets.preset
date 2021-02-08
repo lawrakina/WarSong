@@ -1,0 +1,976 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Pressets-CharacterData
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 3666e134113a40aeb11c29d053f150d6,
+      type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: StoragePlayerPrefab
+    value: 
+    objectReference: {fileID: 1588895830433058, guid: 5f160eebd5f55fb4d8187a5e697e1088,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.size
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[0].Name
+    value: LeftOneHandWeapon
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[0].Path
+    value: Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[0].LocalPosition.x
+    value: -6.8
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[0].LocalPosition.y
+    value: -3.4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[0].LocalPosition.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[0].LocalRotation.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[0].LocalRotation.y
+    value: -90
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[0].LocalRotation.z
+    value: -90
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[1].Name
+    value: RightOneHandWeapon
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[1].Path
+    value: Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[1].LocalPosition.x
+    value: 6.8
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[1].LocalPosition.y
+    value: 1.9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[1].LocalPosition.z
+    value: -0.9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[1].LocalRotation.x
+    value: -177
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[1].LocalRotation.y
+    value: -81
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListAttachPoints.Array.data[1].LocalRotation.z
+    value: 97.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: humanSkin.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: humanSkin.Array.data[0].r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: humanSkin.Array.data[0].g
+    value: 0.8000001
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: humanSkin.Array.data[0].b
+    value: 0.682353
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: humanSkin.Array.data[0].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: elfSkin.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: elfSkin.Array.data[0].r
+    value: 0.5882353
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: elfSkin.Array.data[0].g
+    value: 0.6274
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: elfSkin.Array.data[0].b
+    value: 0.73333
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: elfSkin.Array.data[0].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: orcSkin.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: orcSkin.Array.data[0].r
+    value: 0.23671
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: orcSkin.Array.data[0].g
+    value: 0.3294118
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: orcSkin.Array.data[0].b
+    value: 0.1843
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: orcSkin.Array.data[0].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.size
+    value: 16
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[0].r
+    value: 0.3098039
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[0].g
+    value: 0.254902
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[0].b
+    value: 0.1764706
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[0].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[1].r
+    value: 0.2196079
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[1].g
+    value: 0.2196079
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[1].b
+    value: 0.2196079
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[1].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[2].r
+    value: 0.8313726
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[2].g
+    value: 0.6235294
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[2].b
+    value: 0.3607843
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[2].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[3].r
+    value: 0.8901961
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[3].g
+    value: 0.7803922
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[3].b
+    value: 0.5490196
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[3].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[4].r
+    value: 0.8000001
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[4].g
+    value: 0.8196079
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[4].b
+    value: 0.8078432
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[4].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[5].r
+    value: 0.6862745
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[5].g
+    value: 0.4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[5].b
+    value: 0.2352941
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[5].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[6].r
+    value: 0.5450981
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[6].g
+    value: 0.427451
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[6].b
+    value: 0.2156863
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[6].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[7].r
+    value: 0.8470589
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[7].g
+    value: 0.4666667
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[7].b
+    value: 0.2470588
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[7].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[8].r
+    value: 0.3098039
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[8].g
+    value: 0.254902
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[8].b
+    value: 0.1764706
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[8].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[9].r
+    value: 0.1764706
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[9].g
+    value: 0.1686275
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[9].b
+    value: 0.1686275
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[9].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[10].r
+    value: 0.3843138
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[10].g
+    value: 0.2352941
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[10].b
+    value: 0.0509804
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[10].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[11].r
+    value: 0.6196079
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[11].g
+    value: 0.6196079
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[11].b
+    value: 0.6196079
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[11].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[12].r
+    value: 0.6196079
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[12].g
+    value: 0.6196079
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[12].b
+    value: 0.6196079
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[12].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[13].r
+    value: 0.9764706
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[13].g
+    value: 0.9686275
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[13].b
+    value: 0.9568628
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[13].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[14].r
+    value: 0.1764706
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[14].g
+    value: 0.1686275
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[14].b
+    value: 0.1686275
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[14].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[15].r
+    value: 0.8980393
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[15].g
+    value: 0.7764707
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[15].b
+    value: 0.6196079
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: allHairAndSubble.Array.data[15].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.size
+    value: 9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[0].r
+    value: 0.2862745
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[0].g
+    value: 0.4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[0].b
+    value: 0.4941177
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[0].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[1].r
+    value: 0.4392157
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[1].g
+    value: 0.1960784
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[1].b
+    value: 0.172549
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[1].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[2].r
+    value: 0.3529412
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[2].g
+    value: 0.3803922
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[2].b
+    value: 0.2705882
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[2].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[3].r
+    value: 0.682353
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[3].g
+    value: 0.4392157
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[3].b
+    value: 0.2196079
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[3].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[4].r
+    value: 0.4313726
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[4].g
+    value: 0.2313726
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[4].b
+    value: 0.2705882
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[4].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[5].r
+    value: 0.5921569
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[5].g
+    value: 0.4941177
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[5].b
+    value: 0.2588235
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[5].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[6].r
+    value: 0.482353
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[6].g
+    value: 0.4156863
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[6].b
+    value: 0.3529412
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[6].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[7].r
+    value: 0.2352941
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[7].g
+    value: 0.2352941
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[7].b
+    value: 0.2352941
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[7].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[8].r
+    value: 0.2313726
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[8].g
+    value: 0.4313726
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[8].b
+    value: 0.4156863
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primary.Array.data[8].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondary.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondary.Array.data[0].r
+    value: 0.7019608
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondary.Array.data[0].g
+    value: 0.6235294
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondary.Array.data[0].b
+    value: 0.4666667
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondary.Array.data[0].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondary.Array.data[1].r
+    value: 0.7372549
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondary.Array.data[1].g
+    value: 0.7372549
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondary.Array.data[1].b
+    value: 0.7372549
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondary.Array.data[1].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondary.Array.data[2].r
+    value: 0.1647059
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondary.Array.data[2].g
+    value: 0.1647059
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondary.Array.data[2].b
+    value: 0.1647059
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondary.Array.data[2].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondary.Array.data[3].r
+    value: 0.2392157
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondary.Array.data[3].g
+    value: 0.2509804
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondary.Array.data[3].b
+    value: 0.1882353
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondary.Array.data[3].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.size
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[0].r
+    value: 0.6705883
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[0].g
+    value: 0.6705883
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[0].b
+    value: 0.6705883
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[0].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[1].r
+    value: 0.5568628
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[1].g
+    value: 0.5960785
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[1].b
+    value: 0.6392157
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[1].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[2].r
+    value: 0.5568628
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[2].g
+    value: 0.6235294
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[2].b
+    value: 0.6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[2].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[3].r
+    value: 0.6313726
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[3].g
+    value: 0.6196079
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[3].b
+    value: 0.5568628
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[3].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[4].r
+    value: 0.6980392
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[4].g
+    value: 0.6509804
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[4].b
+    value: 0.6196079
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalPrimary.Array.data[4].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.size
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[0].r
+    value: 0.3921569
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[0].g
+    value: 0.4039216
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[0].b
+    value: 0.4117647
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[0].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[1].r
+    value: 0.4784314
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[1].g
+    value: 0.5176471
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[1].b
+    value: 0.5450981
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[1].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[2].r
+    value: 0.3764706
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[2].g
+    value: 0.3607843
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[2].b
+    value: 0.3372549
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[2].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[3].r
+    value: 0.3254902
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[3].g
+    value: 0.3764706
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[3].b
+    value: 0.3372549
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[3].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[4].r
+    value: 0.4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[4].g
+    value: 0.4039216
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[4].b
+    value: 0.3568628
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: metalSecondary.Array.data[4].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: leatherPrimary.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: leatherPrimary.Array.data[0].r
+    value: 0.49
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: leatherPrimary.Array.data[0].g
+    value: 0.28
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: leatherPrimary.Array.data[0].b
+    value: 0.15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: leatherPrimary.Array.data[0].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: leatherSecondary.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: leatherSecondary.Array.data[0].r
+    value: 0.25
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: leatherSecondary.Array.data[0].g
+    value: 0.14
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: leatherSecondary.Array.data[0].b
+    value: 0.07
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: leatherSecondary.Array.data[0].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.size
+    value: 8
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[0].r
+    value: 0.0509804
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[0].g
+    value: 0.6745098
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[0].b
+    value: 0.9843138
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[0].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[1].r
+    value: 0.7215686
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[1].g
+    value: 0.2666667
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[1].b
+    value: 0.2666667
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[1].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[2].r
+    value: 0.3058824
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[2].g
+    value: 0.7215686
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[2].b
+    value: 0.6862745
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[2].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[3].r
+    value: 0.9254903
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[3].g
+    value: 0.882353
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[3].b
+    value: 0.8509805
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[3].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[4].r
+    value: 0.3098039
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[4].g
+    value: 0.7058824
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[4].b
+    value: 0.3137255
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[4].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[5].r
+    value: 0.5294118
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[5].g
+    value: 0.3098039
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[5].b
+    value: 0.6470588
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[5].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[6].r
+    value: 0.8666667
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[6].g
+    value: 0.7764707
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[6].b
+    value: 0.254902
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[6].a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[7].r
+    value: 0.2392157
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[7].g
+    value: 0.4588236
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[7].b
+    value: 0.8156863
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: bodyArt.Array.data[7].a
+    value: 1
+    objectReference: {fileID: 0}

@@ -1,10 +1,8 @@
 using System.Collections.Generic;
-using Interface;
 using Leopotam.Ecs;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
 #endif
-using Unit.Player;
 using UnityEngine;
 
 
@@ -29,7 +27,6 @@ namespace EcsBattle
 
         public void Init()
         {
-            // void can be switched to IEnumerator for support coroutines.
             _world = new EcsWorld();
             _execute = new EcsSystems(_world);
             _fixedExecute = new EcsSystems(_world);
@@ -89,13 +86,12 @@ namespace EcsBattle
         {
             _execute?.Run();
         }
-
-        #endregion
-
-
+        
         public void FixedExecute(float fixedDeltaTime)
         {
             _fixedExecute?.Run();
         }
+
+        #endregion
     }
 }

@@ -1,4 +1,5 @@
-﻿using Leopotam.Ecs;
+﻿using Controller;
+using Leopotam.Ecs;
 using UniRx;
 using UnityEngine;
 
@@ -53,6 +54,8 @@ namespace Unit.Player
         public StringReactiveProperty Description =>
             new StringReactiveProperty(
                 $"Name:{CharAttributes.Name}\nClass:{CharacterClass.Name}\nRace:{CharAttributes.CharacterRace}\nGender:{CharAttributes.CharacterGender}");
+
+        public EquipmentPoints EquipmentPoints { get; set; }
 
         #endregion
 

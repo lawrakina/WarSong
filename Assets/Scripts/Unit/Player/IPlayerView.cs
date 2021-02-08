@@ -1,4 +1,5 @@
-﻿using Leopotam.Ecs;
+﻿using Controller;
+using Leopotam.Ecs;
 using UniRx;
 
 
@@ -8,5 +9,6 @@ namespace Unit.Player
     {
         BaseCharacterClass CharacterClass { get; set; }
         StringReactiveProperty Description { get; }
+        EquipmentPoints EquipmentPoints { get; set; }
     }
 }

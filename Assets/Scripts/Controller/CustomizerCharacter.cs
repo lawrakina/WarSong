@@ -32,6 +32,10 @@ namespace Controller
             person.CharacterGender = settings.CharacterGender;
 
             person.Generate();
+
+            var pointEquipment = new EquipmentPoints(playerView.Transform.gameObject, _characterData);
+            pointEquipment.GenerateAllPoints();
+            playerView.EquipmentPoints = pointEquipment;
             
             // switch (settings.CharacterRace)
             // {

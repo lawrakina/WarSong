@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StoragePlayerPrefab: {fileID: 1588895830433058, guid: 5f160eebd5f55fb4d8187a5e697e1088,
     type: 3}
+  ListAttachPoints:
+  - Name: 
+    Path: 
+    LocalPosition: {x: 0, y: 0, z: 0}
+    LocalRotation: {x: 0, y: 0, z: 0}
   humanSkin:
   - {r: 1, g: 0.8000001, b: 0.682353, a: 1}
   elfSkin:

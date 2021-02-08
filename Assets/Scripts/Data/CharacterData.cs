@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Extension;
 using UnityEngine;
 
 
@@ -10,6 +11,32 @@ namespace Data
     {
         [SerializeField]
         public GameObject StoragePlayerPrefab;
+
+        [SerializeField]
+        public AttachPoint[] ListAttachPoints =
+        {
+            new AttachPoint()
+            {
+                Name = StringManager.ATTACH_POINT_LEFT_ONE_WEAPON,
+                Path = $"Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L",
+                LocalPosition = new Vector3(-6.8f, -3.4f, 0.0f),
+                LocalRotation = new Vector3(0.0f, -90.0f, -90.0f)
+            },
+            new AttachPoint()
+            {
+                Name = StringManager.ATTACH_POINT_RIGHT_ONE_WEAPON,
+                Path = $"Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R",
+                LocalPosition = new Vector3(6.8f, 1.9f, -0.9f),
+                LocalRotation = new Vector3(-177.0f, -81.0f, 97.1f)
+            },
+            new AttachPoint()
+            {
+                Name = StringManager.ATTACH_POINT_LEFT_SHILD,
+                Path = $"Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Elbow_attachment_L",
+                LocalPosition = new Vector3(0.0f, 4.5f, 0.0f),
+                LocalRotation = new Vector3(-90.0f, 0.0f, -90.0f)
+            },
+        };
 
         [Header("Skin Colors")]
         public Color[] humanSkin = {new Color(1f, 0.8000001f, 0.682353f)};
@@ -75,6 +102,15 @@ namespace Data
             new Color(0.3098039f, 0.7058824f, 0.3137255f), new Color(0.5294118f, 0.3098039f, 0.6470588f),
             new Color(0.8666667f, 0.7764707f, 0.254902f), new Color(0.2392157f, 0.4588236f, 0.8156863f)
         };
+    }
+
+    [Serializable] public class AttachPoint
+    {
+        public string Name;
+        public string Path;
+        public Vector3 LocalPosition;
+        public Vector3 LocalRotation;
+        public Vector3 LocalScale = new Vector3(100.0f, 100.0f, 100.0f);
     }
 
 
