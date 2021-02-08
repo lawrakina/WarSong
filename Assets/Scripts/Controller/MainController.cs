@@ -198,7 +198,7 @@ namespace Controller
         #endregion
     }
 
-    public sealed class BattleController : BaseController, IExecute
+    public sealed class BattleController : BaseController, IExecute, IFixedExecute
     {
         private readonly global::EcsBattle.EcsBattle _ecsEngine;
 
@@ -210,6 +210,11 @@ namespace Controller
         public void Execute(float deltaTime)
         {
             _ecsEngine.Execute(deltaTime);
+        }
+
+        public void FixedExecute(float deltaTime)
+        {
+            _ecsEngine.FixedExecute(deltaTime);
         }
     }
 }

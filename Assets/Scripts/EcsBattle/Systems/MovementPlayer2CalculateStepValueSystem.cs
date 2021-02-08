@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace EcsBattle
 {
-    public sealed class Movement2CalculateStepValueForPlayerSystem : IEcsRunSystem
+    public sealed class MovementPlayer2CalculateStepValueSystem : IEcsRunSystem
     {
         private EcsFilter<PlayerComponent, DirectionMoving, TransformComponent> _filter;
 

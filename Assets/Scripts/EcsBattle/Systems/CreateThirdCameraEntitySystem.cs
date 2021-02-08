@@ -24,7 +24,8 @@ namespace EcsBattle
             var camera = _world.NewEntity();
             camera.Get<FightCameraComponent>();
             camera.Get<TransformComponent>().Value = _camera.Transform;
-            camera.Get<TargetTransformComponent>().Value = _camera.ThirdTarget;
+            camera.Get<TargetCameraComponent>().Position = _camera.ThirdTarget;
+            camera.Get<TargetCameraComponent>().Rotate = _player.Transform;
         }
     }
 }

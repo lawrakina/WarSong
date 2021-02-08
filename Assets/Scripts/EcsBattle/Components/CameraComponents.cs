@@ -7,8 +7,9 @@ namespace EcsBattle.Components
     {
     }
 
-    public struct TargetTransformComponent
+    public struct TargetCameraComponent
     {
-        public Transform Value;
+        public Transform Position;
+        public Transform Rotate;
     }
 }

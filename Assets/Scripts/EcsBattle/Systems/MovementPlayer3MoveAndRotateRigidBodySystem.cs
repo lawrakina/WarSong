@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace EcsBattle
 {
-    public sealed class Movement3MoveAndRotateRigidBodyForPlayerSystem : IEcsRunSystem
+    public sealed class MovementPlayer3MoveAndRotateRigidBodySystem : IEcsRunSystem
     {
         private EcsFilter<NeedStepComponent, TransformComponent, RigidBodyComponent, MovementSpeed, RotateSpeed, DirectionMoving> _filter;
         public void Run()
@@ -19,7 +19,7 @@ namespace EcsBattle
                 ref var rotateSpeed = ref _filter.Get5(index).Value;
                 ref var directionMoving = ref _filter.Get6(index).Value;
                 
-                rigidBody.MovePosition(playerTransform.position - (needStep * (moveSpeed * Time.deltaTime)));
+                rigidBody.MovePosition(playerTransform.position - (needStep * (moveSpeed * Time.fixedDeltaTime)));
                 playerTransform.RotateAround(
                     playerTransform.position, 
                     Vector3.up, 

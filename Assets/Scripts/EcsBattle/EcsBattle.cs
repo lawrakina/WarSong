@@ -15,8 +15,8 @@ namespace EcsBattle
         #region Fields
 
         private EcsWorld _world;
-        private EcsSystems _systems;
-        private float _deltaTime = 0;
+        private EcsSystems _execute;
+        private EcsSystems _fixedExecute;
         private readonly List<object> _listForInject = new List<object>();
 
         #endregion
@@ -31,13 +31,14 @@ namespace EcsBattle
         {
             // void can be switched to IEnumerator for support coroutines.
             _world = new EcsWorld();
-            _systems = new EcsSystems(_world);
+            _execute = new EcsSystems(_world);
+            _fixedExecute = new EcsSystems(_world);
 #if UNITY_EDITOR
             EcsWorldObserver.Create(_world);
-            EcsSystemsObserver.Create(_systems);
+            EcsSystemsObserver.Create(_execute);
 #endif
 
-            _systems
+            _execute
                 //Create Player & Camera
                 .Add(new CreatePlayerEntitySystem())
                 .Add(new CreateThirdCameraEntitySystem())
@@ -45,10 +46,10 @@ namespace EcsBattle
                 .Add(new CameraPositioningOfPlayerSystem())
                 .Add(new CameraRotationOfPlayerSystem())
                 //Moving Player
-                .Add(new Movement1SetDirectionForPlayerSystem())
-                .Add(new Movement2CalculateStepValueForPlayerSystem())
-                .Add(new Movement3MoveAndRotateRigidBodyForPlayerSystem())
-                ;
+                .Add(new MovementPlayer1SetDirectionSystem())
+                .Add(new MovementPlayer2CalculateStepValueSystem());
+            _fixedExecute
+                .Add(new MovementPlayer3MoveAndRotateRigidBodySystem());
 
             // register one-frame components (order is important), for example:
             // .OneFrame<TestComponent1> ()
@@ -58,9 +59,12 @@ namespace EcsBattle
             // .Inject (new CameraService ())
             // .Inject (new NavMeshSupport ())
             foreach (var obj in _listForInject)
-                _systems.Inject(obj);
+                _execute.Inject(obj);
+            foreach (var obj in _listForInject)
+                _fixedExecute.Inject(obj);
 
-            _systems.Init();
+            _execute.Init();
+            _fixedExecute.Init();
         }
 
 
@@ -68,10 +72,10 @@ namespace EcsBattle
 
         void OnDestroy()
         {
-            if (_systems != null)
+            if (_execute != null)
             {
-                _systems.Destroy();
-                _systems = null;
+                _execute.Destroy();
+                _execute = null;
                 _world.Destroy();
                 _world = null;
             }
@@ -79,10 +83,15 @@ namespace EcsBattle
 
         public void Execute(float deltaTime)
         {
-            _deltaTime = deltaTime;
-            _systems?.Run();
+            _execute?.Run();
         }
 
         #endregion
+
+
+        public void FixedExecute(float fixedDeltaTime)
+        {
+            _fixedExecute?.Run();
+        }
     }
 }

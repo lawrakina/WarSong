@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace EcsBattle
 {
-    public class Movement1SetDirectionForPlayerSystem : IEcsRunSystem
+    public class MovementPlayer1SetDirectionSystem : IEcsRunSystem
     {
         private EcsFilter<PlayerComponent> _filter;
         
