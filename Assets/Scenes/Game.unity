@@ -1581,9 +1581,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65703d1d0a82411e8b4b9da34f4b1f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
   _characterData: {fileID: 11400000, guid: 6a9d8d58428c31245b10f24bdf6db892, type: 2}
   _generatorData: {fileID: 11400000, guid: 491268119048552409706074d4d24945, type: 2}
   _ecsBattleData: {fileID: 11400000, guid: 146750372a8399243a45d1ed3a1407e2, type: 2}

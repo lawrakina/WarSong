@@ -1,18 +1,17 @@
 ﻿using System.Collections.Generic;
 using Windows;
 using Battle;
+using CharacterCustomizing;
 using CoreComponent;
 using Data;
 using Enums;
 using Extension;
 using Gui;
-using JetBrains.Annotations;
 using UniRx;
 using Unit.Cameras;
 using Unit.Enemies;
 using Unit.Player;
 using UnityEngine;
-using EcsBattle = EcsBattle.EcsBattle;
 
 
 namespace Controller
@@ -23,10 +22,6 @@ namespace Controller
 
         private CompositeDisposable _subscriptions;
         private Controllers _controllers;
-
-        [Header("Game Layers")]
-        [SerializeField]
-        private LayerMask _groundLayer;
 
         [Header("Game Data")]
         [SerializeField]
@@ -55,10 +50,6 @@ namespace Controller
         [SerializeField]
         private EnumMainWindow _activePanelAndWindow;
 
-        // [Header("Type of camera and char control")]
-        // [SerializeField]
-        // private EnumFightCamera _fightCameraType = EnumFightCamera.ThirdPersonView;
-
         private IPlayerView _player;
 
         [Header("For debug")]
@@ -81,7 +72,6 @@ namespace Controller
         private void Awake()
         {
             _subscriptions = new CompositeDisposable();
-            LayerManager.GroundLayer = _groundLayer;
 
             //UI & Windows
             _activeWindow = new ReactiveProperty<EnumMainWindow>();
