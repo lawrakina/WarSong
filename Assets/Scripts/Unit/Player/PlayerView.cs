@@ -47,8 +47,6 @@ namespace Unit.Player
 
         public ICharAttributes CharAttributes { get; set; }
 
-        public Transform EnemyTarget { get; set; }
-
         public BaseCharacterClass CharacterClass { get; set; }
 
         public StringReactiveProperty Description =>

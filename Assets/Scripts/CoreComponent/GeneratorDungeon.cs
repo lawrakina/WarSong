@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Controller;
 using Data;
 using DungeonArchitect;
 using DungeonArchitect.Builders.GridFlow;
 using UniRx;
+using Unit.Enemies;
 using UnityEngine;
+using VIew;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -76,6 +80,14 @@ namespace CoreComponent
         public GameObject Dungeon()
         {
             return _dungeon;
+        }
+
+        public List<SpawnMarkerEnemyInDungeon> GetEnemiesMarkers()
+        {
+            if (!isEnableDungeon) return null;
+
+            var result = _parent.GetComponentsInChildren<SpawnMarkerEnemyInDungeon>();
+            return result.ToList();
         }
     }
 }

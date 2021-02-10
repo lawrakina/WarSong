@@ -12,6 +12,5 @@ namespace Unit
         Animator Animator { get; }
         AnimatorParameters AnimatorParameters { get; }
         ICharAttributes CharAttributes { get; set; }
-        Transform EnemyTarget { get; set; }
     }
 }

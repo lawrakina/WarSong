@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Data;
 using Leopotam.Ecs;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
@@ -47,10 +48,14 @@ namespace EcsBattle
                 .Add(new MovementPlayer2CalculateStepValueSystem());
             _fixedExecute
                 .Add(new MovementPlayer3MoveAndRotateRigidBodySystem());
-            
             _execute
                 //Animation Player
-                .Add(new AnimationMotionPlayerSystem());
+                .Add(new AnimationMotionPlayerSystem())
+                .Add(new CreateEnemyEntitySystem())
+                
+                
+                
+                ;
 
             // register one-frame components (order is important), for example:
             // .OneFrame<TestComponent1> ()
@@ -93,5 +98,19 @@ namespace EcsBattle
         }
 
         #endregion
+    }
+
+    public sealed class CreateEnemyEntitySystem : IEcsInitSystem
+    {
+        private EcsWorld _world;
+        private List<EnemySettings> _listEnemies;
+        public void Init()
+        {
+            if (_listEnemies == null) return;
+            foreach (var enemy in _listEnemies)
+            {
+                
+            }
+        }
     }
 }

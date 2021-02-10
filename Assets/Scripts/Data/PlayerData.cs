@@ -3,7 +3,7 @@
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "PlayerData", menuName = "Data/PlayerData")]
+    [CreateAssetMenu(fileName = "PlayerData", menuName = "Data/Player Data")]
     public sealed class PlayerData : ScriptableObject
     {
         [SerializeField]

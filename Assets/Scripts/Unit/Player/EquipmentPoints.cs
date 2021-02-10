@@ -30,7 +30,9 @@ namespace Unit.Player
                 GenerateAttachPoint(_characterData.ListAttachPoints.FirstOrDefault(x =>
                     x.Name == StringManager.ATTACH_POINT_RIGHT_ONE_WEAPON));
             _leftShildAttachPoint =
-                GenerateAttachPoint(_characterData.ListAttachPoints.FirstOrDefault(x=>x.Name == StringManager.ATTACH_POINT_LEFT_SHILD));
+                GenerateAttachPoint(
+                    _characterData.ListAttachPoints.FirstOrDefault(x =>
+                        x.Name == StringManager.ATTACH_POINT_LEFT_SHILD));
         }
 
         private GameObject GenerateAttachPoint(AttachPoint point)

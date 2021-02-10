@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Enums;
+using Extension;
 using Interface;
 using UniRx;
 using UnityEngine;
@@ -34,7 +35,7 @@ namespace Gui
         public void Init(List<EnumMainWindow> offItemMenu)
         {
             Init();
-            Debug.Log($"offItemMenu:{offItemMenu},{offItemMenu.Count}");
+            Dbg.Log($"offItemMenu:{offItemMenu},{offItemMenu.Count}");
             CharToggle.interactable = !offItemMenu.Contains(EnumMainWindow.Character);
             EquipToggle.interactable = !offItemMenu.Contains(EnumMainWindow.Equip);
             BattleToggle.interactable = !offItemMenu.Contains(EnumMainWindow.Battle);

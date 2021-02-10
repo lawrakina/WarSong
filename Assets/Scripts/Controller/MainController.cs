@@ -6,11 +6,10 @@ using Data;
 using Enums;
 using Extension;
 using Gui;
-using InputMovement;
-using Interface;
 using JetBrains.Annotations;
 using UniRx;
 using Unit.Cameras;
+using Unit.Enemies;
 using Unit.Player;
 using UnityEngine;
 using EcsBattle = EcsBattle.EcsBattle;
@@ -31,16 +30,19 @@ namespace Controller
 
         [Header("Game Data")]
         [SerializeField]
-        private PlayerData _playerData;
-
-        [SerializeField]
         private CharacterData _characterData;
 
         [SerializeField]
         private DungeonGeneratorData _generatorData;
-        
+
         [SerializeField]
         private EcsBattleData _ecsBattleData;
+
+        [SerializeField]
+        private PlayerData _playerData;
+
+        [SerializeField]
+        private EnemiesData _enemiesData;
 
         [Header("Ui & Windows")]
         [SerializeField]
@@ -70,9 +72,9 @@ namespace Controller
 
         #endregion
 
-        
-        
+
         //ДОДЕЛАТЬ БЛЯТЬ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!outLine
+
 
         #region UnityMethods
 
@@ -99,12 +101,10 @@ namespace Controller
                 _player = listOfCharactersController.CurrentCharacter.Value;
                 _linkToCharPlayer = _player.Transform.gameObject;
             }).AddTo(_subscriptions);
-            
+
             //create ui & windows
             _windows.Ctor(_activeWindow, _battleState);
             _ui.Ctor(_activeWindow, _battleState, _charWindow, listOfCharactersController);
-
-            
 
             //generator levels
             var generatorDungeon = new GeneratorDungeon(_generatorData, _windows.BattleWindow.Content.transform);
@@ -129,32 +129,19 @@ namespace Controller
             positioningCharInMenuController.AddPlayerPosition(
                 _windows.TalentsWindow.CharacterSpawn(), EnumMainWindow.Talents);
 
-            var battleInitialization = new EcsBattleInitialization(_ecsBattleData, generatorDungeon, _battleState, _activeWindow, _player, fightCamera);
+            var enemyFactory = new EnemyFactory();
+            var enemiesInitialization = new EnemiesInitialization(_enemiesData, enemyFactory);
+
+            var battleInitialization = new EcsBattleInitialization(
+                _ecsBattleData, generatorDungeon, _battleState, _activeWindow, _player, fightCamera, enemiesInitialization);
             battleInitialization.Dungeon = generatorDungeon.Dungeon();
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(battleInitialization);
-            
-            var battleController = new BattleController(battleInitialization.BattleEngine());
-            
-            // var battleInitialization = new BattleInitialization(generatorDungeon, _battleState, _activeWindow, _player);
-            // battleInitialization.Dungeon = generatorDungeon.Dungeon();
-            // _ui.BattlePanel.LevelGeneratorPanel.SetReference(battleInitialization);
 
-            // _typeCameraAndCharControl = new ReactiveProperty<EnumFightCamera>(_fightCameraType);
-            // var battleCameraController =
-            //     new FightCameraController(_battleState, _player, fightCamera, _typeCameraAndCharControl);
-            // var battlePlayerMoveController =
-            //     new MovePlayerController(_battleState, inputInitialization.GetInput(), _player,
-            //         _typeCameraAndCharControl);
-            // var inputController = new InputController(inputInitialization.GetInput());
+            var battleController = new BattleController(battleInitialization.BattleEngine());
 
             _controllers = new Controllers();
-            // _controllers.Add(customizingCharacter);
             _controllers.Add(positioningCharInMenuController);
             _controllers.Add(battleController);
-            // _controllers.Add(battleCameraController);
-            // _controllers.Add(inputInitialization);
-            // _controllers.Add(battlePlayerMoveController);
-            // _controllers.Add(inputController);
 
             var offItemMenu = new List<EnumMainWindow>();
             offItemMenu.Add(EnumMainWindow.Equip);
@@ -196,25 +183,5 @@ namespace Controller
         #endregion
 
         #endregion
-    }
-
-    public sealed class BattleController : BaseController, IExecute, IFixedExecute
-    {
-        private readonly global::EcsBattle.EcsBattle _ecsEngine;
-
-        public BattleController(global::EcsBattle.EcsBattle ecsEngine)
-        {
-            _ecsEngine = ecsEngine;
-        }
-
-        public void Execute(float deltaTime)
-        {
-            _ecsEngine.Execute(deltaTime);
-        }
-
-        public void FixedExecute(float deltaTime)
-        {
-            _ecsEngine.FixedExecute(deltaTime);
-        }
     }
 }

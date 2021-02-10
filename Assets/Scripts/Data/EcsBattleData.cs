@@ -3,7 +3,7 @@
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "EcsBattleData", menuName = "Data/EcsBattleData")]
+    [CreateAssetMenu(fileName = "EcsBattleData", menuName = "Data/EcsBattle Data")]
     public class EcsBattleData : ScriptableObject
     {
         [SerializeField]

@@ -3,7 +3,7 @@
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "DungeonData", menuName = "Data/DungeonData")]
+    [CreateAssetMenu(fileName = "DungeonData", menuName = "Data/Dungeon Data")]
     public class DungeonGeneratorData : ScriptableObject
     {
         [SerializeField]

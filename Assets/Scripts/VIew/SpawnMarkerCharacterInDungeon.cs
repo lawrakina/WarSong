@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
 
-public class SpawnMarkerCharacterInDungeon : MonoBehaviour
+namespace VIew
 {
+    public class SpawnMarkerCharacterInDungeon : MonoBehaviour
+    {
+    }
 }

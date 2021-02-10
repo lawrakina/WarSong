@@ -14,7 +14,7 @@ namespace EcsBattle
 
         public void Init()
         {
-            Debug.Log($"CreatePlayerEntitySystem.Init()");
+            // Debug.Log($"CreatePlayerEntitySystem.Init()");
             var player = _world.NewEntity();
             player.Get<PlayerComponent>();
             player.Get<TransformComponent>().Value = _player.Transform;

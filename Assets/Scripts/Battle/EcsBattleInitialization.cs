@@ -1,9 +1,13 @@
-﻿using CoreComponent;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Controller;
+using CoreComponent;
 using Data;
 using Enums;
 using Extension;
 using Interface;
 using UniRx;
+using Unit.Enemies;
 using Unit.Player;
 using UnityEngine;
 
@@ -19,6 +23,8 @@ namespace Battle
         private IReactiveProperty<EnumMainWindow> _activeWindow;
         private readonly IReactiveProperty<EnumBattleWindow> _battleState;
         private readonly IPlayerView _player;
+        private readonly EnemiesInitialization _enemiesInitialization;
+        private List<IEnemyView> _listEnemies = new List<IEnemyView>();
 
         #endregion
 
@@ -36,12 +42,14 @@ namespace Battle
         public EcsBattleInitialization(EcsBattleData ecsBattleData,
             IGeneratorDungeon generatorDungeon,
             IReactiveProperty<EnumBattleWindow> battleState,
-            IReactiveProperty<EnumMainWindow> activeWindow, IPlayerView player, IFightCamera camera)
+            IReactiveProperty<EnumMainWindow> activeWindow,
+            IPlayerView player, IFightCamera camera, EnemiesInitialization enemiesInitialization)
         {
             _ecsBattle = Object.Instantiate(ecsBattleData.EcsBattle);
             _ecsBattle.gameObject.name = StringManager.ECS_BATTLE_GO_NAME;
-            
+
             _player = player;
+            _enemiesInitialization = enemiesInitialization;
             _generatorDungeon = generatorDungeon;
             _battleState = battleState;
             _activeWindow = activeWindow;
@@ -57,13 +65,15 @@ namespace Battle
 
         public void StartBattle()
         {
-            _ecsBattle.Init();
-            
+            _listEnemies = _enemiesInitialization.GetListEnemies(_generatorDungeon.GetEnemiesMarkers());
+            _ecsBattle.Inject(_listEnemies);
+
             var playerPosition = _generatorDungeon.GetPlayerPosition();
             _player.Transform.SetParent(playerPosition);
             _player.Transform.localPosition = Vector3.zero;
-            _player.Transform.localRotation = Quaternion.identity;
             _battleState.Value = EnumBattleWindow.Fight;
+            
+            _ecsBattle.Init();
         }
 
         #endregion

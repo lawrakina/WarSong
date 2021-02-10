@@ -11,7 +11,6 @@ namespace Unit
         private int _attackType;
 
         private bool _battle;
-        private bool _falling;
         private float _horizontalSpeed;
         private bool _jump;
         private float _speed;
@@ -44,16 +43,6 @@ namespace Unit
             {
                 _speed = value;
                 _animator.SetFloat(TagManager.ANIMATOR_PARAM_SPEED, _speed);
-            }
-        }
-
-        public bool Falling
-        {
-            get => _falling;
-            set
-            {
-                _falling = value;
-                _animator.SetBool(TagManager.ANIMATOR_PARAM_FALLING, _falling);
             }
         }
 
@@ -101,11 +90,6 @@ namespace Unit
         public void SetTriggerAttack()
         {
             Attack = true;
-        }
-
-        public void ResetTrigger(string name)
-        {
-            _animator.ResetTrigger(name);
         }
     }
 }
