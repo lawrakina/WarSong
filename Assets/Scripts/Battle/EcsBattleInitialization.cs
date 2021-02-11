@@ -65,14 +65,16 @@ namespace Battle
 
         public void StartBattle()
         {
-            _listEnemies = _enemiesInitialization.GetListEnemies(_generatorDungeon.GetEnemiesMarkers());
+            _listEnemies =
+                _enemiesInitialization.GetListEnemies(_generatorDungeon.GetEnemiesMarkers(),
+                    _generatorDungeon.Dungeon());
             _ecsBattle.Inject(_listEnemies);
 
             var playerPosition = _generatorDungeon.GetPlayerPosition();
             _player.Transform.SetParent(playerPosition);
             _player.Transform.localPosition = Vector3.zero;
             _battleState.Value = EnumBattleWindow.Fight;
-            
+
             _ecsBattle.Init();
         }
 
