@@ -1,4 +1,5 @@
-﻿using Controller;
+﻿using CharacterCustomizing;
+using Controller;
 using Leopotam.Ecs;
 using UniRx;
 using UnityEngine;
@@ -54,6 +55,7 @@ namespace Unit.Player
                 $"Name:{CharAttributes.Name}\nClass:{CharacterClass.Name}\nRace:{CharAttributes.CharacterRace}\nGender:{CharAttributes.CharacterGender}");
 
         public EquipmentPoints EquipmentPoints { get; set; }
+        public EquipmentItems EquipmentItems { get; set; }
 
         #endregion
 

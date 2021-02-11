@@ -18,7 +18,7 @@ namespace CharacterCustomizing
         public void Customize(ref IPlayerView playerView, CharacterSettings settings)
         {
             playerView.CharAttributes.AgroDistance = settings.AgroDistance;
-            playerView.CharAttributes.Speed= settings.PlayerMoveSpeed;
+            playerView.CharAttributes.Speed = settings.PlayerMoveSpeed;
             playerView.CharAttributes.RotateSpeedPlayer = settings.RotateSpeedPlayer;
 
             var person = new PersonCharacter(playerView.Transform.gameObject, _characterData);
@@ -32,8 +32,10 @@ namespace CharacterCustomizing
             playerView.EquipmentPoints = equipmentPoints;
 
             var equipWeapon = new EquipmentWeapon(playerView, settings.Equipment);
-            
-            
+            equipWeapon.GetWeapons();
+            playerView.AnimatorParameters.WeaponType = equipWeapon.GetWeaponType();
+
+
             // switch (settings.CharacterRace)
             // {
             //     case CharacterRace.Human:
@@ -52,10 +54,10 @@ namespace CharacterCustomizing
             //     default:
             //         throw new ArgumentOutOfRangeException();
             // }
-            
-            
+
+
             // var person = new PersonCharacter(playerView.Transform.gameObject, settings);
-            
+
             switch (settings.CharacterClass)
             {
                 case CharacterClass.Warrior:

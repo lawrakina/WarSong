@@ -2,6 +2,7 @@
 {
     public static class StringManager
     {
+        public const string ATTACH_POINT_LEFT_BOW = "LeftBowTwoHandWeapon";
         public const string ATTACH_POINT_LEFT_SHILD = "LeftShild";
         public const string ATTACH_POINT_LEFT_ONE_WEAPON = "LeftOneHandWeapon";
         public const string ATTACH_POINT_RIGHT_ONE_WEAPON = "RightOneHandWeapon";

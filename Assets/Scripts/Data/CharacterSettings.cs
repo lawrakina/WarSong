@@ -28,16 +28,4 @@ namespace Data
         [SerializeField]
         public CharacterEquipment Equipment;
     }
-
-    [Serializable]
-    public sealed class CharacterEquipment
-    {
-        public EquipmentSlot MainWeapon;
-        public EquipmentSlot SecondWeapon;
-    }
-
-    public class EquipmentSlot
-    {
-        public Weapon
-    }
 }

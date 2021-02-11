@@ -20,10 +20,13 @@ MonoBehaviour:
       CharacterRace: 0
       PlayerMoveSpeed: 5
       RotateSpeedPlayer: 120
-    - AgroDistance: 10
-      CharacterClass: 2
-      CharacterGender: 1
-      CharacterRace: 1
-      PlayerMoveSpeed: 5
-      RotateSpeedPlayer: 120
+      Equipment:
+        MainWeapon:
+          View: {fileID: 2584729198991652442, guid: 748584e1e1114c249a340921801d935e,
+            type: 3}
+          Type: 5
+        SecondWeapon:
+          View: {fileID: 3307825871910352492, guid: d3687d2aa11ee35489e653ed8b436246,
+            type: 3}
+          Type: 0
   _numberActiveCharacter: 0

@@ -10,9 +10,9 @@ namespace Unit.Player
     {
         private readonly GameObject _character;
         private readonly CharacterData _characterData;
-        private GameObject _rightWeaponAttachPoint;
-        private GameObject _leftWeaponAttachPoint;
-        private GameObject _leftShildAttachPoint;
+        public GameObject _rightWeaponAttachPoint;
+        public GameObject _leftWeaponAttachPoint;
+        public GameObject _leftShildAttachPoint;
 
 
         public EquipmentPoints(GameObject character, CharacterData characterData)

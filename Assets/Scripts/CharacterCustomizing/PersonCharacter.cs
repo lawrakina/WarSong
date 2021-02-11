@@ -7,7 +7,6 @@ using UnityEngine;
 using CharacterObjectGroups = Data.CharacterObjectGroups;
 using CharacterObjectListsAllGender = Data.CharacterObjectListsAllGender;
 using Random = UnityEngine.Random;
-using SkinColor = CharacterCustomizing.SkinColor;
 
 
 namespace CharacterCustomizing
