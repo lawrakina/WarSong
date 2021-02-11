@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 
 namespace Extension
@@ -27,6 +28,11 @@ namespace Extension
             component.constraints = constraints;
             component.isKinematic = isKinematic;
             component.useGravity = useGravity;
+            return gameObject;
+        }
+        public static GameObject AddNavMeshAgent(this GameObject gameObject)
+        {
+            var component = gameObject.GetOrAddComponent<NavMeshAgent>();
             return gameObject;
         }
 
