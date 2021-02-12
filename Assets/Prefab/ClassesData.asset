@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb533717bab04cfe876f544d22dd4eba, type: 3}
+  m_Name: ClassesData
+  m_EditorClassIdentifier: 
+  Warrior:
+    Strength: 3
+    Agility: 1
+    Stamina: 3
+    Intellect: 1
+    Spirit: 2
+  Rogue:
+    Strength: 1
+    Agility: 3
+    Stamina: 2
+    Intellect: 1
+    Spirit: 2
+  Hunter:
+    Strength: 2
+    Agility: 3
+    Stamina: 2
+    Intellect: 2
+    Spirit: 2
+  Mage:
+    Strength: 1
+    Agility: 1
+    Stamina: 2
+    Intellect: 3
+    Spirit: 3

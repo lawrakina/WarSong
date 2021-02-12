@@ -37,4 +37,13 @@ namespace EcsBattle.Components
     {
         public AnimatorParameters Value;
     }
+    public struct NeedUpdateMaxHpFromPlayerComponent
+    {
+        public float Value;
+    }
+
+    public struct NeedUpdateCurrentHpFromPlayerComponent
+    {
+        public float Value;
+    }
 }

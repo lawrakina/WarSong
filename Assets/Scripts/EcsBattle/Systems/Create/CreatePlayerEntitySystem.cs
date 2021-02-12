@@ -1,6 +1,6 @@
 ﻿using EcsBattle.Components;
+using Extension;
 using Leopotam.Ecs;
-using Unit;
 using Unit.Player;
 using UnityEngine;
 
@@ -22,7 +22,10 @@ namespace EcsBattle
             player.Get<MovementSpeed>().Value = _player.CharAttributes.Speed;
             player.Get<RotateSpeed>().Value = _player.CharAttributes.RotateSpeedPlayer;
             player.Get<AnimatorComponent>().Value = _player.AnimatorParameters;
-            
+            Dbg.Log($"1111111_player.CharacterClass{_player.CharacterClass}");
+            player.Get<NeedUpdateCurrentHpFromPlayerComponent>().Value = _player.CharacterClass.CurrentHp;
+            player.Get<NeedUpdateMaxHpFromPlayerComponent>().Value = _player.CharacterClass.CurrentHp;
+
             var goTarget = Object.Instantiate(new GameObject(), _player.Transform, true);
             goTarget.name = "->DirectionMoving<-";
             var goTargetEntity = _world.NewEntity();
@@ -31,6 +34,4 @@ namespace EcsBattle
             player.Get<GoTargetComponent>().Value = goTargetEntity;
         }
     }
-
-    
 }

@@ -4,6 +4,7 @@ using Controller;
 using Enums;
 using Gui.Characters;
 using Interface;
+using Models;
 using UniRx;
 using Unit.Player;
 
@@ -25,6 +26,7 @@ namespace Gui
         public TalentsPanel TalentsPanel;
         public NavigationBar NavigationBar;
         private ListOfCharactersController _listOfCharactersController;
+        private BattlePlayerModel _playerModel;
 
         #endregion
 
@@ -68,16 +70,17 @@ namespace Gui
 
         public void Ctor(IReactiveProperty<EnumMainWindow> activeWindow,
             IReactiveProperty<EnumBattleWindow> battleState, IReactiveProperty<EnumCharacterWindow> charWindow,
-            ListOfCharactersController listOfCharactersController)
+            ListOfCharactersController listOfCharactersController, BattlePlayerModel playerModel)
         {
             _activeWindow = activeWindow;
             _battleState = battleState;
             _charWindow = charWindow;
             _listOfCharactersController = listOfCharactersController;
+            _playerModel = playerModel;
 
             CharacterPanel.Ctor(_activeWindow, _charWindow, _listOfCharactersController);
             EquipmentPanel.Ctor();
-            BattlePanel.Ctor(_battleState);
+            BattlePanel.Ctor(_battleState, _playerModel);
             SpellsPanel.Ctor();
             TalentsPanel.Ctor();
             NavigationBar.Ctor(_activeWindow, _battleState);

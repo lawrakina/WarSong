@@ -18,7 +18,7 @@ namespace Unit.Enemies
                      false, true,
                      RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |
                      RigidbodyConstraints.FreezeRotationZ)
-                 .AddNavMeshAgent()
+                 // .AddNavMeshAgent()
                  .AddCode<EnemyView>();
 
             var enemyView = enemy.GetComponent<IEnemyView>();

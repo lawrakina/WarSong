@@ -7,6 +7,7 @@ using Data;
 using Enums;
 using Extension;
 using Gui;
+using Models;
 using UniRx;
 using Unit.Cameras;
 using Unit.Enemies;
@@ -28,16 +29,19 @@ namespace Controller
         private CharacterData _characterData;
 
         [SerializeField]
-        private DungeonGeneratorData _generatorData;
-
-        [SerializeField]
-        private EcsBattleData _ecsBattleData;
-
+        private ClassesData _classesData;
+        
         [SerializeField]
         private PlayerData _playerData;
 
         [SerializeField]
         private EnemiesData _enemiesData;
+
+        [SerializeField]
+        private DungeonGeneratorData _generatorData;
+
+        [SerializeField]
+        private EcsBattleData _ecsBattleData;
 
         [Header("Ui & Windows")]
         [SerializeField]
@@ -82,8 +86,11 @@ namespace Controller
             _charWindow.Subscribe(_ => { Dbg.Log(_charWindow.Value); });
             _battleState.Subscribe(_ => { Dbg.Log(_battleState.Value); });
 
+            var playerModel = new BattlePlayerModel();
+            
+            var classesInitialization = new ClassesInitialization(_classesData);
             var customizerCharacter = new CustomizerCharacter(_characterData);
-            var playerFactory = new PlayerFactory(customizerCharacter, _characterData);
+            var playerFactory = new PlayerFactory(customizerCharacter, classesInitialization, _characterData);
             var listOfCharactersController = new ListOfCharactersController(_playerData, playerFactory);
             _player = listOfCharactersController.CurrentCharacter.Value;
             listOfCharactersController.CurrentCharacter.Subscribe(_ =>
@@ -94,7 +101,7 @@ namespace Controller
 
             //create ui & windows
             _windows.Ctor(_activeWindow, _battleState);
-            _ui.Ctor(_activeWindow, _battleState, _charWindow, listOfCharactersController);
+            _ui.Ctor(_activeWindow, _battleState, _charWindow, listOfCharactersController, playerModel);
 
             //generator levels
             var generatorDungeon = new GeneratorDungeon(_generatorData, _windows.BattleWindow.Content.transform);
@@ -123,7 +130,7 @@ namespace Controller
             var enemiesInitialization = new EnemiesInitialization(_enemiesData, enemyFactory);
 
             var battleInitialization = new EcsBattleInitialization(
-                _ecsBattleData, generatorDungeon, _battleState, _activeWindow, _player, fightCamera, enemiesInitialization);
+                _ecsBattleData, generatorDungeon, _battleState, _activeWindow, _player, playerModel, fightCamera, enemiesInitialization);
             battleInitialization.Dungeon = generatorDungeon.Dungeon();
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(battleInitialization);
 

@@ -1,7 +1,4 @@
 ﻿using CharacterCustomizing;
-using Controller;
-using Leopotam.Ecs;
-using UniRx;
 using UnityEngine;
 
 
@@ -9,6 +6,30 @@ namespace Unit.Player
 {
     public sealed class PlayerView : MonoBehaviour, IPlayerView
     {
+        #region Fields
+
+        private Animator _animator;
+
+        #endregion
+
+
+        #region Properties
+
+        public Transform Transform { get; private set; }
+        public Collider Collider { get; private set; }
+        public Rigidbody Rigidbody { get; private set; }
+        public MeshRenderer MeshRenderer { get; private set; }
+        public Animator Animator => _animator;
+        public AnimatorParameters AnimatorParameters { get; private set; }
+        public ICharAttributes CharAttributes { get; set; }
+        public BasicCharacteristics BasicCharacteristics { get; set; }
+        public BaseCharacterClass CharacterClass { get; set; }
+        public EquipmentPoints EquipmentPoints { get; set; }
+        public EquipmentItems EquipmentItems { get; set; }
+
+        #endregion
+
+
         #region UnityMethods
 
         private void Awake()
@@ -21,41 +42,8 @@ namespace Unit.Player
             AnimatorParameters = new AnimatorParameters(ref _animator);
 
             CharAttributes = new CharAttributes();
+            BasicCharacteristics = new BasicCharacteristics();
         }
-
-        #endregion
-
-
-        #region Fields
-
-        private Animator _animator;
-
-        #endregion
-
-
-        #region Properties
-
-        public Transform Transform { get; private set; }
-
-        public Collider Collider { get; private set; }
-
-        public Rigidbody Rigidbody { get; private set; }
-
-        public MeshRenderer MeshRenderer { get; private set; }
-
-        public Animator Animator => _animator;
-        public AnimatorParameters AnimatorParameters { get; private set; }
-
-        public ICharAttributes CharAttributes { get; set; }
-
-        public BaseCharacterClass CharacterClass { get; set; }
-
-        public StringReactiveProperty Description =>
-            new StringReactiveProperty(
-                $"Name:{CharAttributes.Name}\nClass:{CharacterClass.Name}\nRace:{CharAttributes.CharacterRace}\nGender:{CharAttributes.CharacterGender}");
-
-        public EquipmentPoints EquipmentPoints { get; set; }
-        public EquipmentItems EquipmentItems { get; set; }
 
         #endregion
 

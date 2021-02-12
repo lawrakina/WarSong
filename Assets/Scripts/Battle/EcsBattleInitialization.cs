@@ -6,6 +6,7 @@ using Data;
 using Enums;
 using Extension;
 using Interface;
+using Models;
 using UniRx;
 using Unit.Enemies;
 using Unit.Player;
@@ -23,6 +24,8 @@ namespace Battle
         private IReactiveProperty<EnumMainWindow> _activeWindow;
         private readonly IReactiveProperty<EnumBattleWindow> _battleState;
         private readonly IPlayerView _player;
+        private readonly BattlePlayerModel _playerModel;
+        private readonly IFightCamera _camera;
         private readonly EnemiesInitialization _enemiesInitialization;
         private List<IEnemyView> _listEnemies = new List<IEnemyView>();
 
@@ -43,19 +46,24 @@ namespace Battle
             IGeneratorDungeon generatorDungeon,
             IReactiveProperty<EnumBattleWindow> battleState,
             IReactiveProperty<EnumMainWindow> activeWindow,
-            IPlayerView player, IFightCamera camera, EnemiesInitialization enemiesInitialization)
+            IPlayerView player, BattlePlayerModel playerModel, 
+            IFightCamera camera,
+            EnemiesInitialization enemiesInitialization)
         {
             _ecsBattle = Object.Instantiate(ecsBattleData.EcsBattle);
             _ecsBattle.gameObject.name = StringManager.ECS_BATTLE_GO_NAME;
 
             _player = player;
+            _playerModel = playerModel;
+            _camera = camera;
             _enemiesInitialization = enemiesInitialization;
             _generatorDungeon = generatorDungeon;
             _battleState = battleState;
             _activeWindow = activeWindow;
 
-            _ecsBattle.Inject(player);
-            _ecsBattle.Inject(camera);
+            _ecsBattle.Inject(_player);
+            _ecsBattle.Inject(_camera);
+            _ecsBattle.Inject(_playerModel);
         }
 
         #endregion

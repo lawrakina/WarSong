@@ -27,5 +27,8 @@ namespace Data
 
         [SerializeField]
         public CharacterEquipment Equipment;
+
+        [SerializeField]
+        public int Level = 1;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Enums;
 using Gui.Battle;
+using Models;
 using UniRx;
 
 
@@ -8,11 +9,28 @@ namespace Gui
 {
     [Serializable] public sealed class BattlePanel : BasePanel
     {
-        public void Ctor(IReactiveProperty<EnumBattleWindow> battleState)
+        #region Fields
+
+        private IReactiveProperty<EnumBattleWindow> _battleState;
+
+        public LevelGeneratorPanel LevelGeneratorPanel;
+        public FightPanel FightPanel;
+        public VictoryPanel VictoryPanel;
+        public PausePanel PausePanel;
+        public FailPanel FailPanel;
+        private BattlePlayerModel _playerModel;
+
+        #endregion
+
+
+        public void Ctor(IReactiveProperty<EnumBattleWindow> battleState, BattlePlayerModel playerModel)
         {
             base.Ctor();
+
+            _playerModel = playerModel;
+
             LevelGeneratorPanel.Ctor();
-            FightPanel.Ctor();
+            FightPanel.Ctor(_playerModel);
             VictoryPanel.Ctor();
             PausePanel.Ctor();
             FailPanel.Ctor();
@@ -39,18 +57,5 @@ namespace Gui
                 else PausePanel.Hide();
             }).AddTo(_subscriptions);
         }
-
-
-        #region Fields
-
-        private IReactiveProperty<EnumBattleWindow> _battleState;
-
-        public LevelGeneratorPanel LevelGeneratorPanel;
-        public FightPanel FightPanel;
-        public VictoryPanel VictoryPanel;
-        public PausePanel PausePanel;
-        public FailPanel FailPanel;
-
-        #endregion
     }
 }

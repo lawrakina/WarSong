@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Data;
+using EcsBattle.Systems.Ui;
 using Leopotam.Ecs;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
@@ -52,7 +53,10 @@ namespace EcsBattle
                 //Animation Player
                 .Add(new AnimationMotionPlayerSystem())
                 .Add(new CreateEnemyEntitySystem())
-                
+                //UI Player
+                // .Add(new CreateUiPlayerHealsSystem())
+                .Add(new UpdatePlayerCurrentHealthSystem())
+                .Add(new UpdatePlayerMaxHealthSystem())
                 
                 
                 ;
@@ -99,6 +103,19 @@ namespace EcsBattle
 
         #endregion
     }
+
+    // public sealed class CreateUiPlayerHealsSystem : IEcsInitSystem
+    // {
+    //     private EcsWorld _world;
+    //     private BattlePlayerModel _playerModel;
+    //     public void Init()
+    //     {
+    //         var uiHeals = _world.NewEntity();
+    //         uiHeals.Get<UiHealthPlayerComponent>().CurrentValue = _playerModel.CurrentHp;
+    //         uiHeals.Get<UiHealthPlayerComponent>().MaxValue = _playerModel.MaxHp;
+    //     }
+    // }
+
 
     public sealed class CreateEnemyEntitySystem : IEcsInitSystem
     {
