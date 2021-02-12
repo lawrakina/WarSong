@@ -1,7 +1,6 @@
 ﻿using System;
 using Data;
 using Enums;
-using Extension;
 using Unit;
 using Unit.Player;
 
@@ -69,37 +68,42 @@ namespace CharacterCustomizing
 
         #region Methods
 
-        private void GenerateStats(int charLevel, BasicCharacteristics data)
+        private void GenerateStats(int charLevel, BasicCharacteristics currentCharacteristits)
         {
             _playerView.BasicCharacteristics = new BasicCharacteristics
             {
                 // Strength = charLevel * data.Strength,
                 // Agility = charLevel * data.Agility,
-                Stamina = charLevel * data.Stamina,
-                Intellect = charLevel * data.Intellect,
+                StaminaForLevel = charLevel * currentCharacteristits.StaminaForLevel,
+                IntellectForLevel = charLevel * currentCharacteristits.IntellectForLevel,
                 // Spirit = charLevel * data.Spirit
             };
-            _playerView.CharacterClass.BaseHp = _playerView.BasicCharacteristics.Stamina * 10;
+            _playerView.CharacterClass.BaseHp =
+                _playerView.BasicCharacteristics.StartHp +
+                _playerView.BasicCharacteristics.StartStamina * _data.HealthPedStamina +
+                _playerView.BasicCharacteristics.StaminaForLevel *
+                _data.HealthPedStamina;
             _playerView.CharacterClass.CurrentHp = _playerView.CharacterClass.BaseHp;
 
-            Dbg.Log($"SET CurrentHP: {_playerView.CharacterClass.CurrentHp}, MaxHp:{_playerView.CharacterClass.MaxHp}");
+            // Dbg.Log($"SET CurrentHP: {_playerView.CharacterClass.CurrentHp}, MaxHp:{_playerView.CharacterClass.MaxHp}");
 
             switch (_playerView.CharacterClass.ResourceType)
             {
                 case ResourceEnum.Rage:
-                    _playerView.CharacterClass.ResourceBaseValue = 100.0f;
+                    _playerView.CharacterClass.ResourceBaseValue = _data.MaxRageValue;
                     break;
 
                 case ResourceEnum.Energy:
-                    _playerView.CharacterClass.ResourceBaseValue = 100.0f;
+                    _playerView.CharacterClass.ResourceBaseValue = _data.MaxEnergyValue;
                     break;
 
                 case ResourceEnum.Concentration:
-                    _playerView.CharacterClass.ResourceBaseValue = 100.0f;
+                    _playerView.CharacterClass.ResourceBaseValue = _data.MaxConcentrationValue;
                     break;
 
                 case ResourceEnum.Mana:
-                    _playerView.CharacterClass.ResourceBaseValue = _playerView.BasicCharacteristics.Intellect * 15;
+                    _playerView.CharacterClass.ResourceBaseValue =
+                        _playerView.BasicCharacteristics.IntellectForLevel * _data.ManaPointsPerIntellect;
                     break;
 
                 //todo сделать пересчет при получении уровня

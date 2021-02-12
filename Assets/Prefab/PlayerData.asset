@@ -29,4 +29,5 @@ MonoBehaviour:
           View: {fileID: 3307825871910352492, guid: d3687d2aa11ee35489e653ed8b436246,
             type: 3}
           Type: 0
+      Level: 1
   _numberActiveCharacter: 0

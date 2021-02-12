@@ -13,26 +13,54 @@ MonoBehaviour:
   m_Name: ClassesData
   m_EditorClassIdentifier: 
   Warrior:
-    Strength: 3
-    Agility: 1
-    Stamina: 3
-    Intellect: 1
-    Spirit: 2
+    Hp: 1
+    Mana: 1
+    Strength: 6
+    Agility: 2
+    Stamina: 6
+    Intellect: 2
+    Spirit: 3
+    StrengthForLevel: 3
+    AgilityForLevel: 1
+    StaminaForLevel: 3
+    IntellectForLevel: 1
+    SpiritForLevel: 2
   Rogue:
-    Strength: 1
-    Agility: 3
-    Stamina: 2
-    Intellect: 1
-    Spirit: 2
-  Hunter:
+    Hp: 1
+    Mana: 1
     Strength: 2
-    Agility: 3
-    Stamina: 2
+    Agility: 6
+    Stamina: 4
     Intellect: 2
     Spirit: 2
+    StrengthForLevel: 1
+    AgilityForLevel: 3
+    StaminaForLevel: 2
+    IntellectForLevel: 3
+    SpiritForLevel: 2
+  Hunter:
+    Hp: 1
+    Mana: 1
+    Strength: 4
+    Agility: 5
+    Stamina: 4
+    Intellect: 2
+    Spirit: 3
+    StrengthForLevel: 2
+    AgilityForLevel: 2
+    StaminaForLevel: 2
+    IntellectForLevel: 2
+    SpiritForLevel: 3
   Mage:
+    Hp: 1
+    Mana: 1
     Strength: 1
     Agility: 1
-    Stamina: 2
-    Intellect: 3
-    Spirit: 3
+    Stamina: 4
+    Intellect: 4
+    Spirit: 6
+    StrengthForLevel: 1
+    AgilityForLevel: 1
+    StaminaForLevel: 2
+    IntellectForLevel: 4
+    SpiritForLevel: 4
