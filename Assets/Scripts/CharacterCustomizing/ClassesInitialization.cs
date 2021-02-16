@@ -35,7 +35,7 @@ namespace CharacterCustomizing
             _playerView = playerView;
             _characterSettings = characterSettings;
 
-            var experiencePoints = _characterSettings.ExperiencePoints;
+            var experiencePoints = _playerView.Level.CurrentLevel;
             switch (_characterSettings.CharacterClass)
             {
                 case CharacterClass.Warrior:
@@ -70,8 +70,6 @@ namespace CharacterCustomizing
 
         private void GenerateStats(int level, BasicCharacteristics currentCharacteristits)
         {
-            _playerView.CharacterClass.CurrentLevel = level;
-            
             _playerView.BasicCharacteristics = new BasicCharacteristics
             {
                 // Strength = charLevel * data.Strength,
