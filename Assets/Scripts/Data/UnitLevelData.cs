@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 namespace Data
@@ -112,15 +111,5 @@ namespace Data
                 MaxiPointsExperience = 23200
             }, 
         };
-    }
-
-    [Serializable]
-    public class LevelValue
-    {
-        [SerializeField]
-        public int Number;
-
-        [SerializeField]
-        public int MaxiPointsExperience;
     }
 }
