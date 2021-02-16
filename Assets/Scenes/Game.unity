@@ -293,11 +293,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2243990007024540164, guid: f4b0da07ccc3d164caf26dcebbead390,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4b0da07ccc3d164caf26dcebbead390, type: 3}
 --- !u!1 &195370238
@@ -504,6 +499,27 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 6824980056466414343}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &270201885 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2194302051238080810, guid: f4b0da07ccc3d164caf26dcebbead390,
+    type: 3}
+  m_PrefabInstance: {fileID: 140416011}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &270201888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270201885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294ec7259d234d58a5ddc7f1f0607fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
+  DamageForceThreshold: 1
+  DamageForceScale: 5
 --- !u!1001 &273128285
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1654,6 +1670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterData: {fileID: 11400000, guid: 6a9d8d58428c31245b10f24bdf6db892, type: 2}
+  _unitLevelData: {fileID: 11400000, guid: 463046f47ae6fa140acd3404f7978cb1, type: 2}
   _classesData: {fileID: 11400000, guid: ed6a3a7315b10db44a6cba003fd939fa, type: 2}
   _playerData: {fileID: 11400000, guid: ae491f12cb7d7764ab8bad2ff5720d07, type: 2}
   _enemiesData: {fileID: 11400000, guid: 5ffd33d3e167c594fb69d605bafe1c69, type: 2}

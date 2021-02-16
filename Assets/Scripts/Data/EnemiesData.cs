@@ -7,6 +7,9 @@ namespace Data
     public sealed class EnemiesData : ScriptableObject
     {
         [SerializeField]
-        public Enemies _enemies;
+        public Enemies Enemies;
+
+        [SerializeField]
+        public UiEnemies UiEnemies;
     }
 }

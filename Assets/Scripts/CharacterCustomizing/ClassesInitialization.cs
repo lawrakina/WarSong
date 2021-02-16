@@ -30,32 +30,32 @@ namespace CharacterCustomizing
 
         #region Init
 
-        public void Initialization(CharacterSettings characterSettings, IPlayerView playerView)
+        public void Initialization(IPlayerView playerView, CharacterSettings characterSettings)
         {
             _playerView = playerView;
             _characterSettings = characterSettings;
 
-            var charLevel = _characterSettings.Level;
+            var experiencePoints = _characterSettings.ExperiencePoints;
             switch (_characterSettings.CharacterClass)
             {
                 case CharacterClass.Warrior:
                     _playerView.CharacterClass = new CharacterClassWarrior();
-                    GenerateStats(charLevel, _data.Warrior);
+                    GenerateStats(experiencePoints, _data.Warrior);
                     break;
 
                 case CharacterClass.Rogue:
                     _playerView.CharacterClass = new CharacterClassRogue();
-                    GenerateStats(charLevel, _data.Rogue);
+                    GenerateStats(experiencePoints, _data.Rogue);
                     break;
 
                 case CharacterClass.Hunter:
                     _playerView.CharacterClass = new CharacterClassHunter();
-                    GenerateStats(charLevel, _data.Hunter);
+                    GenerateStats(experiencePoints, _data.Hunter);
                     break;
 
                 case CharacterClass.Mage:
                     _playerView.CharacterClass = new CharacterClassMage();
-                    GenerateStats(charLevel, _data.Mage);
+                    GenerateStats(experiencePoints, _data.Mage);
                     break;
 
                 default:
@@ -68,14 +68,16 @@ namespace CharacterCustomizing
 
         #region Methods
 
-        private void GenerateStats(int charLevel, BasicCharacteristics currentCharacteristits)
+        private void GenerateStats(int level, BasicCharacteristics currentCharacteristits)
         {
+            _playerView.CharacterClass.CurrentLevel = level;
+            
             _playerView.BasicCharacteristics = new BasicCharacteristics
             {
                 // Strength = charLevel * data.Strength,
                 // Agility = charLevel * data.Agility,
-                StaminaForLevel = charLevel * currentCharacteristits.StaminaForLevel,
-                IntellectForLevel = charLevel * currentCharacteristits.IntellectForLevel,
+                StaminaForLevel = level * currentCharacteristits.StaminaForLevel,
+                IntellectForLevel = level * currentCharacteristits.IntellectForLevel,
                 // Spirit = charLevel * data.Spirit
             };
             _playerView.CharacterClass.BaseHp =

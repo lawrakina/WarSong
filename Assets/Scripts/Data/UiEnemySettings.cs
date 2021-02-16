@@ -6,10 +6,10 @@ using UnityEngine;
 namespace Data
 {
     [Serializable]
-    public sealed class EnemySettings
+    public sealed class UiEnemySettings
     {
         [SerializeField]
-        public GameObject EnemyView;
+        public GameObject UiView;
         [SerializeField]
         public EnemyType EnemyType;
     }

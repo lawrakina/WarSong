@@ -1,4 +1,5 @@
 ﻿using CharacterCustomizing;
+using Controller;
 using Data;
 using Extension;
 using UnityEngine;
@@ -10,12 +11,15 @@ namespace Unit.Player
     {
         private readonly CharacterData _characterData;
         private readonly CustomizerCharacter _customizerCharacter;
+        private readonly UnitLevelInitialization _unitLevelInitialization;
         private readonly ClassesInitialization _classesInitialization;
 
         public PlayerFactory(CustomizerCharacter customizerCharacter, 
+            UnitLevelInitialization unitLevelInitialization,
             ClassesInitialization classesInitialization,
             CharacterData characterData)
         {
+            _unitLevelInitialization = unitLevelInitialization;
             _customizerCharacter = customizerCharacter;
             _classesInitialization = classesInitialization;
             _characterData = characterData;
@@ -35,8 +39,9 @@ namespace Unit.Player
                   .AddCode<PlayerView>();
 
             var playerView = player.GetComponent<IPlayerView>();
-            _customizerCharacter.Customize(ref playerView, item);
-            _classesInitialization.Initialization(item, playerView);
+            _customizerCharacter.Customize(playerView, item);
+            _unitLevelInitialization.Initialization(playerView, item);
+            _classesInitialization.Initialization(playerView,item);
 
             return playerView;
         }

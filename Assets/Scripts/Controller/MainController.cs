@@ -27,6 +27,9 @@ namespace Controller
         [Header("Game Data")]
         [SerializeField]
         private CharacterData _characterData;
+        
+        [SerializeField]
+        private UnitLevelData _unitLevelData;
 
         [SerializeField]
         private ClassesData _classesData;
@@ -87,10 +90,11 @@ namespace Controller
             _battleState.Subscribe(_ => { Dbg.Log(_battleState.Value); });
 
             var playerModel = new BattlePlayerModel();
-            
+
+            var unitLevelInitialization = new UnitLevelInitialization(_unitLevelData);
             var classesInitialization = new ClassesInitialization(_classesData);
             var customizerCharacter = new CustomizerCharacter(_characterData);
-            var playerFactory = new PlayerFactory(customizerCharacter, classesInitialization, _characterData);
+            var playerFactory = new PlayerFactory(customizerCharacter, unitLevelInitialization, classesInitialization, _characterData); 
             var listOfCharactersController = new ListOfCharactersController(_playerData, playerFactory);
             _player = listOfCharactersController.CurrentCharacter.Value;
             listOfCharactersController.CurrentCharacter.Subscribe(_ =>

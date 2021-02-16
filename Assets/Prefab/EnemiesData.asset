@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: EnemiesData
   m_EditorClassIdentifier: Assembly-CSharp:Data:EnemiesData
-  _enemies:
+  Enemies:
     ListEnemies:
     - EnemyView: {fileID: 1741276027538082, guid: a16f0c419b1c8814babdf7ed30be11a3,
         type: 3}
       EnemyType: 0
-    - EnemyView: {fileID: 6546731415535925042, guid: e18d364378b809546888e2bf49e585ca,
+  UiEnemies:
+    ListUiElements:
+    - UiView: {fileID: 5632589081180970477, guid: d2ddcf18dfa38624791d2fecc565e2a3,
         type: 3}
       EnemyType: 0

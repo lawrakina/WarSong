@@ -22,6 +22,7 @@ namespace Unit.Player
         public Animator Animator => _animator;
         public AnimatorParameters AnimatorParameters { get; private set; }
         public ICharAttributes CharAttributes { get; set; }
+        public UnitLevel Level { get; set; }
         public BasicCharacteristics BasicCharacteristics { get; set; }
         public BaseCharacterClass CharacterClass { get; set; }
         public EquipmentPoints EquipmentPoints { get; set; }
@@ -41,6 +42,7 @@ namespace Unit.Player
             _animator = GetComponent<Animator>();
             AnimatorParameters = new AnimatorParameters(ref _animator);
 
+            Level = new UnitLevel();
             CharAttributes = new CharAttributes();
             BasicCharacteristics = new BasicCharacteristics();
         }

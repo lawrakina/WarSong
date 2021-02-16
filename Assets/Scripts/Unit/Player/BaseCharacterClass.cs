@@ -5,6 +5,12 @@ namespace Unit.Player
 {
     public abstract class BaseCharacterClass
     {
+        private int _currnetLevel;
+        public int CurrentLevel
+        {
+            get { return _currnetLevel; }
+            set { _currnetLevel = value; }
+        }
         public abstract string Name { get; }
         public abstract string Description { get; }
         public float CurrentHp { get; set; }

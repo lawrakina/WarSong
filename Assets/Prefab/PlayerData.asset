@@ -15,7 +15,7 @@ MonoBehaviour:
   _characters:
     ListCharacters:
     - AgroDistance: 10
-      CharacterClass: 0
+      CharacterClass: 3
       CharacterGender: 0
       CharacterRace: 0
       PlayerMoveSpeed: 5

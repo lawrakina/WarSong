@@ -13,7 +13,7 @@ namespace CharacterCustomizing
             _characterData = characterData;
         }
 
-        public void Customize(ref IPlayerView playerView, CharacterSettings settings)
+        public void Customize(IPlayerView playerView, CharacterSettings settings)
         {
             playerView.CharAttributes.AgroDistance = settings.AgroDistance;
             playerView.CharAttributes.Speed = settings.PlayerMoveSpeed;
