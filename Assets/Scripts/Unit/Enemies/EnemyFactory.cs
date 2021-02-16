@@ -7,7 +7,7 @@ namespace Unit.Enemies
 {
     internal sealed class EnemyFactory : IEnemyFactory
     {
-        public IEnemyView CreateEnemy(EnemySettings item)
+        public IEnemyView CreateEnemy(EnemySettings itemSetting, EnemySettings item)
         {
             var enemy = Object.Instantiate(item.EnemyView);
             enemy.name = $"Enemy.{item.EnemyType.ToString()}.{item.EnemyView.name}";
@@ -22,6 +22,7 @@ namespace Unit.Enemies
                  .AddCode<EnemyView>();
 
             var enemyView = enemy.GetComponent<IEnemyView>();
+            enemyView.Init(item);
 
             return enemyView;
         }

@@ -1,11 +1,16 @@
 using System.Collections.Generic;
 using Data;
+using EcsBattle.Components;
 using EcsBattle.Systems.Ui;
+using Extension;
+using Interface;
 using Leopotam.Ecs;
+using Unit.Enemies;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
 #endif
 using UnityEngine;
+using VIew;
 
 
 namespace EcsBattle
@@ -53,6 +58,7 @@ namespace EcsBattle
                 //Animation Player
                 .Add(new AnimationMotionPlayerSystem())
                 .Add(new CreateEnemyEntitySystem())
+                // .Add(new CreateHealthBarForEnemySystem())
                 //UI Player
                 // .Add(new CreateUiPlayerHealsSystem())
                 .Add(new UpdatePlayerCurrentHealthSystem())
@@ -104,6 +110,25 @@ namespace EcsBattle
         #endregion
     }
 
+    // public class CreateHealthBarForEnemySystem : IEcsInitSystem
+    // {
+    //     private EcsFilter<EnemyComponent>
+    //     public void Init()
+    //     {
+    //         
+    //
+    //             
+    //         view.Transform.gameObject.AddCode<HealthBarView>();
+    //         var healthBar = view.Transform.gameObject.GetComponent<HealthBarView>();
+    //         healthBar.Init(_camera.Transform);
+    //         // entity.Get<NeedUpdateCurrentHpFromPlayerComponent>().Value = view.UnitClass.CurrentHp;
+    //         // entity.Get<NeedUpdateMaxHpFromPlayerComponent>().Value = view.UnitClass.CurrentHp;
+    //
+    //         //todo повесить Healthbar на врагов 
+    //         //todo прокинуть зависимости 
+    //     }
+    // }
+
     // public sealed class CreateUiPlayerHealsSystem : IEcsInitSystem
     // {
     //     private EcsWorld _world;
@@ -120,13 +145,20 @@ namespace EcsBattle
     public sealed class CreateEnemyEntitySystem : IEcsInitSystem
     {
         private EcsWorld _world;
-        private List<EnemySettings> _listEnemies;
+        private List<IEnemyView> _listEnemies;
+        
         public void Init()
         {
-            if (_listEnemies == null) return;
-            foreach (var enemy in _listEnemies)
+            foreach (var view in _listEnemies)
             {
                 
+                var entity = _world.NewEntity();
+                entity.Get<EnemyComponent>();
+                entity.Get<TransformComponent>().Value = view.Transform;
+                entity.Get<RigidBodyComponent>().Value = view.Rigidbody;
+                entity.Get<MovementSpeed>().Value = view.CharAttributes.Speed;
+                entity.Get<RotateSpeed>().Value = view.CharAttributes.RotateSpeedPlayer;
+                entity.Get<AnimatorComponent>().Value = view.AnimatorParameters;
             }
         }
     }

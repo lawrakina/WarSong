@@ -1,53 +1,53 @@
-﻿using Interface;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 namespace VIew
 {
-    public class HealthBarView : MonoBehaviour, IEnabled
+    // доделать HealBar
+    public class HealthBarView : MonoBehaviour
     {
-        public void AlignCamera(Transform cameraTransform)
-        {
-            var camXform = cameraTransform;
-            var forward = transform.position - camXform.position;
-            forward.Normalize();
-            var up = Vector3.Cross(forward, camXform.right);
-            transform.rotation = Quaternion.LookRotation(forward, up);
+        MaterialPropertyBlock matBlock;
+        MeshRenderer meshRenderer;
+        Camera mainCamera;
+        Damageable damageable;
+
+        private void Awake() {
+            meshRenderer = GetComponent<MeshRenderer>();
+            matBlock = new MaterialPropertyBlock();
+            // get the damageable parent we're attached to
+            damageable = GetComponentInParent<Damageable>();
         }
 
-        public void UpdateParams(float hp, float maxHp)
-        {
-            MeshRenderer.GetPropertyBlock(MatBlock);
-            MatBlock.SetFloat(Fill, hp / maxHp);
-            MeshRenderer.SetPropertyBlock(MatBlock);
+        private void Start() {
+            // Cache since Camera.main is super slow
+            mainCamera = Camera.main;
         }
 
-
-        #region Fields
-
-        [HideInInspector]
-        public MaterialPropertyBlock MatBlock;
-
-        [HideInInspector]
-        public MeshRenderer MeshRenderer;
-
-        private static readonly int Fill = Shader.PropertyToID("_Fill");
-
-        #endregion
-
-
-        #region UnityMethods
-
-        public void On()
-        {
-            MeshRenderer = GetComponent<MeshRenderer>();
-            MatBlock = new MaterialPropertyBlock();
+        private void Update() {
+            // Only display on partial health
+            if (damageable.CurrentHealth < damageable.MaxHealth) {
+                meshRenderer.enabled = true;
+                AlignCamera();
+                UpdateParams();
+            } else {
+                meshRenderer.enabled = false;
+            }
         }
 
-        public void Off()
-        {
+        private void UpdateParams() {
+            meshRenderer.GetPropertyBlock(matBlock);
+            matBlock.SetFloat("_Fill", damageable.CurrentHealth / (float)damageable.MaxHealth);
+            meshRenderer.SetPropertyBlock(matBlock);
         }
 
-        #endregion
+        private void AlignCamera() {
+            if (mainCamera != null) {
+                var camXform = mainCamera.transform;
+                var forward = transform.position - camXform.position;
+                forward.Normalize();
+                var up = Vector3.Cross(forward, camXform.right);
+                transform.rotation = Quaternion.LookRotation(forward, up);
+            }
+        }
     }
 }

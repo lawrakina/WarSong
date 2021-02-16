@@ -8,6 +8,9 @@ namespace EcsBattle.Components
     public struct PlayerComponent
     {
     }
+    public struct EnemyComponent
+    {
+    }
     public struct RigidBodyComponent
     {
         public Rigidbody Value;

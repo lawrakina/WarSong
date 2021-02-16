@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Data;
+using Unit.Player;
+using UnityEngine;
 
 
 namespace Unit.Enemies
@@ -21,7 +23,7 @@ namespace Unit.Enemies
         public Animator Animator => _animator;
         public AnimatorParameters AnimatorParameters { get; private set; }
         public ICharAttributes CharAttributes { get; set; }
-        public Transform EnemyTarget { get; set; }
+        public BaseEnemyClass UnitClass { get; set; }
 
         #endregion
 
@@ -41,5 +43,12 @@ namespace Unit.Enemies
         }
 
         #endregion
+
+
+        public void Init(EnemySettings item)
+        {
+            UnitClass = new SimplyEnemyClass();
+            
+        }
     }
 }

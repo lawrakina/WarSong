@@ -40,10 +40,14 @@ namespace Controller
             
             foreach (var spawnPoint in list)
             {
-                var itemSetting = _enemiesData._enemies.ListEnemies.FirstOrDefault(
+                var itemSetting = _enemiesData.Enemies.ListEnemies.FirstOrDefault(
                     x => x.EnemyType == spawnPoint._type
                 );
-                var enemy = _enemyFactory.CreateEnemy(itemSetting);
+                // \hdfgjkghdfskjfhdksjfhjkdsf ====>>>>
+                var itemUiEnemy = _enemiesData.UiEnemies.ListUiElements.FirstOrDefault(
+                    x => x.EnemyType == spawnPoint._type
+                );
+                var enemy = _enemyFactory.CreateEnemy(itemSetting, itemSetting);
                 enemy.Transform.SetParent(spawnPoint.transform);
                 enemy.Transform.localPosition = Vector3.zero;
                 enemy.Transform.SetParent(parent.transform);

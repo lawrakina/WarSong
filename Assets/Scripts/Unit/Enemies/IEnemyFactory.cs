@@ -5,6 +5,6 @@ namespace Unit.Enemies
 {
     public interface IEnemyFactory
     {
-        IEnemyView CreateEnemy(EnemySettings item);
+        IEnemyView CreateEnemy(EnemySettings itemSetting, EnemySettings item);
     }
 }
