@@ -1,6 +1,7 @@
 ﻿using Leopotam.Ecs;
 using Unit;
 using UnityEngine;
+using VIew;
 
 
 namespace EcsBattle.Components
@@ -10,6 +11,15 @@ namespace EcsBattle.Components
     }
     public struct EnemyComponent
     {
+    }
+    public struct UiEnemyHealthBarComponent
+    {
+        public HealthBarView Value;
+    }
+    public struct UnitHpComponent
+    {
+        public float CurrentValue;
+        public float MaxValue;
     }
     public struct RigidBodyComponent
     {

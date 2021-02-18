@@ -3,51 +3,63 @@
 
 namespace VIew
 {
-    // доделать HealBar
     public class HealthBarView : MonoBehaviour
     {
-        MaterialPropertyBlock matBlock;
-        MeshRenderer meshRenderer;
-        Camera mainCamera;
-        Damageable damageable;
+        #region fields
 
-        private void Awake() {
-            meshRenderer = GetComponent<MeshRenderer>();
-            matBlock = new MaterialPropertyBlock();
-            // get the damageable parent we're attached to
-            damageable = GetComponentInParent<Damageable>();
+        private MaterialPropertyBlock _matBlock;
+        private MeshRenderer _meshRenderer;
+        private Transform _camera;
+
+        #endregion
+
+
+        #region UnityMethods
+
+        private void Awake()
+        {
+            _meshRenderer = GetComponent<MeshRenderer>();
+            _matBlock = new MaterialPropertyBlock();
         }
 
-        private void Start() {
-            // Cache since Camera.main is super slow
-            mainCamera = Camera.main;
+        #endregion
+
+
+        //todo сделать проверку нажив\мертв и изменить вид Bar`a 
+        // private void Update() {
+        //     // Only display on partial health
+        //     if (damageable.CurrentHealth < damageable.MaxHealth) {
+        //         meshRenderer.enabled = true;
+        //         AlignCamera();
+        //     } else {
+        //         meshRenderer.enabled = false;
+        //     }
+        // }
+
+
+        #region Methods
+
+        public void SetCamera(Transform camera)
+        {
+            _camera = camera;
         }
 
-        private void Update() {
-            // Only display on partial health
-            if (damageable.CurrentHealth < damageable.MaxHealth) {
-                meshRenderer.enabled = true;
-                AlignCamera();
-                UpdateParams();
-            } else {
-                meshRenderer.enabled = false;
-            }
+        public void AlignCamera()
+        {
+            var camXform = _camera.transform;
+            var forward = transform.position - camXform.position;
+            forward.Normalize();
+            var up = Vector3.Cross(forward, camXform.right);
+            transform.rotation = Quaternion.LookRotation(forward, up);
         }
 
-        private void UpdateParams() {
-            meshRenderer.GetPropertyBlock(matBlock);
-            matBlock.SetFloat("_Fill", damageable.CurrentHealth / (float)damageable.MaxHealth);
-            meshRenderer.SetPropertyBlock(matBlock);
+        public void ChangeValue(float currentValue, float maxValue)
+        {
+            _meshRenderer.GetPropertyBlock(_matBlock);
+            _matBlock.SetFloat("_Fill", currentValue / maxValue);
+            _meshRenderer.SetPropertyBlock(_matBlock);
         }
 
-        private void AlignCamera() {
-            if (mainCamera != null) {
-                var camXform = mainCamera.transform;
-                var forward = transform.position - camXform.position;
-                forward.Normalize();
-                var up = Vector3.Cross(forward, camXform.right);
-                transform.rotation = Quaternion.LookRotation(forward, up);
-            }
-        }
+        #endregion
     }
 }

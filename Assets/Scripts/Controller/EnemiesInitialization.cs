@@ -4,6 +4,7 @@ using Data;
 using DungeonArchitect;
 using DungeonArchitect.Builders.GridFlow;
 using Extension;
+using Unit;
 using Unit.Enemies;
 using UnityEngine;
 using VIew;
@@ -17,16 +18,18 @@ namespace Controller
 
         private readonly EnemiesData _enemiesData;
         private readonly IEnemyFactory _enemyFactory;
+        private IHealthBarFactory _healthBarFactory;
 
         #endregion
 
 
         #region ClassLiveCycles
 
-        public EnemiesInitialization(EnemiesData enemiesData, IEnemyFactory enemyFactory)
+        public EnemiesInitialization(EnemiesData enemiesData, IEnemyFactory enemyFactory, IHealthBarFactory healthBarFactory)
         {
             _enemiesData = enemiesData;
             _enemyFactory = enemyFactory;
+            _healthBarFactory = healthBarFactory;
         }
 
         #endregion
@@ -43,20 +46,26 @@ namespace Controller
                 var itemSetting = _enemiesData.Enemies.ListEnemies.FirstOrDefault(
                     x => x.EnemyType == spawnPoint._type
                 );
-                // \hdfgjkghdfskjfhdksjfhjkdsf ====>>>>
-                var itemUiEnemy = _enemiesData.UiEnemies.ListUiElements.FirstOrDefault(
-                    x => x.EnemyType == spawnPoint._type
-                );
-                var enemy = _enemyFactory.CreateEnemy(itemSetting, itemSetting);
+                var enemy = _enemyFactory.CreateEnemy(itemSetting);
                 enemy.Transform.SetParent(spawnPoint.transform);
                 enemy.Transform.localPosition = Vector3.zero;
                 enemy.Transform.SetParent(parent.transform);
 
+                //DungeonArchitect навязывает свои скрипты на всех заспавненных объектах,
+                //сейчас это костыль для копирования скриптов
+                //todo перенести функционал скриптов от DungeonArchitect во вью врагов.
                 GameObjectExtension.CopyComponent(
                     spawnPoint.GetComponent<DungeonSceneProviderData>(), enemy.Transform.gameObject);
                 GameObjectExtension.CopyComponent(
                     spawnPoint.GetComponent<GridFlowItemMetadataComponent>(), enemy.Transform.gameObject);
                 
+                //UI HealthBar
+                var itemUiEnemy = _enemiesData.UiEnemies.ListUiElements.FirstOrDefault(
+                    x => x.EnemyType == spawnPoint._type
+                );
+                var enemyHealthBar = _healthBarFactory.CreateHealthBar(itemUiEnemy, enemy);
+                enemy.HealthBar = enemyHealthBar;
+
                 result.Add(enemy);
             }
 

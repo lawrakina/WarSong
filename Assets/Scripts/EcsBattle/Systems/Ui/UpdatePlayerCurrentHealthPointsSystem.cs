@@ -5,7 +5,7 @@ using Models;
 
 namespace EcsBattle.Systems.Ui
 {
-    public class UpdatePlayerCurrentHealthSystem : IEcsRunSystem
+    public class UpdatePlayerCurrentHealthPointsSystem : IEcsRunSystem
     {
         private EcsFilter<PlayerComponent, NeedUpdateCurrentHpFromPlayerComponent> _newCurrentHpValue;
         private BattlePlayerModel _playerModel;

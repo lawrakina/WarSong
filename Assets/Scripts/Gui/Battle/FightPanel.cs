@@ -8,7 +8,7 @@ namespace Gui.Battle
     public sealed class FightPanel : BasePanel
     {
         public Image HpFiel;
-        public Image ResourceFiel;
+        // public Image ResourceFiel;
         public TextMeshProUGUI HpLabel;
         private BattlePlayerModel _playerModel;
 

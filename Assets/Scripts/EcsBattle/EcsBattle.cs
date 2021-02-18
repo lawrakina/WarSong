@@ -10,7 +10,6 @@ using Unit.Enemies;
 using Leopotam.Ecs.UnityIntegration;
 #endif
 using UnityEngine;
-using VIew;
 
 
 namespace EcsBattle
@@ -57,12 +56,14 @@ namespace EcsBattle
             _execute
                 //Animation Player
                 .Add(new AnimationMotionPlayerSystem())
+                //Enemies
                 .Add(new CreateEnemyEntitySystem())
-                // .Add(new CreateHealthBarForEnemySystem())
+                .Add(new RotateUiHeathBarsToCameraSystem())
+                //Ui Enemies
+                .Add(new UpdateEnemiesCurrentHealthPointsSystem())
                 //UI Player
-                // .Add(new CreateUiPlayerHealsSystem())
-                .Add(new UpdatePlayerCurrentHealthSystem())
-                .Add(new UpdatePlayerMaxHealthSystem())
+                .Add(new UpdatePlayerCurrentHealthPointsSystem())
+                .Add(new UpdatePlayerMaxHealthPointsSystem())
                 
                 
                 ;
@@ -110,6 +111,30 @@ namespace EcsBattle
         #endregion
     }
 
+    public class UpdateEnemiesCurrentHealthPointsSystem : IEcsRunSystem
+    {
+        private EcsFilter<UiEnemyHealthBarComponent, UnitHpComponent> _filter;
+        public void Run()
+        {
+            foreach (var index in _filter)
+            {
+                _filter.Get1(index).Value.ChangeValue(_filter.Get2(index).CurrentValue,_filter.Get2(index).MaxValue);
+            }
+        }
+    }
+
+    public class RotateUiHeathBarsToCameraSystem : IEcsRunSystem
+    {
+        private EcsFilter<UiEnemyHealthBarComponent> _filter;
+        public void Run()
+        {
+            foreach (var index in _filter)
+            {
+                _filter.Get1(index).Value.AlignCamera();
+            }
+        }
+    }
+
     // public class CreateHealthBarForEnemySystem : IEcsInitSystem
     // {
     //     private EcsFilter<EnemyComponent>
@@ -146,11 +171,13 @@ namespace EcsBattle
     {
         private EcsWorld _world;
         private List<IEnemyView> _listEnemies;
+        private IFightCamera _camera;
         
         public void Init()
         {
             foreach (var view in _listEnemies)
             {
+                view.HealthBar.SetCamera(_camera.Transform);
                 
                 var entity = _world.NewEntity();
                 entity.Get<EnemyComponent>();
@@ -159,7 +186,12 @@ namespace EcsBattle
                 entity.Get<MovementSpeed>().Value = view.CharAttributes.Speed;
                 entity.Get<RotateSpeed>().Value = view.CharAttributes.RotateSpeedPlayer;
                 entity.Get<AnimatorComponent>().Value = view.AnimatorParameters;
+                entity.Get<UiEnemyHealthBarComponent>().Value = view.HealthBar;
+                entity.Get<UnitHpComponent>().CurrentValue = view.CurrentHp;
+                entity.Get<UnitHpComponent>().MaxValue = view.MaxHp;
             }
         }
     }
+
+    
 }

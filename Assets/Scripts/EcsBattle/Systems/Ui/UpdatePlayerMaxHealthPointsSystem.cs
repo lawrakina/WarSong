@@ -5,7 +5,7 @@ using Models;
 
 namespace EcsBattle.Systems.Ui
 {
-    public class UpdatePlayerMaxHealthSystem : IEcsRunSystem
+    public class UpdatePlayerMaxHealthPointsSystem : IEcsRunSystem
     {
         private EcsFilter<PlayerComponent, NeedUpdateMaxHpFromPlayerComponent> _newMaxHpValue;
         private BattlePlayerModel _playerModel;

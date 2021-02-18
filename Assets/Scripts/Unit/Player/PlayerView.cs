@@ -22,6 +22,9 @@ namespace Unit.Player
         public Animator Animator => _animator;
         public AnimatorParameters AnimatorParameters { get; private set; }
         public ICharAttributes CharAttributes { get; set; }
+        public float CurrentHp { get; set; }
+        public float BaseHp { get; set; }
+        public float MaxHp { get; set; }
         public UnitLevel Level { get; set; }
         public BasicCharacteristics BasicCharacteristics { get; set; }
         public BaseCharacterClass CharacterClass { get; set; }

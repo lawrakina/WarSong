@@ -9,6 +9,7 @@ using Extension;
 using Gui;
 using Models;
 using UniRx;
+using Unit;
 using Unit.Cameras;
 using Unit.Enemies;
 using Unit.Player;
@@ -27,13 +28,13 @@ namespace Controller
         [Header("Game Data")]
         [SerializeField]
         private CharacterData _characterData;
-        
+
         [SerializeField]
         private UnitLevelData _unitLevelData;
 
         [SerializeField]
         private ClassesData _classesData;
-        
+
         [SerializeField]
         private PlayerData _playerData;
 
@@ -94,7 +95,8 @@ namespace Controller
             var unitLevelInitialization = new UnitLevelInitialization(_unitLevelData);
             var classesInitialization = new ClassesInitialization(_classesData);
             var customizerCharacter = new CustomizerCharacter(_characterData);
-            var playerFactory = new PlayerFactory(customizerCharacter, unitLevelInitialization, classesInitialization, _characterData); 
+            var playerFactory = new PlayerFactory(customizerCharacter, unitLevelInitialization, classesInitialization,
+                _characterData);
             var listOfCharactersController = new ListOfCharactersController(_playerData, playerFactory);
             _player = listOfCharactersController.CurrentCharacter.Value;
             listOfCharactersController.CurrentCharacter.Subscribe(_ =>
@@ -131,10 +133,12 @@ namespace Controller
                 _windows.TalentsWindow.CharacterSpawn(), EnumMainWindow.Talents);
 
             var enemyFactory = new EnemyFactory();
-            var enemiesInitialization = new EnemiesInitialization(_enemiesData, enemyFactory);
+            var healthBarFactory = new HealthBarFactory();
+            var enemiesInitialization = new EnemiesInitialization(_enemiesData, enemyFactory, healthBarFactory);
 
             var battleInitialization = new EcsBattleInitialization(
-                _ecsBattleData, generatorDungeon, _battleState, _activeWindow, _player, playerModel, fightCamera, enemiesInitialization);
+                _ecsBattleData, generatorDungeon, _battleState, _activeWindow, _player, playerModel, fightCamera,
+                enemiesInitialization);
             battleInitialization.Dungeon = generatorDungeon.Dungeon();
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(battleInitialization);
 

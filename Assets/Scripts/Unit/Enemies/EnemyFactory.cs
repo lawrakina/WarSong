@@ -7,7 +7,7 @@ namespace Unit.Enemies
 {
     internal sealed class EnemyFactory : IEnemyFactory
     {
-        public IEnemyView CreateEnemy(EnemySettings itemSetting, EnemySettings item)
+        public IEnemyView CreateEnemy(EnemySettings item)
         {
             var enemy = Object.Instantiate(item.EnemyView);
             enemy.name = $"Enemy.{item.EnemyType.ToString()}.{item.EnemyView.name}";

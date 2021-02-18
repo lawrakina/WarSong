@@ -12,5 +12,8 @@ namespace Unit
         Animator Animator { get; }
         AnimatorParameters AnimatorParameters { get; }
         ICharAttributes CharAttributes { get; set; }
+        float CurrentHp { get; set; }
+        float BaseHp { get; set; }
+        float MaxHp { get; set; }
     }
 }

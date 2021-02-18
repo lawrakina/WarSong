@@ -1,6 +1,6 @@
 ﻿using Data;
-using Unit.Player;
 using UnityEngine;
+using VIew;
 
 
 namespace Unit.Enemies
@@ -23,7 +23,11 @@ namespace Unit.Enemies
         public Animator Animator => _animator;
         public AnimatorParameters AnimatorParameters { get; private set; }
         public ICharAttributes CharAttributes { get; set; }
+        public float CurrentHp { get; set; }
+        public float BaseHp { get; set; }
+        public float MaxHp { get; set; }
         public BaseEnemyClass UnitClass { get; set; }
+        public HealthBarView HealthBar { get; set; }
 
         #endregion
 
