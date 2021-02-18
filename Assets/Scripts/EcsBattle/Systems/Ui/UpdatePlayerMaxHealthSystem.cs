@@ -13,7 +13,7 @@ namespace EcsBattle.Systems.Ui
         {
             foreach (var index in _newMaxHpValue)
             {
-                _playerModel.CurrentHp = _newMaxHpValue.Get2(index).Value;
+                _playerModel.MaxHp = _newMaxHpValue.Get2(index).Value;
             }
         }
     }
