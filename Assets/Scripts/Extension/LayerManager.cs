@@ -6,6 +6,7 @@ namespace Extension
     public static class LayerManager
     {
         public static LayerMask GroundLayer;
+        public static LayerMask EnemiesMask;
 
         /// <summary>
         ///     Проверка на вхождение слоя layer в маску слоев layerMask

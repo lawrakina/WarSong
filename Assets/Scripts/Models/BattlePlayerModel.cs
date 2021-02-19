@@ -27,7 +27,7 @@ namespace Models
 
 
         public float CurrentResource;
-        public float MacResource;
+        public float MaxResource;
 
         public Action<float> ChangeMaxHp;
         public Action<float> ChangeCurrentHp;

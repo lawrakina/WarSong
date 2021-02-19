@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 using Data;
 using EcsBattle.Components;
+using EcsBattle.Systems.PlayerVision;
 using EcsBattle.Systems.Ui;
 using Extension;
-using Interface;
 using Leopotam.Ecs;
-using Unit.Enemies;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
 #endif
 using UnityEngine;
+using VIew;
 
 
 namespace EcsBattle
@@ -64,8 +64,16 @@ namespace EcsBattle
                 //UI Player
                 .Add(new UpdatePlayerCurrentHealthPointsSystem())
                 .Add(new UpdatePlayerMaxHealthPointsSystem())
+                //Battle Player
+                .Add(new StartTimerForVisionSystem())
+                .Add(new TickTimerForVisionForPlayerSystem(1.0f))
+                .Add(new SearchClosesTargetForPlayerSystem())
+
                 
-                
+                // .Add(new CheckingVisibilityOfEnemiesByPlayerSystem())
+                // .Add(new CheckingLineOfVisibilitySystem())
+                // // .Add(new SortingListTargetsByDistanceSystem())
+                // .Add(new SearchClosesTargetSystem())
                 ;
 
             // register one-frame components (order is important), for example:
@@ -98,12 +106,12 @@ namespace EcsBattle
             }
         }
 
-        public void Execute(float deltaTime)
+        public void Execute()
         {
             _execute?.Run();
         }
-        
-        public void FixedExecute(float fixedDeltaTime)
+
+        public void FixedExecute()
         {
             _fixedExecute?.Run();
         }
@@ -111,87 +119,17 @@ namespace EcsBattle
         #endregion
     }
 
+
     public class UpdateEnemiesCurrentHealthPointsSystem : IEcsRunSystem
     {
         private EcsFilter<UiEnemyHealthBarComponent, UnitHpComponent> _filter;
+
         public void Run()
         {
             foreach (var index in _filter)
             {
-                _filter.Get1(index).Value.ChangeValue(_filter.Get2(index).CurrentValue,_filter.Get2(index).MaxValue);
+                _filter.Get1(index).Value.ChangeValue(_filter.Get2(index).CurrentValue, _filter.Get2(index).MaxValue);
             }
         }
     }
-
-    public class RotateUiHeathBarsToCameraSystem : IEcsRunSystem
-    {
-        private EcsFilter<UiEnemyHealthBarComponent> _filter;
-        public void Run()
-        {
-            foreach (var index in _filter)
-            {
-                _filter.Get1(index).Value.AlignCamera();
-            }
-        }
-    }
-
-    // public class CreateHealthBarForEnemySystem : IEcsInitSystem
-    // {
-    //     private EcsFilter<EnemyComponent>
-    //     public void Init()
-    //     {
-    //         
-    //
-    //             
-    //         view.Transform.gameObject.AddCode<HealthBarView>();
-    //         var healthBar = view.Transform.gameObject.GetComponent<HealthBarView>();
-    //         healthBar.Init(_camera.Transform);
-    //         // entity.Get<NeedUpdateCurrentHpFromPlayerComponent>().Value = view.UnitClass.CurrentHp;
-    //         // entity.Get<NeedUpdateMaxHpFromPlayerComponent>().Value = view.UnitClass.CurrentHp;
-    //
-    //         //todo повесить Healthbar на врагов 
-    //         //todo прокинуть зависимости 
-    //     }
-    // }
-
-    // public sealed class CreateUiPlayerHealsSystem : IEcsInitSystem
-    // {
-    //     private EcsWorld _world;
-    //     private BattlePlayerModel _playerModel;
-    //     public void Init()
-    //     {
-    //         var uiHeals = _world.NewEntity();
-    //         uiHeals.Get<UiHealthPlayerComponent>().CurrentValue = _playerModel.CurrentHp;
-    //         uiHeals.Get<UiHealthPlayerComponent>().MaxValue = _playerModel.MaxHp;
-    //     }
-    // }
-
-
-    public sealed class CreateEnemyEntitySystem : IEcsInitSystem
-    {
-        private EcsWorld _world;
-        private List<IEnemyView> _listEnemies;
-        private IFightCamera _camera;
-        
-        public void Init()
-        {
-            foreach (var view in _listEnemies)
-            {
-                view.HealthBar.SetCamera(_camera.Transform);
-                
-                var entity = _world.NewEntity();
-                entity.Get<EnemyComponent>();
-                entity.Get<TransformComponent>().Value = view.Transform;
-                entity.Get<RigidBodyComponent>().Value = view.Rigidbody;
-                entity.Get<MovementSpeed>().Value = view.CharAttributes.Speed;
-                entity.Get<RotateSpeed>().Value = view.CharAttributes.RotateSpeedPlayer;
-                entity.Get<AnimatorComponent>().Value = view.AnimatorParameters;
-                entity.Get<UiEnemyHealthBarComponent>().Value = view.HealthBar;
-                entity.Get<UnitHpComponent>().CurrentValue = view.CurrentHp;
-                entity.Get<UnitHpComponent>().MaxValue = view.MaxHp;
-            }
-        }
-    }
-
-    
 }

@@ -26,12 +26,12 @@ namespace Controller
 
         public void Execute(float deltaTime)
         {
-            _ecsEngine.Execute(deltaTime);
+            _ecsEngine.Execute();
         }
 
         public void FixedExecute(float deltaTime)
         {
-            _ecsEngine.FixedExecute(deltaTime);
+            _ecsEngine.FixedExecute();
         }
 
         #endregion

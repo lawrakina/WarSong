@@ -25,6 +25,9 @@ namespace EcsBattle
             // Dbg.Log($"_player.CharacterClass{_player.CharacterClass}");
             player.Get<NeedUpdateCurrentHpFromPlayerComponent>().Value = _player.CurrentHp;
             player.Get<NeedUpdateMaxHpFromPlayerComponent>().Value = _player.CurrentHp;
+            player.Get<DetectionDistanceEnemyComponent>().Value = _player.Vision.BattleDistance;
+            player.Get<LayerMaskEnemiesComponent>().Value = _player.Vision.LayersEnemies;
+            player.Get<AutoBattleDisableComponent>();
 
             var goTarget = Object.Instantiate(new GameObject(), _player.Transform, true);
             goTarget.name = "->DirectionMoving<-";
@@ -33,5 +36,15 @@ namespace EcsBattle
 
             player.Get<GoTargetComponent>().Value = goTargetEntity;
         }
+    }
+
+    public struct LayerMaskEnemiesComponent
+    {
+        public int Value;
+    }
+
+    public struct DetectionDistanceEnemyComponent
+    {
+        public float Value;
     }
 }

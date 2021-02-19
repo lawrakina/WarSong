@@ -30,6 +30,7 @@ namespace Unit.Player
         public BaseCharacterClass CharacterClass { get; set; }
         public EquipmentPoints EquipmentPoints { get; set; }
         public EquipmentItems EquipmentItems { get; set; }
+        public Vision Vision { get; set; }
 
         #endregion
 
@@ -45,6 +46,7 @@ namespace Unit.Player
             _animator = GetComponent<Animator>();
             AnimatorParameters = new AnimatorParameters(ref _animator);
 
+            Vision = new Vision();
             Level = new UnitLevel();
             CharAttributes = new CharAttributes();
             BasicCharacteristics = new BasicCharacteristics();

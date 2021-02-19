@@ -15,19 +15,25 @@ MonoBehaviour:
   _characters:
     ListCharacters:
     - AgroDistance: 10
-      CharacterClass: 3
+      CharacterClass: 0
       CharacterGender: 0
       CharacterRace: 0
       PlayerMoveSpeed: 5
       RotateSpeedPlayer: 120
       Equipment:
         MainWeapon:
-          View: {fileID: 2584729198991652442, guid: 748584e1e1114c249a340921801d935e,
+          View: {fileID: 6217818179488472574, guid: 1e7d0884ab7bd3e47805374740c15627,
             type: 3}
-          Type: 5
+          Type: 1
         SecondWeapon:
-          View: {fileID: 3307825871910352492, guid: d3687d2aa11ee35489e653ed8b436246,
+          View: {fileID: 3864044728868946134, guid: cc7396c367cf52a4abee0d4712eed902,
             type: 3}
-          Type: 0
+          Type: 7
       ExperiencePoints: 3000
+      VisionParameters:
+        BattleDistance: 15
+        CountTaggets: 5
+        LayersEnemies:
+          serializedVersion: 2
+          m_Bits: 256
   _numberActiveCharacter: 0

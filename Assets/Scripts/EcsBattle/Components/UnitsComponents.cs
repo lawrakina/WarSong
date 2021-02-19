@@ -1,4 +1,5 @@
-﻿using Leopotam.Ecs;
+﻿using System.Collections.Generic;
+using Leopotam.Ecs;
 using Unit;
 using UnityEngine;
 using VIew;
@@ -9,18 +10,31 @@ namespace EcsBattle.Components
     public struct PlayerComponent
     {
     }
+
+    public struct AwaitTimerForVisionComponent
+    {
+        public float Value;
+    }
+
+    public struct TimerTickedForVisionComponent
+    {
+    }
+
     public struct EnemyComponent
     {
     }
+
     public struct UiEnemyHealthBarComponent
     {
         public HealthBarView Value;
     }
+
     public struct UnitHpComponent
     {
         public float CurrentValue;
         public float MaxValue;
     }
+
     public struct RigidBodyComponent
     {
         public Rigidbody Value;
@@ -30,33 +44,49 @@ namespace EcsBattle.Components
     {
         public Transform Value;
     }
+
     public struct DirectionMoving
     {
         public Vector3 Value;
     }
+
     public struct MovementSpeed
     {
         public float Value;
     }
+
     public struct RotateSpeed
     {
         public float Value;
     }
+
     public struct GoTargetComponent
     {
         public EcsEntity Value;
     }
+
     public struct AnimatorComponent
     {
         public AnimatorParameters Value;
     }
+
     public struct NeedUpdateMaxHpFromPlayerComponent
     {
         public float Value;
     }
 
+    public struct AutoBattleDisableComponent
+    {
+    }
+
     public struct NeedUpdateCurrentHpFromPlayerComponent
     {
         public float Value;
+    }
+
+    public struct CurrentTargetComponent
+    {
+        public Transform Target;
+        public float Distance;
     }
 }

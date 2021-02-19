@@ -1,5 +1,6 @@
 ﻿using System;
 using Enums;
+using Unit;
 using UnityEngine;
 
 
@@ -12,5 +13,7 @@ namespace Data
         public GameObject EnemyView;
         [SerializeField]
         public EnemyType EnemyType;
+        [SerializeField]
+        public Vision VisionComponent;
     }
 }

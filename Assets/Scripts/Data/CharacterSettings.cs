@@ -1,5 +1,6 @@
 ﻿using System;
 using Enums;
+using Unit;
 using UnityEngine;
 
 
@@ -30,5 +31,8 @@ namespace Data
 
         [SerializeField]
         public int ExperiencePoints = 1;
+
+        [SerializeField]
+        public Vision VisionParameters;
     }
 }
