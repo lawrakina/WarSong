@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Data;
 using EcsBattle.Components;
 using EcsBattle.Systems.Input;
+using EcsBattle.Systems.PlayerMove;
 using EcsBattle.Systems.PlayerVision;
 using EcsBattle.Systems.Ui;
 using Extension;

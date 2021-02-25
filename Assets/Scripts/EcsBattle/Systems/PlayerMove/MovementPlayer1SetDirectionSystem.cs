@@ -1,25 +1,24 @@
 ﻿using EcsBattle.Components;
-using Extension;
 using Leopotam.Ecs;
 using UnityEngine;
 
 
-namespace EcsBattle
+namespace EcsBattle.Systems.PlayerMove
 {
     public class MovementPlayer1SetDirectionSystem : IEcsRunSystem
     {
-        private EcsFilter<PlayerComponent> _filter;
-        
+        private EcsFilter<PlayerComponent> _player;
+        private EcsFilter<InputControlComponent> _input;
+
         public void Run()
         {
-            foreach (var index in _filter)
+            foreach (var i in _input)
             {
-                var inputVector = new Vector3(
-                    UltimateJoystick.GetHorizontalAxis(StringManager.ULTIMATE_JOYSTICK_MOVENMENT),
-                    0.0f,
-                    UltimateJoystick.GetVerticalAxis(StringManager.ULTIMATE_JOYSTICK_MOVENMENT));
-                _filter.GetEntity(index).Get<DirectionMoving>().Value =
-                    Vector3.ClampMagnitude(inputVector, 1f);
+                foreach (var p in _player)
+                {
+                    _player.GetEntity(p).Get<DirectionMoving>().Value =
+                        Vector3.ClampMagnitude(_input.Get1(i).LastPosition, 1f);
+                }
             }
         }
     }

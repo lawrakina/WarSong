@@ -18,7 +18,11 @@ namespace EcsBattle.Components
         public float PressTime;
     }
 
-    public struct PressJoystickComponent
+    // public struct PressJoystickComponent
+    // {
+    // }
+    
+    public struct NeedAttackComponent
     {
     }
 }
