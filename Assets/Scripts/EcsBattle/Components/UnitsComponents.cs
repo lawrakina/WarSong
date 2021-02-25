@@ -89,4 +89,14 @@ namespace EcsBattle.Components
         public Transform Target;
         public float Distance;
     }
+    
+    public struct LayerMaskEnemiesComponent
+    {
+        public int Value;
+    }
+
+    public struct DetectionDistanceEnemyComponent
+    {
+        public float Value;
+    }
 }

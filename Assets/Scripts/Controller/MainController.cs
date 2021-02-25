@@ -68,7 +68,7 @@ namespace Controller
         private IReactiveProperty<EnumCharacterWindow> _charWindow;
         private IReactiveProperty<EnumBattleWindow> _battleState;
         private IReactiveProperty<EnumFightCamera> _typeCameraAndCharControl;
-
+        
         #endregion
 
 
@@ -136,9 +136,8 @@ namespace Controller
             var healthBarFactory = new HealthBarFactory();
             var enemiesInitialization = new EnemiesInitialization(_enemiesData, enemyFactory, healthBarFactory);
 
-            var battleInitialization = new EcsBattleInitialization(
-                _ecsBattleData, generatorDungeon, _battleState, _activeWindow, _player, playerModel, fightCamera,
-                enemiesInitialization);
+            var battleInitialization = new EcsBattleInitialization(_ecsBattleData, generatorDungeon, _battleState, 
+                _activeWindow, _player, playerModel, fightCamera, enemiesInitialization);
             battleInitialization.Dungeon = generatorDungeon.Dungeon();
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(battleInitialization);
 

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Data;
 using EcsBattle.Components;
+using EcsBattle.Systems.Input;
 using EcsBattle.Systems.PlayerVision;
 using EcsBattle.Systems.Ui;
 using Extension;
@@ -48,6 +49,10 @@ namespace EcsBattle
                 //Moving Camera
                 .Add(new CameraPositioningOfPlayerSystem())
                 .Add(new CameraRotationOfPlayerSystem())
+                //InputControl
+                .Add(new CreateInputControlSystem())
+                .Add(new SetActiveInputOnJoystickSystem())
+                .Add(new GetClickInInputControlSystem())
                 //Moving Player
                 .Add(new MovementPlayer1SetDirectionSystem())
                 .Add(new MovementPlayer2CalculateStepValueSystem());
@@ -68,12 +73,6 @@ namespace EcsBattle
                 .Add(new StartTimerForVisionSystem())
                 .Add(new TickTimerForVisionForPlayerSystem(1.0f))
                 .Add(new SearchClosesTargetForPlayerSystem())
-
-                
-                // .Add(new CheckingVisibilityOfEnemiesByPlayerSystem())
-                // .Add(new CheckingLineOfVisibilitySystem())
-                // // .Add(new SortingListTargetsByDistanceSystem())
-                // .Add(new SearchClosesTargetSystem())
                 ;
 
             // register one-frame components (order is important), for example:
