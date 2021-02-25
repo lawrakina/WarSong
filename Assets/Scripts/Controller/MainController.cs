@@ -7,6 +7,7 @@ using Data;
 using Enums;
 using Extension;
 using Gui;
+using Gui.Battle;
 using Models;
 using UniRx;
 using Unit;
@@ -46,6 +47,9 @@ namespace Controller
 
         [SerializeField]
         private EcsBattleData _ecsBattleData;
+
+        [SerializeField]
+        private BattleInputData _battleInputData;
 
         [Header("Ui & Windows")]
         [SerializeField]
@@ -132,11 +136,13 @@ namespace Controller
             positioningCharInMenuController.AddPlayerPosition(
                 _windows.TalentsWindow.CharacterSpawn(), EnumMainWindow.Talents);
 
+            var battleInputControlsInitialization = new BattleInputControlsInitialization(_battleInputData, _ui.BattlePanel.FightPanel.transform);
             var enemyFactory = new EnemyFactory();
             var healthBarFactory = new HealthBarFactory();
             var enemiesInitialization = new EnemiesInitialization(_enemiesData, enemyFactory, healthBarFactory);
 
-            var battleInitialization = new EcsBattleInitialization(_ecsBattleData, generatorDungeon, _battleState, 
+            var battleInitialization = new EcsBattleInitialization(
+                _ecsBattleData, battleInputControlsInitialization.GetData(), generatorDungeon, _battleState, 
                 _activeWindow, _player, playerModel, fightCamera, enemiesInitialization);
             battleInitialization.Dungeon = generatorDungeon.Dungeon();
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(battleInitialization);

@@ -1528,6 +1528,7 @@ MonoBehaviour:
   _enemiesData: {fileID: 11400000, guid: 5ffd33d3e167c594fb69d605bafe1c69, type: 2}
   _generatorData: {fileID: 11400000, guid: 491268119048552409706074d4d24945, type: 2}
   _ecsBattleData: {fileID: 11400000, guid: 146750372a8399243a45d1ed3a1407e2, type: 2}
+  _battleInputData: {fileID: 11400000, guid: b49016a2e98be49489543cb8fd74882b, type: 2}
   _ui:
     CharacterPanel: {fileID: 2045588499}
     EquipmentPanel: {fileID: 634544370}
@@ -1797,6 +1798,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 383.74408
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178142106199696282, guid: 530c833809f9f5e4698597cc1aaced9a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7178142106209386100, guid: 530c833809f9f5e4698597cc1aaced9a,
         type: 3}

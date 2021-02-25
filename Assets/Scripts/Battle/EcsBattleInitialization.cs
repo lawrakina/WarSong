@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Controller;
 using CoreComponent;
 using Data;
@@ -23,6 +22,7 @@ namespace Battle
         private readonly IGeneratorDungeon _generatorDungeon;
         private IReactiveProperty<EnumMainWindow> _activeWindow;
         private readonly IReactiveProperty<EnumBattleWindow> _battleState;
+        private readonly BattleInputStruct _battleInputStruct;
         private readonly IPlayerView _player;
         private readonly BattlePlayerModel _playerModel;
         private readonly IFightCamera _camera;
@@ -43,16 +43,18 @@ namespace Battle
         #region ClassLiveCycles
 
         public EcsBattleInitialization(EcsBattleData ecsBattleData,
+            BattleInputStruct battleInputStruct,
             IGeneratorDungeon generatorDungeon,
             IReactiveProperty<EnumBattleWindow> battleState,
             IReactiveProperty<EnumMainWindow> activeWindow,
-            IPlayerView player, BattlePlayerModel playerModel, 
+            IPlayerView player, BattlePlayerModel playerModel,
             IFightCamera camera,
             EnemiesInitialization enemiesInitialization)
         {
             _ecsBattle = Object.Instantiate(ecsBattleData.EcsBattle);
             _ecsBattle.gameObject.name = StringManager.ECS_BATTLE_GO_NAME;
 
+            _battleInputStruct = battleInputStruct;
             _player = player;
             _playerModel = playerModel;
             _camera = camera;
@@ -64,6 +66,7 @@ namespace Battle
             _ecsBattle.Inject(_player);
             _ecsBattle.Inject(_camera);
             _ecsBattle.Inject(_playerModel);
+            _ecsBattle.Inject(_battleInputStruct);
         }
 
         #endregion
