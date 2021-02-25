@@ -2,6 +2,7 @@
 using Enums;
 using Unit;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 namespace Data
@@ -32,7 +33,8 @@ namespace Data
         [SerializeField]
         public int ExperiencePoints = 1;
 
+        [FormerlySerializedAs("VisionParameters")]
         [SerializeField]
-        public Vision VisionParameters;
+        public UnitVision unitVisionParameters;
     }
 }

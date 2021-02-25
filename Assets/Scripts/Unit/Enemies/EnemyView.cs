@@ -23,7 +23,8 @@ namespace Unit.Enemies
         public Animator Animator => _animator;
         public AnimatorParameters AnimatorParameters { get; private set; }
         public ICharAttributes CharAttributes { get; set; }
-        public Vision Vision { get; set; }
+        public UnitVision UnitVision { get; set; }
+        public UnitBattle UnitBattle { get; set; }
         public float CurrentHp { get; set; }
         public float BaseHp { get; set; }
         public float MaxHp { get; set; }
@@ -44,7 +45,8 @@ namespace Unit.Enemies
             _animator = GetComponent<Animator>();
             AnimatorParameters = new AnimatorParameters(ref _animator);
 
-            Vision = new Vision();
+            UnitBattle = new UnitBattle();
+            UnitVision = new UnitVision();
             CharAttributes = new CharAttributes();
         }
 
@@ -54,7 +56,7 @@ namespace Unit.Enemies
         public void Init(EnemySettings item)
         {
             UnitClass = new SimplyEnemyClass();
-            Vision = item.VisionComponent;
+            UnitVision = item.unitVisionComponent;
         }
     }
 }

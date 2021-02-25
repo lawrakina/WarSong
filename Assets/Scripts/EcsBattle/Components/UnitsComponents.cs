@@ -43,6 +43,7 @@ namespace EcsBattle.Components
     public struct TransformComponent
     {
         public Transform Value;
+        public Vector3 OffsetHead;
     }
 
     public struct DirectionMoving

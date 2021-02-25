@@ -35,7 +35,7 @@ namespace CharacterCustomizing
             _playerView = playerView;
             _characterSettings = characterSettings;
 
-            _playerView.Vision = _characterSettings.VisionParameters;
+            _playerView.UnitVision = _characterSettings.unitVisionParameters;
             var experiencePoints = _playerView.Level.CurrentLevel;
             switch (_characterSettings.CharacterClass)
             {

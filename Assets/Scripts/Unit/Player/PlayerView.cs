@@ -22,6 +22,8 @@ namespace Unit.Player
         public Animator Animator => _animator;
         public AnimatorParameters AnimatorParameters { get; private set; }
         public ICharAttributes CharAttributes { get; set; }
+        public UnitVision UnitVision { get; set; }
+        public UnitBattle UnitBattle { get; set; }
         public float CurrentHp { get; set; }
         public float BaseHp { get; set; }
         public float MaxHp { get; set; }
@@ -30,7 +32,6 @@ namespace Unit.Player
         public BaseCharacterClass CharacterClass { get; set; }
         public EquipmentPoints EquipmentPoints { get; set; }
         public EquipmentItems EquipmentItems { get; set; }
-        public Vision Vision { get; set; }
 
         #endregion
 
@@ -46,7 +47,8 @@ namespace Unit.Player
             _animator = GetComponent<Animator>();
             AnimatorParameters = new AnimatorParameters(ref _animator);
 
-            Vision = new Vision();
+            UnitBattle = new UnitBattle();
+            UnitVision = new UnitVision();
             Level = new UnitLevel();
             CharAttributes = new CharAttributes();
             BasicCharacteristics = new BasicCharacteristics();

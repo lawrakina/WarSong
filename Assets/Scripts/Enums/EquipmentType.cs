@@ -3,15 +3,6 @@
     public enum EquipmentType
     {
         None,
-        OneHandWeapon,
-        TwoHandSwordWeapon,
-        TwoHandSpearWeapon,
-        TwoHandStaffWeapon,
-        RangeTwoHandBowWeapon,
-        RangeTwoHandCrossbowWeapon,
-        // RangeTwoHandGunWeapon,
-        Shild,
-        ExtraWeapon,
         Head,
         Neck,
         Shoulder,

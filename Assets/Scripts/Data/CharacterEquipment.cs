@@ -1,4 +1,5 @@
 ﻿using System;
+using Weapons;
 
 
 namespace Data
@@ -6,7 +7,7 @@ namespace Data
     [Serializable]
     public sealed class CharacterEquipment
     {
-        public EquipmentSlot MainWeapon;
-        public EquipmentSlot SecondWeapon;
+        public BaseWeapon MainWeapon;
+        public BaseWeapon SecondWeapon;
     }
 }

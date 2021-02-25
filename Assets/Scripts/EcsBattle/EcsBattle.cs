@@ -70,10 +70,14 @@ namespace EcsBattle
                 //UI Player
                 .Add(new UpdatePlayerCurrentHealthPointsSystem())
                 .Add(new UpdatePlayerMaxHealthPointsSystem())
+                
                 //Battle Player
+                //Vision
                 .Add(new StartTimerForVisionSystem())
                 .Add(new TickTimerForVisionForPlayerSystem(1.0f))
                 .Add(new SearchClosesTargetForPlayerSystem())
+                //Attack
+                .Add(new OneStrikeFromWeaponSystem())
                 ;
 
             // register one-frame components (order is important), for example:
@@ -117,6 +121,28 @@ namespace EcsBattle
         }
 
         #endregion
+    }
+
+    public sealed class OneStrikeFromWeaponSystem : IEcsRunSystem
+    {
+        private EcsFilter<TransformComponent, CurrentTargetComponent, NeedAttackComponent, EquipmentWeaponComponent, AnimatorComponent> _filter;
+        public void Run()
+        {
+            foreach (var i in _filter)
+            {
+                ref var transform = ref _filter.Get1(i);
+                ref var target = ref _filter.Get2(i);
+                ref var weapon = ref _filter.Get4(i);
+                ref var animator = ref _filter.Get5(i);
+
+                var direction = target.Target.position - transform.Value.position;
+                var bullet = Object.Instantiate(weapon.Bullet, transform.Value.position + transform.OffsetHead,
+                    Quaternion.Euler(direction));
+                bullet.Rigidbody.AddForce(direction);
+                
+                animator.Value.SetTriggerAttack();
+            }
+        }
     }
 
 

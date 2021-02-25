@@ -12,7 +12,8 @@ namespace Unit
         Animator Animator { get; }
         AnimatorParameters AnimatorParameters { get; }
         ICharAttributes CharAttributes { get; set; }
-        Vision Vision { get; set; }
+        UnitVision UnitVision { get; set; }
+        UnitBattle UnitBattle { get; set; }
         float CurrentHp { get; set; }
         float BaseHp { get; set; }
         float MaxHp { get; set; }

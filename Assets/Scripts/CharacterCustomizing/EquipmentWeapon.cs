@@ -1,7 +1,10 @@
 ﻿using System;
 using Data;
+using Extension;
+using Unit;
 using Unit.Player;
 using UnityEngine;
+using Weapons;
 using Object = UnityEngine.Object;
 
 
@@ -18,52 +21,55 @@ namespace CharacterCustomizing
             _equipment = equipment;
 
             _character.EquipmentItems = new EquipmentItems();
+            _character.UnitBattle = new UnitBattle();
         }
 
         public void GetWeapons()
         {
             //MainHand Init
-            _character.EquipmentItems.MainWeapon = new EquipmentSlot
-            {
-                View = Object.Instantiate(_equipment.MainWeapon.View, Vector3.zero, Quaternion.identity),
-                Type = _equipment.MainWeapon.Type
-            };
+            var goBaseWeapon =
+                Object.Instantiate(_equipment.MainWeapon.gameObject, Vector3.zero, Quaternion.identity);
+            var mainWeapon = goBaseWeapon.GetComponent<BaseWeapon>();
+            mainWeapon.Type = _equipment.MainWeapon.Type;
+            Dbg.Log($"mainWeapon.StandardBullet:{mainWeapon.StandardBullet}");
+            Dbg.Log($"_equipment.MainWeapon.gameObject:{_equipment.MainWeapon.StandardBullet}");
+            _character.EquipmentItems.MainWeapon = mainWeapon;
             //SecondHand Init
-            _character.EquipmentItems.SecondWeapon = new EquipmentSlot
-            {
-                View = Object.Instantiate(_equipment.SecondWeapon.View, Vector3.zero, Quaternion.identity),
-                Type = _equipment.SecondWeapon.Type
-            };
+            var goSecondWeapon =
+                Object.Instantiate(_equipment.SecondWeapon.gameObject, Vector3.zero, Quaternion.identity);
+            var secondWeapon = goSecondWeapon.GetComponent<BaseWeapon>();
+            secondWeapon.Type = _equipment.SecondWeapon.Type;
+            _character.EquipmentItems.SecondWeapon = secondWeapon;
             //Set Parent
             switch (_equipment.MainWeapon.Type)
             {
-                case EquipmentType.OneHandWeapon:
-                    _character.EquipmentItems.MainWeapon.View.transform.SetParent(
+                case WeaponType.OneHandWeapon:
+                    _character.EquipmentItems.MainWeapon.transform.SetParent(
                         _character.EquipmentPoints._rightWeaponAttachPoint.transform, false);
                     break;
 
-                case EquipmentType.TwoHandSwordWeapon:
-                    _character.EquipmentItems.MainWeapon.View.transform.SetParent(
+                case WeaponType.TwoHandSwordWeapon:
+                    _character.EquipmentItems.MainWeapon.transform.SetParent(
                         _character.EquipmentPoints._rightWeaponAttachPoint.transform, false);
                     break;
 
-                case EquipmentType.TwoHandSpearWeapon:
-                    _character.EquipmentItems.MainWeapon.View.transform.SetParent(
+                case WeaponType.TwoHandSpearWeapon:
+                    _character.EquipmentItems.MainWeapon.transform.SetParent(
                         _character.EquipmentPoints._rightWeaponAttachPoint.transform, false);
                     break;
 
-                case EquipmentType.TwoHandStaffWeapon:
-                    _character.EquipmentItems.MainWeapon.View.transform.SetParent(
+                case WeaponType.TwoHandStaffWeapon:
+                    _character.EquipmentItems.MainWeapon.transform.SetParent(
                         _character.EquipmentPoints._rightWeaponAttachPoint.transform, false);
                     break;
 
-                case EquipmentType.RangeTwoHandBowWeapon:
-                    _character.EquipmentItems.MainWeapon.View.transform.SetParent(
+                case WeaponType.RangeTwoHandBowWeapon:
+                    _character.EquipmentItems.MainWeapon.transform.SetParent(
                         _character.EquipmentPoints._leftWeaponAttachPoint.transform, false);
                     break;
 
-                case EquipmentType.RangeTwoHandCrossbowWeapon:
-                    _character.EquipmentItems.MainWeapon.View.transform.SetParent(
+                case WeaponType.RangeTwoHandCrossbowWeapon:
+                    _character.EquipmentItems.MainWeapon.transform.SetParent(
                         _character.EquipmentPoints._rightWeaponAttachPoint.transform, false);
                     break;
             }
@@ -71,54 +77,57 @@ namespace CharacterCustomizing
             //Set Parent
             switch (_equipment.SecondWeapon.Type)
             {
-                case EquipmentType.OneHandWeapon:
-                    _character.EquipmentItems.SecondWeapon.View.transform.SetParent(
+                case WeaponType.OneHandWeapon:
+                    _character.EquipmentItems.SecondWeapon.transform.SetParent(
                         _character.EquipmentPoints._leftWeaponAttachPoint.transform, false);
                     break;
 
-                case EquipmentType.Shild:
-                    _character.EquipmentItems.SecondWeapon.View.transform.SetParent(
+                case WeaponType.Shild:
+                    _character.EquipmentItems.SecondWeapon.transform.SetParent(
                         _character.EquipmentPoints._leftShildAttachPoint.transform, false);
                     break;
 
-                case EquipmentType.ExtraWeapon:
-                    _character.EquipmentItems.SecondWeapon.View.transform.SetParent(
+                case WeaponType.ExtraWeapon:
+                    _character.EquipmentItems.SecondWeapon.transform.SetParent(
                         _character.EquipmentPoints._leftWeaponAttachPoint.transform, false);
                     break;
             }
             
+            //ToDo сейчас все считает только по главному орудию, следать расчет на обе руки
+            //Set Characteristics
+            _character.UnitBattle.Weapon = mainWeapon;
         }
 
         public int GetWeaponType()
         {
             if (_character.EquipmentItems.MainWeapon == null)
                 return 0;//Unarmed
-            if (_character.EquipmentItems.MainWeapon.Type == EquipmentType.OneHandWeapon && 
-                _character.EquipmentItems.SecondWeapon.Type == EquipmentType.OneHandWeapon)
+            if (_character.EquipmentItems.MainWeapon.Type == WeaponType.OneHandWeapon && 
+                _character.EquipmentItems.SecondWeapon.Type == WeaponType.OneHandWeapon)
                 return 5;//DualWeapons
             switch (_character.EquipmentItems.MainWeapon.Type)
             {
-                case EquipmentType.OneHandWeapon:
+                case WeaponType.OneHandWeapon:
                     return 1;
                     break;
 
-                case EquipmentType.TwoHandSwordWeapon:
+                case WeaponType.TwoHandSwordWeapon:
                     return 23;
                     break;
 
-                case EquipmentType.TwoHandSpearWeapon:
+                case WeaponType.TwoHandSpearWeapon:
                     return 22;
                     break;
 
-                case EquipmentType.TwoHandStaffWeapon:
+                case WeaponType.TwoHandStaffWeapon:
                     return 24;
                     break;
 
-                case EquipmentType.RangeTwoHandBowWeapon:
+                case WeaponType.RangeTwoHandBowWeapon:
                     return 25;
                     break;
 
-                case EquipmentType.RangeTwoHandCrossbowWeapon:
+                case WeaponType.RangeTwoHandCrossbowWeapon:
                     return 26;
                     break;
 

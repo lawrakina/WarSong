@@ -1,11 +1,12 @@
 ﻿using Data;
+using Weapons;
 
 
 namespace CharacterCustomizing
 {
     public class EquipmentItems
     {
-        public EquipmentSlot MainWeapon { get; set; }
-        public EquipmentSlot SecondWeapon { get; set; }
+        public BaseWeapon MainWeapon { get; set; }
+        public BaseWeapon SecondWeapon { get; set; }
     }
 }

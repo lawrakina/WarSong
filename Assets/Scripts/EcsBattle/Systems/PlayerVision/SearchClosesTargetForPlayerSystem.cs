@@ -28,7 +28,7 @@ namespace EcsBattle.Systems.PlayerVision
                 ref var layerMaskEnemies = ref _filter.Get5(index).Value;
 
                 //поиск всех целей
-                Collider[] colliders = new Collider[_player.Vision.MaxCountTaggets];
+                Collider[] colliders = new Collider[_player.UnitVision.MaxCountTaggets];
                 var countColliders =
                     Physics.OverlapSphereNonAlloc(transform.position, distanceDetection, colliders, layerMaskEnemies);
                 // DebugExtension.DebugWireSphere(transform.position, Color.green, distanceDetection);

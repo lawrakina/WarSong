@@ -2,6 +2,7 @@
 using Enums;
 using Unit;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 namespace Data
@@ -13,7 +14,8 @@ namespace Data
         public GameObject EnemyView;
         [SerializeField]
         public EnemyType EnemyType;
+        [FormerlySerializedAs("VisionComponent")]
         [SerializeField]
-        public Vision VisionComponent;
+        public UnitVision unitVisionComponent;
     }
 }
