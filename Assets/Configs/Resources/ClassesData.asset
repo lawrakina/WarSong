@@ -12,53 +12,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb533717bab04cfe876f544d22dd4eba, type: 3}
   m_Name: ClassesData
   m_EditorClassIdentifier: 
+  HealthPedStamina: 10
+  ManaPointsPerIntellect: 15
+  MaxRageValue: 100
+  MaxEnergyValue: 100
+  MaxConcentrationValue: 100
   Warrior:
-    Hp: 1
-    Mana: 1
-    Strength: 6
-    Agility: 2
-    Stamina: 6
-    Intellect: 2
-    Spirit: 3
+    StartHp: 1
+    StartMana: 1
+    StartStrength: 1
+    StartAgility: 1
+    StartStamina: 1
+    StartIntellect: 1
+    StartSpirit: 1
     StrengthForLevel: 3
     AgilityForLevel: 1
     StaminaForLevel: 3
     IntellectForLevel: 1
     SpiritForLevel: 2
   Rogue:
-    Hp: 1
-    Mana: 1
-    Strength: 2
-    Agility: 6
-    Stamina: 4
-    Intellect: 2
-    Spirit: 2
+    StartHp: 1
+    StartMana: 1
+    StartStrength: 1
+    StartAgility: 1
+    StartStamina: 1
+    StartIntellect: 1
+    StartSpirit: 1
     StrengthForLevel: 1
     AgilityForLevel: 3
     StaminaForLevel: 2
     IntellectForLevel: 3
     SpiritForLevel: 2
   Hunter:
-    Hp: 1
-    Mana: 1
-    Strength: 4
-    Agility: 5
-    Stamina: 4
-    Intellect: 2
-    Spirit: 3
+    StartHp: 1
+    StartMana: 1
+    StartStrength: 1
+    StartAgility: 1
+    StartStamina: 1
+    StartIntellect: 1
+    StartSpirit: 1
     StrengthForLevel: 2
     AgilityForLevel: 2
     StaminaForLevel: 2
     IntellectForLevel: 2
     SpiritForLevel: 3
   Mage:
-    Hp: 1
-    Mana: 1
-    Strength: 1
-    Agility: 1
-    Stamina: 4
-    Intellect: 4
-    Spirit: 6
+    StartHp: 1
+    StartMana: 1
+    StartStrength: 1
+    StartAgility: 1
+    StartStamina: 1
+    StartIntellect: 1
+    StartSpirit: 1
     StrengthForLevel: 1
     AgilityForLevel: 1
     StaminaForLevel: 2

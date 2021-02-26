@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8aa07d510e9e4c5eb69e727c59084b08, type: 3}
-  m_Name: Battle Input Data
+  m_Name: BattleInputData
   m_EditorClassIdentifier: 
   _maxPressTimeForClickButton: 0.5
   _maxOffsetForClick: {x: 0.2, y: 0.2, z: 0.2}

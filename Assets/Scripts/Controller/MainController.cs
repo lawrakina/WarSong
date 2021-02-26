@@ -25,31 +25,7 @@ namespace Controller
 
         private CompositeDisposable _subscriptions;
         private Controllers _controllers;
-
-        [Header("Game Data")]
-        [SerializeField]
-        private CharacterData _characterData;
-
-        [SerializeField]
-        private UnitLevelData _unitLevelData;
-
-        [SerializeField]
-        private ClassesData _classesData;
-
-        [SerializeField]
-        private PlayerData _playerData;
-
-        [SerializeField]
-        private EnemiesData _enemiesData;
-
-        [SerializeField]
-        private DungeonGeneratorData _generatorData;
-
-        [SerializeField]
-        private EcsBattleData _ecsBattleData;
-
-        [SerializeField]
-        private BattleInputData _battleInputData;
+        private IPlayerView _player;
 
         [Header("Ui & Windows")]
         [SerializeField]
@@ -62,17 +38,24 @@ namespace Controller
         [SerializeField]
         private EnumMainWindow _activePanelAndWindow;
 
-        private IPlayerView _player;
-
-        [Header("For debug")]
+        [Header("Plz do not set value!!! Its Simple access")]
         [SerializeField]
         private GameObject _linkToCharPlayer;
+
+        private CharacterData _characterData;
+        private UnitLevelData _unitLevelData;
+        private ClassesData _classesData;
+        private PlayerData _playerData;
+        private EnemiesData _enemiesData;
+        private DungeonGeneratorData _generatorData;
+        private EcsBattleData _ecsBattleData;
+        private BattleInputData _battleInputData;
 
         private IReactiveProperty<EnumMainWindow> _activeWindow;
         private IReactiveProperty<EnumCharacterWindow> _charWindow;
         private IReactiveProperty<EnumBattleWindow> _battleState;
         private IReactiveProperty<EnumFightCamera> _typeCameraAndCharControl;
-        
+
         #endregion
 
 
@@ -84,6 +67,7 @@ namespace Controller
         private void Awake()
         {
             _subscriptions = new CompositeDisposable();
+            LoadAllResources();
 
             //UI & Windows
             _activeWindow = new ReactiveProperty<EnumMainWindow>();
@@ -136,13 +120,14 @@ namespace Controller
             positioningCharInMenuController.AddPlayerPosition(
                 _windows.TalentsWindow.CharacterSpawn(), EnumMainWindow.Talents);
 
-            var battleInputControlsInitialization = new BattleInputControlsInitialization(_battleInputData, _ui.BattlePanel.FightPanel.transform);
+            var battleInputControlsInitialization =
+                new BattleInputControlsInitialization(_battleInputData, _ui.BattlePanel.FightPanel.transform);
             var enemyFactory = new EnemyFactory();
             var healthBarFactory = new HealthBarFactory();
             var enemiesInitialization = new EnemiesInitialization(_enemiesData, enemyFactory, healthBarFactory);
 
             var battleInitialization = new EcsBattleInitialization(
-                _ecsBattleData, battleInputControlsInitialization.GetData(), generatorDungeon, _battleState, 
+                _ecsBattleData, battleInputControlsInitialization.GetData(), generatorDungeon, _battleState,
                 _activeWindow, _player, playerModel, fightCamera, enemiesInitialization);
             battleInitialization.Dungeon = generatorDungeon.Dungeon();
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(battleInitialization);
@@ -161,6 +146,18 @@ namespace Controller
             _windows.Init();
             _controllers.Initialization();
             _activeWindow.Value = _activePanelAndWindow;
+        }
+
+        private void LoadAllResources()
+        {
+            _characterData = Resources.Load<CharacterData>("CharacterData");
+            _unitLevelData = Resources.Load<UnitLevelData>("UnitLevelData");
+            _classesData = Resources.Load<ClassesData>("ClassesData");
+            _playerData = Resources.Load<PlayerData>("PlayerData");
+            _enemiesData = Resources.Load<EnemiesData>("EnemiesData_Simple");
+            _generatorData = Resources.Load<DungeonGeneratorData>("DungeonData");
+            _ecsBattleData = Resources.Load<EcsBattleData>("EcsBattleData");
+            _battleInputData = Resources.Load<BattleInputData>("BattleInputData");
         }
 
 

@@ -9,16 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: EnemiesData
-  m_EditorClassIdentifier: Assembly-CSharp:Data:EnemiesData
+  m_Script: {fileID: 11500000, guid: 4a0832dd8f9f412f8aae8d8cc7890c26, type: 3}
+  m_Name: EnemiesData_Simple
+  m_EditorClassIdentifier: 
   Enemies:
     ListEnemies:
     - EnemyView: {fileID: 1741276027538082, guid: a16f0c419b1c8814babdf7ed30be11a3,
         type: 3}
       EnemyType: 0
+      unitVisionComponent:
+        BattleDistance: 7
+        MaxCountTaggets: 1
+        LayersEnemies:
+          serializedVersion: 2
+          m_Bits: 256
+        OffsetHead: {x: 0, y: 1.5, z: 0}
   UiEnemies:
     ListUiElements:
     - UiView: {fileID: 5632589081180970477, guid: d2ddcf18dfa38624791d2fecc565e2a3,
         type: 3}
       EnemyType: 0
+      Offset: {x: 0, y: 2.1, z: 0}

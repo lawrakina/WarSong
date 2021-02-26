@@ -3,7 +3,7 @@
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "Battle Input Data", menuName = "Data/Battle Input Data")]
+    [CreateAssetMenu(fileName = "BattleInputData", menuName = "Data/Battle Input Data")]
     public sealed class BattleInputData : ScriptableObject
     {
         public float _maxPressTimeForClickButton = 0.5f;
