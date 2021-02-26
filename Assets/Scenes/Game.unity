@@ -1534,7 +1534,7 @@ MonoBehaviour:
     BattleWindow: {fileID: 887576898}
     SpellsWindow: {fileID: 587162686}
     TalentsWindow: {fileID: 1289326281}
-  _activePanelAndWindow: 1
+  _activePanelAndWindow: 3
   _linkToCharPlayer: {fileID: 0}
 --- !u!1 &1273481788
 GameObject:

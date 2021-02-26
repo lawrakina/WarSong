@@ -24,6 +24,7 @@ namespace Unit.Player
         public ICharAttributes CharAttributes { get; set; }
         public UnitVision UnitVision { get; set; }
         public UnitBattle UnitBattle { get; set; }
+        public UnitReputation UnitReputation { get; set; }
         public float CurrentHp { get; set; }
         public float BaseHp { get; set; }
         public float MaxHp { get; set; }
@@ -49,6 +50,7 @@ namespace Unit.Player
 
             UnitBattle = new UnitBattle();
             UnitVision = new UnitVision();
+            UnitReputation = new UnitReputation();
             Level = new UnitLevel();
             CharAttributes = new CharAttributes();
             BasicCharacteristics = new BasicCharacteristics();

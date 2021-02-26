@@ -158,6 +158,12 @@ namespace Controller
             _generatorData = Resources.Load<DungeonGeneratorData>("DungeonData");
             _ecsBattleData = Resources.Load<EcsBattleData>("EcsBattleData");
             _battleInputData = Resources.Load<BattleInputData>("BattleInputData");
+            
+            LayerManager.EnemyLayer = LayerMask.NameToLayer(StringManager.ENEMY_LAYER);
+            LayerManager.PlayerLayer = LayerMask.NameToLayer(StringManager.PLAYER_LAYER);
+            LayerManager.PlayerAttackLayer = LayerMask.NameToLayer(StringManager.PLAYER_ATTACK_LAYER);
+            LayerManager.EnemyAttackLayer = LayerMask.NameToLayer(StringManager.ENEMY_ATTACK_LAYER);
+            LayerManager.EnemyAndPlayerAttackLayer = LayerMask.NameToLayer(StringManager.ENEMY_AND_PLAYER_ATTACK_LAYER);
         }
 
 

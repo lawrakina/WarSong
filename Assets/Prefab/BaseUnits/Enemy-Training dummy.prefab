@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6546731414380554795}
   - component: {fileID: 6546731414380554798}
   - component: {fileID: 6546731414380554797}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6546731415535925043}
   - component: {fileID: 1738667050872335076}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy-Training dummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 6546731416127263770}
   - component: {fileID: 6546731416127263773}
   - component: {fileID: 6546731416127263772}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1436178878525030, guid: bc6a59c177fcfa1429ae39d1360e8544, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4841611530678610, guid: bc6a59c177fcfa1429ae39d1360e8544, type: 3}
       propertyPath: m_RootOrder

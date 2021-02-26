@@ -70,7 +70,7 @@ namespace EcsBattle
                 //UI Player
                 .Add(new UpdatePlayerCurrentHealthPointsSystem())
                 .Add(new UpdatePlayerMaxHealthPointsSystem())
-                
+
                 //Battle Player
                 //Vision
                 .Add(new StartTimerForVisionSystem())
@@ -125,7 +125,14 @@ namespace EcsBattle
 
     public sealed class OneStrikeFromWeaponSystem : IEcsRunSystem
     {
-        private EcsFilter<TransformComponent, CurrentTargetComponent, NeedAttackComponent, EquipmentWeaponComponent, AnimatorComponent> _filter;
+        private EcsFilter<
+            TransformComponent,
+            CurrentTargetComponent,
+            NeedAttackComponent,
+            EquipmentWeaponComponent,
+            AnimatorComponent,
+            BaseUnitComponent> _filter;
+
         public void Run()
         {
             foreach (var i in _filter)
@@ -134,12 +141,15 @@ namespace EcsBattle
                 ref var target = ref _filter.Get2(i);
                 ref var weapon = ref _filter.Get4(i);
                 ref var animator = ref _filter.Get5(i);
+                ref var unit = ref _filter.Get6(i);
 
                 var direction = target.Target.position - transform.Value.position;
-                var bullet = Object.Instantiate(weapon.Bullet, transform.Value.position + transform.OffsetHead,
-                    Quaternion.Euler(direction));
+                var bullet = Object.Instantiate(weapon.Bullet,
+                    transform.Value.position + transform.OffsetHead, Quaternion.Euler(direction));
+                Dbg.Log($"Create Bullet.Layer:{unit.EnemyLayer.EnemyAttackLayer}");
+                bullet.gameObject.layer = unit.EnemyLayer.EnemyAttackLayer;
                 bullet.Rigidbody.AddForce(direction);
-                
+
                 animator.Value.SetTriggerAttack();
             }
         }

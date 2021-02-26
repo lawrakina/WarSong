@@ -1,4 +1,5 @@
 ﻿using Data;
+using Extension;
 using UnityEngine;
 using VIew;
 
@@ -25,6 +26,7 @@ namespace Unit.Enemies
         public ICharAttributes CharAttributes { get; set; }
         public UnitVision UnitVision { get; set; }
         public UnitBattle UnitBattle { get; set; }
+        public UnitReputation UnitReputation { get; set; }
         public float CurrentHp { get; set; }
         public float BaseHp { get; set; }
         public float MaxHp { get; set; }
@@ -47,6 +49,7 @@ namespace Unit.Enemies
 
             UnitBattle = new UnitBattle();
             UnitVision = new UnitVision();
+            UnitReputation = new UnitReputation();
             CharAttributes = new CharAttributes();
         }
 
@@ -57,6 +60,12 @@ namespace Unit.Enemies
         {
             UnitClass = new SimplyEnemyClass();
             UnitVision = item.unitVisionComponent;
+            //ToDo сделать полноценную систему Свой-чужой
+            gameObject.layer = LayerManager.EnemyLayer;
+            UnitReputation.EnemyLayer = LayerManager.PlayerLayer;
+            UnitReputation.EnemyAttackLayer = LayerManager.PlayerAttackLayer;
+            UnitReputation.FriendLayer = LayerManager.EnemyLayer;
+            UnitReputation.FriendAttackLayer = LayerManager.EnemyAttackLayer;
         }
     }
 }

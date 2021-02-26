@@ -1,4 +1,5 @@
 ﻿using Data;
+using Extension;
 using Unit.Player;
 
 
@@ -18,7 +19,7 @@ namespace CharacterCustomizing
             playerView.CharAttributes.AgroDistance = settings.AgroDistance;
             playerView.CharAttributes.Speed = settings.PlayerMoveSpeed;
             playerView.CharAttributes.RotateSpeedPlayer = settings.RotateSpeedPlayer;
-
+            
             var person = new PersonCharacter(playerView.Transform.gameObject, _characterData);
             person.CharacterRace = settings.CharacterRace;
             person.CharacterGender = settings.CharacterGender;
@@ -31,6 +32,12 @@ namespace CharacterCustomizing
             var equipWeapon = new EquipmentWeapon(playerView, settings.Equipment);
             equipWeapon.GetWeapons();
             playerView.AnimatorParameters.WeaponType = equipWeapon.GetWeaponType();
+
+            playerView.Transform.gameObject.layer = LayerManager.PlayerLayer;
+            playerView.UnitReputation.FriendLayer = LayerManager.PlayerLayer;
+            playerView.UnitReputation.EnemyLayer = LayerManager.EnemyLayer;
+            playerView.UnitReputation.FriendAttackLayer = LayerManager.PlayerAttackLayer;
+            playerView.UnitReputation.EnemyAttackLayer = LayerManager.EnemyAttackLayer;
         }
     }
 }

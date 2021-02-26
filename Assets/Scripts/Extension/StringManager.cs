@@ -2,6 +2,11 @@
 {
     public static class StringManager
     {
+        public const string PLAYER_ATTACK_LAYER = "PlayerAttack";
+        public const string ENEMY_ATTACK_LAYER = "EnemyAttack";
+        public const string ENEMY_AND_PLAYER_ATTACK_LAYER = "EnemyAndPlayerAttack";
+        public const string PLAYER_LAYER = "Player";
+        public const string ENEMY_LAYER = "Enemy";
         public const string ATTACH_POINT_LEFT_BOW = "LeftBowTwoHandWeapon";
         public const string ATTACH_POINT_LEFT_SHILD = "LeftShild";
         public const string ATTACH_POINT_LEFT_ONE_WEAPON = "LeftOneHandWeapon";

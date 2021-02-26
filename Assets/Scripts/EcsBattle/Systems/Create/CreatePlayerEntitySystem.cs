@@ -1,6 +1,7 @@
 ﻿using EcsBattle.Components;
 using Extension;
 using Leopotam.Ecs;
+using Unit;
 using Unit.Player;
 using UnityEngine;
 
@@ -18,6 +19,9 @@ namespace EcsBattle
             var player = _world.NewEntity();
             //Base components
             player.Get<PlayerComponent>();
+            player.Get<BaseUnitComponent>().EnemyLayer = _player.UnitReputation;
+            Dbg.Log($"_player.UnitReputation.EnemyLayer:{_player.UnitReputation.EnemyLayer}");
+            Dbg.Log($"_player.UnitReputation.FriendLayer:{_player.UnitReputation.FriendLayer}");
             player.Get<TransformComponent>().Value = _player.Transform;
             player.Get<TransformComponent>().OffsetHead = _player.UnitVision.OffsetHead;
             player.Get<RigidBodyComponent>().Value = _player.Rigidbody;
@@ -33,8 +37,8 @@ namespace EcsBattle
             player.Get<LayerMaskEnemiesComponent>().Value = _player.UnitVision.LayersEnemies;
             //battle
             player.Get<AutoBattleDisableComponent>();
-            Dbg.Log($"_player.UnitBattle.Weapon:{_player.UnitBattle.Weapon}");
-            Dbg.Log($"_player.UnitBattle.Weapon.StandardBullet:{_player.UnitBattle.Weapon.StandardBullet}");
+            // Dbg.Log($"_player.UnitBattle.Weapon:{_player.UnitBattle.Weapon}");
+            // Dbg.Log($"_player.UnitBattle.Weapon.StandardBullet:{_player.UnitBattle.Weapon.StandardBullet}");
             player.Get<EquipmentWeaponComponent>().Value = _player.UnitBattle.Weapon;
             player.Get<EquipmentWeaponComponent>().Bullet = _player.UnitBattle.Weapon.StandardBullet;
             
@@ -47,5 +51,10 @@ namespace EcsBattle
 
             player.Get<GoTargetComponent>().Value = goTargetEntity;
         }
+    }
+
+    public struct BaseUnitComponent
+    {
+        public UnitReputation EnemyLayer;
     }
 }
