@@ -1,4 +1,7 @@
-﻿using CharacterCustomizing;
+﻿using System;
+using Battle;
+using CharacterCustomizing;
+using Extension;
 using UnityEngine;
 
 
@@ -28,6 +31,7 @@ namespace Unit.Player
         public float CurrentHp { get; set; }
         public float BaseHp { get; set; }
         public float MaxHp { get; set; }
+        public event Action<InfoCollision> OnApplyDamageChange;
         public UnitLevel Level { get; set; }
         public BasicCharacteristics BasicCharacteristics { get; set; }
         public BaseCharacterClass CharacterClass { get; set; }
@@ -56,23 +60,27 @@ namespace Unit.Player
             BasicCharacteristics = new BasicCharacteristics();
         }
 
+        private void OnEnable()
+        {
+            OnApplyDamageChange += SetDamage;
+        }
+
+        private void SetDamage(InfoCollision obj)
+        {
+            Dbg.Log($"I`m Attacked");
+        }
+
+        private void OnDisable()
+        {
+            OnApplyDamageChange -= SetDamage;
+        }
+        
         #endregion
 
 
-        #region Events
-
-        // public event Action<InfoCollision> OnBonusUp;
-
-        #endregion
-
-
-        #region Methods
-
-        // public void OnCollision(InfoCollision infoCollision)
-        // {
-        //     OnBonusUp?.Invoke(infoCollision);
-        // }
-
-        #endregion
+        public void OnCollision(InfoCollision info)
+        {
+            OnApplyDamageChange?.Invoke(info);
+        }
     }
 }

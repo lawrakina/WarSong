@@ -10,8 +10,7 @@ namespace EcsBattle.Systems.PlayerVision
 {
     public class SearchClosesTargetForPlayerSystem : IEcsRunSystem
     {
-        private EcsFilter<PlayerComponent,
-            TransformComponent,
+        private EcsFilter<PlayerComponent, BaseUnitComponent,
             TimerTickedForVisionComponent,
             DetectionDistanceEnemyComponent,
             LayerMaskEnemiesComponent> _filter;
@@ -22,7 +21,7 @@ namespace EcsBattle.Systems.PlayerVision
         {
             foreach (var index in _filter)
             {
-                ref var transform = ref _filter.Get2(index).Value;
+                ref var transform = ref _filter.Get2(index).transform;
                 ref var distanceDetection = ref _filter.Get4(index).Value;
                 ref var layerMaskEnemies = ref _filter.Get5(index).Value;
 

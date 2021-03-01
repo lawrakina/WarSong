@@ -63,7 +63,7 @@ namespace Unit
             set
             {
                 _weaponType = value;
-                _animator.SetInteger(TagManager.ANIMATOR_PARAM_WEAPON_TYPE, _weaponType);
+                _animator.SetFloat(TagManager.ANIMATOR_PARAM_WEAPON_TYPE, _weaponType);
             }
         }
 
@@ -73,7 +73,7 @@ namespace Unit
             set
             {
                 _attackType = value;
-                _animator.SetInteger(TagManager.ANIMATOR_PARAM_ATTACK_TYPE, _attackType);
+                _animator.SetFloat(TagManager.ANIMATOR_PARAM_ATTACK_TYPE, _attackType);
             }
         }
 

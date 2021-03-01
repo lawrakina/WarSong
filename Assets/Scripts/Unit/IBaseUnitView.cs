@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using Battle;
+using UnityEngine;
 
 
 namespace Unit
 {
-    public interface IBaseUnitView
+    public interface IBaseUnitView: ICollision
     {
         Transform Transform { get; }
         Collider Collider { get; }
@@ -18,5 +20,6 @@ namespace Unit
         float CurrentHp { get; set; }
         float BaseHp { get; set; }
         float MaxHp { get; set; }
+        event Action<InfoCollision> OnApplyDamageChange;
     }
 }

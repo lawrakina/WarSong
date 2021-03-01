@@ -45,3 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StandardBullet: {fileID: 8941936133358270778, guid: 792eaa4f975c00246a4e01dbd574f330,
     type: 3}
+  Type: 0
+  AttackDistance: 1
+  AttackValue:
+    _maxAttackValue: 1
+    _minAttackValue: 2

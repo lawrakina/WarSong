@@ -1,5 +1,4 @@
-﻿using Data;
-using VIew;
+﻿using VIew;
 
 
 namespace Unit.Enemies
@@ -8,6 +7,5 @@ namespace Unit.Enemies
     {
         BaseEnemyClass UnitClass { get; set; }
         HealthBarView HealthBar { get; set; }
-        void Init(EnemySettings item);
     }
 }

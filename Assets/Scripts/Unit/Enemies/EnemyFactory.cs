@@ -22,7 +22,17 @@ namespace Unit.Enemies
                  .AddCode<EnemyView>();
 
             var enemyView = enemy.GetComponent<IEnemyView>();
-            enemyView.Init(item);
+            // enemyView.Init(item);
+
+            enemyView.UnitClass = new SimplyEnemyClass();
+            enemyView.UnitVision = item.unitVisionComponent;
+            //ToDo сделать полноценную систему Свой-чужой
+            enemyView.Transform.gameObject.layer = LayerManager.EnemyLayer;
+            enemyView.UnitReputation.EnemyLayer = LayerManager.PlayerLayer;
+            enemyView.UnitReputation.EnemyAttackLayer = LayerManager.PlayerAttackLayer;
+            enemyView.UnitReputation.FriendLayer = LayerManager.EnemyLayer;
+            enemyView.UnitReputation.FriendAttackLayer = LayerManager.EnemyAttackLayer;
+
 
             return enemyView;
         }

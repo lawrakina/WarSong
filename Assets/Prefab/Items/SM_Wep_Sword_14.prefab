@@ -95,3 +95,7 @@ MonoBehaviour:
   StandardBullet: {fileID: 8941936133358270778, guid: 792eaa4f975c00246a4e01dbd574f330,
     type: 3}
   Type: 1
+  AttackDistance: 1
+  AttackValue:
+    _maxAttackValue: 5
+    _minAttackValue: 10

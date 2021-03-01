@@ -26,7 +26,7 @@ namespace EcsBattle
                 //     cameraTransform.position = targetTransform.position;
                 // }
                 
-                _filter.Get2(index).Value.position = _filter.Get3(index).Position.position;
+                _filter.Get2(index).Value.position = _filter.Get3(index).positionThirdTarget.position;
                 
                 //попытка округлить позицию по осям - неудачно
                 // var positionRound = new Vector3(

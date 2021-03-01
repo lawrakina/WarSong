@@ -1,4 +1,6 @@
-﻿using Data;
+﻿using System;
+using Battle;
+using Data;
 using Extension;
 using UnityEngine;
 using VIew;
@@ -30,6 +32,7 @@ namespace Unit.Enemies
         public float CurrentHp { get; set; }
         public float BaseHp { get; set; }
         public float MaxHp { get; set; }
+        public event Action<InfoCollision> OnApplyDamageChange;
         public BaseEnemyClass UnitClass { get; set; }
         public HealthBarView HealthBar { get; set; }
 
@@ -56,16 +59,22 @@ namespace Unit.Enemies
         #endregion
 
 
-        public void Init(EnemySettings item)
+        // public void Init(EnemySettings item)
+        // {
+        //     UnitClass = new SimplyEnemyClass();
+        //     UnitVision = item.unitVisionComponent;
+        //     //ToDo сделать полноценную систему Свой-чужой
+        //     gameObject.layer = LayerManager.EnemyLayer;
+        //     UnitReputation.EnemyLayer = LayerManager.PlayerLayer;
+        //     UnitReputation.EnemyAttackLayer = LayerManager.PlayerAttackLayer;
+        //     UnitReputation.FriendLayer = LayerManager.EnemyLayer;
+        //     UnitReputation.FriendAttackLayer = LayerManager.EnemyAttackLayer;
+        // }
+
+        public void OnCollision(InfoCollision info)
         {
-            UnitClass = new SimplyEnemyClass();
-            UnitVision = item.unitVisionComponent;
-            //ToDo сделать полноценную систему Свой-чужой
-            gameObject.layer = LayerManager.EnemyLayer;
-            UnitReputation.EnemyLayer = LayerManager.PlayerLayer;
-            UnitReputation.EnemyAttackLayer = LayerManager.PlayerAttackLayer;
-            UnitReputation.FriendLayer = LayerManager.EnemyLayer;
-            UnitReputation.FriendAttackLayer = LayerManager.EnemyAttackLayer;
+            Dbg.Log($"I`m Attacked :{gameObject.name}");
+            OnApplyDamageChange?.Invoke(info);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Battle;
 using Leopotam.Ecs;
 using Unit;
 using UnityEngine;
@@ -24,6 +25,11 @@ namespace EcsBattle.Components
     {
     }
 
+    public struct CollisionComponent
+    {
+        public InfoCollision Value;
+    }
+
     public struct UiEnemyHealthBarComponent
     {
         public HealthBarView Value;
@@ -33,11 +39,6 @@ namespace EcsBattle.Components
     {
         public float CurrentValue;
         public float MaxValue;
-    }
-
-    public struct RigidBodyComponent
-    {
-        public Rigidbody Value;
     }
 
     public struct TransformComponent

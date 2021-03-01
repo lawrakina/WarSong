@@ -1,17 +1,19 @@
 using System.Collections.Generic;
 using Data;
 using EcsBattle.Components;
+using EcsBattle.Systems.Attacks;
+using EcsBattle.Systems.Enemies;
 using EcsBattle.Systems.Input;
 using EcsBattle.Systems.PlayerMove;
 using EcsBattle.Systems.PlayerVision;
 using EcsBattle.Systems.Ui;
-using Extension;
 using Leopotam.Ecs;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
 #endif
 using UnityEngine;
 using VIew;
+using Weapons;
 
 
 namespace EcsBattle
@@ -75,9 +77,9 @@ namespace EcsBattle
                 //Vision
                 .Add(new StartTimerForVisionSystem())
                 .Add(new TickTimerForVisionForPlayerSystem(1.0f))
-                .Add(new SearchClosesTargetForPlayerSystem())
+                // .Add(new SearchClosesTargetForPlayerSystem())
                 //Attack
-                .Add(new OneStrikeFromWeaponSystem())
+                .Add(new OneStrikeFromWeaponExcludeTargetSystem())
                 ;
 
             // register one-frame components (order is important), for example:
@@ -121,38 +123,6 @@ namespace EcsBattle
         }
 
         #endregion
-    }
-
-    public sealed class OneStrikeFromWeaponSystem : IEcsRunSystem
-    {
-        private EcsFilter<
-            TransformComponent,
-            CurrentTargetComponent,
-            NeedAttackComponent,
-            EquipmentWeaponComponent,
-            AnimatorComponent,
-            BaseUnitComponent> _filter;
-
-        public void Run()
-        {
-            foreach (var i in _filter)
-            {
-                ref var transform = ref _filter.Get1(i);
-                ref var target = ref _filter.Get2(i);
-                ref var weapon = ref _filter.Get4(i);
-                ref var animator = ref _filter.Get5(i);
-                ref var unit = ref _filter.Get6(i);
-
-                var direction = target.Target.position - transform.Value.position;
-                var bullet = Object.Instantiate(weapon.Bullet,
-                    transform.Value.position + transform.OffsetHead, Quaternion.Euler(direction));
-                Dbg.Log($"Create Bullet.Layer:{unit.EnemyLayer.EnemyAttackLayer}");
-                bullet.gameObject.layer = unit.EnemyLayer.EnemyAttackLayer;
-                bullet.Rigidbody.AddForce(direction);
-
-                animator.Value.SetTriggerAttack();
-            }
-        }
     }
 
 

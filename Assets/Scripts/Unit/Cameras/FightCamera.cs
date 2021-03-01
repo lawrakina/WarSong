@@ -14,10 +14,10 @@ namespace Unit.Cameras
 
         [Header("Top down camera orientation")]
         [SerializeField]
-        private readonly Vector3 _offetTopPosition = new Vector3(-15.0f, 30.0f, 15.0f);
+        private Vector3 _offetTopPosition = new Vector3(-15.0f, 30.0f, 15.0f);
 
         [SerializeField]
-        private readonly Vector3 _offsetTopRotation = new Vector3(45.0f, 135.0f, 0.0f);
+        private Vector3 _offsetTopRotation = new Vector3(45.0f, 135.0f, 0.0f);
 
         [Header("Third person camera orientation")]
         [SerializeField]
@@ -27,10 +27,10 @@ namespace Unit.Cameras
         private Vector3 _offsetThirdRotation = new Vector3(0.0f, 0.0f, 0.0f);
 
         [SerializeField]
-        private readonly float _cameraMoveSpeed = 3.0f;
+        private float _cameraMoveSpeed = 3.0f;
 
         [SerializeField]
-        private readonly float _cameraRotateSpeed = 90.0f;
+        private float _cameraRotateSpeed = 90.0f;
 
         [Header("For Debug, pls do not set:")]
         [SerializeField]

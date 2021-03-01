@@ -1,18 +1,22 @@
 ﻿using System;
 using Data;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 
 namespace Weapons
 {
-    [Serializable]
-    public class BaseWeapon : MonoBehaviour
+    [Serializable] public class BaseWeapon : MonoBehaviour
     {
         [SerializeField]
         public WeaponBullet StandardBullet;
 
         [SerializeField]
         public WeaponType Type;
+
+        [SerializeField]
+        public float AttackDistance;
+
+        [SerializeField]
+        public AttackValue AttackValue;
     }
 }
