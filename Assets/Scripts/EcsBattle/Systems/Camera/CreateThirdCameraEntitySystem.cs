@@ -5,7 +5,7 @@ using Unit.Player;
 using UnityEngine;
 
 
-namespace EcsBattle
+namespace EcsBattle.Systems.Camera
 {
     public sealed class CreateThirdCameraEntitySystem : IEcsInitSystem
     {

@@ -20,11 +20,14 @@ MonoBehaviour:
       unitVisionComponent:
         BattleDistance: 7
         MaxCountTargets: 1
-        LayersEnemies:
-          serializedVersion: 2
-          m_Bits: 1024
         OffsetHead: {x: 0, y: 1.5, z: 0}
       MaxHp: 100
+      unitAttributes:
+        Name: 
+        CharacterGender: 0
+        CharacterRace: 0
+        Speed: 5
+        RotateSpeedPlayer: 200
   UiEnemies:
     ListUiElements:
     - UiView: {fileID: 5632589081180970477, guid: d2ddcf18dfa38624791d2fecc565e2a3,

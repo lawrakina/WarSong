@@ -32,6 +32,11 @@ namespace EcsBattle.Systems.Enemies
                 entity.Get<UiEnemyHealthBarComponent>().Value = view.HealthBar;
                 entity.Get<UnitHpComponent>().CurrentValue = view.CurrentHp;
                 entity.Get<UnitHpComponent>().MaxValue = view.MaxHp;
+                
+                // if(view.UnitBattle == null) throw new System.NotImplementedException("view.UnitBattle: NULL");
+                // entity.Get<BattleInfoComponent>().Value = view.UnitBattle.Weapon;
+                // entity.Get<BattleInfoComponent>().Bullet = view.UnitBattle.Weapon.StandardBullet;
+                // entity.Get<BattleInfoComponent>().AttackValue = view.UnitBattle.Weapon.AttackValue;
 
                 var enemyEntity = new EnemyEntity(view, entity);
             }

@@ -1,8 +1,12 @@
 using System.Collections.Generic;
+using DuloGames.UI;
+using EcsBattle.Components;
 using EcsBattle.Systems.Animation;
 using EcsBattle.Systems.Attacks;
+using EcsBattle.Systems.Camera;
 using EcsBattle.Systems.Enemies;
 using EcsBattle.Systems.Input;
+using EcsBattle.Systems.Player;
 using EcsBattle.Systems.PlayerMove;
 using EcsBattle.Systems.PlayerVision;
 using EcsBattle.Systems.Ui;
@@ -75,6 +79,7 @@ namespace EcsBattle
                 .Add(new StartTimerForVisionPlayerSystem())
                 .Add(new TickTimerForVisionForPlayerSystem(1.0f))
                 .Add(new SearchClosesTargetForPlayerSystem())
+                .Add(new AnimationBattleState())
                 //Attack
                 .Add(new TimerForGetPermissionAttackFromWeaponSystem())
                 .Add(new TimerForStartAnimationFromWeaponSystem())
@@ -82,10 +87,10 @@ namespace EcsBattle
 
                 //Battle Enemies
                 //Vision
-                // .Add(new StartTimerFormVisionEnemySystem())
-                // .Add(new TickTimerForVisionForEnemySystem(2.0f))
                 .Add(new TimerForVisionForEnemySystem(2.0f))
                 .Add(new SearchClosesTargetForEnemySystem())
+                //Moving
+                .Add(new MovementEnemyToTargetSystem())
                 ;
 
             // register one-frame components (order is important), for example:
@@ -129,5 +134,38 @@ namespace EcsBattle
         }
 
         #endregion
+    }
+
+    public sealed class MovementEnemyToTargetSystem : IEcsRunSystem
+    {
+        private EcsFilter<EnemyComponent, BaseUnitComponent, CurrentTargetComponent, MovementSpeed, BattleInfoComponent>
+            _filter;
+
+        public void Run()
+        {
+            foreach (var i in _filter)
+            {
+                ref var entity = ref _filter.GetEntity(i);
+                ref var unit = ref _filter.Get2(i);
+                ref var target = ref _filter.Get3(i);
+                ref var moveSpeed = ref _filter.Get4(i);
+                ref var weapon = ref _filter.Get5(i);
+
+                var sqrDistance = (target.Target.position - unit.transform.position).sqrMagnitude;
+                if (sqrDistance > weapon.Value.AttackDistance)
+                {
+                    var direction = 
+                        (target.Target.position - unit.transform.position) * (moveSpeed.Value * Time.deltaTime);
+                    unit.rigidbody.MovePosition(unit.transform.position + direction);
+                    unit.transform.LookAt(target.Target);
+
+                    unit.animator.Speed = direction.magnitude;
+                }
+                else
+                {
+                    unit.animator.SetTriggerAttack();
+                }
+            }
+        }
     }
 }

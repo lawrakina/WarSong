@@ -19,6 +19,7 @@ namespace EcsBattle.Systems.PlayerVision
         {
             foreach (var index in _filter)
             {
+                ref var entity = ref _filter.GetEntity(index);
                 ref var transform = ref _filter.Get2(index).transform;
                 ref var distanceDetection = ref _filter.Get2(index).unitVision.BattleDistance;
                 ref var reputation = ref _filter.Get2(index).unitReputation;
@@ -26,7 +27,8 @@ namespace EcsBattle.Systems.PlayerVision
                 //поиск всех целей
                 Collider[] colliders = new Collider[_player.UnitVision.MaxCountTargets];
                 var countColliders =
-                    Physics.OverlapSphereNonAlloc(transform.position, distanceDetection, colliders,1<< reputation.EnemyLayer);
+                    Physics.OverlapSphereNonAlloc(transform.position, distanceDetection, colliders,
+                        1 << reputation.EnemyLayer);
                 // DebugExtension.DebugWireSphere(transform.position, Color.green, distanceDetection, 1.0f);
                 var listEnemies = new List<GameObject>();
                 // Dbg.Log($"countColliders:{countColliders}");
@@ -40,9 +42,9 @@ namespace EcsBattle.Systems.PlayerVision
                     var rayDirection = colliders[i].transform.position - transform.position;
                     var countHit = Physics.RaycastNonAlloc(
                         transform.position + new Vector3(0f, 1.0f, 0f), rayDirection, hit,
-                        distanceDetection,1<< reputation.EnemyLayer);
+                        distanceDetection, 1 << reputation.EnemyLayer);
                     // DebugExtension.DebugArrow(transform.position + new Vector3(0f, 1.0f, 0f),
-                        // colliders[i].transform.position - transform.position, Color.red, distanceDetection);
+                    // colliders[i].transform.position - transform.position, Color.red, distanceDetection);
                     if (countHit > 0)
                     {
                         // Dbg.Log($"Visible Target:colliders[i].gameObject");
@@ -65,14 +67,18 @@ namespace EcsBattle.Systems.PlayerVision
                             distance = curDistance;
                         }
                     }
-
-                    _filter.GetEntity(index).Get<CurrentTargetComponent>().Target = targetGo.transform;
-                    _filter.GetEntity(index).Get<CurrentTargetComponent>().Distance = distance;
+                    
+                    entity.Get<CurrentTargetComponent>().Target = targetGo.transform;
+                    entity.Get<CurrentTargetComponent>().Distance = distance;
+                }
+                else
+                {
+                    entity.Del<CurrentTargetComponent>();
                 }
 
                 //restart timer
-                _filter.GetEntity(index).Del<TimerTickedForVisionComponent>();
-                _filter.GetEntity(index).Get<AwaitTimerForVisionComponent>().Value = 0.0f;
+                entity.Del<TimerTickedForVisionComponent>();
+                entity.Get<AwaitTimerForVisionComponent>().Value = 0.0f;
             }
         }
     }

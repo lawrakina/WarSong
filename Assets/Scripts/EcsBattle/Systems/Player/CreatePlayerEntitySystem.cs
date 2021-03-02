@@ -1,12 +1,10 @@
 ﻿using EcsBattle.Components;
-using Extension;
 using Leopotam.Ecs;
-using Unit;
 using Unit.Player;
 using UnityEngine;
 
 
-namespace EcsBattle
+namespace EcsBattle.Systems.Player
 {
     public sealed class CreatePlayerEntitySystem : IEcsInitSystem
     {
