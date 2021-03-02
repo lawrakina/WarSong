@@ -15,4 +15,12 @@ namespace EcsBattle.Components
         public float CurrentTime;
         public float MaxTime;
     }
+    public struct TimerTickForGetPermissionToAttackComponent
+    {
+        public float CurrentTime;
+        public float MaxTime;
+    }
+    internal struct PermissionForAttackAllowedComponent
+    {
+    }
 }

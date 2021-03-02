@@ -7,14 +7,24 @@ namespace Weapons
 {
     [Serializable] public sealed class AttackValue
     {
-        [SerializeField]
-        private float _maxAttackValue;
+        #region Fields
 
         [SerializeField]
-        private float _minAttackValue;
+        private float _maxAttackValue = 1.0f;
+
+        [SerializeField]
+        private float _minAttackValue = 2.0f;
 
         [SerializeField]
         private float _timeDelayBeforeAttack = 0.5f;
+
+        [SerializeField]
+        private float _attackSpeed = 2.0f;
+
+        #endregion
+
+
+        #region Properties
 
         public float GetAttack()
         {
@@ -25,5 +35,12 @@ namespace Weapons
         {
             return _timeDelayBeforeAttack;
         }
+
+        public float GetAttackSpeed()
+        {
+            return _attackSpeed;
+        }
+
+        #endregion
     }
 }

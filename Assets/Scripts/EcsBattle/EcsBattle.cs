@@ -1,19 +1,15 @@
 using System.Collections.Generic;
-using Data;
 using EcsBattle.Systems.Attacks;
 using EcsBattle.Systems.Enemies;
 using EcsBattle.Systems.Input;
 using EcsBattle.Systems.PlayerMove;
 using EcsBattle.Systems.PlayerVision;
 using EcsBattle.Systems.Ui;
-using Extension;
 using Leopotam.Ecs;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
 #endif
 using UnityEngine;
-using VIew;
-using Weapons;
 
 
 namespace EcsBattle
@@ -79,9 +75,10 @@ namespace EcsBattle
                 .Add(new TickTimerForVisionForPlayerSystem(1.0f))
                 // .Add(new SearchClosesTargetForPlayerSystem())
                 //Attack
-                .Add(new StartTimerForOneStrikeFromWeaponSystem())
-                .Add(new OneStrikeFromWeaponExcludeTargetSystem())
+                .Add(new TimerForGetPermissionAttackFromWeaponSystem())
+                .Add(new TimerForStartAnimationFromWeaponSystem())
                 .Add(new ApplyDamageInUnitSystem())
+                
                 ;
 
             // register one-frame components (order is important), for example:

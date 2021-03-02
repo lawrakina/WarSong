@@ -2,12 +2,12 @@
 using Leopotam.Ecs;
 
 
-namespace EcsBattle
+namespace EcsBattle.Systems.Attacks
 {
     public sealed class ApplyDamageInUnitSystem : IEcsRunSystem
     {
         private EcsFilter<UnitHpComponent, AttackCollisionComponent> _filter;
-
+    
         public void Run()
         {
             foreach (var i in _filter)
