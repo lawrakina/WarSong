@@ -9,7 +9,7 @@ namespace EcsBattle.Systems.Attacks
 {
     public sealed class OneStrikeFromWeaponExcludeTargetSystem : IEcsRunSystem
     {
-        private EcsFilter<NeedAttackComponent, BaseUnitComponent, BattleComponent>
+        private EcsFilter<NeedAttackComponent, BaseUnitComponent, BattleInfoComponent>
             .Exclude<CurrentTargetComponent> _filter;
 
         public void Run()
@@ -33,6 +33,7 @@ namespace EcsBattle.Systems.Attacks
                     var tempObj = hitColliders[index].gameObject.GetComponent<ICollision>();
                     if (tempObj != null)
                     {
+                        Dbg.Log($"weapon.AttackValue.GetTimeLag():{weapon.AttackValue.GetTimeLag()}");
                         var collision = new InfoCollision(
                             weapon.AttackValue.GetAttack(), 
                             weapon.AttackValue.GetTimeLag());

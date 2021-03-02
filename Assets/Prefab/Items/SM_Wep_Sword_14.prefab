@@ -99,3 +99,4 @@ MonoBehaviour:
   AttackValue:
     _maxAttackValue: 5
     _minAttackValue: 10
+    _timeDelayBeforeAttack: 0.5

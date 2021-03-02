@@ -14,6 +14,7 @@ namespace Unit
         Animator Animator { get; }
         AnimatorParameters AnimatorParameters { get; }
         ICharAttributes CharAttributes { get; set; }
+        UnitLevel UnitLevel { get; set; }
         UnitVision UnitVision { get; set; }
         UnitBattle UnitBattle { get; set; }
         UnitReputation UnitReputation { get; set; }

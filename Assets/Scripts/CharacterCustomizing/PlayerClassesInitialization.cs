@@ -7,11 +7,11 @@ using Unit.Player;
 
 namespace CharacterCustomizing
 {
-    public class ClassesInitialization
+    public class PlayerClassesInitialization
     {
         #region Fields
 
-        private readonly ClassesData _data;
+        private readonly PlayerClassesData _data;
         private CharacterSettings _characterSettings;
         private IPlayerView _playerView;
 
@@ -20,7 +20,7 @@ namespace CharacterCustomizing
 
         #region ctor
 
-        public ClassesInitialization(ClassesData data)
+        public PlayerClassesInitialization(PlayerClassesData data)
         {
             _data = data;
         }
@@ -36,27 +36,27 @@ namespace CharacterCustomizing
             _characterSettings = characterSettings;
 
             _playerView.UnitVision = _characterSettings.unitVisionParameters;
-            var experiencePoints = _playerView.Level.CurrentLevel;
+            var playerLevel = _playerView.UnitLevel.CurrentLevel;
             switch (_characterSettings.CharacterClass)
             {
                 case CharacterClass.Warrior:
                     _playerView.CharacterClass = new CharacterClassWarrior();
-                    GenerateStats(experiencePoints, _data.Warrior);
+                    GenerateStats(playerLevel, _data.Warrior);
                     break;
 
                 case CharacterClass.Rogue:
                     _playerView.CharacterClass = new CharacterClassRogue();
-                    GenerateStats(experiencePoints, _data.Rogue);
+                    GenerateStats(playerLevel, _data.Rogue);
                     break;
 
                 case CharacterClass.Hunter:
                     _playerView.CharacterClass = new CharacterClassHunter();
-                    GenerateStats(experiencePoints, _data.Hunter);
+                    GenerateStats(playerLevel, _data.Hunter);
                     break;
 
                 case CharacterClass.Mage:
                     _playerView.CharacterClass = new CharacterClassMage();
-                    GenerateStats(experiencePoints, _data.Mage);
+                    GenerateStats(playerLevel, _data.Mage);
                     break;
 
                 default:
@@ -81,9 +81,9 @@ namespace CharacterCustomizing
             };
             _playerView.BaseHp =
                 _playerView.BasicCharacteristics.StartHp +
-                _playerView.BasicCharacteristics.StartStamina * _data.HealthPedStamina +
+                _playerView.BasicCharacteristics.StartStamina * _data.HealthPerStamina +
                 _playerView.BasicCharacteristics.StaminaForLevel *
-                _data.HealthPedStamina;
+                _data.HealthPerStamina;
             _playerView.CurrentHp = _playerView.BaseHp;
             _playerView.MaxHp = _playerView.BaseHp;
 

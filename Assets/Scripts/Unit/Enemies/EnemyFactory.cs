@@ -1,12 +1,21 @@
-﻿using Data;
+﻿using Controller;
+using Data;
 using Extension;
+using Unit.Player;
 using UnityEngine;
 
 
 namespace Unit.Enemies
 {
-    internal sealed class EnemyFactory : IEnemyFactory
+    public sealed class EnemyFactory : IEnemyFactory
     {
+        private readonly EnemyClassesInitialization _enemyClassesInitialization;
+
+        public EnemyFactory(EnemyClassesInitialization enemyClassesInitialization)
+        {
+            _enemyClassesInitialization = enemyClassesInitialization;
+        }
+
         public IEnemyView CreateEnemy(EnemySettings item)
         {
             var enemy = Object.Instantiate(item.EnemyView);
@@ -22,17 +31,10 @@ namespace Unit.Enemies
                  .AddCode<EnemyView>();
 
             var enemyView = enemy.GetComponent<IEnemyView>();
-            // enemyView.Init(item);
-
-            enemyView.UnitClass = new SimplyEnemyClass();
-            enemyView.UnitVision = item.unitVisionComponent;
-            //ToDo сделать полноценную систему Свой-чужой
-            enemyView.Transform.gameObject.layer = LayerManager.EnemyLayer;
-            enemyView.UnitReputation.EnemyLayer = LayerManager.PlayerLayer;
-            enemyView.UnitReputation.EnemyAttackLayer = LayerManager.PlayerAttackLayer;
-            enemyView.UnitReputation.FriendLayer = LayerManager.EnemyLayer;
-            enemyView.UnitReputation.FriendAttackLayer = LayerManager.EnemyAttackLayer;
-
+            
+            // _customizerCharacter.Customize(enemyView, item);
+            // _unitLevelInitialization.Initialization(enemyView, item);
+            _enemyClassesInitialization.Initialization(enemyView,item);
 
             return enemyView;
         }

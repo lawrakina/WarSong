@@ -41,7 +41,7 @@ namespace EcsBattle.Systems.Create
 
         private void ViewOnApplyDamageChange(InfoCollision collision)
         {
-            _entity.Get<CollisionComponent>().Value = collision;
+            _entity.Get<AttackCollisionComponent>().Value = collision;
         }
 
         #endregion

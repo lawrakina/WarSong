@@ -5,11 +5,11 @@ using Unit.Player;
 
 namespace CharacterCustomizing
 {
-    public sealed class CustomizerCharacter
+    public sealed class PlayerCustomizerCharacter
     {
         private CharacterData _characterData;
 
-        public CustomizerCharacter(CharacterData characterData)
+        public PlayerCustomizerCharacter(CharacterData characterData)
         {
             _characterData = characterData;
         }

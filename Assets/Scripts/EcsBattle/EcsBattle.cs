@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using Data;
-using EcsBattle.Components;
 using EcsBattle.Systems.Attacks;
 using EcsBattle.Systems.Enemies;
 using EcsBattle.Systems.Input;
 using EcsBattle.Systems.PlayerMove;
 using EcsBattle.Systems.PlayerVision;
 using EcsBattle.Systems.Ui;
+using Extension;
 using Leopotam.Ecs;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
@@ -80,6 +80,7 @@ namespace EcsBattle
                 // .Add(new SearchClosesTargetForPlayerSystem())
                 //Attack
                 .Add(new OneStrikeFromWeaponExcludeTargetSystem())
+                .Add(new ApplyDamageInUnitSystem())
                 ;
 
             // register one-frame components (order is important), for example:
@@ -123,19 +124,5 @@ namespace EcsBattle
         }
 
         #endregion
-    }
-
-
-    public class UpdateEnemiesCurrentHealthPointsSystem : IEcsRunSystem
-    {
-        private EcsFilter<UiEnemyHealthBarComponent, UnitHpComponent> _filter;
-
-        public void Run()
-        {
-            foreach (var index in _filter)
-            {
-                _filter.Get1(index).Value.ChangeValue(_filter.Get2(index).CurrentValue, _filter.Get2(index).MaxValue);
-            }
-        }
     }
 }

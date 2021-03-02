@@ -3,7 +3,7 @@
 
 namespace EcsBattle.Components
 {
-    public struct BattleComponent
+    public struct BattleInfoComponent
     {
         public BaseWeapon Value;
         public WeaponBullet Bullet;

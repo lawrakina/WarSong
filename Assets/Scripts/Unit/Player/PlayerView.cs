@@ -32,7 +32,7 @@ namespace Unit.Player
         public float BaseHp { get; set; }
         public float MaxHp { get; set; }
         public event Action<InfoCollision> OnApplyDamageChange;
-        public UnitLevel Level { get; set; }
+        public UnitLevel UnitLevel { get; set; }
         public BasicCharacteristics BasicCharacteristics { get; set; }
         public BaseCharacterClass CharacterClass { get; set; }
         public EquipmentPoints EquipmentPoints { get; set; }
@@ -55,7 +55,7 @@ namespace Unit.Player
             UnitBattle = new UnitBattle();
             UnitVision = new UnitVision();
             UnitReputation = new UnitReputation();
-            Level = new UnitLevel();
+            UnitLevel = new UnitLevel();
             CharAttributes = new CharAttributes();
             BasicCharacteristics = new BasicCharacteristics();
         }

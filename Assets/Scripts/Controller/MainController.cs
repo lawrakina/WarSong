@@ -44,9 +44,10 @@ namespace Controller
 
         private CharacterData _characterData;
         private UnitLevelData _unitLevelData;
-        private ClassesData _classesData;
+        private PlayerClassesData _playerClassesData;
         private PlayerData _playerData;
         private EnemiesData _enemiesData;
+        private EnemyClassesData _enemyClassesData;
         private DungeonGeneratorData _generatorData;
         private EcsBattleData _ecsBattleData;
         private BattleInputData _battleInputData;
@@ -81,10 +82,12 @@ namespace Controller
             var playerModel = new BattlePlayerModel();
 
             var unitLevelInitialization = new UnitLevelInitialization(_unitLevelData);
-            var classesInitialization = new ClassesInitialization(_classesData);
-            var customizerCharacter = new CustomizerCharacter(_characterData);
-            var playerFactory = new PlayerFactory(customizerCharacter, unitLevelInitialization, classesInitialization,
-                _characterData);
+            var playerClassesInitialization = new PlayerClassesInitialization(_playerClassesData);
+            var playerCustomizerCharacter = new PlayerCustomizerCharacter(_characterData);
+            var playerFactory = new PlayerFactory(
+                playerCustomizerCharacter, unitLevelInitialization,
+                playerClassesInitialization, _characterData);
+
             var listOfCharactersController = new ListOfCharactersController(_playerData, playerFactory);
             _player = listOfCharactersController.CurrentCharacter.Value;
             listOfCharactersController.CurrentCharacter.Subscribe(_ =>
@@ -122,7 +125,8 @@ namespace Controller
 
             var battleInputControlsInitialization =
                 new BattleInputControlsInitialization(_battleInputData, _ui.BattlePanel.FightPanel.transform);
-            var enemyFactory = new EnemyFactory();
+            var enemyClassesInitialization = new EnemyClassesInitialization(/*_enemyClassesData,*/ _player.UnitLevel);
+            var enemyFactory = new EnemyFactory(enemyClassesInitialization);
             var healthBarFactory = new HealthBarFactory();
             var enemiesInitialization = new EnemiesInitialization(_enemiesData, enemyFactory, healthBarFactory);
 
@@ -152,13 +156,13 @@ namespace Controller
         {
             _characterData = Resources.Load<CharacterData>("CharacterData");
             _unitLevelData = Resources.Load<UnitLevelData>("UnitLevelData");
-            _classesData = Resources.Load<ClassesData>("ClassesData");
+            _playerClassesData = Resources.Load<PlayerClassesData>("ClassesData");
             _playerData = Resources.Load<PlayerData>("PlayerData");
             _enemiesData = Resources.Load<EnemiesData>("EnemiesData_Simple");
             _generatorData = Resources.Load<DungeonGeneratorData>("DungeonData");
             _ecsBattleData = Resources.Load<EcsBattleData>("EcsBattleData");
             _battleInputData = Resources.Load<BattleInputData>("BattleInputData");
-            
+
             LayerManager.EnemyLayer = LayerMask.NameToLayer(StringManager.ENEMY_LAYER);
             LayerManager.PlayerLayer = LayerMask.NameToLayer(StringManager.PLAYER_LAYER);
             LayerManager.PlayerAttackLayer = LayerMask.NameToLayer(StringManager.PLAYER_ATTACK_LAYER);
@@ -196,5 +200,35 @@ namespace Controller
         #endregion
 
         #endregion
+    }
+
+    public class EnemyClassesInitialization
+    {
+        // private readonly EnemyClassesData _data;
+        private readonly UnitLevel _currentPlayerLevel;
+
+        public EnemyClassesInitialization(/*EnemyClassesData data,*/ UnitLevel currentPlayerLevel)
+        {
+            // _data = data;
+            _currentPlayerLevel = currentPlayerLevel;
+        }
+
+        public void Initialization(IEnemyView view, EnemySettings enemySettings)
+        {
+            // view.UnitClass = new SimplyEnemyClass();
+            view.UnitVision = enemySettings.unitVisionComponent;
+            view.UnitClass = new SimplyEnemyClass();
+            view.MaxHp = enemySettings.MaxHp;
+            view.CurrentHp = enemySettings.MaxHp;
+            
+            
+            
+            //ToDo сделать полноценную систему Свой-чужой
+            view.Transform.gameObject.layer = LayerManager.EnemyLayer;
+            view.UnitReputation.EnemyLayer = LayerManager.PlayerLayer;
+            view.UnitReputation.EnemyAttackLayer = LayerManager.PlayerAttackLayer;
+            view.UnitReputation.FriendLayer = LayerManager.EnemyLayer;
+            view.UnitReputation.FriendAttackLayer = LayerManager.EnemyAttackLayer;
+        }
     }
 }

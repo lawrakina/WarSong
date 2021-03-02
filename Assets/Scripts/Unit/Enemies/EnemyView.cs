@@ -1,6 +1,5 @@
 ﻿using System;
 using Battle;
-using Data;
 using Extension;
 using UnityEngine;
 using VIew;
@@ -26,6 +25,7 @@ namespace Unit.Enemies
         public Animator Animator => _animator;
         public AnimatorParameters AnimatorParameters { get; private set; }
         public ICharAttributes CharAttributes { get; set; }
+        public UnitLevel UnitLevel { get; set; }
         public UnitVision UnitVision { get; set; }
         public UnitBattle UnitBattle { get; set; }
         public UnitReputation UnitReputation { get; set; }
@@ -52,24 +52,13 @@ namespace Unit.Enemies
 
             UnitBattle = new UnitBattle();
             UnitVision = new UnitVision();
+            UnitLevel = new UnitLevel();
             UnitReputation = new UnitReputation();
             CharAttributes = new CharAttributes();
         }
 
         #endregion
 
-
-        // public void Init(EnemySettings item)
-        // {
-        //     UnitClass = new SimplyEnemyClass();
-        //     UnitVision = item.unitVisionComponent;
-        //     //ToDo сделать полноценную систему Свой-чужой
-        //     gameObject.layer = LayerManager.EnemyLayer;
-        //     UnitReputation.EnemyLayer = LayerManager.PlayerLayer;
-        //     UnitReputation.EnemyAttackLayer = LayerManager.PlayerAttackLayer;
-        //     UnitReputation.FriendLayer = LayerManager.EnemyLayer;
-        //     UnitReputation.FriendAttackLayer = LayerManager.EnemyAttackLayer;
-        // }
 
         public void OnCollision(InfoCollision info)
         {

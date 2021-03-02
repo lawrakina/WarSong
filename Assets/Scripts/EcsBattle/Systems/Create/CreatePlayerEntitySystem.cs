@@ -44,9 +44,9 @@ namespace EcsBattle
             player.Get<LayerMaskEnemiesComponent>().Value = _player.UnitVision.LayersEnemies;//ДУБЛИРОВАНИЕ СЛОЕВ
             //battle
             player.Get<AutoBattleDisableComponent>();
-            player.Get<BattleComponent>().Value = _player.UnitBattle.Weapon;
-            player.Get<BattleComponent>().Bullet = _player.UnitBattle.Weapon.StandardBullet;
-            player.Get<BattleComponent>().AttackValue = _player.UnitBattle.Weapon.AttackValue;
+            player.Get<BattleInfoComponent>().Value = _player.UnitBattle.Weapon;
+            player.Get<BattleInfoComponent>().Bullet = _player.UnitBattle.Weapon.StandardBullet;
+            player.Get<BattleInfoComponent>().AttackValue = _player.UnitBattle.Weapon.AttackValue;
             
 
 

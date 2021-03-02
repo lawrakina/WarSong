@@ -10,18 +10,18 @@ namespace Unit.Player
     public sealed class PlayerFactory : IPlayerFactory
     {
         private readonly CharacterData _characterData;
-        private readonly CustomizerCharacter _customizerCharacter;
+        private readonly PlayerCustomizerCharacter _playerCustomizerCharacter;
         private readonly UnitLevelInitialization _unitLevelInitialization;
-        private readonly ClassesInitialization _classesInitialization;
+        private readonly PlayerClassesInitialization _playerClassesInitialization;
 
-        public PlayerFactory(CustomizerCharacter customizerCharacter, 
+        public PlayerFactory(PlayerCustomizerCharacter playerCustomizerCharacter, 
             UnitLevelInitialization unitLevelInitialization,
-            ClassesInitialization classesInitialization,
+            PlayerClassesInitialization playerClassesInitialization,
             CharacterData characterData)
         {
             _unitLevelInitialization = unitLevelInitialization;
-            _customizerCharacter = customizerCharacter;
-            _classesInitialization = classesInitialization;
+            _playerCustomizerCharacter = playerCustomizerCharacter;
+            _playerClassesInitialization = playerClassesInitialization;
             _characterData = characterData;
         }
 
@@ -39,9 +39,9 @@ namespace Unit.Player
                   .AddCode<PlayerView>();
 
             var playerView = player.GetComponent<IPlayerView>();
-            _customizerCharacter.Customize(playerView, item);
+            _playerCustomizerCharacter.Customize(playerView, item);
             _unitLevelInitialization.Initialization(playerView, item);
-            _classesInitialization.Initialization(playerView,item);
+            _playerClassesInitialization.Initialization(playerView,item);
 
             return playerView;
         }

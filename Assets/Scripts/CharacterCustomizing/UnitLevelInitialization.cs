@@ -32,10 +32,10 @@ namespace CharacterCustomizing
                 if (balansExp - level.MaxiPointsExperience >= 0)
                 {
                     balansExp -= level.MaxiPointsExperience;
-                    _playerView.Level.CurrentExperiencePoints = balansExp;
-                    _playerView.Level.UpNextLevel();
-                    Dbg.Log($"Player.GetNextLevel. CurrentLevel:{_playerView.Level.CurrentLevel}");
-                    Dbg.Log($"Player.CurrentExpPoints:{_playerView.Level.CurrentExperiencePoints}");
+                    _playerView.UnitLevel.CurrentExperiencePoints = balansExp;
+                    _playerView.UnitLevel.UpNextLevel();
+                    Dbg.Log($"Player.GetNextLevel. CurrentLevel:{_playerView.UnitLevel.CurrentLevel}");
+                    Dbg.Log($"Player.CurrentExpPoints:{_playerView.UnitLevel.CurrentExperiencePoints}");
                 }
             }
         }

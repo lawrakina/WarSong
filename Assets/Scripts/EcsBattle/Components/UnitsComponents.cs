@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Battle;
+﻿using Battle;
 using Leopotam.Ecs;
 using Unit;
 using UnityEngine;
@@ -25,7 +24,7 @@ namespace EcsBattle.Components
     {
     }
 
-    public struct CollisionComponent
+    public struct AttackCollisionComponent
     {
         public InfoCollision Value;
     }

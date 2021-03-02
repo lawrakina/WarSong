@@ -9,6 +9,7 @@ namespace Data
         [SerializeField]
         public Enemies Enemies;
 
+        //ToDo relocate UiEnemies to List<EnemySetting>
         [SerializeField]
         public UiEnemies UiEnemies;
     }
