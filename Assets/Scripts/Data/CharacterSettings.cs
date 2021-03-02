@@ -2,16 +2,12 @@
 using Enums;
 using Unit;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 
 namespace Data
 {
     [Serializable] public sealed class CharacterSettings
     {
-        [SerializeField]
-        public float AgroDistance = 10.0f;
-
         [SerializeField]
         public CharacterClass CharacterClass;
 
@@ -22,10 +18,10 @@ namespace Data
         public CharacterRace CharacterRace;
 
         [SerializeField]
-        public float PlayerMoveSpeed = 10.0f;
+        public float PlayerMoveSpeed = 5.0f;
 
         [SerializeField]
-        public float RotateSpeedPlayer = 90.0f;
+        public float RotateSpeedPlayer = 120.0f;
 
         [SerializeField]
         public CharacterEquipment Equipment;
@@ -33,7 +29,6 @@ namespace Data
         [SerializeField]
         public int ExperiencePoints = 1;
 
-        [FormerlySerializedAs("VisionParameters")]
         [SerializeField]
         public UnitVision unitVisionParameters;
     }

@@ -66,6 +66,7 @@ namespace Controller
                 var enemyHealthBar = _healthBarFactory.CreateHealthBar(itemUiEnemy, enemy);
                 enemy.HealthBar = enemyHealthBar;
 
+                // Dbg.Log($"GetListEnemy.OneEnemy.UnitReputation.EnemyLayer:{enemy.UnitReputation.EnemyLayer}");
                 result.Add(enemy);
             }
 

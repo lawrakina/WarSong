@@ -1,5 +1,6 @@
 ﻿using Data;
 using Extension;
+using Unit;
 using Unit.Player;
 
 
@@ -16,9 +17,11 @@ namespace CharacterCustomizing
 
         public void Customize(IPlayerView playerView, CharacterSettings settings)
         {
-            playerView.CharAttributes.AgroDistance = settings.AgroDistance;
-            playerView.CharAttributes.Speed = settings.PlayerMoveSpeed;
-            playerView.CharAttributes.RotateSpeedPlayer = settings.RotateSpeedPlayer;
+            playerView.UnitVision = settings.unitVisionParameters;
+            
+            playerView.Attributes = new UnitAttributes();
+            playerView.Attributes.Speed = settings.PlayerMoveSpeed;
+            playerView.Attributes.RotateSpeedPlayer = settings.RotateSpeedPlayer;
             
             var person = new PersonCharacter(playerView.Transform.gameObject, _characterData);
             person.CharacterRace = settings.CharacterRace;
@@ -34,6 +37,7 @@ namespace CharacterCustomizing
             playerView.AnimatorParameters.WeaponType = equipWeapon.GetWeaponType();
 
             playerView.Transform.gameObject.layer = LayerManager.PlayerLayer;
+            playerView.UnitReputation = new UnitReputation();
             playerView.UnitReputation.FriendLayer = LayerManager.PlayerLayer;
             playerView.UnitReputation.EnemyLayer = LayerManager.EnemyLayer;
             playerView.UnitReputation.FriendAttackLayer = LayerManager.PlayerAttackLayer;

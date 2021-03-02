@@ -1,5 +1,6 @@
 ﻿using Data;
 using Extension;
+using Unit;
 using Unit.Player;
 
 
@@ -26,6 +27,7 @@ namespace CharacterCustomizing
             _playerView = playerView;
             _characterSettings = characterSettings;
 
+            _playerView.UnitLevel = new UnitLevel();
             var balansExp = characterSettings.ExperiencePoints;
             foreach (var level in _unitLevelData.Levels)
             {

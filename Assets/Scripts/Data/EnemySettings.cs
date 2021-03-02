@@ -17,5 +17,7 @@ namespace Data
         public UnitVision unitVisionComponent;
         [SerializeField]
         public float MaxHp;
+        [SerializeField]
+        public UnitAttributes unitAttributes;
     }
 }

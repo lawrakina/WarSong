@@ -25,13 +25,13 @@ namespace EcsBattle.Systems.Create
             _entity = entity;
 
             _view.OnApplyDamageChange += ViewOnApplyDamageChange;
-            Dbg.Log($"Create EnemyEnity");
+            // Dbg.Log($"Create EnemyEnity");
         }
 
         ~EnemyEntity()
         {
             _view.OnApplyDamageChange -= ViewOnApplyDamageChange;
-            Dbg.Log($"Destroy EnemyEnity");
+            // Dbg.Log($"Destroy EnemyEnity");
         }
 
         #endregion

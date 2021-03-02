@@ -4,7 +4,7 @@ using Leopotam.Ecs;
 
 namespace EcsBattle.Systems.PlayerVision
 {
-    public class StartTimerForVisionSystem : IEcsRunSystem
+    public class StartTimerForVisionPlayerSystem : IEcsRunSystem
     {
         private EcsFilter<PlayerComponent>.Exclude<AwaitTimerForVisionComponent> _filter;
 

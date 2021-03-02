@@ -24,7 +24,7 @@ namespace Unit.Player
         public MeshRenderer MeshRenderer { get; private set; }
         public Animator Animator => _animator;
         public AnimatorParameters AnimatorParameters { get; private set; }
-        public ICharAttributes CharAttributes { get; set; }
+        public UnitAttributes Attributes { get; set; }
         public UnitVision UnitVision { get; set; }
         public UnitBattle UnitBattle { get; set; }
         public UnitReputation UnitReputation { get; set; }
@@ -52,12 +52,12 @@ namespace Unit.Player
             _animator = GetComponent<Animator>();
             AnimatorParameters = new AnimatorParameters(ref _animator);
 
-            UnitBattle = new UnitBattle();
-            UnitVision = new UnitVision();
-            UnitReputation = new UnitReputation();
-            UnitLevel = new UnitLevel();
-            CharAttributes = new CharAttributes();
-            BasicCharacteristics = new BasicCharacteristics();
+            // UnitBattle = new UnitBattle();
+            // UnitVision = new UnitVision();
+            // UnitReputation = new UnitReputation();
+            // UnitLevel = new UnitLevel();
+            // Attributes = new UnitAttributes();
+            // BasicCharacteristics = new BasicCharacteristics();
         }
 
         private void OnEnable()

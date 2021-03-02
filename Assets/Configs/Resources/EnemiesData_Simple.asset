@@ -19,10 +19,10 @@ MonoBehaviour:
       EnemyType: 0
       unitVisionComponent:
         BattleDistance: 7
-        MaxCountTaggets: 1
+        MaxCountTargets: 1
         LayersEnemies:
           serializedVersion: 2
-          m_Bits: 256
+          m_Bits: 1024
         OffsetHead: {x: 0, y: 1.5, z: 0}
       MaxHp: 100
   UiEnemies:

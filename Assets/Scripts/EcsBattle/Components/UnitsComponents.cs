@@ -10,7 +10,14 @@ namespace EcsBattle.Components
     public struct PlayerComponent
     {
     }
-
+    public struct BaseUnitComponent
+    {
+        public UnitReputation unitReputation;
+        public Transform transform;
+        public Rigidbody rigidbody;
+        public AnimatorParameters animator;
+        public UnitVision unitVision;
+    }
     public struct AwaitTimerForVisionComponent
     {
         public float Value;
@@ -89,15 +96,5 @@ namespace EcsBattle.Components
     {
         public Transform Target;
         public float Distance;
-    }
-    
-    public struct LayerMaskEnemiesComponent
-    {
-        public int Value;
-    }
-
-    public struct DetectionDistanceEnemyComponent
-    {
-        public float Value;
     }
 }

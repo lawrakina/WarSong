@@ -13,7 +13,7 @@ namespace Unit
         MeshRenderer MeshRenderer { get; }
         Animator Animator { get; }
         AnimatorParameters AnimatorParameters { get; }
-        ICharAttributes CharAttributes { get; set; }
+        UnitAttributes Attributes { get; set; }
         UnitLevel UnitLevel { get; set; }
         UnitVision UnitVision { get; set; }
         UnitBattle UnitBattle { get; set; }

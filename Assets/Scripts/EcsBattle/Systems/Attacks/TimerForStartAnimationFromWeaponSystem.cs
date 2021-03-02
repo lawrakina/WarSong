@@ -37,7 +37,7 @@ namespace EcsBattle.Systems.Attacks
                     timer.CurrentTime += Time.deltaTime;
                     if (timer.CurrentTime > timer.MaxTime)
                     {//if timer complete => Attack
-                        var attackPositionCenter = unit.transform.position + unit.transform.forward + unit.offsetHead;
+                        var attackPositionCenter = unit.transform.position + unit.transform.forward + unit.unitVision.OffsetHead;
                         var maxColliders = 10;
                         var hitColliders = new Collider[maxColliders];
                         var numColliders = Physics.OverlapSphereNonAlloc(attackPositionCenter,

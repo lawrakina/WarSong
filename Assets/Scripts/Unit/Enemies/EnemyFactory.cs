@@ -31,11 +31,12 @@ namespace Unit.Enemies
                  .AddCode<EnemyView>();
 
             var enemyView = enemy.GetComponent<IEnemyView>();
-            
+
             // _customizerCharacter.Customize(enemyView, item);
             // _unitLevelInitialization.Initialization(enemyView, item);
-            _enemyClassesInitialization.Initialization(enemyView,item);
+            _enemyClassesInitialization.Initialization(enemyView, item);
 
+            // Dbg.Log($"view.UnitReputation.EnemyLayer:{enemyView.UnitReputation.EnemyLayer})");
             return enemyView;
         }
     }
