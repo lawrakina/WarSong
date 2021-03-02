@@ -20,7 +20,12 @@ namespace EcsBattle.Components
         public float CurrentTime;
         public float MaxTime;
     }
-    internal struct PermissionForAttackAllowedComponent
+    public struct PermissionForAttackAllowedComponent
     {
+    }
+    public struct TimerForVisionForEnemyComponent
+    {
+        public float CurrentTime;
+        public float MaxTime;
     }
 }

@@ -2,9 +2,9 @@
 using Leopotam.Ecs;
 
 
-namespace EcsBattle
+namespace EcsBattle.Systems.Animation
 {
-    public sealed class AnimationMotionPlayerSystem : IEcsRunSystem
+    public sealed class AnimationMoveSystem : IEcsRunSystem
     {
         private EcsFilter<DirectionMoving, AnimatorComponent> _filter;
         public void Run()
