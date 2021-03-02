@@ -9,4 +9,10 @@ namespace EcsBattle.Components
         public WeaponBullet Bullet;
         public AttackValue AttackValue;
     }
+
+    public struct AwaitTimerForOneStrikeComponent
+    {
+        public float CurrentTime;
+        public float MaxTime;
+    }
 }

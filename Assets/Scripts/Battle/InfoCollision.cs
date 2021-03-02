@@ -13,11 +13,9 @@
         #endregion
 
 
-        public InfoCollision(float damage, float timeDelay)
+        public InfoCollision(float damage)
         {
             _damage = damage;
-            MaxTime = timeDelay;
-            CurrentTime = 0;
         }
         // public InfoCollision(float damage, ContactPoint contact, Transform objCollision, Vector3 direction = default)
         // {
@@ -33,8 +31,6 @@
         // public Vector3 Direction => _direction;
 
         public float Damage => _damage;
-        public float MaxTime { get; set; }
-        public float CurrentTime { get; set; }
 
         // public ContactPoint Contact => _contact;
         //

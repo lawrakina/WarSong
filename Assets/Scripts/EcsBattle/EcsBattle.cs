@@ -79,6 +79,7 @@ namespace EcsBattle
                 .Add(new TickTimerForVisionForPlayerSystem(1.0f))
                 // .Add(new SearchClosesTargetForPlayerSystem())
                 //Attack
+                .Add(new StartTimerForOneStrikeFromWeaponSystem())
                 .Add(new OneStrikeFromWeaponExcludeTargetSystem())
                 .Add(new ApplyDamageInUnitSystem())
                 ;

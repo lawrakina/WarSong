@@ -2,7 +2,7 @@
 using Leopotam.Ecs;
 
 
-namespace EcsBattle
+namespace EcsBattle.Systems.Ui
 {
     public class UpdateEnemiesCurrentHealthPointsSystem : IEcsRunSystem
     {
