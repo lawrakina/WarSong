@@ -16,7 +16,6 @@ namespace Unit
         UnitAttributes Attributes { get; set; }
         UnitLevel UnitLevel { get; set; }
         UnitVision UnitVision { get; set; }
-        UnitBattle UnitBattle { get; set; }
         UnitReputation UnitReputation { get; set; }
         float CurrentHp { get; set; }
         float BaseHp { get; set; }

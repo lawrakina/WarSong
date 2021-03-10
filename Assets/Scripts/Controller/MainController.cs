@@ -8,6 +8,7 @@ using Enums;
 using Extension;
 using Gui;
 using Gui.Battle;
+using Interface;
 using Models;
 using UniRx;
 using Unit;
@@ -51,11 +52,13 @@ namespace Controller
         private DungeonGeneratorData _generatorData;
         private EcsBattleData _ecsBattleData;
         private BattleInputData _battleInputData;
+        private CameraSettingsInBattle _cameraSettings;
 
         private IReactiveProperty<EnumMainWindow> _activeWindow;
         private IReactiveProperty<EnumCharacterWindow> _charWindow;
         private IReactiveProperty<EnumBattleWindow> _battleState;
         private IReactiveProperty<EnumFightCamera> _typeCameraAndCharControl;
+        private GeneratorDungeon _generatorDungeon;
 
         #endregion
 
@@ -104,7 +107,7 @@ namespace Controller
             var generatorDungeon = new GeneratorDungeon(_generatorData, _windows.BattleWindow.Content.transform);
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(generatorDungeon);
 
-            var fightCameraFactory = new CameraFactory();
+            var fightCameraFactory = new CameraFactory(_cameraSettings);
             // камера используется в рендере gui и сцены - todo все в SO и префабы
             var fightCamera = fightCameraFactory.CreateCamera(_windows.BattleWindow.Camera);
 
@@ -141,6 +144,7 @@ namespace Controller
             _controllers = new Controllers();
             _controllers.Add(positioningCharInMenuController);
             _controllers.Add(battleController);
+            _controllers.Add(generatorDungeon);
 
             var offItemMenu = new List<EnumMainWindow>();
             offItemMenu.Add(EnumMainWindow.Equip);
@@ -155,13 +159,23 @@ namespace Controller
         private void LoadAllResources()
         {
             _characterData = Resources.Load<CharacterData>("CharacterData");
+            Dbg.Log($"Start resource load data - CharacterData:{_characterData}");
             _unitLevelData = Resources.Load<UnitLevelData>("UnitLevelData");
+            Dbg.Log($"Start resource load data - UnitLevelData:{_unitLevelData}");
             _playerClassesData = Resources.Load<PlayerClassesData>("ClassesData");
+            Dbg.Log($"Start resource load data - PlayerClassesData:{_playerClassesData}");
             _playerData = Resources.Load<PlayerData>("PlayerData");
+            Dbg.Log($"Start resource load data - PlayerData:{_playerData}");
+            _cameraSettings = Resources.Load<CameraSettingsInBattle>("CameraSettingsInBattle");
+            Dbg.Log($"Start resource load data - CameraSettingsInBattle:{_cameraSettings}");
             _enemiesData = Resources.Load<EnemiesData>("EnemiesData_Simple");
+            Dbg.Log($"Start resource load data - EnemiesData:{_enemiesData}");
             _generatorData = Resources.Load<DungeonGeneratorData>("DungeonData");
+            Dbg.Log($"Start resource load data - DungeonGeneratorData:{_generatorData}");
             _ecsBattleData = Resources.Load<EcsBattleData>("EcsBattleData");
+            Dbg.Log($"Start resource load data - EcsBattleData:{_ecsBattleData}");
             _battleInputData = Resources.Load<BattleInputData>("BattleInputData");
+            Dbg.Log($"Start resource load data - BattleInputData:{_battleInputData}");
 
             LayerManager.EnemyLayer = LayerMask.NameToLayer(StringManager.ENEMY_LAYER);
             LayerManager.PlayerLayer = LayerMask.NameToLayer(StringManager.PLAYER_LAYER);

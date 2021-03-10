@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8526288168844326666
 RectTransform:
   m_ObjectHideFlags: 0
@@ -110,8 +110,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 312.32, y: 312.32}
+  m_AnchoredPosition: {x: 13.716003, y: -303.93597}
+  m_SizeDelta: {x: 192, y: 192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8452176640783247644
 CanvasRenderer:
@@ -262,8 +262,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 972.60034, y: 583.21924}
-  m_SizeDelta: {x: 624.64, y: 624.64}
+  m_AnchoredPosition: {x: 750.06, y: 629.75995}
+  m_SizeDelta: {x: 659.88, y: 1259.5199}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8452176640783248696
 CanvasRenderer:
@@ -319,15 +319,15 @@ MonoBehaviour:
   scalingAxis: 1
   anchor: 1
   activationRange: 2
-  customActivationRange: 0
-  activationWidth: 50
-  activationHeight: 75
+  customActivationRange: 1
+  activationWidth: 61.1
+  activationHeight: 65.6
   activationPositionHorizontal: 0
   activationPositionVertical: 0
-  joystickSize: 1.22
+  joystickSize: 1
   radiusModifier: 7
-  positionHorizontal: 27.6
-  positionVertical: 19
+  positionHorizontal: 24.8
+  positionVertical: 13.3
   dynamicPositioning: 1
   gravity: 60
   extendRadius: 0
@@ -351,7 +351,7 @@ MonoBehaviour:
   highlightColor: {r: 1, g: 1, b: 1, a: 1}
   highlightBase: {fileID: 0}
   highlightJoystick: {fileID: 0}
-  showTension: 1
+  showTension: 0
   tensionColorNone: {r: 0, g: 0, b: 0, a: 0}
   tensionColorFull: {r: 1, g: 1, b: 1, a: 1}
   tensionType: 1

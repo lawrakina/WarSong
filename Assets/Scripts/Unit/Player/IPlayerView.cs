@@ -9,5 +9,6 @@ namespace Unit.Player
         BaseCharacterClass CharacterClass { get; set; }
         EquipmentPoints EquipmentPoints { get; set; }
         EquipmentItems EquipmentItems { get; set; }
+        UnitPlayerBattle UnitPlayerBattle { get; set; }
     }
 }

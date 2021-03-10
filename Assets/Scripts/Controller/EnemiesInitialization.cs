@@ -60,10 +60,10 @@ namespace Controller
                     spawnPoint.GetComponent<GridFlowItemMetadataComponent>(), enemy.Transform.gameObject);
                 
                 //UI HealthBar
-                var itemUiEnemy = _enemiesData.UiEnemies.ListUiElements.FirstOrDefault(
+                var itemUiEnemy = _enemiesData.Enemies.ListEnemies.FirstOrDefault(
                     x => x.EnemyType == spawnPoint._type
                 );
-                var enemyHealthBar = _healthBarFactory.CreateHealthBar(itemUiEnemy, enemy);
+                var enemyHealthBar = _healthBarFactory.CreateHealthBar(itemUiEnemy.uiElement, enemy);
                 enemy.HealthBar = enemyHealthBar;
 
                 // Dbg.Log($"GetListEnemy.OneEnemy.UnitReputation.EnemyLayer:{enemy.UnitReputation.EnemyLayer}");

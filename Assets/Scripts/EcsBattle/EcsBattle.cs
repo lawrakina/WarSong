@@ -10,6 +10,7 @@ using EcsBattle.Systems.Player;
 using EcsBattle.Systems.PlayerMove;
 using EcsBattle.Systems.PlayerVision;
 using EcsBattle.Systems.Ui;
+using Extension;
 using Leopotam.Ecs;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
@@ -52,6 +53,8 @@ namespace EcsBattle
                 .Add(new CreateThirdCameraEntitySystem())
                 //Moving Camera
                 .Add(new CameraPositioningOfPlayerSystem())
+                .Add(new TimerStopFollowingCameraInPlayerSystem())
+                .Add(new NeedLerpPositionCameraFollowingToTargetSystem())
                 .Add(new CameraRotationOfPlayerSystem())
                 //InputControl
                 .Add(new CreateInputControlSystem())
@@ -71,8 +74,7 @@ namespace EcsBattle
                 //Ui Enemies
                 .Add(new UpdateEnemiesCurrentHealthPointsSystem())
                 //UI Player
-                .Add(new UpdatePlayerCurrentHealthPointsSystem())
-                .Add(new UpdatePlayerMaxHealthPointsSystem())
+                .Add(new UpdatePlayerHealthPointsInUiSystem())
 
                 //Battle Player
                 //Vision
@@ -91,6 +93,9 @@ namespace EcsBattle
                 .Add(new SearchClosesTargetForEnemySystem())
                 //Moving
                 .Add(new MovementEnemyToTargetSystem())
+
+                //Death Units
+                .Add(new EnableRagdollByDeathSystem())
                 ;
 
             // register one-frame components (order is important), for example:
@@ -136,6 +141,7 @@ namespace EcsBattle
         #endregion
     }
 
+
     public sealed class MovementEnemyToTargetSystem : IEcsRunSystem
     {
         private EcsFilter<EnemyComponent, BaseUnitComponent, CurrentTargetComponent, MovementSpeed, BattleInfoComponent>
@@ -151,20 +157,25 @@ namespace EcsBattle
                 ref var moveSpeed = ref _filter.Get4(i);
                 ref var weapon = ref _filter.Get5(i);
 
-                var sqrDistance = (target.Target.position - unit.transform.position).sqrMagnitude;
-                if (sqrDistance > weapon.Value.AttackDistance)
-                {
-                    var direction = 
-                        (target.Target.position - unit.transform.position) * (moveSpeed.Value * Time.deltaTime);
-                    unit.rigidbody.MovePosition(unit.transform.position + direction);
-                    unit.transform.LookAt(target.Target);
+                var distanceVector = (target.Target.position - unit.transform.position);
+                var sqrDistance = distanceVector.sqrMagnitude;
+                var direction = distanceVector * (moveSpeed.Value * Time.deltaTime);
 
+                if (sqrDistance > (weapon.Value.AttackDistance * weapon.Value.AttackDistance))
+                {
+                    Dbg.Log(
+                        $"sqrDistance:{sqrDistance}, sqrAttackDistance:{weapon.Value.AttackDistance * weapon.Value.AttackDistance}");
+                    direction = distanceVector * (moveSpeed.Value * Time.deltaTime);
+                    unit.rigidbody.MovePosition(unit.transform.position + direction);
                     unit.animator.Speed = direction.magnitude;
                 }
                 else
                 {
-                    unit.animator.SetTriggerAttack();
+                    unit.animator.Speed = 0.0f;
+                    entity.Get<NeedAttackComponent>();
                 }
+
+                unit.transform.LookAt(target.Target.position.Change(y: 0.0f));
             }
         }
     }

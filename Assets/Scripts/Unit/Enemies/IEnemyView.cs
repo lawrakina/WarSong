@@ -7,5 +7,6 @@ namespace Unit.Enemies
     {
         BaseEnemyClass UnitClass { get; set; }
         HealthBarView HealthBar { get; set; }
+        UnitEnemyBattle UnitBattle { get; set; }
     }
 }

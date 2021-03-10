@@ -1,12 +1,11 @@
 ﻿using System;
-using UnityEngine;
 using Weapons;
 
 
 namespace Unit
 {
     [Serializable]
-    public class UnitBattle
+    public class UnitEnemyBattle
     {
         public BaseWeapon Weapon;
     }

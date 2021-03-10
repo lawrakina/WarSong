@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StorageGenerator: {fileID: 2253205860022267994, guid: 15b338328b51b9343a5d299696436e1c,
     type: 3}
+  StorageNavMash: {fileID: 7481363851858651527, guid: a66e667ad53cc894c93ac1f560625bee,
+    type: 3}

@@ -1,11 +1,10 @@
 ﻿using Battle;
 using EcsBattle.Components;
-using Extension;
 using Leopotam.Ecs;
 using Unit.Enemies;
 
 
-namespace EcsBattle.Systems.Create
+namespace EcsBattle.CustomEntities
 {
     public class EnemyEntity
     {

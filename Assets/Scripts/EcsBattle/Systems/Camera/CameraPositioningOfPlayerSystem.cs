@@ -1,5 +1,6 @@
 ﻿using System;
 using EcsBattle.Components;
+using EcsBattle.Systems.Input;
 using Extension;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -9,7 +10,13 @@ namespace EcsBattle
 {
     public sealed class CameraPositioningOfPlayerSystem : IEcsRunSystem
     {
-        private EcsFilter<FightCameraComponent, TransformComponent, TargetCameraComponent> _filter;
+        private EcsFilter<
+                FightCameraComponent, 
+                TransformComponent, 
+                TargetCameraComponent>
+            .Exclude<
+                TimerStopFollowingInPlayerComponent,
+                NeedLerpPositionCameraFollowingToTargetComponent> _filter;
 
         public void Run()
         {

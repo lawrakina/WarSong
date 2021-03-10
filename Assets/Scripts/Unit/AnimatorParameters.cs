@@ -91,5 +91,10 @@ namespace Unit
         {
             Attack = true;
         }
+
+        public void Off()
+        {
+            _animator.enabled = false;
+        }
     }
 }

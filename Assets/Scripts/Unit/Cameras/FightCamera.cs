@@ -1,4 +1,5 @@
 ﻿using System;
+using Data;
 using Extension;
 using Interface;
 using Leopotam.Ecs;
@@ -47,6 +48,7 @@ namespace Unit.Cameras
         public EcsEntity Entity { get; set; }
 
         public Transform Transform => gameObject.transform;
+        public CameraSettingsInBattle Settings { get; set; }
 
         public Vector3 OffsetTopPosition()
         {

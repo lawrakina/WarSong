@@ -1,4 +1,5 @@
 ﻿using EcsBattle.Components;
+using EcsBattle.CustomEntities;
 using Leopotam.Ecs;
 using Unit.Player;
 using UnityEngine;
@@ -9,18 +10,18 @@ namespace EcsBattle.Systems.Player
     public sealed class CreatePlayerEntitySystem : IEcsInitSystem
     {
         private EcsWorld _world;
-        private IPlayerView _player;
+        private IPlayerView _view;
 
         public void Init()
         {
-            var player = _world.NewEntity();
+            var entity = _world.NewEntity();
             //Base components
-            player.Get<PlayerComponent>();
-            player.Get<BaseUnitComponent>().transform = _player.Transform;
-            player.Get<BaseUnitComponent>().rigidbody = _player.Rigidbody;
-            player.Get<BaseUnitComponent>().animator = _player.AnimatorParameters;
-            player.Get<BaseUnitComponent>().unitReputation = _player.UnitReputation;
-            player.Get<BaseUnitComponent>().unitVision = _player.UnitVision;
+            entity.Get<PlayerComponent>();
+            entity.Get<BaseUnitComponent>().transform = _view.Transform;
+            entity.Get<BaseUnitComponent>().rigidbody = _view.Rigidbody;
+            entity.Get<BaseUnitComponent>().animator = _view.AnimatorParameters;
+            entity.Get<BaseUnitComponent>().unitReputation = _view.UnitReputation;
+            entity.Get<BaseUnitComponent>().unitVision = _view.UnitVision;
             
             // Dbg.Log($"_player.UnitReputation.EnemyLayer{LayerMask.LayerToName(_player.UnitReputation.EnemyLayer)}");
             // Dbg.Log($"_player.UnitReputation.FriendLayer{LayerMask.LayerToName(_player.UnitReputation.FriendLayer)}");
@@ -29,26 +30,30 @@ namespace EcsBattle.Systems.Player
             // player.Get<TransformComponent>().OffsetHead = _player.UnitVision.OffsetHead;
             // player.Get<RigidBodyComponent>().Value = _player.Rigidbody;
             //moving rotate
-            player.Get<MovementSpeed>().Value = _player.Attributes.Speed;
-            player.Get<RotateSpeed>().Value = _player.Attributes.RotateSpeedPlayer;
-            player.Get<AnimatorComponent>().Value = _player.AnimatorParameters;
+            entity.Get<MovementSpeed>().Value = _view.Attributes.Speed;
+            entity.Get<RotateSpeed>().Value = _view.Attributes.RotateSpeedPlayer;
+            entity.Get<AnimatorComponent>().Value = _view.AnimatorParameters;
             //ui
-            player.Get<NeedUpdateCurrentHpFromPlayerComponent>().Value = _player.CurrentHp;
-            player.Get<NeedUpdateMaxHpFromPlayerComponent>().Value = _player.CurrentHp;
+            // entity.Get<NeedUpdateCurrentHpFromPlayerComponent>().Value = _view.CurrentHp;
+            // entity.Get<NeedUpdateMaxHpFromPlayerComponent>().Value = _view.CurrentHp;
+            entity.Get<UnitHpComponent>().CurrentValue = _view.CurrentHp;
+            entity.Get<UnitHpComponent>().MaxValue = _view.CurrentHp;
             //battle
-            player.Get<AutoBattleDisableComponent>();
-            player.Get<BattleInfoComponent>().Value = _player.UnitBattle.Weapon;
-            player.Get<BattleInfoComponent>().Bullet = _player.UnitBattle.Weapon.StandardBullet;
-            player.Get<BattleInfoComponent>().AttackValue = _player.UnitBattle.Weapon.AttackValue;
+            entity.Get<AutoBattleDisableComponent>();
+            entity.Get<BattleInfoComponent>().Value = _view.UnitPlayerBattle.Weapon;
+            entity.Get<BattleInfoComponent>().Bullet = _view.UnitPlayerBattle.Weapon.StandardBullet;
+            entity.Get<BattleInfoComponent>().AttackValue = _view.UnitPlayerBattle.Weapon.AttackValue;
             
 
 
-            var goTarget = Object.Instantiate(new GameObject(), _player.Transform, true);
+            var goTarget = Object.Instantiate(new GameObject(), _view.Transform, true);
             goTarget.name = "->DirectionMoving<-";
             var goTargetEntity = _world.NewEntity();
             goTargetEntity.Get<TransformComponent>().Value = goTarget.transform;
 
-            player.Get<GoTargetComponent>().Value = goTargetEntity;
+            entity.Get<GoTargetComponent>().Value = goTargetEntity;
+            
+            var playerEntity = new PlayerEntity(_view, entity);
         }
     }
 }

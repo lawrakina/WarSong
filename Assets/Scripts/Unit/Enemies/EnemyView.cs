@@ -27,7 +27,7 @@ namespace Unit.Enemies
         public UnitAttributes Attributes { get; set; }
         public UnitLevel UnitLevel { get; set; }
         public UnitVision UnitVision { get; set; }
-        public UnitBattle UnitBattle { get; set; }
+        public UnitEnemyBattle UnitBattle { get; set; }
         public UnitReputation UnitReputation { get; set; }
         public float CurrentHp { get; set; }
         public float BaseHp { get; set; }
@@ -49,12 +49,6 @@ namespace Unit.Enemies
             MeshRenderer = GetComponent<MeshRenderer>();
             _animator = GetComponent<Animator>();
             AnimatorParameters = new AnimatorParameters(ref _animator);
-
-            // UnitBattle = new UnitBattle();
-            // UnitVision = new UnitVision();
-            // UnitLevel = new UnitLevel();
-            // UnitReputation = new UnitReputation();
-            // CharAttributes = new CharAttributes();
         }
 
         #endregion

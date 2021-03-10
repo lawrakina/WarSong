@@ -8,7 +8,5 @@ namespace Data
     [Serializable]
     public class UiEnemies
     {
-        [SerializeField]
-        public List<UiEnemySettings> ListUiElements;
     }
 }

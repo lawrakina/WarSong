@@ -19,5 +19,9 @@ namespace Data
         public float MaxHp;
         [SerializeField]
         public UnitAttributes unitAttributes;
+        [SerializeField]
+        public UnitEnemyBattle unitBattle;
+        [SerializeField]
+        public UiEnemySettings uiElement;
     }
 }

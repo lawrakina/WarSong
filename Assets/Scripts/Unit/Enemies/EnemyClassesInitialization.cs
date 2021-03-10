@@ -25,6 +25,9 @@ namespace Unit.Enemies
 
             view.Attributes = enemySettings.unitAttributes;
             
+            view.UnitBattle = enemySettings.unitBattle;
+            
+            
             //ToDo сделать полноценную систему Свой-чужой
             view.Transform.gameObject.layer = LayerManager.EnemyLayer;
             view.UnitReputation = new UnitReputation();

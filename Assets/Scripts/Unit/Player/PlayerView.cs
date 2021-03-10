@@ -26,7 +26,7 @@ namespace Unit.Player
         public AnimatorParameters AnimatorParameters { get; private set; }
         public UnitAttributes Attributes { get; set; }
         public UnitVision UnitVision { get; set; }
-        public UnitBattle UnitBattle { get; set; }
+        public UnitPlayerBattle UnitPlayerBattle { get; set; }
         public UnitReputation UnitReputation { get; set; }
         public float CurrentHp { get; set; }
         public float BaseHp { get; set; }
@@ -51,35 +51,30 @@ namespace Unit.Player
             MeshRenderer = GetComponent<MeshRenderer>();
             _animator = GetComponent<Animator>();
             AnimatorParameters = new AnimatorParameters(ref _animator);
-
-            // UnitBattle = new UnitBattle();
-            // UnitVision = new UnitVision();
-            // UnitReputation = new UnitReputation();
-            // UnitLevel = new UnitLevel();
-            // Attributes = new UnitAttributes();
-            // BasicCharacteristics = new BasicCharacteristics();
         }
-
-        private void OnEnable()
-        {
-            OnApplyDamageChange += SetDamage;
-        }
-
-        private void SetDamage(InfoCollision obj)
-        {
-            Dbg.Log($"I`m Attacked");
-        }
-
-        private void OnDisable()
-        {
-            OnApplyDamageChange -= SetDamage;
-        }
+        //
+        // private void OnEnable()
+        // {
+        //     OnApplyDamageChange += SetDamage;
+        // }
+        //
+        // private void SetDamage(InfoCollision collision)
+        // {
+        //     Dbg.Log($"{gameObject.name} Attacked");
+        //     OnApplyDamageChange?.Invoke(collision);
+        // }
+        //
+        // private void OnDisable()
+        // {
+        //     OnApplyDamageChange -= SetDamage;
+        // }
         
         #endregion
 
-
+    
         public void OnCollision(InfoCollision info)
         {
+            Dbg.Log($"{gameObject.name} Attacked");
             OnApplyDamageChange?.Invoke(info);
         }
     }

@@ -1,10 +1,14 @@
-﻿namespace Battle
+﻿using Leopotam.Ecs;
+
+
+namespace Battle
 {
     public struct InfoCollision
     {
         #region Fields
 
         private readonly float _damage;
+        public EcsEntity _attacker;
 
         // private readonly ContactPoint _contact;
         // private readonly Transform _objCollision;
@@ -13,9 +17,10 @@
         #endregion
 
 
-        public InfoCollision(float damage)
+        public InfoCollision(float damage, EcsEntity attacker)
         {
             _damage = damage;
+            _attacker = attacker;
         }
         // public InfoCollision(float damage, ContactPoint contact, Transform objCollision, Vector3 direction = default)
         // {

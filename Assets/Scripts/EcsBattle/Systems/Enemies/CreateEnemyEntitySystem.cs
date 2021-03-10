@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using EcsBattle.Components;
-using EcsBattle.Systems.Create;
+using EcsBattle.CustomEntities;
 using Interface;
 using Leopotam.Ecs;
+using Unit;
 using Unit.Enemies;
+using UnityEngine;
 
 
 namespace EcsBattle.Systems.Enemies
@@ -23,6 +25,7 @@ namespace EcsBattle.Systems.Enemies
                 var entity = _world.NewEntity();
                 entity.Get<EnemyComponent>();
                 entity.Get<BaseUnitComponent>().transform = view.Transform;
+                entity.Get<BaseUnitComponent>().collider = view.Collider;
                 entity.Get<BaseUnitComponent>().rigidbody = view.Rigidbody;
                 entity.Get<BaseUnitComponent>().animator = view.AnimatorParameters;
                 entity.Get<BaseUnitComponent>().unitReputation = view.UnitReputation;
@@ -33,13 +36,36 @@ namespace EcsBattle.Systems.Enemies
                 entity.Get<UnitHpComponent>().CurrentValue = view.CurrentHp;
                 entity.Get<UnitHpComponent>().MaxValue = view.MaxHp;
                 
-                // if(view.UnitBattle == null) throw new System.NotImplementedException("view.UnitBattle: NULL");
-                // entity.Get<BattleInfoComponent>().Value = view.UnitBattle.Weapon;
-                // entity.Get<BattleInfoComponent>().Bullet = view.UnitBattle.Weapon.StandardBullet;
-                // entity.Get<BattleInfoComponent>().AttackValue = view.UnitBattle.Weapon.AttackValue;
+                if(view.UnitBattle == null) throw new System.NotImplementedException("view.UnitBattle: NULL");
+                entity.Get<BattleInfoComponent>().Value = view.UnitBattle.Weapon;
+                entity.Get<BattleInfoComponent>().AttackValue = view.UnitBattle.Weapon.AttackValue;
+                entity.Get<BattleInfoComponent>().Bullet = view.UnitBattle.Weapon.StandardBullet;
+                
+                //Ragdoll
+                SearchNodesOfRagdoll(entity, view);
 
                 var enemyEntity = new EnemyEntity(view, entity);
             }
         }
+
+        private static void SearchNodesOfRagdoll(EcsEntity entity, IBaseUnitView view)
+        {
+            entity.Get<ListRigidBAndCollidersComponent>().rigidbodies
+                = new List<Rigidbody>(view.Transform.GetComponentsInChildren<Rigidbody>());
+            entity.Get<ListRigidBAndCollidersComponent>().colliders
+                = new List<Collider>(view.Transform.GetComponentsInChildren<Collider>());
+            foreach (var rigidbody in entity.Get<ListRigidBAndCollidersComponent>().rigidbodies)
+                rigidbody.isKinematic = true;
+            foreach (var collider in entity.Get<ListRigidBAndCollidersComponent>().colliders)
+                collider.enabled = false;
+            view.Rigidbody.isKinematic = false;
+            view.Collider.enabled = true;
+        }
+    }
+
+    public struct ListRigidBAndCollidersComponent
+    {
+        public List<Rigidbody> rigidbodies;
+        public List<Collider> colliders;
     }
 }

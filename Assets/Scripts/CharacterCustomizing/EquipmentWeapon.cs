@@ -21,7 +21,7 @@ namespace CharacterCustomizing
             _equipment = equipment;
 
             _character.EquipmentItems = new EquipmentItems();
-            _character.UnitBattle = new UnitBattle();
+            _character.UnitPlayerBattle = new UnitPlayerBattle();
         }
 
         public void GetWeapons()
@@ -95,7 +95,7 @@ namespace CharacterCustomizing
             
             //ToDo сейчас все считает только по главному орудию, следать расчет на обе руки
             //Set Characteristics
-            _character.UnitBattle.Weapon = mainWeapon;
+            _character.UnitPlayerBattle.Weapon = mainWeapon;
         }
 
         public int GetWeaponType()

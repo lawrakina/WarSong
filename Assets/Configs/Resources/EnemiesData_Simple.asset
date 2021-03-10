@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemies:
     ListEnemies:
-    - EnemyView: {fileID: 1741276027538082, guid: a16f0c419b1c8814babdf7ed30be11a3,
+    - EnemyView: {fileID: 5437079356858987363, guid: fd8a32711d273fb4180f89bdefd2eacf,
         type: 3}
       EnemyType: 0
       unitVisionComponent:
@@ -23,14 +23,16 @@ MonoBehaviour:
         OffsetHead: {x: 0, y: 1.5, z: 0}
       MaxHp: 100
       unitAttributes:
-        Name: 
+        Name: 1
         CharacterGender: 0
         CharacterRace: 0
         Speed: 5
         RotateSpeedPlayer: 200
-  UiEnemies:
-    ListUiElements:
-    - UiView: {fileID: 5632589081180970477, guid: d2ddcf18dfa38624791d2fecc565e2a3,
-        type: 3}
-      EnemyType: 0
-      Offset: {x: 0, y: 2.1, z: 0}
+      unitBattle:
+        Weapon: {fileID: 4791450294888299635, guid: d3687d2aa11ee35489e653ed8b436246,
+          type: 3}
+      uiElement:
+        UiView: {fileID: 5632589081180970477, guid: d2ddcf18dfa38624791d2fecc565e2a3,
+          type: 3}
+        EnemyType: 0
+        Offset: {x: 0, y: 2.1, z: 0}

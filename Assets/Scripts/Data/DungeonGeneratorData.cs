@@ -8,5 +8,8 @@ namespace Data
     {
         [SerializeField]
         public GameObject StorageGenerator;
+
+        [SerializeField]
+        public GameObject StorageNavMash;
     }
 }

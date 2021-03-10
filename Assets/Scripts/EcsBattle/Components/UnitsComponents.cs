@@ -17,6 +17,7 @@ namespace EcsBattle.Components
         public Rigidbody rigidbody;
         public AnimatorParameters animator;
         public UnitVision unitVision;
+        public Collider collider;
     }
     public struct AwaitTimerForVisionComponent
     {
@@ -78,13 +79,13 @@ namespace EcsBattle.Components
         public AnimatorParameters Value;
     }
 
+    public struct AutoBattleDisableComponent
+    {
+    }
+
     public struct NeedUpdateMaxHpFromPlayerComponent
     {
         public float Value;
-    }
-
-    public struct AutoBattleDisableComponent
-    {
     }
 
     public struct NeedUpdateCurrentHpFromPlayerComponent
