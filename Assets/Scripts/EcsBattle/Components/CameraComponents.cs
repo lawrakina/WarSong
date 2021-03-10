@@ -7,7 +7,6 @@ namespace EcsBattle.Components
     {
         public float maxTimeToStopFollowingInPlayer;
         public float maxTimeToLerpInPlayer;
-        public float valueToInterpolate;
     }
 
     public struct NeedLerpPositionCameraFollowingToTargetComponent

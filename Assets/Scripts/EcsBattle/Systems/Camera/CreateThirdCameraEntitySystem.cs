@@ -25,7 +25,6 @@ namespace EcsBattle.Systems.Camera
             camera.Get<FightCameraComponent>();
             camera.Get<FightCameraComponent>().maxTimeToStopFollowingInPlayer = _camera.Settings.maxTimeToStopFollowingInPlayer;
             camera.Get<FightCameraComponent>().maxTimeToLerpInPlayer = _camera.Settings.maxTimeToLerpInPlayer;
-            camera.Get<FightCameraComponent>().valueToInterpolate = _camera.Settings.valueToInterpolateBetweenCameraAndPlayer;
             camera.Get<TransformComponent>().Value = _camera.Transform;
             camera.Get<TargetCameraComponent>().positionThirdTarget = _camera.ThirdTarget;
             camera.Get<TargetCameraComponent>().positionPlayerTransform = _player.Transform;

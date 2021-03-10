@@ -12,8 +12,5 @@ namespace Data
 
         [SerializeField]
         public float maxTimeToLerpInPlayer = 1.0f;
-
-        [SerializeField]
-        public float valueToInterpolateBetweenCameraAndPlayer = 0.1f;
     }
 }
