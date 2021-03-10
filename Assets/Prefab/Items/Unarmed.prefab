@@ -47,6 +47,7 @@ MonoBehaviour:
     type: 3}
   Type: 0
   AttackDistance: 1.5
+  AttackDistanceOffset: 1
   AttackValue:
     _maxAttackValue: 1
     _minAttackValue: 2

@@ -69,7 +69,7 @@ namespace EcsBattle.Systems.PlayerVision
                     }
                     
                     entity.Get<CurrentTargetComponent>().Target = targetGo.transform;
-                    entity.Get<CurrentTargetComponent>().Distance = distance;
+                    entity.Get<CurrentTargetComponent>().sqrDistance = distance;
                 }
                 else
                 {

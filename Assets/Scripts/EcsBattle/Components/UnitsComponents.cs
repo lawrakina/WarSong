@@ -96,6 +96,6 @@ namespace EcsBattle.Components
     public struct CurrentTargetComponent
     {
         public Transform Target;
-        public float Distance;
+        public float sqrDistance;
     }
 }

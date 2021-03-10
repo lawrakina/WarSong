@@ -15,6 +15,9 @@ namespace Weapons
 
         [SerializeField]
         public float AttackDistance;
+        
+        [SerializeField]
+        public float AttackDistanceOffset = 1.0f;
 
         [SerializeField]
         public AttackValue AttackValue;

@@ -65,7 +65,7 @@ namespace EcsBattle.Systems.Enemies
                     }
 
                     _filter.GetEntity(i).Get<CurrentTargetComponent>().Target = targetGo.transform;
-                    _filter.GetEntity(i).Get<CurrentTargetComponent>().Distance = distance;
+                    _filter.GetEntity(i).Get<CurrentTargetComponent>().sqrDistance = distance;
                 }
                 else
                 {

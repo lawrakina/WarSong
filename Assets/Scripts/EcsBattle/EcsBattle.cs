@@ -55,11 +55,14 @@ namespace EcsBattle
                 .Add(new CameraPositioningOfPlayerSystem())
                 .Add(new TimerStopFollowingCameraInPlayerSystem())
                 .Add(new NeedLerpPositionCameraFollowingToTargetSystem())
+                .Add(new EnableFollowingCameraInPlayerNonBattleSystem())
                 .Add(new CameraRotationOfPlayerSystem())
                 //InputControl
                 .Add(new CreateInputControlSystem())
                 .Add(new SetActiveInputOnJoystickSystem())
                 .Add(new GetClickInInputControlSystem())
+                //Rotation Player
+                .Add(new RestoreSavedRotationInUnitSystem())
                 //Moving Player
                 .Add(new MovementPlayer1SetDirectionSystem())
                 .Add(new MovementPlayer2CalculateStepValueSystem());
@@ -79,7 +82,7 @@ namespace EcsBattle
                 //Battle Player
                 //Vision
                 .Add(new StartTimerForVisionPlayerSystem())
-                .Add(new TickTimerForVisionForPlayerSystem(1.0f))
+                .Add(new TickTimerForVisionForPlayerSystem(0.05f))
                 .Add(new SearchClosesTargetForPlayerSystem())
                 .Add(new AnimationBattleState())
                 //Attack

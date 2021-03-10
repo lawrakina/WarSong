@@ -10,10 +10,10 @@ namespace EcsBattle.Systems.Attacks
     public sealed class TimerForStartAnimationFromWeaponSystem : IEcsRunSystem
     {
         //If needAttack and have permissionForAttack to start animation and start timerForAttack
-        private EcsFilter<NeedAttackComponent, 
-                PermissionForAttackAllowedComponent,
-                BattleInfoComponent,
-                BaseUnitComponent> _filter;
+        private EcsFilter<NeedAttackComponent,
+            PermissionForAttackAllowedComponent,
+            BattleInfoComponent,
+            BaseUnitComponent> _filter;
 
         public void Run()
         {
@@ -26,6 +26,18 @@ namespace EcsBattle.Systems.Attacks
                 //if Timer not founded => start animation and create timer
                 if (!entity.Has<AwaitTimerForOneStrikeComponent>())
                 {
+                    //LookAt target
+                    if (entity.Has<CurrentTargetComponent>())
+                    {
+                        //save default rotation
+                        if (!entity.Has<SavedRotationValueComponent>())
+                            entity.Get<SavedRotationValueComponent>().value = unit.transform.rotation;
+
+                        ref var target = ref entity.Get<CurrentTargetComponent>();
+                        if(target.sqrDistance < Mathf.Pow(weapon.Value.AttackDistance,2) + weapon.Value.AttackDistanceOffset)
+                            unit.transform.LookAt(target.Target, Vector3.up);
+                    }
+
                     //start animation
                     unit.animator.AttackType = Random.Range(0, 3);
                     unit.animator.SetTriggerAttack();
@@ -72,5 +84,34 @@ namespace EcsBattle.Systems.Attacks
                 }
             }
         }
+    }
+
+    public sealed class RestoreSavedRotationInUnitSystem : IEcsRunSystem
+    {
+        private EcsFilter<BaseUnitComponent, SavedRotationValueComponent>
+            .Exclude<CurrentTargetComponent> _units;
+        // private EcsFilter<NeedLerpPositionCameraFollowingToTargetComponent> _lerp;
+
+        public void Run()
+        {
+            foreach (var u in _units)
+            {
+                ref var entity = ref _units.GetEntity(u);
+                ref var unit = ref _units.Get1(u);
+                ref var rotation = ref _units.Get2(u);
+                // foreach (var l in _lerp)
+                {
+                    //if camera contains component _lerp => need recover old rotation in unit
+                    // ref var entityLerp = ref _lerp.GetEntity(l);
+                    unit.transform.rotation = rotation.value;
+                    entity.Del<SavedRotationValueComponent>();
+                }
+            }
+        }
+    }
+
+    public struct SavedRotationValueComponent
+    {
+        public Quaternion value;
     }
 }
