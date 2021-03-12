@@ -11,8 +11,7 @@ namespace EcsBattle.Systems.Camera
 
         private EcsFilter<
             FightCameraComponent,
-            TransformComponent,
-            TargetCameraComponent> _camera;
+            TransformComponent> _camera;
 
         public void Run()
         {
@@ -33,10 +32,10 @@ namespace EcsBattle.Systems.Camera
                     {
                         // ref var cameraSettings = ref _camera.Get1(c);
                         ref var camera = ref _camera.Get2(c);
-                        ref var target = ref _camera.Get3(c);
+                        ref var target = ref _camera.Get1(c);
 
-                        camera.Value.position = Vector3.Lerp(
-                            camera.Value.transform.position,
+                        camera.value.position = Vector3.Lerp(
+                            camera.value.transform.position,
                             target.positionThirdTarget.position,
                             timer.currentTime);
                         // cameraSettings.valueToInterpolate);

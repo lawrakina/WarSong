@@ -14,7 +14,7 @@ namespace Unit.Player
         private readonly UnitLevelInitialization _unitLevelInitialization;
         private readonly PlayerClassesInitialization _playerClassesInitialization;
 
-        public PlayerFactory(PlayerCustomizerCharacter playerCustomizerCharacter, 
+        public PlayerFactory(PlayerCustomizerCharacter playerCustomizerCharacter,
             UnitLevelInitialization unitLevelInitialization,
             PlayerClassesInitialization playerClassesInitialization,
             CharacterData characterData)
@@ -27,23 +27,45 @@ namespace Unit.Player
 
         public IPlayerView CreatePlayer(CharacterSettings item)
         {
-            var player = Object.Instantiate(_characterData.StoragePlayerPrefab);
-            player.name = $"PlayerCharacter.{item.CharacterClass}";
-            player.AddCapsuleCollider(0.5f, false,
-                      new Vector3(0.0f, 0.9f, 0.0f),
-                      1.8f)
-                  .AddRigidBody(80, CollisionDetectionMode.ContinuousSpeculative,
-                      false, true,
-                      RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |
-                      RigidbodyConstraints.FreezeRotationZ)
-                  .AddCode<PlayerView>();
+            var playerPrefab = Object.Instantiate(_characterData.StoragePlayerPrefab);
+                playerPrefab.name = $"Prefab.Model";
+                
+            var rootPlayer = Object.Instantiate(new GameObject());
+                rootPlayer.name = $"PlayerCharacter.{item.CharacterClass}";
+                
+            var player = rootPlayer.AddCode<PlayerView>();
+            player.Transform = rootPlayer.transform;//root transform
+            player.TransformModel = playerPrefab.transform;//prefab transform
+            player.Rigidbody = rootPlayer.AddRigidBody(80, CollisionDetectionMode.ContinuousDynamic,
+                false, true,
+                RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |
+                RigidbodyConstraints.FreezeRotationZ);
+            player.Collider = rootPlayer.AddCapsuleCollider(0.5f, false,
+                new Vector3(0.0f, 0.9f, 0.0f),
+                1.8f);
+            player.MeshRenderer = playerPrefab.GetComponent<MeshRenderer>();
+            player.Animator = playerPrefab.GetComponent<Animator>();
+            player.AnimatorParameters = new AnimatorParameters(player.Animator);
+            playerPrefab.transform.SetParent(rootPlayer.transform);
+                     
+            // player.Animator = item.Animator;
+            
+            // private void Awake()
+            // {
+            //     Transform = GetComponent<Transform>();
+            //     Rigidbody = GetComponent<Rigidbody>();
+            //     Collider = GetComponent<Collider>();
+            //     MeshRenderer = GetComponent<MeshRenderer>();
+            //     _animator = GetComponent<Animator>();
+            //     AnimatorParameters = new AnimatorParameters(ref _animator);
+            // }
 
-            var playerView = player.GetComponent<IPlayerView>();
-            _playerCustomizerCharacter.Customize(playerView, item);
-            _unitLevelInitialization.Initialization(playerView, item);
-            _playerClassesInitialization.Initialization(playerView,item);
+            // var playerView = playerPrefab.GetComponent<IPlayerView>();
+            _playerCustomizerCharacter.Customize(player, item);
+            _unitLevelInitialization.Initialization(player, item);
+            _playerClassesInitialization.Initialization(player, item);
 
-            return playerView;
+            return player;
         }
     }
 }

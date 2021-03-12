@@ -1,31 +1,26 @@
 ﻿using EcsBattle.Components;
+using EcsBattle.Systems.Player;
 using Leopotam.Ecs;
-using UnityEngine;
 
 
 namespace EcsBattle
 {
     public sealed class MovementPlayer2CalculateStepValueSystem : IEcsRunSystem
     {
-        private EcsFilter<PlayerComponent, DirectionMoving, BaseUnitComponent> _filter;
+        private EcsFilter<PlayerComponent, DirectionMovementComponent> _filter;
 
         public void Run()
         {
             foreach (var index in _filter)
             {
-                ref var directionMoving = ref _filter.Get2(index).Value;
-                ref var playerTransform = ref _filter.Get3(index).transform;
-                ref var goTargetTransform = ref _filter.GetEntity(index).Get<GoTargetComponent>().Value.Get<TransformComponent>().Value;
+                ref var entity = ref _filter.GetEntity(index);
+                ref var playerTransform = ref _filter.Get1(index).rootTransform;
+                ref var directionMoving = ref _filter.Get2(index).value;
 
-                goTargetTransform.localPosition = directionMoving;
-
-                _filter.GetEntity(index).Get<NeedStepComponent>().Value = playerTransform.position - goTargetTransform.position;
+                entity.Get<NeedStepComponent>().value = playerTransform.position - directionMoving.position;
+                entity.Get<NeedStepComponent>().needMove = true;
+                entity.Get<NeedStepComponent>().needRotate = true;
             }
         }
-    }
-
-    public struct NeedStepComponent
-    {
-        public Vector3 Value;
     }
 }

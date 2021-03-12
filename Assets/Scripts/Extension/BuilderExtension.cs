@@ -8,7 +8,7 @@ namespace Extension
 {
     public static class BuilderExtension
     {
-        public static GameObject AddCapsuleCollider(this GameObject gameObject, float radius, bool isTrigger,
+        public static CapsuleCollider AddCapsuleCollider(this GameObject gameObject, float radius, bool isTrigger,
             Vector3 center, float height, int numberAxisDirection = 1)
         {
             var component = gameObject.GetOrAddComponent<CapsuleCollider>();
@@ -17,10 +17,10 @@ namespace Extension
             component.center = center;
             component.height = height;
             component.direction = numberAxisDirection;
-            return gameObject;
+            return component;
         }
 
-        public static GameObject AddRigidBody(this GameObject gameObject, float mass,
+        public static Rigidbody AddRigidBody(this GameObject gameObject, float mass,
             CollisionDetectionMode collisionDetectionMode, bool isKinematic, bool useGravity,
             RigidbodyConstraints constraints)
         {
@@ -30,18 +30,18 @@ namespace Extension
             component.constraints = constraints;
             component.isKinematic = isKinematic;
             component.useGravity = useGravity;
-            return gameObject;
+            return component;
         }
-        public static GameObject AddNavMeshAgent(this GameObject gameObject)
+        public static NavMeshAgent AddNavMeshAgent(this GameObject gameObject)
         {
             var component = gameObject.GetOrAddComponent<NavMeshAgent>();
-            return gameObject;
+            return component;
         }
 
-        public static GameObject AddCode<T>(this GameObject gameObject) where T : Component
+        public static T AddCode<T>(this GameObject gameObject) where T : Component
         {
             var component = gameObject.GetOrAddComponent<T>();
-            return gameObject;
+            return component;
         }
 
         private static T GetOrAddComponent<T>(this GameObject gameObject) where T : Component

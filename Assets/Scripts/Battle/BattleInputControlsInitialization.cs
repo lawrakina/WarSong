@@ -28,6 +28,7 @@ namespace Battle
             
             var data = new BattleInputStruct();
             data._joystick = _joystick;
+            data._maxOffsetForMovement = _data._maxOffsetForMovement;
             data._maxOffsetForClick = _data._maxOffsetForClick;
             data._maxPressTimeForClickButton = _data._maxPressTimeForClickButton;
             data._rootCanvas = _rootCanvas;

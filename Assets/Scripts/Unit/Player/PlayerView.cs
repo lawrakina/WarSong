@@ -9,21 +9,14 @@ namespace Unit.Player
 {
     public sealed class PlayerView : MonoBehaviour, IPlayerView
     {
-        #region Fields
-
-        private Animator _animator;
-
-        #endregion
-
-
         #region Properties
 
-        public Transform Transform { get; private set; }
-        public Collider Collider { get; private set; }
-        public Rigidbody Rigidbody { get; private set; }
-        public MeshRenderer MeshRenderer { get; private set; }
-        public Animator Animator => _animator;
-        public AnimatorParameters AnimatorParameters { get; private set; }
+        public Transform Transform { get; set; }
+        public Collider Collider { get; set; }
+        public Rigidbody Rigidbody { get; set; }
+        public MeshRenderer MeshRenderer { get; set; }
+        public Animator Animator { get; set; }
+        public AnimatorParameters AnimatorParameters { get; set; }
         public UnitAttributes Attributes { get; set; }
         public UnitVision UnitVision { get; set; }
         public UnitPlayerBattle UnitPlayerBattle { get; set; }
@@ -37,41 +30,11 @@ namespace Unit.Player
         public BaseCharacterClass CharacterClass { get; set; }
         public EquipmentPoints EquipmentPoints { get; set; }
         public EquipmentItems EquipmentItems { get; set; }
+        public Transform TransformModel { get; set; }
 
         #endregion
-
-
-        #region UnityMethods
-
-        private void Awake()
-        {
-            Transform = GetComponent<Transform>();
-            Rigidbody = GetComponent<Rigidbody>();
-            Collider = GetComponent<Collider>();
-            MeshRenderer = GetComponent<MeshRenderer>();
-            _animator = GetComponent<Animator>();
-            AnimatorParameters = new AnimatorParameters(ref _animator);
-        }
-        //
-        // private void OnEnable()
-        // {
-        //     OnApplyDamageChange += SetDamage;
-        // }
-        //
-        // private void SetDamage(InfoCollision collision)
-        // {
-        //     Dbg.Log($"{gameObject.name} Attacked");
-        //     OnApplyDamageChange?.Invoke(collision);
-        // }
-        //
-        // private void OnDisable()
-        // {
-        //     OnApplyDamageChange -= SetDamage;
-        // }
         
-        #endregion
-
-    
+        
         public void OnCollision(InfoCollision info)
         {
             Dbg.Log($"{gameObject.name} Attacked");

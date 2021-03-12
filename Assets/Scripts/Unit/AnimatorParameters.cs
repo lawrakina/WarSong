@@ -17,7 +17,7 @@ namespace Unit
         private int _weaponType;
 
 
-        public AnimatorParameters(ref Animator animator)
+        public AnimatorParameters(Animator animator)
         {
             _animator = animator;
         }

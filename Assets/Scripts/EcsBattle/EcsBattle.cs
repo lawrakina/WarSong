@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using DuloGames.UI;
-using EcsBattle.Components;
 using EcsBattle.Systems.Animation;
 using EcsBattle.Systems.Attacks;
 using EcsBattle.Systems.Camera;
@@ -10,7 +9,6 @@ using EcsBattle.Systems.Player;
 using EcsBattle.Systems.PlayerMove;
 using EcsBattle.Systems.PlayerVision;
 using EcsBattle.Systems.Ui;
-using Extension;
 using Leopotam.Ecs;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
@@ -51,54 +49,81 @@ namespace EcsBattle
                 //Create Player & Camera
                 .Add(new CreatePlayerEntitySystem())
                 .Add(new CreateThirdCameraEntitySystem())
-                //Moving Camera
-                .Add(new CameraPositioningOfPlayerSystem())
-                .Add(new TimerStopFollowingCameraInPlayerSystem())
-                .Add(new NeedLerpPositionCameraFollowingToTargetSystem())
-                .Add(new EnableFollowingCameraInPlayerNonBattleSystem())
-                .Add(new CameraRotationOfPlayerSystem())
+
                 //InputControl
                 .Add(new CreateInputControlSystem())
-                .Add(new SetActiveInputOnJoystickSystem())
+                .Add(new TimerJoystickSystem())
+
+                //EVENTS Click\Swipe\Movement
                 .Add(new GetClickInInputControlSystem())
-                //Rotation Player
-                .Add(new RestoreSavedRotationInUnitSystem())
-                //Moving Player
+                .Add(new GetMovementInInputControlSystem())
+                .Add(new GetSwipeInInputControlSystem())
+
+                //Player
+                //Movement
                 .Add(new MovementPlayer1SetDirectionSystem())
                 .Add(new MovementPlayer2CalculateStepValueSystem());
+            ;
             _fixedExecute
-                .Add(new MovementPlayer3MoveAndRotateRigidBodySystem());
+                .Add(new MovementPlayer3MoveRigidBodySystem())
+                .Add(new MovementPlayer4RotateTransformSystem());
             _execute
-                //Animation Player
-                .Add(new AnimationMoveSystem())
-                //Enemies
-                .Add(new CreateEnemyEntitySystem())
-                .Add(new RotateUiHeathBarsToCameraSystem())
-                //Ui Enemies
-                .Add(new UpdateEnemiesCurrentHealthPointsSystem())
-                //UI Player
-                .Add(new UpdatePlayerHealthPointsInUiSystem())
+                .Add(new MovementPlayer5EndSystem())
+                //     //Moving Camera
+                .Add(new CameraRotateOnPlayerSystem())
+                .Add(new CameraPositioningOnMarkerPlayerSystem())
+                //     
+                
+                
+                
+                
+                
+                
+                
+                
+                
 
-                //Battle Player
-                //Vision
-                .Add(new StartTimerForVisionPlayerSystem())
-                .Add(new TickTimerForVisionForPlayerSystem(0.05f))
-                .Add(new SearchClosesTargetForPlayerSystem())
-                .Add(new AnimationBattleState())
-                //Attack
-                .Add(new TimerForGetPermissionAttackFromWeaponSystem())
-                .Add(new TimerForStartAnimationFromWeaponSystem())
-                .Add(new ApplyDamageInUnitSystem())
-
-                //Battle Enemies
-                //Vision
-                .Add(new TimerForVisionForEnemySystem(2.0f))
-                .Add(new SearchClosesTargetForEnemySystem())
-                //Moving
-                .Add(new MovementEnemyToTargetSystem())
-
-                //Death Units
-                .Add(new EnableRagdollByDeathSystem())
+                // .Add(new TimerStopFollowingCameraInPlayerSystem())
+                // .Add(new NeedLerpPositionCameraFollowingToTargetSystem())
+                // .Add(new EnableFollowingCameraInPlayerNonBattleSystem())
+                //     //Rotation Player
+                //     .Add(new RestoreSavedRotationInUnitSystem())
+                //     //Moving Player
+                //     .Add(new MovementPlayer1SetDirectionSystem())
+                //     .Add(new MovementPlayer2CalculateStepValueSystem());
+                // _fixedExecute
+                //     .Add(new MovementPlayer3MoveAndRotateRigidBodySystem());
+                // _execute
+                //     //Animation Player
+                // .Add(new AnimationMoveSystem())
+                //     //Enemies
+                //     .Add(new CreateEnemyEntitySystem())
+                //     .Add(new RotateUiHeathBarsToCameraSystem())
+                //     //Ui Enemies
+                //     .Add(new UpdateEnemiesCurrentHealthPointsSystem())
+                //     //UI Player
+                //     .Add(new UpdatePlayerHealthPointsInUiSystem())
+                //
+                //     //Battle Player
+                //     //Vision
+                //     .Add(new StartTimerForVisionPlayerSystem())
+                //     .Add(new TickTimerForVisionForPlayerSystem(0.05f))
+                //     .Add(new SearchClosesTargetForPlayerSystem())
+                //     .Add(new AnimationBattleState())
+                //     //Attack
+                //     .Add(new TimerForGetPermissionAttackFromWeaponSystem())
+                //     .Add(new TimerForStartAnimationFromWeaponSystem())
+                //     .Add(new ApplyDamageInUnitSystem())
+                //
+                //     //Battle Enemies
+                //     //Vision
+                //     .Add(new TimerForVisionForEnemySystem(2.0f))
+                //     .Add(new SearchClosesTargetForEnemySystem())
+                //     //Moving
+                //     .Add(new MovementEnemyToTargetSystem())
+                //
+                //     //Death Units
+                //     .Add(new EnableRagdollByDeathSystem())
                 ;
 
             // register one-frame components (order is important), for example:
@@ -147,39 +172,39 @@ namespace EcsBattle
 
     public sealed class MovementEnemyToTargetSystem : IEcsRunSystem
     {
-        private EcsFilter<EnemyComponent, BaseUnitComponent, CurrentTargetComponent, MovementSpeed, BattleInfoComponent>
-            _filter;
+        // private EcsFilter<EnemyComponent, BaseUnitComponent, CurrentTargetComponent, MovementSpeed, BattleInfoComponent>
+        // _filter;
 
         public void Run()
         {
-            foreach (var i in _filter)
-            {
-                ref var entity = ref _filter.GetEntity(i);
-                ref var unit = ref _filter.Get2(i);
-                ref var target = ref _filter.Get3(i);
-                ref var moveSpeed = ref _filter.Get4(i);
-                ref var weapon = ref _filter.Get5(i);
-
-                var distanceVector = (target.Target.position - unit.transform.position);
-                var sqrDistance = distanceVector.sqrMagnitude;
-                var direction = distanceVector * (moveSpeed.Value * Time.deltaTime);
-
-                if (sqrDistance > (weapon.Value.AttackDistance * weapon.Value.AttackDistance))
-                {
-                    Dbg.Log(
-                        $"sqrDistance:{sqrDistance}, sqrAttackDistance:{weapon.Value.AttackDistance * weapon.Value.AttackDistance}");
-                    direction = distanceVector * (moveSpeed.Value * Time.deltaTime);
-                    unit.rigidbody.MovePosition(unit.transform.position + direction);
-                    unit.animator.Speed = direction.magnitude;
-                }
-                else
-                {
-                    unit.animator.Speed = 0.0f;
-                    entity.Get<NeedAttackComponent>();
-                }
-
-                unit.transform.LookAt(target.Target.position.Change(y: 0.0f));
-            }
+            // foreach (var i in _filter)
+            // {
+            //     ref var entity = ref _filter.GetEntity(i);
+            //     ref var unit = ref _filter.Get2(i);
+            //     ref var target = ref _filter.Get3(i);
+            //     ref var moveSpeed = ref _filter.Get4(i);
+            //     ref var weapon = ref _filter.Get5(i);
+            //
+            //     var distanceVector = (target.Target.position - unit.transform.position);
+            //     var sqrDistance = distanceVector.sqrMagnitude;
+            //     var direction = distanceVector * (moveSpeed.Value * Time.deltaTime);
+            //
+            //     if (sqrDistance > (weapon.Value.AttackDistance * weapon.Value.AttackDistance))
+            //     {
+            //         Dbg.Log(
+            //             $"sqrDistance:{sqrDistance}, sqrAttackDistance:{weapon.Value.AttackDistance * weapon.Value.AttackDistance}");
+            //         direction = distanceVector * (moveSpeed.Value * Time.deltaTime);
+            //         unit.rigidbody.MovePosition(unit.transform.position + direction);
+            //         unit.animator.Speed = direction.magnitude;
+            //     }
+            //     else
+            //     {
+            //         unit.animator.Speed = 0.0f;
+            //         entity.Get<NeedAttackComponent>();
+            //     }
+            //
+            //     unit.transform.LookAt(target.Target.position.Change(y: 0.0f));
+            // }
         }
     }
 }

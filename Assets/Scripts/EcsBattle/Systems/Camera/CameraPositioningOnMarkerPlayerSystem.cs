@@ -8,12 +8,11 @@ using UnityEngine;
 
 namespace EcsBattle
 {
-    public sealed class CameraPositioningOfPlayerSystem : IEcsRunSystem
+    public sealed class CameraPositioningOnMarkerPlayerSystem : IEcsRunSystem
     {
         private EcsFilter<
                 FightCameraComponent, 
-                TransformComponent, 
-                TargetCameraComponent>
+                TransformComponent>
             .Exclude<
                 TimerStopFollowingInPlayerComponent,
                 NeedLerpPositionCameraFollowingToTargetComponent> _filter;
@@ -33,7 +32,7 @@ namespace EcsBattle
                 //     cameraTransform.position = targetTransform.position;
                 // }
                 
-                _filter.Get2(index).Value.position = _filter.Get3(index).positionThirdTarget.position;
+                _filter.Get2(index).value.position = _filter.Get1(index).positionThirdTarget.position;
                 
                 //попытка округлить позицию по осям - неудачно
                 // var positionRound = new Vector3(
