@@ -1,20 +1,27 @@
-﻿using Controller;
+﻿using CharacterCustomizing;
+using Controller;
 using Data;
 using Extension;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 
 namespace Unit.Player
 {
     public sealed class PlayerFactory : IPlayerFactory
     {
-        private CharacterData _characterData;
-        private CustomizerCharacter _customizerCharacter;
+        private readonly CharacterData _characterData;
+        private readonly PlayerCustomizerCharacter _playerCustomizerCharacter;
+        private readonly UnitLevelInitialization _unitLevelInitialization;
+        private readonly PlayerClassesInitialization _playerClassesInitialization;
 
-        public PlayerFactory(CustomizerCharacter customizerCharacter, CharacterData characterData)
+        public PlayerFactory(PlayerCustomizerCharacter playerCustomizerCharacter, 
+            UnitLevelInitialization unitLevelInitialization,
+            PlayerClassesInitialization playerClassesInitialization,
+            CharacterData characterData)
         {
-            _customizerCharacter = customizerCharacter;
+            _unitLevelInitialization = unitLevelInitialization;
+            _playerCustomizerCharacter = playerCustomizerCharacter;
+            _playerClassesInitialization = playerClassesInitialization;
             _characterData = characterData;
         }
 
@@ -32,7 +39,9 @@ namespace Unit.Player
                   .AddCode<PlayerView>();
 
             var playerView = player.GetComponent<IPlayerView>();
-            _customizerCharacter.Customize(ref playerView, item);
+            _playerCustomizerCharacter.Customize(playerView, item);
+            _unitLevelInitialization.Initialization(playerView, item);
+            _playerClassesInitialization.Initialization(playerView,item);
 
             return playerView;
         }

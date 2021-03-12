@@ -1,5 +1,8 @@
-﻿using UniRx;
+﻿using System.Collections.Generic;
+using UniRx;
+using Unit.Enemies;
 using UnityEngine;
+using VIew;
 
 
 namespace CoreComponent
@@ -12,5 +15,6 @@ namespace CoreComponent
         Transform GetPlayerPosition();
         void SetRandomSeed();
         GameObject Dungeon();
+        List<SpawnMarkerEnemyInDungeon> GetEnemiesMarkers();
     }
 }

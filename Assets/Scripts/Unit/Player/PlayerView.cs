@@ -1,4 +1,7 @@
-﻿using UniRx;
+﻿using System;
+using Battle;
+using CharacterCustomizing;
+using Extension;
 using UnityEngine;
 
 
@@ -6,23 +9,6 @@ namespace Unit.Player
 {
     public sealed class PlayerView : MonoBehaviour, IPlayerView
     {
-        #region UnityMethods
-
-        private void Awake()
-        {
-            Transform = GetComponent<Transform>();
-            Rigidbody = GetComponent<Rigidbody>();
-            Collider = GetComponent<Collider>();
-            MeshRenderer = GetComponent<MeshRenderer>();
-            _animator = GetComponent<Animator>();
-            AnimatorParameters = new AnimatorParameters(ref _animator);
-
-            CharAttributes = new CharAttributes();
-        }
-
-        #endregion
-
-
         #region Fields
 
         private Animator _animator;
@@ -33,43 +19,63 @@ namespace Unit.Player
         #region Properties
 
         public Transform Transform { get; private set; }
-
         public Collider Collider { get; private set; }
-
         public Rigidbody Rigidbody { get; private set; }
-
         public MeshRenderer MeshRenderer { get; private set; }
-
         public Animator Animator => _animator;
         public AnimatorParameters AnimatorParameters { get; private set; }
-
-        public ICharAttributes CharAttributes { get; set; }
-
-        public Transform EnemyTarget { get; set; }
-
+        public UnitAttributes Attributes { get; set; }
+        public UnitVision UnitVision { get; set; }
+        public UnitPlayerBattle UnitPlayerBattle { get; set; }
+        public UnitReputation UnitReputation { get; set; }
+        public float CurrentHp { get; set; }
+        public float BaseHp { get; set; }
+        public float MaxHp { get; set; }
+        public event Action<InfoCollision> OnApplyDamageChange;
+        public UnitLevel UnitLevel { get; set; }
+        public BasicCharacteristics BasicCharacteristics { get; set; }
         public BaseCharacterClass CharacterClass { get; set; }
-
-        public StringReactiveProperty Description =>
-            new StringReactiveProperty(
-                $"Name:{CharAttributes.Name}\nClass:{CharacterClass.Name}\nRace:{CharAttributes.CharacterRace}\nGender:{CharAttributes.CharacterGender}");
+        public EquipmentPoints EquipmentPoints { get; set; }
+        public EquipmentItems EquipmentItems { get; set; }
 
         #endregion
 
 
-        #region Events
+        #region UnityMethods
 
-        // public event Action<InfoCollision> OnBonusUp;
-
-        #endregion
-
-
-        #region Methods
-
-        // public void OnCollision(InfoCollision infoCollision)
+        private void Awake()
+        {
+            Transform = GetComponent<Transform>();
+            Rigidbody = GetComponent<Rigidbody>();
+            Collider = GetComponent<Collider>();
+            MeshRenderer = GetComponent<MeshRenderer>();
+            _animator = GetComponent<Animator>();
+            AnimatorParameters = new AnimatorParameters(ref _animator);
+        }
+        //
+        // private void OnEnable()
         // {
-        //     OnBonusUp?.Invoke(infoCollision);
+        //     OnApplyDamageChange += SetDamage;
         // }
-
+        //
+        // private void SetDamage(InfoCollision collision)
+        // {
+        //     Dbg.Log($"{gameObject.name} Attacked");
+        //     OnApplyDamageChange?.Invoke(collision);
+        // }
+        //
+        // private void OnDisable()
+        // {
+        //     OnApplyDamageChange -= SetDamage;
+        // }
+        
         #endregion
+
+    
+        public void OnCollision(InfoCollision info)
+        {
+            Dbg.Log($"{gameObject.name} Attacked");
+            OnApplyDamageChange?.Invoke(info);
+        }
     }
 }

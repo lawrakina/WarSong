@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0497cda58a6a469993ab709f09277c51, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  _characters:
+    ListCharacters:
+    - AgroDistance: 10
+      CharacterClass: 0
+      CharacterGender: 0
+      CharacterRace: 0
+      PlayerMoveSpeed: 10
+      RotateSpeedPlayer: 120
+      Equipment:
+        MainWeapon: {fileID: -6081652771160073839, guid: 1e7d0884ab7bd3e47805374740c15627,
+          type: 3}
+        SecondWeapon: {fileID: 2742068569462338133, guid: cc7396c367cf52a4abee0d4712eed902,
+          type: 3}
+      ExperiencePoints: 3000
+      unitVisionParameters:
+        BattleDistance: 15
+        MaxCountTaggets: 5
+        LayersEnemies:
+          serializedVersion: 2
+          m_Bits: 256
+        OffsetHead: {x: 0, y: 1.5, z: 0}
+  _numberActiveCharacter: 0

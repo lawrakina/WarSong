@@ -1,5 +1,19 @@
 {
   "dependencies": {
+    "com.leopotam.ecs": {
+      "version": "https://github.com/Leopotam/ecs.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "acd5873e57796ab5bfbe6c11c06fb044b912c6f9"
+    },
+    "com.leopotam.ecs-unityintegration": {
+      "version": "https://github.com/Leopotam/ecs-unityintegration.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "127d6a8f02ec987ac724a7fc671b1d5d00b0ea56"
+    },
     "com.unity.collab-proxy": {
       "version": "1.2.16",
       "depth": 0,
@@ -15,7 +29,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "1.1.4",
+      "version": "3.0.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -25,6 +39,13 @@
     },
     "com.unity.ide.vscode": {
       "version": "1.2.3",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.inputsystem": {
+      "version": "1.0.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {},

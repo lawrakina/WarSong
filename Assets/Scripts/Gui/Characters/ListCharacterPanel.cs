@@ -58,9 +58,6 @@ namespace Gui.Characters
                            .AddTo(_subscriptions);
             _nextCharButton.OnPointerClickAsObservable().Subscribe(_ => { _listCharactersManager.MoveNext(); })
                            .AddTo(_subscriptions);
-
-            //подписываемся на изменение персонажа
-            _listCharactersManager.CurrentCharacter.Subscribe(view => { _info.text = view.Description.Value; });
         }
     }
 }

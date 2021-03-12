@@ -1,15 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Extension;
 using UnityEngine;
 
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "CharacterData", menuName = "Data/CharacterData")]
+    [CreateAssetMenu(fileName = "CharacterData", menuName = "Data/Character Data")]
     public sealed class CharacterData : ScriptableObject
     {
         [SerializeField]
         public GameObject StoragePlayerPrefab;
+
+        [SerializeField]
+        public AttachPoint[] ListAttachPoints =
+        {
+            new AttachPoint()
+            {
+                Name = StringManager.ATTACH_POINT_LEFT_ONE_WEAPON,
+                Path = $"Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L",
+                LocalPosition = new Vector3(-6.8f, -3.4f, 0.0f),
+                LocalRotation = new Vector3(0.0f, -90.0f, -90.0f)
+            },
+            new AttachPoint()
+            {
+                Name = StringManager.ATTACH_POINT_RIGHT_ONE_WEAPON,
+                Path = $"Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R",
+                LocalPosition = new Vector3(6.8f, 1.9f, -0.9f),
+                LocalRotation = new Vector3(-177.0f, -81.0f, 97.1f)
+            },
+            new AttachPoint()
+            {
+                Name = StringManager.ATTACH_POINT_LEFT_SHILD,
+                Path = $"Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Elbow_Attachment_L",
+                LocalPosition = new Vector3(0.0f, 4.5f, 0.0f),
+                LocalRotation = new Vector3(-90.0f, 0.0f, -90.0f)
+            },
+        };
+
+
+        #region Color palette
 
         [Header("Skin Colors")]
         public Color[] humanSkin = {new Color(1f, 0.8000001f, 0.682353f)};
@@ -75,46 +103,7 @@ namespace Data
             new Color(0.3098039f, 0.7058824f, 0.3137255f), new Color(0.5294118f, 0.3098039f, 0.6470588f),
             new Color(0.8666667f, 0.7764707f, 0.254902f), new Color(0.2392157f, 0.4588236f, 0.8156863f)
         };
-    }
 
-
-    // classe for keeping the lists organized, allows for simple switching from male/female objects
-    [Serializable] public class CharacterObjectGroups
-    {
-        public List<GameObject> arm_Lower_Left = new List<GameObject>();
-        public List<GameObject> arm_Lower_Right = new List<GameObject>();
-        public List<GameObject> arm_Upper_Left = new List<GameObject>();
-        public List<GameObject> arm_Upper_Right = new List<GameObject>();
-        public List<GameObject> eyebrow = new List<GameObject>();
-        public List<GameObject> facialHair = new List<GameObject>();
-        public List<GameObject> hand_Left = new List<GameObject>();
-        public List<GameObject> hand_Right = new List<GameObject>();
-        public List<GameObject> headAllElements = new List<GameObject>();
-        public List<GameObject> headNoElements = new List<GameObject>();
-        public List<GameObject> hips = new List<GameObject>();
-        public List<GameObject> leg_Left = new List<GameObject>();
-        public List<GameObject> leg_Right = new List<GameObject>();
-        public List<GameObject> torso = new List<GameObject>();
-    }
-
-    // classe for keeping the lists organized, allows for organization of the all gender items
-    [Serializable] public class CharacterObjectListsAllGender
-    {
-        public List<GameObject> all_12_Extra = new List<GameObject>();
-        public List<GameObject> all_Hair = new List<GameObject>();
-        public List<GameObject> all_Head_Attachment = new List<GameObject>();
-        public List<GameObject> back_Attachment = new List<GameObject>();
-        public List<GameObject> chest_Attachment = new List<GameObject>();
-        public List<GameObject> elbow_Attachment_Left = new List<GameObject>();
-        public List<GameObject> elbow_Attachment_Right = new List<GameObject>();
-        public List<GameObject> elf_Ear = new List<GameObject>();
-        public List<GameObject> headCoverings_Base_Hair = new List<GameObject>();
-        public List<GameObject> headCoverings_No_FacialHair = new List<GameObject>();
-        public List<GameObject> headCoverings_No_Hair = new List<GameObject>();
-        public List<GameObject> hips_Attachment = new List<GameObject>();
-        public List<GameObject> knee_Attachement_Left = new List<GameObject>();
-        public List<GameObject> knee_Attachement_Right = new List<GameObject>();
-        public List<GameObject> shoulder_Attachment_Left = new List<GameObject>();
-        public List<GameObject> shoulder_Attachment_Right = new List<GameObject>();
+        #endregion
     }
 }

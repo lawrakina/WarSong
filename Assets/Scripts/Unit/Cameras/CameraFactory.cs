@@ -1,4 +1,6 @@
-﻿using Extension;
+﻿using Data;
+using Extension;
+using Interface;
 using UnityEngine;
 
 
@@ -6,16 +8,19 @@ namespace Unit.Cameras
 {
     public sealed class CameraFactory : ICameraFactory
     {
+        private readonly CameraSettingsInBattle _cameraSettings;
+
+        public CameraFactory(CameraSettingsInBattle cameraSettings)
+        {
+            _cameraSettings = cameraSettings;
+        }
+
         public FightCamera CreateCamera(Camera baseCamera)
         {
             var component = baseCamera.gameObject.AddCode<FightCamera>();
-                /*.AddCapsuleCollider(
-                1.87f,
-                false,
-                new Vector3(0.0f,2.0f,13.0f), 
-                24.0f, 
-                2);*/
-            return component.GetComponent<FightCamera>();
+            var camera = component.GetComponent<FightCamera>();
+            camera.Settings = _cameraSettings;
+            return camera;
         }
     }
 }

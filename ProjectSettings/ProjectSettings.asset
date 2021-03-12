@@ -126,7 +126,10 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.1
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -676,7 +679,7 @@ PlayerSettings:
   webGLWasmStreaming: 0
   scriptingDefineSymbols:
     1: POSEIDON;GRIFFIN
-    7: GRIFFIN
+    7: GRIFFIN;POSEIDON
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}

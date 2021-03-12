@@ -11,7 +11,6 @@ namespace Unit
         private int _attackType;
 
         private bool _battle;
-        private bool _falling;
         private float _horizontalSpeed;
         private bool _jump;
         private float _speed;
@@ -47,16 +46,6 @@ namespace Unit
             }
         }
 
-        public bool Falling
-        {
-            get => _falling;
-            set
-            {
-                _falling = value;
-                _animator.SetBool(TagManager.ANIMATOR_PARAM_FALLING, _falling);
-            }
-        }
-
         public bool Attack
         {
             get => _attack;
@@ -74,7 +63,7 @@ namespace Unit
             set
             {
                 _weaponType = value;
-                _animator.SetInteger(TagManager.ANIMATOR_PARAM_WEAPON_TYPE, _weaponType);
+                _animator.SetFloat(TagManager.ANIMATOR_PARAM_WEAPON_TYPE, _weaponType);
             }
         }
 
@@ -84,7 +73,7 @@ namespace Unit
             set
             {
                 _attackType = value;
-                _animator.SetInteger(TagManager.ANIMATOR_PARAM_ATTACK_TYPE, _attackType);
+                _animator.SetFloat(TagManager.ANIMATOR_PARAM_ATTACK_TYPE, _attackType);
             }
         }
 
@@ -103,9 +92,9 @@ namespace Unit
             Attack = true;
         }
 
-        public void ResetTrigger(string name)
+        public void Off()
         {
-            _animator.ResetTrigger(name);
+            _animator.enabled = false;
         }
     }
 }

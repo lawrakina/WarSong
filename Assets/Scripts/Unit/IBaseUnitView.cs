@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using Battle;
+using UnityEngine;
 
 
 namespace Unit
 {
-    public interface IBaseUnitView
+    public interface IBaseUnitView: ICollision
     {
         Transform Transform { get; }
         Collider Collider { get; }
@@ -11,7 +13,13 @@ namespace Unit
         MeshRenderer MeshRenderer { get; }
         Animator Animator { get; }
         AnimatorParameters AnimatorParameters { get; }
-        ICharAttributes CharAttributes { get; set; }
-        Transform EnemyTarget { get; set; }
+        UnitAttributes Attributes { get; set; }
+        UnitLevel UnitLevel { get; set; }
+        UnitVision UnitVision { get; set; }
+        UnitReputation UnitReputation { get; set; }
+        float CurrentHp { get; set; }
+        float BaseHp { get; set; }
+        float MaxHp { get; set; }
+        event Action<InfoCollision> OnApplyDamageChange;
     }
 }
