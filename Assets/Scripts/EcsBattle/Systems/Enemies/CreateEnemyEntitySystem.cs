@@ -27,6 +27,7 @@ namespace EcsBattle.Systems.Enemies
                 entity.Get<EnemyComponent>();
                 entity.Get<UnitComponent>().transform = view.Transform;
                 entity.Get<UnitComponent>().rigidbody = view.Rigidbody;
+                entity.Get<UnitComponent>().collider = view.Collider;
                 entity.Get<UnitComponent>().animator = view.AnimatorParameters;
                 entity.Get<UnitComponent>().reputation = view.UnitReputation;
                 entity.Get<UnitComponent>().vision = view.UnitVision;

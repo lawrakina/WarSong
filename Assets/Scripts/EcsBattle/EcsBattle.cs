@@ -98,6 +98,10 @@ namespace EcsBattle
                 .Add(new RotateUiHeathBarsToCameraSystem())
                 //Ui Enemies
                 .Add(new UpdateEnemiesCurrentHealthPointsSystem())
+                
+                
+                //     //Death Units
+                .Add(new EnableRagdollByDeathSystem())
 
                 // .Add(new TimerStopFollowingCameraInPlayerSystem())
                 // .Add(new NeedLerpPositionCameraFollowingToTargetSystem())
@@ -122,8 +126,6 @@ namespace EcsBattle
                 //     //Moving
                 //     .Add(new MovementEnemyToTargetSystem())
                 //
-                //     //Death Units
-                //     .Add(new EnableRagdollByDeathSystem())
                 ;
 
             // register one-frame components (order is important), for example:

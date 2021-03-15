@@ -42,6 +42,7 @@ namespace EcsBattle.Components
     {
         public Transform transform;
         public Rigidbody rigidbody;
+        public Collider collider;
         public AnimatorParameters animator;
         public UnitReputation reputation;
         public UnitAttributes attributes;
