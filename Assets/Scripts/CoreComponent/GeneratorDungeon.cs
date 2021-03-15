@@ -54,7 +54,7 @@ namespace CoreComponent
 
             // _builder.IsLayoutBuilt;
             // _pooledSceneProvider.OnDungeonBuildStop+= (x =>x){};
-            var proc = new MyDungeonProcessor();
+            // var proc = new MyDungeonProcessor();
             // _generator.
 
             var goNavMesh = Object.Instantiate(_dungeonGeneratorData.StorageNavMash, _parent);

@@ -23,12 +23,12 @@ namespace CharacterCustomizing
             playerView.Attributes.Speed = settings.PlayerMoveSpeed;
             playerView.Attributes.RotateSpeedPlayer = settings.RotateSpeedPlayer;
             
-            var person = new PersonCharacter(playerView.Transform.gameObject, _characterData);
+            var person = new PersonCharacter(playerView.TransformModel.gameObject, _characterData);
             person.CharacterRace = settings.CharacterRace;
             person.CharacterGender = settings.CharacterGender;
             person.Generate();
 
-            var equipmentPoints = new EquipmentPoints(playerView.Transform.gameObject, _characterData);
+            var equipmentPoints = new EquipmentPoints(playerView.TransformModel.gameObject, _characterData);
             equipmentPoints.GenerateAllPoints();
             playerView.EquipmentPoints = equipmentPoints;
 

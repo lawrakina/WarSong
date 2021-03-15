@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using EcsBattle.Components;
 using EcsBattle.CustomEntities;
+using EcsBattle.Systems.Player;
 using Interface;
 using Leopotam.Ecs;
 using Unit;
@@ -24,14 +25,14 @@ namespace EcsBattle.Systems.Enemies
 
                 var entity = _world.NewEntity();
                 entity.Get<EnemyComponent>();
-                entity.Get<BaseUnitComponent>().transform = view.Transform;
-                entity.Get<BaseUnitComponent>().collider = view.Collider;
-                entity.Get<BaseUnitComponent>().rigidbody = view.Rigidbody;
-                entity.Get<BaseUnitComponent>().animator = view.AnimatorParameters;
-                entity.Get<BaseUnitComponent>().unitReputation = view.UnitReputation;
-                entity.Get<BaseUnitComponent>().unitVision = view.UnitVision;
-                entity.Get<MovementSpeed>().Value = view.Attributes.Speed;
-                entity.Get<RotateSpeed>().Value = view.Attributes.RotateSpeedPlayer;
+                entity.Get<TransformComponent>().value = view.Transform;
+                entity.Get<RigidbodyComponent>().value = view.Rigidbody;
+                entity.Get<AnimatorComponent>().value = view.AnimatorParameters;
+                entity.Get<UnitReputationComponent>().value = view.UnitReputation;
+                entity.Get<UnitVisionComponent>().value = view.UnitVision;
+                
+                entity.Get<MovementSpeed>().value = view.Attributes.Speed;
+                entity.Get<RotateSpeed>().value = view.Attributes.RotateSpeedPlayer;
                 entity.Get<UiEnemyHealthBarComponent>().Value = view.HealthBar;
                 entity.Get<UnitHpComponent>().CurrentValue = view.CurrentHp;
                 entity.Get<UnitHpComponent>().MaxValue = view.MaxHp;

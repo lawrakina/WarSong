@@ -26,7 +26,7 @@ namespace EcsBattle.Systems.Camera
                     foreach (var s in _settings)
                     {
                         ref var setting = ref _settings.Get1(s);
-                        timerLerp.maxTime = setting.maxTimeToLerpInPlayer;
+                        timerLerp.maxTime = 1.0f;
                     }
                     entity.Del<TimerStopFollowingInPlayerComponent>();
                 }

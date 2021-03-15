@@ -7,11 +7,12 @@ namespace Unit
 {
     public interface IBaseUnitView: ICollision
     {
-        Transform Transform { get; }
+        Transform Transform { get; set; }
+        Transform TransformModel { get; set; }
         Collider Collider { get; }
-        Rigidbody Rigidbody { get; }
+        Rigidbody Rigidbody { get; set; }
         MeshRenderer MeshRenderer { get; }
-        Animator Animator { get; }
+        Animator Animator { get; set; }
         AnimatorParameters AnimatorParameters { get; }
         UnitAttributes Attributes { get; set; }
         UnitLevel UnitLevel { get; set; }

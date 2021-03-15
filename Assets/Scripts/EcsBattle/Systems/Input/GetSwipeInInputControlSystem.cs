@@ -5,10 +5,11 @@ using Leopotam.Ecs;
 
 namespace EcsBattle.Systems.Input
 {
-    public class GetClickInInputControlSystem : IEcsRunSystem
+    public sealed class GetSwipeInInputControlSystem : IEcsRunSystem
     {
-        private EcsFilter<InputControlComponent, TargetEntityComponent, UnpressJoystickComponent> _input;
-
+        private EcsFilter<InputControlComponent, TargetEntityComponent,UnpressJoystickComponent> _input;
+        //.Exclude<UnpressJoystickComponent>
+        
         public void Run()
         {
             foreach (var index in _input)
@@ -18,13 +19,13 @@ namespace EcsBattle.Systems.Input
                 ref var target = ref _input.Get2(index);
                 ref var lastState = ref _input.Get3(index);
 
-                //create event Click. time hold lastState less than offset и offset less than MaxOffsetForClick
+                // create event swipe. time hold less и offset more than MaxOffsetForClick => SwipeEvent
                 if (lastState.PressTime <= joystick.MaxPressTimeForClickButton &&
-                    lastState.LastValueVector.sqrMagnitude <= joystick.MaxOffsetForClick.sqrMagnitude)
+                    lastState.LastValueVector.sqrMagnitude > joystick.MaxOffsetForClick.sqrMagnitude)
                 {
-                    target.value.Get<ClickEventComponent>();
+                    target.value.Get<SwipeEventComponent>();
                     entity.Del<UnpressJoystickComponent>();
-                    Dbg.Log($"joystick.Click");
+                    Dbg.Log($"joystick.Swipe");
                 }
             }
         }

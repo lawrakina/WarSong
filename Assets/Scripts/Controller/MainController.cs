@@ -48,7 +48,7 @@ namespace Controller
         private PlayerClassesData _playerClassesData;
         private PlayerData _playerData;
         private EnemiesData _enemiesData;
-        private EnemyClassesData _enemyClassesData;
+        // private EnemyClassesData _enemyClassesData;
         private DungeonGeneratorData _generatorData;
         private EcsBattleData _ecsBattleData;
         private BattleInputData _battleInputData;

@@ -1,9 +1,10 @@
-﻿using Interface;
+﻿using Extension;
+using Interface;
 
 
 namespace Controller
 {
-    public sealed class BattleController : BaseController, IExecute, IFixedExecute
+    public sealed class BattleController : BaseController, IExecute, IFixedExecute, ILateExecute
     {
         #region Fields
 
@@ -35,5 +36,11 @@ namespace Controller
         }
 
         #endregion
+
+
+        public void LateExecute(float deltaTime)
+        {
+            _ecsEngine.LateExecute();
+        }
     }
 }

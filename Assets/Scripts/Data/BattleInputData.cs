@@ -8,7 +8,7 @@ namespace Data
     {
         public float _maxPressTimeForClickButton = 0.5f;
         public Vector3 _maxOffsetForClick = new Vector3(0.2f, 0.2f, 0.2f);
+        public Vector3 _maxOffsetForMovement = new Vector3(0.2f, 0.2f, 0.2f);
         public UltimateJoystick _joystick;
-        // = UltimateJoystick.GetUltimateJoystick(StringManager.ULTIMATE_JOYSTICK_MOVENMENT);
     }
 }

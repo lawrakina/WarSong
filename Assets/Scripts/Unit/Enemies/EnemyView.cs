@@ -9,21 +9,15 @@ namespace Unit.Enemies
 {
     public sealed class EnemyView : MonoBehaviour, IEnemyView
     {
-        #region Fields
-
-        private Animator _animator;
-
-        #endregion
-
-
         #region Properties
 
-        public Transform Transform { get; private set; }
-        public Collider Collider { get; private set; }
-        public Rigidbody Rigidbody { get; private set; }
-        public MeshRenderer MeshRenderer { get; private set; }
-        public Animator Animator => _animator;
-        public AnimatorParameters AnimatorParameters { get; private set; }
+        public Transform Transform { get; set; }
+        public Transform TransformModel { get; set; }
+        public Collider Collider { get; set; }
+        public Rigidbody Rigidbody { get; set; }
+        public MeshRenderer MeshRenderer { get; set; }
+        public Animator Animator { get; set; }
+        public AnimatorParameters AnimatorParameters { get; set; }
         public UnitAttributes Attributes { get; set; }
         public UnitLevel UnitLevel { get; set; }
         public UnitVision UnitVision { get; set; }
@@ -38,22 +32,7 @@ namespace Unit.Enemies
 
         #endregion
 
-
-        #region UnityMethods
-
-        private void Awake()
-        {
-            Transform = GetComponent<Transform>();
-            Rigidbody = GetComponent<Rigidbody>();
-            Collider = GetComponent<Collider>();
-            MeshRenderer = GetComponent<MeshRenderer>();
-            _animator = GetComponent<Animator>();
-            AnimatorParameters = new AnimatorParameters(ref _animator);
-        }
-
-        #endregion
-
-
+        
         public void OnCollision(InfoCollision info)
         {
             Dbg.Log($"I`m Attacked :{gameObject.name}");
