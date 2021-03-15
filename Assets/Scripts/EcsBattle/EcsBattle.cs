@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DuloGames.UI;
 using EcsBattle.Systems.Animation;
@@ -9,6 +10,7 @@ using EcsBattle.Systems.Player;
 using EcsBattle.Systems.PlayerMove;
 using EcsBattle.Systems.PlayerVision;
 using EcsBattle.Systems.Ui;
+using Extension;
 using Leopotam.Ecs;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
@@ -25,7 +27,9 @@ namespace EcsBattle
         private EcsWorld _world;
         private EcsSystems _execute;
         private EcsSystems _fixedExecute;
+        private EcsSystems _lateExecute;
         private readonly List<object> _listForInject = new List<object>();
+        private bool _enable = false;
 
         #endregion
 
@@ -40,16 +44,20 @@ namespace EcsBattle
             _world = new EcsWorld();
             _execute = new EcsSystems(_world);
             _fixedExecute = new EcsSystems(_world);
+            _lateExecute = new EcsSystems(_world);
 #if UNITY_EDITOR
             EcsWorldObserver.Create(_world);
             EcsSystemsObserver.Create(_execute);
+            EcsSystemsObserver.Create(_fixedExecute);
+            EcsSystemsObserver.Create(_lateExecute);
 #endif
 
             _execute
                 //Create Player & Camera
-                .Add(new CreatePlayerEntitySystem())
-                .Add(new CreateThirdCameraEntitySystem())
-
+                .Add(new CreatePlayerEntitySystem());
+            _execute
+                .Add(new CreateThirdCameraEntitySystem());
+            _execute
                 //InputControl
                 .Add(new CreateInputControlSystem())
                 .Add(new TimerJoystickSystem())
@@ -63,25 +71,21 @@ namespace EcsBattle
                 //Movement
                 .Add(new MovementPlayer1SetDirectionSystem())
                 .Add(new MovementPlayer2CalculateStepValueSystem());
-            ;
             _fixedExecute
                 .Add(new MovementPlayer3MoveRigidBodySystem())
                 .Add(new MovementPlayer4RotateTransformSystem());
+            
+            //////////////
+            //if us Rotate and Move camera systems than remove code in CreateThirdCameraEntitySystem
+            //Moving Camera
+            // _lateExecute
+                // .Add(new CameraRotateOnPlayerSystem())
+                // .Add(new CameraPositioningOnMarkerPlayerSystem());
+            //////////////
+            
             _execute
-                .Add(new MovementPlayer5EndSystem())
-                //     //Moving Camera
-                .Add(new CameraRotateOnPlayerSystem())
-                .Add(new CameraPositioningOnMarkerPlayerSystem())
+
                 //     
-                
-                
-                
-                
-                
-                
-                
-                
-                
 
                 // .Add(new TimerStopFollowingCameraInPlayerSystem())
                 // .Add(new NeedLerpPositionCameraFollowingToTargetSystem())
@@ -102,7 +106,7 @@ namespace EcsBattle
                 //     //Ui Enemies
                 //     .Add(new UpdateEnemiesCurrentHealthPointsSystem())
                 //     //UI Player
-                //     .Add(new UpdatePlayerHealthPointsInUiSystem())
+                .Add(new UpdatePlayerHealthPointsInUiSystem())
                 //
                 //     //Battle Player
                 //     //Vision
@@ -137,9 +141,14 @@ namespace EcsBattle
                 _execute.Inject(obj);
             foreach (var obj in _listForInject)
                 _fixedExecute.Inject(obj);
+            foreach (var obj in _listForInject)
+                _lateExecute.Inject(obj);
 
             _execute.Init();
             _fixedExecute.Init();
+            _lateExecute.Init();
+
+            _enable = true;
         }
 
 
@@ -166,7 +175,25 @@ namespace EcsBattle
             _fixedExecute?.Run();
         }
 
+        public void LateExecute()
+        {
+            // Dbg.Log($"LateExecute");
+            _lateExecute?.Run();
+        }
+
         #endregion
+
+
+        private void LateUpdate()
+        {
+            if (_enable)
+            {
+                // Dbg.Log($"LateUpdate");
+                 // CameraRotateOnPlayerSystem()
+                // CameraPositioningOnMarkerPlayerSystem()
+                // _lateExecute?.Run();
+            }
+        }
     }
 
 

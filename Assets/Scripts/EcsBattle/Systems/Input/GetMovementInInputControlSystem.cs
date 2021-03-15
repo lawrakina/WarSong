@@ -1,4 +1,5 @@
 ﻿using EcsBattle.Components;
+using Extension;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace EcsBattle.Systems.Input
                 if(input.LastPosition.sqrMagnitude > input.MaxOffsetForMovement.sqrMagnitude)
                 {
                     target.value.Get<MovementEventComponent>().value = input.LastPosition;
-                    // Dbg.Log($"joystick.Movement:{input.LastPosition}");
+                    Dbg.Log($"joystick.Movement:{input.LastPosition}");
                 }
                 else
                 {
@@ -28,7 +29,6 @@ namespace EcsBattle.Systems.Input
                     if (movement.value.sqrMagnitude > input.MaxOffsetForMovement.sqrMagnitude)
                     {
                         movement.value = Vector3.zero;
-                        // Dbg.Log($"movement.value:{movement.value}");
                     }
                 }
             }

@@ -9,7 +9,7 @@ namespace Battle
     {
         private readonly BattleInputData _data;
         private readonly Transform _rootCanvas;
-        private UltimateJoystick _joystick;
+        // private UltimateJoystick _joystick;
 
         public BattleInputControlsInitialization(BattleInputData data, Transform rootCanvas)
         {
@@ -19,19 +19,18 @@ namespace Battle
 
         public void Initialization()
         {
-            _joystick.transform.SetParent(_rootCanvas.transform);
+            // _joystick.transform.SetParent(_rootCanvas.transform);
         }
 
         public BattleInputStruct GetData()
         {
-            _joystick = Object.Instantiate(_data._joystick);
-            
             var data = new BattleInputStruct();
-            data._joystick = _joystick;
+            data._joystick = Object.Instantiate(_data._joystick);
             data._maxOffsetForMovement = _data._maxOffsetForMovement;
             data._maxOffsetForClick = _data._maxOffsetForClick;
             data._maxPressTimeForClickButton = _data._maxPressTimeForClickButton;
             data._rootCanvas = _rootCanvas;
+            data._joystick.transform.SetParent(_rootCanvas.transform);
             return data;
         }
 

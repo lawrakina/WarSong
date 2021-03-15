@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Extension;
 using Interface;
 
 
@@ -77,12 +78,14 @@ namespace Controller
 
         public void LateExecute(float deltaTime)
         {
-            for (var index = 0; index < _lateControllers.Count; ++index) _lateControllers[index].LateExecute(deltaTime);
+            for (var index = 0; index < _lateControllers.Count; ++index) 
+                _lateControllers[index].LateExecute(deltaTime);
         }
 
         public void Cleanup()
         {
-            for (var index = 0; index < _cleanupControllers.Count; ++index) _cleanupControllers[index].Cleanup();
+            for (var index = 0; index < _cleanupControllers.Count; ++index) 
+                _cleanupControllers[index].Cleanup();
         }
 
         #endregion

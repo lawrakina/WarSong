@@ -1,4 +1,5 @@
 ﻿using EcsBattle.Components;
+using Extension;
 using Interface;
 using Leopotam.Ecs;
 using Unit.Player;
@@ -18,12 +19,14 @@ namespace EcsBattle.Systems.Camera
             _camera.ThirdTarget = Object.Instantiate(new GameObject("ThirdPersonTargetCamera"), _player.Transform).transform;
             _camera.ThirdTarget.localPosition = _camera.OffsetThirdPosition();
             
-            var camera = _world.NewEntity();
-            // camera.Get<FightCameraComponent>().maxTimeToStopFollowingInPlayer = _camera.Settings.maxTimeToStopFollowingInPlayer;
-            // camera.Get<FightCameraComponent>().maxTimeToLerpInPlayer = _camera.Settings.maxTimeToLerpInPlayer;
-            camera.Get<FightCameraComponent>().positionThirdTarget = _camera.ThirdTarget;
-            camera.Get<FightCameraComponent>().positionPlayerTransform = _player.Transform;
-            camera.Get<TransformComponent>().value = _camera.Transform;
+            _camera.Transform.SetParent(_camera.ThirdTarget, false);
+            _camera.Transform.LookAt(_player.Transform);
+            
+            //if us CameraPositioningOnMarkerPlayerSystem && CameraRotateOnPlayerSystem than decomment =>
+            // var camera = _world.NewEntity();
+            // camera.Get<FightCameraComponent>().positionThirdTarget = _camera.ThirdTarget;
+            // camera.Get<FightCameraComponent>().positionPlayerTransform = _player.Transform;
+            // camera.Get<TransformComponent>().value = _camera.Transform;
         }
     }
 }

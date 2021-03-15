@@ -36,32 +36,10 @@ namespace EcsBattle.Systems.Player
 
             var directionMovement = Object.Instantiate(new GameObject(), _view.Transform, true);
             directionMovement.name = "->DirectionMoving<-";
-            // var targetEntity = _world.NewEntity();
-            // targetEntity.Get<TransformComponent>().value = goDirectionMoving.transform;
             entity.Get<DirectionMovementComponent>().value = directionMovement.transform;
-            // entity.Get<TargetTransformComponent>().Value = targetEntity;
             
+            //for collision 
             var playerEntity = new PlayerEntity(_view, entity);
         }
-    }
-
-    public struct DirectionMovementComponent
-    {
-        public Transform value;
-    }
-
-    public struct UnitVisionComponent
-    {
-        public UnitVision value;
-    }
-
-    public struct UnitReputationComponent
-    {
-        public UnitReputation value;
-    }
-
-    public struct RigidbodyComponent
-    {
-        public Rigidbody value;
     }
 }

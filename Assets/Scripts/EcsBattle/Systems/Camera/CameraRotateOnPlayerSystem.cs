@@ -16,7 +16,6 @@ namespace EcsBattle
                 ref var transform = ref _filter.Get2(index).value;
                 ref var target = ref _filter.Get1(index);
 
-                // transform.rotation = Quaternion.LookRotation(target.positionThirdTarget.position);
                 transform.LookAt(target.positionPlayerTransform);
             }
         }

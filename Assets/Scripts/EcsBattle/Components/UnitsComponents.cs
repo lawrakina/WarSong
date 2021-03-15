@@ -12,15 +12,7 @@ namespace EcsBattle.Components
         public Transform rootTransform;
         public Transform modelTransform;
     }
-    // public struct BaseUnitComponent
-    // {
-    //     public UnitReputation unitReputation;
-    //     public Transform transform;
-    //     public Rigidbody rigidbody;
-    //     public AnimatorParameters animator;
-    //     public UnitVision unitVision;
-    //     public Collider collider;
-    // }
+
     public struct AwaitTimerForVisionComponent
     {
         public float Value;
@@ -31,6 +23,7 @@ namespace EcsBattle.Components
         public float currentTime;
         public float maxTime;
     }
+
     public struct TimerTickedForVisionComponent
     {
     }
@@ -60,11 +53,6 @@ namespace EcsBattle.Components
         public Transform value;
     }
 
-    // public struct DirectionMoving
-    // {
-    //     public Vector3 Value;
-    // }
-
     public struct MovementSpeed
     {
         public float value;
@@ -75,23 +63,44 @@ namespace EcsBattle.Components
         public float value;
     }
 
-    public struct TargetTransformComponent
+    public struct DirectionMovementComponent
     {
-        public Transform Value;
+        public Transform value;
     }
+
+    public struct UnitVisionComponent
+    {
+        public UnitVision value;
+    }
+
+    public struct UnitReputationComponent
+    {
+        public UnitReputation value;
+    }
+
+    public struct RigidbodyComponent
+    {
+        public Rigidbody value;
+    }
+
     public struct TargetEntityComponent
     {
         public EcsEntity value;
     }
+
     public struct AnimatorComponent
     {
         public AnimatorParameters value;
     }
+
     public struct NeedStepComponent
     {
         public Vector3 value;
-        public bool needMove;
-        public bool needRotate;
+    }
+
+    public struct NeedRotateComponent
+    {
+        public Transform value;
     }
 
     public struct CurrentTargetComponent
