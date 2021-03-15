@@ -25,14 +25,12 @@ namespace EcsBattle.Systems.Enemies
 
                 var entity = _world.NewEntity();
                 entity.Get<EnemyComponent>();
-                entity.Get<TransformComponent>().value = view.Transform;
-                entity.Get<RigidbodyComponent>().value = view.Rigidbody;
-                entity.Get<AnimatorComponent>().value = view.AnimatorParameters;
-                entity.Get<UnitReputationComponent>().value = view.UnitReputation;
-                entity.Get<UnitVisionComponent>().value = view.UnitVision;
-                
-                entity.Get<MovementSpeed>().value = view.Attributes.Speed;
-                entity.Get<RotateSpeed>().value = view.Attributes.RotateSpeedPlayer;
+                entity.Get<UnitComponent>().transform = view.Transform;
+                entity.Get<UnitComponent>().rigidbody = view.Rigidbody;
+                entity.Get<UnitComponent>().animator = view.AnimatorParameters;
+                entity.Get<UnitComponent>().reputation = view.UnitReputation;
+                entity.Get<UnitComponent>().vision = view.UnitVision;
+                entity.Get<UnitComponent>().attributes = view.Attributes;
                 entity.Get<UiEnemyHealthBarComponent>().Value = view.HealthBar;
                 entity.Get<UnitHpComponent>().CurrentValue = view.CurrentHp;
                 entity.Get<UnitHpComponent>().MaxValue = view.MaxHp;
@@ -62,11 +60,5 @@ namespace EcsBattle.Systems.Enemies
             view.Rigidbody.isKinematic = false;
             view.Collider.enabled = true;
         }
-    }
-
-    public struct ListRigidBAndCollidersComponent
-    {
-        public List<Rigidbody> rigidbodies;
-        public List<Collider> colliders;
     }
 }

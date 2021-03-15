@@ -27,9 +27,4 @@ namespace EcsBattle.Systems.Attacks
             }
         }
     }
-
-    public struct DeathEventComponent
-    {
-        public EcsEntity _killer;
-    }
 }

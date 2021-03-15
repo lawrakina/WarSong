@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace EcsBattle.Systems.Attacks
 {
-    public sealed class TimerForGetPermissionAttackFromWeaponSystem : IEcsRunSystem
+    public sealed class TimerForGettingPermissionAttackFromWeaponSystem : IEcsRunSystem
     {
         //If Permission not founded => Start Timer, create new Permission, stop Timer
-        private EcsFilter<BattleInfoComponent>.Exclude<PermissionForAttackAllowedComponent> _filter;
+        private EcsFilter<BattleInfoComponent>.Exclude<PermissionForAttackAllowedComponent,AwaitTimerForOneStrikeComponent> _filter;
         public void Run()
         {
             foreach (var i in _filter)

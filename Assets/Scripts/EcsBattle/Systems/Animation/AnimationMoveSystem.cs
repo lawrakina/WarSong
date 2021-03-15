@@ -8,17 +8,16 @@ namespace EcsBattle.Systems.Animation
 {
     public sealed class AnimationMoveSystem : IEcsRunSystem
     {
-        private EcsFilter<DirectionMovementComponent, AnimatorComponent> _filter;
+        private EcsFilter<PlayerComponent, DirectionMovementComponent> _filter;
         public void Run()
         {
             foreach (var index in _filter)
             {
-                ref var animator = ref _filter.Get2(index);
-                ref var direction = ref _filter.Get1(index);
+                ref var player = ref _filter.Get1(index);
+                ref var direction = ref _filter.Get2(index).value;
 
-                Dbg.Log($"Speed:{direction.value.localPosition.z}, HorizontalSpeed:{direction.value.localPosition.x}");
-                animator.value.Speed = direction.value.localPosition.z;
-                animator.value.HorizontalSpeed = direction.value.localPosition.x;
+                player.animator.Speed = direction.localPosition.z;
+                player.animator.HorizontalSpeed = direction.localPosition.x;
             }
         }
     }

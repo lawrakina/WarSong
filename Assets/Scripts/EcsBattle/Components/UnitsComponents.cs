@@ -1,4 +1,5 @@
-﻿using Battle;
+﻿using System.Collections.Generic;
+using Battle;
 using Leopotam.Ecs;
 using Unit;
 using UnityEngine;
@@ -11,6 +12,11 @@ namespace EcsBattle.Components
     {
         public Transform rootTransform;
         public Transform modelTransform;
+        public Rigidbody rigidbody;
+        public UnitReputation unitReputation;
+        public UnitVision unitVision;
+        public UnitAttributes attributes;
+        public AnimatorParameters animator;
     }
 
     public struct AwaitTimerForVisionComponent
@@ -32,6 +38,22 @@ namespace EcsBattle.Components
     {
     }
 
+    public struct UnitComponent
+    {
+        public Transform transform;
+        public Rigidbody rigidbody;
+        public AnimatorParameters animator;
+        public UnitReputation reputation;
+        public UnitAttributes attributes;
+        public UnitVision vision;
+    }
+
+    public struct ListRigidBAndCollidersComponent
+    {
+        public List<Rigidbody> rigidbodies;
+        public List<Collider> colliders;
+    }
+
     public struct AttackCollisionComponent
     {
         public InfoCollision Value;
@@ -48,19 +70,14 @@ namespace EcsBattle.Components
         public float MaxValue;
     }
 
+    public struct DeathEventComponent
+    {
+        public EcsEntity _killer;
+    }
+
     public struct TransformComponent
     {
         public Transform value;
-    }
-
-    public struct MovementSpeed
-    {
-        public float value;
-    }
-
-    public struct RotateSpeed
-    {
-        public float value;
     }
 
     public struct DirectionMovementComponent
@@ -68,29 +85,9 @@ namespace EcsBattle.Components
         public Transform value;
     }
 
-    public struct UnitVisionComponent
-    {
-        public UnitVision value;
-    }
-
-    public struct UnitReputationComponent
-    {
-        public UnitReputation value;
-    }
-
-    public struct RigidbodyComponent
-    {
-        public Rigidbody value;
-    }
-
     public struct TargetEntityComponent
     {
         public EcsEntity value;
-    }
-
-    public struct AnimatorComponent
-    {
-        public AnimatorParameters value;
     }
 
     public struct NeedStepComponent
@@ -107,5 +104,26 @@ namespace EcsBattle.Components
     {
         public Transform Target;
         public float sqrDistance;
+    }
+
+
+    public struct NeedStartAnimationComponent
+    {
+    }
+
+    public struct NeedAttackComponent
+    {
+    }
+
+    public struct NeedFindTargetComponent
+    {
+    }
+
+    public struct NeedLookAtTargetComponent
+    {
+    }
+
+    public struct FinalAttackComponent
+    {
     }
 }

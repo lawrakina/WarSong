@@ -10,7 +10,6 @@ using EcsBattle.Systems.Player;
 using EcsBattle.Systems.PlayerMove;
 using EcsBattle.Systems.PlayerVision;
 using EcsBattle.Systems.Ui;
-using Extension;
 using Leopotam.Ecs;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
@@ -54,27 +53,25 @@ namespace EcsBattle
 
             _execute
                 //Create Player & Camera
-                .Add(new CreatePlayerEntitySystem());
-            _execute
-                .Add(new CreateThirdCameraEntitySystem());
-            _execute
+                .Add(new CreatePlayerEntitySystem())
+                .Add(new CreateThirdCameraEntitySystem())
                 //InputControl
                 .Add(new CreateInputControlSystem())
                 .Add(new TimerJoystickSystem())
-
-                //EVENTS Click\Swipe\Movement
+                //    EVENTS Click\Swipe\Movement
                 .Add(new GetClickInInputControlSystem())
                 .Add(new GetMovementInInputControlSystem())
                 .Add(new GetSwipeInInputControlSystem())
-
+                .Add(new BindingEventsToActionSystem())
+                //UI Player
+                .Add(new UpdatePlayerHealthPointsInUiSystem())
                 //Player
-                //Movement
+                //    Movement
                 .Add(new MovementPlayer1SetDirectionSystem())
                 .Add(new MovementPlayer2CalculateStepValueSystem());
             _fixedExecute
                 .Add(new MovementPlayer3MoveRigidBodySystem())
                 .Add(new MovementPlayer4RotateTransformSystem());
-
             //////////////
             //if us Rotate and Move camera systems than remove code in CreateThirdCameraEntitySystem
             //Moving Camera
@@ -82,10 +79,19 @@ namespace EcsBattle
             // .Add(new CameraRotateOnPlayerSystem())
             // .Add(new CameraPositioningOnMarkerPlayerSystem());
             //////////////
+             _execute
+                // Animation
+                 .Add(new AnimationMoveSystem())
 
-            _execute
-                //     //Animation Player
-                .Add(new AnimationMoveSystem())
+                //Attack
+                .Add(new TimerForGettingPermissionAttackFromWeaponSystem())
+                .Add(new Attack1StartProcessSystem())
+                .Add(new Attack2StartGetTargetSystem())
+                .Add(new Attack3LookAtTargetSystem())
+                .Add(new Attack4StartAnimationStrikeSystem())
+                .Add(new Attack5StartTimerLagBeforeAttack())
+                .Add(new Attack6FinalAttackSystem())
+                .Add(new ApplyDamageInUnitSystem())
 
                 //Enemies
                 .Add(new CreateEnemyEntitySystem())
@@ -97,8 +103,6 @@ namespace EcsBattle
                 // .Add(new NeedLerpPositionCameraFollowingToTargetSystem())
                 // .Add(new EnableFollowingCameraInPlayerNonBattleSystem())
 
-                //     //UI Player
-                .Add(new UpdatePlayerHealthPointsInUiSystem())
                 //
                 //     //Battle Player
                 //     //Vision

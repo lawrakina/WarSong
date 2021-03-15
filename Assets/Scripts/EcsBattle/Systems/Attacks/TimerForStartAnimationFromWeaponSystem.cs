@@ -9,11 +9,10 @@ namespace EcsBattle.Systems.Attacks
 {
     public sealed class TimerForStartAnimationFromWeaponSystem : IEcsRunSystem
     {
-        //If needAttack and have permissionForAttack to start animation and start timerForAttack
-        // private EcsFilter<NeedAttackComponent,
+        // //If needAttack and have permissionForAttack to start animation and start timerForAttack
+        // private EcsFilter<StartAttackComponent,
         //     PermissionForAttackAllowedComponent,
-        //     BattleInfoComponent,
-        //     BaseUnitComponent> _filter;
+        //     BattleInfoComponent> _filter;
 
         public void Run()
         {
@@ -75,7 +74,7 @@ namespace EcsBattle.Systems.Attacks
             //             }
             //
             //             //del command NeedAttack
-            //             entity.Del<NeedAttackComponent>();
+            //             entity.Del<StartAttackComponent>();
             //             //del timer
             //             entity.Del<AwaitTimerForOneStrikeComponent>();
             //             //del permission for attack

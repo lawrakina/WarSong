@@ -31,5 +31,6 @@ namespace EcsBattle.Components
     // {
     // }
     
-    public struct NeedAttackComponent { }
+    public struct StartAttackComponent { }
+    public struct StartJumpComponent { }
 }

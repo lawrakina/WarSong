@@ -17,15 +17,13 @@ namespace EcsBattle.Systems.Player
         {
             var entity = _world.NewEntity();
             //Base components
-            entity.Get<PlayerComponent>().rootTransform =_view.Transform; 
             entity.Get<PlayerComponent>().modelTransform =_view.TransformModel; 
-            entity.Get<RigidbodyComponent>().value = _view.Rigidbody;
-            entity.Get<AnimatorComponent>().value = _view.AnimatorParameters;
-            entity.Get<UnitReputationComponent>().value = _view.UnitReputation;
-            entity.Get<UnitVisionComponent>().value = _view.UnitVision;
-            //moving rotate
-            entity.Get<MovementSpeed>().value = _view.Attributes.Speed;
-            entity.Get<RotateSpeed>().value = _view.Attributes.RotateSpeedPlayer;
+            entity.Get<PlayerComponent>().rootTransform =_view.Transform; 
+            entity.Get<PlayerComponent>().rigidbody = _view.Rigidbody;
+            entity.Get<PlayerComponent>().unitReputation = _view.UnitReputation;
+            entity.Get<PlayerComponent>().unitVision = _view.UnitVision;
+            entity.Get<PlayerComponent>().attributes = _view.Attributes;
+            entity.Get<PlayerComponent>().animator = _view.AnimatorParameters;
             //ui
             entity.Get<UnitHpComponent>().CurrentValue = _view.CurrentHp;
             entity.Get<UnitHpComponent>().MaxValue = _view.CurrentHp;
