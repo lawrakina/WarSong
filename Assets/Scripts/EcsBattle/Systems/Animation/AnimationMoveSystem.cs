@@ -1,5 +1,6 @@
 ﻿using EcsBattle.Components;
 using EcsBattle.Systems.Player;
+using Extension;
 using Leopotam.Ecs;
 
 
@@ -15,6 +16,7 @@ namespace EcsBattle.Systems.Animation
                 ref var animator = ref _filter.Get2(index);
                 ref var direction = ref _filter.Get1(index);
 
+                Dbg.Log($"Speed:{direction.value.localPosition.z}, HorizontalSpeed:{direction.value.localPosition.x}");
                 animator.value.Speed = direction.value.localPosition.z;
                 animator.value.HorizontalSpeed = direction.value.localPosition.x;
             }

@@ -74,37 +74,29 @@ namespace EcsBattle
             _fixedExecute
                 .Add(new MovementPlayer3MoveRigidBodySystem())
                 .Add(new MovementPlayer4RotateTransformSystem());
-            
+
             //////////////
             //if us Rotate and Move camera systems than remove code in CreateThirdCameraEntitySystem
             //Moving Camera
             // _lateExecute
-                // .Add(new CameraRotateOnPlayerSystem())
-                // .Add(new CameraPositioningOnMarkerPlayerSystem());
+            // .Add(new CameraRotateOnPlayerSystem())
+            // .Add(new CameraPositioningOnMarkerPlayerSystem());
             //////////////
-            
-            _execute
 
-                //     
+            _execute
+                //     //Animation Player
+                .Add(new AnimationMoveSystem())
+
+                //Enemies
+                .Add(new CreateEnemyEntitySystem())
+                .Add(new RotateUiHeathBarsToCameraSystem())
+                //Ui Enemies
+                .Add(new UpdateEnemiesCurrentHealthPointsSystem())
 
                 // .Add(new TimerStopFollowingCameraInPlayerSystem())
                 // .Add(new NeedLerpPositionCameraFollowingToTargetSystem())
                 // .Add(new EnableFollowingCameraInPlayerNonBattleSystem())
-                //     //Rotation Player
-                //     .Add(new RestoreSavedRotationInUnitSystem())
-                //     //Moving Player
-                //     .Add(new MovementPlayer1SetDirectionSystem())
-                //     .Add(new MovementPlayer2CalculateStepValueSystem());
-                // _fixedExecute
-                //     .Add(new MovementPlayer3MoveAndRotateRigidBodySystem());
-                // _execute
-                //     //Animation Player
-                // .Add(new AnimationMoveSystem())
-                //     //Enemies
-                //     .Add(new CreateEnemyEntitySystem())
-                //     .Add(new RotateUiHeathBarsToCameraSystem())
-                //     //Ui Enemies
-                //     .Add(new UpdateEnemiesCurrentHealthPointsSystem())
+
                 //     //UI Player
                 .Add(new UpdatePlayerHealthPointsInUiSystem())
                 //
@@ -160,6 +152,22 @@ namespace EcsBattle
             {
                 _execute.Destroy();
                 _execute = null;
+            }
+
+            if (_fixedExecute != null)
+            {
+                _fixedExecute.Destroy();
+                _fixedExecute = null;
+            }
+
+            if (_lateExecute != null)
+            {
+                _lateExecute.Destroy();
+                _lateExecute = null;
+            }
+
+            if (_execute == null && _fixedExecute == null && _lateExecute == null)
+            {
                 _world.Destroy();
                 _world = null;
             }
@@ -177,23 +185,10 @@ namespace EcsBattle
 
         public void LateExecute()
         {
-            // Dbg.Log($"LateExecute");
             _lateExecute?.Run();
         }
 
         #endregion
-
-
-        private void LateUpdate()
-        {
-            if (_enable)
-            {
-                // Dbg.Log($"LateUpdate");
-                 // CameraRotateOnPlayerSystem()
-                // CameraPositioningOnMarkerPlayerSystem()
-                // _lateExecute?.Run();
-            }
-        }
     }
 
 
