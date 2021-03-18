@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace EcsBattle.Systems.Attacks
 {
-    public sealed class Attack7FinalAttackSystem : IEcsRunSystem
+    public sealed class Attack7FinalAttackForPlayerSystem : IEcsRunSystem
     {
         private EcsFilter<
             FinalAttackComponent, 

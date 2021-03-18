@@ -1,13 +1,11 @@
 ﻿using EcsBattle.Components;
-using EcsBattle.Systems.Player;
 using Extension;
 using Leopotam.Ecs;
-using UnityEngine;
 
 
 namespace EcsBattle.Systems.Animation
 {
-    public sealed class AnimationMoveSystem : IEcsRunSystem
+    public sealed class AnimationMoveForPlayerSystem : IEcsRunSystem
     {
         private EcsFilter<PlayerComponent, DirectionMovementComponent> _filter;
         public void Run()

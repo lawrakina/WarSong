@@ -30,7 +30,7 @@ namespace EcsBattle.Components
         public float maxTime;
     }
 
-    public struct TimerTickedForVisionComponent
+    public struct TimerTickedForCheckVisionComponent
     {
     }
 

@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace EcsBattle.Systems.Enemies
 {
-    public sealed class TimerForVisionForEnemySystem : IEcsRunSystem
+    public sealed class TimerForCheckVisionForUnitsSystem : IEcsRunSystem
     {
         private readonly float _time;
-        private EcsFilter<EnemyComponent> _filter;
+        private EcsFilter<EnemyComponent>.Exclude<TimerTickedForCheckVisionComponent> _filter;
 
-        public TimerForVisionForEnemySystem(float time)
+        public TimerForCheckVisionForUnitsSystem(float time)
         {
             _time = time;
         }
@@ -21,20 +21,20 @@ namespace EcsBattle.Systems.Enemies
             {
                 ref var entity = ref _filter.GetEntity(i);
 
-                if (!entity.Has<TimerForVisionForEnemyComponent>())
+                if (!entity.Has<TimerForCheckVisionForEnemyComponent>())
                 {
-                    ref var timer = ref entity.Get<TimerForVisionForEnemyComponent>();
+                    ref var timer = ref entity.Get<TimerForCheckVisionForEnemyComponent>();
                     timer.CurrentTime = Random.Range(0.0f, 0.5f);
                     timer.MaxTime = _time;
                 }
                 else
                 {
-                    ref var timer = ref entity.Get<TimerForVisionForEnemyComponent>();
+                    ref var timer = ref entity.Get<TimerForCheckVisionForEnemyComponent>();
                     timer.CurrentTime += Time.deltaTime;
                     if (timer.CurrentTime > timer.MaxTime)
                     {
-                        entity.Del<TimerForVisionForEnemyComponent>();
-                        entity.Get<TimerTickedForVisionComponent>();
+                        entity.Del<TimerForCheckVisionForEnemyComponent>();
+                        entity.Get<TimerTickedForCheckVisionComponent>();
                     }
                 }
             }

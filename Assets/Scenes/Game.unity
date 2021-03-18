@@ -2041,7 +2041,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 37.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3538,6 +3538,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ----BattleWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544865196874667873, guid: d92d6ed23c665da4e9af441afe85eebb,
+        type: 3}
+      propertyPath: field of view
+      value: 38
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d92d6ed23c665da4e9af441afe85eebb, type: 3}

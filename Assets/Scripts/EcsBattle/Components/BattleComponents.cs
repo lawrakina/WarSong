@@ -23,7 +23,7 @@ namespace EcsBattle.Components
     public struct PermissionForAttackAllowedComponent
     {
     }
-    public struct TimerForVisionForEnemyComponent
+    public struct TimerForCheckVisionForEnemyComponent
     {
         public float CurrentTime;
         public float MaxTime;

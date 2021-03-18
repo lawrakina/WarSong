@@ -12,5 +12,13 @@ namespace Extension
                 y == null ? org.y : (float) y,
                 z == null ? org.z : (float) z);
         }
+        
+
+        public static bool CheckBlocked(Transform player, Transform target, Vector3 offset)
+        {
+            if (!Physics.Linecast(player.position + offset, target.position + offset, out var hit))
+                return true;
+            return hit.transform != target;
+        }
     }
 }

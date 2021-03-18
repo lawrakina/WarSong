@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121564}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -189,6 +189,10 @@ PrefabInstance:
     - target: {fileID: 1213984388251548, guid: 452aeb3047c0bcc4fbc10b11b54b3faf, type: 3}
       propertyPath: m_Name
       value: SM_Env_Ground_Flat_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1213984388251548, guid: 452aeb3047c0bcc4fbc10b11b54b3faf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4601039941046434, guid: 452aeb3047c0bcc4fbc10b11b54b3faf, type: 3}
       propertyPath: m_RootOrder

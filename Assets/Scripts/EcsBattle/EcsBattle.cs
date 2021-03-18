@@ -10,6 +10,7 @@ using EcsBattle.Systems.Player;
 using EcsBattle.Systems.PlayerMove;
 using EcsBattle.Systems.PlayerVision;
 using EcsBattle.Systems.Ui;
+using Extension;
 using Leopotam.Ecs;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
@@ -73,13 +74,13 @@ namespace EcsBattle
                 .Add(new MovementPlayer3MoveRigidBodySystem())
                 .Add(new MovementPlayer4RotateTransformSystem());
             //////////////
-            //if us Rotate and Move camera systems than remove code in CreateThirdCameraEntitySystem
+            //if need using Rotate and Move camera systems than remove code in CreateThirdCameraEntitySystem
             //Moving Camera
             // _lateExecute
             // .Add(new CameraRotateOnPlayerSystem())
             // .Add(new CameraPositioningOnMarkerPlayerSystem());
             //////////////
-             _execute
+            _execute
 
                 //Attack
                 .Add(new TimerForGettingPermissionAttackFromWeaponSystem())
@@ -89,7 +90,7 @@ namespace EcsBattle
                 .Add(new Attack4MoveToTargetSystem())
                 .Add(new Attack5StartAnimationStrikeSystem())
                 .Add(new Attack6StartTimerLagBeforeAttack())
-                .Add(new Attack7FinalAttackSystem())
+                .Add(new Attack7FinalAttackForPlayerSystem())
                 .Add(new ApplyDamageInUnitSystem())
 
                 //Enemies
@@ -97,36 +98,27 @@ namespace EcsBattle
                 .Add(new RotateUiHeathBarsToCameraSystem())
                 //Ui Enemies
                 .Add(new UpdateEnemiesCurrentHealthPointsSystem())
-                
-                
+
                 //     //Death Units
                 .Add(new EnableRagdollByDeathSystem())
                 // Animation
-                 .Add(new AnimationMoveSystem())
+                .Add(new AnimationMoveForPlayerSystem())
+                .Add(new AnimationBattleState())
 
-                // .Add(new TimerStopFollowingCameraInPlayerSystem())
-                // .Add(new NeedLerpPositionCameraFollowingToTargetSystem())
-                // .Add(new EnableFollowingCameraInPlayerNonBattleSystem())
 
-                //
-                //     //Battle Player
-                //     //Vision
-                //     .Add(new StartTimerForVisionPlayerSystem())
-                //     .Add(new TickTimerForVisionForPlayerSystem(0.05f))
-                //     .Add(new SearchClosesTargetForPlayerSystem())
-                //     .Add(new AnimationBattleState())
-                //     //Attack
-                //     .Add(new TimerForGetPermissionAttackFromWeaponSystem())
-                //     .Add(new TimerForStartAnimationFromWeaponSystem())
-                //     .Add(new ApplyDamageInUnitSystem())
-                //
-                //     //Battle Enemies
-                //     //Vision
-                //     .Add(new TimerForVisionForEnemySystem(2.0f))
-                //     .Add(new SearchClosesTargetForEnemySystem())
-                //     //Moving
-                //     .Add(new MovementEnemyToTargetSystem())
-                //
+                //Battle Enemies
+                //Vision
+                .Add(new TimerForCheckVisionForUnitsSystem(2.0f))
+                .Add(new SearchClosesTargetForUnitsSystem())
+                //Moving
+                .Add(new CalculateStepForUnitsToTargetSystem())
+                .Add(new AnimationMoveSystemByStepSystem());
+            _fixedExecute
+                .Add(new MovementUnitByStepSystem());
+            _execute
+                //Attack
+                .Add(new StartAnimationStrikeForUnitsSystem())
+                .Add(new FinalAttackForUnitsSystem())
                 ;
 
             // register one-frame components (order is important), for example:
@@ -196,44 +188,5 @@ namespace EcsBattle
         }
 
         #endregion
-    }
-
-
-    public sealed class MovementEnemyToTargetSystem : IEcsRunSystem
-    {
-        // private EcsFilter<EnemyComponent, BaseUnitComponent, CurrentTargetComponent, MovementSpeed, BattleInfoComponent>
-        // _filter;
-
-        public void Run()
-        {
-            // foreach (var i in _filter)
-            // {
-            //     ref var entity = ref _filter.GetEntity(i);
-            //     ref var unit = ref _filter.Get2(i);
-            //     ref var target = ref _filter.Get3(i);
-            //     ref var moveSpeed = ref _filter.Get4(i);
-            //     ref var weapon = ref _filter.Get5(i);
-            //
-            //     var distanceVector = (target.Target.position - unit.transform.position);
-            //     var sqrDistance = distanceVector.sqrMagnitude;
-            //     var direction = distanceVector * (moveSpeed.Value * Time.deltaTime);
-            //
-            //     if (sqrDistance > (weapon.Value.AttackDistance * weapon.Value.AttackDistance))
-            //     {
-            //         Dbg.Log(
-            //             $"sqrDistance:{sqrDistance}, sqrAttackDistance:{weapon.Value.AttackDistance * weapon.Value.AttackDistance}");
-            //         direction = distanceVector * (moveSpeed.Value * Time.deltaTime);
-            //         unit.rigidbody.MovePosition(unit.transform.position + direction);
-            //         unit.animator.Speed = direction.magnitude;
-            //     }
-            //     else
-            //     {
-            //         unit.animator.Speed = 0.0f;
-            //         entity.Get<NeedAttackComponent>();
-            //     }
-            //
-            //     unit.transform.LookAt(target.Target.position.Change(y: 0.0f));
-            // }
-        }
     }
 }

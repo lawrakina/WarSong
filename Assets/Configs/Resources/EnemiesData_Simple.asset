@@ -18,9 +18,9 @@ MonoBehaviour:
         type: 3}
       EnemyType: 0
       unitVisionComponent:
-        BattleDistance: 7
-        MaxCountTargets: 1
-        OffsetHead: {x: 0, y: 1.5, z: 0}
+        distanceDetection: 15
+        maxCountTargets: 5
+        offsetHead: {x: 0, y: 1.5, z: 0}
       MaxHp: 100
       unitAttributes:
         Name: 1

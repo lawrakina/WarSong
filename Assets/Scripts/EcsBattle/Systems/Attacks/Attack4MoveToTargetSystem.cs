@@ -11,17 +11,17 @@ namespace EcsBattle.Systems.Attacks
             DirectionMovementComponent,
             NeedMoveToTargetAndAttackComponent,
             CurrentTargetComponent,
-            BattleInfoComponent> _filter;
-
+            BattleInfoComponent> _player;
+        
         public void Run()
         {
-            foreach (var i in _filter)
+            foreach (var i in _player)
             {
-                ref var entity = ref _filter.GetEntity(i);
-                ref var unit = ref _filter.Get1(i);
-                ref var target = ref _filter.Get4(i);
-                ref var direction = ref _filter.Get2(i);
-                ref var battleInfo = ref _filter.Get5(i);
+                ref var entity = ref _player.GetEntity(i);
+                ref var unit = ref _player.Get1(i);
+                ref var target = ref _player.Get4(i);
+                ref var direction = ref _player.Get2(i);
+                ref var battleInfo = ref _player.Get5(i);
                 var rootPosition = unit.rootTransform.position;
 
                 target.sqrDistance = (target.Target.position - rootPosition).sqrMagnitude;
