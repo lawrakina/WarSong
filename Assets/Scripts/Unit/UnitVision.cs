@@ -8,10 +8,10 @@ namespace Unit
     public class UnitVision
     {
         [SerializeField]
-        public float BattleDistance = 15.0f;
+        public float distanceDetection = 15.0f;
         [SerializeField]
-        public int MaxCountTargets = 5;
+        public int maxCountTargets = 5;
         [SerializeField]
-        public Vector3 OffsetHead = new Vector3(0.0f,1.5f,0.0f);
+        public Vector3 offsetHead = new Vector3(0.0f,1.5f,0.0f);
     }
 }

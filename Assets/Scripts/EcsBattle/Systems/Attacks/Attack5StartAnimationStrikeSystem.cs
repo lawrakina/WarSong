@@ -4,7 +4,7 @@ using Leopotam.Ecs;
 
 namespace EcsBattle.Systems.Attacks
 {
-    public sealed class Attack4StartAnimationStrikeSystem : IEcsRunSystem
+    public sealed class Attack5StartAnimationStrikeSystem : IEcsRunSystem
     {
         private EcsFilter<NeedStartAnimationComponent, PlayerComponent> _filter;
         public void Run()

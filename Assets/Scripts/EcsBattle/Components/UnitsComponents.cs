@@ -116,6 +116,9 @@ namespace EcsBattle.Components
     {
     }
 
+    public struct NeedMoveToTargetAndAttackComponent
+    {
+    }
     public struct NeedFindTargetComponent
     {
     }

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace EcsBattle.Systems.Attacks
 {
-    public sealed class Attack6FinalAttackSystem : IEcsRunSystem
+    public sealed class Attack7FinalAttackSystem : IEcsRunSystem
     {
         private EcsFilter<
             FinalAttackComponent, 
@@ -27,14 +27,14 @@ namespace EcsBattle.Systems.Attacks
                 ref var battleInfo = ref _filter.Get4(i);
 
                 var attackPositionCenter =
-                    modelTransform.position + modelTransform.forward + vision.OffsetHead;
+                    modelTransform.position + modelTransform.forward + vision.offsetHead;
                 var maxColliders = 10;
                 var hitColliders = new Collider[maxColliders];
                 var numColliders = Physics.OverlapSphereNonAlloc(attackPositionCenter,
                     1.0f, hitColliders, 1 << reputation.EnemyLayer);
             
                 DebugExtension.DebugWireSphere(attackPositionCenter, Color.magenta, 1.0f, 2.0f);
-                Dbg.Log($"numColliders:{numColliders}");
+                Dbg.Log($"Attack6Final.Targets:{numColliders}");
             
                 for (int index = 0; index < numColliders; index++)
                 {

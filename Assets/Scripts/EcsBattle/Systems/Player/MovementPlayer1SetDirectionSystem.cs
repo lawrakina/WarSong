@@ -1,4 +1,5 @@
 ﻿using EcsBattle.Components;
+using EcsBattle.Systems.Attacks;
 using EcsBattle.Systems.Player;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -20,6 +21,10 @@ namespace EcsBattle.Systems.PlayerMove
 
                 direction.value.localPosition =  Vector3.ClampMagnitude(eventVector.value, 1f);
 
+                if (eventVector.value.sqrMagnitude > new Vector3(0.2f, 0.2f, 0.2f).sqrMagnitude)
+                {
+                    entity.Del<NeedMoveToTargetAndAttackComponent>();
+                }
                 entity.Del<MovementEventComponent>();
             }
         }

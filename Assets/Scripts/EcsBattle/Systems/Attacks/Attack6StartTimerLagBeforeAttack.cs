@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace EcsBattle.Systems.Attacks
 {
-    public sealed class Attack5StartTimerLagBeforeAttack : IEcsRunSystem
+    public sealed class Attack6StartTimerLagBeforeAttack : IEcsRunSystem
     {
         private EcsFilter<NeedAttackComponent,BattleInfoComponent> _filter;
         public void Run()

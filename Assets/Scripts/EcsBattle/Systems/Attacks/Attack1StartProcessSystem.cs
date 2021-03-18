@@ -17,9 +17,9 @@ namespace EcsBattle.Systems.Attacks
                 entity.Del<PermissionForAttackAllowedComponent>();
                 entity.Del<StartAttackComponent>();
                 entity.Get<NeedFindTargetComponent>();
-                entity.Get<NeedLookAtTargetComponent>();
-                entity.Get<NeedStartAnimationComponent>();
-                entity.Get<NeedAttackComponent>();
+                // entity.Get<NeedLookAtTargetComponent>();
+                // entity.Get<NeedStartAnimationComponent>();
+                // entity.Get<NeedAttackComponent>();
             }
         }
     }

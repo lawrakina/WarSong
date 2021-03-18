@@ -80,17 +80,16 @@ namespace EcsBattle
             // .Add(new CameraPositioningOnMarkerPlayerSystem());
             //////////////
              _execute
-                // Animation
-                 .Add(new AnimationMoveSystem())
 
                 //Attack
                 .Add(new TimerForGettingPermissionAttackFromWeaponSystem())
                 .Add(new Attack1StartProcessSystem())
                 .Add(new Attack2StartGetTargetSystem())
                 .Add(new Attack3LookAtTargetSystem())
-                .Add(new Attack4StartAnimationStrikeSystem())
-                .Add(new Attack5StartTimerLagBeforeAttack())
-                .Add(new Attack6FinalAttackSystem())
+                .Add(new Attack4MoveToTargetSystem())
+                .Add(new Attack5StartAnimationStrikeSystem())
+                .Add(new Attack6StartTimerLagBeforeAttack())
+                .Add(new Attack7FinalAttackSystem())
                 .Add(new ApplyDamageInUnitSystem())
 
                 //Enemies
@@ -102,6 +101,8 @@ namespace EcsBattle
                 
                 //     //Death Units
                 .Add(new EnableRagdollByDeathSystem())
+                // Animation
+                 .Add(new AnimationMoveSystem())
 
                 // .Add(new TimerStopFollowingCameraInPlayerSystem())
                 // .Add(new NeedLerpPositionCameraFollowingToTargetSystem())

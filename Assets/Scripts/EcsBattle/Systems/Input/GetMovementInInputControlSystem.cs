@@ -21,7 +21,7 @@ namespace EcsBattle.Systems.Input
                 if(input.LastPosition.sqrMagnitude > input.MaxOffsetForMovement.sqrMagnitude)
                 {
                     target.value.Get<MovementEventComponent>().value = input.LastPosition;
-                    Dbg.Log($"joystick.Movement:{input.LastPosition}");
+                    // Dbg.Log($"joystick.Movement:{input.LastPosition}");
                 }
                 else
                 {

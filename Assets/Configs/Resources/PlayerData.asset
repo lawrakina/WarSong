@@ -26,7 +26,7 @@ MonoBehaviour:
           type: 3}
       ExperiencePoints: 3000
       unitVisionParameters:
-        BattleDistance: 15
-        MaxCountTargets: 5
-        OffsetHead: {x: 0, y: 1.5, z: 0}
+        distanceDetection: 15
+        maxCountTargets: 5
+        offsetHead: {x: 0, y: 1.5, z: 0}
   _numberActiveCharacter: 0
