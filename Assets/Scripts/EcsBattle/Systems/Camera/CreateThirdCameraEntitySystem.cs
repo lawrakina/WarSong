@@ -23,7 +23,8 @@ namespace EcsBattle.Systems.Camera
             _camera.Transform.LookAt(_player.Transform);
             
             //if us CameraPositioningOnMarkerPlayerSystem && CameraRotateOnPlayerSystem than decomment =>
-            // var camera = _world.NewEntity();
+            var camera = _world.NewEntity();
+            camera.Get<FightCameraComponent>().uiTextManager = _camera.UiTextManager;
             // camera.Get<FightCameraComponent>().positionThirdTarget = _camera.ThirdTarget;
             // camera.Get<FightCameraComponent>().positionPlayerTransform = _player.Transform;
             // camera.Get<TransformComponent>().value = _camera.Transform;

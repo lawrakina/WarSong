@@ -1,4 +1,6 @@
 ﻿using CharacterCustomizing;
+using Guirao.UltimateTextDamage;
+using Necromancy.UI;
 
 
 namespace Unit.Player
@@ -10,5 +12,6 @@ namespace Unit.Player
         EquipmentPoints EquipmentPoints { get; set; }
         EquipmentItems EquipmentItems { get; set; }
         UnitPlayerBattle UnitPlayerBattle { get; set; }
+        UltimateTextDamageManager UiTextManager { get; set; }
     }
 }

@@ -10,7 +10,8 @@ namespace EcsBattle.Systems.Enemies
         private EcsFilter<UnitComponent,
             NeedMoveToTargetAndAttackComponent,
             CurrentTargetComponent,
-            BattleInfoComponent> _filter;
+            BattleInfoComponent,
+            EnemyComponent> _filter;
 
         public void Run()
         {
@@ -20,10 +21,10 @@ namespace EcsBattle.Systems.Enemies
                 ref var unit = ref _filter.Get1(i);
                 ref var target = ref _filter.Get3(i);
                 ref var battleInfo = ref _filter.Get4(i);
-                var position = unit.transform.position;
+                var position = unit.rootTransform.position;
 
                 target.sqrDistance = (target.Target.position - position).sqrMagnitude;
-                unit.transform.LookAt(target.Target.position, Vector3.up);
+                unit.rootTransform.LookAt(target.Target.position, Vector3.up);
 
                 if (target.sqrDistance > Mathf.Pow(battleInfo.Value.AttackDistance, 2))
                 {

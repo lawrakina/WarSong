@@ -6,7 +6,7 @@ namespace EcsBattle.Systems.Attacks
 {
     public sealed class Attack5StartAnimationStrikeSystem : IEcsRunSystem
     {
-        private EcsFilter<NeedStartAnimationComponent, PlayerComponent> _player;
+        private EcsFilter<NeedStartAnimationComponent, UnitComponent> _player;
         
         public void Run()
         {

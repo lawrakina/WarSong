@@ -11,15 +11,15 @@ namespace Unit.Player
     {
         private readonly CharacterData _characterData;
         private readonly PlayerCustomizerCharacter _playerCustomizerCharacter;
-        private readonly UnitLevelInitialization _unitLevelInitialization;
+        private readonly PlayerLevelInitialization _playerLevelInitialization;
         private readonly PlayerClassesInitialization _playerClassesInitialization;
 
         public PlayerFactory(PlayerCustomizerCharacter playerCustomizerCharacter,
-            UnitLevelInitialization unitLevelInitialization,
+            PlayerLevelInitialization playerLevelInitialization,
             PlayerClassesInitialization playerClassesInitialization,
             CharacterData characterData)
         {
-            _unitLevelInitialization = unitLevelInitialization;
+            _playerLevelInitialization = playerLevelInitialization;
             _playerCustomizerCharacter = playerCustomizerCharacter;
             _playerClassesInitialization = playerClassesInitialization;
             _characterData = characterData;
@@ -62,7 +62,7 @@ namespace Unit.Player
 
             // var playerView = playerPrefab.GetComponent<IPlayerView>();
             _playerCustomizerCharacter.Customize(player, item);
-            _unitLevelInitialization.Initialization(player, item);
+            _playerLevelInitialization.Initialization(player, item);
             _playerClassesInitialization.Initialization(player, item);
 
             return player;

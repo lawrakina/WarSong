@@ -15,9 +15,9 @@ namespace Unit
         Animator Animator { get; set; }
         AnimatorParameters AnimatorParameters { get; }
         UnitAttributes Attributes { get; set; }
-        UnitLevel UnitLevel { get; set; }
         UnitVision UnitVision { get; set; }
         UnitReputation UnitReputation { get; set; }
+        UnitLevel UnitLevel { get; set; }
         float CurrentHp { get; set; }
         float BaseHp { get; set; }
         float MaxHp { get; set; }

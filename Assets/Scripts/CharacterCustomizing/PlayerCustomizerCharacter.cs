@@ -2,6 +2,7 @@
 using Extension;
 using Unit;
 using Unit.Player;
+using UnityEngine;
 
 
 namespace CharacterCustomizing
@@ -22,7 +23,7 @@ namespace CharacterCustomizing
             playerView.Attributes = new UnitAttributes();
             playerView.Attributes.Speed = settings.PlayerMoveSpeed;
             playerView.Attributes.RotateSpeedPlayer = settings.RotateSpeedPlayer;
-            
+
             var person = new PersonCharacter(playerView.TransformModel.gameObject, _characterData);
             person.CharacterRace = settings.CharacterRace;
             person.CharacterGender = settings.CharacterGender;

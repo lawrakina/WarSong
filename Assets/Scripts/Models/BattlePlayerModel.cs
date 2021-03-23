@@ -5,7 +5,7 @@ namespace Models
 {
     public class BattlePlayerModel
     {
-        public float CurrentHp
+        public int CurrentHp
         {
             get => _curHp;
             set
@@ -15,7 +15,7 @@ namespace Models
             }
         }
 
-        public float MaxHp
+        public int MaxHp
         {
             get => _maxHp;
             set
@@ -26,12 +26,12 @@ namespace Models
         }
 
 
-        public float CurrentResource;
-        public float MaxResource;
+        public int CurrentResource;
+        public int MaxResource;
 
-        public Action<float> ChangeMaxHp;
-        public Action<float> ChangeCurrentHp;
-        private float _curHp;
-        private float _maxHp;
+        public Action<int> ChangeMaxHp;
+        public Action<int> ChangeCurrentHp;
+        private int _curHp = 1;
+        private int _maxHp = 1;
     }
 }

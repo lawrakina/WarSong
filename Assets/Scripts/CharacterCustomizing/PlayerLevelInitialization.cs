@@ -6,20 +6,20 @@ using Unit.Player;
 
 namespace CharacterCustomizing
 {
-    public class UnitLevelInitialization
+    public class PlayerLevelInitialization
     {
         #region Fields
 
-        private readonly UnitLevelData _unitLevelData;
+        private readonly PlayerLevelData _playerLevelData;
         private CharacterSettings _characterSettings;
         private IPlayerView _playerView;
 
         #endregion
 
 
-        public UnitLevelInitialization(UnitLevelData unitLevelData)
+        public PlayerLevelInitialization(PlayerLevelData playerLevelData)
         {
-            _unitLevelData = unitLevelData;
+            _playerLevelData = playerLevelData;
         }
 
         public void Initialization(IPlayerView playerView, CharacterSettings characterSettings)
@@ -29,7 +29,7 @@ namespace CharacterCustomizing
 
             _playerView.UnitLevel = new UnitLevel();
             var balansExp = characterSettings.ExperiencePoints;
-            foreach (var level in _unitLevelData.Levels)
+            foreach (var level in _playerLevelData.Levels)
             {
                 if (balansExp - level.MaxiPointsExperience >= 0)
                 {

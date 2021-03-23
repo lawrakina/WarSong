@@ -17,7 +17,7 @@ MonoBehaviour:
     - CharacterClass: 0
       CharacterGender: 0
       CharacterRace: 0
-      PlayerMoveSpeed: 6
+      PlayerMoveSpeed: 12
       RotateSpeedPlayer: 120
       Equipment:
         MainWeapon: {fileID: -6081652771160073839, guid: 1e7d0884ab7bd3e47805374740c15627,

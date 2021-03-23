@@ -19,10 +19,10 @@ namespace Unit.Enemies
         public Animator Animator { get; set; }
         public AnimatorParameters AnimatorParameters { get; set; }
         public UnitAttributes Attributes { get; set; }
-        public UnitLevel UnitLevel { get; set; }
         public UnitVision UnitVision { get; set; }
         public UnitEnemyBattle UnitBattle { get; set; }
         public UnitReputation UnitReputation { get; set; }
+        public UnitLevel UnitLevel { get; set; }
         public float CurrentHp { get; set; }
         public float BaseHp { get; set; }
         public float MaxHp { get; set; }

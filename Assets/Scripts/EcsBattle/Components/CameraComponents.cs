@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Guirao.UltimateTextDamage;
+using UnityEngine;
 
 
 namespace EcsBattle.Components
@@ -7,8 +8,9 @@ namespace EcsBattle.Components
     {
         // public float maxTimeToStopFollowingInPlayer;
         // public float maxTimeToLerpInPlayer;
-        public Transform positionThirdTarget;
-        public Transform positionPlayerTransform;
+        // public Transform positionThirdTarget;
+        // public Transform positionPlayerTransform;
+        public UltimateTextDamageManager uiTextManager;
     }
 
     public struct NeedLerpPositionCameraFollowingToTargetComponent

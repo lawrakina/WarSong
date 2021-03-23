@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Controller;
 using CoreComponent;
 using Data;
@@ -10,6 +11,7 @@ using UniRx;
 using Unit.Enemies;
 using Unit.Player;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 
 namespace Battle
@@ -23,8 +25,10 @@ namespace Battle
         private IReactiveProperty<EnumMainWindow> _activeWindow;
         private readonly IReactiveProperty<EnumBattleWindow> _battleState;
         private readonly BattleInputStruct _battleInputStruct;
+        private readonly BattleSettingsData _battleSettings;
         private readonly IPlayerView _player;
         private readonly BattlePlayerModel _playerModel;
+        private readonly BattleProgressModel _battleModel;
         private readonly IFightCamera _camera;
         private readonly EnemiesInitialization _enemiesInitialization;
         private List<IEnemyView> _listEnemies = new List<IEnemyView>();
@@ -44,10 +48,12 @@ namespace Battle
 
         public EcsBattleInitialization(EcsBattleData ecsBattleData,
             BattleInputStruct battleInputStruct,
+            BattleSettingsData battleSettings,
             IGeneratorDungeon generatorDungeon,
             IReactiveProperty<EnumBattleWindow> battleState,
             IReactiveProperty<EnumMainWindow> activeWindow,
             IPlayerView player, BattlePlayerModel playerModel,
+            BattleProgressModel battleModel,
             IFightCamera camera,
             EnemiesInitialization enemiesInitialization)
         {
@@ -55,8 +61,10 @@ namespace Battle
             _ecsBattle.gameObject.name = StringManager.ECS_BATTLE_GO_NAME;
 
             _battleInputStruct = battleInputStruct;
+            _battleSettings = battleSettings;
             _player = player;
             _playerModel = playerModel;
+            _battleModel = battleModel;
             _camera = camera;
             _enemiesInitialization = enemiesInitialization;
             _generatorDungeon = generatorDungeon;
@@ -66,7 +74,9 @@ namespace Battle
             _ecsBattle.Inject(_player);
             _ecsBattle.Inject(_camera);
             _ecsBattle.Inject(_playerModel);
+            _ecsBattle.Inject(_battleModel);
             _ecsBattle.Inject(_battleInputStruct);
+            _ecsBattle.Inject(_battleSettings);
         }
 
         #endregion

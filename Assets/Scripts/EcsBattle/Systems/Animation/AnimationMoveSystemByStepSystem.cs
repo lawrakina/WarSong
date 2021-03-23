@@ -6,7 +6,7 @@ namespace EcsBattle.Systems.Animation
 {
     public sealed class AnimationMoveSystemByStepSystem : IEcsRunSystem
     {
-        private EcsFilter<UnitComponent> _filter;
+        private EcsFilter<UnitComponent, EnemyComponent> _filter;
         public void Run()
         {
             foreach (var i in _filter)

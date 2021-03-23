@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Battle;
+using Guirao.UltimateTextDamage;
 using Leopotam.Ecs;
+using Necromancy.UI;
 using Unit;
 using UnityEngine;
 using VIew;
@@ -10,13 +12,9 @@ namespace EcsBattle.Components
 {
     public struct PlayerComponent
     {
-        public Transform rootTransform;
-        public Transform modelTransform;
-        public Rigidbody rigidbody;
-        public UnitReputation unitReputation;
-        public UnitVision unitVision;
-        public UnitAttributes attributes;
-        public AnimatorParameters animator;
+    }
+    public struct EnemyComponent
+    {
     }
 
     public struct AwaitTimerForVisionComponent
@@ -34,19 +32,18 @@ namespace EcsBattle.Components
     {
     }
 
-    public struct EnemyComponent
-    {
-    }
 
     public struct UnitComponent
     {
-        public Transform transform;
+        public Transform rootTransform;
+        public Transform modelTransform;
         public Rigidbody rigidbody;
         public Collider collider;
         public AnimatorParameters animator;
         public UnitReputation reputation;
         public UnitAttributes attributes;
         public UnitVision vision;
+        public UnitLevel level;
     }
 
     public struct ListRigidBAndCollidersComponent

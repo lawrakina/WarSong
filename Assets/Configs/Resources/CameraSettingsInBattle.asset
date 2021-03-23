@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f59c0cbaa6754e7fbb8839c314af1e90, type: 3}
   m_Name: CameraSettingsInBattle
   m_EditorClassIdentifier: 
-  maxTimeToStopFollowingInPlayer: 1
-  maxTimeToLerpInPlayer: 1
+  _textDamageManager: {fileID: 2572528044748795553, guid: 0a4f8a0352edcb641ba0abc11832f252,
+    type: 3}

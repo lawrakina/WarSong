@@ -1,4 +1,6 @@
 ﻿using Extension;
+using Guirao.UltimateTextDamage;
+using Necromancy.UI;
 using UnityEngine;
 
 
@@ -35,7 +37,6 @@ namespace Data
                 LocalRotation = new Vector3(-90.0f, 0.0f, -90.0f)
             },
         };
-
 
         #region Color palette
 

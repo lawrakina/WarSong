@@ -1,6 +1,7 @@
 ﻿using System;
 using Data;
 using Extension;
+using Guirao.UltimateTextDamage;
 using Interface;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -79,6 +80,8 @@ namespace Unit.Cameras
             get => _thidrTarget;
             set => _thidrTarget = value;
         }
+
+        public UltimateTextDamageManager UiTextManager { get; set; }
 
         #endregion
 

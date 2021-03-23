@@ -8,7 +8,7 @@ namespace EcsBattle.Systems.Player
 {
     public sealed class MovementPlayer4RotateTransformSystem : IEcsRunSystem
     {
-        private EcsFilter<NeedRotateComponent, PlayerComponent> _filter;
+        private EcsFilter<NeedRotateComponent, PlayerComponent,UnitComponent> _filter;
 
         public void Run()
         {
@@ -16,9 +16,9 @@ namespace EcsBattle.Systems.Player
             {
                 ref var entity = ref _filter.GetEntity(i);
                 ref var needRotate = ref _filter.Get1(i);
-                ref var rootTransform = ref _filter.Get2(i).rootTransform;
-                ref var modelTransform = ref _filter.Get2(i).modelTransform;
-                ref var rotateSpeed = ref _filter.Get2(i).attributes.RotateSpeedPlayer;
+                ref var rootTransform = ref _filter.Get3(i).rootTransform;
+                ref var modelTransform = ref _filter.Get3(i).modelTransform;
+                ref var rotateSpeed = ref _filter.Get3(i).attributes.RotateSpeedPlayer;
 
 
                 // rootTransform.rotation = Quaternion.Slerp(rootTransform.rotation, needRotate.value.rotation, Time.deltaTime * rotateSpeed);

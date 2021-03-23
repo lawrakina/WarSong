@@ -6,7 +6,7 @@ namespace EcsBattle
 {
     public sealed class AnimationBattleState : IEcsRunSystem
     {
-        private EcsFilter<PlayerComponent> _filter;
+        private EcsFilter<UnitComponent> _filter;
         public void Run()
         {
             foreach (var i in _filter)

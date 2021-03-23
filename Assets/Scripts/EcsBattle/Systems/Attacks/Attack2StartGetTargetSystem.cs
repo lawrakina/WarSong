@@ -11,7 +11,8 @@ namespace EcsBattle.Systems.Attacks
     {
         private EcsFilter<
             NeedFindTargetComponent,
-            PlayerComponent
+            PlayerComponent,
+            UnitComponent
             // ,BattleInfoComponent
         > _filter;
 
@@ -20,9 +21,9 @@ namespace EcsBattle.Systems.Attacks
             foreach (var i in _filter)
             {
                 ref var entity = ref _filter.GetEntity(i);
-                ref var transform = ref _filter.Get2(i).rootTransform;
-                ref var vision = ref _filter.Get2(i).unitVision;
-                ref var reputation = ref _filter.Get2(i).unitReputation;
+                ref var transform = ref _filter.Get3(i).rootTransform;
+                ref var vision = ref _filter.Get3(i).vision;
+                ref var reputation = ref _filter.Get3(i).reputation;
                 // ref var battleInfo = ref _filter.Get3(i);
 
                 //поиск всех целей

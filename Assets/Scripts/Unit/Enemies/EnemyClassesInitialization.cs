@@ -7,12 +7,12 @@ namespace Unit.Enemies
     public class EnemyClassesInitialization
     {
         // private readonly EnemyClassesData _data;
-        private readonly UnitLevel _currentPlayerLevel;
+        private readonly UnitLevel _currentUnitLevel;
 
-        public EnemyClassesInitialization(/*EnemyClassesData data,*/ UnitLevel currentPlayerLevel)
+        public EnemyClassesInitialization(/*EnemyClassesData data,*/ UnitLevel currentUnitLevel)
         {
             // _data = data;
-            _currentPlayerLevel = currentPlayerLevel;
+            _currentUnitLevel = currentUnitLevel;
         }
 
         public void Initialization(IEnemyView view, EnemySettings enemySettings)
@@ -26,7 +26,8 @@ namespace Unit.Enemies
             view.Attributes = enemySettings.unitAttributes;
             
             view.UnitBattle = enemySettings.unitBattle;
-            
+
+            view.UnitLevel = enemySettings.unitLevel;
             
             //ToDo сделать полноценную систему Свой-чужой
             view.Transform.gameObject.layer = LayerManager.EnemyLayer;

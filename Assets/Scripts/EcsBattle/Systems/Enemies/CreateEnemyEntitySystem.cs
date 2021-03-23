@@ -2,8 +2,10 @@
 using EcsBattle.Components;
 using EcsBattle.CustomEntities;
 using EcsBattle.Systems.Player;
+using Extension;
 using Interface;
 using Leopotam.Ecs;
+using Models;
 using Unit;
 using Unit.Enemies;
 using UnityEngine;
@@ -16,6 +18,7 @@ namespace EcsBattle.Systems.Enemies
         private EcsWorld _world;
         private List<IEnemyView> _listEnemies;
         private IFightCamera _camera;
+        private BattleProgressModel _battleProgressModel;
 
         public void Init()
         {
@@ -25,13 +28,14 @@ namespace EcsBattle.Systems.Enemies
 
                 var entity = _world.NewEntity();
                 entity.Get<EnemyComponent>();
-                entity.Get<UnitComponent>().transform = view.Transform;
+                entity.Get<UnitComponent>().rootTransform = view.Transform;
                 entity.Get<UnitComponent>().rigidbody = view.Rigidbody;
                 entity.Get<UnitComponent>().collider = view.Collider;
                 entity.Get<UnitComponent>().animator = view.AnimatorParameters;
                 entity.Get<UnitComponent>().reputation = view.UnitReputation;
                 entity.Get<UnitComponent>().vision = view.UnitVision;
                 entity.Get<UnitComponent>().attributes = view.Attributes;
+                entity.Get<UnitComponent>().level = view.UnitLevel;
                 entity.Get<UiEnemyHealthBarComponent>().Value = view.HealthBar;
                 entity.Get<UnitHpComponent>().CurrentValue = view.CurrentHp;
                 entity.Get<UnitHpComponent>().MaxValue = view.MaxHp;

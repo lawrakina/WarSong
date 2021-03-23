@@ -6,6 +6,7 @@
 
         public int CurrentLevel { get; private set; }
         public int CurrentExperiencePoints { get; set; }
+        public float RewardForKilling { get; set; }
 
         #endregion
 

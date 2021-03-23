@@ -1,4 +1,5 @@
 ﻿using System;
+using Battle;
 using Enums;
 using Gui.Battle;
 using Models;
@@ -19,18 +20,21 @@ namespace Gui
         public PausePanel PausePanel;
         public FailPanel FailPanel;
         private BattlePlayerModel _playerModel;
+        private BattleProgressModel _battleModel;
 
         #endregion
 
 
-        public void Ctor(IReactiveProperty<EnumBattleWindow> battleState, BattlePlayerModel playerModel)
+        public void Ctor(IReactiveProperty<EnumBattleWindow> battleState, BattlePlayerModel playerModel,
+            BattleProgressModel battleModel)
         {
             base.Ctor();
 
             _playerModel = playerModel;
+            _battleModel = battleModel;
 
             LevelGeneratorPanel.Ctor();
-            FightPanel.Ctor(_playerModel);
+            FightPanel.Ctor(_battleModel,_playerModel);
             VictoryPanel.Ctor();
             PausePanel.Ctor();
             FailPanel.Ctor();

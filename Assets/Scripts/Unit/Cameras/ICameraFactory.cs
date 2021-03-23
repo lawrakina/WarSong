@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Interface;
+using UnityEngine;
 
 
 namespace Unit.Cameras
 {
     public interface ICameraFactory
     {
-        FightCamera CreateCamera(Camera baseCamera);
+        IFightCamera CreateCamera(Camera baseCamera);
     }
 }

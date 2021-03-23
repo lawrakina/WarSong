@@ -17,7 +17,7 @@ namespace EcsBattle.Systems.Enemies
             {
                 ref var entity = ref _filter.GetEntity(i);
                 ref var unit = ref _filter.Get2(i);
-                ref var transform = ref _filter.Get2(i).transform;
+                ref var transform = ref _filter.Get2(i).rootTransform;
                 ref var vision = ref _filter.Get2(i).vision;
                 ref var distanceDetection = ref _filter.Get2(i).vision.distanceDetection;
                 ref var reputation = ref _filter.Get2(i).reputation;
@@ -35,9 +35,9 @@ namespace EcsBattle.Systems.Enemies
                 var colliders = new Collider[unit.vision.maxCountTargets];
                 var countColliders =
                     Physics.OverlapSphereNonAlloc(position, distanceDetection, colliders, 1 << reputation.EnemyLayer);
-                DebugExtension.DebugWireSphere(position, Color.red, distanceDetection, 1.0f);
+                // DebugExtension.DebugWireSphere(position, Color.red, distanceDetection, 1.0f);
                 var listEnemies = new List<GameObject>();
-                Dbg.Log($"countColliders:{countColliders}");
+                // Dbg.Log($"countColliders:{countColliders}");
 
                 //проверка прямой видимости
                 for (var j = 0; j < countColliders; j++)

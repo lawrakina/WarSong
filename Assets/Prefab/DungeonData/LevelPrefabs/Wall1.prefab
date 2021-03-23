@@ -34,6 +34,7 @@ Transform:
   - {fileID: 363980662083580966}
   - {fileID: 7445485819957303364}
   - {fileID: 2100428456704295684}
+  - {fileID: 4054684928508666729}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -212,6 +213,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_StoneWall_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1436398286074176, guid: aa7a79e53bee7d64e9b1fb9894a773a5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4339720627652856, guid: aa7a79e53bee7d64e9b1fb9894a773a5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -272,6 +277,78 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2101301404270644220}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4056082019761975027
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 467822}
+    m_Modifications:
+    - target: {fileID: 1848455675612600, guid: 031e6e30012afb745b0a530f980f6bc4, type: 3}
+      propertyPath: m_Name
+      value: SM_Bld_Castle_Wall_Cut_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287472177597850, guid: 031e6e30012afb745b0a530f980f6bc4, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287472177597850, guid: 031e6e30012afb745b0a530f980f6bc4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.79927033
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287472177597850, guid: 031e6e30012afb745b0a530f980f6bc4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287472177597850, guid: 031e6e30012afb745b0a530f980f6bc4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287472177597850, guid: 031e6e30012afb745b0a530f980f6bc4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287472177597850, guid: 031e6e30012afb745b0a530f980f6bc4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287472177597850, guid: 031e6e30012afb745b0a530f980f6bc4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287472177597850, guid: 031e6e30012afb745b0a530f980f6bc4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287472177597850, guid: 031e6e30012afb745b0a530f980f6bc4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287472177597850, guid: 031e6e30012afb745b0a530f980f6bc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287472177597850, guid: 031e6e30012afb745b0a530f980f6bc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287472177597850, guid: 031e6e30012afb745b0a530f980f6bc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23423603831077252, guid: 031e6e30012afb745b0a530f980f6bc4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f36af89dacada404ab5564fde90d6059, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 031e6e30012afb745b0a530f980f6bc4, type: 3}
+--- !u!4 &4054684928508666729 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4287472177597850, guid: 031e6e30012afb745b0a530f980f6bc4,
+    type: 3}
+  m_PrefabInstance: {fileID: 4056082019761975027}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7448046773360971964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -282,6 +359,10 @@ PrefabInstance:
     - target: {fileID: 1436398286074176, guid: aa7a79e53bee7d64e9b1fb9894a773a5, type: 3}
       propertyPath: m_Name
       value: SM_Prop_StoneWall_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1436398286074176, guid: aa7a79e53bee7d64e9b1fb9894a773a5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4339720627652856, guid: aa7a79e53bee7d64e9b1fb9894a773a5, type: 3}
       propertyPath: m_RootOrder

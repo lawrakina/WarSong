@@ -2,6 +2,8 @@
 using Battle;
 using CharacterCustomizing;
 using Extension;
+using Guirao.UltimateTextDamage;
+using Necromancy.UI;
 using UnityEngine;
 
 
@@ -20,6 +22,7 @@ namespace Unit.Player
         public UnitAttributes Attributes { get; set; }
         public UnitVision UnitVision { get; set; }
         public UnitPlayerBattle UnitPlayerBattle { get; set; }
+        public UltimateTextDamageManager UiTextManager { get; set; }
         public UnitReputation UnitReputation { get; set; }
         public float CurrentHp { get; set; }
         public float BaseHp { get; set; }

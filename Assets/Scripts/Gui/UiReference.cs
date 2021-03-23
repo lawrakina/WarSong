@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Battle;
 using Controller;
 using Enums;
 using Gui.Characters;
@@ -27,6 +28,7 @@ namespace Gui
         public NavigationBar NavigationBar;
         private ListOfCharactersController _listOfCharactersController;
         private BattlePlayerModel _playerModel;
+        private BattleProgressModel _battleModel;
 
         #endregion
 
@@ -70,17 +72,19 @@ namespace Gui
 
         public void Ctor(IReactiveProperty<EnumMainWindow> activeWindow,
             IReactiveProperty<EnumBattleWindow> battleState, IReactiveProperty<EnumCharacterWindow> charWindow,
-            ListOfCharactersController listOfCharactersController, BattlePlayerModel playerModel)
+            ListOfCharactersController listOfCharactersController, BattlePlayerModel playerModel,
+            BattleProgressModel battleModel)
         {
             _activeWindow = activeWindow;
             _battleState = battleState;
             _charWindow = charWindow;
             _listOfCharactersController = listOfCharactersController;
             _playerModel = playerModel;
+            _battleModel = battleModel;
 
             CharacterPanel.Ctor(_activeWindow, _charWindow, _listOfCharactersController);
             EquipmentPanel.Ctor();
-            BattlePanel.Ctor(_battleState, _playerModel);
+            BattlePanel.Ctor(_battleState, _playerModel, _battleModel);
             SpellsPanel.Ctor();
             TalentsPanel.Ctor();
             NavigationBar.Ctor(_activeWindow, _battleState);

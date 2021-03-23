@@ -44,7 +44,7 @@ namespace Controller
         private GameObject _linkToCharPlayer;
 
         private CharacterData _characterData;
-        private UnitLevelData _unitLevelData;
+        private PlayerLevelData _playerLevelData;
         private PlayerClassesData _playerClassesData;
         private PlayerData _playerData;
         private EnemiesData _enemiesData;
@@ -59,6 +59,7 @@ namespace Controller
         private IReactiveProperty<EnumBattleWindow> _battleState;
         private IReactiveProperty<EnumFightCamera> _typeCameraAndCharControl;
         private GeneratorDungeon _generatorDungeon;
+        private BattleSettingsData _battleSettingsData;
 
         #endregion
 
@@ -83,8 +84,9 @@ namespace Controller
             _battleState.Subscribe(_ => { Dbg.Log(_battleState.Value); });
 
             var playerModel = new BattlePlayerModel();
+            var battleModel = new BattleProgressModel();
 
-            var unitLevelInitialization = new UnitLevelInitialization(_unitLevelData);
+            var unitLevelInitialization = new PlayerLevelInitialization(_playerLevelData);
             var playerClassesInitialization = new PlayerClassesInitialization(_playerClassesData);
             var playerCustomizerCharacter = new PlayerCustomizerCharacter(_characterData);
             var playerFactory = new PlayerFactory(
@@ -101,7 +103,7 @@ namespace Controller
 
             //create ui & windows
             _windows.Ctor(_activeWindow, _battleState);
-            _ui.Ctor(_activeWindow, _battleState, _charWindow, listOfCharactersController, playerModel);
+            _ui.Ctor(_activeWindow, _battleState, _charWindow, listOfCharactersController, playerModel, battleModel);
 
             //generator levels
             var generatorDungeon = new GeneratorDungeon(_generatorData, _windows.BattleWindow.Content.transform);
@@ -134,8 +136,8 @@ namespace Controller
             var enemiesInitialization = new EnemiesInitialization(_enemiesData, enemyFactory, healthBarFactory);
 
             var battleInitialization = new EcsBattleInitialization(
-                _ecsBattleData, battleInputControlsInitialization.GetData(), generatorDungeon, _battleState,
-                _activeWindow, _player, playerModel, fightCamera, enemiesInitialization);
+                _ecsBattleData, battleInputControlsInitialization.GetData(), _battleSettingsData, generatorDungeon, _battleState,
+                _activeWindow, _player, playerModel, battleModel, fightCamera, enemiesInitialization);
             battleInitialization.Dungeon = generatorDungeon.Dungeon();
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(battleInitialization);
 
@@ -160,8 +162,8 @@ namespace Controller
         {
             _characterData = Resources.Load<CharacterData>("CharacterData");
             Dbg.Log($"Start resource load data - CharacterData:{_characterData}");
-            _unitLevelData = Resources.Load<UnitLevelData>("UnitLevelData");
-            Dbg.Log($"Start resource load data - UnitLevelData:{_unitLevelData}");
+            _playerLevelData = Resources.Load<PlayerLevelData>("UnitLevelData");
+            Dbg.Log($"Start resource load data - UnitLevelData:{_playerLevelData}");
             _playerClassesData = Resources.Load<PlayerClassesData>("ClassesData");
             Dbg.Log($"Start resource load data - PlayerClassesData:{_playerClassesData}");
             _playerData = Resources.Load<PlayerData>("PlayerData");
@@ -176,6 +178,8 @@ namespace Controller
             Dbg.Log($"Start resource load data - EcsBattleData:{_ecsBattleData}");
             _battleInputData = Resources.Load<BattleInputData>("BattleInputData");
             Dbg.Log($"Start resource load data - BattleInputData:{_battleInputData}");
+            _battleSettingsData = Resources.Load<BattleSettingsData>("BattleSettingsData");
+            Dbg.Log($"Start resource load data - BattleSettingsData:{_battleSettingsData}");
 
             LayerManager.EnemyLayer = LayerMask.NameToLayer(StringManager.ENEMY_LAYER);
             LayerManager.PlayerLayer = LayerMask.NameToLayer(StringManager.PLAYER_LAYER);

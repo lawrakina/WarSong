@@ -2,6 +2,7 @@
 using EcsBattle.Components;
 using Leopotam.Ecs;
 using Models;
+using UnityEngine;
 
 
 namespace EcsBattle.Systems.Ui
@@ -20,8 +21,8 @@ namespace EcsBattle.Systems.Ui
         {
             foreach (var index in _filter)
             {
-                _playerModel.CurrentHp = (float) Math.Ceiling(_filter.Get2(index).CurrentValue);
-                _playerModel.MaxHp = (float) Math.Ceiling(_filter.Get2(index).MaxValue);
+                _playerModel.CurrentHp = Mathf.CeilToInt(_filter.Get2(index).CurrentValue);
+                _playerModel.MaxHp =  Mathf.CeilToInt(_filter.Get2(index).MaxValue);
             }
         }
     }

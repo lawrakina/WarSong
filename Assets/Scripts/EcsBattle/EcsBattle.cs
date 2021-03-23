@@ -9,6 +9,7 @@ using EcsBattle.Systems.Input;
 using EcsBattle.Systems.Player;
 using EcsBattle.Systems.PlayerMove;
 using EcsBattle.Systems.PlayerVision;
+using EcsBattle.Systems.Statistics;
 using EcsBattle.Systems.Ui;
 using Extension;
 using Leopotam.Ecs;
@@ -53,6 +54,10 @@ namespace EcsBattle
 #endif
 
             _execute
+                //GameManager
+                .Add(new CreateTimerStatisticsObserverSystem())
+                .Add(new TimerTickForStatisticsObserverSystem())
+                // .Add(new TimerForCheckingWinningConditionsSystem())
                 //Create Player & Camera
                 .Add(new CreatePlayerEntitySystem())
                 .Add(new CreateThirdCameraEntitySystem())
@@ -98,9 +103,10 @@ namespace EcsBattle
                 .Add(new RotateUiHeathBarsToCameraSystem())
                 //Ui Enemies
                 .Add(new UpdateEnemiesCurrentHealthPointsSystem())
+                .Add(new ShowUiMessageByDamageSystem())
 
                 //     //Death Units
-                .Add(new EnableRagdollByDeathSystem())
+                .Add(new ProcessingUnitEventDeathSystem())
                 // Animation
                 .Add(new AnimationMoveForPlayerSystem())
                 .Add(new AnimationBattleState())
@@ -119,6 +125,8 @@ namespace EcsBattle
                 //Attack
                 .Add(new StartAnimationStrikeForUnitsSystem())
                 .Add(new FinalAttackForUnitsSystem())
+                
+                .Add(new UpdateStatisticsOfBattleGroundSystem())
                 ;
 
             // register one-frame components (order is important), for example:
@@ -129,7 +137,11 @@ namespace EcsBattle
             // .Inject (new CameraService ())
             // .Inject (new NavMeshSupport ())
             foreach (var obj in _listForInject)
-                _execute.Inject(obj);
+            {
+                Debug.Log(obj);
+                _execute.Inject(obj);    
+            }
+            
             foreach (var obj in _listForInject)
                 _fixedExecute.Inject(obj);
             foreach (var obj in _listForInject)
@@ -189,4 +201,12 @@ namespace EcsBattle
 
         #endregion
     }
+
+    // public sealed class TimerForCheckingWinningConditionsSystem : IEcsRunSystem
+    // {
+    //     public void Run()
+    //     {
+    //         
+    //     }
+    // }
 }

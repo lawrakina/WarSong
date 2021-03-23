@@ -23,5 +23,7 @@ namespace Data
         public UnitEnemyBattle unitBattle;
         [SerializeField]
         public UiEnemySettings uiElement;
+        [SerializeField]
+        public UnitLevel unitLevel;
     }
 }
