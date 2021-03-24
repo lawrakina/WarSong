@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using DuloGames.UI;
-using EcsBattle.Components;
 using EcsBattle.Systems.Animation;
 using EcsBattle.Systems.Attacks;
+using EcsBattle.Systems.BattleLiveCycles;
 using EcsBattle.Systems.Camera;
 using EcsBattle.Systems.Enemies;
 using EcsBattle.Systems.Input;
@@ -12,10 +12,8 @@ using EcsBattle.Systems.PlayerMove;
 using EcsBattle.Systems.PlayerVision;
 using EcsBattle.Systems.Statistics;
 using EcsBattle.Systems.Ui;
-using Enums;
 using Extension;
 using Leopotam.Ecs;
-using UniRx;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
 #endif
@@ -60,7 +58,7 @@ namespace EcsBattle
                 //GameManager
                 .Add(new CreateTimerStatisticsObserverSystem())
                 .Add(new TimerTickForStatisticsObserverSystem())
-                .Add(new TimerForCheckingWinningConditionsSystem())
+                
                 .Add(new SpawnGoalLevelSystem())
                 .Add(new EndOfBattleSystem())
                 //Create Player & Camera
@@ -203,28 +201,5 @@ namespace EcsBattle
         }
 
         #endregion
-    }
-
-    public sealed class EndOfBattleSystem : IEcsRunSystem
-    {
-        private IReactiveProperty<EnumBattleWindow> _battleState;
-        private EcsFilter<GoalLevelComponent, GoalLevelAchievedComponent> _filter;
-        public void Run()
-        {
-            foreach (var i in _filter)
-            {
-                ref var entity = ref _filter.GetEntity(i);
-
-                Time.timeScale = 0;
-                _battleState.Value = EnumBattleWindow.Victory;
-            }
-        }
-    }
-
-    public sealed class TimerForCheckingWinningConditionsSystem : IEcsRunSystem
-    {
-        public void Run()
-        {
-        }
     }
 }

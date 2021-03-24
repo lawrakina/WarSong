@@ -5,7 +5,7 @@ using Leopotam.Ecs;
 using VIew;
 
 
-namespace EcsBattle
+namespace EcsBattle.Systems.BattleLiveCycles
 {
     public sealed class SpawnGoalLevelSystem : IEcsInitSystem
     {

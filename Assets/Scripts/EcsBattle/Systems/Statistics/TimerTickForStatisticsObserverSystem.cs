@@ -8,6 +8,7 @@ namespace EcsBattle.Systems.Statistics
     public sealed class TimerTickForStatisticsObserverSystem : IEcsRunSystem
     {
         private EcsFilter<TimerStatisticsObserverComponent> _filter;
+        
         public void Run()
         {
             foreach (var i in _filter)
@@ -16,6 +17,10 @@ namespace EcsBattle.Systems.Statistics
 
                 timer.currentTime += Time.deltaTime;
                 timer.observer.CurrentTimer = timer.currentTime;
+                // if (timer.maxTime <= timer.currentTime)
+                // {
+                //     
+                // }
             }
         }
     }
