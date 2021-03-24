@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: BattleSettingsData
   m_EditorClassIdentifier: 
   _maxTimeForReward: 120
+  _storageGoalLevel:
+  - {fileID: -4287801578671158148, guid: 2679f18edb7e9b648b310652d1acc590, type: 3}

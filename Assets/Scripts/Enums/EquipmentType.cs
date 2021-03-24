@@ -1,4 +1,4 @@
-﻿namespace Data
+﻿namespace Enums
 {
     public enum EquipmentType
     {

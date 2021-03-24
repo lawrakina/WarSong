@@ -111,6 +111,12 @@ namespace CoreComponent
             return result.ToList();
         }
 
+        public SpawnMarkerGoalInDungeon GetGoalLevelMarker()
+        {
+            var result = _parent.GetComponentInChildren<SpawnMarkerGoalInDungeon>();
+            return result;
+        }
+
         public void Execute(float deltaTime)
         {
             if (_buildingProcess)

@@ -1,5 +1,7 @@
-﻿using EcsBattle.Components;
+﻿using DungeonArchitect.Samples.GridFlow;
+using EcsBattle.Components;
 using EcsBattle.CustomEntities;
+using Extension;
 using Leopotam.Ecs;
 using Models;
 using Unit;
@@ -44,6 +46,18 @@ namespace EcsBattle.Systems.Player
             
             //for collision 
             var playerEntity = new PlayerEntity(_view, entity);
+
+            var inventory = Object.Instantiate(new GameObject("KeyChain"), _view.Transform);
+            var inventoryForKeys = inventory.AddCode<Inventory>();
+            inventoryForKeys.slots = new InventorySlot[4];
+            inventoryForKeys.slots[0] = Object.Instantiate(new GameObject("slot1"),inventory.transform).AddCode<InventorySlot>();
+            inventoryForKeys.slots[0].item = new InventoryItem();
+            inventoryForKeys.slots[1] = Object.Instantiate(new GameObject("slot2"),inventory.transform).AddCode<InventorySlot>();
+            inventoryForKeys.slots[1].item = new InventoryItem();
+            inventoryForKeys.slots[2] = Object.Instantiate(new GameObject("slot3"),inventory.transform).AddCode<InventorySlot>();
+            inventoryForKeys.slots[2].item = new InventoryItem();
+            inventoryForKeys.slots[3] = Object.Instantiate(new GameObject("slot4"),inventory.transform).AddCode<InventorySlot>();
+            inventoryForKeys.slots[3].item = new InventoryItem();
         }
     }
 }

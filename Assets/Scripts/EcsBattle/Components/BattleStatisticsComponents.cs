@@ -9,4 +9,13 @@ namespace EcsBattle.Components
         public float maxTime;
         public BattleProgressModel observer;
     }
+    
+    internal struct GoalLevelAchievedComponent
+    {
+    }
+
+
+    public struct GoalLevelComponent
+    {
+    }
 }

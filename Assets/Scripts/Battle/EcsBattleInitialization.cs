@@ -11,6 +11,7 @@ using UniRx;
 using Unit.Enemies;
 using Unit.Player;
 using UnityEngine;
+using VIew;
 using Object = UnityEngine.Object;
 
 
@@ -22,6 +23,7 @@ namespace Battle
 
         private readonly EcsBattle.EcsBattle _ecsBattle;
         private readonly IGeneratorDungeon _generatorDungeon;
+        private readonly InteractiveObjectsInitialization _interactiveObjectsInitialization;
         private IReactiveProperty<EnumMainWindow> _activeWindow;
         private readonly IReactiveProperty<EnumBattleWindow> _battleState;
         private readonly BattleInputStruct _battleInputStruct;
@@ -32,13 +34,14 @@ namespace Battle
         private readonly IFightCamera _camera;
         private readonly EnemiesInitialization _enemiesInitialization;
         private List<IEnemyView> _listEnemies = new List<IEnemyView>();
+        private GoalLevelView _goal;
 
         #endregion
 
 
         #region Properties
 
-        public GameObject Dungeon { get; set; }
+        // public GameObject Dungeon { get; set; }
         public EcsBattle.EcsBattle BattleEngine() => _ecsBattle;
 
         #endregion
@@ -50,6 +53,7 @@ namespace Battle
             BattleInputStruct battleInputStruct,
             BattleSettingsData battleSettings,
             IGeneratorDungeon generatorDungeon,
+            InteractiveObjectsInitialization interactiveObjectsInitialization,
             IReactiveProperty<EnumBattleWindow> battleState,
             IReactiveProperty<EnumMainWindow> activeWindow,
             IPlayerView player, BattlePlayerModel playerModel,
@@ -68,9 +72,11 @@ namespace Battle
             _camera = camera;
             _enemiesInitialization = enemiesInitialization;
             _generatorDungeon = generatorDungeon;
+            _interactiveObjectsInitialization = interactiveObjectsInitialization;
             _battleState = battleState;
             _activeWindow = activeWindow;
 
+            _ecsBattle.Inject(_battleState);
             _ecsBattle.Inject(_player);
             _ecsBattle.Inject(_camera);
             _ecsBattle.Inject(_playerModel);
@@ -90,6 +96,9 @@ namespace Battle
                 _enemiesInitialization.GetListEnemies(_generatorDungeon.GetEnemiesMarkers(),
                     _generatorDungeon.Dungeon());
             _ecsBattle.Inject(_listEnemies);
+
+            _goal = _interactiveObjectsInitialization.GetGoal(_generatorDungeon.GetGoalLevelMarker());
+            _ecsBattle.Inject(_goal);
 
             var playerPosition = _generatorDungeon.GetPlayerPosition();
             _player.Transform.SetParent(playerPosition);

@@ -16,5 +16,6 @@ namespace CoreComponent
         void SetRandomSeed();
         GameObject Dungeon();
         List<SpawnMarkerEnemyInDungeon> GetEnemiesMarkers();
+        SpawnMarkerGoalInDungeon GetGoalLevelMarker();
     }
 }

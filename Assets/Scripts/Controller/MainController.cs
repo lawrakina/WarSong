@@ -53,13 +53,13 @@ namespace Controller
         private EcsBattleData _ecsBattleData;
         private BattleInputData _battleInputData;
         private CameraSettingsInBattle _cameraSettings;
+        private GeneratorDungeon _generatorDungeon;
+        private BattleSettingsData _battleSettingsData;
 
         private IReactiveProperty<EnumMainWindow> _activeWindow;
         private IReactiveProperty<EnumCharacterWindow> _charWindow;
         private IReactiveProperty<EnumBattleWindow> _battleState;
         private IReactiveProperty<EnumFightCamera> _typeCameraAndCharControl;
-        private GeneratorDungeon _generatorDungeon;
-        private BattleSettingsData _battleSettingsData;
 
         #endregion
 
@@ -134,11 +134,12 @@ namespace Controller
             var enemyFactory = new EnemyFactory(enemyClassesInitialization);
             var healthBarFactory = new HealthBarFactory();
             var enemiesInitialization = new EnemiesInitialization(_enemiesData, enemyFactory, healthBarFactory);
+            var interactiveObjectsInitialization = new InteractiveObjectsInitialization(_battleSettingsData);
 
             var battleInitialization = new EcsBattleInitialization(
-                _ecsBattleData, battleInputControlsInitialization.GetData(), _battleSettingsData, generatorDungeon, _battleState,
+                _ecsBattleData, battleInputControlsInitialization.GetData(), _battleSettingsData, generatorDungeon, interactiveObjectsInitialization, _battleState,
                 _activeWindow, _player, playerModel, battleModel, fightCamera, enemiesInitialization);
-            battleInitialization.Dungeon = generatorDungeon.Dungeon();
+            // battleInitialization.Dungeon = generatorDungeon.Dungeon();
             _ui.BattlePanel.LevelGeneratorPanel.SetReference(battleInitialization);
 
             var battleController = new BattleController(battleInitialization.BattleEngine());
