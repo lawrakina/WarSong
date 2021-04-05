@@ -21,6 +21,8 @@ namespace CoreComponent
 {
     public sealed class GeneratorDungeon : IGeneratorDungeon, IController, IExecute
     {
+        private readonly GeneratorDungeonModel _model;
+        private readonly GeneratorDungeonView _view;
         private GridFlowDungeonBuilder _builder;
         private readonly GridFlowDungeonConfig _config;
         private readonly GameObject _dungeon;
@@ -35,10 +37,12 @@ namespace CoreComponent
         private bool _buildingProcess;
         private bool _buildingComplete;
 
-        public GeneratorDungeon(DungeonGeneratorData dungeonGeneratorData, Transform parent)
+        public GeneratorDungeon(GeneratorDungeonModel model, GeneratorDungeonView view)
         {
-            _dungeonGeneratorData = dungeonGeneratorData;
-            _parent = parent;
+            _model = model;
+            _view = view;
+            _dungeonGeneratorData = _model.GeneratorData;
+            _parent = _view.Root;
 
             _dungeon = Object.Instantiate(new GameObject(), _parent);
             _dungeon.name = "root-Dungeon.Static";
@@ -51,11 +55,6 @@ namespace CoreComponent
             _pooledSceneProvider = gameObjectGenerator.GetComponent<PooledDungeonSceneProvider>();
             _pooledSceneProvider.itemParent = _dungeon;
             _builder.asyncBuild = true;
-
-            // _builder.IsLayoutBuilt;
-            // _pooledSceneProvider.OnDungeonBuildStop+= (x =>x){};
-            // var proc = new MyDungeonProcessor();
-            // _generator.
 
             var goNavMesh = Object.Instantiate(_dungeonGeneratorData.StorageNavMash, _parent);
             goNavMesh.transform.position = new Vector3(17.0f,0.32f,20.27f);//it`s laziness
@@ -151,29 +150,6 @@ namespace CoreComponent
                 isEnableDungeon = true;
             }
             // Dbg.Log($"_generator.IsLayoutBuilt:{_generator.IsLayoutBuilt}");
-        }
-
-        public void On()
-        {
-            
-        }
-
-        public void Off()
-        {
-            
-        }
-    }
-    
-    public class MyDungeonProcessor : DungeonEventListener {
-        ///<summary>
-        ///Called after the dungeon is completely built
-        ///</summary>
-        public virtual void OnPostDungeonBuild(Dungeon dungeon, DungeonModel model) {
-            var myObjs = GameObject.FindObjectsOfType<DungeonSceneProviderData>();
-            foreach (var obj in myObjs) {
-                // your processing here
-                Dbg.Log($"111111111 {obj}");
-            }
         }
     }
 }

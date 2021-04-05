@@ -21,15 +21,6 @@ namespace Controller
         #endregion
 
 
-        public void On()
-        {
-        }
-
-        public void Off()
-        {
-        }
-
-
         #region Fields
 
         private readonly List<IInitialization> _initializeControllers;

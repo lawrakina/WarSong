@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Gui
 {
-    public class BasePanel : MonoBehaviour, IInit, ICleanup
+    public class BasePanel : MonoBehaviour, IInitialization, ICleanup
     {
         #region Fields
 
@@ -15,13 +15,14 @@ namespace Gui
         #endregion
 
 
+
+        public void Initialization()
+        {
+            
+        }
         public void Cleanup()
         {
             _subscriptions?.Dispose();
-        }
-
-        public void Init()
-        {
         }
 
         public void Ctor()

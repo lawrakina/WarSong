@@ -28,7 +28,7 @@ namespace CharacterCustomizing
             _characterSettings = characterSettings;
 
             _playerView.UnitLevel = new UnitLevel();
-            var balansExp = characterSettings.ExperiencePoints;
+            var balansExp = _characterSettings.ExperiencePoints;
             foreach (var level in _playerLevelData.Levels)
             {
                 if (balansExp - level.MaxiPointsExperience >= 0)

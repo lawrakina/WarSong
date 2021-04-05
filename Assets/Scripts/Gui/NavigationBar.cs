@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace Gui
 {
-    [Serializable] public sealed class NavigationBar : MonoBehaviour, IInit, ICleanup
+    [Serializable] public sealed class NavigationBar : MonoBehaviour, IInitialization, ICleanup
     {
         private IReactiveProperty<EnumMainWindow> _activeWindow;
         private IReactiveProperty<EnumBattleWindow> _battleState;
@@ -28,13 +28,13 @@ namespace Gui
         }
 
 
-        public void Init()
+        public void Initialization()
         {
         }
 
         public void Init(List<EnumMainWindow> offItemMenu)
         {
-            Init();
+            Initialization();
             Dbg.Log($"offItemMenu:{offItemMenu},{offItemMenu.Count}");
             CharToggle.interactable = !offItemMenu.Contains(EnumMainWindow.Character);
             EquipToggle.interactable = !offItemMenu.Contains(EnumMainWindow.Equip);

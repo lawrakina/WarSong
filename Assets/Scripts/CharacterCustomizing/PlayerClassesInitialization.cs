@@ -18,7 +18,7 @@ namespace CharacterCustomizing
         #endregion
 
 
-        #region ctor
+        #region ClassLiveCycles
 
         public PlayerClassesInitialization(PlayerClassesData data)
         {

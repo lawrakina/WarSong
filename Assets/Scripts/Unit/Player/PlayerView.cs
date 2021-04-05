@@ -13,7 +13,7 @@ namespace Unit.Player
     {
         #region Properties
 
-        public Transform Transform { get; set; }
+        public Transform Transform => transform;
         public Collider Collider { get; set; }
         public Rigidbody Rigidbody { get; set; }
         public MeshRenderer MeshRenderer { get; set; }
@@ -36,8 +36,8 @@ namespace Unit.Player
         public Transform TransformModel { get; set; }
 
         #endregion
-        
-        
+
+
         public void OnCollision(InfoCollision info)
         {
             Dbg.Log($"{gameObject.name} Attacked");

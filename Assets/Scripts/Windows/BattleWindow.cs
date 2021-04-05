@@ -1,41 +1,50 @@
-﻿using Enums;
-using UniRx;
+﻿using System;
 using UnityEngine;
 
 
 namespace Windows
 {
-    public sealed class BattleWindow : BaseWindow
+    public sealed class BattleWindow : UiWindow
     {
         #region Fields
 
+        // [Header("UI")]
+        
+        [Header("Window")]
+        [SerializeField]
+        public GameObject _sceneRootObject;
+        
         [SerializeField]
         private Camera _forTextureRenderCamera;
 
-        private IReactiveProperty<EnumBattleWindow> _battleState;
+        [SerializeField]
+        public Camera _camera;
+
+        [SerializeField]
+        private GameObject _environment;
 
         #endregion
 
 
         #region Properties
 
-        public GameObject Content => _content;
-
         #endregion
 
 
         #region ClassLiveCycles
 
-        public void Ctor(IReactiveProperty<EnumBattleWindow> battleState)
+        public override void Init()
         {
-            base.Ctor();
-            _battleState = battleState;
+            base.Init();
 
-            _battleState.Subscribe(_ =>
-            {
-                _forTextureRenderCamera.gameObject.SetActive(
-                    _battleState.Value == EnumBattleWindow.DungeonGenerator);
-            });
+            OnShow += OnShowExternalContent;
+            OnHide += OnHideExternalContent;
+        }
+
+        ~BattleWindow()
+        {
+            OnShow -= OnShowExternalContent;
+            OnHide -= OnHideExternalContent;
         }
 
         #endregion
@@ -43,16 +52,20 @@ namespace Windows
 
         #region Methods
 
-        public override void Show()
+        private void OnShowExternalContent(Guid id)
         {
-            base.Show();
-            _forTextureRenderCamera.enabled = true;
+            if(_sceneRootObject) _sceneRootObject.SetActive(true);
+            if (_camera) _camera.enabled = true;
+            if (_environment) _environment.SetActive(true);
+            if (_forTextureRenderCamera) _forTextureRenderCamera.enabled = true;
         }
 
-        public override void Hide()
+        private void OnHideExternalContent(Guid id)
         {
-            base.Hide();
-            _forTextureRenderCamera.enabled = false;
+            if(_sceneRootObject) _sceneRootObject.SetActive(false);
+            if (_camera) _camera.enabled = false;
+            if (_environment) _environment.SetActive(false);
+            if (_forTextureRenderCamera) _forTextureRenderCamera.enabled = false;
         }
 
         #endregion

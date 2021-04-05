@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows;
 using Battle;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace Unit
 {
     public interface IBaseUnitView: ICollision
     {
-        Transform Transform { get; set; }
+        Transform Transform { get; }
         Transform TransformModel { get; set; }
         Collider Collider { get; }
         Rigidbody Rigidbody { get; set; }

@@ -12,7 +12,7 @@ using Unit.Player;
 
 namespace Gui
 {
-    [Serializable] public sealed class UiReference : IInit, ICleanup
+    [Serializable] public sealed class UiReference : IInitialization, ICleanup
     {
         #region Fields
 
@@ -50,18 +50,18 @@ namespace Gui
 
         #region IInit
 
-        public void Init()
+        public void Initialization()
         {
         }
 
         public void Init(List<EnumMainWindow> offItemMenu)
         {
-            Init();
-            CharacterPanel.Init();
-            EquipmentPanel.Init();
-            BattlePanel.Init();
-            SpellsPanel.Init();
-            TalentsPanel.Init();
+            Initialization();
+            CharacterPanel.Initialization();
+            EquipmentPanel.Initialization();
+            BattlePanel.Initialization();
+            SpellsPanel.Initialization();
+            TalentsPanel.Initialization();
             NavigationBar.Init(offItemMenu);
         }
 

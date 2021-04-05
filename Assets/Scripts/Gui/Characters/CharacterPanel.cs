@@ -39,9 +39,9 @@ namespace Gui.Characters
             _activeCharacterWindow = activeCharacterWindow;
             _listOfCharactersController = listCharactersManager;
 
-            _newCharPanel.Ctor(_activeCharacterWindow, _listOfCharactersController);
+            // _newCharPanel.Ctor(_activeCharacterWindow, _listOfCharactersController);
             _settingCharPanel.Ctor(_activeCharacterWindow, _listOfCharactersController);
-            _listCharPanel.Ctor(_activeWindow, _activeCharacterWindow, _listOfCharactersController);
+            // _listCharPanel.Ctor(_activeWindow, _activeCharacterWindow, _listOfCharactersController);
 
             //переключение между дочерними окнами
             _activeCharacterWindow.Subscribe(_ =>

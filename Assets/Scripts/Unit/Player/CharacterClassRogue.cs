@@ -8,7 +8,7 @@ namespace Unit.Player
         public override string Name => "Воин";
 
         public override string Description =>
-            "Воины - класс, сосредоточенный на оружии ближнего боя. Они сильные и выносливые, а так же мастера оружия и тактики. Специальные способности воина ориентированы на бой";
+            "Воины - класс, сосредоточенный на оружии ближнего боя. Бьет по нескольким противникам. Они сильные и выносливые, а так же мастера оружия и тактики.";
         public override ResourceEnum ResourceType => ResourceEnum.Rage;
     }
 
@@ -27,7 +27,7 @@ namespace Unit.Player
         public override string Name => "Охотник";
 
         public override string Description =>
-            "Охотники бьют врага на расстоянии или в ближнем бою, приказывая питомцам атаковать, пока сами натягивают тетиву, заряжают ружье или разят древковым оружием.";
+            "Охотники бьют врага на расстоянии, приказывая питомцам атаковать. Пока сами натягивают тетиву или заряжают ружье.";
 
         public override ResourceEnum ResourceType => ResourceEnum.Concentration;
     }

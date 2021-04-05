@@ -14,10 +14,10 @@ namespace Unit.Player
         private readonly PlayerLevelInitialization _playerLevelInitialization;
         private readonly PlayerClassesInitialization _playerClassesInitialization;
 
-        public PlayerFactory(PlayerCustomizerCharacter playerCustomizerCharacter,
+        public PlayerFactory(CharacterData characterData,
+            PlayerCustomizerCharacter playerCustomizerCharacter,
             PlayerLevelInitialization playerLevelInitialization,
-            PlayerClassesInitialization playerClassesInitialization,
-            CharacterData characterData)
+            PlayerClassesInitialization playerClassesInitialization)
         {
             _playerLevelInitialization = playerLevelInitialization;
             _playerCustomizerCharacter = playerCustomizerCharacter;
@@ -34,7 +34,7 @@ namespace Unit.Player
                 rootPlayer.name = $"PlayerCharacter.{item.CharacterClass}";
                 
             var player = rootPlayer.AddCode<PlayerView>();
-            player.Transform = rootPlayer.transform;//root transform
+            // player.SetTransform(rootPlayer.transform);//root transform
             player.TransformModel = playerPrefab.transform;//prefab transform
             player.Rigidbody = rootPlayer.AddRigidBody(80, CollisionDetectionMode.ContinuousDynamic,
                 false, true,
