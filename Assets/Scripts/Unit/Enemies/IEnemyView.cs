@@ -1,7 +1,4 @@
-﻿using VIew;
-
-
-namespace Unit.Enemies
+﻿namespace Unit.Enemies
 {
     public interface IEnemyView : IBaseUnitView
     {

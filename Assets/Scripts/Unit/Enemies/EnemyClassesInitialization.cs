@@ -6,15 +6,6 @@ namespace Unit.Enemies
 {
     public class EnemyClassesInitialization
     {
-        // private readonly EnemyClassesData _data;
-        private readonly UnitLevel _currentUnitLevel;
-
-        public EnemyClassesInitialization(/*EnemyClassesData data,*/ UnitLevel currentUnitLevel)
-        {
-            // _data = data;
-            _currentUnitLevel = currentUnitLevel;
-        }
-
         public void Initialization(IEnemyView view, EnemySettings enemySettings)
         {
             // view.UnitClass = new SimplyEnemyClass();

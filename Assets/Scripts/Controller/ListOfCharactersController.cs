@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Controller.Model;
 using Extension;
 using Interface;
+using UniRx;
 using Unit.Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,12 +16,11 @@ namespace Controller
         #region Fields
 
         private readonly ListCharacterModel _model;
-        private readonly ListCharacterView _view;
+        private readonly CommandManager _commandManager;
         private readonly List<PlayerView> _characters;
         private PlayerView _currentChar;
 
-        public Action<PlayerView> ChangePlayer;
-
+        private readonly CompositeDisposable _subscriptions;
         #endregion
 
 
@@ -35,8 +36,10 @@ namespace Controller
             }
             private set
             {
+                GoToSumpTank(_currentChar);
                 _currentChar = value;
-                ChangePlayer?.Invoke(value);
+                _commandManager.ChangePlayer.ForceExecute(value);
+                _currentChar.gameObject.SetActive(true);
             }
         }
         
@@ -51,11 +54,12 @@ namespace Controller
 
         #region ClassLiveCycles
 
-        public ListOfCharactersController(ListCharacterModel model, ListCharacterView view)
+        public ListOfCharactersController(ListCharacterModel model, CommandManager commandManager)
         {
+            _subscriptions = new CompositeDisposable();
             _model = model;
-            _view = view;
-            
+            _commandManager = commandManager;
+
             _characters = new List<PlayerView>();
             for (var index = 0; index < _model._playerData._characters.ListCharacters.Count; index++)
             {
@@ -64,25 +68,6 @@ namespace Controller
                 character.Transform.position = new Vector3(index * 3,0.0f,0.0f);
                 _characters.Add(character);
             }
-
-            view.CharacterWindow._listCharacterPanel._moveNextCharAction.OnAction += () => MoveNext();
-            view.CharacterWindow._listCharacterPanel._movePrevCharAction.OnAction += () => MovePrev();
-            view.CharacterWindow._listCharacterPanel._selectCharAction.OnAction += () =>
-            {
-                Dbg.Log($"SelectButtonClick.Char:{_characters[_model._playerData._numberActiveCharacter]}");
-                CurrentCharacter = _characters[_model._playerData._numberActiveCharacter];
-            };
-            
-            ChangePlayer += value =>
-            {
-                GoToSumpTank(_model.Player);
-                _model.Player = value;
-                GoToActivePosition(_model.Player, _view.CharacterWindow.GetPositionCharacter());
-            };
-            ChangePlayer += value =>
-            {
-                _view.CharacterWindow._listCharacterPanel._info.text = GetInfoByPlayer(_model.Player);
-            };
             
             CurrentCharacter = _characters[_model._playerData._numberActiveCharacter];
         }
@@ -96,14 +81,14 @@ namespace Controller
             return result;
         }
 
-        public void Initialization()
+        public void Init()
         {
             CurrentCharacter = _characters[_model._playerData._numberActiveCharacter];
         }
         
         ~ListOfCharactersController()
         {
-            ChangePlayer = null;
+            _subscriptions?.Dispose();
         }
 
         #endregion
@@ -111,7 +96,12 @@ namespace Controller
 
         #region Methods
 
-        private bool MoveNext()
+        public void UpdateCurrentCharacter()
+        {
+            CurrentCharacter = _characters[_model._playerData._numberActiveCharacter];
+        }
+        
+        public bool MoveNext()
         {
             if (Position < _characters.Count - 1)
             {
@@ -124,7 +114,7 @@ namespace Controller
             return false;
         }
 
-        private bool MovePrev()
+        public bool MovePrev()
         {
             if (Position > 0)
             {
@@ -143,13 +133,6 @@ namespace Controller
             var sumpTank = new Vector3(Random.Range(-2.0f,2.0f), 0.0f, Random.Range(-2.0f,2.0f));
             player.Transform.position = sumpTank;
             player.gameObject.SetActive(false);
-        }
-
-        private static void GoToActivePosition(PlayerView player, Transform newPosition)
-        {
-            player.gameObject.SetActive(true);
-            player.Transform.position = newPosition.position;
-            player.Transform.rotation = newPosition.rotation;
         }
         
         public void SaveNewCharacter()

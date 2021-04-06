@@ -1,6 +1,9 @@
-﻿namespace Gui.Battle
+﻿using Windows;
+
+
+namespace Gui.Battle
 {
-    public sealed class PausePanel : BasePanel
+    public sealed class PausePanel : UiWindow
     {
     }
 }

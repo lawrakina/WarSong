@@ -19,6 +19,7 @@ namespace Unit.Cameras
         {
             var component = baseCamera.gameObject.AddCode<FightCamera>();
             var camera = component.GetComponent<IFightCamera>();
+            camera.Camera = baseCamera;
             
             camera.UiTextManager = Object.Instantiate(_cameraSettings._textDamageManager, camera.Transform);
             camera.UiTextManager.canvas.worldCamera = camera.Transform.GetComponent<Camera>();

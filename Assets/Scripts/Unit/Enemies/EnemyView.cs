@@ -2,7 +2,6 @@
 using Battle;
 using Extension;
 using UnityEngine;
-using VIew;
 
 
 namespace Unit.Enemies

@@ -49,10 +49,10 @@ namespace Controller
             return this;
         }
 
-        public void Initialization()
+        public void Init()
         {
             for (var index = 0; index < _initializeControllers.Count; ++index)
-                _initializeControllers[index].Initialization();
+                _initializeControllers[index].Init();
         }
 
         public void Execute(float deltaTime)

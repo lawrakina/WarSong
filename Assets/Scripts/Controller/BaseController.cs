@@ -51,7 +51,7 @@ namespace Controller
 
         #region IInitialization
 
-        public virtual void Initialization()
+        public virtual void Init()
         {
             _isEnable = true;
         }

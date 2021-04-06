@@ -48,19 +48,6 @@ namespace Unit.Player
             player.AnimatorParameters = new AnimatorParameters(player.Animator);
             playerPrefab.transform.SetParent(rootPlayer.transform);
                      
-            // player.Animator = item.Animator;
-            
-            // private void Awake()
-            // {
-            //     Transform = GetComponent<Transform>();
-            //     Rigidbody = GetComponent<Rigidbody>();
-            //     Collider = GetComponent<Collider>();
-            //     MeshRenderer = GetComponent<MeshRenderer>();
-            //     _animator = GetComponent<Animator>();
-            //     AnimatorParameters = new AnimatorParameters(ref _animator);
-            // }
-
-            // var playerView = playerPrefab.GetComponent<IPlayerView>();
             _playerCustomizerCharacter.Customize(player, item);
             _playerLevelInitialization.Initialization(player, item);
             _playerClassesInitialization.Initialization(player, item);

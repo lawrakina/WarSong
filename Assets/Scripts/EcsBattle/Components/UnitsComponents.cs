@@ -5,7 +5,6 @@ using Leopotam.Ecs;
 using Necromancy.UI;
 using Unit;
 using UnityEngine;
-using VIew;
 
 
 namespace EcsBattle.Components

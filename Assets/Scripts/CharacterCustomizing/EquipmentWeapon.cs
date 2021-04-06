@@ -32,8 +32,8 @@ namespace CharacterCustomizing
                 Object.Instantiate(_equipment.MainWeapon.gameObject, Vector3.zero, Quaternion.identity);
             var mainWeapon = goBaseWeapon.GetComponent<BaseWeapon>();
             mainWeapon.Type = _equipment.MainWeapon.Type;
-            Dbg.Log($"mainWeapon.StandardBullet:{mainWeapon.StandardBullet}");
-            Dbg.Log($"_equipment.MainWeapon.gameObject:{_equipment.MainWeapon.StandardBullet}");
+            // Dbg.Log($"mainWeapon.StandardBullet:{mainWeapon.StandardBullet}");
+            // Dbg.Log($"_equipment.MainWeapon.gameObject:{_equipment.MainWeapon.StandardBullet}");
             _character.EquipmentItems.MainWeapon = mainWeapon;
             //SecondHand Init
             var goSecondWeapon =

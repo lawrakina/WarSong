@@ -1,6 +1,7 @@
-﻿using Battle;
+﻿using Windows;
+using Battle;
 using CharacterCustomizing;
-using CoreComponent;
+using Controller.Model;
 using Data;
 using Enums;
 using Extension;
@@ -21,20 +22,16 @@ namespace Controller
     {
         #region Fields
 
-        // private CompositeDisposable _subscriptions;
+        private CompositeDisposable _subscriptions;
         private Controllers _controllers;
 
-        [Header("Ui & Windows")]
+        [Header("Ui")]
         [SerializeField]
         private UiWindows _uiWindows;
-        // private UiReference _ui;
 
-        // [SerializeField]
-        // private WindowsReference _windows;
-
-        // [Header("Active Panel and Window at the Start")]
-        // [SerializeField]
-        // private EnumMainWindow _activePanelAndWindow;
+        [Header("Windows")]
+        [SerializeField]
+        private SceneWindows _windows;
 
 
         private CharacterData _characterData;
@@ -52,15 +49,12 @@ namespace Controller
         private GeneratorDungeon _generatorDungeon;
         private BattleSettingsData _battleSettingsData;
 
-        // private IReactiveProperty<EnumMainWindow> _activeWindow;
-        // private IReactiveProperty<EnumCharacterWindow> _charWindow;
-        // private IReactiveProperty<EnumBattleWindow> _battleState;
-        // private IReactiveProperty<EnumFightCamera> _typeCameraAndCharControl;
-
 
         [Header("Plz do not set value!!! Its Simple access")]
         [SerializeField]
-        private PlayerView _player;
+        public PlayerView _player;
+
+        private CommandManager _commandManager;
 
         #endregion
 
@@ -72,136 +66,61 @@ namespace Controller
 
         private void Awake()
         {
-            // _subscriptions = new CompositeDisposable();
-            _controllers = new Controllers();
+            GlobalLinks.SetLinkToRoot(this);
             LoadAllResources();
-
-            var windowManager = new WindowManager(_uiWindows);
-            var rootToggleGroup = new ToggleWindowGroup();
-            rootToggleGroup.Add(_uiWindows.BattleWindow);
-            rootToggleGroup.Add(_uiWindows.CharacterWindow, true);
-            // rootToggleGroup.Add(_uiWindows.TavernWindow);
-            // rootToggleGroup.Add(_uiWindows.ShopWindow);
-
-            windowManager.Add(rootToggleGroup);
-            windowManager.Add(_uiWindows.TopNavigationWindow, true);
-            windowManager.Add(_uiWindows.BottomNavigationWindow, true);
-            windowManager.Add(_uiWindows.CharacterWindow._listCharacterPanel, true);
+            _subscriptions = new CompositeDisposable();
+            _controllers = new Controllers();
+            _commandManager = new CommandManager(_uiWindows,_windows);
             
-
             var playerFactory = new PlayerFactory(_characterData,
                 new PlayerCustomizerCharacter(_characterData),
                 new PlayerLevelInitialization(_playerLevelData),
                 new PlayerClassesInitialization(_playerClassesData));
 
-            var listCharacterModel = new ListCharacterModel(_playerData, playerFactory, _player);
-            var listCharacterView = new ListCharacterView(_uiWindows.CharacterWindow);
-            var listOfCharactersController = new ListOfCharactersController(listCharacterModel,listCharacterView);
-            listOfCharactersController.ChangePlayer += value => _player = value;
+            var generatorDungeonModel = new GeneratorDungeonModel(_windows, _generatorData);
+            var generatorDungeon = new GeneratorDungeon(generatorDungeonModel);
+            _commandManager.GeneratorDungeon = generatorDungeon;
+            
+            var listCharacterModel = new ListCharacterModel(_playerData, playerFactory);
+            var listOfCharactersController = new ListOfCharactersController(listCharacterModel, _commandManager);
+            _commandManager.ListOfCharacters = listOfCharactersController;
+            _commandManager.ChangePlayer.Subscribe(value => { _player = (PlayerView) value; }).AddTo(_subscriptions);
+            _commandManager.ChangePlayer.Subscribe(value => { }).AddTo(_subscriptions);
 
-            _uiWindows.BottomNavigationWindow._charAction.OnAction += () =>
-            {
-                _player = listOfCharactersController.CurrentCharacter;
-                _player.Transform.Change(_uiWindows.CharacterWindow.GetPositionCharacter());
-            };
-
-
-            //Positioning character in menu
-            // var positioningCharInMenuController = new PositioningCharacterInMenuController();
-            // positioningCharInMenuController.Player = _player;
-            // positioningCharInMenuController.GeneratorDungeon = generatorDungeon;
-            // positioningCharInMenuController.AddPlayerPosition(
-            //     _uiWindows.CharacterWindow.CharacterSpawn(), EnumMainWindow.Character);
-            // positioningCharInMenuController.AddPlayerPosition(
-            // generatorDungeon.GetPlayerPosition(), EnumMainWindow.Battle);
-            // positioningCharInMenuController.AddPlayerPosition(
-            // _windows.SpellsWindow.CharacterSpawn(), EnumMainWindow.Spells);
-            // positioningCharInMenuController.AddPlayerPosition(
-            // _windows.TalentsWindow.CharacterSpawn(), EnumMainWindow.Talents);
-
-            //                           
-            //                           .CurrentCharacter.Subscribe(_ =>
-            // {
-            //     _player = listOfCharactersController.CurrentCharacter.Value;
-            //     _linkToCharPlayer = _player.Transform.gameObject;
-            // }).AddTo(_subscriptions);
-
-
-            // //UI & Windows
-            // _activeWindow = new ReactiveProperty<EnumMainWindow>();
-            // _charWindow = new ReactiveProperty<EnumCharacterWindow>(EnumCharacterWindow.ListCharacters);
-            // _battleState = new ReactiveProperty<EnumBattleWindow>(EnumBattleWindow.DungeonGenerator);
-            //
-            // _activeWindow.Subscribe(_ => { Dbg.Log(_activeWindow.Value); });
-            // _charWindow.Subscribe(_ => { Dbg.Log(_charWindow.Value); });
-            // _battleState.Subscribe(_ => { Dbg.Log(_battleState.Value); });
-
+            var listOfPositionCharInMenuModel = new ListOfPositionCharInMenuModel(_windows);
+            var listOfPositionCharInMenuController =
+                new ListOfPositionCharInMenuController(listOfPositionCharInMenuModel, _commandManager);
+            
             var playerModel = new BattlePlayerModel();
             var battleModel = new BattleProgressModel();
-            
-            //create ui & windows
-            // _windows.Ctor(_activeWindow, _battleState);
-            // _ui.Ctor(_activeWindow, _battleState, _charWindow, listOfCharactersController, playerModel, battleModel);
 
-            //generator levels
+            _uiWindows.FightUiWindow.SetModels(battleModel, playerModel);
+            
+            var fightCameraFactory = new CameraFactory(_cameraSettings);
+            var fightCamera = fightCameraFactory.CreateCamera(_windows.RootBattleCamera);
+            
+            var battleInputControlsInitialization =
+            new BattleInputControlsInitialization(_battleInputData, _uiWindows.FightUiWindow.transform);
+            var enemyClassesInitialization = new EnemyClassesInitialization( /*_enemyClassesData,*/);
+            var enemyFactory = new EnemyFactory(enemyClassesInitialization);
+            var healthBarFactory = new HealthBarFactory();
+            var enemiesInitialization = new EnemiesInitialization(_enemiesData, enemyFactory, healthBarFactory);
+            var interactiveObjectsInitialization = new InteractiveObjectsInitialization(_battleSettingsData);
+            
+            var battleInitialization = new EcsBattleInitialization(
+            _ecsBattleData, battleInputControlsInitialization.GetData(), _battleSettingsData, generatorDungeon,
+            interactiveObjectsInitialization, _player, playerModel, battleModel, fightCamera, enemiesInitialization);
 
-            var generatorDungeonModel = new GeneratorDungeonModel(_generatorData); 
-            var generatorDungeonView = new GeneratorDungeonView(_uiWindows.BattleWindow); 
+            _commandManager.BattleInitialisation = battleInitialization;
             
-            var generatorDungeon = new GeneratorDungeon(generatorDungeonModel, generatorDungeonView);
+            var battleController = new BattleController(battleInitialization.BattleEngine());
             
-            
-            // _ui.BattlePanel.LevelGeneratorPanel.SetReference(generatorDungeon);
-            //
-            // var fightCameraFactory = new CameraFactory(_cameraSettings);
-            // // камера используется в рендере gui и сцены - todo все в SO и префабы
-            // var fightCamera = fightCameraFactory.CreateCamera(_windows.BattleWindow.Camera);
-            //
-            // //Positioning character in menu
-            // var positioningCharInMenuController = new PositioningCharacterInMenuController(_activeWindow, _battleState);
-            // positioningCharInMenuController.Player = _player;
-            // positioningCharInMenuController.GeneratorDungeon = generatorDungeon;
-            // positioningCharInMenuController.AddPlayerPosition(
-            // _windows.CharacterWindow.CharacterSpawn(), EnumMainWindow.Character);
-            // positioningCharInMenuController.AddPlayerPosition(
-            // _windows.EquipmentWindow.CharacterSpawn(), EnumMainWindow.Equip);
-            // positioningCharInMenuController.AddPlayerPosition(
-            // generatorDungeon.GetPlayerPosition(), EnumMainWindow.Battle);
-            // positioningCharInMenuController.AddPlayerPosition(
-            // _windows.SpellsWindow.CharacterSpawn(), EnumMainWindow.Spells);
-            // positioningCharInMenuController.AddPlayerPosition(
-            // _windows.TalentsWindow.CharacterSpawn(), EnumMainWindow.Talents);
-            //
-            // var battleInputControlsInitialization =
-            //     new BattleInputControlsInitialization(_battleInputData, _ui.BattlePanel.FightPanel.transform);
-            // var enemyClassesInitialization = new EnemyClassesInitialization( /*_enemyClassesData,*/ _player.UnitLevel);
-            // var enemyFactory = new EnemyFactory(enemyClassesInitialization);
-            // var healthBarFactory = new HealthBarFactory();
-            // var enemiesInitialization = new EnemiesInitialization(_enemiesData, enemyFactory, healthBarFactory);
-            // var interactiveObjectsInitialization = new InteractiveObjectsInitialization(_battleSettingsData);
-            //
-            // var battleInitialization = new EcsBattleInitialization(
-            //     _ecsBattleData, battleInputControlsInitialization.GetData(), _battleSettingsData, generatorDungeon,
-            //     interactiveObjectsInitialization, _battleState,
-            //     _activeWindow, _player, playerModel, battleModel, fightCamera, enemiesInitialization);
-            // // battleInitialization.Dungeon = generatorDungeon.Dungeon();
-            // _ui.BattlePanel.LevelGeneratorPanel.SetReference(battleInitialization);
-            //
-            // var battleController = new BattleController(battleInitialization.BattleEngine());
-            //
-            // _controllers.Add(positioningCharInMenuController);
-            // _controllers.Add(battleController);
-            // _controllers.Add(generatorDungeon);
-            _controllers.Add(windowManager);
+            _controllers.Add(_commandManager);
+            _controllers.Add(generatorDungeon);
+            _controllers.Add(listOfPositionCharInMenuController);
             _controllers.Add(listOfCharactersController);
-            // var offItemMenu = new List<EnumMainWindow>();
-            // offItemMenu.Add(EnumMainWindow.Equip);
-            // offItemMenu.Add(EnumMainWindow.Spells);
-            // offItemMenu.Add(EnumMainWindow.Talents);
-            // _ui.Init(offItemMenu);
-            // _windows.Init();
-            _controllers.Initialization();
-            // _activeWindow.Value = _activePanelAndWindow;
+            _controllers.Add(battleController);
+            _controllers.Init();
         }
 
         private void LoadAllResources()
@@ -257,7 +176,7 @@ namespace Controller
 
         private void OnDestroy()
         {
-            // _subscriptions?.Dispose();
+            _subscriptions?.Dispose();
             _controllers.Cleanup();
         }
 

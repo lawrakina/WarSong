@@ -2,7 +2,7 @@
 using EcsBattle.Components;
 using EcsBattle.CustomEntities;
 using Leopotam.Ecs;
-using VIew;
+using Unit;
 
 
 namespace EcsBattle

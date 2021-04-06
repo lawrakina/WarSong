@@ -40,7 +40,9 @@ namespace EcsBattle
 
         public void Inject(object obj)
         {
+            if (obj == null) return;
             _listForInject.Add(obj);
+            Dbg.Log($"Inject object in EcsWorld:{obj}");
         }
 
         public void Init()
@@ -182,7 +184,7 @@ namespace EcsBattle
 
             if (_execute == null && _fixedExecute == null && _lateExecute == null)
             {
-                _world.Destroy();
+                _world?.Destroy();
                 _world = null;
             }
         }
@@ -207,8 +209,8 @@ namespace EcsBattle
 
     public sealed class EndOfBattleSystem : IEcsRunSystem
     {
-        private IReactiveProperty<EnumBattleWindow> _battleState;
         private EcsFilter<GoalLevelComponent, GoalLevelAchievedComponent> _filter;
+
         public void Run()
         {
             foreach (var i in _filter)
@@ -216,7 +218,7 @@ namespace EcsBattle
                 ref var entity = ref _filter.GetEntity(i);
 
                 Time.timeScale = 0;
-                _battleState.Value = EnumBattleWindow.Victory;
+                
             }
         }
     }
