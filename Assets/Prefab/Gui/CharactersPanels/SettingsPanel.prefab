@@ -429,7 +429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5675864659856641559
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1199,7 +1199,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.8
+  m_fontSize: 38.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1407,7 +1407,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.55
+  m_fontSize: 42.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1692,7 +1692,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.7
+  m_fontSize: 64.35
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1825,7 +1825,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.5
+  m_fontSize: 36.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2263,7 +2263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.76857966}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.17352295, y: 0.00005340576}
+  m_AnchoredPosition: {x: 0.17352295, y: 0.000045776367}
   m_SizeDelta: {x: -0.34716797, y: 0.00007247925}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5675864660754993101
@@ -3002,7 +3002,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3191,7 +3191,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5675864661320752724
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3265,13 +3265,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8173e6671947456e8f09de69b647abf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _createCharacterButton: {fileID: 5675864661422340796}
   _backtoSelectCharClass: {fileID: 5675864659770172534}
+  _createCharacterButton: {fileID: 5675864661422340796}
   _genderManToggle: {fileID: 5675864660106899294}
   _genderWomanToggle: {fileID: 5675864660106899295}
+  _raceBloodElfToggle: {fileID: 5675864660106899283}
   _raceHumanToggle: {fileID: 5675864660106899281}
   _raceNightElfToggle: {fileID: 5675864660106899280}
-  _raceBloodElfToggle: {fileID: 5675864660106899283}
   _raceOrcToggle: {fileID: 5675864660106899282}
 --- !u!1 &5675864661321840217
 GameObject:
@@ -3512,7 +3512,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.25
+  m_fontSize: 47.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4066,7 +4066,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.7
+  m_fontSize: 50.25
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1

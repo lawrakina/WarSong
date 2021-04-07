@@ -35,6 +35,7 @@ namespace CharacterCustomizing
             // Dbg.Log($"mainWeapon.StandardBullet:{mainWeapon.StandardBullet}");
             // Dbg.Log($"_equipment.MainWeapon.gameObject:{_equipment.MainWeapon.StandardBullet}");
             _character.EquipmentItems.MainWeapon = mainWeapon;
+            //todo create global database for storage Items
             //SecondHand Init
             var goSecondWeapon =
                 Object.Instantiate(_equipment.SecondWeapon.gameObject, Vector3.zero, Quaternion.identity);

@@ -16,6 +16,9 @@ namespace Windows
         public CreateNewCharacterUiWindow createNewCharacterUiWindow;
 
         [SerializeField]
+        public CreateSettingCharacterUiWindow createSettingsCharacterUiWindow;
+
+        [SerializeField]
         public AboutActiveCharacterUiWindow aboutActiveCharacterUiWindow;
 
         #endregion

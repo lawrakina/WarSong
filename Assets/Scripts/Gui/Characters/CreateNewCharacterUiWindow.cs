@@ -41,11 +41,14 @@ namespace Gui.Characters
         private GameObjectLinkedList<CharacterClass> _listClasses;
 
         public ReactiveCommand<CharacterClass> selectCharacterClassCommand = new ReactiveCommand<CharacterClass>();
+        public ReactiveCommand gotoSettingsCharacterClassCommand = new ReactiveCommand();
         
         
         #endregion
-        public void Init()
+        public void Awake()
         {
+            base.Init();
+            
             _listClasses = new GameObjectLinkedList<CharacterClass>(new[]
             {
                 new LinkedListItem<CharacterClass>(CharacterClass.Warrior, _warriorIcon),
@@ -59,15 +62,20 @@ namespace Gui.Characters
             {
                 if (_listClasses.MovePrev())
                     selectCharacterClassCommand.ForceExecute(_listClasses.Current.Key);
-                // _listCharactersManager.PrototypePlayer.CharacterClass.Value = _listClasses.Current.Key;
             }).AddTo(_subscriptions);
             //next class
             _nextClassButton.OnPointerClickAsObservable().Subscribe(_ =>
             {
                 if (_listClasses.MoveNext())
                     selectCharacterClassCommand.ForceExecute(_listClasses.Current.Key);
-                    // _listCharactersManager.PrototypePlayer.CharacterClass.Value = _listClasses.Current.Key;
             }).AddTo(_subscriptions);
+
+            gotoSettingsCharacterClassCommand.BindTo(_gotoSettingChar).AddTo(_subscriptions);
+            
+            _warriorIcon.SetActive(true);
+            _rogueIcon.SetActive(false);
+            _hunterIcon.SetActive(false);
+            _mageIcon.SetActive(false);
         }
     }
 }

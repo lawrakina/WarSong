@@ -21,9 +21,9 @@ namespace Controller
         public readonly ReactiveCommand<bool> _shopWindowShowCommand = new ReactiveCommand<bool>();
 
         public readonly ReactiveCommand _buildDungeonCommand = new ReactiveCommand();
-        
+
         public readonly ReactiveCommand<IPlayerView> ChangePlayer = new ReactiveCommand<IPlayerView>();
-        
+
         private readonly CompositeDisposable _subscriptions;
 
 
@@ -95,20 +95,20 @@ namespace Controller
                 _uiWindows.BottomNavigationWindow.SetActive(false);
                 _uiWindows.BattleUiWindow.SetActive(false);
                 _uiWindows.LoadUiWindow.SetActive(true);
-                
+
                 GeneratorDungeon.SetRandomSeed();
                 GeneratorDungeon.BuildDungeon();
 
                 _buildDungeonCommand.Execute();
             }).AddTo(_subscriptions);
-            
+
             _buildDungeonCommand.Subscribe(_ =>
             {
                 var buildGun = Observable.FromCoroutine(AsyncBuildDungeon).Subscribe().AddTo(_subscriptions);
             });
-            
+
             #endregion
-            
+
 
             #region CharacterPanel
 
@@ -117,23 +117,72 @@ namespace Controller
             ChangePlayer.Subscribe(value =>
             {
                 _uiWindows.CharacterWindow.listCharacterUiWindow._info.text = GetInfoByPlayer(value);
+                _uiWindows.CharacterWindow.aboutActiveCharacterUiWindow._info.text = GetInfoByPlayer(value);
             }).AddTo(_subscriptions);
 
             _uiWindows.CharacterWindow.listCharacterUiWindow._selectCharCommand.Subscribe(_ =>
             {
                 _uiWindows.CharacterWindow.listCharacterUiWindow.SetActive(false);
                 _uiWindows.CharacterWindow.aboutActiveCharacterUiWindow.SetActive(true);
-                ListOfCharacters.UpdateCurrentCharacter(); 
+                ListOfCharacters.UpdateCurrentCharacter();
             }).AddTo(_subscriptions);
             _uiWindows.CharacterWindow.listCharacterUiWindow._nextCharCommand.Subscribe(_ =>
             {
-                ListOfCharacters.MoveNext(); 
+                ListOfCharacters.MoveNext();
             }).AddTo(_subscriptions);
             _uiWindows.CharacterWindow.listCharacterUiWindow._prevCharCommand.Subscribe(_ =>
             {
-                ListOfCharacters.MovePrev(); 
+                ListOfCharacters.MovePrev();
             }).AddTo(_subscriptions);
-            
+
+            _uiWindows.CharacterWindow.listCharacterUiWindow._createCharCommand.Subscribe(_ =>
+            {
+                _uiWindows.CharacterWindow.listCharacterUiWindow.Hide();
+                _uiWindows.CharacterWindow.createNewCharacterUiWindow.Show();
+                ListOfCharacters.CreateNewPrototype();
+            }).AddTo(_subscriptions);
+
+
+            #region CreateNewCharacter
+
+            _uiWindows.CharacterWindow.createNewCharacterUiWindow.selectCharacterClassCommand.Subscribe(value =>
+            {
+                ListOfCharacters.UpdatePrototype(characterClass: value);
+            }).AddTo(_subscriptions);
+
+            _uiWindows.CharacterWindow.createNewCharacterUiWindow.gotoSettingsCharacterClassCommand.Subscribe(_ =>
+            {
+                _uiWindows.CharacterWindow.createNewCharacterUiWindow.Hide();
+                _uiWindows.CharacterWindow.createSettingsCharacterUiWindow.Show();
+                ListOfCharacters.UpdatePrototype();
+            }).AddTo(_subscriptions);
+
+            _uiWindows.CharacterWindow.createSettingsCharacterUiWindow._selectGenderCommand.Subscribe(value =>
+            {
+                ListOfCharacters.UpdatePrototype(characterGender: value);
+            }).AddTo(_subscriptions);
+
+            _uiWindows.CharacterWindow.createSettingsCharacterUiWindow._selectRaceCommand.Subscribe(value =>
+            {
+                ListOfCharacters.UpdatePrototype(characterClass: value);
+            }).AddTo(_subscriptions);
+
+            _uiWindows.CharacterWindow.createSettingsCharacterUiWindow._toSelectClassCommand.Subscribe(_ =>
+            {
+                _uiWindows.CharacterWindow.createSettingsCharacterUiWindow.Hide();
+                _uiWindows.CharacterWindow.createNewCharacterUiWindow.Show();
+                ListOfCharacters.UpdatePrototype();
+            }).AddTo(_subscriptions);
+
+            _uiWindows.CharacterWindow.createSettingsCharacterUiWindow._createNewCharacterCommand.Subscribe(_ =>
+            {
+                ListOfCharacters.CreateCharacterFromPrototype();
+                _uiWindows.CharacterWindow.createSettingsCharacterUiWindow.Hide();
+                _uiWindows.CharacterWindow.aboutActiveCharacterUiWindow.Show();
+            }).AddTo(_subscriptions);
+
+            #endregion
+
             #endregion
 
             #endregion
@@ -172,7 +221,7 @@ namespace Controller
                 }
             }
         }
-        
+
         private static string GetInfoByPlayer(IPlayerView p)
         {
             var result =
