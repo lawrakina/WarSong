@@ -104,7 +104,7 @@ namespace EcsBattle.Components
     }
 
 
-    public struct NeedStartAnimationComponent
+    public struct NeedStartAnimationAttackComponent
     {
     }
 

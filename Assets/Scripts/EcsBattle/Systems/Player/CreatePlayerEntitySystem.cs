@@ -4,7 +4,6 @@ using EcsBattle.CustomEntities;
 using Extension;
 using Leopotam.Ecs;
 using Models;
-using Unit;
 using Unit.Player;
 using UnityEngine;
 
@@ -39,6 +38,8 @@ namespace EcsBattle.Systems.Player
             entity.Get<BattleInfoComponent>().Value = _view.UnitPlayerBattle.Weapon;
             entity.Get<BattleInfoComponent>().Bullet = _view.UnitPlayerBattle.Weapon.StandardBullet;
             entity.Get<BattleInfoComponent>().AttackValue = _view.UnitPlayerBattle.Weapon.AttackValue;
+            entity.Get<BattleInfoComponent>().WeaponTypeAnimation = _view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
+            entity.Get<BattleInfoComponent>().AttackMaxValueAnimation = 3;//todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
 
             var directionMovement = Object.Instantiate(new GameObject(), _view.Transform, true);
             directionMovement.name = "->DirectionMoving<-";

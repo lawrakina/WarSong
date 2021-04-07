@@ -33,7 +33,7 @@ namespace EcsBattle.Systems.Enemies
                 }
                 else
                 {
-                    entity.Get<NeedStartAnimationComponent>();
+                    entity.Get<NeedStartAnimationAttackComponent>();
                     entity.Get<NeedAttackComponent>();
                     entity.Del<NeedMoveToTargetAndAttackComponent>();
                 }

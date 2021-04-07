@@ -100,7 +100,7 @@ namespace EcsBattle
                 .Add(new Attack2StartGetTargetSystem())
                 .Add(new Attack3LookAtTargetSystem())
                 .Add(new Attack4MoveToTargetSystem())
-                .Add(new Attack5StartAnimationStrikeSystem())
+                // .Add(new Attack5StartAnimationStrikeSystem())
                 .Add(new Attack6StartTimerLagBeforeAttack())
                 .Add(new Attack7FinalAttackForPlayerSystem())
                 .Add(new ApplyDamageInUnitSystem())

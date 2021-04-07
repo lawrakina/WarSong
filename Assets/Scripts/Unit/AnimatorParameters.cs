@@ -59,9 +59,14 @@ namespace Unit
 
         public int WeaponType
         {
-            get => _weaponType;
+            get
+            {
+                Dbg.Log($"------------------ Get WeaponType:{_weaponType}");
+                return _weaponType;
+            }
             set
             {
+                Dbg.Log($"------------------ Set WeaponType:{value}");
                 _weaponType = value;
                 _animator.SetFloat(TagManager.ANIMATOR_PARAM_WEAPON_TYPE, _weaponType);
             }

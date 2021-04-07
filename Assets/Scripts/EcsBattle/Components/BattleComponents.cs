@@ -1,4 +1,5 @@
-﻿using Weapons;
+﻿using Enums;
+using Weapons;
 
 
 namespace EcsBattle.Components
@@ -8,6 +9,8 @@ namespace EcsBattle.Components
         public BaseWeapon Value;
         public WeaponBullet Bullet;
         public AttackValue AttackValue;
+        public int AttackMaxValueAnimation;
+        public int WeaponTypeAnimation;
     }
 
     public struct AwaitTimerForOneStrikeComponent

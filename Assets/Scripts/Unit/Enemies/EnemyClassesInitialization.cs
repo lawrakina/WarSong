@@ -27,8 +27,6 @@ namespace Unit.Enemies
             view.UnitReputation.EnemyAttackLayer = LayerManager.PlayerAttackLayer;
             view.UnitReputation.FriendLayer = LayerManager.EnemyLayer;
             view.UnitReputation.FriendAttackLayer = LayerManager.EnemyAttackLayer;
-
-            Dbg.Log($"view.UnitReputation.EnemyLayer:{view.UnitReputation.EnemyLayer})");
         }
     }
 }
