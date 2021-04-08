@@ -164,7 +164,7 @@ namespace Controller
 
             _uiWindows.CharacterWindow.createSettingsCharacterUiWindow._selectRaceCommand.Subscribe(value =>
             {
-                ListOfCharacters.UpdatePrototype(characterClass: value);
+                ListOfCharacters.UpdatePrototype(characterRace: value);
             }).AddTo(_subscriptions);
 
             _uiWindows.CharacterWindow.createSettingsCharacterUiWindow._toSelectClassCommand.Subscribe(_ =>
