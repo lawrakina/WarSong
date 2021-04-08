@@ -70,8 +70,8 @@ namespace Controller
             LoadAllResources();
             _subscriptions = new CompositeDisposable();
             _controllers = new Controllers();
-            _commandManager = new CommandManager(_uiWindows,_windows);
-            
+            _commandManager = new CommandManager(_uiWindows, _windows);
+
             var playerFactory = new PlayerFactory(_characterData,
                 new PlayerCustomizerCharacter(_characterData),
                 new PlayerLevelInitialization(_playerLevelData),
@@ -80,7 +80,7 @@ namespace Controller
             var generatorDungeonModel = new GeneratorDungeonModel(_windows, _generatorData);
             var generatorDungeon = new GeneratorDungeon(generatorDungeonModel);
             _commandManager.GeneratorDungeon = generatorDungeon;
-            
+
             var listCharacterModel = new ListCharacterModel(_playerData, playerFactory);
             var listOfCharactersController = new ListOfCharactersController(listCharacterModel, _commandManager);
             _commandManager.ListOfCharacters = listOfCharactersController;
@@ -90,31 +90,32 @@ namespace Controller
             var listOfPositionCharInMenuModel = new ListOfPositionCharInMenuModel(_windows);
             var listOfPositionCharInMenuController =
                 new ListOfPositionCharInMenuController(listOfPositionCharInMenuModel, _commandManager);
-            
+
             var playerModel = new BattlePlayerModel();
             var battleModel = new BattleProgressModel();
 
             _uiWindows.FightUiWindow.SetModels(battleModel, playerModel);
-            
+
             var fightCameraFactory = new CameraFactory(_cameraSettings);
             var fightCamera = fightCameraFactory.CreateCamera(_windows.RootBattleCamera);
-            
+
             var battleInputControlsInitialization =
-            new BattleInputControlsInitialization(_battleInputData, _uiWindows.FightUiWindow.transform);
+                new BattleInputControlsInitialization(_battleInputData, _uiWindows.FightUiWindow.transform);
             var enemyClassesInitialization = new EnemyClassesInitialization( /*_enemyClassesData,*/);
             var enemyFactory = new EnemyFactory(enemyClassesInitialization);
             var healthBarFactory = new HealthBarFactory();
             var enemiesInitialization = new EnemiesInitialization(_enemiesData, enemyFactory, healthBarFactory);
             var interactiveObjectsInitialization = new InteractiveObjectsInitialization(_battleSettingsData);
-            
+
             var battleInitialization = new EcsBattleInitialization(
-            _ecsBattleData, battleInputControlsInitialization.GetData(), _battleSettingsData, generatorDungeon,
-            interactiveObjectsInitialization, _player, playerModel, battleModel, fightCamera, enemiesInitialization);
+                _ecsBattleData, battleInputControlsInitialization.GetData(), _battleSettingsData, generatorDungeon,
+                interactiveObjectsInitialization, _player, playerModel, battleModel, fightCamera,
+                enemiesInitialization);
 
             _commandManager.BattleInitialisation = battleInitialization;
-            
+
             var battleController = new BattleController(battleInitialization.BattleEngine());
-            
+
             _controllers.Add(_commandManager);
             _controllers.Add(generatorDungeon);
             _controllers.Add(listOfPositionCharInMenuController);
@@ -122,6 +123,9 @@ namespace Controller
             _controllers.Add(battleController);
             _controllers.Init();
         }
+
+
+        #region Methods
 
         private void LoadAllResources()
         {
@@ -152,9 +156,6 @@ namespace Controller
             LayerManager.EnemyAttackLayer = LayerMask.NameToLayer(StringManager.ENEMY_ATTACK_LAYER);
             LayerManager.EnemyAndPlayerAttackLayer = LayerMask.NameToLayer(StringManager.ENEMY_AND_PLAYER_ATTACK_LAYER);
         }
-
-
-        #region Methods
 
         private void Update()
         {

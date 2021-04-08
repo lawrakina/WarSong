@@ -11,7 +11,7 @@ namespace EcsBattle.Systems.Attacks
             DirectionMovementComponent,
             NeedMoveToTargetAndAttackComponent,
             CurrentTargetComponent,
-            BattleInfoComponent,
+            BattleInfoMainWeaponComponent,
             UnitComponent> _player;
 
         public void Run()
@@ -37,8 +37,14 @@ namespace EcsBattle.Systems.Attacks
                 }
                 else
                 {
-                    entity.Get<NeedStartAnimationAttackComponent>();
-                    entity.Get<NeedAttackComponent>();
+                    entity.Get<NeedStartAnimationAttackFromMainWeaponComponent>();
+                    entity.Get<NeedAttackFromMainWeaponComponent>();
+                    if (entity.Has<PermissionForAttackFromSecondWeaponAllowedComponent>())
+                    {
+                        entity.Del<PermissionForAttackFromSecondWeaponAllowedComponent>();
+                        entity.Get<NeedStartAnimationAttackFromSecondWeaponComponent>().currentTimeForLag = 0.0f;
+                        entity.Get<NeedStartAnimationAttackFromSecondWeaponComponent>().maxTimeForLag = entity.Get<BattleInfoSecondWeaponComponent>().lagBeforeAttack;
+                    }
                     entity.Del<NeedMoveToTargetAndAttackComponent>();
                 }
             }

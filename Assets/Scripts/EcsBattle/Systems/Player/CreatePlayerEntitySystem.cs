@@ -1,11 +1,14 @@
-﻿using DungeonArchitect.Samples.GridFlow;
+﻿using System;
+using DungeonArchitect.Samples.GridFlow;
 using EcsBattle.Components;
 using EcsBattle.CustomEntities;
+using Enums;
 using Extension;
 using Leopotam.Ecs;
 using Models;
 using Unit.Player;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 
 namespace EcsBattle.Systems.Player
@@ -35,12 +38,48 @@ namespace EcsBattle.Systems.Player
             entity.Get<UnitHpComponent>().CurrentValue = _view.CurrentHp;
             entity.Get<UnitHpComponent>().MaxValue = _view.CurrentHp;
             //battle
-            entity.Get<BattleInfoComponent>().Value = _view.UnitPlayerBattle.Weapon;
-            entity.Get<BattleInfoComponent>().Bullet = _view.UnitPlayerBattle.Weapon.StandardBullet;
-            entity.Get<BattleInfoComponent>().AttackValue = _view.UnitPlayerBattle.Weapon.AttackValue;
-            entity.Get<BattleInfoComponent>().WeaponTypeAnimation = _view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
-            entity.Get<BattleInfoComponent>().AttackMaxValueAnimation = 3;//todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
+            void SetBattleInfoForMainWeapon()
+            {
+                entity.Get<BattleInfoMainWeaponComponent>().Value = _view.UnitPlayerBattle.MainWeapon;
+                entity.Get<BattleInfoMainWeaponComponent>().Bullet = _view.UnitPlayerBattle.MainWeapon.StandardBullet;
+                entity.Get<BattleInfoMainWeaponComponent>().AttackValue = _view.UnitPlayerBattle.MainWeapon.AttackValue;
+                entity.Get<BattleInfoMainWeaponComponent>().WeaponTypeAnimation = _view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
+                entity.Get<BattleInfoMainWeaponComponent>().AttackMaxValueAnimation = 3;//todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
+            }
+            switch (_view.UnitPlayerBattle.ActiveWeapons)
+            {
+                case ActiveWeapons.RightHand:
+                    SetBattleInfoForMainWeapon();
+                    break;
 
+                case ActiveWeapons.TwoHand:
+                    SetBattleInfoForMainWeapon();
+                    break;
+
+                case ActiveWeapons.RightAndLeft:
+                    //right
+                    entity.Get<BattleInfoMainWeaponComponent>().Value = _view.UnitPlayerBattle.MainWeapon;
+                    entity.Get<BattleInfoMainWeaponComponent>().Bullet = _view.UnitPlayerBattle.MainWeapon.StandardBullet;
+                    entity.Get<BattleInfoMainWeaponComponent>().AttackValue = _view.UnitPlayerBattle.MainWeapon.AttackValue;
+                    entity.Get<BattleInfoMainWeaponComponent>().WeaponTypeAnimation = 1;//todo убрать магические числа, но это не обязательно  //_view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
+                    entity.Get<BattleInfoMainWeaponComponent>().AttackMaxValueAnimation = 4;//todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
+                    //left
+                    entity.Get<BattleInfoSecondWeaponComponent>().Value = _view.UnitPlayerBattle.SecondWeapon;
+                    entity.Get<BattleInfoSecondWeaponComponent>().Bullet = _view.UnitPlayerBattle.SecondWeapon.StandardBullet;
+                    entity.Get<BattleInfoSecondWeaponComponent>().AttackValue = _view.UnitPlayerBattle.SecondWeapon.AttackValue;
+                    entity.Get<BattleInfoSecondWeaponComponent>().WeaponTypeAnimation = 2;//todo убрать магические числа, но это не обязательно  //_view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
+                    entity.Get<BattleInfoSecondWeaponComponent>().AttackMaxValueAnimation = 4;//todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
+                    entity.Get<BattleInfoSecondWeaponComponent>().lagBeforeAttack = 0.5f; //todo в глобальные настройки персонажа - лаг перед ударом левой рукой
+                    entity.Get<BattleInfoSecondWeaponComponent>().powerFactor = 0.5f; //todo в глобальные настройки персонажа - коэффициент силы удара
+                    break;
+
+                case ActiveWeapons.RightAndShield:
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
             var directionMovement = Object.Instantiate(new GameObject(), _view.Transform, true);
             directionMovement.name = "->DirectionMoving<-";
             entity.Get<DirectionMovementComponent>().value = directionMovement.transform;

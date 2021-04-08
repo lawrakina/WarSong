@@ -70,7 +70,7 @@ namespace EcsBattle.Systems.Attacks
                 }
                 else
                 {
-                    entity.Get<NeedStartAnimationAttackComponent>();
+                    entity.Get<NeedStartAnimationAttackFromMainWeaponComponent>();
                     entity.Del<CurrentTargetComponent>();
                 }
 

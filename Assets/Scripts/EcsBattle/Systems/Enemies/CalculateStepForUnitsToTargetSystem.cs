@@ -10,7 +10,7 @@ namespace EcsBattle.Systems.Enemies
         private EcsFilter<UnitComponent,
             NeedMoveToTargetAndAttackComponent,
             CurrentTargetComponent,
-            BattleInfoComponent,
+            BattleInfoMainWeaponComponent,
             EnemyComponent> _filter;
 
         public void Run()
@@ -33,8 +33,8 @@ namespace EcsBattle.Systems.Enemies
                 }
                 else
                 {
-                    entity.Get<NeedStartAnimationAttackComponent>();
-                    entity.Get<NeedAttackComponent>();
+                    entity.Get<NeedStartAnimationAttackFromMainWeaponComponent>();
+                    entity.Get<NeedAttackFromMainWeaponComponent>();
                     entity.Del<NeedMoveToTargetAndAttackComponent>();
                 }
             }

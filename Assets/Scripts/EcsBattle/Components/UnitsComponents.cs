@@ -104,12 +104,22 @@ namespace EcsBattle.Components
     }
 
 
-    public struct NeedStartAnimationAttackComponent
+    public struct NeedStartAnimationAttackFromMainWeaponComponent
     {
     }
 
-    public struct NeedAttackComponent
+    public struct NeedAttackFromMainWeaponComponent
     {
+    }
+
+    public struct NeedAttackFromSecondWeaponComponent
+    {
+    }
+
+    public struct NeedStartAnimationAttackFromSecondWeaponComponent
+    {
+        public float currentTimeForLag;
+        public float maxTimeForLag;
     }
 
     public struct NeedMoveToTargetAndAttackComponent
@@ -123,7 +133,11 @@ namespace EcsBattle.Components
     {
     }
 
-    public struct FinalAttackComponent
+    public struct FinalAttackFromMainWeaponComponent
+    {
+    }
+
+    public struct FinalAttackFromSecondWeaponComponent
     {
     }
 }

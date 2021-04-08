@@ -95,14 +95,17 @@ namespace EcsBattle
             _execute
 
                 //Attack
-                .Add(new TimerForGettingPermissionAttackFromWeaponSystem())
+                .Add(new TimerForGettingPermissionAttackFromMainWeaponSystem())
+                .Add(new TimerForGettingPermissionAttackFromSecondWeaponSystem())
                 .Add(new Attack1StartProcessSystem())
                 .Add(new Attack2StartGetTargetSystem())
                 .Add(new Attack3LookAtTargetSystem())
                 .Add(new Attack4MoveToTargetSystem())
                 // .Add(new Attack5StartAnimationStrikeSystem())
-                .Add(new Attack6StartTimerLagBeforeAttack())
-                .Add(new Attack7FinalAttackForPlayerSystem())
+                .Add(new Attack6StartTimerLagBeforeAttackFromMainWeaponSystem())
+                .Add(new Attack6StartTimerLagBeforeAttackFromSecondWeaponSystem())
+                .Add(new Attack7FinalAttackForPlayerFromMainWeaponSystem())
+                .Add(new Attack7FinalAttackForPlayerFromSecondWeaponSystem())
                 .Add(new ApplyDamageInUnitSystem())
 
                 //Enemies
@@ -129,8 +132,10 @@ namespace EcsBattle
                 .Add(new MovementUnitByStepSystem());
             _execute
                 //Attack
-                .Add(new StartAnimationStrikeForUnitsSystem())
-                .Add(new FinalAttackForUnitsSystem())
+                .Add(new StartAnimationStrikeFromMainWeaponForUnitsSystem())
+                .Add(new StartAnimationStrikeFromSecondWeaponForUnitsSystem())
+                .Add(new FinalAttackForUnitsFromMainWeaponSystem())
+                .Add(new FinalAttackForUnitsFromSecondWeaponSystem())
                 .Add(new UpdateStatisticsOfBattleGroundSystem())
                 ;
 

@@ -41,9 +41,9 @@ namespace EcsBattle.Systems.Enemies
                 entity.Get<UnitHpComponent>().MaxValue = view.MaxHp;
                 
                 if(view.UnitBattle == null) throw new System.NotImplementedException("view.UnitBattle: NULL");
-                entity.Get<BattleInfoComponent>().Value = view.UnitBattle.Weapon;
-                entity.Get<BattleInfoComponent>().AttackValue = view.UnitBattle.Weapon.AttackValue;
-                entity.Get<BattleInfoComponent>().Bullet = view.UnitBattle.Weapon.StandardBullet;
+                entity.Get<BattleInfoMainWeaponComponent>().Value = view.UnitBattle.Weapon;
+                entity.Get<BattleInfoMainWeaponComponent>().AttackValue = view.UnitBattle.Weapon.AttackValue;
+                entity.Get<BattleInfoMainWeaponComponent>().Bullet = view.UnitBattle.Weapon.StandardBullet;
                 
                 //Ragdoll
                 SearchNodesOfRagdoll(entity, view);

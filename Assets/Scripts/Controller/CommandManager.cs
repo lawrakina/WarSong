@@ -226,7 +226,7 @@ namespace Controller
         {
             var result =
                 $"{p.CharacterClass.Name}, Level:{p.UnitLevel.CurrentLevel}, Hp:{p.BaseHp}\n" +
-                $"Weapon:{p.UnitPlayerBattle.Weapon.name}\n" +
+                $"Weapon:{p.UnitPlayerBattle.MainWeapon.name}\n" +
                 $"Description:{p.CharacterClass.Description}";
             return result;
         }
