@@ -21,8 +21,8 @@ namespace EcsBattle.Systems.Ui
         {
             foreach (var index in _filter)
             {
-                _playerModel.CurrentHp = Mathf.CeilToInt(_filter.Get2(index).CurrentValue);
-                _playerModel.MaxHp =  Mathf.CeilToInt(_filter.Get2(index).MaxValue);
+                _playerModel.CurrentHp = Mathf.CeilToInt(_filter.Get2(index)._currentValue);
+                _playerModel.MaxHp =  Mathf.CeilToInt(_filter.Get2(index)._maxValue);
             }
         }
     }

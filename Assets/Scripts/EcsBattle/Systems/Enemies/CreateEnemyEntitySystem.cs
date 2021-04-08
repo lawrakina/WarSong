@@ -28,22 +28,22 @@ namespace EcsBattle.Systems.Enemies
 
                 var entity = _world.NewEntity();
                 entity.Get<EnemyComponent>();
-                entity.Get<UnitComponent>().rootTransform = view.Transform;
-                entity.Get<UnitComponent>().rigidbody = view.Rigidbody;
-                entity.Get<UnitComponent>().collider = view.Collider;
-                entity.Get<UnitComponent>().animator = view.AnimatorParameters;
-                entity.Get<UnitComponent>().reputation = view.UnitReputation;
-                entity.Get<UnitComponent>().vision = view.UnitVision;
-                entity.Get<UnitComponent>().attributes = view.Attributes;
-                entity.Get<UnitComponent>().level = view.UnitLevel;
-                entity.Get<UiEnemyHealthBarComponent>().Value = view.HealthBar;
-                entity.Get<UnitHpComponent>().CurrentValue = view.CurrentHp;
-                entity.Get<UnitHpComponent>().MaxValue = view.MaxHp;
+                entity.Get<UnitComponent>()._rootTransform = view.Transform;
+                entity.Get<UnitComponent>()._rigidBody = view.Rigidbody;
+                entity.Get<UnitComponent>()._collider = view.Collider;
+                entity.Get<UnitComponent>()._animator = view.AnimatorParameters;
+                entity.Get<UnitComponent>()._reputation = view.UnitReputation;
+                entity.Get<UnitComponent>()._vision = view.UnitVision;
+                entity.Get<UnitComponent>()._attributes = view.Attributes;
+                entity.Get<UnitComponent>()._level = view.UnitLevel;
+                entity.Get<UiEnemyHealthBarComponent>()._value = view.HealthBar;
+                entity.Get<UnitHpComponent>()._currentValue = view.CurrentHp;
+                entity.Get<UnitHpComponent>()._maxValue = view.MaxHp;
                 
                 if(view.UnitBattle == null) throw new System.NotImplementedException("view.UnitBattle: NULL");
-                entity.Get<BattleInfoMainWeaponComponent>().Value = view.UnitBattle.Weapon;
-                entity.Get<BattleInfoMainWeaponComponent>().AttackValue = view.UnitBattle.Weapon.AttackValue;
-                entity.Get<BattleInfoMainWeaponComponent>().Bullet = view.UnitBattle.Weapon.StandardBullet;
+                entity.Get<BattleInfoMainWeaponComponent>()._value = view.UnitBattle.Weapon;
+                entity.Get<BattleInfoMainWeaponComponent>()._attackValue = view.UnitBattle.Weapon.AttackValue;
+                entity.Get<BattleInfoMainWeaponComponent>()._bullet = view.UnitBattle.Weapon.StandardBullet;
                 
                 //Ragdoll
                 SearchNodesOfRagdoll(entity, view);
@@ -54,13 +54,13 @@ namespace EcsBattle.Systems.Enemies
 
         private static void SearchNodesOfRagdoll(EcsEntity entity, IBaseUnitView view)
         {
-            entity.Get<ListRigidBAndCollidersComponent>().rigidbodies
+            entity.Get<ListRigidBAndCollidersComponent>()._rigidBodies
                 = new List<Rigidbody>(view.Transform.GetComponentsInChildren<Rigidbody>());
-            entity.Get<ListRigidBAndCollidersComponent>().colliders
+            entity.Get<ListRigidBAndCollidersComponent>()._colliders
                 = new List<Collider>(view.Transform.GetComponentsInChildren<Collider>());
-            foreach (var rigidbody in entity.Get<ListRigidBAndCollidersComponent>().rigidbodies)
+            foreach (var rigidbody in entity.Get<ListRigidBAndCollidersComponent>()._rigidBodies)
                 rigidbody.isKinematic = true;
-            foreach (var collider in entity.Get<ListRigidBAndCollidersComponent>().colliders)
+            foreach (var collider in entity.Get<ListRigidBAndCollidersComponent>()._colliders)
                 collider.enabled = false;
             view.Rigidbody.isKinematic = false;
             view.Collider.enabled = true;

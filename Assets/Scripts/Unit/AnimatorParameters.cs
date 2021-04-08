@@ -1,4 +1,5 @@
-﻿using Extension;
+﻿using System;
+using Extension;
 using UnityEngine;
 
 
@@ -41,6 +42,7 @@ namespace Unit
             get => _speed;
             set
             {
+                // if(Math.Abs(_speed - value) < float.Epsilon) return;
                 _speed = value;
                 _animator.SetFloat(TagManager.ANIMATOR_PARAM_SPEED, _speed);
             }

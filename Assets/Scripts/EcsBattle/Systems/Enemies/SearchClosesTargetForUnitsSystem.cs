@@ -17,22 +17,22 @@ namespace EcsBattle.Systems.Enemies
             {
                 ref var entity = ref _filter.GetEntity(i);
                 ref var unit = ref _filter.Get2(i);
-                ref var transform = ref _filter.Get2(i).rootTransform;
-                ref var vision = ref _filter.Get2(i).vision;
-                ref var distanceDetection = ref _filter.Get2(i).vision.distanceDetection;
-                ref var reputation = ref _filter.Get2(i).reputation;
+                ref var transform = ref _filter.Get2(i)._rootTransform;
+                ref var vision = ref _filter.Get2(i)._vision;
+                ref var distanceDetection = ref _filter.Get2(i)._vision.distanceDetection;
+                ref var reputation = ref _filter.Get2(i)._reputation;
                 var position = transform.position;
 
                 if (entity.Has<CurrentTargetComponent>())
                 {
                     ref var target = ref entity.Get<CurrentTargetComponent>();
-                    target.sqrDistance = (target.Target.position - transform.position).sqrMagnitude;
-                    if (target.sqrDistance > Mathf.Pow(vision.distanceDetection, 2))
+                    target._sqrDistance = (target._target.position - transform.position).sqrMagnitude;
+                    if (target._sqrDistance > Mathf.Pow(vision.distanceDetection, 2))
                         entity.Del<CurrentTargetComponent>();
                 }
                 
                 //поиск всех целей
-                var colliders = new Collider[unit.vision.maxCountTargets];
+                var colliders = new Collider[unit._vision.maxCountTargets];
                 var countColliders =
                     Physics.OverlapSphereNonAlloc(position, distanceDetection, colliders, 1 << reputation.EnemyLayer);
                 // DebugExtension.DebugWireSphere(position, Color.red, distanceDetection, 1.0f);
@@ -65,8 +65,8 @@ namespace EcsBattle.Systems.Enemies
                     }
 
                     entity.Get<NeedMoveToTargetAndAttackComponent>();
-                    entity.Get<CurrentTargetComponent>().Target = targetGo.transform;
-                    entity.Get<CurrentTargetComponent>().sqrDistance = distance;
+                    entity.Get<CurrentTargetComponent>()._target = targetGo.transform;
+                    entity.Get<CurrentTargetComponent>()._sqrDistance = distance;
                 }
                 else
                 {

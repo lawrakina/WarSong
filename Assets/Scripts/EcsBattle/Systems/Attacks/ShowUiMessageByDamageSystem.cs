@@ -22,8 +22,8 @@ namespace EcsBattle.Systems.Attacks
                 ref var message = ref _units.Get2(i);
 
                 // Dbg.Log($"ShowUiMessageTextSystem.{message.pointsDamage}");
-                _camera.UiTextManager.Add(message.pointsDamage.ToStringScientific(),
-                    unit.rootTransform.position + unit.vision.offsetHead, "default");
+                _camera.UiTextManager.Add(message._pointsDamage.ToStringScientific(),
+                    unit._rootTransform.position + unit._vision.offsetHead, "default");
 
                 entity.Del<NeedShowUiEventComponent>();
             }

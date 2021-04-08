@@ -16,9 +16,9 @@ namespace EcsBattle.Systems.Player
             {
                 ref var entity = ref _filter.GetEntity(i);
                 ref var needRotate = ref _filter.Get1(i);
-                ref var rootTransform = ref _filter.Get3(i).rootTransform;
-                ref var modelTransform = ref _filter.Get3(i).modelTransform;
-                ref var rotateSpeed = ref _filter.Get3(i).attributes.RotateSpeedPlayer;
+                ref var rootTransform = ref _filter.Get3(i)._rootTransform;
+                ref var modelTransform = ref _filter.Get3(i)._modelTransform;
+                ref var rotateSpeed = ref _filter.Get3(i)._attributes.RotateSpeedPlayer;
 
 
                 // rootTransform.rotation = Quaternion.Slerp(rootTransform.rotation, needRotate.value.rotation, Time.deltaTime * rotateSpeed);
@@ -35,7 +35,7 @@ namespace EcsBattle.Systems.Player
                 rootTransform.RotateAround(
                     rootTransform.position,
                     Vector3.up,
-                    rotateSpeed * Time.fixedDeltaTime * needRotate.value.localPosition.x
+                    rotateSpeed * Time.fixedDeltaTime * needRotate._value.localPosition.x
                 );
                 modelTransform.localRotation = Quaternion.identity;
                 // rootTransform.RotateAround(

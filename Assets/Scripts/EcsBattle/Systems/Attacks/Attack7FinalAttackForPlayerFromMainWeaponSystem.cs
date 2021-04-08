@@ -20,9 +20,9 @@ namespace EcsBattle.Systems.Attacks
             foreach (var i in _filter)
             {
                 ref var entity = ref _filter.GetEntity(i);
-                ref var modelTransform = ref _filter.Get3(i).modelTransform;
-                ref var reputation = ref _filter.Get3(i).reputation;
-                ref var vision = ref _filter.Get3(i).vision;
+                ref var modelTransform = ref _filter.Get3(i)._modelTransform;
+                ref var reputation = ref _filter.Get3(i)._reputation;
+                ref var vision = ref _filter.Get3(i)._vision;
                 ref var battleInfo = ref _filter.Get5(i);
 
                 var attackPositionCenter =
@@ -40,7 +40,7 @@ namespace EcsBattle.Systems.Attacks
                     var tempObj = hitColliders[index].gameObject.GetComponent<ICollision>();
                     if (tempObj != null)
                     {
-                        var collision = new InfoCollision(battleInfo.AttackValue.GetAttack(), entity);
+                        var collision = new InfoCollision(battleInfo._attackValue.GetAttack(), entity);
                         tempObj.OnCollision(collision);
                     }
                 }

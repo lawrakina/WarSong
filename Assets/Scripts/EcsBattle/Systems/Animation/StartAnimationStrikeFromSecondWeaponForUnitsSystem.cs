@@ -17,14 +17,14 @@ namespace EcsBattle.Systems.Animation
             {
                 ref var entity = ref _filter.GetEntity(i);
                 ref var timer = ref _filter.Get1(i);
-                ref var animator = ref _filter.Get2(i).animator;
+                ref var animator = ref _filter.Get2(i)._animator;
                 ref var battle = ref _filter.Get3(i);
                 
-                timer.currentTimeForLag += Time.deltaTime;
-                if (timer.currentTimeForLag > timer.maxTimeForLag)
+                timer._currentTimeForLag += Time.deltaTime;
+                if (timer._currentTimeForLag > timer._maxTimeForLag)
                 {
-                    animator.WeaponType = battle.WeaponTypeAnimation;
-                    animator.AttackType = Random.Range(0, battle.AttackMaxValueAnimation);
+                    animator.WeaponType = battle._weaponTypeAnimation;
+                    animator.AttackType = Random.Range(0, battle._attackMaxValueAnimation);
                     animator.SetTriggerAttack();
                     entity.Del<NeedStartAnimationAttackFromSecondWeaponComponent>();
                     entity.Get<NeedAttackFromSecondWeaponComponent>();

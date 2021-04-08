@@ -23,28 +23,28 @@ namespace EcsBattle.Systems.Player
         {
             var entity = _world.NewEntity();
             //Base components
-            entity.Get<PlayerComponent>(); 
-            entity.Get<UnitComponent>().modelTransform =_view.TransformModel; 
-            entity.Get<UnitComponent>().rootTransform =_view.Transform; 
-            entity.Get<UnitComponent>().rigidbody = _view.Rigidbody;
-            entity.Get<UnitComponent>().reputation = _view.UnitReputation;
-            entity.Get<UnitComponent>().vision = _view.UnitVision;
-            entity.Get<UnitComponent>().attributes = _view.Attributes;
-            entity.Get<UnitComponent>().animator = _view.AnimatorParameters;
+            entity.Get<PlayerComponent>()._unitClass = _view.CharacterClass.Class;
+            entity.Get<UnitComponent>()._modelTransform =_view.TransformModel; 
+            entity.Get<UnitComponent>()._rootTransform =_view.Transform; 
+            entity.Get<UnitComponent>()._rigidBody = _view.Rigidbody;
+            entity.Get<UnitComponent>()._reputation = _view.UnitReputation;
+            entity.Get<UnitComponent>()._vision = _view.UnitVision;
+            entity.Get<UnitComponent>()._attributes = _view.Attributes;
+            entity.Get<UnitComponent>()._animator = _view.AnimatorParameters;
             //ui
             _playerModel.MaxHp = Mathf.RoundToInt(_view.CurrentHp);
             _playerModel.CurrentHp = Mathf.RoundToInt(_view.CurrentHp);
             
-            entity.Get<UnitHpComponent>().CurrentValue = _view.CurrentHp;
-            entity.Get<UnitHpComponent>().MaxValue = _view.CurrentHp;
+            entity.Get<UnitHpComponent>()._currentValue = _view.CurrentHp;
+            entity.Get<UnitHpComponent>()._maxValue = _view.CurrentHp;
             //battle
             void SetBattleInfoForMainWeapon()
             {
-                entity.Get<BattleInfoMainWeaponComponent>().Value = _view.UnitPlayerBattle.MainWeapon;
-                entity.Get<BattleInfoMainWeaponComponent>().Bullet = _view.UnitPlayerBattle.MainWeapon.StandardBullet;
-                entity.Get<BattleInfoMainWeaponComponent>().AttackValue = _view.UnitPlayerBattle.MainWeapon.AttackValue;
-                entity.Get<BattleInfoMainWeaponComponent>().WeaponTypeAnimation = _view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
-                entity.Get<BattleInfoMainWeaponComponent>().AttackMaxValueAnimation = 3;//todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
+                entity.Get<BattleInfoMainWeaponComponent>()._value = _view.UnitPlayerBattle.MainWeapon;
+                entity.Get<BattleInfoMainWeaponComponent>()._bullet = _view.UnitPlayerBattle.MainWeapon.StandardBullet;
+                entity.Get<BattleInfoMainWeaponComponent>()._attackValue = _view.UnitPlayerBattle.MainWeapon.AttackValue;
+                entity.Get<BattleInfoMainWeaponComponent>()._weaponTypeAnimation = _view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
+                entity.Get<BattleInfoMainWeaponComponent>()._attackMaxValueAnimation = 3;//todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
             }
             switch (_view.UnitPlayerBattle.ActiveWeapons)
             {
@@ -58,19 +58,19 @@ namespace EcsBattle.Systems.Player
 
                 case ActiveWeapons.RightAndLeft:
                     //right
-                    entity.Get<BattleInfoMainWeaponComponent>().Value = _view.UnitPlayerBattle.MainWeapon;
-                    entity.Get<BattleInfoMainWeaponComponent>().Bullet = _view.UnitPlayerBattle.MainWeapon.StandardBullet;
-                    entity.Get<BattleInfoMainWeaponComponent>().AttackValue = _view.UnitPlayerBattle.MainWeapon.AttackValue;
-                    entity.Get<BattleInfoMainWeaponComponent>().WeaponTypeAnimation = 1;//todo убрать магические числа, но это не обязательно  //_view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
-                    entity.Get<BattleInfoMainWeaponComponent>().AttackMaxValueAnimation = 4;//todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
+                    entity.Get<BattleInfoMainWeaponComponent>()._value = _view.UnitPlayerBattle.MainWeapon;
+                    entity.Get<BattleInfoMainWeaponComponent>()._bullet = _view.UnitPlayerBattle.MainWeapon.StandardBullet;
+                    entity.Get<BattleInfoMainWeaponComponent>()._attackValue = _view.UnitPlayerBattle.MainWeapon.AttackValue;
+                    entity.Get<BattleInfoMainWeaponComponent>()._weaponTypeAnimation = 1;//todo убрать магические числа, но это не обязательно  //_view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
+                    entity.Get<BattleInfoMainWeaponComponent>()._attackMaxValueAnimation = 4;//todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
                     //left
-                    entity.Get<BattleInfoSecondWeaponComponent>().Value = _view.UnitPlayerBattle.SecondWeapon;
-                    entity.Get<BattleInfoSecondWeaponComponent>().Bullet = _view.UnitPlayerBattle.SecondWeapon.StandardBullet;
-                    entity.Get<BattleInfoSecondWeaponComponent>().AttackValue = _view.UnitPlayerBattle.SecondWeapon.AttackValue;
-                    entity.Get<BattleInfoSecondWeaponComponent>().WeaponTypeAnimation = 2;//todo убрать магические числа, но это не обязательно  //_view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
-                    entity.Get<BattleInfoSecondWeaponComponent>().AttackMaxValueAnimation = 4;//todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
-                    entity.Get<BattleInfoSecondWeaponComponent>().lagBeforeAttack = 0.5f; //todo в глобальные настройки персонажа - лаг перед ударом левой рукой
-                    entity.Get<BattleInfoSecondWeaponComponent>().powerFactor = 0.5f; //todo в глобальные настройки персонажа - коэффициент силы удара
+                    entity.Get<BattleInfoSecondWeaponComponent>()._value = _view.UnitPlayerBattle.SecondWeapon;
+                    entity.Get<BattleInfoSecondWeaponComponent>()._bullet = _view.UnitPlayerBattle.SecondWeapon.StandardBullet;
+                    entity.Get<BattleInfoSecondWeaponComponent>()._attackValue = _view.UnitPlayerBattle.SecondWeapon.AttackValue;
+                    entity.Get<BattleInfoSecondWeaponComponent>()._weaponTypeAnimation = 2;//todo убрать магические числа, но это не обязательно  //_view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
+                    entity.Get<BattleInfoSecondWeaponComponent>()._attackMaxValueAnimation = 4;//todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
+                    entity.Get<BattleInfoSecondWeaponComponent>()._lagBeforeAttack = 0.5f; //todo в глобальные настройки персонажа - лаг перед ударом левой рукой
+                    entity.Get<BattleInfoSecondWeaponComponent>()._powerFactor = 0.5f; //todo в глобальные настройки персонажа - коэффициент силы удара
                     break;
 
                 case ActiveWeapons.RightAndShield:
@@ -82,7 +82,7 @@ namespace EcsBattle.Systems.Player
             
             var directionMovement = Object.Instantiate(new GameObject(), _view.Transform, true);
             directionMovement.name = "->DirectionMoving<-";
-            entity.Get<DirectionMovementComponent>().value = directionMovement.transform;
+            entity.Get<DirectionMovementComponent>()._value = directionMovement.transform;
             
             //for collision 
             var playerEntity = new PlayerEntity(_view, entity);

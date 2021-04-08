@@ -16,11 +16,11 @@ namespace EcsBattle.Systems.Animation
             foreach (var i in _filter)
             {
                 ref var entity = ref _filter.GetEntity(i);
-                ref var animator = ref _filter.Get2(i).animator;
+                ref var animator = ref _filter.Get2(i)._animator;
                 ref var battle = ref _filter.Get3(i);
 
-                animator.WeaponType = battle.WeaponTypeAnimation;
-                animator.AttackType = Random.Range(0, battle.AttackMaxValueAnimation);
+                animator.WeaponType = battle._weaponTypeAnimation;
+                animator.AttackType = Random.Range(0, battle._attackMaxValueAnimation);
                 animator.SetTriggerAttack();
                 entity.Del<NeedStartAnimationAttackFromMainWeaponComponent>();
             }

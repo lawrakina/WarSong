@@ -14,11 +14,11 @@ namespace EcsBattle.Systems.Attacks
             {
                 ref var entity = ref _filter.GetEntity(i);
                 // ref var rootTransform = ref _filter.Get3(i).rootTransform;
-                ref var modelTransform = ref _filter.Get4(i).modelTransform;
+                ref var modelTransform = ref _filter.Get4(i)._modelTransform;
                 ref var target = ref _filter.Get2(i);
                 
-                if(target.Target != null)
-                    modelTransform.LookAt(target.Target);
+                if(target._target != null)
+                    modelTransform.LookAt(target._target);
                 else
                     modelTransform.localRotation = Quaternion.identity;
                 

@@ -6,53 +6,53 @@ namespace EcsBattle.Components
 {
     public struct BattleInfoMainWeaponComponent
     {
-        public BaseWeapon Value;
-        public WeaponBullet Bullet;
-        public AttackValue AttackValue;
-        public int AttackMaxValueAnimation;
-        public int WeaponTypeAnimation;
+        public BaseWeapon _value;
+        public WeaponBullet _bullet;
+        public AttackValue _attackValue;
+        public int _attackMaxValueAnimation;
+        public int _weaponTypeAnimation;
     }
     public struct BattleInfoSecondWeaponComponent
     {
-        public BaseWeapon Value;
-        public WeaponBullet Bullet;
-        public AttackValue AttackValue;
-        public int AttackMaxValueAnimation;
-        public int WeaponTypeAnimation;
-        public float lagBeforeAttack;
-        public float powerFactor;
+        public BaseWeapon _value;
+        public WeaponBullet _bullet;
+        public AttackValue _attackValue;
+        public int _attackMaxValueAnimation;
+        public int _weaponTypeAnimation;
+        public float _lagBeforeAttack;
+        public float _powerFactor;
     }
 
     public struct AwaitTimerForOneStrikeFromMainWeaponComponent
     {
-        public float CurrentTime;
-        public float MaxTime;
+        public float _currentTime;
+        public float _maxTime;
     }
     public struct TimerTickForGetPermissionToAttackFromMainWeaponComponent
     {
-        public float CurrentTime;
-        public float MaxTime;
+        public float _currentTime;
+        public float _maxTime;
     }
     public struct PermissionForAttackFromMainWeaponAllowedComponent
     {
     }
     public struct TimerForCheckVisionForEnemyComponent
     {
-        public float CurrentTime;
-        public float MaxTime;
+        public float _currentTime;
+        public float _maxTime;
     }
     
 
     public struct TimerTickForGetPermissionToAttackFromSecondWeaponComponent
     {
-        public float CurrentTime;
-        public float MaxTime;
+        public float _currentTime;
+        public float _maxTime;
     }
 
     public struct AwaitTimerForOneStrikeFromSecondWeaponComponent
     {
-        public float CurrentTime;
-        public float MaxTime;
+        public float _currentTime;
+        public float _maxTime;
     }
 
     public struct PermissionForAttackFromSecondWeaponAllowedComponent

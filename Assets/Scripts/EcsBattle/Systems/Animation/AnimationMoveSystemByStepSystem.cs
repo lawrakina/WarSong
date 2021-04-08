@@ -12,12 +12,12 @@ namespace EcsBattle.Systems.Animation
             foreach (var i in _filter)
             {
                 ref var entity = ref _filter.GetEntity(i);
-                ref var animator = ref _filter.Get1(i).animator;
+                ref var animator = ref _filter.Get1(i)._animator;
                 ref var step = ref _filter.Get1(i);
 
                 if (entity.Has<NeedStepComponent>())
                 {
-                    animator.Speed = entity.Get<NeedStepComponent>().value.magnitude;
+                    animator.Speed = entity.Get<NeedStepComponent>()._value.magnitude;
                 }
                 else
                 {

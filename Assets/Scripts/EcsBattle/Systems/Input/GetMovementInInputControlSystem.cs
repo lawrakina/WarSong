@@ -18,17 +18,17 @@ namespace EcsBattle.Systems.Input
                 ref var target = ref _input.Get2(index);
                 
                 //имитация движения джойстика. смещение больше погрешности
-                if(input.LastPosition.sqrMagnitude > input.MaxOffsetForMovement.sqrMagnitude)
+                if(input._lastPosition.sqrMagnitude > input._maxOffsetForMovement.sqrMagnitude)
                 {
-                    target.value.Get<MovementEventComponent>().value = input.LastPosition;
+                    target._value.Get<MovementEventComponent>()._value = input._lastPosition;
                     // Dbg.Log($"joystick.Movement:{input.LastPosition}");
                 }
                 else
                 {
-                    ref var movement = ref target.value.Get<MovementEventComponent>();
-                    if (movement.value.sqrMagnitude > input.MaxOffsetForMovement.sqrMagnitude)
+                    ref var movement = ref target._value.Get<MovementEventComponent>();
+                    if (movement._value.sqrMagnitude > input._maxOffsetForMovement.sqrMagnitude)
                     {
-                        movement.value = Vector3.zero;
+                        movement._value = Vector3.zero;
                     }
                 }
             }

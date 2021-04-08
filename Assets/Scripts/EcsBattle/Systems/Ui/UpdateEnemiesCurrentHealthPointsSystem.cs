@@ -12,7 +12,7 @@ namespace EcsBattle.Systems.Ui
         {
             foreach (var index in _filter)
             {
-                _filter.Get1(index).Value.ChangeValue(_filter.Get2(index).CurrentValue, _filter.Get2(index).MaxValue);
+                _filter.Get1(index)._value.ChangeValue(_filter.Get2(index)._currentValue, _filter.Get2(index)._maxValue);
             }
         }
     }

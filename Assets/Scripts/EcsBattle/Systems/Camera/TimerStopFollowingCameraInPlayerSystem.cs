@@ -19,14 +19,14 @@ namespace EcsBattle.Systems.Camera
                 ref var timer = ref _filter.Get1(i);
                 ref var timerLerp = ref entity.Get<NeedLerpPositionCameraFollowingToTargetComponent>();
 
-                timer.currentTime += Time.deltaTime;
-                if (timer.currentTime > timer.maxTime)
+                timer._currentTime += Time.deltaTime;
+                if (timer._currentTime > timer._maxTime)
                 {
-                    timerLerp.currentTime = 0.0f;
+                    timerLerp._currentTime = 0.0f;
                     foreach (var s in _settings)
                     {
                         ref var setting = ref _settings.Get1(s);
-                        timerLerp.maxTime = 1.0f;
+                        timerLerp._maxTime = 1.0f;
                     }
                     entity.Del<TimerStopFollowingInPlayerComponent>();
                 }

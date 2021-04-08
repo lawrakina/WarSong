@@ -23,17 +23,17 @@ namespace EcsBattle.Systems.Attacks
                 ref var target = ref _player.Get4(i);
                 ref var direction = ref _player.Get2(i);
                 ref var battleInfo = ref _player.Get5(i);
-                var rootPosition = _player.Get6(i).rootTransform.position;
+                var rootPosition = _player.Get6(i)._rootTransform.position;
 
-                target.sqrDistance = (target.Target.position - rootPosition).sqrMagnitude;
+                target._sqrDistance = (target._target.position - rootPosition).sqrMagnitude;
 
-                if (target.sqrDistance > Mathf.Pow(battleInfo.Value.AttackDistance, 2))
+                if (target._sqrDistance > Mathf.Pow(battleInfo._value.AttackDistance, 2))
                 {
-                    var offset = target.Target.position - rootPosition;
-                    direction.value.position = rootPosition + Vector3.ClampMagnitude(offset,1.0f);
-                    entity.Get<NeedStepComponent>().value = rootPosition - direction.value.position;
+                    var offset = target._target.position - rootPosition;
+                    direction._value.position = rootPosition + Vector3.ClampMagnitude(offset,1.0f);
+                    entity.Get<NeedStepComponent>()._value = rootPosition - direction._value.position;
                     //for animator
-                    direction.value.localPosition = new Vector3(0.0f, 0.0f, 1.0f);
+                    direction._value.localPosition = new Vector3(0.0f, 0.0f, 1.0f);
                 }
                 else
                 {
@@ -42,8 +42,8 @@ namespace EcsBattle.Systems.Attacks
                     if (entity.Has<PermissionForAttackFromSecondWeaponAllowedComponent>())
                     {
                         entity.Del<PermissionForAttackFromSecondWeaponAllowedComponent>();
-                        entity.Get<NeedStartAnimationAttackFromSecondWeaponComponent>().currentTimeForLag = 0.0f;
-                        entity.Get<NeedStartAnimationAttackFromSecondWeaponComponent>().maxTimeForLag = entity.Get<BattleInfoSecondWeaponComponent>().lagBeforeAttack;
+                        entity.Get<NeedStartAnimationAttackFromSecondWeaponComponent>()._currentTimeForLag = 0.0f;
+                        entity.Get<NeedStartAnimationAttackFromSecondWeaponComponent>()._maxTimeForLag = entity.Get<BattleInfoSecondWeaponComponent>()._lagBeforeAttack;
                     }
                     entity.Del<NeedMoveToTargetAndAttackComponent>();
                 }

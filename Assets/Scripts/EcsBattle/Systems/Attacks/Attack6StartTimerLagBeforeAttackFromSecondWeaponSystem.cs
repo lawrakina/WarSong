@@ -18,15 +18,15 @@ namespace EcsBattle.Systems.Attacks
                 if (!entity.Has<AwaitTimerForOneStrikeFromSecondWeaponComponent>())
                 {
                     ref var timer = ref entity.Get<AwaitTimerForOneStrikeFromSecondWeaponComponent>();
-                    timer.CurrentTime = 0.0f;
-                    timer.MaxTime = battleInfo.AttackValue.GetTimeLag();
+                    timer._currentTime = 0.0f;
+                    timer._maxTime = battleInfo._attackValue.GetTimeLag();
                 }
                 else
                 {
                     //increment timer
                     ref var timer = ref entity.Get<AwaitTimerForOneStrikeFromSecondWeaponComponent>();
-                    timer.CurrentTime += Time.deltaTime;
-                    if (timer.CurrentTime > timer.MaxTime)
+                    timer._currentTime += Time.deltaTime;
+                    if (timer._currentTime > timer._maxTime)
                     {
                         entity.Del<AwaitTimerForOneStrikeFromSecondWeaponComponent>();
                         entity.Del<NeedAttackFromSecondWeaponComponent>();

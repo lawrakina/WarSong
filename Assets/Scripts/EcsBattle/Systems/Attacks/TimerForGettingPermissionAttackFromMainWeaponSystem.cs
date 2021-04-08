@@ -23,15 +23,15 @@ namespace EcsBattle.Systems.Attacks
                 {
                     //timer not found, start timer
                     ref var timer = ref entity.Get<TimerTickForGetPermissionToAttackFromMainWeaponComponent>();
-                    timer.CurrentTime = 0.0f;
-                    timer.MaxTime = weapon.AttackValue.GetAttackSpeed();
+                    timer._currentTime = 0.0f;
+                    timer._maxTime = weapon._attackValue.GetAttackSpeed();
                 }
                 else
                 {
                     //timer founded, increment ValueTimer
                     ref var timer = ref entity.Get<TimerTickForGetPermissionToAttackFromMainWeaponComponent>();
-                    timer.CurrentTime += Time.deltaTime;
-                    if (timer.CurrentTime > timer.MaxTime)
+                    timer._currentTime += Time.deltaTime;
+                    if (timer._currentTime > timer._maxTime)
                     {
                         entity.Del<TimerTickForGetPermissionToAttackFromMainWeaponComponent>();
                         entity.Get<PermissionForAttackFromMainWeaponAllowedComponent>();

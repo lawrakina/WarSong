@@ -17,8 +17,8 @@ namespace EcsBattle.Systems.Animation
                 // if(direction.value.localPosition.x < Vector3.kEpsilon && 
                 //    direction.value.localPosition.z < Vector3.kEpsilon) return;
                 
-                unit.animator.Speed = direction.value.localPosition.z;
-                unit.animator.HorizontalSpeed = direction.value.localPosition.x;
+                unit._animator.Speed = direction._value.localPosition.z;
+                unit._animator.HorizontalSpeed = direction._value.localPosition.x;
             }
         }
     }

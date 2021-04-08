@@ -24,14 +24,14 @@ namespace EcsBattle.Systems.Enemies
                 if (!entity.Has<TimerForCheckVisionForEnemyComponent>())
                 {
                     ref var timer = ref entity.Get<TimerForCheckVisionForEnemyComponent>();
-                    timer.CurrentTime = Random.Range(0.0f, 0.5f);
-                    timer.MaxTime = _time;
+                    timer._currentTime = Random.Range(0.0f, 0.5f);
+                    timer._maxTime = _time;
                 }
                 else
                 {
                     ref var timer = ref entity.Get<TimerForCheckVisionForEnemyComponent>();
-                    timer.CurrentTime += Time.deltaTime;
-                    if (timer.CurrentTime > timer.MaxTime)
+                    timer._currentTime += Time.deltaTime;
+                    if (timer._currentTime > timer._maxTime)
                     {
                         entity.Del<TimerForCheckVisionForEnemyComponent>();
                         entity.Get<TimerTickedForCheckVisionComponent>();
