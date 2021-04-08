@@ -104,4 +104,4 @@ MonoBehaviour:
   textTypes:
   - keyType: default
     poolCount: 20
-    prefab: {fileID: 114685088414384168, guid: 74837713fa6c9ca40beb9f0df4fb1830, type: 3}
+    prefab: {fileID: 114685088414384168, guid: 5fc2c5db473d9264f80ff7eb184ad4b8, type: 3}
