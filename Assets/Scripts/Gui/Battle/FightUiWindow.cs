@@ -1,6 +1,7 @@
 ﻿using System;
 using Windows;
 using Controller;
+using Controller.Model;
 using Extension;
 using Models;
 using UnityEngine;
@@ -298,11 +299,7 @@ namespace Gui.Battle
                 _rootTarget.gameObject.SetActive(target != null);
                 _targetName.text = target?.Transform.gameObject.name;
             };
-            _targetModel.ChangeMaxHp += f =>
-            {
-                
-                TargetMaxHpValue = f;
-            };
+            _targetModel.ChangeMaxHp += f => { TargetMaxHpValue = f; };
             _targetModel.ChangeCurrentHp += f => { TargetCurrentHpValue = f; };
         }
     }

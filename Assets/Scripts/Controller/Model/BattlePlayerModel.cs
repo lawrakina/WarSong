@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Models
+namespace Controller.Model
 {
     public class BattlePlayerModel
     {

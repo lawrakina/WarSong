@@ -187,11 +187,4 @@ namespace Controller
 
         #endregion
     }
-
-    public sealed class BattleTargetModel
-    {
-        public Action<IBaseUnitView> ChangeTarget;
-        public Action<int> ChangeMaxHp;
-        public Action<int> ChangeCurrentHp;
-    }
 }

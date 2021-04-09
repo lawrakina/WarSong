@@ -1,4 +1,5 @@
 ﻿using System;
+using Controller.Model;
 using DungeonArchitect.Samples.GridFlow;
 using EcsBattle.Components;
 using EcsBattle.CustomEntities;

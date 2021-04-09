@@ -1,4 +1,5 @@
 ﻿using System;
+using Controller.Model;
 using EcsBattle.Components;
 using Leopotam.Ecs;
 using Models;

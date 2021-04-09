@@ -1,6 +1,7 @@
-﻿using Controller;
+﻿using Controller.Model;
 using EcsBattle.Components;
 using Leopotam.Ecs;
+using Models;
 
 
 namespace EcsBattle.Systems.Ui
