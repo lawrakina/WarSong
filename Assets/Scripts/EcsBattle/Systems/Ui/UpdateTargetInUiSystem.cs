@@ -20,8 +20,8 @@ namespace EcsBattle.Systems.Ui
                 {
                     ref var target = ref entity.Get<CurrentTargetComponent>();
                     _targetModel.ChangeTarget(target._baseUnitView);
-                    _targetModel.ChangeMaxHp((int) target._baseUnitView.MaxHp);
-                    _targetModel.ChangeCurrentHp((int) target._baseUnitView.CurrentHp);
+                    _targetModel.ChangeMaxHp((int) target._baseUnitView.UnitHealth.MaxHp);
+                    _targetModel.ChangeCurrentHp((int) target._baseUnitView.UnitHealth.CurrentHp);
                 }
                 else
                 {

@@ -11,8 +11,11 @@ namespace Unit.Enemies
             // view.UnitClass = new SimplyEnemyClass();
             view.UnitVision = enemySettings.unitVisionComponent;
             view.UnitClass = new SimplyEnemyClass();
-            view.MaxHp = enemySettings.MaxHp;
-            view.CurrentHp = enemySettings.MaxHp;
+            view.UnitHealth = new UnitHealth
+            {
+                MaxHp = enemySettings.MaxHp, 
+                CurrentHp = enemySettings.MaxHp
+            };
 
             view.Attributes = enemySettings.unitAttributes;
             

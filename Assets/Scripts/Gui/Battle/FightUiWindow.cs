@@ -22,6 +22,8 @@ namespace Gui.Battle
 
         [Header("Target")]
         [SerializeField]
+        private Image _rootTarget;
+        [SerializeField]
         private Image _targetBackground;
 
         [SerializeField]
@@ -293,10 +295,14 @@ namespace Gui.Battle
 
             _targetModel.ChangeTarget += target =>
             {
-                _targetBackground.gameObject.SetActive(target != null);
+                _rootTarget.gameObject.SetActive(target != null);
                 _targetName.text = target?.Transform.gameObject.name;
             };
-            _targetModel.ChangeMaxHp += f => { TargetMaxHpValue = f; };
+            _targetModel.ChangeMaxHp += f =>
+            {
+                
+                TargetMaxHpValue = f;
+            };
             _targetModel.ChangeCurrentHp += f => { TargetCurrentHpValue = f; };
         }
     }

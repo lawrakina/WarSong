@@ -17,14 +17,11 @@ namespace EcsBattle.Systems.Attacks
                 ref var infoCollision = ref _filter.Get2(i);
 
                 var damage = infoCollision._value.Damage;
-                unit._currentHpValue -= damage;
-                //todo это такой костыль что пиздец
-                unit._view.CurrentHp = unit._currentHpValue;
-                unit._view.MaxHp = unit._maxHpValue;
+                unit._health.CurrentHp -= damage;
                 
                 entity.Get<NeedShowUiEventComponent>()._pointsDamage = damage;
 
-                if (unit._currentHpValue <= 0.0f)
+                if (unit._health.CurrentHp <= 0.0f)
                 {
                     entity.Get<DeathEventComponent>()._killer = infoCollision._value._attacker;
                 }

@@ -24,7 +24,7 @@ namespace EcsBattle.Systems.Player
             var entity = _world.NewEntity();
             //Base components
             entity.Get<PlayerComponent>()._unitClass = _view.CharacterClass.Class;
-            entity.Get<PlayerComponent>()._view = _view;
+            // entity.Get<PlayerComponent>()._view = _view;
             entity.Get<UnitComponent>()._view =_view; 
             entity.Get<UnitComponent>()._modelTransform =_view.TransformModel; 
             entity.Get<UnitComponent>()._rootTransform =_view.Transform; 
@@ -33,12 +33,13 @@ namespace EcsBattle.Systems.Player
             entity.Get<UnitComponent>()._vision = _view.UnitVision;
             entity.Get<UnitComponent>()._attributes = _view.Attributes;
             entity.Get<UnitComponent>()._animator = _view.AnimatorParameters;
+            entity.Get<UnitComponent>()._health = _view.UnitHealth;
             //ui
-            _playerModel.MaxHp = Mathf.RoundToInt(_view.CurrentHp);
-            _playerModel.CurrentHp = Mathf.RoundToInt(_view.CurrentHp);
+            _playerModel.MaxHp = Mathf.RoundToInt(_view.UnitHealth.CurrentHp);
+            _playerModel.CurrentHp = Mathf.RoundToInt(_view.UnitHealth.CurrentHp);
             
-            entity.Get<UnitComponent>()._currentHpValue = _view.CurrentHp;
-            entity.Get<UnitComponent>()._maxHpValue = _view.CurrentHp;
+            // entity.Get<UnitComponent>()._currentHpValue = _view.CurrentHp;
+            // entity.Get<UnitComponent>()._maxHpValue = _view.CurrentHp;
             //battle
             void SetBattleInfoForMainWeapon()
             {

@@ -49,8 +49,7 @@ namespace EcsBattle.Components
         public UnitAttributes _attributes;
         public UnitVision _vision;
         public UnitLevel _level;
-        public float _currentHpValue;
-        public float _maxHpValue;
+        public UnitHealth _health;
     }
 
     public struct ListRigidBAndCollidersComponent

@@ -225,7 +225,7 @@ namespace Controller
         private static string GetInfoByPlayer(IPlayerView p)
         {
             var result =
-                $"{p.CharacterClass.Name}, Level:{p.UnitLevel.CurrentLevel}, Hp:{p.BaseHp}\n" +
+                $"{p.CharacterClass.Name}, Level:{p.UnitLevel.CurrentLevel}, Hp:{p.UnitHealth.MaxHp}\n" +
                 $"Weapon:{p.UnitPlayerBattle.MainWeapon.name}\n" +
                 $"Description:{p.CharacterClass.Description}";
             return result;

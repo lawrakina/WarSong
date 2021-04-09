@@ -37,8 +37,7 @@ namespace EcsBattle.Systems.Enemies
                 entity.Get<UnitComponent>()._vision = view.UnitVision;
                 entity.Get<UnitComponent>()._attributes = view.Attributes;
                 entity.Get<UnitComponent>()._level = view.UnitLevel;
-                entity.Get<UnitComponent>()._currentHpValue = view.CurrentHp;
-                entity.Get<UnitComponent>()._maxHpValue = view.MaxHp;
+                entity.Get<UnitComponent>()._health = view.UnitHealth;
                 entity.Get<UiEnemyHealthBarComponent>()._value = view.HealthBar;
                 
                 if(view.UnitBattle == null) throw new System.NotImplementedException("view.UnitBattle: NULL");
