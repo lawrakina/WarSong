@@ -69,7 +69,7 @@ MonoBehaviour:
   Seed: 12
   Mode2D: 0
   flowAsset: {fileID: 11400000, guid: cf13a5846b2c8604283812266c22529d, type: 2}
-  gridSize: {x: 4, y: 4, z: 4}
+  gridSize: {x: 3, y: 3, z: 3}
 --- !u!114 &2253205860022267969
 MonoBehaviour:
   m_ObjectHideFlags: 0

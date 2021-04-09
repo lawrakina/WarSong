@@ -44,21 +44,6 @@ MonoBehaviour:
         distanceDetection: 15
         maxCountTargets: 5
         offsetHead: {x: 0, y: 1.5, z: 0}
-    - CharacterClass: 1
-      CharacterGender: 1
-      CharacterRace: 2
-      PlayerMoveSpeed: 7
-      RotateSpeedPlayer: 120
-      Equipment:
-        MainWeapon: {fileID: -6366401157965156963, guid: 748584e1e1114c249a340921801d935e,
-          type: 3}
-        SecondWeapon: {fileID: 4791450294888299635, guid: d3687d2aa11ee35489e653ed8b436246,
-          type: 3}
-      ExperiencePoints: 0
-      unitVisionParameters:
-        distanceDetection: 15
-        maxCountTargets: 5
-        offsetHead: {x: 0, y: 1.5, z: 0}
     - CharacterClass: 2
       CharacterGender: 1
       CharacterRace: 1
@@ -74,7 +59,7 @@ MonoBehaviour:
         distanceDetection: 15
         maxCountTargets: 5
         offsetHead: {x: 0, y: 1.5, z: 0}
-  _numberActiveCharacter: 1
+  _numberActiveCharacter: 2
   _presetCharacters:
     listPresetsSettings:
     - CharacterClass: 0

@@ -25,11 +25,11 @@ namespace EcsBattle.Systems.Attacks
                 ref var battleInfo = ref _player.Get5(i);
                 var rootPosition = _player.Get6(i)._rootTransform.position;
 
-                target._sqrDistance = (target._target.position - rootPosition).sqrMagnitude;
+                target._sqrDistance = (target._baseUnitView.Transform.position - rootPosition).sqrMagnitude;
 
                 if (target._sqrDistance > Mathf.Pow(battleInfo._value.AttackDistance, 2))
                 {
-                    var offset = target._target.position - rootPosition;
+                    var offset = target._baseUnitView.Transform.position - rootPosition;
                     direction._value.position = rootPosition + Vector3.ClampMagnitude(offset,1.0f);
                     entity.Get<NeedStepComponent>()._value = rootPosition - direction._value.position;
                     //for animator

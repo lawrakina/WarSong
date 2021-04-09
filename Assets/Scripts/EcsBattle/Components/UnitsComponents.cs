@@ -5,6 +5,8 @@ using Guirao.UltimateTextDamage;
 using Leopotam.Ecs;
 using Necromancy.UI;
 using Unit;
+using Unit.Enemies;
+using Unit.Player;
 using UnityEngine;
 
 
@@ -13,6 +15,7 @@ namespace EcsBattle.Components
     public struct PlayerComponent
     {
         public CharacterClass _unitClass;
+        public IPlayerView _view;
     }
     public struct EnemyComponent
     {
@@ -36,6 +39,7 @@ namespace EcsBattle.Components
 
     public struct UnitComponent
     {
+        public IBaseUnitView _view;
         public Transform _rootTransform;
         public Transform _modelTransform;
         public Rigidbody _rigidBody;
@@ -45,6 +49,8 @@ namespace EcsBattle.Components
         public UnitAttributes _attributes;
         public UnitVision _vision;
         public UnitLevel _level;
+        public float _currentHpValue;
+        public float _maxHpValue;
     }
 
     public struct ListRigidBAndCollidersComponent
@@ -61,12 +67,6 @@ namespace EcsBattle.Components
     public struct UiEnemyHealthBarComponent
     {
         public HealthBarView _value;
-    }
-
-    public struct UnitHpComponent
-    {
-        public float _currentValue;
-        public float _maxValue;
     }
 
     public struct DeathEventComponent
@@ -101,7 +101,7 @@ namespace EcsBattle.Components
 
     public struct CurrentTargetComponent
     {
-        public Transform _target;
+        public IBaseUnitView _baseUnitView;
         public float _sqrDistance;
     }
 

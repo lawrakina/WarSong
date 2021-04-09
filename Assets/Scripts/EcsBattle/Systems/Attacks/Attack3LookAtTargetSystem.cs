@@ -17,8 +17,8 @@ namespace EcsBattle.Systems.Attacks
                 ref var modelTransform = ref _filter.Get4(i)._modelTransform;
                 ref var target = ref _filter.Get2(i);
                 
-                if(target._target != null)
-                    modelTransform.LookAt(target._target);
+                if(target._baseUnitView != null)
+                    modelTransform.LookAt(target._baseUnitView.Transform);
                 else
                     modelTransform.localRotation = Quaternion.identity;
                 

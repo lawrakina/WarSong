@@ -4,6 +4,7 @@ using DuloGames.UI;
 using EcsBattle.Components;
 using EcsBattle.Systems.Animation;
 using EcsBattle.Systems.Attacks;
+using EcsBattle.Systems.BattleLiveCycles;
 using EcsBattle.Systems.Camera;
 using EcsBattle.Systems.Enemies;
 using EcsBattle.Systems.Input;
@@ -16,6 +17,7 @@ using Enums;
 using Extension;
 using Leopotam.Ecs;
 using UniRx;
+using Unit;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
 #endif
@@ -78,6 +80,7 @@ namespace EcsBattle
                 .Add(new BindingEventsToActionSystem())
                 //UI Player
                 .Add(new UpdatePlayerHealthPointsInUiSystem())
+                .Add(new UpdateTargetInUiSystem())
                 //Player
                 //    Movement
                 .Add(new MovementPlayer1SetDirectionSystem())
@@ -223,7 +226,6 @@ namespace EcsBattle
                 ref var entity = ref _filter.GetEntity(i);
 
                 Time.timeScale = 0;
-                
             }
         }
     }

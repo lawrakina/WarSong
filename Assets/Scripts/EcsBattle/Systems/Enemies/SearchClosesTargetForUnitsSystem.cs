@@ -2,6 +2,7 @@
 using EcsBattle.Components;
 using Extension;
 using Leopotam.Ecs;
+using Unit;
 using UnityEngine;
 
 
@@ -26,7 +27,7 @@ namespace EcsBattle.Systems.Enemies
                 if (entity.Has<CurrentTargetComponent>())
                 {
                     ref var target = ref entity.Get<CurrentTargetComponent>();
-                    target._sqrDistance = (target._target.position - transform.position).sqrMagnitude;
+                    target._sqrDistance = (target._baseUnitView.Transform.position - transform.position).sqrMagnitude;
                     if (target._sqrDistance > Mathf.Pow(vision.distanceDetection, 2))
                         entity.Del<CurrentTargetComponent>();
                 }
@@ -65,7 +66,7 @@ namespace EcsBattle.Systems.Enemies
                     }
 
                     entity.Get<NeedMoveToTargetAndAttackComponent>();
-                    entity.Get<CurrentTargetComponent>()._target = targetGo.transform;
+                    entity.Get<CurrentTargetComponent>()._baseUnitView = targetGo.GetComponent<IBaseUnitView>();
                     entity.Get<CurrentTargetComponent>()._sqrDistance = distance;
                 }
                 else

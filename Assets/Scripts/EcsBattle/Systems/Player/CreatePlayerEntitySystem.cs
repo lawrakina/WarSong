@@ -24,6 +24,8 @@ namespace EcsBattle.Systems.Player
             var entity = _world.NewEntity();
             //Base components
             entity.Get<PlayerComponent>()._unitClass = _view.CharacterClass.Class;
+            entity.Get<PlayerComponent>()._view = _view;
+            entity.Get<UnitComponent>()._view =_view; 
             entity.Get<UnitComponent>()._modelTransform =_view.TransformModel; 
             entity.Get<UnitComponent>()._rootTransform =_view.Transform; 
             entity.Get<UnitComponent>()._rigidBody = _view.Rigidbody;
@@ -35,8 +37,8 @@ namespace EcsBattle.Systems.Player
             _playerModel.MaxHp = Mathf.RoundToInt(_view.CurrentHp);
             _playerModel.CurrentHp = Mathf.RoundToInt(_view.CurrentHp);
             
-            entity.Get<UnitHpComponent>()._currentValue = _view.CurrentHp;
-            entity.Get<UnitHpComponent>()._maxValue = _view.CurrentHp;
+            entity.Get<UnitComponent>()._currentHpValue = _view.CurrentHp;
+            entity.Get<UnitComponent>()._maxHpValue = _view.CurrentHp;
             //battle
             void SetBattleInfoForMainWeapon()
             {

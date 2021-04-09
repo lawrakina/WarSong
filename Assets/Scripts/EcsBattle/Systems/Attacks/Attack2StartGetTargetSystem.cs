@@ -2,6 +2,7 @@
 using EcsBattle.Components;
 using Extension;
 using Leopotam.Ecs;
+using Unit;
 using UnityEngine;
 
 
@@ -62,7 +63,8 @@ namespace EcsBattle.Systems.Attacks
                         }
                     }
 
-                    entity.Get<CurrentTargetComponent>()._target = targetGo.transform;
+                    // entity.Get<NeedUpdateUiTargetComponent>();
+                    entity.Get<CurrentTargetComponent>()._baseUnitView = targetGo.GetComponent<IBaseUnitView>();
                     entity.Get<CurrentTargetComponent>()._sqrDistance = distance;
 
                     entity.Get<NeedLookAtTargetComponent>();
@@ -72,10 +74,15 @@ namespace EcsBattle.Systems.Attacks
                 {
                     entity.Get<NeedStartAnimationAttackFromMainWeaponComponent>();
                     entity.Del<CurrentTargetComponent>();
+                    // entity.Get<NeedUpdateUiTargetComponent>();
                 }
 
                 entity.Del<NeedFindTargetComponent>();
             }
         }
     }
+
+    // public struct NeedUpdateUiTargetComponent
+    // {
+    // }
 }

@@ -28,6 +28,7 @@ namespace EcsBattle.Systems.Enemies
 
                 var entity = _world.NewEntity();
                 entity.Get<EnemyComponent>();
+                entity.Get<UnitComponent>()._view = view;
                 entity.Get<UnitComponent>()._rootTransform = view.Transform;
                 entity.Get<UnitComponent>()._rigidBody = view.Rigidbody;
                 entity.Get<UnitComponent>()._collider = view.Collider;
@@ -36,9 +37,9 @@ namespace EcsBattle.Systems.Enemies
                 entity.Get<UnitComponent>()._vision = view.UnitVision;
                 entity.Get<UnitComponent>()._attributes = view.Attributes;
                 entity.Get<UnitComponent>()._level = view.UnitLevel;
+                entity.Get<UnitComponent>()._currentHpValue = view.CurrentHp;
+                entity.Get<UnitComponent>()._maxHpValue = view.MaxHp;
                 entity.Get<UiEnemyHealthBarComponent>()._value = view.HealthBar;
-                entity.Get<UnitHpComponent>()._currentValue = view.CurrentHp;
-                entity.Get<UnitHpComponent>()._maxValue = view.MaxHp;
                 
                 if(view.UnitBattle == null) throw new System.NotImplementedException("view.UnitBattle: NULL");
                 entity.Get<BattleInfoMainWeaponComponent>()._value = view.UnitBattle.Weapon;

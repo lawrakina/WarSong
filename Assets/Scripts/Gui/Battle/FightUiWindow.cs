@@ -1,5 +1,7 @@
 ﻿using System;
 using Windows;
+using Controller;
+using Extension;
 using Models;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,44 +11,134 @@ namespace Gui.Battle
 {
     public sealed class FightUiWindow : UiWindow
     {
-        public Image HpFiel;
+        [Header("Player")]
+        [SerializeField]
+        private Image _playerHpFiel;
 
-        // public Image ResourceFiel;
-        public Text HpLabel;
+        // public Image PlayerResourceFiel;
+        [SerializeField]
+        private Text _playerHpLabel;
 
-        public Image TimerIco;
-        public Text TimerText;
-        public Image EnemyIco;
-        public Text EnemyText;
-        public Image BagIco;
-        public Text BagText;
-        public Image BanditIco;
-        public Text BanditText;
+
+        [Header("Target")]
+        [SerializeField]
+        private Image _targetBackground;
+
+        [SerializeField]
+        private Text _targetName;
+        
+        [SerializeField]
+        private Image _targetHpFiel;
+
+        // public Image _targetResourceFiel;
+        [SerializeField]
+        private Text _targetHpLabel;
+
+
+        [Header("Rewards panel")]
+        [SerializeField]
+        private Image _timerIco;
+
+        [SerializeField]
+        private Text _timerText;
+
+        [SerializeField]
+        private Image _enemyIco;
+
+        [SerializeField]
+        private Text _enemyText;
+
+        [SerializeField]
+        private Image _bagIco;
+
+        [SerializeField]
+        private Text _bagText;
+
+        [SerializeField]
+        private Image _banditIco;
+
+        [SerializeField]
+        private Text _banditText;
 
         private BattlePlayerModel _playerModel;
         private BattleProgressModel _battleModel;
+        private BattleTargetModel _targetModel;
         private int _maxBandit;
-        private int _maxHp;
+        private int _playerMaxHp;
         private int _maxEnemy;
         private int _currentEnemy;
+        private float _maxBag;
+        private int _maxTimer;
+        private int _targetMaxHp;
 
 
-        private int MaxHpValue
+        #region Player
+
+        private int PlayerMaxHpValue
         {
-            get => _maxHp;
-            set => _maxHp = value;
+            get => _playerMaxHp;
+            set => _playerMaxHp = value;
         }
 
-        private int CurrentHpValue
+        private int PlayerCurrentHpValue
         {
             set
             {
-                HpLabel.text = $"{value}/{MaxHpValue}";
-                HpFiel.fillAmount = (float)value / (float)MaxHpValue;
+                _playerHpLabel.text = $"{value}/{PlayerMaxHpValue}";
+                _playerHpFiel.fillAmount = (float) value / (float) PlayerMaxHpValue;
             }
         }
 
-        public int MaxTimer { get; set; }
+        #endregion
+
+
+        #region Target
+
+        private int TargetMaxHpValue
+        {
+            get => _targetMaxHp;
+            set => _targetMaxHp = value;
+        }
+
+        private int TargetCurrentHpValue
+        {
+            set
+            {
+                if (value > 0)
+                {
+                    _targetBackground.color = Color.red;
+                    _targetHpLabel.text = $"{value}/{TargetMaxHpValue}";
+                    _targetHpFiel.fillAmount = (float) value / (float) TargetMaxHpValue;
+                }
+                else
+                {
+                    _targetBackground.color = Color.grey;
+                    _targetHpFiel.fillAmount = 0;
+                    _targetHpLabel.text = StringManager.UNIT_STATUS_DEAD;
+                }
+            }
+        }
+
+        #endregion
+
+
+        #region Reward panel
+
+        public int MaxTimer
+        {
+            get => _maxTimer;
+            set
+            {
+                if (value < 1)
+                {
+                    _timerIco.enabled = false;
+                    _timerText.enabled = false;
+                    return;
+                }
+
+                _maxTimer = value;
+            }
+        }
 
         public float CurrentTimer
         {
@@ -55,19 +147,33 @@ namespace Gui.Battle
                 var currentTimer = new DateTime();
                 if (value < MaxTimer)
                 {
-                    TimerIco.color = Color.white;
-                    TimerText.text = $"{currentTimer.AddSeconds(MaxTimer - Mathf.RoundToInt(value)):mm:ss}";
+                    _timerIco.color = Color.white;
+                    _timerText.text = $"{currentTimer.AddSeconds(MaxTimer - Mathf.RoundToInt(value)):mm:ss}";
                 }
                 else
                 {
-                    TimerIco.color = Color.red;
-                    TimerText.text = $"-{currentTimer.AddSeconds(Mathf.RoundToInt(value) - MaxTimer):mm:ss}";
+                    _timerIco.color = Color.red;
+                    _timerText.text = $"-{currentTimer.AddSeconds(Mathf.RoundToInt(value) - MaxTimer):mm:ss}";
                 }
             }
         }
 
 
-        public float MaxBag { get; set; }
+        public float MaxBag
+        {
+            get => _maxBag;
+            set
+            {
+                if (value < 1)
+                {
+                    _bagIco.enabled = false;
+                    _bagText.enabled = false;
+                    return;
+                }
+
+                _maxBag = value;
+            }
+        }
 
         public float CurrentBag
         {
@@ -75,14 +181,14 @@ namespace Gui.Battle
             {
                 if (value < MaxBag)
                 {
-                    BagIco.color = Color.white;
+                    _bagIco.color = Color.white;
                 }
                 else
                 {
-                    BagIco.color = Color.green;
+                    _bagIco.color = Color.green;
                 }
 
-                BagText.text = $"{value}/{MaxBag}";
+                _bagText.text = $"{value}/{MaxBag}";
             }
         }
 
@@ -91,8 +197,15 @@ namespace Gui.Battle
             get => _maxEnemy;
             set
             {
+                if (value < 1)
+                {
+                    _enemyIco.enabled = false;
+                    _enemyText.enabled = false;
+                    return;
+                }
+
                 _maxEnemy = value;
-                EnemyText.text = $"{CurrentEnemy}/{MaxEnemy}";
+                _enemyText.text = $"{CurrentEnemy}/{MaxEnemy}";
             }
         }
 
@@ -104,14 +217,14 @@ namespace Gui.Battle
                 _currentEnemy = value;
                 if (value < MaxEnemy)
                 {
-                    EnemyIco.color = Color.white;
+                    _enemyIco.color = Color.white;
                 }
                 else
                 {
-                    EnemyIco.color = Color.green;
+                    _enemyIco.color = Color.green;
                 }
 
-                EnemyText.text = $"{value}/{MaxEnemy}";
+                _enemyText.text = $"{value}/{MaxEnemy}";
             }
         }
 
@@ -121,15 +234,15 @@ namespace Gui.Battle
             private get { return _maxBandit; }
             set
             {
-                if (value == 0)
+                if (value < 1)
                 {
-                    BanditIco.enabled = false;
-                    BanditText.enabled = false;
+                    _banditIco.enabled = false;
+                    _banditText.enabled = false;
                 }
                 else
                 {
-                    BanditIco.enabled = true;
-                    BanditText.enabled = true;
+                    _banditIco.enabled = true;
+                    _banditText.enabled = true;
                 }
 
                 _maxBandit = value;
@@ -142,25 +255,29 @@ namespace Gui.Battle
             {
                 if (value < MaxBandit)
                 {
-                    BanditIco.color = Color.white;
+                    _banditIco.color = Color.white;
                 }
                 else
                 {
-                    BanditIco.color = Color.green;
+                    _banditIco.color = Color.green;
                 }
 
-                BanditText.text = $"{value}/{MaxBandit}";
+                _banditText.text = $"{value}/{MaxBandit}";
             }
         }
 
+        #endregion
 
-        public void SetModels(BattleProgressModel battleModel, BattlePlayerModel playerModel)
+
+        public void SetModels(BattleProgressModel battleModel, BattlePlayerModel playerModel,
+            BattleTargetModel targetModel)
         {
             _playerModel = playerModel;
             _battleModel = battleModel;
+            _targetModel = targetModel;
 
-            _playerModel.ChangeMaxHp += f => { MaxHpValue = f; };
-            _playerModel.ChangeCurrentHp += f => { CurrentHpValue = f; };
+            _playerModel.ChangeMaxHp += f => { PlayerMaxHpValue = f; };
+            _playerModel.ChangeCurrentHp += f => { PlayerCurrentHpValue = f; };
 
             _battleModel.ChangeMaxTimer += f => { MaxTimer = f; };
             _battleModel.ChangeCurrentTimer += f => { CurrentTimer = f; };
@@ -173,6 +290,14 @@ namespace Gui.Battle
 
             _battleModel.ChangeMaxBandit += f => { MaxBandit = f; };
             _battleModel.ChangeCurrentBandit += f => { CurrentBandit = f; };
+
+            _targetModel.ChangeTarget += target =>
+            {
+                _targetBackground.gameObject.SetActive(target != null);
+                _targetName.text = target?.Transform.gameObject.name;
+            };
+            _targetModel.ChangeMaxHp += f => { TargetMaxHpValue = f; };
+            _targetModel.ChangeCurrentHp += f => { TargetCurrentHpValue = f; };
         }
     }
 }

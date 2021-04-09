@@ -21,14 +21,15 @@ namespace EcsBattle.Systems.Enemies
                 ref var unit = ref _filter.Get1(i);
                 ref var target = ref _filter.Get3(i);
                 ref var battleInfo = ref _filter.Get4(i);
-                var position = unit._rootTransform.position;
-
-                target._sqrDistance = (target._target.position - position).sqrMagnitude;
-                unit._rootTransform.LookAt(target._target.position, Vector3.up);
+                var unitPosition = unit._rootTransform.position;
+                var targetPosition = target._baseUnitView.Transform.position;
+                
+                target._sqrDistance = (targetPosition - unitPosition).sqrMagnitude;
+                unit._rootTransform.LookAt(targetPosition, Vector3.up);
 
                 if (target._sqrDistance > Mathf.Pow(battleInfo._value.AttackDistance, 2))
                 {
-                    var step = Vector3.ClampMagnitude(target._target.position - position, 1.0f);
+                    var step = Vector3.ClampMagnitude(targetPosition - unitPosition, 1.0f);
                     entity.Get<NeedStepComponent>()._value = step;
                 }
                 else

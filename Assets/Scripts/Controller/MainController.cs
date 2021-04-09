@@ -1,4 +1,5 @@
-﻿using Windows;
+﻿using System;
+using Windows;
 using Battle;
 using CharacterCustomizing;
 using Controller.Model;
@@ -93,8 +94,9 @@ namespace Controller
 
             var playerModel = new BattlePlayerModel();
             var battleModel = new BattleProgressModel();
+            var targetModel = new BattleTargetModel();
 
-            _uiWindows.FightUiWindow.SetModels(battleModel, playerModel);
+            _uiWindows.FightUiWindow.SetModels(battleModel, playerModel, targetModel);
 
             var fightCameraFactory = new CameraFactory(_cameraSettings);
             var fightCamera = fightCameraFactory.CreateCamera(_windows.RootBattleCamera);
@@ -109,7 +111,7 @@ namespace Controller
 
             var battleInitialization = new EcsBattleInitialization(
                 _ecsBattleData, battleInputControlsInitialization.GetData(), _battleSettingsData, generatorDungeon,
-                interactiveObjectsInitialization, _player, playerModel, battleModel, fightCamera,
+                interactiveObjectsInitialization, _player, playerModel, battleModel,targetModel, fightCamera,
                 enemiesInitialization);
 
             _commandManager.BattleInitialisation = battleInitialization;
@@ -184,5 +186,12 @@ namespace Controller
         #endregion
 
         #endregion
+    }
+
+    public sealed class BattleTargetModel
+    {
+        public Action<IBaseUnitView> ChangeTarget;
+        public Action<int> ChangeMaxHp;
+        public Action<int> ChangeCurrentHp;
     }
 }

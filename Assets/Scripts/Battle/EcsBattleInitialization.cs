@@ -28,6 +28,7 @@ namespace Battle
         private IPlayerView _player;
         private readonly BattlePlayerModel _playerModel;
         private readonly BattleProgressModel _battleModel;
+        private readonly BattleTargetModel _targetModel;
         private readonly IFightCamera _camera;
         private readonly EnemiesInitialization _enemiesInitialization;
         private List<IEnemyView> _listEnemies = new List<IEnemyView>();
@@ -52,6 +53,7 @@ namespace Battle
             InteractiveObjectsInitialization interactiveObjectsInitialization,
             IPlayerView player, BattlePlayerModel playerModel,
             BattleProgressModel battleModel,
+            BattleTargetModel targetModel,
             IFightCamera camera,
             EnemiesInitialization enemiesInitialization)
         {
@@ -63,6 +65,7 @@ namespace Battle
             _player = player;
             _playerModel = playerModel;
             _battleModel = battleModel;
+            _targetModel = targetModel;
             _camera = camera;
             _enemiesInitialization = enemiesInitialization;
             _generatorDungeon = generatorDungeon;
@@ -71,6 +74,7 @@ namespace Battle
             _ecsBattle.Inject(_camera);
             _ecsBattle.Inject(_playerModel);
             _ecsBattle.Inject(_battleModel);
+            _ecsBattle.Inject(_targetModel);
             _ecsBattle.Inject(_battleInputStruct);
             _ecsBattle.Inject(_battleSettings);
         }
