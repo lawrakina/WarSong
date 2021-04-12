@@ -6,14 +6,13 @@ using UnityEngine;
 
 namespace EcsBattle.Systems.Attacks
 {
-    public sealed class Attack7FinalAttackForPlayerRogueFromMainWeaponSystem : IEcsRunSystem
+    public sealed class Attack7FinalTargetForPlayerFromSecondWeaponSystem : IEcsRunSystem
     {
         private EcsFilter<
-            FinalAttackFromMainWeaponComponent,
-            PlayerComponent,
-            CurrentTargetComponent,
-            BattleInfoMainWeaponComponent> _filter;
-
+            FinalAttackFromSecondWeaponComponent, 
+            PlayerComponent, 
+            CurrentTargetComponent, 
+            BattleInfoSecondWeaponComponent> _filter;
         public void Run()
         {
             foreach (var i in _filter)
@@ -24,7 +23,7 @@ namespace EcsBattle.Systems.Attacks
 
                 var targetCollision = target._baseUnitView.Transform.GetComponent<ICollision>();
                 var collision =
-                    new InfoCollision(battleInfo._attackValue.GetAttack(), entity);
+                    new InfoCollision(battleInfo._attackValue.GetAttack() * battleInfo._powerFactor, entity);
                 targetCollision?.OnCollision(collision);
 
                 entity.Del<FinalAttackFromSecondWeaponComponent>();

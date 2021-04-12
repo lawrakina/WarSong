@@ -22,6 +22,7 @@ using Unit;
 using Leopotam.Ecs.UnityIntegration;
 #endif
 using UnityEngine;
+using Weapons;
 
 
 namespace EcsBattle
@@ -111,17 +112,21 @@ namespace EcsBattle
             {
                 case CharacterClass.Warrior:
                     _execute
-                        .Add(new Attack7FinalAttackForPlayerWarriorFromMainWeaponSystem())
-                        .Add(new Attack7FinalAttackForPlayerWarriorFromSecondWeaponSystem());
+                        .Add(new Attack7FinalSplashAttackForPlayerFromMainWeaponSystem())
+                        .Add(new Attack7FinalSplashAttackForPlayerFromSecondWeaponSystem());
                     break;
 
                 case CharacterClass.Rogue:
                     _execute
-                        .Add(new Attack7FinalAttackForPlayerRogueFromMainWeaponSystem())
-                        .Add(new Attack7FinalAttackForPlayerRogueFromSecondWeaponSystem());
+                        .Add(new Attack7FinalTargetAttackForPlayerFromMainWeaponSystem())
+                        .Add(new Attack7FinalTargetForPlayerFromSecondWeaponSystem());
                     break;
 
                 case CharacterClass.Hunter:
+                    _execute
+                        .Add(new CreatePoolOfAmmunitionForRangeWeaponSystem(5))
+                        .Add(new Attack7StartRangeTargetAttackForPlayerFromMainWeaponSystem())
+                        .Add(new Attack8MoveBulletRangeTargetAttackForPlayerFromMainWeaponSystem());
                     break;
 
                 case CharacterClass.Mage:

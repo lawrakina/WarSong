@@ -47,14 +47,14 @@ MonoBehaviour:
     - CharacterClass: 2
       CharacterGender: 1
       CharacterRace: 1
-      PlayerMoveSpeed: 7
+      PlayerMoveSpeed: 12
       RotateSpeedPlayer: 120
       Equipment:
         MainWeapon: {fileID: -6366401157965156963, guid: 748584e1e1114c249a340921801d935e,
           type: 3}
         SecondWeapon: {fileID: 4791450294888299635, guid: d3687d2aa11ee35489e653ed8b436246,
           type: 3}
-      ExperiencePoints: 0
+      ExperiencePoints: 6000
       unitVisionParameters:
         distanceDetection: 15
         maxCountTargets: 5

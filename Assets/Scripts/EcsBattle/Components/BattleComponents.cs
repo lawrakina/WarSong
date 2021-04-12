@@ -1,4 +1,7 @@
-﻿using Enums;
+﻿using System.Collections.Generic;
+using Battle;
+using Enums;
+using Leopotam.Ecs;
 using Weapons;
 
 
@@ -11,6 +14,7 @@ namespace EcsBattle.Components
         public AttackValue _attackValue;
         public int _attackMaxValueAnimation;
         public int _weaponTypeAnimation;
+        // public LinkedList<WeaponBullet> _poolBullet;
     }
     public struct BattleInfoSecondWeaponComponent
     {
@@ -56,6 +60,15 @@ namespace EcsBattle.Components
     }
 
     public struct PermissionForAttackFromSecondWeaponAllowedComponent
+    {
+    }
+
+    public struct WeaponBulletComponent
+    {
+        public WeaponBullet _value;
+        public InfoCollision _collision;
+    }
+    public struct DisableComponent
     {
     }
 }
