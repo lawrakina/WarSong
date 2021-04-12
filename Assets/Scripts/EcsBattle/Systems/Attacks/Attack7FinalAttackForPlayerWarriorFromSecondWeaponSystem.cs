@@ -1,20 +1,19 @@
 ﻿using Battle;
 using EcsBattle.Components;
-using Extension;
 using Leopotam.Ecs;
 using UnityEngine;
 
 
 namespace EcsBattle.Systems.Attacks
 {
-    public sealed class Attack7FinalAttackForPlayerFromMainWeaponSystem : IEcsRunSystem
+    public sealed class Attack7FinalAttackForPlayerWarriorFromSecondWeaponSystem : IEcsRunSystem
     {
         private EcsFilter<
-            FinalAttackFromMainWeaponComponent, 
+            FinalAttackFromSecondWeaponComponent, 
             PlayerComponent, 
             UnitComponent,
             CurrentTargetComponent, 
-            BattleInfoMainWeaponComponent> _filter;
+            BattleInfoSecondWeaponComponent> _filter;
         public void Run()
         {
             foreach (var i in _filter)
@@ -40,12 +39,12 @@ namespace EcsBattle.Systems.Attacks
                     var tempObj = hitColliders[index].gameObject.GetComponent<ICollision>();
                     if (tempObj != null)
                     {
-                        var collision = new InfoCollision(battleInfo._attackValue.GetAttack(), entity);
+                        var collision = new InfoCollision(battleInfo._attackValue.GetAttack() * battleInfo._powerFactor, entity);
                         tempObj.OnCollision(collision);
                     }
                 }
                 
-                entity.Del<FinalAttackFromMainWeaponComponent>();
+                entity.Del<FinalAttackFromSecondWeaponComponent>();
             }
         }
     }

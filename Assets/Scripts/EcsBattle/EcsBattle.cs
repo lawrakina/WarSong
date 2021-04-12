@@ -106,9 +106,32 @@ namespace EcsBattle
                 .Add(new Attack4MoveToTargetSystem())
                 // .Add(new Attack5StartAnimationStrikeSystem())
                 .Add(new Attack6StartTimerLagBeforeAttackFromMainWeaponSystem())
-                .Add(new Attack6StartTimerLagBeforeAttackFromSecondWeaponSystem())
-                .Add(new Attack7FinalAttackForPlayerFromMainWeaponSystem())
-                .Add(new Attack7FinalAttackForPlayerFromSecondWeaponSystem())
+                .Add(new Attack6StartTimerLagBeforeAttackFromSecondWeaponSystem());
+            switch (GlobalLinks.Player.CharacterClass.Class)
+            {
+                case CharacterClass.Warrior:
+                    _execute
+                        .Add(new Attack7FinalAttackForPlayerWarriorFromMainWeaponSystem())
+                        .Add(new Attack7FinalAttackForPlayerWarriorFromSecondWeaponSystem());
+                    break;
+
+                case CharacterClass.Rogue:
+                    _execute
+                        .Add(new Attack7FinalAttackForPlayerRogueFromMainWeaponSystem())
+                        .Add(new Attack7FinalAttackForPlayerRogueFromSecondWeaponSystem());
+                    break;
+
+                case CharacterClass.Hunter:
+                    break;
+
+                case CharacterClass.Mage:
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            _execute
                 .Add(new ApplyDamageInUnitSystem())
 
                 //Enemies
