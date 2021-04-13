@@ -51,6 +51,8 @@ namespace Unit.Cameras
         public Transform Transform => gameObject.transform;
         public CameraSettingsInBattle Settings { get; set; }
 
+        public Camera Camera { get; set; }
+
         public Vector3 OffsetTopPosition()
         {
             return _offetTopPosition;

@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using DuloGames.UI;
+using EcsBattle.Components;
 using EcsBattle.Systems.Animation;
 using EcsBattle.Systems.Attacks;
 using EcsBattle.Systems.BattleLiveCycles;
@@ -9,7 +9,6 @@ using EcsBattle.Systems.Enemies;
 using EcsBattle.Systems.Input;
 using EcsBattle.Systems.Player;
 using EcsBattle.Systems.PlayerMove;
-using EcsBattle.Systems.PlayerVision;
 using EcsBattle.Systems.Statistics;
 using EcsBattle.Systems.Ui;
 using Extension;
@@ -38,7 +37,9 @@ namespace EcsBattle
 
         public void Inject(object obj)
         {
+            if (obj == null) return;
             _listForInject.Add(obj);
+            Dbg.Log($"Inject object in EcsWorld:{obj}");
         }
 
         public void Init()
@@ -74,6 +75,7 @@ namespace EcsBattle
                 .Add(new BindingEventsToActionSystem())
                 //UI Player
                 .Add(new UpdatePlayerHealthPointsInUiSystem())
+                .Add(new UpdateTargetInUiSystem())
                 //Player
                 //    Movement
                 .Add(new MovementPlayer1SetDirectionSystem())
@@ -91,14 +93,44 @@ namespace EcsBattle
             _execute
 
                 //Attack
-                .Add(new TimerForGettingPermissionAttackFromWeaponSystem())
+                .Add(new TimerForGettingPermissionAttackFromMainWeaponSystem())
+                .Add(new TimerForGettingPermissionAttackFromSecondWeaponSystem())
                 .Add(new Attack1StartProcessSystem())
                 .Add(new Attack2StartGetTargetSystem())
                 .Add(new Attack3LookAtTargetSystem())
                 .Add(new Attack4MoveToTargetSystem())
-                .Add(new Attack5StartAnimationStrikeSystem())
-                .Add(new Attack6StartTimerLagBeforeAttack())
-                .Add(new Attack7FinalAttackForPlayerSystem())
+                // .Add(new Attack5StartAnimationStrikeSystem())
+                .Add(new Attack6StartTimerLagBeforeAttackFromMainWeaponSystem())
+                .Add(new Attack6StartTimerLagBeforeAttackFromSecondWeaponSystem());
+            switch (GlobalLinks.Player.CharacterClass.Class)
+            {
+                case CharacterClass.Warrior:
+                    _execute
+                        .Add(new Attack7FinalSplashAttackForPlayerFromMainWeaponSystem())
+                        .Add(new Attack7FinalSplashAttackForPlayerFromSecondWeaponSystem());
+                    break;
+
+                case CharacterClass.Rogue:
+                    _execute
+                        .Add(new Attack7FinalTargetAttackForPlayerFromMainWeaponSystem())
+                        .Add(new Attack7FinalTargetForPlayerFromSecondWeaponSystem());
+                    break;
+
+                case CharacterClass.Hunter:
+                    _execute
+                        .Add(new CreatePoolOfAmmunitionForRangeWeaponSystem(5))
+                        .Add(new Attack7StartRangeTargetAttackForPlayerFromMainWeaponSystem())
+                        .Add(new Attack8MoveBulletRangeTargetAttackForPlayerFromMainWeaponSystem());
+                    break;
+
+                case CharacterClass.Mage:
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            _execute
                 .Add(new ApplyDamageInUnitSystem())
 
                 //Enemies
@@ -125,8 +157,10 @@ namespace EcsBattle
                 .Add(new MovementUnitByStepSystem());
             _execute
                 //Attack
-                .Add(new StartAnimationStrikeForUnitsSystem())
-                .Add(new FinalAttackForUnitsSystem())
+                .Add(new StartAnimationStrikeFromMainWeaponForUnitsSystem())
+                .Add(new StartAnimationStrikeFromSecondWeaponForUnitsSystem())
+                .Add(new FinalAttackForUnitsFromMainWeaponSystem())
+                .Add(new FinalAttackForUnitsFromSecondWeaponSystem())
                 .Add(new UpdateStatisticsOfBattleGroundSystem())
                 ;
 
@@ -180,7 +214,7 @@ namespace EcsBattle
 
             if (_execute == null && _fixedExecute == null && _lateExecute == null)
             {
-                _world.Destroy();
+                _world?.Destroy();
                 _world = null;
             }
         }
@@ -201,5 +235,27 @@ namespace EcsBattle
         }
 
         #endregion
+    }
+
+    public sealed class EndOfBattleSystem : IEcsRunSystem
+    {
+        private EcsFilter<GoalLevelComponent, GoalLevelAchievedComponent> _filter;
+
+        public void Run()
+        {
+            foreach (var i in _filter)
+            {
+                ref var entity = ref _filter.GetEntity(i);
+
+                Time.timeScale = 0;
+            }
+        }
+    }
+
+    public sealed class TimerForCheckingWinningConditionsSystem : IEcsRunSystem
+    {
+        public void Run()
+        {
+        }
     }
 }

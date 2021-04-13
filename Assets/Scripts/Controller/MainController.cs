@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using Windows;
 using Battle;
 using CharacterCustomizing;
-using CoreComponent;
+using Controller.Model;
 using Data;
 using Enums;
 using Extension;
 using Gui;
 using Gui.Battle;
-using Interface;
 using Models;
 using UniRx;
 using Unit;
@@ -26,28 +25,23 @@ namespace Controller
 
         private CompositeDisposable _subscriptions;
         private Controllers _controllers;
-        private IPlayerView _player;
 
-        [Header("Ui & Windows")]
+        [Header("Ui")]
         [SerializeField]
-        private UiReference _ui;
+        private UiWindows _uiWindows;
 
+        [Header("Windows")]
         [SerializeField]
-        private WindowsReference _windows;
+        private SceneWindows _windows;
 
-        [Header("Active Panel and Window at the Start")]
-        [SerializeField]
-        private EnumMainWindow _activePanelAndWindow;
-
-        [Header("Plz do not set value!!! Its Simple access")]
-        [SerializeField]
-        private GameObject _linkToCharPlayer;
 
         private CharacterData _characterData;
         private PlayerLevelData _playerLevelData;
         private PlayerClassesData _playerClassesData;
         private PlayerData _playerData;
+
         private EnemiesData _enemiesData;
+
         // private EnemyClassesData _enemyClassesData;
         private DungeonGeneratorData _generatorData;
         private EcsBattleData _ecsBattleData;
@@ -56,10 +50,12 @@ namespace Controller
         private GeneratorDungeon _generatorDungeon;
         private BattleSettingsData _battleSettingsData;
 
-        private IReactiveProperty<EnumMainWindow> _activeWindow;
-        private IReactiveProperty<EnumCharacterWindow> _charWindow;
-        private IReactiveProperty<EnumBattleWindow> _battleState;
-        private IReactiveProperty<EnumFightCamera> _typeCameraAndCharControl;
+
+        [Header("Plz do not set value!!! Its Simple access")]
+        [SerializeField]
+        public PlayerView _player;
+
+        private CommandManager _commandManager;
 
         #endregion
 
@@ -71,93 +67,67 @@ namespace Controller
 
         private void Awake()
         {
-            _subscriptions = new CompositeDisposable();
+            GlobalLinks.SetLinkToRoot(this);
             LoadAllResources();
+            _subscriptions = new CompositeDisposable();
+            _controllers = new Controllers();
+            _commandManager = new CommandManager(_uiWindows, _windows);
 
-            //UI & Windows
-            _activeWindow = new ReactiveProperty<EnumMainWindow>();
-            _charWindow = new ReactiveProperty<EnumCharacterWindow>(EnumCharacterWindow.ListCharacters);
-            _battleState = new ReactiveProperty<EnumBattleWindow>(EnumBattleWindow.DungeonGenerator);
+            var playerFactory = new PlayerFactory(_characterData,
+                new PlayerCustomizerCharacter(_characterData),
+                new PlayerLevelInitialization(_playerLevelData),
+                new PlayerClassesInitialization(_playerClassesData));
 
-            _activeWindow.Subscribe(_ => { Dbg.Log(_activeWindow.Value); });
-            _charWindow.Subscribe(_ => { Dbg.Log(_charWindow.Value); });
-            _battleState.Subscribe(_ => { Dbg.Log(_battleState.Value); });
+            var generatorDungeonModel = new GeneratorDungeonModel(_windows, _generatorData);
+            var generatorDungeon = new GeneratorDungeon(generatorDungeonModel);
+            _commandManager.GeneratorDungeon = generatorDungeon;
+
+            var listCharacterModel = new ListCharacterModel(_playerData, playerFactory);
+            var listOfCharactersController = new ListOfCharactersController(listCharacterModel, _commandManager);
+            _commandManager.ListOfCharacters = listOfCharactersController;
+            _commandManager.ChangePlayer.Subscribe(value => { _player = (PlayerView) value; }).AddTo(_subscriptions);
+            _commandManager.ChangePlayer.Subscribe(value => { }).AddTo(_subscriptions);
+
+            var listOfPositionCharInMenuModel = new ListOfPositionCharInMenuModel(_windows);
+            var listOfPositionCharInMenuController =
+                new ListOfPositionCharInMenuController(listOfPositionCharInMenuModel, _commandManager);
 
             var playerModel = new BattlePlayerModel();
             var battleModel = new BattleProgressModel();
+            var targetModel = new BattleTargetModel();
 
-            var unitLevelInitialization = new PlayerLevelInitialization(_playerLevelData);
-            var playerClassesInitialization = new PlayerClassesInitialization(_playerClassesData);
-            var playerCustomizerCharacter = new PlayerCustomizerCharacter(_characterData);
-            var playerFactory = new PlayerFactory(
-                playerCustomizerCharacter, unitLevelInitialization,
-                playerClassesInitialization, _characterData);
-
-            var listOfCharactersController = new ListOfCharactersController(_playerData, playerFactory);
-            _player = listOfCharactersController.CurrentCharacter.Value;
-            listOfCharactersController.CurrentCharacter.Subscribe(_ =>
-            {
-                _player = listOfCharactersController.CurrentCharacter.Value;
-                _linkToCharPlayer = _player.Transform.gameObject;
-            }).AddTo(_subscriptions);
-
-            //create ui & windows
-            _windows.Ctor(_activeWindow, _battleState);
-            _ui.Ctor(_activeWindow, _battleState, _charWindow, listOfCharactersController, playerModel, battleModel);
-
-            //generator levels
-            var generatorDungeon = new GeneratorDungeon(_generatorData, _windows.BattleWindow.Content.transform);
-            _ui.BattlePanel.LevelGeneratorPanel.SetReference(generatorDungeon);
+            _uiWindows.FightUiWindow.SetModels(battleModel, playerModel, targetModel);
 
             var fightCameraFactory = new CameraFactory(_cameraSettings);
-            // камера используется в рендере gui и сцены - todo все в SO и префабы
-            var fightCamera = fightCameraFactory.CreateCamera(_windows.BattleWindow.Camera);
-
-            //Positioning character in menu
-            var positioningCharInMenuController = new PositioningCharacterInMenuController(_activeWindow, _battleState);
-            positioningCharInMenuController.Player = _player;
-            positioningCharInMenuController.GeneratorDungeon = generatorDungeon;
-            positioningCharInMenuController.AddPlayerPosition(
-                _windows.CharacterWindow.CharacterSpawn(), EnumMainWindow.Character);
-            positioningCharInMenuController.AddPlayerPosition(
-                _windows.EquipmentWindow.CharacterSpawn(), EnumMainWindow.Equip);
-            positioningCharInMenuController.AddPlayerPosition(
-                generatorDungeon.GetPlayerPosition(), EnumMainWindow.Battle);
-            positioningCharInMenuController.AddPlayerPosition(
-                _windows.SpellsWindow.CharacterSpawn(), EnumMainWindow.Spells);
-            positioningCharInMenuController.AddPlayerPosition(
-                _windows.TalentsWindow.CharacterSpawn(), EnumMainWindow.Talents);
+            var fightCamera = fightCameraFactory.CreateCamera(_windows.RootBattleCamera);
 
             var battleInputControlsInitialization =
-                new BattleInputControlsInitialization(_battleInputData, _ui.BattlePanel.FightPanel.transform);
-            var enemyClassesInitialization = new EnemyClassesInitialization(/*_enemyClassesData,*/ _player.UnitLevel);
+                new BattleInputControlsInitialization(_battleInputData, _uiWindows.FightUiWindow.transform);
+            var enemyClassesInitialization = new EnemyClassesInitialization( /*_enemyClassesData,*/);
             var enemyFactory = new EnemyFactory(enemyClassesInitialization);
             var healthBarFactory = new HealthBarFactory();
             var enemiesInitialization = new EnemiesInitialization(_enemiesData, enemyFactory, healthBarFactory);
             var interactiveObjectsInitialization = new InteractiveObjectsInitialization(_battleSettingsData);
 
             var battleInitialization = new EcsBattleInitialization(
-                _ecsBattleData, battleInputControlsInitialization.GetData(), _battleSettingsData, generatorDungeon, interactiveObjectsInitialization, _battleState,
-                _activeWindow, _player, playerModel, battleModel, fightCamera, enemiesInitialization);
-            // battleInitialization.Dungeon = generatorDungeon.Dungeon();
-            _ui.BattlePanel.LevelGeneratorPanel.SetReference(battleInitialization);
+                _ecsBattleData, battleInputControlsInitialization.GetData(), _battleSettingsData, generatorDungeon,
+                interactiveObjectsInitialization, _player, playerModel, battleModel,targetModel, fightCamera,
+                enemiesInitialization);
+
+            _commandManager.BattleInitialisation = battleInitialization;
 
             var battleController = new BattleController(battleInitialization.BattleEngine());
 
-            _controllers = new Controllers();
-            _controllers.Add(positioningCharInMenuController);
-            _controllers.Add(battleController);
+            _controllers.Add(_commandManager);
             _controllers.Add(generatorDungeon);
-
-            var offItemMenu = new List<EnumMainWindow>();
-            offItemMenu.Add(EnumMainWindow.Equip);
-            offItemMenu.Add(EnumMainWindow.Spells);
-            offItemMenu.Add(EnumMainWindow.Talents);
-            _ui.Init(offItemMenu);
-            _windows.Init();
-            _controllers.Initialization();
-            _activeWindow.Value = _activePanelAndWindow;
+            _controllers.Add(listOfPositionCharInMenuController);
+            _controllers.Add(listOfCharactersController);
+            _controllers.Add(battleController);
+            _controllers.Init();
         }
+
+
+        #region Methods
 
         private void LoadAllResources()
         {
@@ -188,9 +158,6 @@ namespace Controller
             LayerManager.EnemyAttackLayer = LayerMask.NameToLayer(StringManager.ENEMY_ATTACK_LAYER);
             LayerManager.EnemyAndPlayerAttackLayer = LayerMask.NameToLayer(StringManager.ENEMY_AND_PLAYER_ATTACK_LAYER);
         }
-
-
-        #region Methods
 
         private void Update()
         {

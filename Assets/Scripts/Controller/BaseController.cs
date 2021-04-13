@@ -8,7 +8,7 @@ namespace Controller
     {
         #region Fields
 
-        protected CompositeDisposable _subscriptions;
+        // protected CompositeDisposable _subscriptions;
         protected bool _isEnable;
 
         #endregion
@@ -18,7 +18,7 @@ namespace Controller
 
         public BaseController()
         {
-            _subscriptions = new CompositeDisposable();
+            // _subscriptions = new CompositeDisposable();
         }
 
         #endregion
@@ -28,7 +28,7 @@ namespace Controller
 
         public virtual void Cleanup()
         {
-            _subscriptions?.Dispose();
+            // _subscriptions?.Dispose();
         }
 
         #endregion
@@ -51,7 +51,7 @@ namespace Controller
 
         #region IInitialization
 
-        public virtual void Initialization()
+        public virtual void Init()
         {
             _isEnable = true;
         }

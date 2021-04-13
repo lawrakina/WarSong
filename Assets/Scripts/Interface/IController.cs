@@ -2,7 +2,7 @@
 {
     public interface IController
     {
-        void On();
-        void Off();
+        // void On();
+        // void Off();
     }
 }

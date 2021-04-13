@@ -1568,7 +1568,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6824980055847802161}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!45 &6824980055847802175
 Skybox:
   m_ObjectHideFlags: 0
@@ -1624,9 +1624,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b0b77708694107ba8856cd3b718011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 6824980055847802173}
-  _content: {fileID: 6824980055265212812}
+  _showBeforeStart: 0
+  _listCharacterPanel: {fileID: 0}
+  _createNewCharacterPanel: {fileID: 0}
+  _sceneRootObject: {fileID: 6824980055862280648}
   _characterPositionSpawn: {fileID: 6824980054766534757}
+  _camera: {fileID: 6824980055847802173}
+  _environment: {fileID: 6824980055265212812}
 --- !u!1001 &5512721412427674
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ namespace Interface
         Transform Transform { get; }
         CameraSettingsInBattle Settings { get; set; }
         UltimateTextDamageManager UiTextManager { get; set; }
+        Camera Camera { get; set; }
         Vector3 OffsetTopPosition();
         Vector3 OffsetThirdPosition();
     }

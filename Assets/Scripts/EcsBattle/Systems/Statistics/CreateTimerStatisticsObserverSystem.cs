@@ -21,15 +21,15 @@ namespace EcsBattle.Systems.Statistics
             var entity = _world.NewEntity();
             entity.Get<TimerStatisticsObserverComponent>();
             ref var timer = ref entity.Get<TimerStatisticsObserverComponent>();
-            timer.maxTime = _battleSettings._maxTimeForReward;
-            timer.currentTime = 0.0f;
-            timer.observer = _battleModel;
+            timer._maxTime = _battleSettings._maxTimeForReward;
+            timer._currentTime = 0.0f;
+            timer._observer = _battleModel;
             //Battle time
-            timer.observer.MaxTimer = Mathf.RoundToInt(_battleSettings._maxTimeForReward);
-            timer.observer.CurrentTimer = 0.0f;
+            timer._observer.MaxTimer = Mathf.RoundToInt(_battleSettings._maxTimeForReward);
+            timer._observer.CurrentTimer = 0.0f;
             //EnemyCount
-            timer.observer.MaxEnemy = _enemyViews.Count;
-            timer.observer.CurrentEnemy = 0;
+            timer._observer.MaxEnemy = _enemyViews.Count;
+            timer._observer.CurrentEnemy = 0;
         }
     }
 }

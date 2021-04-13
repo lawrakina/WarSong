@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Data
+namespace CharacterCustomizing
 {
     [Serializable] public class CharacterObjectListsAllGender
     {// classe for keeping the lists organized, allows for organization of the all gender items

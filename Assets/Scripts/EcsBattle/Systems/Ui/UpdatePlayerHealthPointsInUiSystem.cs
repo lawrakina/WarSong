@@ -1,4 +1,5 @@
 ﻿using System;
+using Controller.Model;
 using EcsBattle.Components;
 using Leopotam.Ecs;
 using Models;
@@ -11,7 +12,7 @@ namespace EcsBattle.Systems.Ui
     {
         #region Fields
 
-        private EcsFilter<PlayerComponent, UnitHpComponent> _filter;
+        private EcsFilter<PlayerComponent, UnitComponent> _filter;
         private BattlePlayerModel _playerModel;
 
         #endregion
@@ -21,8 +22,8 @@ namespace EcsBattle.Systems.Ui
         {
             foreach (var index in _filter)
             {
-                _playerModel.CurrentHp = Mathf.CeilToInt(_filter.Get2(index).CurrentValue);
-                _playerModel.MaxHp =  Mathf.CeilToInt(_filter.Get2(index).MaxValue);
+                _playerModel.CurrentHp = Mathf.CeilToInt(_filter.Get2(index)._health.CurrentHp);
+                _playerModel.MaxHp =  Mathf.CeilToInt(_filter.Get2(index)._health.MaxHp);
             }
         }
     }

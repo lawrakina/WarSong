@@ -2,6 +2,7 @@
 using EcsBattle.Components;
 using Extension;
 using Leopotam.Ecs;
+using Unit;
 using UnityEngine;
 
 
@@ -21,9 +22,9 @@ namespace EcsBattle.Systems.Attacks
             foreach (var i in _filter)
             {
                 ref var entity = ref _filter.GetEntity(i);
-                ref var transform = ref _filter.Get3(i).rootTransform;
-                ref var vision = ref _filter.Get3(i).vision;
-                ref var reputation = ref _filter.Get3(i).reputation;
+                ref var transform = ref _filter.Get3(i)._rootTransform;
+                ref var vision = ref _filter.Get3(i)._vision;
+                ref var reputation = ref _filter.Get3(i)._reputation;
                 // ref var battleInfo = ref _filter.Get3(i);
 
                 //поиск всех целей
@@ -62,20 +63,26 @@ namespace EcsBattle.Systems.Attacks
                         }
                     }
 
-                    entity.Get<CurrentTargetComponent>().Target = targetGo.transform;
-                    entity.Get<CurrentTargetComponent>().sqrDistance = distance;
+                    // entity.Get<NeedUpdateUiTargetComponent>();
+                    entity.Get<CurrentTargetComponent>()._baseUnitView = targetGo.GetComponent<IBaseUnitView>();
+                    entity.Get<CurrentTargetComponent>()._sqrDistance = distance;
 
                     entity.Get<NeedLookAtTargetComponent>();
                     entity.Get<NeedMoveToTargetAndAttackComponent>();
                 }
                 else
                 {
-                    entity.Get<NeedStartAnimationComponent>();
+                    entity.Get<NeedStartAnimationAttackFromMainWeaponComponent>();
                     entity.Del<CurrentTargetComponent>();
+                    // entity.Get<NeedUpdateUiTargetComponent>();
                 }
 
                 entity.Del<NeedFindTargetComponent>();
             }
         }
     }
+
+    // public struct NeedUpdateUiTargetComponent
+    // {
+    // }
 }

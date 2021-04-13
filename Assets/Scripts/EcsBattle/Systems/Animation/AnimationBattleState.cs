@@ -14,7 +14,7 @@ namespace EcsBattle
                 ref var entity = ref _filter.GetEntity(i);
                 ref var player = ref _filter.Get1(i);
 
-                player.animator.Battle = entity.Has<CurrentTargetComponent>();
+                player._animator.Battle = entity.Has<CurrentTargetComponent>();
             }
         }
     }

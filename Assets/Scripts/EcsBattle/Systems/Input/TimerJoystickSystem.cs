@@ -17,25 +17,25 @@ namespace EcsBattle.Systems.Input
                 ref var input = ref _filter.Get1(index);
                 ref var entity = ref _filter.GetEntity(index);
 
-                if (input.Value.GetJoystickState())
+                if (input._value.GetJoystickState())
                 {
                     // Dbg.Log($"joystick.Value.GetJoystickState:TRUE");
                     var inputVector = new Vector3(
-                        input.Value.GetHorizontalAxis(),
+                        input._value.GetHorizontalAxis(),
                         0.0f,
-                        input.Value.GetVerticalAxis());
-                    input.ClickTime += Time.deltaTime;
-                    input.LastPosition = inputVector;
+                        input._value.GetVerticalAxis());
+                    input._clickTime += Time.deltaTime;
+                    input._lastPosition = inputVector;
                 }
                 else
                 {
                     // Dbg.Log($"joystick.Value.GetJoystickState:FALSE");
-                    if (!(input.ClickTime > 0)) continue;
-                    entity.Get<UnpressJoystickComponent>().PressTime = input.ClickTime;
-                    entity.Get<UnpressJoystickComponent>().LastValueVector = input.LastPosition;
+                    if (!(input._clickTime > 0)) continue;
+                    entity.Get<UnpressJoystickComponent>()._pressTime = input._clickTime;
+                    entity.Get<UnpressJoystickComponent>()._lastValueVector = input._lastPosition;
 
-                    input.ClickTime = 0.0f;
-                    input.LastPosition = Vector3.zero;
+                    input._clickTime = 0.0f;
+                    input._lastPosition = Vector3.zero;
                 }
             }
         }

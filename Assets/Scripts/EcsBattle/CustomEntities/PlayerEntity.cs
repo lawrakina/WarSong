@@ -40,7 +40,7 @@ namespace EcsBattle.CustomEntities
 
         private void ViewOnApplyDamageChange(InfoCollision collision)
         {
-            _entity.Get<AttackCollisionComponent>().Value = collision;
+            _entity.Get<AttackCollisionComponent>()._value = collision;
         }
 
         #endregion

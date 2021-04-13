@@ -17,12 +17,12 @@ namespace EcsBattle.Systems.Input
             {
                 ref var playerEntity = ref _playerFilter.GetEntity(i);
                 var entity = _world.NewEntity();
-                entity.Get<InputControlComponent>().Value = _inputStruct._joystick;
-                entity.Get<InputControlComponent>().ClickTime = 0.0f;
-                entity.Get<InputControlComponent>().MaxPressTimeForClickButton = _inputStruct._maxPressTimeForClickButton;
-                entity.Get<InputControlComponent>().MaxOffsetForClick = _inputStruct._maxOffsetForClick;
-                entity.Get<InputControlComponent>().MaxOffsetForMovement = _inputStruct._maxOffsetForMovement;
-                entity.Get<TargetEntityComponent>().value = playerEntity;
+                entity.Get<InputControlComponent>()._value = _inputStruct._joystick;
+                entity.Get<InputControlComponent>()._clickTime = 0.0f;
+                entity.Get<InputControlComponent>()._maxPressTimeForClickButton = _inputStruct._maxPressTimeForClickButton;
+                entity.Get<InputControlComponent>()._maxOffsetForClick = _inputStruct._maxOffsetForClick;
+                entity.Get<InputControlComponent>()._maxOffsetForMovement = _inputStruct._maxOffsetForMovement;
+                entity.Get<TargetEntityComponent>()._value = playerEntity;
             }
         }
     }

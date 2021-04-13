@@ -1,6 +1,6 @@
 ﻿using Battle;
+using Unit;
 using UnityEngine;
-using VIew;
 
 
 namespace Data

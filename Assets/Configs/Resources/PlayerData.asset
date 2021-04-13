@@ -29,4 +29,96 @@ MonoBehaviour:
         distanceDetection: 15
         maxCountTargets: 5
         offsetHead: {x: 0, y: 1.5, z: 0}
-  _numberActiveCharacter: 0
+    - CharacterClass: 1
+      CharacterGender: 1
+      CharacterRace: 1
+      PlayerMoveSpeed: 12
+      RotateSpeedPlayer: 120
+      Equipment:
+        MainWeapon: {fileID: -6081652771160073839, guid: 1e7d0884ab7bd3e47805374740c15627,
+          type: 3}
+        SecondWeapon: {fileID: -6081652771160073839, guid: 1e7d0884ab7bd3e47805374740c15627,
+          type: 3}
+      ExperiencePoints: 5000
+      unitVisionParameters:
+        distanceDetection: 15
+        maxCountTargets: 5
+        offsetHead: {x: 0, y: 1.5, z: 0}
+    - CharacterClass: 2
+      CharacterGender: 1
+      CharacterRace: 1
+      PlayerMoveSpeed: 12
+      RotateSpeedPlayer: 120
+      Equipment:
+        MainWeapon: {fileID: -6366401157965156963, guid: 748584e1e1114c249a340921801d935e,
+          type: 3}
+        SecondWeapon: {fileID: 4791450294888299635, guid: d3687d2aa11ee35489e653ed8b436246,
+          type: 3}
+      ExperiencePoints: 6000
+      unitVisionParameters:
+        distanceDetection: 15
+        maxCountTargets: 5
+        offsetHead: {x: 0, y: 1.5, z: 0}
+  _numberActiveCharacter: 2
+  _presetCharacters:
+    listPresetsSettings:
+    - CharacterClass: 0
+      CharacterGender: 0
+      CharacterRace: 3
+      PlayerMoveSpeed: 7
+      RotateSpeedPlayer: 120
+      Equipment:
+        MainWeapon: {fileID: -6081652771160073839, guid: 1e7d0884ab7bd3e47805374740c15627,
+          type: 3}
+        SecondWeapon: {fileID: 2742068569462338133, guid: cc7396c367cf52a4abee0d4712eed902,
+          type: 3}
+      ExperiencePoints: 0
+      unitVisionParameters:
+        distanceDetection: 15
+        maxCountTargets: 5
+        offsetHead: {x: 0, y: 1.5, z: 0}
+    - CharacterClass: 1
+      CharacterGender: 1
+      CharacterRace: 1
+      PlayerMoveSpeed: 7
+      RotateSpeedPlayer: 120
+      Equipment:
+        MainWeapon: {fileID: -6081652771160073839, guid: 1e7d0884ab7bd3e47805374740c15627,
+          type: 3}
+        SecondWeapon: {fileID: -6081652771160073839, guid: 1e7d0884ab7bd3e47805374740c15627,
+          type: 3}
+      ExperiencePoints: 0
+      unitVisionParameters:
+        distanceDetection: 15
+        maxCountTargets: 5
+        offsetHead: {x: 0, y: 1.5, z: 0}
+    - CharacterClass: 2
+      CharacterGender: 1
+      CharacterRace: 1
+      PlayerMoveSpeed: 7
+      RotateSpeedPlayer: 120
+      Equipment:
+        MainWeapon: {fileID: -6366401157965156963, guid: 748584e1e1114c249a340921801d935e,
+          type: 3}
+        SecondWeapon: {fileID: 4791450294888299635, guid: d3687d2aa11ee35489e653ed8b436246,
+          type: 3}
+      ExperiencePoints: 0
+      unitVisionParameters:
+        distanceDetection: 15
+        maxCountTargets: 5
+        offsetHead: {x: 0, y: 1.5, z: 0}
+    - CharacterClass: 3
+      CharacterGender: 0
+      CharacterRace: 0
+      PlayerMoveSpeed: 7
+      RotateSpeedPlayer: 120
+      Equipment:
+        MainWeapon: {fileID: 4791450294888299635, guid: d3687d2aa11ee35489e653ed8b436246,
+          type: 3}
+        SecondWeapon: {fileID: 4791450294888299635, guid: d3687d2aa11ee35489e653ed8b436246,
+          type: 3}
+      ExperiencePoints: 0
+      unitVisionParameters:
+        distanceDetection: 15
+        maxCountTargets: 5
+        offsetHead: {x: 0, y: 1.5, z: 0}

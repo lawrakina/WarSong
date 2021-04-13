@@ -1,17 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
+using Unit;
+using UnityEngine;
 
 
 namespace Weapons
 {
     public class WeaponBullet : MonoBehaviour
     {
-        public Rigidbody Rigidbody { get; set; }
-        private Collider Collider { get; set; }
+        public IBaseUnitView Target { get; set; }
+        public float Speed = 50.0f;
+        public TrailRenderer Trail {get; set; }
 
         private void Awake()
         {
-            Rigidbody = GetComponent<Rigidbody>();
-            Collider = GetComponent<Collider>();
+            Trail = GetComponentInChildren<TrailRenderer>();
         }
     }
 }

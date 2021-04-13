@@ -1,6 +1,5 @@
 ﻿using Data;
 using UnityEngine;
-using VIew;
 
 
 namespace Unit

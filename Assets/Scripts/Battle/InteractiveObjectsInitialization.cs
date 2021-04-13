@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using Data;
 using Extension;
+using Unit;
 using UnityEngine;
-using VIew;
 
 
 namespace Battle

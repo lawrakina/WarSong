@@ -5,9 +5,9 @@ namespace EcsBattle.Components
 {
     public struct TimerStatisticsObserverComponent
     {
-        public float currentTime;
-        public float maxTime;
-        public BattleProgressModel observer;
+        public float _currentTime;
+        public float _maxTime;
+        public BattleProgressModel _observer;
     }
     
     internal struct GoalLevelAchievedComponent

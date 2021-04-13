@@ -14,11 +14,11 @@ namespace EcsBattle.Systems.Player
             {
                 ref var entity = ref _filter.GetEntity(i);
                 ref var needStep = ref _filter.Get1(i);
-                ref var transform = ref _filter.Get3(i).rootTransform;
-                ref var rigidBody = ref _filter.Get3(i).rigidbody;
-                ref var moveSpeed = ref _filter.Get3(i).attributes.Speed;
+                ref var transform = ref _filter.Get3(i)._rootTransform;
+                ref var rigidBody = ref _filter.Get3(i)._rigidBody;
+                ref var moveSpeed = ref _filter.Get3(i)._attributes.Speed;
                 
-                rigidBody.MovePosition(transform.position - (needStep.value * (moveSpeed * Time.fixedDeltaTime)));
+                rigidBody.MovePosition(transform.position - (needStep._value * (moveSpeed * Time.fixedDeltaTime)));
 
                 entity.Del<NeedStepComponent>();
             }

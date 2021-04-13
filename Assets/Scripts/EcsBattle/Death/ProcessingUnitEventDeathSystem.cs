@@ -24,15 +24,15 @@ namespace EcsBattle
                 // ref var listOfAwards = ref _filter.Get2(i);
             
                 //Enable Ragdoll
-                for (int j = 0; j < listBbodies.rigidbodies.Count; j++)
+                for (int j = 0; j < listBbodies._rigidBodies.Count; j++)
                 {
-                    listBbodies.rigidbodies[j].isKinematic = false;
-                    listBbodies.colliders[j].enabled = true;
+                    listBbodies._rigidBodies[j].isKinematic = false;
+                    listBbodies._colliders[j].enabled = true;
                 }
                 
-                unit.animator.Off();
-                unit.collider.enabled = false;
-                unit.rigidbody.isKinematic = true;
+                unit._animator.Off();
+                unit._collider.enabled = false;
+                unit._rigidBody.isKinematic = true;
 
                 entity.Get<NeedToAddToStatisticsComponent>().killer = deathEvent._killer;
                 // foreach (var rigidbody in listBbodies.rigidbodies)

@@ -1,22 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Controller.Model;
 using Data;
+using Enums;
 using Extension;
+using Interface;
 using UniRx;
 using Unit.Player;
+using UnityEngine;
+using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 
 namespace Controller
 {
-    public sealed class ListOfCharactersController: BaseController
+    public sealed class ListOfCharactersController : IInitialization
     {
-        private PlayerData _playerData;
-        private IPlayerFactory _playerFactory;
-        
-        private readonly List<IPlayerView> _characters;
-        private readonly ReactiveProperty<IPlayerView> _currentChar;
+        #region Fields
 
-        public ReactiveProperty<IPlayerView> CurrentCharacter
+        private readonly ListCharacterModel _model;
+        private readonly CommandManager _commandManager;
+        private readonly List<PlayerView> _characters;
+        private IPlayerView _currentChar;
+        private CharacterSettings _presetCharacters;
+
+        private readonly CompositeDisposable _subscriptions;
+
+        #endregion
+
+
+        #region Properties
+
+        private IPlayerView CurrentCharacter
         {
             get
             {
@@ -24,36 +40,110 @@ namespace Controller
                     throw new InvalidOperationException("fuck off");
                 return _currentChar;
             }
+            set
+            {
+                GoToSumpTank(_currentChar);
+                _currentChar = value;
+                _commandManager.ChangePlayer.ForceExecute(value);
+                _currentChar.Transform.gameObject.SetActive(true);
+            }
         }
-        
+
         private int Position
         {
-            get => _playerData._numberActiveCharacter;
-            set => _playerData._numberActiveCharacter = value;
+            get => _model._playerData._numberActiveCharacter;
+            set => _model._playerData._numberActiveCharacter = value;
         }
-        
-        public ListOfCharactersController(PlayerData playerData, IPlayerFactory playerFactory)
+
+        #endregion
+
+
+        #region ClassLiveCycles
+
+        public ListOfCharactersController(ListCharacterModel model, CommandManager commandManager)
         {
-            _playerFactory = playerFactory;
-            _playerData = playerData;
-            
-            _characters = new List<IPlayerView>();
-            foreach (var item in playerData._characters.ListCharacters)
+            _subscriptions = new CompositeDisposable();
+            _model = model;
+            _commandManager = commandManager;
+
+            _characters = new List<PlayerView>();
+            for (var index = 0; index < _model._playerData._characters.ListCharacters.Count; index++)
             {
-                var character = _playerFactory.CreatePlayer(item);
+                var item = _model._playerData._characters.ListCharacters[index];
+                var character = (PlayerView) _model._playerFactory.CreatePlayer(item);
+                character.Transform.position = new Vector3(index * 3, 0.0f, 0.0f);
                 _characters.Add(character);
             }
-            _currentChar = new ReactiveProperty<IPlayerView>(_characters[playerData._numberActiveCharacter]);
+
+            CurrentCharacter = _characters[_model._playerData._numberActiveCharacter];
+        }
+
+        public void Init()
+        {
+            CurrentCharacter = _characters[_model._playerData._numberActiveCharacter];
+        }
+
+        ~ListOfCharactersController()
+        {
+            _subscriptions?.Dispose();
+        }
+
+        #endregion
+
+
+        #region Methods
+
+        public void CreateNewPrototype()
+        {
+            GoToSumpTank(CurrentCharacter);
+            _presetCharacters = _model._playerData._presetCharacters.listPresetsSettings.FirstOrDefault();
+            CreatePlayerFromFabric();
+        }
+
+        public void UpdatePrototype(
+            object characterClass = null, 
+            object characterGender = null,
+            object characterRace = null)
+        {
+            if (characterClass != null)
+            {
+                _presetCharacters =
+                    _model._playerData._presetCharacters.listPresetsSettings.FirstOrDefault(x =>
+                        x.CharacterClass == (CharacterClass)characterClass);
+            }
+            
+            _presetCharacters.CharacterGender = characterGender == null
+                ? _presetCharacters.CharacterGender
+                : (CharacterGender) characterGender;
+            
+            _presetCharacters.CharacterRace = characterRace == null
+                ? _presetCharacters.CharacterRace
+                : (CharacterRace) characterRace;
+            
+            CreatePlayerFromFabric();
+        }
+
+        private void CreatePlayerFromFabric()
+        {
+            //todo it`s method generate trash!!! Max task => ReUse Prototype character, Min task => destroy all children objects in old CurrentCharacter
+            Object.Destroy(CurrentCharacter.Transform.gameObject);
+            var prototype = _model._playerFactory.CreatePlayer(_presetCharacters);
+            prototype.Transform.gameObject.name =
+                $"PROTOTYPE.Character.{_presetCharacters.CharacterClass}.{_presetCharacters.CharacterGender}.{_presetCharacters.CharacterRace}";
+            CurrentCharacter = prototype;
         }
         
-        #region Methods
+        public void UpdateCurrentCharacter()
+        {
+            CurrentCharacter = _characters[_model._playerData._numberActiveCharacter];
+        }
 
         public bool MoveNext()
         {
             if (Position < _characters.Count - 1)
             {
                 Position++;
-                CurrentCharacter.Value = _characters[Position];
+                CurrentCharacter = _characters[Position];
                 Dbg.Log($"ListCharactersManager.MoveNext.Position:{Position}");
                 return true;
             }
@@ -66,12 +156,20 @@ namespace Controller
             if (Position > 0)
             {
                 Position--;
-                CurrentCharacter.Value = _characters[Position];
+                CurrentCharacter = _characters[Position];
                 Dbg.Log($"ListCharactersManager.MovePrev.Position:{Position}");
                 return true;
             }
 
             return false;
+        }
+
+        private static void GoToSumpTank(IPlayerView player)
+        {
+            if (player == null) return;
+            var sumpTank = new Vector3(Random.Range(-2.0f, 2.0f), 0.0f, Random.Range(-2.0f, 2.0f));
+            player.Transform.position = sumpTank;
+            player.Transform.gameObject.SetActive(false);
         }
 
         public void SaveNewCharacter()
@@ -85,5 +183,12 @@ namespace Controller
         }
 
         #endregion
+
+
+        public void CreateCharacterFromPrototype()
+        {
+            _model._playerData._characters.ListCharacters.Add(_presetCharacters);
+            _model._playerData._numberActiveCharacter = _model._playerData._characters.ListCharacters.Count - 1;
+        }
     }
 }
