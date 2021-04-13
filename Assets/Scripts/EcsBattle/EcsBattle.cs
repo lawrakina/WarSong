@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using DuloGames.UI;
 using EcsBattle.Components;
 using EcsBattle.Systems.Animation;
 using EcsBattle.Systems.Attacks;
@@ -10,19 +9,15 @@ using EcsBattle.Systems.Enemies;
 using EcsBattle.Systems.Input;
 using EcsBattle.Systems.Player;
 using EcsBattle.Systems.PlayerMove;
-using EcsBattle.Systems.PlayerVision;
 using EcsBattle.Systems.Statistics;
 using EcsBattle.Systems.Ui;
 using Enums;
 using Extension;
 using Leopotam.Ecs;
-using UniRx;
-using Unit;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
 #endif
 using UnityEngine;
-using Weapons;
 
 
 namespace EcsBattle
