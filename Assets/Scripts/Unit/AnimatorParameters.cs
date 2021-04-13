@@ -28,10 +28,10 @@ namespace Unit
             get => _battle;
             set
             {
-                if (_battle && !value)
-                    _animator.SetTrigger(TagManager.ANIMATOR_PARAM_WEAPON_UNSHEATH_TRIGGER);
-                if (!_battle && value)
-                    _animator.SetTrigger(TagManager.ANIMATOR_PARAM_WEAPON_SHEATH_TRIGGER);
+                // if (_battle && !value)
+                    // _animator.SetTrigger(TagManager.ANIMATOR_PARAM_WEAPON_UNSHEATH_TRIGGER);
+                // if (!_battle && value)
+                    // _animator.SetTrigger(TagManager.ANIMATOR_PARAM_WEAPON_SHEATH_TRIGGER);
                 _battle = value;
                 _animator.SetBool(TagManager.ANIMATOR_PARAM_BATTLE, _battle);
             }

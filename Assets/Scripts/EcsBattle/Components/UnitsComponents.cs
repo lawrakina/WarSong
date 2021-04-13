@@ -15,7 +15,7 @@ namespace EcsBattle.Components
     public struct PlayerComponent
     {
         public CharacterClass _unitClass;
-        public IPlayerView _view;
+        // public IPlayerView _view;
     }
     public struct EnemyComponent
     {
