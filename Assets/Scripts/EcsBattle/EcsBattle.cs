@@ -11,7 +11,6 @@ using EcsBattle.Systems.Player;
 using EcsBattle.Systems.PlayerMove;
 using EcsBattle.Systems.Statistics;
 using EcsBattle.Systems.Ui;
-using Enums;
 using Extension;
 using Leopotam.Ecs;
 #if UNITY_EDITOR
@@ -60,7 +59,7 @@ namespace EcsBattle
                 //GameManager
                 .Add(new CreateTimerStatisticsObserverSystem())
                 .Add(new TimerTickForStatisticsObserverSystem())
-                .Add(new TimerForCheckingWinningConditionsSystem())
+                
                 .Add(new SpawnGoalLevelSystem())
                 .Add(new EndOfBattleSystem())
                 //Create Player & Camera

@@ -8,6 +8,7 @@ namespace EcsBattle.Systems.Statistics
     public sealed class TimerTickForStatisticsObserverSystem : IEcsRunSystem
     {
         private EcsFilter<TimerStatisticsObserverComponent> _filter;
+        
         public void Run()
         {
             foreach (var i in _filter)
