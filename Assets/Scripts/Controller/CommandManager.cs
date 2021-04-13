@@ -13,23 +13,31 @@ namespace Controller
 {
     public sealed class CommandManager : IInitialization, ICleanup
     {
+        #region Fields
+
         private readonly UiWindows _uiWindows;
         private readonly SceneWindows _windows;
         public readonly ReactiveCommand<bool> _battleWindowShowCommand = new ReactiveCommand<bool>();
         public readonly ReactiveCommand<bool> _characterWindowShowCommand = new ReactiveCommand<bool>();
         public readonly ReactiveCommand<bool> _tavernWindowShowCommand = new ReactiveCommand<bool>();
         public readonly ReactiveCommand<bool> _shopWindowShowCommand = new ReactiveCommand<bool>();
-
         public readonly ReactiveCommand _buildDungeonCommand = new ReactiveCommand();
-
         public readonly ReactiveCommand<IPlayerView> ChangePlayer = new ReactiveCommand<IPlayerView>();
-
         private readonly CompositeDisposable _subscriptions;
 
+        #endregion
+
+
+        #region Properties
 
         public ListOfCharactersController ListOfCharacters { get; set; }
         public GeneratorDungeon GeneratorDungeon { get; set; }
         public EcsBattleInitialization BattleInitialisation { get; set; }
+
+        #endregion
+
+
+        #region ClassLiveCycles
 
         public CommandManager(UiWindows uiWindows, SceneWindows windows)
         {
@@ -37,6 +45,11 @@ namespace Controller
             _uiWindows = uiWindows;
             _windows = windows;
         }
+
+        #endregion
+
+
+        #region IInitialization
 
         public void Init()
         {
@@ -188,6 +201,11 @@ namespace Controller
             #endregion
         }
 
+        #endregion
+
+
+        #region Private Methods
+
         private void SetActiveRootBattle(bool value)
         {
             _windows.RootBattleCamera.enabled = value;
@@ -230,6 +248,8 @@ namespace Controller
                 $"Description:{p.CharacterClass.Description}";
             return result;
         }
+
+        #endregion
 
         public void Cleanup()
         {
