@@ -16,12 +16,14 @@ namespace EcsBattle.Systems.Camera
 
         public void Init()
         {
-            _camera.ThirdTarget = Object.Instantiate(new GameObject("ThirdPersonTargetCamera"), _player.Transform).transform;
+            _camera.ThirdTarget = 
+                Object.Instantiate(new GameObject("ThirdPersonTargetCamera"), _player.Transform).transform;
             _camera.ThirdTarget.localPosition = _camera.OffsetThirdPosition();
-            
+
             _camera.Transform.SetParent(_camera.ThirdTarget, false);
             _camera.Transform.LookAt(_player.Transform);
-            
+            _camera.Camera.enabled = true;
+
             //if us CameraPositioningOnMarkerPlayerSystem && CameraRotateOnPlayerSystem than decomment =>
             var camera = _world.NewEntity();
             camera.Get<FightCameraComponent>().uiTextManager = _camera.UiTextManager;

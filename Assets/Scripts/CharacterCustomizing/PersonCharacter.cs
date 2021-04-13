@@ -4,8 +4,8 @@ using Data;
 using Enums;
 using PsychoticLab;
 using UnityEngine;
-using CharacterObjectGroups = Data.CharacterObjectGroups;
-using CharacterObjectListsAllGender = Data.CharacterObjectListsAllGender;
+using CharacterObjectGroups = CharacterCustomizing.CharacterObjectGroups;
+using CharacterObjectListsAllGender = CharacterCustomizing.CharacterObjectListsAllGender;
 using Random = UnityEngine.Random;
 
 

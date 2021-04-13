@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using Controller;
-using CoreComponent;
+using Controller.Model;
 using Data;
 using Enums;
 using Extension;
 using Interface;
 using Models;
 using UniRx;
+using Unit;
 using Unit.Enemies;
 using Unit.Player;
 using UnityEngine;
-using VIew;
 using Object = UnityEngine.Object;
 
 
@@ -24,13 +24,12 @@ namespace Battle
         private readonly EcsBattle.EcsBattle _ecsBattle;
         private readonly IGeneratorDungeon _generatorDungeon;
         private readonly InteractiveObjectsInitialization _interactiveObjectsInitialization;
-        private IReactiveProperty<EnumMainWindow> _activeWindow;
-        private readonly IReactiveProperty<EnumBattleWindow> _battleState;
         private readonly BattleInputStruct _battleInputStruct;
         private readonly BattleSettingsData _battleSettings;
-        private readonly IPlayerView _player;
+        private IPlayerView _player;
         private readonly BattlePlayerModel _playerModel;
         private readonly BattleProgressModel _battleModel;
+        private readonly BattleTargetModel _targetModel;
         private readonly IFightCamera _camera;
         private readonly EnemiesInitialization _enemiesInitialization;
         private List<IEnemyView> _listEnemies = new List<IEnemyView>();
@@ -41,7 +40,6 @@ namespace Battle
 
         #region Properties
 
-        // public GameObject Dungeon { get; set; }
         public EcsBattle.EcsBattle BattleEngine() => _ecsBattle;
 
         #endregion
@@ -54,10 +52,9 @@ namespace Battle
             BattleSettingsData battleSettings,
             IGeneratorDungeon generatorDungeon,
             InteractiveObjectsInitialization interactiveObjectsInitialization,
-            IReactiveProperty<EnumBattleWindow> battleState,
-            IReactiveProperty<EnumMainWindow> activeWindow,
             IPlayerView player, BattlePlayerModel playerModel,
             BattleProgressModel battleModel,
+            BattleTargetModel targetModel,
             IFightCamera camera,
             EnemiesInitialization enemiesInitialization)
         {
@@ -69,18 +66,16 @@ namespace Battle
             _player = player;
             _playerModel = playerModel;
             _battleModel = battleModel;
+            _targetModel = targetModel;
             _camera = camera;
             _enemiesInitialization = enemiesInitialization;
             _generatorDungeon = generatorDungeon;
             _interactiveObjectsInitialization = interactiveObjectsInitialization;
-            _battleState = battleState;
-            _activeWindow = activeWindow;
-
-            _ecsBattle.Inject(_battleState);
-            _ecsBattle.Inject(_player);
+            
             _ecsBattle.Inject(_camera);
             _ecsBattle.Inject(_playerModel);
             _ecsBattle.Inject(_battleModel);
+            _ecsBattle.Inject(_targetModel);
             _ecsBattle.Inject(_battleInputStruct);
             _ecsBattle.Inject(_battleSettings);
         }
@@ -92,6 +87,9 @@ namespace Battle
 
         public void StartBattle()
         {
+            _player = GlobalLinks.Player;
+            _ecsBattle.Inject(_player);
+            
             _listEnemies =
                 _enemiesInitialization.GetListEnemies(_generatorDungeon.GetEnemiesMarkers(),
                     _generatorDungeon.Dungeon());
@@ -103,7 +101,6 @@ namespace Battle
             var playerPosition = _generatorDungeon.GetPlayerPosition();
             _player.Transform.SetParent(playerPosition);
             _player.Transform.localPosition = Vector3.zero;
-            _battleState.Value = EnumBattleWindow.Fight;
 
             _ecsBattle.Init();
         }

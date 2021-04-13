@@ -17,6 +17,7 @@ namespace Unit.Player
         public Collider Collider { get; set; }
         public Rigidbody Rigidbody { get; set; }
         public MeshRenderer MeshRenderer { get; set; }
+        public UnitHealth UnitHealth { get; set; }
         public Animator Animator { get; set; }
         public AnimatorParameters AnimatorParameters { get; set; }
         public UnitAttributes Attributes { get; set; }
@@ -24,9 +25,6 @@ namespace Unit.Player
         public UnitPlayerBattle UnitPlayerBattle { get; set; }
         public UltimateTextDamageManager UiTextManager { get; set; }
         public UnitReputation UnitReputation { get; set; }
-        public float CurrentHp { get; set; }
-        public float BaseHp { get; set; }
-        public float MaxHp { get; set; }
         public event Action<InfoCollision> OnApplyDamageChange;
         public UnitLevel UnitLevel { get; set; }
         public BasicCharacteristics BasicCharacteristics { get; set; }

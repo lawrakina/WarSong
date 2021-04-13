@@ -1,8 +1,8 @@
 ﻿using EcsBattle.Components;
 using Leopotam.Ecs;
+using Unit;
 using Unit.Player;
 using UnityEngine;
-using VIew;
 
 
 namespace EcsBattle.CustomEntities

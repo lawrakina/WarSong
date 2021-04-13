@@ -6,7 +6,7 @@ namespace EcsBattle.Systems.Attacks
 {
     public sealed class Attack1StartProcessSystem : IEcsRunSystem
     {
-        private EcsFilter<StartAttackComponent, PermissionForAttackAllowedComponent> _filter;
+        private EcsFilter<StartAttackComponent, PermissionForAttackFromMainWeaponAllowedComponent> _filter;
 
         public void Run()
         {
@@ -14,7 +14,7 @@ namespace EcsBattle.Systems.Attacks
             {
                 ref var entity = ref _filter.GetEntity(i);
 
-                entity.Del<PermissionForAttackAllowedComponent>();
+                entity.Del<PermissionForAttackFromMainWeaponAllowedComponent>();
                 entity.Del<StartAttackComponent>();
                 entity.Get<NeedFindTargetComponent>();
                 // entity.Get<NeedLookAtTargetComponent>();

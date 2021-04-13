@@ -9,7 +9,6 @@ namespace Battle
     {
         private readonly BattleInputData _data;
         private readonly Transform _rootCanvas;
-        // private UltimateJoystick _joystick;
 
         public BattleInputControlsInitialization(BattleInputData data, Transform rootCanvas)
         {
@@ -17,9 +16,9 @@ namespace Battle
             _rootCanvas = rootCanvas;
         }
 
-        public void Initialization()
+        public void Init()
         {
-            // _joystick.transform.SetParent(_rootCanvas.transform);
+            
         }
 
         public BattleInputStruct GetData()
@@ -32,15 +31,6 @@ namespace Battle
             data._rootCanvas = _rootCanvas;
             data._joystick.transform.SetParent(_rootCanvas.transform);
             return data;
-        }
-
-        public void On()
-        {
-            
-        }
-
-        public void Off()
-        {
         }
     }
 }

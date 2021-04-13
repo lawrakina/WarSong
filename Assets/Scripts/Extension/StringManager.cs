@@ -2,6 +2,7 @@
 {
     public static class StringManager
     {
+        public const string UNIT_STATUS_DEAD = "Unit is totally dead";
         public const string PLAYER_ATTACK_LAYER = "PlayerAttack";
         public const string ENEMY_ATTACK_LAYER = "EnemyAttack";
         public const string ENEMY_AND_PLAYER_ATTACK_LAYER = "EnemyAndPlayerAttack";

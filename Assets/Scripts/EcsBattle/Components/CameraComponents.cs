@@ -15,7 +15,7 @@ namespace EcsBattle.Components
 
     public struct NeedLerpPositionCameraFollowingToTargetComponent
     {
-        public float currentTime;
-        public float maxTime;
+        public float _currentTime;
+        public float _maxTime;
     }
 }

@@ -15,13 +15,13 @@ namespace EcsBattle
             foreach (var index in _filter)
             {
                 ref var entity = ref _filter.GetEntity(index);
-                ref var playerTransform = ref _filter.Get2(index).rootTransform;
-                ref var directionMoving = ref _filter.Get3(index).value;
+                ref var playerTransform = ref _filter.Get2(index)._rootTransform;
+                ref var directionMoving = ref _filter.Get3(index)._value;
 
                 if (directionMoving.localPosition.sqrMagnitude > Vector3.kEpsilon)
                 {
-                    entity.Get<NeedStepComponent>().value = playerTransform.position - directionMoving.position;
-                    entity.Get<NeedRotateComponent>().value = directionMoving;
+                    entity.Get<NeedStepComponent>()._value = playerTransform.position - directionMoving.position;
+                    entity.Get<NeedRotateComponent>()._value = directionMoving;
                 }
             }
         }

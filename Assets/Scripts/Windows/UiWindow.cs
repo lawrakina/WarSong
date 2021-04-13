@@ -1,28 +1,15 @@
-﻿using System;
+﻿using Interface;
+using UniRx;
 using UnityEngine;
 
 
 namespace Windows
 {
-    public abstract class UiWindow : MonoBehaviour
+    public abstract class UiWindow : MonoBehaviour, IInitialization
     {
         #region Fields
 
-        [HideInInspector]
-        public bool _showBeforeStart = false;
-
-        public Action<Guid> OnShow;
-        public Action<Guid> OnHide;
-
-        #endregion
-
-
-        #region Properties
-
-        public Guid Id { get; } = Guid.NewGuid();
-        
-        public delegate Transform GetCharacterSpawn();
-        public GetCharacterSpawn CharacterSpawn;
+        protected CompositeDisposable _subscriptions;
 
         #endregion
 
@@ -31,16 +18,13 @@ namespace Windows
 
         public virtual void Init()
         {
-            if (_showBeforeStart)
-                Show();
-            else
-                Hide();
+            _subscriptions = new CompositeDisposable();
         }
+
 
         ~UiWindow()
         {
-            OnShow = null;
-            OnHide = null;
+            _subscriptions?.Dispose();
         }
 
         #endregion
@@ -48,17 +32,18 @@ namespace Windows
 
         #region Methods
 
+        public void SetActive(bool value)
+        {
+            gameObject.SetActive(value);
+        }
+
         public virtual void Show()
         {
-            OnShow?.Invoke(Id);
-
             gameObject.SetActive(true);
         }
 
         public virtual void Hide()
         {
-            OnHide?.Invoke(Id);
-
             gameObject.SetActive(false);
         }
 

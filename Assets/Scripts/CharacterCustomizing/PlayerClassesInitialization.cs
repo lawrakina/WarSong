@@ -79,13 +79,14 @@ namespace CharacterCustomizing
                 IntellectForLevel = level * currentCharacteristits.IntellectForLevel,
                 // Spirit = charLevel * data.Spirit
             };
-            _playerView.BaseHp =
+            _playerView.UnitHealth = new UnitHealth();
+            var baseHp =
                 _playerView.BasicCharacteristics.StartHp +
                 _playerView.BasicCharacteristics.StartStamina * _data.HealthPerStamina +
                 _playerView.BasicCharacteristics.StaminaForLevel *
                 _data.HealthPerStamina;
-            _playerView.CurrentHp = _playerView.BaseHp;
-            _playerView.MaxHp = _playerView.BaseHp;
+            _playerView.UnitHealth.CurrentHp = baseHp;
+            _playerView.UnitHealth.MaxHp = baseHp;
 
             // Dbg.Log($"SET CurrentHP: {_playerView.CharacterClass.CurrentHp}, MaxHp:{_playerView.CharacterClass.MaxHp}");
 

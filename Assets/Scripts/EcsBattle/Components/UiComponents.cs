@@ -2,6 +2,6 @@
 {
     public struct NeedShowUiEventComponent
     {
-        public float pointsDamage;
+        public float _pointsDamage;
     }
 }

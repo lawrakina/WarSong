@@ -10,7 +10,15 @@
         RangeTwoHandBowWeapon,
         RangeTwoHandCrossbowWeapon,
         // RangeTwoHandGunWeapon,
-        Shild,
+        Shield,
         ExtraWeapon,
+    }
+
+    public enum ActiveWeapons
+    {
+        RightHand,
+        TwoHand,
+        RightAndLeft,
+        RightAndShield
     }
 }

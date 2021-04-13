@@ -20,10 +20,10 @@ namespace EcsBattle.Systems.Input
                 ref var lastState = ref _input.Get3(index);
 
                 // create event swipe. time hold less и offset more than MaxOffsetForClick => SwipeEvent
-                if (lastState.PressTime <= joystick.MaxPressTimeForClickButton &&
-                    lastState.LastValueVector.sqrMagnitude > joystick.MaxOffsetForClick.sqrMagnitude)
+                if (lastState._pressTime <= joystick._maxPressTimeForClickButton &&
+                    lastState._lastValueVector.sqrMagnitude > joystick._maxOffsetForClick.sqrMagnitude)
                 {
-                    target.value.Get<SwipeEventComponent>();
+                    target._value.Get<SwipeEventComponent>();
                     entity.Del<UnpressJoystickComponent>();
                     Dbg.Log($"joystick.Swipe");
                 }

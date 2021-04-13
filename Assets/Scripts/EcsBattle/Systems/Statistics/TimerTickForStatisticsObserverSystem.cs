@@ -14,8 +14,8 @@ namespace EcsBattle.Systems.Statistics
             {
                 ref var timer = ref _filter.Get1(i);
 
-                timer.currentTime += Time.deltaTime;
-                timer.observer.CurrentTimer = timer.currentTime;
+                timer._currentTime += Time.deltaTime;
+                timer._observer.CurrentTimer = timer._currentTime;
             }
         }
     }

@@ -11,7 +11,7 @@ namespace EcsBattle
         {
             foreach (var index in _filter)
             {
-                _filter.Get1(index).Value.AlignCamera();
+                _filter.Get1(index)._value.AlignCamera();
             }
         }
     }

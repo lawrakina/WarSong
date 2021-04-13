@@ -1,6 +1,9 @@
-﻿namespace Gui.Battle
+﻿using Windows;
+
+
+namespace Gui.Battle
 {
-    public sealed class FailPanel : BasePanel
+    public sealed class FailPanel : UiWindow
     {
     }
 }

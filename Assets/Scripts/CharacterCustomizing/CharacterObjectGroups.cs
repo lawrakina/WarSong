@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Data
+namespace CharacterCustomizing
 {
     [Serializable] public class CharacterObjectGroups
     {// classe for keeping the lists organized, allows for simple switching from male/female objects

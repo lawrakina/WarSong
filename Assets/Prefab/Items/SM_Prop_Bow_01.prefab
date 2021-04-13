@@ -107,6 +107,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 207af87f8b3b40368872bb7044a6f2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StandardBullet: {fileID: 8941936133358270778, guid: 792eaa4f975c00246a4e01dbd574f330,
+  StandardBullet: {fileID: 8941936133358270778, guid: 9702d835fad37f441865e4dce703829c,
     type: 3}
   Type: 5
+  AttackDistance: 20
+  AttackDistanceOffset: 1
+  AttackValue:
+    _maxAttackValue: 20
+    _minAttackValue: 30
+    _timeDelayBeforeAttack: 0.5
+    _attackSpeed: 2

@@ -11,5 +11,8 @@ namespace Data
 
         [SerializeField]
         public int _numberActiveCharacter;
+
+        [SerializeField]
+        public PresetCharacters _presetCharacters;
     }
 }
