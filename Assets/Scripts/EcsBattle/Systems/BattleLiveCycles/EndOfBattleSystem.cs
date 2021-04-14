@@ -9,7 +9,6 @@ namespace EcsBattle.Systems.BattleLiveCycles
 {
     public sealed class EndOfBattleSystem : IEcsRunSystem
     {
-        private IReactiveProperty<EnumBattleWindow> _battleState;
         private EcsFilter<GoalLevelComponent, GoalLevelAchievedComponent> _filter;
         public void Run()
         {
@@ -18,7 +17,7 @@ namespace EcsBattle.Systems.BattleLiveCycles
                 ref var entity = ref _filter.GetEntity(i);
 
                 Time.timeScale = 0;
-                _battleState.Value = EnumBattleWindow.Victory;
+                // _battleState.Value = EnumBattleWindow.Victory;
             }
         }
     }

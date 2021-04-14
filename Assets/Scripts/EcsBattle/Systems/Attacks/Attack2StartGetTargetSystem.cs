@@ -59,11 +59,9 @@ namespace EcsBattle.Systems.Attacks
                         {
                             targetGo = target;
                             distance = curDistance;
-                            // Dbg.Log($"target:{target},distance:{distance}");
                         }
                     }
 
-                    // entity.Get<NeedUpdateUiTargetComponent>();
                     entity.Get<CurrentTargetComponent>()._baseUnitView = targetGo.GetComponent<IBaseUnitView>();
                     entity.Get<CurrentTargetComponent>()._sqrDistance = distance;
 
@@ -74,7 +72,6 @@ namespace EcsBattle.Systems.Attacks
                 {
                     entity.Get<NeedStartAnimationAttackFromMainWeaponComponent>();
                     entity.Del<CurrentTargetComponent>();
-                    // entity.Get<NeedUpdateUiTargetComponent>();
                 }
 
                 entity.Del<NeedFindTargetComponent>();

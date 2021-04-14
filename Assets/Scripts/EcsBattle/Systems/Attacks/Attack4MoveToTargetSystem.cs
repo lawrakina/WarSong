@@ -1,4 +1,5 @@
 ﻿using EcsBattle.Components;
+using Extension;
 using Leopotam.Ecs;
 using UnityEngine;
 

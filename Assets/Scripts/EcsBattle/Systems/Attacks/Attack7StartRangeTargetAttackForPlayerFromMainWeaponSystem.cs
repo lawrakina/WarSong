@@ -54,7 +54,7 @@ namespace EcsBattle.Systems.Attacks
                 weaponBulletComponent._value.gameObject.SetActive(true);
                 weaponBulletComponent._value.transform.position = startPosition;
                 weaponBulletComponent._value.Target = target._baseUnitView;
-                weaponBulletComponent._value.Trail.Clear();
+                weaponBulletComponent._value.Clear();
 
 
                 bulletEntity.Get<WeaponBulletComponent>()._value = weaponBulletComponent._value;

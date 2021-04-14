@@ -11,6 +11,7 @@ using EcsBattle.Systems.Player;
 using EcsBattle.Systems.PlayerMove;
 using EcsBattle.Systems.Statistics;
 using EcsBattle.Systems.Ui;
+using Enums;
 using Extension;
 using Leopotam.Ecs;
 #if UNITY_EDITOR
@@ -59,7 +60,6 @@ namespace EcsBattle
                 //GameManager
                 .Add(new CreateTimerStatisticsObserverSystem())
                 .Add(new TimerTickForStatisticsObserverSystem())
-                
                 .Add(new SpawnGoalLevelSystem())
                 .Add(new EndOfBattleSystem())
                 //Create Player & Camera
@@ -83,15 +83,7 @@ namespace EcsBattle
             _fixedExecute
                 .Add(new MovementPlayer3MoveRigidBodySystem())
                 .Add(new MovementPlayer4RotateTransformSystem());
-            //////////////
-            //if need using Rotate and Move camera systems than remove code in CreateThirdCameraEntitySystem
-            //Moving Camera
-            // _lateExecute
-            // .Add(new CameraRotateOnPlayerSystem())
-            // .Add(new CameraPositioningOnMarkerPlayerSystem());
-            //////////////
             _execute
-
                 //Attack
                 .Add(new TimerForGettingPermissionAttackFromMainWeaponSystem())
                 .Add(new TimerForGettingPermissionAttackFromSecondWeaponSystem())
@@ -124,6 +116,10 @@ namespace EcsBattle
                     break;
 
                 case CharacterClass.Mage:
+                    _execute
+                        .Add(new CreatePoolOfAmmunitionForRangeWeaponSystem(5))
+                        .Add(new Attack7StartRangeTargetAttackForPlayerFromMainWeaponSystem())
+                        .Add(new Attack8MoveBulletRangeTargetAttackForPlayerFromMainWeaponSystem());
                     break;
 
                 default:
@@ -235,27 +231,5 @@ namespace EcsBattle
         }
 
         #endregion
-    }
-
-    public sealed class EndOfBattleSystem : IEcsRunSystem
-    {
-        private EcsFilter<GoalLevelComponent, GoalLevelAchievedComponent> _filter;
-
-        public void Run()
-        {
-            foreach (var i in _filter)
-            {
-                ref var entity = ref _filter.GetEntity(i);
-
-                Time.timeScale = 0;
-            }
-        }
-    }
-
-    public sealed class TimerForCheckingWinningConditionsSystem : IEcsRunSystem
-    {
-        public void Run()
-        {
-        }
     }
 }

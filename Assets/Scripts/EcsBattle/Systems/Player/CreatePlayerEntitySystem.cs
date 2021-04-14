@@ -40,7 +40,7 @@ namespace EcsBattle.Systems.Player
             _playerModel.CurrentHp = Mathf.RoundToInt(_view.UnitHealth.CurrentHp);
 
             //battle
-            ref var mainWeapon =ref entity.Get<BattleInfoMainWeaponComponent>();
+            ref var mainWeapon = ref entity.Get<BattleInfoMainWeaponComponent>();
 
             void SetBattleInfoForMainWeapon(ref BattleInfoMainWeaponComponent weapon)
             {
@@ -70,22 +70,22 @@ namespace EcsBattle.Systems.Player
                     mainWeapon._bullet = _view.UnitPlayerBattle.MainWeapon.StandardBullet;
                     mainWeapon._attackValue = _view.UnitPlayerBattle.MainWeapon.AttackValue;
                     //todo убрать магические числа, но это не обязательно  //_view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
-                    mainWeapon._weaponTypeAnimation = 1; 
+                    mainWeapon._weaponTypeAnimation = 1;
                     //todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
-                    mainWeapon._attackMaxValueAnimation = 4; 
+                    mainWeapon._attackMaxValueAnimation = 4;
                     //left
-                    var secondWeapon = entity.Get<BattleInfoSecondWeaponComponent>();
+                    ref var secondWeapon = ref entity.Get<BattleInfoSecondWeaponComponent>();
                     secondWeapon._value = _view.UnitPlayerBattle.SecondWeapon;
                     secondWeapon._bullet = _view.UnitPlayerBattle.SecondWeapon.StandardBullet;
                     secondWeapon._attackValue = _view.UnitPlayerBattle.SecondWeapon.AttackValue;
                     //todo убрать магические числа, но это не обязательно  //_view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
                     secondWeapon._weaponTypeAnimation = 2;
                     //todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
-                    secondWeapon._attackMaxValueAnimation = 4; 
+                    secondWeapon._attackMaxValueAnimation = 4;
                     //todo в глобальные настройки персонажа - лаг перед ударом левой рукой
-                    secondWeapon._lagBeforeAttack = 0.5f;  
+                    secondWeapon._lagBeforeAttack = 0.8f;
                     //todo в глобальные настройки персонажа - коэффициент силы удара
-                    secondWeapon._powerFactor = 0.5f; 
+                    secondWeapon._powerFactor = 0.5f;
                     break;
 
                 case ActiveWeapons.TwoHand:

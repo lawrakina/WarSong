@@ -30,9 +30,6 @@ namespace EcsBattle.Systems.Attacks
                 var numColliders = Physics.OverlapSphereNonAlloc(attackPositionCenter,
                     1.0f, hitColliders, 1 << reputation.EnemyLayer);
 
-                // DebugExtension.DebugWireSphere(attackPositionCenter, Color.black, 1.0f, 2.0f);
-                // Dbg.Log($"Attack6Final.Targets:{numColliders}");
-
                 for (int index = 0; index < numColliders; index++)
                 {
                     var tempObj = hitColliders[index].gameObject.GetComponent<ICollision>();

@@ -27,7 +27,7 @@ namespace EcsBattle.Systems.Attacks
                     new InfoCollision(battleInfo._attackValue.GetAttack(), entity);
                 targetCollision?.OnCollision(collision);
 
-                entity.Del<FinalAttackFromSecondWeaponComponent>();
+                entity.Del<FinalAttackFromMainWeaponComponent>();
             }
         }
     }

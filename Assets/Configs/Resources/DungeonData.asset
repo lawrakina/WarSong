@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2310afcb5aba4fc5abe2179f6180bd00, type: 3}
   m_Name: DungeonData
   m_EditorClassIdentifier: 
-  StorageGenerator: {fileID: 2253205860022267994, guid: 15b338328b51b9343a5d299696436e1c,
+  StorageGenerator: {fileID: 4845604754175925911, guid: f4e1ee0edfbad9944bf9b30f4f8c4f1b,
     type: 3}
   StorageNavMash: {fileID: 7481363851858651527, guid: a66e667ad53cc894c93ac1f560625bee,
     type: 3}
