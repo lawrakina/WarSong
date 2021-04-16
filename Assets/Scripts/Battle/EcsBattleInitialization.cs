@@ -12,6 +12,7 @@ using Unit;
 using Unit.Enemies;
 using Unit.Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
 
@@ -21,9 +22,10 @@ namespace Battle
     {
         #region Fields
 
-        private readonly EcsBattle.EcsBattle _ecsBattle;
+        private EcsBattle.EcsBattle _ecsBattle;
         private readonly IGeneratorDungeon _generatorDungeon;
         private readonly InteractiveObjectsInitialization _interactiveObjectsInitialization;
+        private readonly EcsBattleData _ecsBattleData;
         private readonly BattleInputStruct _battleInputStruct;
         private readonly BattleSettingsData _battleSettings;
         private IPlayerView _player;
@@ -58,9 +60,7 @@ namespace Battle
             IFightCamera camera,
             EnemiesInitialization enemiesInitialization)
         {
-            _ecsBattle = Object.Instantiate(ecsBattleData.EcsBattle);
-            _ecsBattle.gameObject.name = StringManager.ECS_BATTLE_GO_NAME;
-
+            _ecsBattleData = ecsBattleData;
             _battleInputStruct = battleInputStruct;
             _battleSettings = battleSettings;
             _player = player;
@@ -72,12 +72,8 @@ namespace Battle
             _generatorDungeon = generatorDungeon;
             _interactiveObjectsInitialization = interactiveObjectsInitialization;
             
-            _ecsBattle.Inject(_camera);
-            _ecsBattle.Inject(_playerModel);
-            _ecsBattle.Inject(_battleModel);
-            _ecsBattle.Inject(_targetModel);
-            _ecsBattle.Inject(_battleInputStruct);
-            _ecsBattle.Inject(_battleSettings);
+            _ecsBattle = Object.Instantiate(_ecsBattleData.EcsBattle);
+            _ecsBattle.gameObject.name = StringManager.ECS_BATTLE_GO_NAME;
         }
 
         #endregion
@@ -87,6 +83,14 @@ namespace Battle
 
         public void StartBattle()
         {
+            _ecsBattle.Inject(_camera);
+            _ecsBattle.Inject(_playerModel);
+            _ecsBattle.Inject(_battleModel);
+            _ecsBattle.Inject(_targetModel);
+            _ecsBattle.Inject(_battleInputStruct);
+            _ecsBattle.Inject(_battleSettings);
+            
+            
             _player = GlobalLinks.Player;
             _ecsBattle.Inject(_player);
             
@@ -106,5 +110,17 @@ namespace Battle
         }
 
         #endregion
+
+
+        public void UnSaveStopBattle()
+        {
+            foreach (var enemy in _listEnemies)
+            {
+                Object.Destroy(enemy.Transform.gameObject);
+            }
+            _player.Transform.SetParent(GlobalLinks.Root);
+            _generatorDungeon.DestroyDungeon();
+            _ecsBattle.DisposeWorld();
+        }
     }
 }

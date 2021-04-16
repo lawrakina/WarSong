@@ -49,7 +49,7 @@ MonoBehaviour:
   AttackDistance: 1.5
   AttackDistanceOffset: 1
   AttackValue:
-    _maxAttackValue: 1
-    _minAttackValue: 2
+    _maxAttackValue: 10
+    _minAttackValue: 5
     _timeDelayBeforeAttack: 0.3
     _attackSpeed: 1

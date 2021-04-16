@@ -32,7 +32,7 @@ namespace Controller
 
         public ListOfCharactersController ListOfCharacters { get; set; }
         public GeneratorDungeon GeneratorDungeon { get; set; }
-        public EcsBattleInitialization BattleInitialisation { get; set; }
+        public IBattleInit BattleInitialisation { get; set; }
 
         #endregion
 
@@ -97,6 +97,15 @@ namespace Controller
             _uiWindows.BottomNavigationWindow._shopToggle.onValueChanged.AddListener(
                 (_) => { _shopWindowShowCommand.Execute(true); });
 
+            _uiWindows.TopNavigationUiWindow._toListCharacterCommand.Subscribe(_ =>
+            {
+                _characterWindowShowCommand.Execute(true);
+                _uiWindows.CharacterWindow.aboutActiveCharacterUiWindow.Hide();
+                _uiWindows.CharacterWindow.createSettingsCharacterUiWindow.Hide();
+                _uiWindows.CharacterWindow.createNewCharacterUiWindow.Hide();
+                _uiWindows.CharacterWindow.listCharacterUiWindow.Show();
+            }).AddTo(_subscriptions);
+            
             #endregion
 
 
@@ -122,6 +131,40 @@ namespace Controller
 
             #endregion
 
+            
+
+            #region FightPanel
+
+            _uiWindows.FightUiWindow._pauseBattleCommand.Subscribe(_ =>
+            {
+                Time.timeScale = 0.0f;
+                _uiWindows.FightUiWindow.Hide();
+                _uiWindows.PauseFightUiWindow.Show();
+            }).AddTo(_subscriptions);
+
+            #endregion
+
+
+            #region PauseFightPanel
+
+            _uiWindows.PauseFightUiWindow._continueFightCommand.Subscribe(_ =>
+            {
+                Time.timeScale = 1.0f;
+                _uiWindows.PauseFightUiWindow.Hide();
+                _uiWindows.FightUiWindow.Show();
+            }).AddTo(_subscriptions);
+
+            _uiWindows.PauseFightUiWindow._gotoMainMenuCommand.Subscribe(_ =>
+            {
+                Time.timeScale = 1.0f;
+                BattleInitialisation.UnSaveStopBattle();
+                _uiWindows.PauseFightUiWindow.Hide();
+                _characterWindowShowCommand.Execute(true);
+                _uiWindows.BottomNavigationWindow.Show();
+                _uiWindows.TopNavigationUiWindow.Show();
+            }).AddTo(_subscriptions);
+
+            #endregion
 
             #region CharacterPanel
 

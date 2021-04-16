@@ -4,6 +4,7 @@ using Controller;
 using Controller.Model;
 using Extension;
 using Models;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,12 @@ namespace Gui.Battle
 {
     public sealed class FightUiWindow : UiWindow
     {
+        #region Fields
+
+        [Header("Ui Action")]
+        [SerializeField]
+        private Button _pauseButton;
+
         [Header("Player")]
         [SerializeField]
         private Image _playerHpFiel;
@@ -24,12 +31,13 @@ namespace Gui.Battle
         [Header("Target")]
         [SerializeField]
         private Image _rootTarget;
+
         [SerializeField]
         private Image _targetBackground;
 
         [SerializeField]
         private Text _targetName;
-        
+
         [SerializeField]
         private Image _targetHpFiel;
 
@@ -73,6 +81,17 @@ namespace Gui.Battle
         private float _maxBag;
         private int _maxTimer;
         private int _targetMaxHp;
+
+        #endregion
+
+
+        #region Properties
+
+        #region Commands
+
+        public ReactiveCommand _pauseBattleCommand = new ReactiveCommand();
+
+        #endregion
 
 
         #region Player
@@ -271,6 +290,13 @@ namespace Gui.Battle
 
         #endregion
 
+        #endregion
+
+
+        private void Awake()
+        {
+            _pauseBattleCommand.BindTo(_pauseButton);
+        }
 
         public void SetModels(BattleProgressModel battleModel, BattlePlayerModel playerModel,
             BattleTargetModel targetModel)
@@ -291,8 +317,8 @@ namespace Gui.Battle
             _battleModel.ChangeMaxBag += f => { MaxBag = f; };
             _battleModel.ChangeCurrentBag += f => { CurrentBag = f; };
 
-            _battleModel.ChangeMaxBandit += f => { MaxBandit = f; };
-            _battleModel.ChangeCurrentBandit += f => { CurrentBandit = f; };
+            _battleModel.ChangeMaxRareEnemy += f => { MaxBandit = f; };
+            _battleModel.ChangeCurrentRareEnemy += f => { CurrentBandit = f; };
 
             _targetModel.ChangeTarget += target =>
             {

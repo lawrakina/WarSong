@@ -30,6 +30,12 @@ namespace EcsBattle.Systems.Statistics
             //EnemyCount
             timer._observer.MaxEnemy = _enemyViews.Count;
             timer._observer.CurrentEnemy = 0;
+            //BagCount
+            timer._observer.MaxBag = 0;//_bagViews.Count;
+            timer._observer.CurrentBag = 0;
+            //BossCount
+            timer._observer.MaxRareEnemy = 0;//_bossViews.Count;
+            timer._observer.CurrentRareEnemy = 0;
         }
     }
 }

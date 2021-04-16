@@ -31,24 +31,4 @@
 
         #endregion
     }
-    
-
-    public class UnitHealth
-    {
-        public float CurrentHp { get; set; }
-        public float MaxHp { get; set; }
-        // todo add new class //UnitHealth
-        // {
-        //     CurrentHp
-        //         MaxHp
-        //     ChangeCurrentHp
-        //         ChangeMaxHp
-        //     CurrentResource
-        //         MaxResource
-        //     ChangeCurrentResource
-        //         ChangeMaxResource
-        //     List<Buff> - все положительные эффекты
-        //     List<Debuff> - все отрицательные эффекты
-        // }
-    }
 }

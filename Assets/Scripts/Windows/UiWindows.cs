@@ -31,6 +31,10 @@ namespace Windows
         [SerializeField]
         private FightUiWindow _fightWindow;
 
+        [SerializeField]
+        private PauseFightUiWindow _pauseFightUiWindow;
+
+
         public TopNavigationUiWindow TopNavigationUiWindow => topNavigationUiWindow;
         public CharacterUiWindow CharacterWindow => _characterWindow;
         public BattleUiWindow BattleUiWindow => battleUiWindow;
@@ -39,5 +43,6 @@ namespace Windows
         public BottomNavigationUiWindow BottomNavigationWindow => _bottomNavigationWindow;
         public LoadUiWindow LoadUiWindow => loadUiWindow;
         public FightUiWindow FightUiWindow => _fightWindow;
+        public PauseFightUiWindow PauseFightUiWindow =>_pauseFightUiWindow;
     }
 }

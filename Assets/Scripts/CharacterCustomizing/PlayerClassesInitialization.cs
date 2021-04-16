@@ -1,6 +1,7 @@
 ﻿using System;
 using Data;
 using Enums;
+using Extension;
 using Unit;
 using Unit.Player;
 
@@ -79,14 +80,12 @@ namespace CharacterCustomizing
                 IntellectForLevel = level * currentCharacteristits.IntellectForLevel,
                 // Spirit = charLevel * data.Spirit
             };
-            _playerView.UnitHealth = new UnitHealth();
             var baseHp =
                 _playerView.BasicCharacteristics.StartHp +
                 _playerView.BasicCharacteristics.StartStamina * _data.HealthPerStamina +
                 _playerView.BasicCharacteristics.StaminaForLevel *
                 _data.HealthPerStamina;
-            _playerView.UnitHealth.CurrentHp = baseHp;
-            _playerView.UnitHealth.MaxHp = baseHp;
+            _playerView.UnitHealth = new UnitHealth(hp:baseHp);
 
             // Dbg.Log($"SET CurrentHP: {_playerView.CharacterClass.CurrentHp}, MaxHp:{_playerView.CharacterClass.MaxHp}");
 

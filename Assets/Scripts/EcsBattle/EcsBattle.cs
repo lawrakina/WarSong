@@ -43,6 +43,11 @@ namespace EcsBattle
             Dbg.Log($"Inject object in EcsWorld:{obj}");
         }
 
+        public void DisposeWorld()
+        {
+            OnDestroy();
+        }
+
         public void Init()
         {
             _world = new EcsWorld();
@@ -158,6 +163,9 @@ namespace EcsBattle
                 .Add(new FinalAttackForUnitsFromMainWeaponSystem())
                 .Add(new FinalAttackForUnitsFromSecondWeaponSystem())
                 .Add(new UpdateStatisticsOfBattleGroundSystem())
+
+                //Regeneration
+                .Add(new RegenerationHealthSystem())
                 ;
 
             // register one-frame components (order is important), for example:
@@ -231,5 +239,21 @@ namespace EcsBattle
         }
 
         #endregion
+    }
+
+    public sealed class RegenerationHealthSystem : IEcsRunSystem
+    {
+        private EcsFilter<UnitComponent>.Exclude<CurrentTargetComponent> _filter;
+
+        public void Run()
+        {
+            foreach (var i in _filter)
+            {
+                ref var entity = ref _filter.GetEntity(i);
+                ref var unit = ref _filter.Get1(i);
+
+                unit._health.CurrentHp += Time.deltaTime;
+            }
+        }
     }
 }
