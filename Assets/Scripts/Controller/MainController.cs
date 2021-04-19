@@ -6,7 +6,6 @@ using Controller.Model;
 using Data;
 using Enums;
 using Extension;
-using Gui;
 using Gui.Battle;
 using Models;
 using UniRx;
@@ -56,6 +55,7 @@ namespace Controller
         public PlayerView _player;
 
         private CommandManager _commandManager;
+        private CursorParticleSystemController _cursorParticleSystemController;
 
         #endregion
 
@@ -72,6 +72,9 @@ namespace Controller
             _subscriptions = new CompositeDisposable();
             _controllers = new Controllers();
             _commandManager = new CommandManager(_uiWindows, _windows);
+
+            _cursorParticleSystemController = new CursorParticleSystemController(_uiWindows.RootCanvas);
+            _controllers.Add(_cursorParticleSystemController);
 
             var playerFactory = new PlayerFactory(_characterData,
                 new PlayerCustomizerCharacter(_characterData),
@@ -111,7 +114,7 @@ namespace Controller
 
             var battleInitialization = new EcsBattleInitialization(
                 _ecsBattleData, battleInputControlsInitialization.GetData(), _battleSettingsData, generatorDungeon,
-                interactiveObjectsInitialization, _player, playerModel, battleModel,targetModel, fightCamera,
+                interactiveObjectsInitialization, _player, playerModel, battleModel, targetModel, fightCamera,
                 enemiesInitialization);
 
             _commandManager.BattleInitialisation = battleInitialization;

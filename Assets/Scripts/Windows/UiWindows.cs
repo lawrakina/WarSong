@@ -8,6 +8,9 @@ namespace Windows
     [Serializable] public class UiWindows
     {
         [SerializeField]
+        private Canvas _rootCanvas;
+        
+        [SerializeField]
         private TopNavigationUiWindow topNavigationUiWindow;
 
         [SerializeField]
@@ -35,6 +38,7 @@ namespace Windows
         private PauseFightUiWindow _pauseFightUiWindow;
 
 
+        public Canvas RootCanvas => _rootCanvas;
         public TopNavigationUiWindow TopNavigationUiWindow => topNavigationUiWindow;
         public CharacterUiWindow CharacterWindow => _characterWindow;
         public BattleUiWindow BattleUiWindow => battleUiWindow;
