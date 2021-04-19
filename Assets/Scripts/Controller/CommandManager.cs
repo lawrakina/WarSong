@@ -3,6 +3,7 @@ using System.Collections;
 using Windows;
 using Battle;
 using Extension;
+using Gui;
 using Interface;
 using UniRx;
 using Unit.Player;
@@ -53,39 +54,38 @@ namespace Controller
 
         public void Init()
         {
+            var navigationToggleGroupWindows = new ToggleWindowGroup();
+            navigationToggleGroupWindows.Add(_uiWindows.BattleUiWindow);
+            navigationToggleGroupWindows.Add(_uiWindows.CharacterWindow);
+            navigationToggleGroupWindows.Add(_uiWindows.TavernUiWindow);
+            navigationToggleGroupWindows.Add(_uiWindows.ShopUiWindow);
+            navigationToggleGroupWindows.Init();
+            
             #region NavigationPanel
 
             _battleWindowShowCommand.Subscribe(value =>
             {
-                _uiWindows.BattleUiWindow.SetActive(value);
-                _uiWindows.CharacterWindow.SetActive(!value);
-                _uiWindows.TavernUiWindow.SetActive(!value);
-                _uiWindows.ShopUiWindow.SetActive(!value);
+                if(value)
+                    _uiWindows.BattleUiWindow.Show();
                 SetActiveRootBattle(value);
                 SetActiveRootCharacter(!value);
             }).AddTo(_subscriptions);
             _characterWindowShowCommand.Subscribe(value =>
             {
-                _uiWindows.BattleUiWindow.SetActive(!value);
-                _uiWindows.CharacterWindow.SetActive(value);
-                _uiWindows.TavernUiWindow.SetActive(!value);
-                _uiWindows.ShopUiWindow.SetActive(!value);
+                if(value)
+                    _uiWindows.CharacterWindow.Show();
                 SetActiveRootCharacter(value);
                 SetActiveRootBattle(!value);
             }).AddTo(_subscriptions);
             _tavernWindowShowCommand.Subscribe(value =>
             {
-                _uiWindows.BattleUiWindow.SetActive(!value);
-                _uiWindows.CharacterWindow.SetActive(!value);
-                _uiWindows.TavernUiWindow.SetActive(value);
-                _uiWindows.ShopUiWindow.SetActive(!value);
+                if(value)
+                    _uiWindows.TavernUiWindow.Show();
             }).AddTo(_subscriptions);
             _shopWindowShowCommand.Subscribe(value =>
             {
-                _uiWindows.BattleUiWindow.SetActive(!value);
-                _uiWindows.CharacterWindow.SetActive(!value);
-                _uiWindows.TavernUiWindow.SetActive(!value);
-                _uiWindows.ShopUiWindow.SetActive(value);
+                if(value)
+                    _uiWindows.ShopUiWindow.Show();
             }).AddTo(_subscriptions);
 
             _uiWindows.BottomNavigationWindow._battleToggle.onValueChanged.AddListener(

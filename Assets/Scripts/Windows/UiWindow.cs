@@ -1,4 +1,5 @@
-﻿using Interface;
+﻿using System;
+using Interface;
 using UniRx;
 using UnityEngine;
 
@@ -9,7 +10,11 @@ namespace Windows
     {
         #region Fields
 
+        private Guid _id = Guid.NewGuid();
         protected CompositeDisposable _subscriptions;
+        public Action<Guid> OnShow;
+        public Action<Guid> OnHide;
+        public Guid Id => _id;
 
         #endregion
 
@@ -20,8 +25,7 @@ namespace Windows
         {
             _subscriptions = new CompositeDisposable();
         }
-
-
+        
         ~UiWindow()
         {
             _subscriptions?.Dispose();
@@ -39,11 +43,13 @@ namespace Windows
 
         public virtual void Show()
         {
+            OnShow?.Invoke(_id);
             gameObject.SetActive(true);
         }
 
         public virtual void Hide()
         {
+            OnHide?.Invoke(_id);
             gameObject.SetActive(false);
         }
 
