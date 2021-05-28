@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections;
 using Windows;
+using AppAds;
+using Analytic;
 using Battle;
+using Controller.Model;
 using Extension;
 using Gui;
 using Interface;
@@ -18,6 +21,8 @@ namespace Controller
 
         private readonly UiWindows _uiWindows;
         private readonly SceneWindows _windows;
+        private readonly IAnalyticTools _analyticTools;
+        private readonly IAdsShower _adsTools;
         public readonly ReactiveCommand<bool> _battleWindowShowCommand = new ReactiveCommand<bool>();
         public readonly ReactiveCommand<bool> _characterWindowShowCommand = new ReactiveCommand<bool>();
         public readonly ReactiveCommand<bool> _tavernWindowShowCommand = new ReactiveCommand<bool>();
@@ -32,19 +37,23 @@ namespace Controller
         #region Properties
 
         public ListOfCharactersController ListOfCharacters { get; set; }
-        public GeneratorDungeon GeneratorDungeon { get; set; }
+        public IGeneratorDungeon GeneratorDungeon { get; set; }
         public IBattleInit BattleInitialisation { get; set; }
+        public BattlePlayerModel PlayerModel { get; set; }
 
         #endregion
 
 
         #region ClassLiveCycles
 
-        public CommandManager(UiWindows uiWindows, SceneWindows windows)
+        public CommandManager(UiWindows uiWindows, SceneWindows windows, IAnalyticTools analyticTools,
+            IAdsShower adsTools)
         {
             _subscriptions = new CompositeDisposable();
             _uiWindows = uiWindows;
             _windows = windows;
+            _analyticTools = analyticTools;
+            _adsTools = adsTools;
         }
 
         #endregion
@@ -60,31 +69,32 @@ namespace Controller
             navigationToggleGroupWindows.Add(_uiWindows.TavernUiWindow);
             navigationToggleGroupWindows.Add(_uiWindows.ShopUiWindow);
             navigationToggleGroupWindows.Init();
-            
+
+
             #region NavigationPanel
 
             _battleWindowShowCommand.Subscribe(value =>
             {
-                if(value)
+                if (value)
                     _uiWindows.BattleUiWindow.Show();
                 SetActiveRootBattle(value);
                 SetActiveRootCharacter(!value);
             }).AddTo(_subscriptions);
             _characterWindowShowCommand.Subscribe(value =>
             {
-                if(value)
+                if (value)
                     _uiWindows.CharacterWindow.Show();
                 SetActiveRootCharacter(value);
                 SetActiveRootBattle(!value);
             }).AddTo(_subscriptions);
             _tavernWindowShowCommand.Subscribe(value =>
             {
-                if(value)
+                if (value)
                     _uiWindows.TavernUiWindow.Show();
             }).AddTo(_subscriptions);
             _shopWindowShowCommand.Subscribe(value =>
             {
-                if(value)
+                if (value)
                     _uiWindows.ShopUiWindow.Show();
             }).AddTo(_subscriptions);
 
@@ -105,7 +115,7 @@ namespace Controller
                 _uiWindows.CharacterWindow.createNewCharacterUiWindow.Hide();
                 _uiWindows.CharacterWindow.listCharacterUiWindow.Show();
             }).AddTo(_subscriptions);
-            
+
             #endregion
 
 
@@ -113,6 +123,8 @@ namespace Controller
 
             _uiWindows.BattleUiWindow._startBattleCommand.Subscribe(_ =>
             {
+                _analyticTools.SendMessage("StartBattle");
+                
                 _uiWindows.TopNavigationUiWindow.SetActive(false);
                 _uiWindows.BottomNavigationWindow.SetActive(false);
                 _uiWindows.BattleUiWindow.SetActive(false);
@@ -131,7 +143,6 @@ namespace Controller
 
             #endregion
 
-            
 
             #region FightPanel
 
@@ -140,6 +151,25 @@ namespace Controller
                 Time.timeScale = 0.0f;
                 _uiWindows.FightUiWindow.Hide();
                 _uiWindows.PauseFightUiWindow.Show();
+                _adsTools.ShowVideo(() =>
+                {
+                    Dbg.Log($"Ads complete");
+                });
+            }).AddTo(_subscriptions);
+
+            _uiWindows.FightUiWindow._spell1Command.Subscribe(_ =>
+            {
+                // PlayerModel._spell1?.Invoke(PlayerModel.AbilityItem1);
+            }).AddTo(_subscriptions);
+
+            _uiWindows.FightUiWindow._spell2Command.Subscribe(_ =>
+            {
+                // PlayerModel._spell2?.Invoke(PlayerModel.AbilityItem2);
+            }).AddTo(_subscriptions);
+
+            _uiWindows.FightUiWindow._spell3Command.Subscribe(_ =>
+            {
+                // PlayerModel._spell3?.Invoke(PlayerModel.AbilityItem3);
             }).AddTo(_subscriptions);
 
             #endregion
@@ -166,6 +196,7 @@ namespace Controller
 
             #endregion
 
+
             #region CharacterPanel
 
             #region ListCharacterPanel
@@ -174,6 +205,7 @@ namespace Controller
             {
                 _uiWindows.CharacterWindow.listCharacterUiWindow._info.text = GetInfoByPlayer(value);
                 _uiWindows.CharacterWindow.aboutActiveCharacterUiWindow._info.text = GetInfoByPlayer(value);
+                _uiWindows.CharacterWindow.aboutActiveCharacterUiWindow._infoCharacteristics.text = GetCharacteristicsByPlayer(value);
             }).AddTo(_subscriptions);
 
             _uiWindows.CharacterWindow.listCharacterUiWindow._selectCharCommand.Subscribe(_ =>
@@ -285,14 +317,22 @@ namespace Controller
 
         private static string GetInfoByPlayer(IPlayerView p)
         {
-            var result =
-                $"{p.CharacterClass.Name}, Level:{p.UnitLevel.CurrentLevel}, Hp:{p.UnitHealth.MaxHp}\n" +
-                $"Weapon:{p.UnitPlayerBattle.MainWeapon.name}\n" +
-                $"Description:{p.CharacterClass.Description}";
-            return result;
+            return $"{p.CharacterClass.Name}, Level:{p.UnitLevel.CurrentLevel}, Hp:{p.UnitHealth.MaxHp}\n" +
+                   $"Weapon:{p.UnitPlayerBattle.MainWeapon.name}\n" +
+                   $"Description:{p.CharacterClass.Description}";
+        }
+
+        private static string GetCharacteristicsByPlayer(IPlayerView p)
+        {
+            return $"ItemLevel:{p.EquipmentItems.SumItemsLevel}\n" +
+                   $"HP:{p.UnitHealth.MaxHp}\n" +
+                   $"{p.CharacterClass.ResourceType.ToString()}:{p.CharacterClass.ResourceBaseValue}\n" +
+                   $"Crit chance:{p.UnitCharacteristics.CritChance}\n" +
+                   $"Dodge chance:{p.UnitCharacteristics.Dodge}";
         }
 
         #endregion
+
 
         public void Cleanup()
         {

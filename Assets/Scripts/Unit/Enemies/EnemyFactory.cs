@@ -9,10 +9,12 @@ namespace Unit.Enemies
 {
     public sealed class EnemyFactory : IEnemyFactory
     {
+        private readonly EnemyClassesData _data;
         private readonly EnemyClassesInitialization _enemyClassesInitialization;
 
-        public EnemyFactory(EnemyClassesInitialization enemyClassesInitialization)
+        public EnemyFactory(EnemyClassesData data, EnemyClassesInitialization enemyClassesInitialization)
         {
+            _data = data;
             _enemyClassesInitialization = enemyClassesInitialization;
         }
 
@@ -35,7 +37,7 @@ namespace Unit.Enemies
 
             // _customizerCharacter.Customize(enemyView, item);
             // _unitLevelInitialization.Initialization(enemyView, item);
-            _enemyClassesInitialization.Initialization(enemyView, item);
+            _enemyClassesInitialization.Initialization(enemyView, _data, item);
 
             // Dbg.Log($"view.UnitReputation.EnemyLayer:{enemyView.UnitReputation.EnemyLayer})");
             return enemyView;

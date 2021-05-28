@@ -10,7 +10,5 @@ namespace Unit
         public string Name;
         public CharacterGender CharacterGender;
         public CharacterRace CharacterRace;
-        public float Speed;
-        public float RotateSpeedPlayer;
     }
 }

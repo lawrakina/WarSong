@@ -20,6 +20,7 @@ namespace Unit
         UnitVision UnitVision { get; set; }
         UnitReputation UnitReputation { get; set; }
         UnitLevel UnitLevel { get; set; }
+        UnitAbilities UnitAbilities { get; set; }
         event Action<InfoCollision> OnApplyDamageChange;
     }
 }

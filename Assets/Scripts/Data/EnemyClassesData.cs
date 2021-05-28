@@ -17,15 +17,15 @@ namespace Data
 
         [Header("Classes start value")]
         [SerializeField]
-        public BasicCharacteristics Warrior;
+        public UnitCharacteristics Warrior;
 
         [SerializeField]
-        public BasicCharacteristics Rogue;
+        public UnitCharacteristics Rogue;
 
         [SerializeField]
-        public BasicCharacteristics Hunter;
+        public UnitCharacteristics Hunter;
 
         [SerializeField]
-        public BasicCharacteristics Mage;
+        public UnitCharacteristics Mage;
     }
 }

@@ -8,12 +8,13 @@ namespace Data
     public sealed class PlayerClassesData : ScriptableObject
     {
         [Header("Absolute value")]
-        public float HealthPerStamina = 10.0f;
-
-        public float ManaPointsPerIntellect = 15.0f;
-        public float MaxRageValue = 100.0f;
-        public float MaxEnergyValue = 100.0f;
-        public float MaxConcentrationValue = 100.0f;
+        public float healthPerStamina = 10.0f;
+        public float manaPointsPerIntellect = 15.0f;
+        public float maxRageValue = 100.0f;
+        public float maxEnergyValue = 100.0f;
+        public float maxConcentrationValue = 100.0f;
+        public float PlayerMoveSpeed = 8.0f;
+        public float RotateSpeedPlayer = 120.0f;
 
         [Header("Classes start value")]
         [SerializeField]

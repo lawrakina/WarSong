@@ -110,8 +110,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.716003, y: -303.93597}
-  m_SizeDelta: {x: 192, y: 192}
+  m_AnchoredPosition: {x: 23.615967, y: 89.343994}
+  m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8452176640783247644
 CanvasRenderer:
@@ -262,8 +262,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 750.06, y: 629.75995}
-  m_SizeDelta: {x: 659.88, y: 1259.5199}
+  m_AnchoredPosition: {x: 1080, y: 640}
+  m_SizeDelta: {x: 720, y: 1280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8452176640783248696
 CanvasRenderer:
@@ -320,33 +320,33 @@ MonoBehaviour:
   anchor: 1
   activationRange: 2
   customActivationRange: 1
-  activationWidth: 61.1
-  activationHeight: 65.6
+  activationWidth: 50
+  activationHeight: 50
   activationPositionHorizontal: 0
   activationPositionVertical: 0
   joystickSize: 1
   radiusModifier: 7
-  positionHorizontal: 24.8
-  positionVertical: 13.3
+  positionHorizontal: 17.6
+  positionVertical: 26.1
   dynamicPositioning: 1
   gravity: 60
   extendRadius: 0
   axis: 0
-  boundary: 0
+  boundary: 1
   deadZone: 0
   tapCountOption: 0
   tapCountDuration: 0.5
   targetTapCount: 2
   useTouchInput: 0
   disableVisuals: 0
-  inputTransition: 0
+  inputTransition: 1
   transitionUntouchedDuration: 0.1
   transitionTouchedDuration: 0.1
   useFade: 1
-  fadeUntouched: 1
-  fadeTouched: 0.5
-  useScale: 1
-  scaleTouched: 0.9
+  fadeUntouched: 0.181
+  fadeTouched: 1
+  useScale: 0
+  scaleTouched: 1
   showHighlight: 0
   highlightColor: {r: 1, g: 1, b: 1, a: 1}
   highlightBase: {fileID: 0}
@@ -399,7 +399,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8452176640803072342}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0.181
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0

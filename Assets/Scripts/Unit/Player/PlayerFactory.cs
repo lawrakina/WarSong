@@ -13,15 +13,19 @@ namespace Unit.Player
         private readonly PlayerCustomizerCharacter _playerCustomizerCharacter;
         private readonly PlayerLevelInitialization _playerLevelInitialization;
         private readonly PlayerClassesInitialization _playerClassesInitialization;
+        // private readonly PlayerAbilitiesInitialization _playerAbilitiesInitialization;
 
         public PlayerFactory(CharacterData characterData,
             PlayerCustomizerCharacter playerCustomizerCharacter,
             PlayerLevelInitialization playerLevelInitialization,
-            PlayerClassesInitialization playerClassesInitialization)
+            PlayerClassesInitialization playerClassesInitialization
+            // PlayerAbilitiesInitialization playerAbilitiesInitialization
+            )
         {
             _playerLevelInitialization = playerLevelInitialization;
             _playerCustomizerCharacter = playerCustomizerCharacter;
             _playerClassesInitialization = playerClassesInitialization;
+            // _playerAbilitiesInitialization = playerAbilitiesInitialization;
             _characterData = characterData;
         }
 
@@ -39,7 +43,7 @@ namespace Unit.Player
             player.Rigidbody = rootPlayer.AddRigidBody(80, CollisionDetectionMode.ContinuousDynamic,
                 false, true,
                 RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |
-                RigidbodyConstraints.FreezeRotationZ);
+                             RigidbodyConstraints.FreezeRotationZ);
             player.Collider = rootPlayer.AddCapsuleCollider(0.5f, false,
                 new Vector3(0.0f, 0.9f, 0.0f),
                 1.8f);
@@ -47,12 +51,44 @@ namespace Unit.Player
             player.Animator = playerPrefab.GetComponent<Animator>();
             player.AnimatorParameters = new AnimatorParameters(player.Animator);
             playerPrefab.transform.SetParent(rootPlayer.transform);
-                     
-            _playerCustomizerCharacter.Customize(player, item);
-            _playerLevelInitialization.Initialization(player, item);
-            _playerClassesInitialization.Initialization(player, item);
+
+            player.Modifier = new UnitModifier(player, item,
+                _playerCustomizerCharacter,
+                _playerLevelInitialization,
+                _playerClassesInitialization
+            );
+
+            player.Modifier.Init();
 
             return player;
+        }
+    }
+
+    public sealed class UnitModifier
+    {
+        private readonly IPlayerView _player;
+        private readonly CharacterSettings _settings;
+        private readonly PlayerCustomizerCharacter _playerCustomizerCharacter;
+        private readonly PlayerLevelInitialization _playerLevelInitialization;
+        private readonly PlayerClassesInitialization _playerClassesInitialization;
+
+        public UnitModifier(IPlayerView player, CharacterSettings settings,
+            PlayerCustomizerCharacter playerCustomizerCharacter, PlayerLevelInitialization playerLevelInitialization,
+            PlayerClassesInitialization playerClassesInitialization)
+        {
+            _player = player;
+            _settings = settings;
+            _playerCustomizerCharacter = playerCustomizerCharacter;
+            _playerLevelInitialization = playerLevelInitialization;
+            _playerClassesInitialization = playerClassesInitialization;
+        }
+
+        public void Init()
+        {
+            _playerCustomizerCharacter.Customize(_player, _settings);
+            _playerLevelInitialization.Initialization(_player, _settings);
+            _playerClassesInitialization.Initialization(_player, _settings);
+            // _playerAbilitiesInitialization.Initialization(player, item);
         }
     }
 }

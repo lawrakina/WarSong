@@ -18,7 +18,7 @@ namespace EcsBattle.Systems.Player
                 ref var needRotate = ref _filter.Get1(i);
                 ref var rootTransform = ref _filter.Get3(i)._rootTransform;
                 ref var modelTransform = ref _filter.Get3(i)._modelTransform;
-                ref var rotateSpeed = ref _filter.Get3(i)._attributes.RotateSpeedPlayer;
+                ref var rotateSpeed = ref _filter.Get3(i)._characteristics.RotateSpeedPlayer;
 
 
                 // rootTransform.rotation = Quaternion.Slerp(rootTransform.rotation, needRotate.value.rotation, Time.deltaTime * rotateSpeed);

@@ -1,4 +1,7 @@
-﻿namespace Unit
+﻿using Controller;
+
+
+namespace Unit
 {
     public class UnitLevel
     {

@@ -6,7 +6,7 @@ namespace Unit.Enemies
 {
     public class EnemyClassesInitialization
     {
-        public void Initialization(IEnemyView view, EnemySettings enemySettings)
+        public void Initialization(IEnemyView view, EnemyClassesData staticSettings, EnemySettings enemySettings)
         {
             // view.UnitClass = new SimplyEnemyClass();
             view.UnitVision = enemySettings.unitVisionComponent;
@@ -22,6 +22,8 @@ namespace Unit.Enemies
             view.UnitBattle = enemySettings.unitBattle;
 
             view.UnitLevel = enemySettings.unitLevel;
+            
+            // view.UnitCHaracteristics = staticSettings.
             
             //ToDo сделать полноценную систему Свой-чужой
             view.Transform.gameObject.layer = LayerManager.EnemyLayer;

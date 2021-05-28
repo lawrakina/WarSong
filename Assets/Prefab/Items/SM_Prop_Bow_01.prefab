@@ -110,7 +110,7 @@ MonoBehaviour:
   StandardBullet: {fileID: 8941936133358270778, guid: 9702d835fad37f441865e4dce703829c,
     type: 3}
   Type: 5
-  AttackDistance: 20
+  AttackDistance: 35
   AttackDistanceOffset: 1
   AttackValue:
     _maxAttackValue: 40

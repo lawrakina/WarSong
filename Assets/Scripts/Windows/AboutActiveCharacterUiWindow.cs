@@ -8,5 +8,8 @@ namespace Windows
     {
         [SerializeField]
         public Text _info;
+
+        [SerializeField]
+        public Text _infoCharacteristics;
     }
 }

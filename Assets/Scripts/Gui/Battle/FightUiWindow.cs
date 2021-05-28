@@ -82,6 +82,13 @@ namespace Gui.Battle
         private int _maxTimer;
         private int _targetMaxHp;
 
+        [SerializeField]
+        private Button _spell1;
+        [SerializeField]
+        private Button _spell2;
+        [SerializeField]
+        private Button _spell3;
+
         #endregion
 
 
@@ -90,6 +97,9 @@ namespace Gui.Battle
         #region Commands
 
         public ReactiveCommand _pauseBattleCommand = new ReactiveCommand();
+        public ReactiveCommand _spell1Command = new ReactiveCommand();
+        public ReactiveCommand _spell2Command = new ReactiveCommand();
+        public ReactiveCommand _spell3Command = new ReactiveCommand();
 
         #endregion
 
@@ -296,9 +306,14 @@ namespace Gui.Battle
         private void Awake()
         {
             _pauseBattleCommand.BindTo(_pauseButton);
+            _spell1Command.BindTo(_spell1);
+            _spell2Command.BindTo(_spell2);
+            _spell3Command.BindTo(_spell3);
         }
 
-        public void SetModels(BattleProgressModel battleModel, BattlePlayerModel playerModel,
+        public void SetModels(
+            BattleProgressModel battleModel, 
+            BattlePlayerModel playerModel, 
             BattleTargetModel targetModel)
         {
             _playerModel = playerModel;

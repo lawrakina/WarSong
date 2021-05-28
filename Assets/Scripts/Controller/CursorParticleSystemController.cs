@@ -14,12 +14,12 @@ namespace Controller
             _view.transform.SetParent(canvas.transform);
         }
 
-        private readonly ResourcePath _viewPath = new ResourcePath {PathResource = "Prefabs/particleCursor"};
+        private readonly string _viewPath = "Prefabs/particleCursor";
         private CursorParticleSystemView _view;
 
         private CursorParticleSystemView LoadView()
         {
-            GameObject objView = Object.Instantiate(Resources.Load<GameObject>(_viewPath.PathResource));
+            GameObject objView = Object.Instantiate(Resources.Load<GameObject>(_viewPath));
             return objView.GetComponent<CursorParticleSystemView>();
         }
 

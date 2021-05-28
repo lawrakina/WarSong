@@ -32,13 +32,13 @@ namespace CharacterCustomizing
 
         // universal list
         public CharacterObjectListsAllGender _allGenderObjectGroups = new CharacterObjectListsAllGender();
-        
-        private SkinColor SkinColor{ get; set; }
+
+        public SkinColor SkinColor{ get; set; }
         public CharacterRace CharacterRace { get; set; }
         public CharacterGender CharacterGender{ get; set; }
         [SerializeField] private Elements _elements = Elements.Yes;
-        [SerializeField] private HeadCovering _headCovering = HeadCovering.HeadCoverings_No_FacialHair;
-        [SerializeField] private FacialHair _facialHair = FacialHair.No;
+        [SerializeField] private HeadCovering _headCovering = HeadCovering.HeadCoverings_No_Hair;
+        [SerializeField] private FacialHair _facialHair = FacialHair.Yes;
         
         
         public PersonCharacter(GameObject player, CharacterData characterData)
@@ -217,11 +217,13 @@ namespace CharacterCustomizing
                     break;
 
                 case SkinColor.Elf:
-                    RandomizeAndSetHairSkinColors("Elf", _characterData.elfSkin,  _characterData.allHairAndSubble, _characterData.allHairAndSubble, _characterData.allHairAndSubble);
+                    // RandomizeAndSetHairSkinColors("Elf", _characterData.elfSkin,  _characterData.allHairAndSubble, _characterData.allHairAndSubble, _characterData.allHairAndSubble);
+                    RandomizeAndSetHairSkinColors("Elf", _characterData.elfSkin,  _characterData.elfSkin, _characterData.elfSkin, _characterData.elfSkin);
                     break;
                 
                 case SkinColor.Orc:
-                    RandomizeAndSetHairSkinColors("Orc", _characterData.orcSkin,   _characterData.allHairAndSubble, _characterData.allHairAndSubble, _characterData.allHairAndSubble);
+                    // RandomizeAndSetHairSkinColors("Orc", _characterData.orcSkin,   _characterData.allHairAndSubble, _characterData.allHairAndSubble, _characterData.allHairAndSubble);
+                    RandomizeAndSetHairSkinColors("Orc", _characterData.orcSkin,   _characterData.orcSkin, _characterData.orcSkin, _characterData.orcSkin);
                     break;
             }
 
