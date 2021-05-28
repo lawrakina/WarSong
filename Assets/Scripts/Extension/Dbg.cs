@@ -15,5 +15,10 @@ namespace Extension
         {
             Debug.Log($"Console.{@enum.GetType()}:{@enum}");
         }
+
+        public static void Error(string message)
+        {
+            Debug.LogError($"{message}");
+        }
     }
 }

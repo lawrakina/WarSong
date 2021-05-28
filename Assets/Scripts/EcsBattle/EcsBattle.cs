@@ -24,6 +24,10 @@ namespace EcsBattle
 {
     public sealed class EcsBattle : MonoBehaviour
     {
+        /// <summary>
+        /// https://github.com/Leopotam/ecs
+        /// https://github.com/Leopotam/ecs-unityintegration
+        /// </summary>
         #region Fields
 
         private EcsWorld _world;

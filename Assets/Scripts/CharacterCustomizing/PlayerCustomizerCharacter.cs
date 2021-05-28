@@ -1,4 +1,6 @@
-﻿using Data;
+﻿using System;
+using Data;
+using Enums;
 using Extension;
 using Unit;
 using Unit.Player;
@@ -18,15 +20,30 @@ namespace CharacterCustomizing
 
         public void Customize(IPlayerView playerView, CharacterSettings settings)
         {
-            playerView.UnitVision = settings.unitVisionParameters;
-            
-            playerView.Attributes = new UnitAttributes();
-            playerView.Attributes.Speed = settings.PlayerMoveSpeed;
-            playerView.Attributes.RotateSpeedPlayer = settings.RotateSpeedPlayer;
-
             var person = new PersonCharacter(playerView.TransformModel.gameObject, _characterData);
             person.CharacterRace = settings.CharacterRace;
             person.CharacterGender = settings.CharacterGender;
+            // switch (settings.CharacterRace)
+            // {
+            //     case CharacterRace.Human:
+            //         person.SkinColor = SkinColor.Human;
+            //         break;
+            //
+            //     case CharacterRace.NightElf:
+            //         person.SkinColor = SkinColor.Elf;
+            //         break;
+            //
+            //     case CharacterRace.BloodElf:
+            //         person.SkinColor = SkinColor.Elf;
+            //         break;
+            //
+            //     case CharacterRace.Orc:
+            //         person.SkinColor = SkinColor.Orc;
+            //         break;
+            //
+            //     default:
+            //         throw new ArgumentOutOfRangeException();
+            // }
             person.Generate();
 
             var equipmentPoints = new EquipmentPoints(playerView.TransformModel.gameObject, _characterData);
@@ -38,11 +55,6 @@ namespace CharacterCustomizing
             playerView.AnimatorParameters.WeaponType = equipWeapon.GetWeaponType();
 
             playerView.Transform.gameObject.layer = LayerManager.PlayerLayer;
-            playerView.UnitReputation = new UnitReputation();
-            playerView.UnitReputation.FriendLayer = LayerManager.PlayerLayer;
-            playerView.UnitReputation.EnemyLayer = LayerManager.EnemyLayer;
-            playerView.UnitReputation.FriendAttackLayer = LayerManager.PlayerAttackLayer;
-            playerView.UnitReputation.EnemyAttackLayer = LayerManager.EnemyAttackLayer;
         }
     }
 }

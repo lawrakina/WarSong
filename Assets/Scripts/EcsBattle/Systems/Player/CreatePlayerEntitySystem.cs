@@ -35,6 +35,7 @@ namespace EcsBattle.Systems.Player
             entity.Get<UnitComponent>()._attributes = _view.Attributes;
             entity.Get<UnitComponent>()._animator = _view.AnimatorParameters;
             entity.Get<UnitComponent>()._health = _view.UnitHealth;
+            entity.Get<UnitComponent>()._characteristics = _view.UnitCharacteristics;
             //ui
             _playerModel.MaxHp = Mathf.RoundToInt(_view.UnitHealth.CurrentHp);
             _playerModel.CurrentHp = Mathf.RoundToInt(_view.UnitHealth.CurrentHp);

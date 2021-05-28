@@ -23,6 +23,7 @@ namespace Unit.Enemies
         public UnitEnemyBattle UnitBattle { get; set; }
         public UnitReputation UnitReputation { get; set; }
         public UnitLevel UnitLevel { get; set; }
+        public UnitAbilities UnitAbilities { get; set; }
         public event Action<InfoCollision> OnApplyDamageChange;
         public BaseEnemyClass UnitClass { get; set; }
         public HealthBarView HealthBar { get; set; }

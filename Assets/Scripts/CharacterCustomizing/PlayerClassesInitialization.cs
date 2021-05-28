@@ -35,7 +35,16 @@ namespace CharacterCustomizing
         {
             _playerView = playerView;
             _characterSettings = characterSettings;
-
+            
+            playerView.UnitVision = characterSettings.unitVisionParameters;
+            playerView.Attributes = new UnitAttributes();
+            
+            playerView.UnitReputation = new UnitReputation();
+            playerView.UnitReputation.FriendLayer = LayerManager.PlayerLayer;
+            playerView.UnitReputation.EnemyLayer = LayerManager.EnemyLayer;
+            playerView.UnitReputation.FriendAttackLayer = LayerManager.PlayerAttackLayer;
+            playerView.UnitReputation.EnemyAttackLayer = LayerManager.EnemyAttackLayer;
+            
             _playerView.UnitVision = _characterSettings.unitVisionParameters;
             var playerLevel = _playerView.UnitLevel.CurrentLevel;
             switch (_characterSettings.CharacterClass)
@@ -61,6 +70,7 @@ namespace CharacterCustomizing
                     break;
 
                 default:
+                    Dbg.Error($"PlayerClassesInitialization.Initialization._characterSettings.CharacterClass:{_characterSettings.CharacterClass}");
                     throw new ArgumentOutOfRangeException();
             }
         }
@@ -70,42 +80,43 @@ namespace CharacterCustomizing
 
         #region Methods
 
-        private void GenerateStats(int level, BasicCharacteristics currentCharacteristits)
+        private void GenerateStats(int level, BasicCharacteristics value)
         {
-            _playerView.BasicCharacteristics = new BasicCharacteristics
+            _playerView.UnitCharacteristics = new UnitCharacteristics
             {
-                // Strength = charLevel * data.Strength,
-                // Agility = charLevel * data.Agility,
-                StaminaForLevel = level * currentCharacteristits.StaminaForLevel,
-                IntellectForLevel = level * currentCharacteristits.IntellectForLevel,
-                // Spirit = charLevel * data.Spirit
+                Start = value.Start,
+                ForOneLevel = value.ForOneLevel,
+                Values = new BasicCharacteristics.Characteristics(
+                    value.Start.Strength + level * value.ForOneLevel.Strength,
+                    value.Start.Agility +    level * value.ForOneLevel.Agility,
+                    value.Start.Stamina +  level * value.ForOneLevel.Stamina,
+                    value.Start.Intellect +level * value.ForOneLevel.Intellect,
+                    value.Start.Spirit +      level * value.ForOneLevel.Spirit
+                )
             };
-            var baseHp =
-                _playerView.BasicCharacteristics.StartHp +
-                _playerView.BasicCharacteristics.StartStamina * _data.HealthPerStamina +
-                _playerView.BasicCharacteristics.StaminaForLevel *
-                _data.HealthPerStamina;
-            _playerView.UnitHealth = new UnitHealth(hp:baseHp);
-
-            // Dbg.Log($"SET CurrentHP: {_playerView.CharacterClass.CurrentHp}, MaxHp:{_playerView.CharacterClass.MaxHp}");
-
+            
+            _playerView.UnitCharacteristics.Speed = _data.PlayerMoveSpeed;
+            _playerView.UnitCharacteristics.RotateSpeedPlayer = _data.RotateSpeedPlayer;
+            
+            _playerView.UnitHealth = new UnitHealth();
+            
             switch (_playerView.CharacterClass.ResourceType)
             {
                 case ResourceEnum.Rage:
-                    _playerView.CharacterClass.ResourceBaseValue = _data.MaxRageValue;
+                    _playerView.CharacterClass.ResourceBaseValue = _data.maxRageValue;
                     break;
 
                 case ResourceEnum.Energy:
-                    _playerView.CharacterClass.ResourceBaseValue = _data.MaxEnergyValue;
+                    _playerView.CharacterClass.ResourceBaseValue = _data.maxEnergyValue;
                     break;
 
                 case ResourceEnum.Concentration:
-                    _playerView.CharacterClass.ResourceBaseValue = _data.MaxConcentrationValue;
+                    _playerView.CharacterClass.ResourceBaseValue = _data.maxConcentrationValue;
                     break;
 
                 case ResourceEnum.Mana:
                     _playerView.CharacterClass.ResourceBaseValue =
-                        _playerView.BasicCharacteristics.IntellectForLevel * _data.ManaPointsPerIntellect;
+                        _playerView.UnitCharacteristics.ForOneLevel.Intellect * _data.manaPointsPerIntellect;
                     break;
 
                 //todo сделать пересчет при получении уровня

@@ -18,12 +18,6 @@ namespace Data
         public CharacterRace CharacterRace;
 
         [SerializeField]
-        public float PlayerMoveSpeed = 5.0f;
-
-        [SerializeField]
-        public float RotateSpeedPlayer = 120.0f;
-
-        [SerializeField]
         public CharacterEquipment Equipment;
 
         [SerializeField]

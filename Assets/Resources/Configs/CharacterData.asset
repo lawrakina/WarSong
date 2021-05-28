@@ -30,8 +30,6 @@ MonoBehaviour:
     LocalPosition: {x: 0, y: 4.5, z: 0}
     LocalRotation: {x: -90, y: 0, z: -90}
     LocalScale: {x: 100, y: 100, z: 100}
-  _rendererParticleSystem: {fileID: 3492755681695876636, guid: 7ac849ea973629f45ad423d28c7cde80,
-    type: 3}
   humanSkin:
   - {r: 1, g: 0.8000001, b: 0.682353, a: 1}
   elfSkin:

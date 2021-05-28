@@ -25,16 +25,19 @@ namespace Unit.Player
         public UnitPlayerBattle UnitPlayerBattle { get; set; }
         public UltimateTextDamageManager UiTextManager { get; set; }
         public UnitReputation UnitReputation { get; set; }
-        public event Action<InfoCollision> OnApplyDamageChange;
+        public UnitAbilities UnitAbilities { get; set; }
         public UnitLevel UnitLevel { get; set; }
-        public BasicCharacteristics BasicCharacteristics { get; set; }
+        public UnitCharacteristics UnitCharacteristics { get; set; }
         public BaseCharacterClass CharacterClass { get; set; }
         public EquipmentPoints EquipmentPoints { get; set; }
         public EquipmentItems EquipmentItems { get; set; }
         public Transform TransformModel { get; set; }
+        public UnitModifier Modifier { get; set; }
 
         #endregion
 
+        public event Action<InfoCollision> OnApplyDamageChange;
+        
 
         public void OnCollision(InfoCollision info)
         {

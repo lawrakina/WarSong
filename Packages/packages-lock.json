@@ -1,18 +1,11 @@
 {
   "dependencies": {
-    "com.coffee.ui-particle": {
-      "version": "https://github.com/mob-sakai/ParticleEffectForUGUI.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "5f3ead208666caa379299bf76eb1f17324ad1025"
-    },
     "com.leopotam.ecs": {
       "version": "https://github.com/Leopotam/ecs.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "acd5873e57796ab5bfbe6c11c06fb044b912c6f9"
+      "hash": "e400d0f60ad8240568f675f40a549d5e71949a35"
     },
     "com.leopotam.ecs-unityintegration": {
       "version": "https://github.com/Leopotam/ecs-unityintegration.git",
@@ -20,6 +13,21 @@
       "source": "git",
       "dependencies": {},
       "hash": "127d6a8f02ec987ac724a7fc671b1d5d00b0ea56"
+    },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.ads": {
+      "version": "3.5.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
       "version": "1.2.16",
@@ -36,7 +44,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "3.0.4",
+      "version": "1.1.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -51,13 +59,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.inputsystem": {
-      "version": "1.0.2",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.purchasing": {
       "version": "2.2.2",
       "depth": 0,
@@ -65,13 +66,6 @@
       "dependencies": {
         "com.unity.ugui": "1.0.0"
       },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.quicksearch": {
-      "version": "2.0.2",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
@@ -86,7 +80,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.textmeshpro": {
-      "version": "2.1.4",
+      "version": "2.1.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -95,7 +89,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
-      "version": "1.2.16",
+      "version": "1.2.17",
       "depth": 0,
       "source": "registry",
       "dependencies": {},

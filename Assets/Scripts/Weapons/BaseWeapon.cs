@@ -22,5 +22,8 @@ namespace Weapons
 
         [SerializeField]
         public AttackValue AttackValue;
+
+        [SerializeField]
+        public int ItemLevel = 0;
     }
 }

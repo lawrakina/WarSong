@@ -50,6 +50,7 @@ namespace EcsBattle.Components
         public UnitVision _vision;
         public UnitLevel _level;
         public UnitHealth _health;
+        public UnitCharacteristics _characteristics;
     }
 
     public struct ListRigidBAndCollidersComponent
