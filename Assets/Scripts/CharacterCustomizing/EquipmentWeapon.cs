@@ -1,7 +1,6 @@
 ﻿using System;
 using Data;
 using Enums;
-using Extension;
 using Unit;
 using Unit.Player;
 using UnityEngine;

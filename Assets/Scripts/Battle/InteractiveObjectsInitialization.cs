@@ -1,6 +1,6 @@
 ﻿using System.Linq;
+using Code.Extension;
 using Data;
-using Extension;
 using Unit;
 using UnityEngine;
 

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Code.Extension;
 using Data;
 using DungeonArchitect;
 using DungeonArchitect.Builders.GridFlow;
-using Extension;
 using Unit;
 using Unit.Enemies;
 using UnityEngine;

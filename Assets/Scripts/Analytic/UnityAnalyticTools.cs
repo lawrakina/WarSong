@@ -12,5 +12,10 @@ namespace Analytic
                 eventData = new Dictionary<string, object>();
             Analytics.CustomEvent(alias, eventData);
         }
+
+        public void SendMessage(string @alias)
+        {
+            // throw new System.NotImplementedException();
+        }
     }
 }

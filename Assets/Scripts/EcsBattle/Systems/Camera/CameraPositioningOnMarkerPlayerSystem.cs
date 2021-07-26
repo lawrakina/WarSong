@@ -1,7 +1,6 @@
 ﻿using System;
 using EcsBattle.Components;
 using EcsBattle.Systems.Input;
-using Extension;
 using Leopotam.Ecs;
 using UnityEngine;
 

@@ -1,8 +1,8 @@
 ﻿using System;
 using Windows;
+using Code.Extension;
 using Controller;
 using Controller.Model;
-using Extension;
 using Models;
 using UniRx;
 using UnityEngine;

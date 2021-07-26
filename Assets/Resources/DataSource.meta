@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 086a311e92eab8d4a9ab2367d7c4ff27
+<<<<<<< Updated upstream:Assets/Resources/DataSource.meta
+guid: b63ddcc4d9ffc5b4cbfebb5541ee32ca
+=======
+guid: 90366bca6fa642c2bb788edf28226dcf
+>>>>>>> Stashed changes:Assets/Code/UI/Adventure.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

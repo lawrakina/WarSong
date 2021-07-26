@@ -1,7 +1,7 @@
 ﻿using System;
 using Battle;
 using CharacterCustomizing;
-using Extension;
+using Code.Extension;
 using Guirao.UltimateTextDamage;
 using Necromancy.UI;
 using UnityEngine;

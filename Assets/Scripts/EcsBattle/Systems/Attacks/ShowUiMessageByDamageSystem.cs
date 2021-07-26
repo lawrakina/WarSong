@@ -1,5 +1,4 @@
 ﻿using EcsBattle.Components;
-using Extension;
 using Guirao.UltimateTextDamage;
 using Interface;
 using Leopotam.Ecs;

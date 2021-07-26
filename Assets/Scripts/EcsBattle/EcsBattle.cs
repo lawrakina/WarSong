@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Code.Extension;
 using EcsBattle.Components;
 using EcsBattle.Systems.Animation;
 using EcsBattle.Systems.Attacks;
@@ -12,7 +13,6 @@ using EcsBattle.Systems.PlayerMove;
 using EcsBattle.Systems.Statistics;
 using EcsBattle.Systems.Ui;
 using Enums;
-using Extension;
 using Leopotam.Ecs;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;

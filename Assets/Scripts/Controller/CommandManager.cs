@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Windows;
 using AppAds;
-using Analytic;
 using Battle;
+using Code.Extension;
 using Controller.Model;
-using Extension;
 using Gui;
 using Interface;
+using Profile.Analytic;
 using UniRx;
 using Unit.Player;
 using UnityEngine;
+using UnityAnalyticTools = Analytic.UnityAnalyticTools;
 
 
 namespace Controller
@@ -21,7 +21,7 @@ namespace Controller
 
         private readonly UiWindows _uiWindows;
         private readonly SceneWindows _windows;
-        private readonly IAnalyticTools _analyticTools;
+        private readonly UnityAnalyticTools _analyticTools;
         private readonly IAdsShower _adsTools;
         public readonly ReactiveCommand<bool> _battleWindowShowCommand = new ReactiveCommand<bool>();
         public readonly ReactiveCommand<bool> _characterWindowShowCommand = new ReactiveCommand<bool>();
@@ -46,7 +46,7 @@ namespace Controller
 
         #region ClassLiveCycles
 
-        public CommandManager(UiWindows uiWindows, SceneWindows windows, IAnalyticTools analyticTools,
+        public CommandManager(UiWindows uiWindows, SceneWindows windows, UnityAnalyticTools analyticTools,
             IAdsShower adsTools)
         {
             _subscriptions = new CompositeDisposable();
@@ -123,7 +123,7 @@ namespace Controller
 
             _uiWindows.BattleUiWindow._startBattleCommand.Subscribe(_ =>
             {
-                _analyticTools.SendMessage("StartBattle");
+                _analyticTools.SendMessage($"StartBattle");
                 
                 _uiWindows.TopNavigationUiWindow.SetActive(false);
                 _uiWindows.BottomNavigationWindow.SetActive(false);

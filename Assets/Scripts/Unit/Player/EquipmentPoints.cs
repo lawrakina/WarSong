@@ -1,6 +1,6 @@
 ﻿using System.Linq;
+using Code.Extension;
 using Data;
-using Extension;
 using UnityEngine;
 
 
@@ -37,8 +37,10 @@ namespace Unit.Player
 
         private GameObject GenerateAttachPoint(AttachPoint point)
         {
-            var result = Object.Instantiate(new GameObject($"AttachPoint---{point.Name}"),
-                _character.transform.Find(point.Path).transform);
+            var result = new GameObject($"AttachPoint---{point.Name}");
+            // var result = Object.Instantiate(new GameObject($"AttachPoint---{point.Name}"),
+            result.transform.SetParent(_character.transform.Find(point.Path).transform);
+                // _character.transform.Find(point.Path).transform);
             result.transform.localPosition = point.LocalPosition;
             result.transform.localRotation = Quaternion.Euler(point.LocalRotation);
             result.transform.localScale = point.LocalScale;

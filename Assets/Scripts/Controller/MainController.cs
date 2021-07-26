@@ -6,13 +6,10 @@ using AppAds;
 using Analytic;
 using Battle;
 using CharacterCustomizing;
-using ContentDataSource;
+using Code.Extension;
 using ContentDataSource.AbilityItems;
 using Controller.Model;
 using Data;
-using Enums;
-using Enums.Abilities;
-using Extension;
 using Gui.Battle;
 using Models;
 using UniRx;
@@ -157,27 +154,27 @@ namespace Controller
 
         private void LoadAllResources()
         {
-            _characterData = Resources.Load<CharacterData>("Configs/CharacterData");
+            
+            _characterData = Resources.Load<CharacterData>("Configs/old/CharacterData");
             Dbg.Log($"Start resource load data - CharacterData:{_characterData}");
-            _playerLevelData = Resources.Load<PlayerLevelData>("Configs/UnitLevelData");
+            _playerLevelData = Resources.Load<PlayerLevelData>("Configs/old/UnitLevelData");
             Dbg.Log($"Start resource load data - UnitLevelData:{_playerLevelData}");
-            _playerClassesData = Resources.Load<PlayerClassesData>("Configs/ClassesData");
+            _playerClassesData = Resources.Load<PlayerClassesData>("Configs/old/ClassesData");
             Dbg.Log($"Start resource load data - PlayerClassesData:{_playerClassesData}");
-            _playerData = Resources.Load<PlayerData>("Configs/PlayerData");
+            _playerData = Resources.Load<PlayerData>("Configs/old/PlayerData");
             Dbg.Log($"Start resource load data - PlayerData:{_playerData}");
-            _cameraSettings = Resources.Load<CameraSettingsInBattle>("Configs/CameraSettingsInBattle");
+            _cameraSettings = Resources.Load<CameraSettingsInBattle>("Configs/old/CameraSettingsInBattle");
             Dbg.Log($"Start resource load data - CameraSettingsInBattle:{_cameraSettings}");
-            _enemiesData = Resources.Load<EnemiesData>("Configs/EnemiesData_Simple");
+            _enemiesData = Resources.Load<EnemiesData>("Configs/old/EnemiesData_Simple");
             Dbg.Log($"Start resource load data - EnemiesData:{_enemiesData}");
-            _enemyClassesData = Resources.Load<EnemyClassesData>("Configs/EnemyClassesData");
-            Dbg.Log($"Start resource load data - EnemyClassesData:{_enemyClassesData}");
-            _generatorData = Resources.Load<DungeonGeneratorData>("Configs/DungeonData");
+            _generatorData = Resources.Load<DungeonGeneratorData>("Configs/old/DungeonData");
             Dbg.Log($"Start resource load data - DungeonGeneratorData:{_generatorData}");
-            _ecsBattleData = Resources.Load<EcsBattleData>("Configs/EcsBattleData");
+            _ecsBattleData = Resources.Load<EcsBattleData>("Configs/old/EcsBattleData");
             Dbg.Log($"Start resource load data - EcsBattleData:{_ecsBattleData}");
-            _battleInputData = Resources.Load<BattleInputData>("Configs/BattleInputData");
+            _battleInputData = Resources.Load<BattleInputData>("Configs/old/BattleInputData");
             Dbg.Log($"Start resource load data - BattleInputData:{_battleInputData}");
-            _battleSettingsData = Resources.Load<BattleSettingsData>("Configs/BattleSettingsData");
+            _battleSettingsData = Resources.Load<BattleSettingsData>("Configs/old/BattleSettingsData");
+
             Dbg.Log($"Start resource load data - BattleSettingsData:{_battleSettingsData}");
             _abilityCollectionData = Resources.Load<AbilitiesConfigData>("DataSource/Ability/AbilitiesConfigData");
             Dbg.Log($"Start resource load data - _abilityItemsConfigCollection:{_abilityCollectionData}");

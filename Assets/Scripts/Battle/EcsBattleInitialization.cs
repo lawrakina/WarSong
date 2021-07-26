@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Code.Extension;
 using Controller;
 using Controller.Model;
 using Data;
 using Enums;
-using Extension;
 using Interface;
 using Models;
 using UniRx;

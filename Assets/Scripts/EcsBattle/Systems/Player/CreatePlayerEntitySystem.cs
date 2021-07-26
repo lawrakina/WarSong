@@ -1,10 +1,10 @@
 ﻿using System;
+using Code.Extension;
 using Controller.Model;
 using DungeonArchitect.Samples.GridFlow;
 using EcsBattle.Components;
 using EcsBattle.CustomEntities;
 using Enums;
-using Extension;
 using Leopotam.Ecs;
 using Models;
 using Unit.Player;

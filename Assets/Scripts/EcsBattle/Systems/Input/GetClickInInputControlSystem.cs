@@ -1,5 +1,5 @@
-﻿using EcsBattle.Components;
-using Extension;
+﻿using Code.Extension;
+using EcsBattle.Components;
 using Leopotam.Ecs;
 
 

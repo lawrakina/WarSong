@@ -1,5 +1,5 @@
-﻿using Controller.Model;
-using Extension;
+﻿using Code.Extension;
+using Controller.Model;
 using Interface;
 using UniRx;
 

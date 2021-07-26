@@ -1,6 +1,6 @@
 ﻿using System;
+using Code.Extension;
 using Data;
-using Extension;
 using Guirao.UltimateTextDamage;
 using Interface;
 using Leopotam.Ecs;

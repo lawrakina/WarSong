@@ -2,7 +2,6 @@
 using EcsBattle.Components;
 using EcsBattle.CustomEntities;
 using EcsBattle.Systems.Player;
-using Extension;
 using Interface;
 using Leopotam.Ecs;
 using Models;

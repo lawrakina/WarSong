@@ -1,6 +1,6 @@
-﻿using Controller;
+﻿using Code.Extension;
+using Controller;
 using Data;
-using Extension;
 using Unit.Player;
 using UnityEngine;
 

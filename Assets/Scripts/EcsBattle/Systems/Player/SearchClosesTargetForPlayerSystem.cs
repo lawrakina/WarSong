@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using EcsBattle.Components;
-using Extension;
 using Leopotam.Ecs;
 using Unit.Player;
 using UnityEngine;

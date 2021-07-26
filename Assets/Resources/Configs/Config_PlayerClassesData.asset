@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6028addb0f274cfd88b2e0f1238099a0, type: 3}
+  m_Name: Config_PlayerClassesData
+  m_EditorClassIdentifier: 
+  HealthPerStamina: 10
+  ManaPointsPerIntellect: 15
+  MaxRageValue: 100
+  MaxEnergyValue: 100
+  MaxConcentrationValue: 100
+  MoveSpeed: 7
+  RotateSpeed: 120
+  _classesStartCharacteristics:
+  - Start:
+      Strength: 0
+      Agility: 0
+      Stamina: 0
+      Intellect: 0
+      Spirit: 0
+    ForOneLevel:
+      Strength: 0
+      Agility: 0
+      Stamina: 0
+      Intellect: 0
+      Spirit: 0
+    _minCritChance: 0
+    _maxCritChance: 0
+    _critChance: 0
+    _minDodgeChance: 0
+    _maxDodgeChance: 0
+    _dodgeChance: 0
+  _presetCharacters:
+    listPresetsSettings:
+    - CharacterClass: 1
+      CharacterGender: 1
+      CharacterRace: 0
+      Equipment:
+        permissionForEquipment:
+          OneHandWeapon: 1
+          TwoOneHandWeapon: 1
+          TwoHandSwordWeapon: 1
+          TwoHandSpearWeapon: 1
+          TwoHandStaffWeapon: 1
+          RangeTwoHandBowWeapon: 0
+          RangeTwoHandCrossbowWeapon: 0
+          Shield: 1
+        Slots:
+        - {fileID: 6217818179488472574, guid: b42a483ee5137f843929c77d6f537502, type: 3}
+        - {fileID: 6217818179488472574, guid: b42a483ee5137f843929c77d6f537502, type: 3}
+        - {fileID: 6217818179488472574, guid: b42a483ee5137f843929c77d6f537502, type: 3}
+      ExperiencePoints: 1
+      UiBadge: {fileID: 7179238373803716959, guid: 6e176475ef69b424383f4798114d2236,
+        type: 3}
+      ResourceType: 0
+      ResourceBaseValue: 100
+    - CharacterClass: 2
+      CharacterGender: 0
+      CharacterRace: 0
+      Equipment:
+        permissionForEquipment:
+          OneHandWeapon: 1
+          TwoOneHandWeapon: 1
+          TwoHandSwordWeapon: 0
+          TwoHandSpearWeapon: 0
+          TwoHandStaffWeapon: 0
+          RangeTwoHandBowWeapon: 0
+          RangeTwoHandCrossbowWeapon: 0
+          Shield: 0
+        Slots:
+        - {fileID: 6217818179488472574, guid: b42a483ee5137f843929c77d6f537502, type: 3}
+        - {fileID: 6217818179488472574, guid: b42a483ee5137f843929c77d6f537502, type: 3}
+      ExperiencePoints: 1
+      UiBadge: {fileID: 4157712349263451614, guid: 3ae8e235f392ef14cbdbe6d052fcc930,
+        type: 3}
+      ResourceType: 1
+      ResourceBaseValue: 100
+    - CharacterClass: 3
+      CharacterGender: 0
+      CharacterRace: 0
+      Equipment:
+        permissionForEquipment:
+          OneHandWeapon: 0
+          TwoOneHandWeapon: 0
+          TwoHandSwordWeapon: 0
+          TwoHandSpearWeapon: 0
+          TwoHandStaffWeapon: 0
+          RangeTwoHandBowWeapon: 1
+          RangeTwoHandCrossbowWeapon: 1
+          Shield: 0
+        Slots:
+        - {fileID: 2584729198991652442, guid: a86d9763462c31640b33721b9ee09be7, type: 3}
+      ExperiencePoints: 1
+      UiBadge: {fileID: 4319355777000030377, guid: 34c4793f6cdb64447b65c81c9844499b,
+        type: 3}
+      ResourceType: 2
+      ResourceBaseValue: 100
+    - CharacterClass: 4
+      CharacterGender: 0
+      CharacterRace: 0
+      Equipment:
+        permissionForEquipment:
+          OneHandWeapon: 1
+          TwoOneHandWeapon: 0
+          TwoHandSwordWeapon: 0
+          TwoHandSpearWeapon: 0
+          TwoHandStaffWeapon: 1
+          RangeTwoHandBowWeapon: 0
+          RangeTwoHandCrossbowWeapon: 0
+          Shield: 0
+        Slots:
+        - {fileID: 2167086574517691783, guid: 9e80f1214d24de448b17ab3d2302eb1a, type: 3}
+      ExperiencePoints: 1
+      UiBadge: {fileID: 2264942570204359833, guid: aa4eb9bbd97dfc244936dfdca4f76bf5,
+        type: 3}
+      ResourceType: 3
+      ResourceBaseValue: 1

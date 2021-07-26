@@ -1,7 +1,4 @@
-﻿using Extension;
-
-
-namespace Unit
+﻿namespace Unit
 {
     public class UnitHealth
     {
