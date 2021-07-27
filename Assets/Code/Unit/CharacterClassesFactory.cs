@@ -14,7 +14,7 @@ namespace Code.Unit
             _settings = settings;
         }
 
-        public void GenerateClass(BaseCharacterClass characterClass, CharacterSettings value)
+        public BaseCharacterClass GenerateClass(BaseCharacterClass characterClass, CharacterSettings value)
         {
             if(characterClass == null)
                 characterClass = new BaseCharacterClass();
@@ -24,8 +24,8 @@ namespace Code.Unit
             
             characterClass.Class = value.CharacterClass;
             characterClass.Name = value.CharacterClass.ToString(); //ToDo need using Localization;
-            characterClass.ResourceType = fromDataBase.ResourceType;
-            characterClass.ResourceBaseValue =fromDataBase.ResourceBaseValue;
+
+            return characterClass;
         }
     }
 }

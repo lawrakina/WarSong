@@ -37,6 +37,8 @@ namespace Code.Data.Unit
                 Intellect = intellect;
             }
         }
+        [SerializeField] 
+        public CharacterClass CharacterClass;
 
         [SerializeField]
         public Characteristics Start;

@@ -1,6 +1,5 @@
 ﻿using System;
 using Code.CharacterCustomizing;
-using Code.Data;
 using Code.Data.Unit;
 using Code.Extension;
 using UnityEngine;
@@ -17,10 +16,12 @@ namespace Code.Unit
         public MeshRenderer MeshRenderer { get; set; }
         public Animator Animator { get; set; }
         public AnimatorParameters AnimatorParameters { get; set; }
+        public UnitResource UnitResource { get; set; }
         public UnitCharacteristics UnitCharacteristics { get; set; }
         public BaseCharacterClass CharacterClass { get; set; }
         public PersonCharacter PersonCharacter { get; set; }
         public UnitLevel UnitLevel { get; set; }
+        public UnitHealth UnitHealth { get; set; }
         public UnitEquipment UnitEquipment { get; set; }
 
         public event Action<InfoCollision> OnApplyDamageChange;

@@ -13,9 +13,9 @@ namespace Code.Unit
             _settings = settings;
         }
 
-        public void GenerateLevel(UnitLevel characterUnitLevel, CharacterSettings value)
+        public UnitLevel GenerateLevel(UnitLevel characterUnitLevel, CharacterSettings value)
         {
-            if(characterUnitLevel == null)
+            if (characterUnitLevel == null)
                 characterUnitLevel = new UnitLevel();
             characterUnitLevel.CurrentLevel = 0;
             foreach (var level in _settings.Levels)
@@ -27,6 +27,8 @@ namespace Code.Unit
                     characterUnitLevel.CurrentLevel++;
                 }
             }
+
+            return characterUnitLevel;
         }
     }
 }

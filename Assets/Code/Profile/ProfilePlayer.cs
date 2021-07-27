@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Linq;
 using Code.Data;
 using Code.Data.Unit;
 using Code.Data.Unit.Player;
@@ -42,13 +42,29 @@ namespace Code.Profile
         {
             //создание GameObject игрока и добавление компонентов
             var playerFactory = new PlayerFactory(Settings.CharacterData);
-
             var levelFactory = new LevelFactory(Settings.UnitLevelData);
-
             var classesFactory = new CharacterClassesFactory(Settings.PlayerClassesData);
+            var resourceFactory = new ResourceFactory(Settings.PlayerClassesData);
+            var characteristicsFactory = new CharacteristicsFactory(Settings.PlayerClassesData);
+            var healthFactory = new HealthFactory(Settings.PlayerClassesData);
 
             //контроллер активного персонажа (отвечает за модификацию внешного вида, одетых вещей в реалтайме)
-            return new CharacterFabric(playerFactory, classesFactory, levelFactory);
+            return new CharacterFabric(
+                playerFactory,
+                classesFactory,
+                levelFactory,
+                resourceFactory,
+                characteristicsFactory,
+                healthFactory);
+        }
+        
+        public void BuildPlayer()
+        {
+            CurrentPlayer =
+                CharacterFabric.CreatePlayer(
+                    Settings.PlayerData.ListCharacters[Settings.PlayerData._numberActiveCharacter]);
+            RebuildCurrentCharacter();
+            InfoAboutCurrentPlayer.Value = new InfoAboutCharacter(CurrentPlayer);
         }
         
         public void RebuildCurrentCharacter()
@@ -60,15 +76,6 @@ namespace Code.Profile
         {
             Dbg.Log($"RebuildCharacter");
             CharacterFabric.RebuildCharacter(CurrentPlayer, value);
-            InfoAboutCurrentPlayer.Value = new InfoAboutCharacter(CurrentPlayer);
-        }
-
-        public void BuildPlayer()
-        {
-            CurrentPlayer =
-                CharacterFabric.CreatePlayer(
-                    Settings.PlayerData.ListCharacters[Settings.PlayerData._numberActiveCharacter]);
-            RebuildCurrentCharacter();
             InfoAboutCurrentPlayer.Value = new InfoAboutCharacter(CurrentPlayer);
         }
     }

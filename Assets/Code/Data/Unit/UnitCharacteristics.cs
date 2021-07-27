@@ -12,12 +12,21 @@ namespace Code.Data.Unit
         private float _maxCritChance = 0.05f;
         [SerializeField] [Range(0f,1f)]
         private float _critChance = 0.1f;
+        
         [SerializeField] [Range(0f,1f)]
         private float _minDodgeChance = 0.05f;
         [SerializeField] [Range(0f,1f)]
         private float _maxDodgeChance = 0.05f;
         [SerializeField] [Range(0f,1f)]
         private float _dodgeChance = 0.1f;
+
+        private int _minAttack;
+        private int _maxAttack;
+
+        [SerializeField]
+        private float _minArmorValue = 0.0f;
+        [SerializeField]
+        private float _maxArmorValue = 0.75f;
 
         public float DodgeChance
         {
@@ -43,6 +52,24 @@ namespace Code.Data.Unit
                 return _critChance;
             }
             set => _critChance = value;
+        }
+
+        public int MinAttack => _minAttack;
+        public int MaxAttack => _maxAttack;
+
+        public float ArmorValue
+        {
+            get
+            {
+                var result = 0.1f;
+                //ToDo нужен рассчет показателя брони в процентах 
+
+                if (result > _maxArmorValue)
+                    result = _maxArmorValue;
+                if (result < _minArmorValue)
+                    result = _minArmorValue;
+                return result;
+            }
         }
     }
 }

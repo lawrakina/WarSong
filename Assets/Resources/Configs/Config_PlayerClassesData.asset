@@ -20,24 +20,90 @@ MonoBehaviour:
   MoveSpeed: 7
   RotateSpeed: 120
   _classesStartCharacteristics:
-  - Start:
-      Strength: 0
-      Agility: 0
-      Stamina: 0
-      Intellect: 0
-      Spirit: 0
+  - CharacterClass: 1
+    Start:
+      Strength: 1
+      Agility: 1
+      Stamina: 1
+      Intellect: 1
+      Spirit: 1
     ForOneLevel:
-      Strength: 0
-      Agility: 0
-      Stamina: 0
-      Intellect: 0
-      Spirit: 0
+      Strength: 3
+      Agility: 1
+      Stamina: 2
+      Intellect: 1
+      Spirit: 1
     _minCritChance: 0
-    _maxCritChance: 0
-    _critChance: 0
-    _minDodgeChance: 0
-    _maxDodgeChance: 0
-    _dodgeChance: 0
+    _maxCritChance: 0.75
+    _critChance: 0.1
+    _minDodgeChance: 0.05
+    _maxDodgeChance: 0.75
+    _dodgeChance: 0.05
+    _minArmorValue: 5
+    _maxArmorValue: 1000000
+  - CharacterClass: 2
+    Start:
+      Strength: 1
+      Agility: 1
+      Stamina: 1
+      Intellect: 1
+      Spirit: 1
+    ForOneLevel:
+      Strength: 1
+      Agility: 3
+      Stamina: 2
+      Intellect: 1
+      Spirit: 1
+    _minCritChance: 0
+    _maxCritChance: 0.75
+    _critChance: 0.1
+    _minDodgeChance: 0.05
+    _maxDodgeChance: 0.75
+    _dodgeChance: 0.05
+    _minArmorValue: 1
+    _maxArmorValue: 1000000
+  - CharacterClass: 3
+    Start:
+      Strength: 1
+      Agility: 1
+      Stamina: 1
+      Intellect: 1
+      Spirit: 1
+    ForOneLevel:
+      Strength: 2
+      Agility: 2
+      Stamina: 2
+      Intellect: 1
+      Spirit: 1
+    _minCritChance: 0
+    _maxCritChance: 0.75
+    _critChance: 0.1
+    _minDodgeChance: 0.05
+    _maxDodgeChance: 0.75
+    _dodgeChance: 0.05
+    _minArmorValue: 1
+    _maxArmorValue: 1000000
+  - CharacterClass: 4
+    Start:
+      Strength: 1
+      Agility: 1
+      Stamina: 1
+      Intellect: 1
+      Spirit: 1
+    ForOneLevel:
+      Strength: 1
+      Agility: 1
+      Stamina: 2
+      Intellect: 3
+      Spirit: 2
+    _minCritChance: 0
+    _maxCritChance: 0.75
+    _critChance: 0.1
+    _minDodgeChance: 0.05
+    _maxDodgeChance: 0.75
+    _dodgeChance: 0.05
+    _minArmorValue: 5
+    _maxArmorValue: 1000000
   _presetCharacters:
     listPresetsSettings:
     - CharacterClass: 1

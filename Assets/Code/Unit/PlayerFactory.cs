@@ -49,10 +49,10 @@ namespace Code.Unit
 
             player.UnitEquipment = new UnitEquipment(equipmentPoints, settings.Equipment);
             
-            player.CharacterClass = new BaseCharacterClass();
+            // player.CharacterClass = new BaseCharacterClass();
             
-            player.UnitLevel = new UnitLevel();
-            player.UnitCharacteristics = new UnitCharacteristics();
+            // player.UnitLevel = new UnitLevel();
+            // player.UnitCharacteristics = new UnitCharacteristics();
             
             return player;
         }

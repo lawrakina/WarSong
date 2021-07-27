@@ -22,6 +22,10 @@ namespace Code.Equipment
         [SerializeField]
         public AttackValue AttackValue;
 
+        [SerializeField]
+        private int _itemLevel = 1;
+
         public override InventoryItemType ItemType => InventoryItemType.Weapon;
+        public override int ItemLevel => _itemLevel;
     }
 }

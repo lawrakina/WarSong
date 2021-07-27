@@ -30,10 +30,38 @@ namespace Code.Data.Unit
         {
             get
             {
-                return 0;
-                //сделать подсчет общего ItemLevel
+                var result = 0;
+                if (MainWeapon)
+                    result += MainWeapon.ItemLevel;
+                if (SecondWeapon)
+                    result += SecondWeapon.ItemLevel;
+                if (Shield)
+                    result += Shield.ItemLevel;
+                //ToDo need add all slots
+                
+                return result;
             }
         }
+
+        public int FullArmor
+        {
+            get
+            {
+                var result = 0;
+                if (Shield)
+                    result += Shield.ArmorValue;
+                //ToDo need add all armors 
+
+                return result;
+            }
+        }
+
+        //ToDo сделать рассчет по каждой характеристике по всем одетым предметам
+        public float FullAgility { get; set; }
+        public float FullIntellect { get; set; }
+        public float FullSpirit { get; set; }
+        public float FullStamina { get; set; }
+        public float FullStrength { get; set; }
 
         public void RebuildEquipment()
         {
