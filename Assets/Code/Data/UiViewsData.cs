@@ -46,5 +46,7 @@ namespace Code.Data
         [Header("Shop tab")] 
         public ShopView Shop;
 
+        [Header("Modals windows")]
+        public LoadingView LoadingView;
     }
 }

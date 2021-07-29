@@ -15,8 +15,9 @@ namespace Code.Profile
     public class ProfilePlayer
     {
         private readonly DataSettings _dataSettings;
+        private readonly MvcModels _models;
         private readonly CameraController _cameraController;
-
+        public MvcModels Models => _models;
         public DataSettings Settings => _dataSettings;
         public IAnalyticTools AnalyticTools { get; }
         public CommandManager CommandManager { get; }
@@ -25,12 +26,13 @@ namespace Code.Profile
         public IPlayerView CurrentPlayer { get; set; }
         public UiWindowAfterStart WindowAfterStart { get; set; }
         public ReactiveProperty<InfoAboutCharacter> InfoAboutCurrentPlayer { get; }
-        public LevelGenerator LevelGenerator { get; set; }
 
-        public ProfilePlayer(CommandManager commandManager, DataSettings dataSettings, IAnalyticTools analyticTools,
+        public ProfilePlayer(CommandManager commandManager, DataSettings dataSettings, MvcModels models,
+            IAnalyticTools analyticTools,
             CameraController cameraController)
         {
             _dataSettings = dataSettings;
+            _models = models;
             _cameraController = cameraController;
             CommandManager = commandManager;
             CurrentState = new ReactiveProperty<GameState>();

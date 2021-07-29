@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using Code.Data.Dungeon;
+using UnityEngine;
 
 
 namespace Code.Data
@@ -11,5 +14,20 @@ namespace Code.Data
 
         [SerializeField]
         public GameObject StorageNavMash;
+
+        [SerializeField]
+        public List<DungeonParams> BdLevels;
+    }
+
+    [Serializable]
+    public class DungeonParams
+    {
+        [SerializeField]
+        private string _name = "Demo";
+        [SerializeField]
+        private DungeonParamsType _type = DungeonParamsType.Demo;
+
+        public string Name => _name;
+        public DungeonParamsType Type => _type;
     }
 }

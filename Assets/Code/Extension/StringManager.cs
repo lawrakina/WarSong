@@ -2,6 +2,8 @@
 {
     public static class StringManager
     {
+        public const string RESULT_OF_LOADING_DATA_MODEL = "Result of loading the data model";
+        public const string RESULF_OF_LOADING_RESOURCES = "Result of loading resources";
         public const string UNIT_STATUS_DEAD = "Unit is totally dead";
         public const string PLAYER_ATTACK_LAYER = "PlayerAttack";
         public const string ENEMY_ATTACK_LAYER = "EnemyAttack";

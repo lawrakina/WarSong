@@ -1,5 +1,6 @@
 ﻿using Code.Data;
 using Code.Extension;
+using Code.Fight;
 using Code.Profile;
 using Code.UI.CharacterList;
 using UniRx;
@@ -44,15 +45,15 @@ namespace Code
                     
                     break;
                 case GameState.Menu:
+                    _characterListController?.Dispose();
                     _mainMenuController = new MainMenuController(_placeForUi, _profilePlayer);
                     _fightController?.Dispose();
-                    _characterListController?.Dispose();
                     break;
 
                 case GameState.Fight:
-                    _fightController = new FightController(_controllers, _placeForUi, _profilePlayer);
-                    _mainMenuController?.Dispose();
                     _characterListController?.Dispose();
+                    _mainMenuController?.Dispose();
+                    _fightController = new FightController(_controllers, _placeForUi, _profilePlayer);
                     break;
 
                 default:

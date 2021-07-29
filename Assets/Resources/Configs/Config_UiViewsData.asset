@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5cf6e719574199b62b15f78df017aa, type: 3}
   m_Name: Config_UiViewsData
   m_EditorClassIdentifier: 
-  ListOfCharacters: {fileID: 3559799547911804342, guid: 0ba391bddee3bd54f89da44276b791e0,
-    type: 3}
   Create_CharacterList: {fileID: 6218906719816462005, guid: 7abfd7e867444c745abbf5ca7fbc4136,
     type: 3}
   Create_CreatePrototype: {fileID: 160362227395209417, guid: 13abda787c3aae546ac0d568cad3ccd5,
@@ -35,3 +33,5 @@ MonoBehaviour:
   TavernView: {fileID: 1470198044735619993, guid: b168be17943b2394c8e83b2eead08ab3,
     type: 3}
   Shop: {fileID: 1028708163599223412, guid: 192c07b0b9a4aa74d8d56c3b5cdb3b58, type: 3}
+  LoadingView: {fileID: 5110274699611494723, guid: 01a0f0e955b4c62468964f47070cfa7b,
+    type: 3}
