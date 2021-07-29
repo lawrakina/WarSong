@@ -4,6 +4,7 @@ using Code.Data.Unit;
 using Code.Data.Unit.Player;
 using Code.Extension;
 using Code.GameCamera;
+using Code.UI.Adventure;
 using Code.Unit;
 using Profile.Analytic;
 using UniRx;
@@ -24,6 +25,7 @@ namespace Code.Profile
         public IPlayerView CurrentPlayer { get; set; }
         public UiWindowAfterStart WindowAfterStart { get; set; }
         public ReactiveProperty<InfoAboutCharacter> InfoAboutCurrentPlayer { get; }
+        public LevelGenerator LevelGenerator { get; set; }
 
         public ProfilePlayer(CommandManager commandManager, DataSettings dataSettings, IAnalyticTools analyticTools,
             CameraController cameraController)

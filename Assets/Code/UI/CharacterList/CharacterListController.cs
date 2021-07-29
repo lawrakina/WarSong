@@ -38,6 +38,7 @@ namespace Code.UI.CharacterList
             AddGameObjects(_view.gameObject);
             _profilePlayer.InfoAboutCurrentPlayer
                 .Subscribe(info => _view.InfoFormatted = info.FullInfo).AddTo(_subscriptions);
+
             _view.Init(MovePrev, MoveNext, SelectCurrentCharacter, CreateNewPrototype);
             OffExecute();
 

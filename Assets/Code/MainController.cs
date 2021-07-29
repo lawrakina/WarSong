@@ -11,17 +11,19 @@ namespace Code
     public class MainController : BaseController
     {
         private readonly Transform _placeForUi;
+        private readonly Controllers _controllers;
         private readonly ProfilePlayer _profilePlayer;
 
         private CharacterListController _characterListController;
         private MainMenuController _mainMenuController;
-        // private FightController _gameController;
+        private FightController _fightController;
 
         private readonly CommandManager _commandManager;
         private GameState _oldState = GameState.None;
 
-        public MainController(Transform placeForUi, ProfilePlayer profilePlayer )
+        public MainController(Controllers controllers, Transform placeForUi, ProfilePlayer profilePlayer)
         {
+            _controllers = controllers;
             _profilePlayer = profilePlayer;
             _placeForUi = placeForUi;
             OnChangeGameState(_profilePlayer.CurrentState.Value);
@@ -38,24 +40,24 @@ namespace Code
                 case GameState.ListOfCharacter:
                     _characterListController = new CharacterListController(_placeForUi, _profilePlayer);
                     _mainMenuController?.Dispose();
-                    // _gameController?.Dispose();
+                    _fightController?.Dispose();
                     
                     break;
                 case GameState.Menu:
                     _mainMenuController = new MainMenuController(_placeForUi, _profilePlayer);
-                    // _gameController?.Dispose();
+                    _fightController?.Dispose();
                     _characterListController?.Dispose();
                     break;
 
                 case GameState.Fight:
-                    // _gameController = new FightController(_placeForUi, _profilePlayer);
+                    _fightController = new FightController(_controllers, _placeForUi, _profilePlayer);
                     _mainMenuController?.Dispose();
                     _characterListController?.Dispose();
                     break;
 
                 default:
                     _mainMenuController?.Dispose();
-                    // _gameController?.Dispose();
+                    _fightController?.Dispose();
                     _characterListController?.Dispose();
                     break;
             }
@@ -67,7 +69,7 @@ namespace Code
         {
             _commandManager?.Dispose();
             _mainMenuController?.Dispose();
-            // _gameController?.Dispose();
+            _fightController?.Dispose();
             base.OnDispose();
         }
     }

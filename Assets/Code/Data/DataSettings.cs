@@ -6,6 +6,7 @@ namespace Code.Data
 {
     public struct DataSettings
     {
+        public DungeonGeneratorData DungeonGeneratorData { get; set; }
         public UiViewsData UiViews { get; set; }
         public CameraSettings CameraSettings { get; set; }
         public CharacterData CharacterData { get; set; }

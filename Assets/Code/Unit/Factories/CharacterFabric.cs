@@ -37,6 +37,10 @@ namespace Code.Unit
             settings.CharacterRace = value.CharacterRace;
             settings.Generate();
 
+            //ToDo переделать эквип на новый стиль:
+            // 1) инвентарь со списоком всех предметов
+            // 2) эквипмент это класс в котором есть список одетых предметов(не одетые вещи отправляются назад в инвентарь)
+            // все запросы (GetItemLevel,GetCharacteristics.Agility,...)делаются через linq к списку. Кроме специфичных вроде аниатора.
             character.UnitEquipment.SetEquipment(value.Equipment);
             character.UnitEquipment.RebuildEquipment();
             character.AnimatorParameters.WeaponType = character.UnitEquipment.GetWeaponType();

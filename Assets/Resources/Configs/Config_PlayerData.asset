@@ -13,8 +13,26 @@ MonoBehaviour:
   m_Name: Config_PlayerData
   m_EditorClassIdentifier: 
   ListCharacters:
-  - CharacterClass: 3
+  - CharacterClass: 1
     CharacterGender: 1
+    CharacterRace: 0
+    Equipment:
+      permissionForEquipment:
+        OneHandWeapon: 1
+        TwoOneHandWeapon: 1
+        TwoHandSwordWeapon: 1
+        TwoHandSpearWeapon: 1
+        TwoHandStaffWeapon: 1
+        RangeTwoHandBowWeapon: 0
+        RangeTwoHandCrossbowWeapon: 0
+        Shield: 1
+      Slots:
+      - {fileID: 6217818179488472574, guid: b42a483ee5137f843929c77d6f537502, type: 3}
+      - {fileID: 6217818179488472574, guid: b42a483ee5137f843929c77d6f537502, type: 3}
+      - {fileID: 6217818179488472574, guid: b42a483ee5137f843929c77d6f537502, type: 3}
+    ExperiencePoints: 1
+  - CharacterClass: 3
+    CharacterGender: 0
     CharacterRace: 0
     Equipment:
       permissionForEquipment:

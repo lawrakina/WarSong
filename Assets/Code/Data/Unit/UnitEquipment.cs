@@ -13,6 +13,7 @@ namespace Code.Data.Unit
     {
         private readonly EquipmentPoints _equipmentPoints;
         private CharacterEquipment _characterEquipment;
+        private List<BaseEquipItem> _listEquipmentItems = new List<BaseEquipItem>();
         public BaseWeapon MainWeapon = null;
         public BaseWeapon SecondWeapon = null;
         public BaseShield Shield = null;
@@ -38,7 +39,7 @@ namespace Code.Data.Unit
                 if (Shield)
                     result += Shield.ItemLevel;
                 //ToDo need add all slots
-                
+
                 return result;
             }
         }
@@ -95,6 +96,8 @@ namespace Code.Data.Unit
                 .ToList();
             children.ForEach(Object.Destroy);
             children = null;
+
+            _listEquipmentItems = new List<BaseEquipItem>();
         }
 
         private void EquipItems(IEnumerable<GameObject> slots)

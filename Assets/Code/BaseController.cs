@@ -7,7 +7,7 @@ using Object = UnityEngine.Object;
 
 namespace Code
 {
-    public abstract class BaseController : IDisposable
+    public abstract class BaseController :IController, IDisposable
     {
         #region Fields
 
@@ -164,6 +164,9 @@ namespace Code
                 }
             }
         }
+
+        public bool IsOn => _isEnabled;
+        
 
         #endregion
     }
