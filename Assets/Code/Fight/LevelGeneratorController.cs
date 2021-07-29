@@ -1,4 +1,4 @@
-﻿using Code.Data;
+﻿using Code.Data.Dungeon;
 using DungeonArchitect;
 using DungeonArchitect.Builders.GridFlow;
 using UnityEngine;
@@ -44,7 +44,6 @@ namespace Code.Fight
 
         public void GenerateDemoLevel()
         {
-            DestroyDungeon();
             _config.Seed = (uint) Random.Range(0, int.MaxValue);
         }
         

@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace Code.Data
 {
-    [CreateAssetMenu(fileName = "Config_UiViewsData", menuName = "Data/Config UiViews Data")]
+    [CreateAssetMenu(fileName = nameof(UiViewsData), menuName = "Configs/" + nameof(UiViewsData))]
     public class UiViewsData : ScriptableObject
     {
         [Header("List character")]

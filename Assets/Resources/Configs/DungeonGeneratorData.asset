@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f59c0cbaa6754e7fbb8839c314af1e90, type: 3}
-  m_Name: CameraSettingsInBattle
+  m_Script: {fileID: 11500000, guid: e5b6c427fc394f998c1b0dde5bd1120b, type: 3}
+  m_Name: DungeonGeneratorData
   m_EditorClassIdentifier: 
-  _textDamageManager: {fileID: 2572528044748795553, guid: 0a4f8a0352edcb641ba0abc11832f252,
-    type: 3}
+  StorageGenerator: {fileID: 0}
+  StorageNavMash: {fileID: 0}
+  BdLevels:
+  - _name: Demo
+    _type: 0

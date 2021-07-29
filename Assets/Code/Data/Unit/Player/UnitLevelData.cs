@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Code.Data.Unit.Player
 {
-    [CreateAssetMenu(fileName = "Config_UnitLevelData", menuName = "Data/Config Units level Data")]
+    [CreateAssetMenu(fileName = nameof(UnitLevelData), menuName = "Configs/" + nameof(UnitLevelData))]
     public sealed class UnitLevelData : ScriptableObject
     {
         // https://external-preview.redd.it/o2qSIhPtNsS5sbenkl6SRUj5djEJm8kFm0GIsVvqu2U.jpg?auto=webp&s=f46557d59ed004ddef28fbfcd3231c31e7aa62c0

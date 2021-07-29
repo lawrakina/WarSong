@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Code.Data.Unit.Player
 {
-    [CreateAssetMenu(fileName = "Config_PlayerData", menuName = "Data/Config Player Data")]
+    [CreateAssetMenu(fileName = nameof(PlayerData), menuName = "Configs/" + nameof(PlayerData))]
     public sealed class PlayerData : ScriptableObject
     {
         [SerializeField]

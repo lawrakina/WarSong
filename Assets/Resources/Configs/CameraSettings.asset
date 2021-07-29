@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 828248feb3164d8cb8579765dd6815ea, type: 3}
-  m_Name: Config_CameraSettings
+  m_Name: CameraSettings
   m_EditorClassIdentifier: 
   _textDamageManager: {fileID: 0}
   CameraPrefab: {fileID: 8761174804215584567, guid: af83d4fe7ccd5574a8c1068e2c152391,

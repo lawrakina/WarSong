@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3666e134113a40aeb11c29d053f150d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 82810ef862b846ceb1564b3e40ec1101, type: 3}
   m_Name: CharacterData
   m_EditorClassIdentifier: 
   StoragePlayerPrefab: {fileID: 1588895830433058, guid: 5f160eebd5f55fb4d8187a5e697e1088,
@@ -30,12 +30,19 @@ MonoBehaviour:
     LocalPosition: {x: 0, y: 4.5, z: 0}
     LocalRotation: {x: -90, y: 0, z: -90}
     LocalScale: {x: 100, y: 100, z: 100}
+  material: {fileID: 2100000, guid: 9ab1f78527b208d418a9b7bc0669f4ea, type: 2}
   humanSkin:
-  - {r: 1, g: 0.8000001, b: 0.682353, a: 1}
+  - {r: 1, g: 0.8, b: 0.68235296, a: 1}
+  - {r: 0.62352943, g: 0.43137255, b: 0.32156864, a: 1}
+  - {r: 0.9254902, g: 0.9098039, b: 0.9019608, a: 1}
   elfSkin:
   - {r: 0.5882353, g: 0.6274, b: 0.73333, a: 1}
+  - {r: 0.8392157, g: 0.8392157, b: 0.8392157, a: 1}
+  - {r: 0.39607844, g: 0.7294118, b: 0.78431374, a: 1}
   orcSkin:
   - {r: 0.23671, g: 0.3294118, b: 0.1843, a: 1}
+  - {r: 0.24705882, g: 0.35686275, b: 0.09803922, a: 1}
+  - {r: 0.14509805, g: 0.23529412, b: 0.09803922, a: 1}
   allHairAndSubble:
   - {r: 0.3098039, g: 0.254902, b: 0.1764706, a: 1}
   - {r: 0.2196079, g: 0.2196079, b: 0.2196079, a: 1}

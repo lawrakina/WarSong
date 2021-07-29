@@ -1,4 +1,5 @@
 ﻿using Code.Data;
+using Code.Data.Dungeon;
 using Code.Data.Unit;
 using Code.Data.Unit.Player;
 using Code.Extension;
@@ -37,35 +38,27 @@ namespace Code
         private MvcModels LoadAllModels()
         {
             var result = new MvcModels();
-            result.DungeonGeneratorModel = Resources.Load<DungeonGeneratorModel>("Models/DungeonGeneratorModel");
-            Dbg.Log($"{StringManager.RESULT_OF_LOADING_DATA_MODEL} - {nameof(DungeonGeneratorModel)}:{result.DungeonGeneratorModel}");
+            result.DungeonGeneratorModel = ResourceLoader.LoadModel<DungeonGeneratorModel>();
             return result;
         }
 
         private DataSettings LoadAllResources()
         {
             var settings = new DataSettings();
-            settings.CharacterData = Resources.Load<CharacterData>("Configs/Config_CharacterData");
-            Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(CharacterData)}:{settings.CharacterData}");
-            settings.UnitLevelData = Resources.Load<UnitLevelData>("Configs/Config_UnitLevelData");
-            Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(UnitLevelData)}:{settings.UnitLevelData}");
-            settings.PlayerClassesData = Resources.Load<PlayerClassesData>("Configs/Config_PlayerClassesData");
-            Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(PlayerClassesData)}:{settings.PlayerClassesData}");
-            settings.PlayerData = Resources.Load<PlayerData>("Configs/Config_PlayerData");
-            Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(PlayerData)}:{settings.PlayerData}");
-            settings.CameraSettings = Resources.Load<CameraSettings>("Configs/Config_CameraSettings");
-            Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(CameraSettings)}:{settings.CameraSettings}");
-            settings.UiViews = Resources.Load<UiViewsData>("Configs/Config_UiViewsData");
-            Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(UiViewsData)}:{settings.UiViews}");
-            // settings.EnemiesData = Resources.Load<EnemiesData>("Configs/EnemiesData_Simple");
+            settings.CharacterData = ResourceLoader.LoadConfig<CharacterData>();
+            settings.UnitLevelData = ResourceLoader.LoadConfig<UnitLevelData>();
+            settings.PlayerClassesData = ResourceLoader.LoadConfig<PlayerClassesData>();
+            settings.PlayerData = ResourceLoader.LoadConfig<PlayerData>();
+            settings.CameraSettings = ResourceLoader.LoadConfig<CameraSettings>();
+            settings.UiViews = ResourceLoader.LoadConfig<UiViewsData>();
+            // settings.EnemiesData = ResourceLoader.LoadConfig<EnemiesData>("Configs/EnemiesData_Simple");
             // Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(EnemiesData)}:{_enemiesData}");
-            settings.DungeonGeneratorData = Resources.Load<DungeonGeneratorData>("Configs/Config_DungeonData");
-            Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(DungeonGeneratorData)}:{settings.DungeonGeneratorData}");
-            // settings.EcsBattleData = Resources.Load<EcsBattleData>("Configs/EcsBattleData");
+            settings.DungeonGeneratorData = ResourceLoader.LoadConfig<DungeonGeneratorData>();
+            // settings.EcsBattleData = ResourceLoader.LoadConfig<EcsBattleData>("Configs/EcsBattleData");
             // Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(EcsBattleData)}:{_ecsBattleData}");
-            // settings.BattleInputData = Resources.Load<BattleInputData>("Configs/BattleInputData");
+            // settings.BattleInputData = ResourceLoader.LoadConfig<BattleInputData>("Configs/BattleInputData");
             // Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(BattleInputData)}:{_battleInputData}");
-            // settings.BattleSettingsData = Resources.Load<BattleSettingsData>("Configs/BattleSettingsData");
+            // settings.BattleSettingsData = ResourceLoader.LoadConfig<BattleSettingsData>("Configs/BattleSettingsData");
             // Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(BattleSettingsData)}:{_battleSettingsData}");
 
             LayerManager.EnemyLayer = LayerMask.NameToLayer(StringManager.ENEMY_LAYER);
@@ -76,7 +69,7 @@ namespace Code
 
             return settings;
         }
-        
+
         private void Update()
         {
             var deltaTime = Time.deltaTime;

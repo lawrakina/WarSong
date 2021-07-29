@@ -7,7 +7,7 @@ using Object = UnityEngine.Object;
 namespace Code.Data
 {
     // [Serializable]
-    [CreateAssetMenu(fileName = "Config_CameraSettings", menuName = "Data/Config Camera settings")]
+    [CreateAssetMenu(fileName = nameof(CameraSettings), menuName = "Configs/" + nameof(CameraSettings))]
     public class CameraSettings : ScriptableObject
     {
         // [SerializeField]

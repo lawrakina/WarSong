@@ -3,7 +3,7 @@
 
 namespace Code.Data.Unit.Player
 {
-    [CreateAssetMenu(fileName = "Config_PlayerClassesData", menuName = "Data/Config Player Classes Data")]
+    [CreateAssetMenu(fileName = nameof(PlayerClassesData), menuName = "Configs/" + nameof(PlayerClassesData))]
     public sealed class PlayerClassesData : ScriptableObject
     {
         [Header("Absolute value")]

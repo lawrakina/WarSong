@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Code.Data.Unit
 {
-    [CreateAssetMenu(fileName = "Config_CharacterData", menuName = "Data/Config Character Data")]
+    [CreateAssetMenu(fileName = nameof(CharacterData), menuName = "Configs/" + nameof(CharacterData))]
     public sealed class CharacterData : ScriptableObject
     {
         [SerializeField]
