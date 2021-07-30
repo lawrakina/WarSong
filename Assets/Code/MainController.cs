@@ -1,5 +1,4 @@
-﻿using Code.Data;
-using Code.Extension;
+﻿using Code.Extension;
 using Code.Fight;
 using Code.Profile;
 using Code.UI.CharacterList;

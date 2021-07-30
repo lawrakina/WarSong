@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b6c427fc394f998c1b0dde5bd1120b, type: 3}
   m_Name: DungeonGeneratorData
   m_EditorClassIdentifier: 
-  StorageGenerator: {fileID: 0}
+  StorageGenerator: {fileID: 4845604754175925911, guid: 09c30f153dc967242927423b5ca7c616,
+    type: 3}
   StorageNavMash: {fileID: 0}
   BdLevels:
   - _name: Demo

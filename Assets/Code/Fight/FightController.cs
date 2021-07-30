@@ -29,6 +29,7 @@ namespace Code.Fight
 
             _generator = new LevelGeneratorController(_profilePlayer.Settings.DungeonGeneratorData);
             _controllers.Add(_generator);
+            AddController(_generator);
         }
 
         protected override void OnDispose()

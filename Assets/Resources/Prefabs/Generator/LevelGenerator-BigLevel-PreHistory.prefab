@@ -1,0 +1,1375 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4845604754175925911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6187411431023131063}
+  - component: {fileID: 3605582882110101367}
+  - component: {fileID: 1572470780810003540}
+  - component: {fileID: 8899108235817273021}
+  - component: {fileID: 8951357913661065583}
+  - component: {fileID: 1802372968140860569}
+  - component: {fileID: 8548084449347282702}
+  - component: {fileID: 6550250948640582889}
+  - component: {fileID: 440907756720420446}
+  - component: {fileID: 3015220414129521483}
+  m_Layer: 0
+  m_Name: LevelGenerator-BigLevel-PreHistory
+  m_TagString: Untagged
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &6187411431023131063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845604754175925911}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.12, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3605582882110101367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845604754175925911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e65b74248fe594982b0d9bfde7d96c6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dungeonThemes:
+  - {fileID: 11400000, guid: bf4e4d4b008cce14aaa01026d526e779, type: 2}
+  debugDraw: 1
+--- !u!114 &1572470780810003540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845604754175925911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb6c97d89d49bb4bb439ecf27df8fcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Seed: 571229873
+  Mode2D: 0
+  flowAsset: {fileID: 11400000, guid: d7ea25fa097cc73499a950d181f41c21, type: 2}
+  gridSize: {x: 4, y: 5, z: 4}
+--- !u!114 &8899108235817273021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845604754175925911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aa6c53aeca2ab446b62af5bc1d59c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asyncBuild: 0
+  maxBuildTimePerFrame: 32
+  asyncBuildStartPosition: {fileID: 0}
+--- !u!114 &8951357913661065583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845604754175925911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bcaac49d17086f4db6c81ef45e6ea4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ToolData: {fileID: 0}
+  abstractGraph:
+    Nodes:
+    - Position: {x: 0, y: 480}
+      state:
+        Active: 0
+        Color: {r: 0, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 0
+          y: 0
+        Items: []
+        RoomType: 1
+    - Position: {x: 120, y: 480}
+      state:
+        Active: 0
+        Color: {r: 0, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 1
+          y: 0
+        Items: []
+        RoomType: 1
+    - Position: {x: 240, y: 480}
+      state:
+        Active: 1
+        Color: {r: 0, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 2
+          y: 0
+        Items:
+        - type: 0
+          markerName: KeyTreasure
+          editorSelected: 0
+          customInfo:
+            itemType: custom
+            text: 
+            textColor: {r: 1, g: 1, b: 1, a: 1}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 360, y: 480}
+      state:
+        Active: 1
+        Color: {r: 0, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 3
+          y: 0
+        Items:
+        - type: 6
+          markerName: HealthPickup
+          editorSelected: 0
+          customInfo:
+            itemType: health
+            text: H
+            textColor: {r: 1, g: 0, b: 0, a: 1}
+            backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 6
+          markerName: MyItem
+          editorSelected: 0
+          customInfo:
+            itemType: weapon_rack
+            text: W
+            textColor: {r: 0.0993236, g: 0.19598128, b: 0.2264151, a: 1}
+            backgroundColor: {r: 0.754717, g: 0.5991564, b: 0.38803846, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 480, y: 480}
+      state:
+        Active: 1
+        Color: {r: 1, g: 0.5, b: 0, a: 1}
+        GridCoord:
+          x: 4
+          y: 0
+        Items:
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 6
+          markerName: HealthPickup
+          editorSelected: 0
+          customInfo:
+            itemType: health
+            text: H
+            textColor: {r: 1, g: 0, b: 0, a: 1}
+            backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 600, y: 480}
+      state:
+        Active: 1
+        Color: {r: 1, g: 0.9899542, b: 0, a: 1}
+        GridCoord:
+          x: 5
+          y: 0
+        Items:
+        - type: 3
+          markerName: Treasure
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 0, y: 360}
+      state:
+        Active: 0
+        Color: {r: 0, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 0
+          y: 1
+        Items: []
+        RoomType: 1
+    - Position: {x: 120, y: 360}
+      state:
+        Active: 1
+        Color: {r: 1, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 1
+          y: 1
+        Items:
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 240, y: 360}
+      state:
+        Active: 1
+        Color: {r: 0, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 2
+          y: 1
+        Items:
+        - type: 6
+          markerName: MyItem
+          editorSelected: 0
+          customInfo:
+            itemType: weapon_rack
+            text: W
+            textColor: {r: 0.0993236, g: 0.19598128, b: 0.2264151, a: 1}
+            backgroundColor: {r: 0.754717, g: 0.5991564, b: 0.38803846, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 360, y: 360}
+      state:
+        Active: 1
+        Color: {r: 0, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 3
+          y: 1
+        Items:
+        - type: 4
+          markerName: SpawnPoint
+          editorSelected: 0
+          customInfo:
+            itemType: custom
+            text: 
+            textColor: {r: 1, g: 1, b: 1, a: 1}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 480, y: 360}
+      state:
+        Active: 1
+        Color: {r: 1, g: 0.5, b: 0, a: 1}
+        GridCoord:
+          x: 4
+          y: 1
+        Items:
+        - type: 0
+          markerName: KeyAltPath
+          editorSelected: 0
+          customInfo:
+            itemType: custom
+            text: 
+            textColor: {r: 1, g: 1, b: 1, a: 1}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 600, y: 360}
+      state:
+        Active: 1
+        Color: {r: 1, g: 0.5, b: 0, a: 1}
+        GridCoord:
+          x: 5
+          y: 1
+        Items:
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 0, y: 240}
+      state:
+        Active: 0
+        Color: {r: 0, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 0
+          y: 2
+        Items: []
+        RoomType: 1
+    - Position: {x: 120, y: 240}
+      state:
+        Active: 1
+        Color: {r: 1, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 1
+          y: 2
+        Items:
+        - type: 3
+          markerName: Treasure
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 240, y: 240}
+      state:
+        Active: 1
+        Color: {r: 0, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 2
+          y: 2
+        Items:
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 6
+          markerName: MyItem
+          editorSelected: 0
+          customInfo:
+            itemType: weapon_rack
+            text: W
+            textColor: {r: 0.0993236, g: 0.19598128, b: 0.2264151, a: 1}
+            backgroundColor: {r: 0.754717, g: 0.5991564, b: 0.38803846, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 360, y: 240}
+      state:
+        Active: 1
+        Color: {r: 1, g: 0.5330188, b: 0.88468874, a: 1}
+        GridCoord:
+          x: 3
+          y: 2
+        Items:
+        - type: 6
+          markerName: Shop
+          editorSelected: 0
+          customInfo:
+            itemType: shop
+            text: Sh
+            textColor: {r: 1, g: 1, b: 1, a: 1}
+            backgroundColor: {r: 0.4528302, g: 0, b: 0.061630752, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 480, y: 240}
+      state:
+        Active: 1
+        Color: {r: 0.13725491, g: 0.94509804, b: 0.74509805, a: 1}
+        GridCoord:
+          x: 4
+          y: 2
+        Items:
+        - type: 0
+          markerName: KeyMain
+          editorSelected: 0
+          customInfo:
+            itemType: custom
+            text: 
+            textColor: {r: 1, g: 1, b: 1, a: 1}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 600, y: 240}
+      state:
+        Active: 1
+        Color: {r: 1, g: 0.5, b: 0, a: 1}
+        GridCoord:
+          x: 5
+          y: 2
+        Items:
+        - type: 0
+          markerName: KeyAltTreasure
+          editorSelected: 0
+          customInfo:
+            itemType: custom
+            text: 
+            textColor: {r: 1, g: 1, b: 1, a: 1}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 6
+          markerName: HealthPickup
+          editorSelected: 0
+          customInfo:
+            itemType: health
+            text: H
+            textColor: {r: 1, g: 0, b: 0, a: 1}
+            backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 6
+          markerName: MyItem
+          editorSelected: 0
+          customInfo:
+            itemType: weapon_rack
+            text: W
+            textColor: {r: 0.0993236, g: 0.19598128, b: 0.2264151, a: 1}
+            backgroundColor: {r: 0.754717, g: 0.5991564, b: 0.38803846, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 0, y: 120}
+      state:
+        Active: 0
+        Color: {r: 0, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 0
+          y: 3
+        Items: []
+        RoomType: 1
+    - Position: {x: 120, y: 120}
+      state:
+        Active: 1
+        Color: {r: 0.3820755, g: 0.5912391, b: 1, a: 1}
+        GridCoord:
+          x: 1
+          y: 3
+        Items: []
+        RoomType: 1
+    - Position: {x: 240, y: 120}
+      state:
+        Active: 1
+        Color: {r: 0, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 2
+          y: 3
+        Items:
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 360, y: 120}
+      state:
+        Active: 1
+        Color: {r: 0, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 3
+          y: 3
+        Items:
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 480, y: 120}
+      state:
+        Active: 1
+        Color: {r: 0, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 4
+          y: 3
+        Items:
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 600, y: 120}
+      state:
+        Active: 1
+        Color: {r: 1, g: 0.5, b: 0, a: 1}
+        GridCoord:
+          x: 5
+          y: 3
+        Items: []
+        RoomType: 1
+    - Position: {x: 0, y: 0}
+      state:
+        Active: 0
+        Color: {r: 0, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 0
+          y: 4
+        Items: []
+        RoomType: 1
+    - Position: {x: 120, y: 0}
+      state:
+        Active: 1
+        Color: {r: 0.3820755, g: 0.5912391, b: 1, a: 1}
+        GridCoord:
+          x: 1
+          y: 4
+        Items:
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 240, y: 0}
+      state:
+        Active: 1
+        Color: {r: 0.3820755, g: 0.5912391, b: 1, a: 1}
+        GridCoord:
+          x: 2
+          y: 4
+        Items:
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 6
+          markerName: HealthPickup
+          editorSelected: 0
+          customInfo:
+            itemType: health
+            text: H
+            textColor: {r: 1, g: 0, b: 0, a: 1}
+            backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 360, y: 0}
+      state:
+        Active: 0
+        Color: {r: 0, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 3
+          y: 4
+        Items: []
+        RoomType: 1
+    - Position: {x: 480, y: 0}
+      state:
+        Active: 1
+        Color: {r: 0, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 4
+          y: 4
+        Items:
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        - type: 2
+          markerName: Grunt
+          editorSelected: 0
+          customInfo:
+            itemType: 
+            text: 
+            textColor: {r: 0, g: 0, b: 0, a: 0}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    - Position: {x: 600, y: 0}
+      state:
+        Active: 1
+        Color: {r: 0, g: 1, b: 0, a: 1}
+        GridCoord:
+          x: 5
+          y: 4
+        Items:
+        - type: 5
+          markerName: LevelGoal
+          editorSelected: 0
+          customInfo:
+            itemType: custom
+            text: 
+            textColor: {r: 1, g: 1, b: 1, a: 1}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+        RoomType: 1
+    Links:
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 1
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items:
+        - type: 1
+          markerName: LockAltPath
+          editorSelected: 0
+          customInfo:
+            itemType: custom
+            text: 
+            textColor: {r: 1, g: 1, b: 1, a: 1}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items:
+        - type: 1
+          markerName: LockAltTreasure
+          editorSelected: 0
+          customInfo:
+            itemType: custom
+            text: 
+            textColor: {r: 1, g: 1, b: 1, a: 1}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items:
+        - type: 1
+          markerName: LockTreasure
+          editorSelected: 0
+          customInfo:
+            itemType: custom
+            text: 
+            textColor: {r: 1, g: 1, b: 1, a: 1}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+    - state:
+        Directional: 1
+        OneWay: 1
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 1
+        Items: []
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items:
+        - type: 1
+          markerName: LockMain
+          editorSelected: 0
+          customInfo:
+            itemType: custom
+            text: 
+            textColor: {r: 1, g: 1, b: 1, a: 1}
+            backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+          placementSettings:
+            placementMethod: 0
+            avoidPlacingNextToDoors: 1
+            placementScriptClass: 
+            fallbackToRandomPlacement: 1
+    - state:
+        Directional: 1
+        OneWay: 0
+        Items: []
+--- !u!114 &1802372968140860569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845604754175925911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd0ef9172759d43928c6f1131063f690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemParent: {fileID: 0}
+--- !u!114 &8548084449347282702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845604754175925911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5bfe9cc405aea440915ad84edb36ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6550250948640582889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845604754175925911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fcceba8b342e742abf05970124e35a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &440907756720420446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845604754175925911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f97ba792dc3405345935639087029a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3015220414129521483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845604754175925911}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 652da2fd54ec98b488459a7ac73afcdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateFrequency: 0.05
+  enableFogOfWar: 1
+  minimapTexture: {fileID: 8400000, guid: bb9fa62f180a4cf40940a0ec57df87d1, type: 2}
+  compositeShader: {fileID: 4800000, guid: 7e1460c86b4767a4cb656ab35f9078c2, type: 3}
+  tileShader: {fileID: 4800000, guid: 935330e389a658349bd9450e337d1cc5, type: 3}
+  initMode: 2
+  icons:
+    iconOneWayDoor: {fileID: 2800000, guid: ff9e76e1bb9817e4abcf4837dd91a594, type: 3}
+  seeThroughWalls: 1
