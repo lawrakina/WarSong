@@ -32,9 +32,9 @@ namespace EcsBattle.Systems.Attacks
                 var countColliders =
                     Physics.OverlapSphereNonAlloc(transform.position, vision.distanceDetection, colliders,
                         1 << reputation.EnemyLayer);
-                // DebugExtension.DebugWireSphere(transform.position, Color.green, distanceDetection, 1.0f);
+                 DebugExtension.DebugWireSphere(transform.position, Color.green, vision.distanceDetection, 1.0f);
                 var listEnemies = new List<GameObject>();
-                // Dbg.Log($"countColliders:{countColliders}");
+                 Dbg.Log($"countColliders:{countColliders}");
 
                 //проверка прямой видимости
                 for (var j = 0; j < countColliders; j++)
@@ -48,7 +48,7 @@ namespace EcsBattle.Systems.Attacks
                 //находим ближайшего врага
                 if (listEnemies.Count >= 1)
                 {
-                    // Dbg.Log($"listEnemies.Count:{listEnemies.Count}");
+                     Dbg.Log($"listEnemies.Count:{listEnemies.Count}");
                     var targetGo = listEnemies[0];
                     var distance = Mathf.Infinity;
                     foreach (var target in listEnemies)

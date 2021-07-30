@@ -1,8 +1,10 @@
 ﻿using System;
 using Code.Data;
 using Code.Data.Unit;
+using Unit;
 using UnityEngine;
 using UnitCharacteristics = Code.Data.Unit.UnitCharacteristics;
+using UnitHealth = Code.Data.Unit.UnitHealth;
 using UnitLevel = Code.Data.Unit.UnitLevel;
 
 
@@ -19,7 +21,7 @@ namespace Code.Unit
         AnimatorParameters AnimatorParameters { get; }
         UnitHealth UnitHealth { get; set; }
         // UnitAttributes Attributes { get; set; }
-        // UnitVision UnitVision { get; set; }
+         // UnitVision UnitVision { get; set; }
         // UnitReputation UnitReputation { get; set; }
         UnitResource UnitResource { get; set; }
         UnitLevel UnitLevel { get; set; }
