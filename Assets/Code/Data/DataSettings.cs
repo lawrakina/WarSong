@@ -1,5 +1,6 @@
 ﻿using Code.Data.Dungeon;
 using Code.Data.Unit;
+using Code.Data.Unit.Enemy;
 using Code.Data.Unit.Player;
 
 
@@ -14,5 +15,6 @@ namespace Code.Data
         public UnitLevelData UnitLevelData { get; set; }
         public PlayerClassesData PlayerClassesData { get; set; }
         public PlayerData PlayerData { get; set; }
+        public EnemiesData EnemiesData { get; set; }
     }
 }

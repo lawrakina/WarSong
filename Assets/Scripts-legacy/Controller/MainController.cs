@@ -117,16 +117,16 @@ namespace Controller
             var battleInputControlsInitialization =
                 new BattleInputControlsInitialization(_battleInputData, _uiWindows.FightUiWindow.transform);
             var enemyClassesInitialization = new EnemyClassesInitialization( /*_enemyClassesData,*/);
-            var enemyFactory = new EnemyFactory(_enemyClassesData,enemyClassesInitialization);
+            //var enemyFactory = new EnemyFactory(_enemyClassesData,enemyClassesInitialization);
             var healthBarFactory = new HealthBarFactory();
-            var enemiesInitialization = new EnemiesInitialization(_enemiesData, enemyFactory, healthBarFactory);
+            //var enemiesInitialization = new EnemiesInitialization(_enemiesData, enemyFactory, healthBarFactory);
             var interactiveObjectsInitialization = new InteractiveObjectsInitialization(_battleSettingsData);
 
-            var battleInitialization = new EcsBattleInitialization(
-                _ecsBattleData, battleInputControlsInitialization.GetData(), _battleSettingsData, generatorDungeon,
-                interactiveObjectsInitialization, _player, playerModel, battleModel, targetModel, fightCamera,
-                enemiesInitialization);
-            var battleController = new BattleController(battleInitialization.BattleEngine());
+            // var battleInitialization = new EcsBattleInitialization(
+            //     _ecsBattleData, battleInputControlsInitialization.GetData(), _battleSettingsData, generatorDungeon,
+            //     interactiveObjectsInitialization, _player, playerModel, battleModel, targetModel, fightCamera,
+            //     enemiesInitialization);
+            //var battleController = new BattleController(battleInitialization.BattleEngine());
 
             _commandManager.ListOfCharacters = listOfCharactersController;
             _commandManager.ChangePlayer.Subscribe(value => 
@@ -135,7 +135,7 @@ namespace Controller
                 // { abilitiesController.ChangeClass(value); }).AddTo(_subscriptions);
             _commandManager.ChangePlayer.Subscribe(value => 
                 { }).AddTo(_subscriptions);
-            _commandManager.BattleInitialisation = battleInitialization;
+           // _commandManager.BattleInitialisation = battleInitialization;
             _commandManager.PlayerModel = playerModel;
             // _commandManager.AbilitiesController = abilitiesController;
 
@@ -145,7 +145,7 @@ namespace Controller
             _controllers.Add(generatorDungeon);
             _controllers.Add(listOfPositionCharInMenuController);
             _controllers.Add(listOfCharactersController);
-            _controllers.Add(battleController);
+            //_controllers.Add(battleController);
             _controllers.Init();
         }
 
