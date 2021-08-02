@@ -5,6 +5,7 @@ using Code.Data.Unit.Player;
 using Code.Extension;
 using Code.GameCamera;
 using Code.Profile;
+using Code.Profile.Models;
 using Profile.Analytic;
 using UnityEngine;
 
@@ -33,12 +34,15 @@ namespace Code
             profilePlayer.CurrentState.Value = _gameStateAfterStart;
             profilePlayer.WindowAfterStart = _showWindowAfterStart;
             _mainController = new MainController(_controllers, _placeForUi, profilePlayer);
+            _controllers.Init();
         }
 
         private MvcModels LoadAllModels()
         {
             var result = new MvcModels();
             result.DungeonGeneratorModel = ResourceLoader.LoadModel<DungeonGeneratorModel>();
+            result.FightModel = ResourceLoader.LoadModel<FightDungeonModel>();
+            result.EnemiesLevelModel = ResourceLoader.LoadModel<EnemiesLevelModel>();
             return result;
         }
 

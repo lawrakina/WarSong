@@ -2,6 +2,9 @@
 {
     public static class StringManager
     {
+        public const string INFO_BUILDING_STATE_BUILDING_COMPLETE_START_SPAWN_OBJECTS = "The level is built, let's spawn the objects";
+        public const string INFO_BULDING_STATE_BUILDING_PROCESS = "Building a level in the process";
+        public const string INFO_BULDING_STATE_START_PROCESS = "Start building level...";
         public const string RESULT_OF_LOADING_DATA_MODEL = "Result of loading the data model";
         public const string RESULF_OF_LOADING_RESOURCES = "Result of loading resources";
         public const string UNIT_STATUS_DEAD = "Unit is totally dead";
