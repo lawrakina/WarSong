@@ -1,11 +1,10 @@
 ﻿using Code.CharacterCustomizing;
-using Code.Data;
 using Code.Data.Unit;
 using Code.Extension;
 using UnityEngine;
 
 
-namespace Code.Unit
+namespace Code.Unit.Factories
 {
     public sealed class PlayerFactory : IPlayerFactory
     {
@@ -25,6 +24,7 @@ namespace Code.Unit
             rootPlayer.name = $"PlayerCharacter";
                 
             var player = rootPlayer.AddCode<PlayerView>();
+            player.Transform = rootPlayer.transform;
             player.TransformModel = playerPrefab.transform;//prefab transform
             player.Rigidbody = rootPlayer.AddRigidBody(80, CollisionDetectionMode.ContinuousDynamic,
                 false, true,

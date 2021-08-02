@@ -4,8 +4,10 @@ using Code.Data.Unit;
 using Code.Data.Unit.Player;
 using Code.Extension;
 using Code.GameCamera;
+using Code.Profile.Models;
 using Code.UI.Adventure;
 using Code.Unit;
+using Code.Unit.Factories;
 using Profile.Analytic;
 using UniRx;
 

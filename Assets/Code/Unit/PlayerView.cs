@@ -9,7 +9,7 @@ namespace Code.Unit
 {
     public sealed class PlayerView : MonoBehaviour, IPlayerView
     {
-        public Transform Transform { get; }
+        public Transform Transform { get; set; }
         public Transform TransformModel { get; set; }
         public Collider Collider { get; set; }
         public Rigidbody Rigidbody { get; set; }

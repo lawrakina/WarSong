@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using Code.Data.Dungeon;
+﻿using Code.Data.Dungeon;
 using Code.Data.Marker;
 using Code.Extension;
+using Code.Profile;
+using Code.Profile.Models;
+using Code.TimeRemaining;
 using DungeonArchitect;
 using DungeonArchitect.Builders.GridFlow;
 using UniRx;
@@ -14,9 +14,11 @@ using Random = UnityEngine.Random;
 
 namespace Code.Fight
 {
-    public class LevelGeneratorController : BaseController, IExecute
+    public class LevelGeneratorController : BaseController
     {
+        private readonly Controllers _controllers;
         private readonly DungeonGeneratorData _settings;
+        private readonly FightDungeonModel _fightModel;
         private GameObject _dungeon;
         private GridFlowDungeonBuilder _builder;
         private readonly GridFlowDungeonConfig _config;
@@ -24,78 +26,32 @@ namespace Code.Fight
         private readonly PooledDungeonSceneProvider _pooledSceneProvider;
 
         private static bool _isOn = false;
+        private TimeRemaining.TimeRemaining _timerCheckBuildState;
 
-        // private bool isEnableDungeon;
-        // private bool _buildingProcess;
-        // private bool _buildingComplete;
-        public ReactiveProperty<FightState> FightState = new ReactiveProperty<FightState>();
-        private Timer _timer;
 
         public static bool IsOn
         {
             get => _isOn;
             set => _isOn = value;
         }
+        
 
-        public void Execute(float deltaTime)
-        {
-            Dbg.Log($"GENERATOR EXECUTE");
-            switch (FightState.Value)
-            {
-                case Fight.FightState.Default:
-                    break;
-                case Fight.FightState.BuildingStart:
-                    Dbg.Log($"Build Start:");
-                    _timer = new Timer(new TimerCallback(CheckBuildDungeon), null, 0, 1000);
-                    break;
-                case Fight.FightState.BuildingProcess:
-                    Dbg.Log($"Check build state: {FightState.Value}");
-                    break;
-                case Fight.FightState.BuildingComplete:
-                    Dbg.Log($"Build complete:");
-                    break;
-                case Fight.FightState.Fight:
-                    break;
-                case Fight.FightState.Fail:
-                    break;
-                case Fight.FightState.Win:
-                    break;
-                case Fight.FightState.Pause:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            // if (_buildingProcess)
-            // {
-            //     if (_generator.IsLayoutBuilt)
-            //     {
-            //         _buildingProcess = false;
-            //         _buildingComplete = true;
-            //     }
-            // }
-            // if (_buildingComplete)
-            // {
-            //     _buildingComplete = false;
-            //     isEnableDungeon = true;
-            //     Dbg.Log($"GeneratorLevel.Complete");
-            //     FightState.Value = Fight.FightState.Fight;
-            // }
-        }
-
-        private void CheckBuildDungeon(object state)
+        private void CheckBuildDungeon()
         {
             Dbg.Log($"CheckBuildDungeon");
             if (GetPlayerPosition() == null)
             {
                 Dbg.Log($"CheckStatus Dungeon: {GetPlayerPosition()} ?");
-                FightState.Value = Fight.FightState.BuildingProcess;
+                _fightModel.InfoState.Value = StringManager.INFO_BULDING_STATE_BUILDING_PROCESS;
+                _fightModel.FightState.Value = FightState.BuildingProcess;
             }
             else
             {
                 Dbg.Log($"Start BATTLE: {GetPlayerPosition()} ?");
-                FightState.Value = Fight.FightState.BuildingComplete;
-                _timer.Dispose();
+                _fightModel.FightState.Value = FightState.BuildingComplete;
+                _fightModel.InfoState.Value = StringManager.INFO_BUILDING_STATE_BUILDING_COMPLETE_START_SPAWN_OBJECTS;
+                _fightModel.OnChangePlayerPosition?.Invoke(GetPlayerPosition());
+                _timerCheckBuildState.RemoveTimeRemaining();
             }
         }
 
@@ -108,10 +64,13 @@ namespace Code.Fight
             return null;
         }
 
-        public LevelGeneratorController(DungeonGeneratorData settings)
+        public LevelGeneratorController(Controllers controllers, DungeonGeneratorData settings,
+            FightDungeonModel fightModel)
         {
             _isOn = true;
+            _controllers = controllers;
             _settings = settings;
+            _fightModel = fightModel;
 
             _dungeon = Object.Instantiate(new GameObject(), new RectTransform());
             _dungeon.name = "---Dungeon";
@@ -129,20 +88,22 @@ namespace Code.Fight
 
         public void BuildDungeon()
         {
+            GenerateDemoLevel();
             _generator.Build();
-            // _buildingProcess = true;
-            FightState.Value = Fight.FightState.BuildingProcess;
+            _fightModel.FightState.Value = FightState.BuildingProcess;
+            _fightModel.InfoState.Value = StringManager.INFO_BULDING_STATE_START_PROCESS;
+            _timerCheckBuildState = new TimeRemaining.TimeRemaining(CheckBuildDungeon, 1f, true);
+            _timerCheckBuildState.AddTimeRemaining();
         }
 
-        public void GenerateDemoLevel()
+        private void GenerateDemoLevel()
         {
             _config.Seed = (uint) Random.Range(0, int.MaxValue);
         }
 
-        public void DestroyDungeon()
+        private void DestroyDungeon()
         {
             _generator.DestroyDungeon();
-            // isEnableDungeon = false;
         }
 
         protected override void OnDispose()

@@ -25,6 +25,7 @@ namespace Code.UI.Adventure
 
         private void StartBattle()
         {
+            //ToDo сейчас тут заглушка на генерацию демоуровня, сделать полноценный выбор настроек уровня (выбор из БД варианта и присвоение его в актуальный вариант)
             _profilePlayer.Models.DungeonGeneratorModel.ActiveLevel = 
                 _profilePlayer.Settings.DungeonGeneratorData.BdLevels
                     .FirstOrDefault(x => x.Type == DungeonParamsType.Demo);

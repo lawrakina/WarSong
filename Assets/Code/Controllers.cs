@@ -1,23 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using Code.Extension;
+using Code.TimeRemaining;
+using Code.UI;
 
 
 namespace Code
 {
-    public sealed class Controllers :  IExecute, IFixedExecute, ILateExecute 
+    public sealed class Controllers :  IExecute, IFixedExecute, ILateExecute
         //, IInitialization, ICleanup
     {
         public Controllers()
         {
-            // _initializeControllers = new List<IInitialization>();
+            _initializeControllers = new List<IInitialization>();
             _executeControllers = new List<IExecute>();
+            _executeControllers.Add(new TimeRemainingController());
             _lateControllers = new List<ILateExecute>();
             _fixedControllers = new List<IFixedExecute>();
             // _cleanupControllers = new List<ICleanup>();
         }
         
 
-        // private readonly List<IInitialization> _initializeControllers;
+        private readonly List<IInitialization> _initializeControllers;
         private readonly List<IExecute> _executeControllers;
         private readonly List<IFixedExecute> _fixedControllers;
         private readonly List<ILateExecute> _lateControllers;
@@ -40,7 +44,8 @@ namespace Code
 
         public void Add(IController controller)
         {
-            // if (controller is IInitialization initializeController) _initializeControllers.Add(initializeController);
+            // Dbg.Log($"controllers.add:{controller}");
+            if (controller is IInitialization initializeController) _initializeControllers.Add(initializeController);
 
             if (controller is IExecute executeController) _executeControllers.Add(executeController);
 
@@ -51,11 +56,11 @@ namespace Code
             // if (controller is ICleanup cleanupController) _cleanupControllers.Add(cleanupController);
         }
 
-        // public void Init()
-        // {
-        //     for (var index = 0; index < _initializeControllers.Count; ++index)
-        //         _initializeControllers[index].Init();
-        // }
+        public void Init()
+        {
+            for (var index = 0; index < _initializeControllers.Count; ++index)
+                _initializeControllers[index].Init();
+        }
 
         public void Execute(float deltaTime)
         {

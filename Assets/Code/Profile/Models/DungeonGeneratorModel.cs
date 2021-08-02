@@ -1,9 +1,8 @@
-﻿using Code.Data;
-using Code.Data.Dungeon;
+﻿using Code.Data.Dungeon;
 using UnityEngine;
 
 
-namespace Code.Profile
+namespace Code.Profile.Models
 {
     [CreateAssetMenu(fileName = nameof(DungeonGeneratorModel), menuName = "Models/" + nameof(DungeonGeneratorModel))]
     public class DungeonGeneratorModel : ScriptableObject

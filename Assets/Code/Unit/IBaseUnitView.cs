@@ -12,9 +12,9 @@ namespace Code.Unit
 {
     public interface IBaseUnitView: ICollision
     {
-        Transform Transform { get; }
+        Transform Transform { get; set; }
         Transform TransformModel { get; set; }
-        Collider Collider { get; }
+        Collider Collider { get; set; }
         Rigidbody Rigidbody { get; set; }
         MeshRenderer MeshRenderer { get; }
         Animator Animator { get; set; }
