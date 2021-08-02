@@ -41,8 +41,8 @@ namespace Code
                     _characterListController = new CharacterListController(_placeForUi, _profilePlayer);
                     _mainMenuController?.Dispose();
                     _fightController?.Dispose();
-                    
                     break;
+                
                 case GameState.Menu:
                     _characterListController?.Dispose();
                     _mainMenuController = new MainMenuController(_placeForUi, _profilePlayer);

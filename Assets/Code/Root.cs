@@ -51,7 +51,7 @@ namespace Code
             settings.PlayerData = ResourceLoader.LoadConfig<PlayerData>();
             settings.CameraSettings = ResourceLoader.LoadConfig<CameraSettings>();
             settings.UiViews = ResourceLoader.LoadConfig<UiViewsData>();
-            // settings.EnemiesData = ResourceLoader.LoadConfig<EnemiesData>("Configs/EnemiesData_Simple");
+            //settings.EnemiesData = ResourceLoader.LoadConfig<EnemiesData>("Configs/EnemiesData_Simple");
             // Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(EnemiesData)}:{_enemiesData}");
             settings.DungeonGeneratorData = ResourceLoader.LoadConfig<DungeonGeneratorData>();
             // settings.EcsBattleData = ResourceLoader.LoadConfig<EcsBattleData>("Configs/EcsBattleData");
