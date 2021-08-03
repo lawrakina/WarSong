@@ -29,8 +29,7 @@ namespace Code
             var models = LoadAllModels();
             _controllers = new Controllers();
             var commandManager = new CommandManager();
-            var cameraController = new CameraController(settings.CameraSettings);
-            var profilePlayer = new ProfilePlayer(commandManager, settings, models, new UnityAnalyticTools(), cameraController);
+            var profilePlayer = new ProfilePlayer(commandManager, settings, models, new UnityAnalyticTools());
             profilePlayer.CurrentState.Value = _gameStateAfterStart;
             profilePlayer.WindowAfterStart = _showWindowAfterStart;
             _mainController = new MainController(_controllers, _placeForUi, profilePlayer);
@@ -43,6 +42,7 @@ namespace Code
             result.DungeonGeneratorModel = ResourceLoader.LoadModel<DungeonGeneratorModel>();
             result.FightModel = ResourceLoader.LoadModel<FightDungeonModel>();
             result.EnemiesLevelModel = ResourceLoader.LoadModel<EnemiesLevelModel>();
+            result.InOutControlFightModel = ResourceLoader.LoadModel<InOutControlFightModel>();
             return result;
         }
 
@@ -58,7 +58,7 @@ namespace Code
             // settings.EnemiesData = ResourceLoader.LoadConfig<EnemiesData>("Configs/EnemiesData_Simple");
             // Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(EnemiesData)}:{_enemiesData}");
             settings.DungeonGeneratorData = ResourceLoader.LoadConfig<DungeonGeneratorData>();
-            // settings.EcsBattleData = ResourceLoader.LoadConfig<EcsBattleData>("Configs/EcsBattleData");
+            settings.EcsBattleData = ResourceLoader.LoadConfig<EcsBattleData>();
             // Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(EcsBattleData)}:{_ecsBattleData}");
             // settings.BattleInputData = ResourceLoader.LoadConfig<BattleInputData>("Configs/BattleInputData");
             // Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(BattleInputData)}:{_battleInputData}");

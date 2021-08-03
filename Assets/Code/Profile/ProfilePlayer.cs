@@ -18,7 +18,6 @@ namespace Code.Profile
     {
         private readonly DataSettings _dataSettings;
         private readonly MvcModels _models;
-        private readonly CameraController _cameraController;
         public MvcModels Models => _models;
         public DataSettings Settings => _dataSettings;
         public IAnalyticTools AnalyticTools { get; }
@@ -30,12 +29,10 @@ namespace Code.Profile
         public ReactiveProperty<InfoAboutCharacter> InfoAboutCurrentPlayer { get; }
 
         public ProfilePlayer(CommandManager commandManager, DataSettings dataSettings, MvcModels models,
-            IAnalyticTools analyticTools,
-            CameraController cameraController)
+            IAnalyticTools analyticTools)
         {
             _dataSettings = dataSettings;
             _models = models;
-            _cameraController = cameraController;
             CommandManager = commandManager;
             CurrentState = new ReactiveProperty<GameState>();
             InfoAboutCurrentPlayer = new ReactiveProperty<InfoAboutCharacter>(new InfoAboutCharacter(null));

@@ -3,10 +3,10 @@
 
 namespace Code.Data
 {
-    [CreateAssetMenu(fileName = "Config_EcsBattleData", menuName = "Data/Config EcsBattle Data")]
+    [CreateAssetMenu(fileName = nameof(EcsBattleData), menuName = "Configs/" + nameof(EcsBattleData))]
     public class EcsBattleData : ScriptableObject
     {
         [SerializeField]
-        public EcsBattle.EcsBattle EcsBattle;
+        public Fight.EcsBattle.EcsBattle EcsBattle;
     }
 }

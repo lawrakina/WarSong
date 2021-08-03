@@ -1,5 +1,6 @@
 ﻿using Code.Data;
 using Code.Extension;
+using Code.GameCamera;
 using Code.Profile;
 using UniRx;
 using UnityEngine;
@@ -22,7 +23,8 @@ namespace Code.UI.CharacterList
 
         private DataSettings _settings;
 
-        public CharacterListController(Transform placeForUi, ProfilePlayer profilePlayer)
+        public CharacterListController(Transform placeForUi, ProfilePlayer profilePlayer,
+            CameraController cameraController)
         {
             _placeForUi = placeForUi;
             _profilePlayer = profilePlayer;

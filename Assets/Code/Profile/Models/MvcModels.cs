@@ -5,5 +5,6 @@
         public DungeonGeneratorModel DungeonGeneratorModel;
         public FightDungeonModel FightModel;
         public EnemiesLevelModel EnemiesLevelModel;
+        public InOutControlFightModel InOutControlFightModel;
     }
 }

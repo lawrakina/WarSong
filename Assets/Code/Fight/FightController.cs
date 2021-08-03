@@ -1,10 +1,12 @@
 ﻿using System;
 using Code.Extension;
+using Code.GameCamera;
 using Code.Loading;
 using Code.Profile;
 using Code.Profile.Models;
 using UniRx;
 using UnityEngine;
+using EcsBattle = EcsBattle.EcsBattle;
 
 
 namespace Code.Fight
@@ -25,12 +27,17 @@ namespace Code.Fight
 
         private EnemyFightController _enemyFightController;
 
-        public FightController(Controllers controllers, Transform placeForUi, ProfilePlayer profilePlayer)
+        private CameraController _cameraController;
+        private EcsBattleController _ecsBattleController;
+
+        public FightController(Controllers controllers, Transform placeForUi, ProfilePlayer profilePlayer,
+            CameraController cameraController)
         {
             _controllers = controllers;
             _placeForUi = placeForUi;
             _profilePlayer = profilePlayer;
             _model = _profilePlayer.Models.FightModel;
+            _cameraController = cameraController;
 
             _controllers.Add(this);
 
@@ -55,6 +62,18 @@ namespace Code.Fight
             _controllers.Add(_enemyFightController);
             AddController(_enemyFightController);
             
+            //insert in this InputController
+
+            _ecsBattleController = new EcsBattleController(_profilePlayer.Settings.EcsBattleData);
+            _controllers.Add(_ecsBattleController);
+            AddController(_ecsBattleController);
+            _ecsBattleController.OffExecute();
+
+            _ecsBattleController.Inject(_profilePlayer.CurrentPlayer);
+            _ecsBattleController.Inject(_cameraController.FightCamera);
+            _ecsBattleController.Inject(_profilePlayer.Models.InOutControlFightModel);
+            _ecsBattleController.Inject(_profilePlayer.Models.DungeonGeneratorModel.ActiveLevel);
+
             _model.FightState.Subscribe(OnChangeFightState).AddTo(_subscriptions);
             OnChangeFightState(FightState.BuildingStart);
         }
@@ -76,13 +95,11 @@ namespace Code.Fight
                 case FightState.BuildingComplete:
                     _loadingController.UpdateInfo();
                     _enemyFightController.SpawnEnemies();
+                    // _inputController.ShowFightInterface();
                     _model.FightState.Value = FightState.Fight;
                     break;
                 case FightState.Fight:
-                    //ToDo for me
-                    //_cameraController.SetMode(state);
-                    // _inputController.ShowFightInterface();
-                    // _ecsBattle.StartFight();
+                    _ecsBattleController.StartFight();
                     _loadingController.HideLoading();
                     break;
                 case FightState.Fail:

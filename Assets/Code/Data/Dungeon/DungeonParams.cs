@@ -11,8 +11,11 @@ namespace Code.Data.Dungeon
         private string _name = "Demo";
         [SerializeField]
         private DungeonParamsType _type = DungeonParamsType.Demo;
-
+        [SerializeField]
+        private float _maxTimeForReward = 120.0f;
+        
         public string Name => _name;
         public DungeonParamsType Type => _type;
+        public float MaxTimeForReward => _maxTimeForReward;
     }
 }

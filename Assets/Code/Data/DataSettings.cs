@@ -14,5 +14,6 @@ namespace Code.Data
         public UnitLevelData UnitLevelData { get; set; }
         public PlayerClassesData PlayerClassesData { get; set; }
         public PlayerData PlayerData { get; set; }
+        public EcsBattleData EcsBattleData { get; set; }
     }
 }
