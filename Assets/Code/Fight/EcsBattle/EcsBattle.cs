@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using Code.Data;
 using Code.Extension;
-using EcsBattle;
-using EcsBattle.Systems.Animation;
-using EcsBattle.Systems.Attacks;
-using EcsBattle.Systems.BattleLiveCycles;
-using EcsBattle.Systems.Camera;
-using EcsBattle.Systems.Enemies;
-using EcsBattle.Systems.Input;
-using EcsBattle.Systems.Player;
-using EcsBattle.Systems.PlayerMove;
-using EcsBattle.Systems.Statistics;
-using EcsBattle.Systems.Ui;
+using Code.Fight.EcsBattle.Input;
+using Code.Fight.EcsBattle.Out.Gui;
+using Code.Fight.EcsBattle.Statistics;
+using Code.Fight.EcsBattle.Unit;
+using Code.Fight.EcsBattle.Unit.Animation;
+using Code.Fight.EcsBattle.Unit.Attack;
+using Code.Fight.EcsBattle.Unit.Create;
+using Code.Fight.EcsBattle.Unit.Move;
+using Code.Fight.EcsBattle.Unit.Vision;
+using Code.Profile;
 using Leopotam.Ecs;
 using Leopotam.Ecs.UnityIntegration;
 using UnityEngine;
@@ -25,14 +25,18 @@ namespace Code.Fight.EcsBattle
         /// https://github.com/Leopotam/ecs
         /// https://github.com/Leopotam/ecs-unityintegration
         /// </summary>
+
+
         #region Fields
 
         private EcsWorld _world;
+
         private EcsSystems _execute;
         private EcsSystems _fixedExecute;
         private EcsSystems _lateExecute;
         private readonly List<object> _listForInject = new List<object>();
         private bool _enable = false;
+        private ProfilePlayer _profilePlayer;
 
         #endregion
 
@@ -49,8 +53,9 @@ namespace Code.Fight.EcsBattle
             OnDestroy();
         }
 
-        public void Init()
+        public void Init(ProfilePlayer profilePlayer)
         {
+            _profilePlayer = profilePlayer;
             _world = new EcsWorld();
             _execute = new EcsSystems(_world);
             _fixedExecute = new EcsSystems(_world);
@@ -64,13 +69,13 @@ namespace Code.Fight.EcsBattle
 
             _execute
                 //GameManager
-                // .Add(new CreateTimerStatisticsObserverSystem())
-                // .Add(new TimerTickForStatisticsObserverSystem())
+                .Add(new CreateTimerStatisticsObserverSystem())
+                .Add(new TimerTickForStatisticsObserverSystem())
                 // .Add(new SpawnGoalLevelSystem())
                 // .Add(new EndOfBattleSystem())
                 //Create Player & Camera
-                // .Add(new CreatePlayerEntitySystem())
-                // .Add(new CreateThirdCameraEntitySystem())
+                .Add(new CreatePlayerEntitySystem())
+                .Add(new CreateThirdCameraEntitySystem())
                 //InputControl
                 .Add(new CreateInputControlSystem())
                 .Add(new TimerJoystickSystem())
@@ -100,47 +105,47 @@ namespace Code.Fight.EcsBattle
                 // .Add(new Attack5StartAnimationStrikeSystem())
                 .Add(new Attack6StartTimerLagBeforeAttackFromMainWeaponSystem())
                 .Add(new Attack6StartTimerLagBeforeAttackFromSecondWeaponSystem());
-            // switch (GlobalLinks.Player.CharacterClass.Class)
-            // {
-            //     case CharacterClass.Warrior:
-            //         _execute
-            //             .Add(new Attack7FinalSplashAttackForPlayerFromMainWeaponSystem())
-            //             .Add(new Attack7FinalSplashAttackForPlayerFromSecondWeaponSystem());
-            //         break;
-            //
-            //     case CharacterClass.Rogue:
-            //         _execute
-            //             .Add(new Attack7FinalTargetAttackForPlayerFromMainWeaponSystem())
-            //             .Add(new Attack7FinalTargetForPlayerFromSecondWeaponSystem());
-            //         break;
-            //
-            //     case CharacterClass.Hunter:
-            //         _execute
-            //             .Add(new CreatePoolOfAmmunitionForRangeWeaponSystem(5))
-            //             .Add(new Attack7StartRangeTargetAttackForPlayerFromMainWeaponSystem())
-            //             .Add(new Attack8MoveBulletRangeTargetAttackForPlayerFromMainWeaponSystem());
-            //         break;
-            //
-            //     case CharacterClass.Mage:
-            //         _execute
-            //             .Add(new CreatePoolOfAmmunitionForRangeWeaponSystem(5))
-            //             .Add(new Attack7StartRangeTargetAttackForPlayerFromMainWeaponSystem())
-            //             .Add(new Attack8MoveBulletRangeTargetAttackForPlayerFromMainWeaponSystem());
-            //         break;
-            //
-            //     default:
-            //         throw new ArgumentOutOfRangeException();
-            // }
+            switch (_profilePlayer.CurrentPlayer.CharacterClass.Class)
+            {
+                case CharacterClass.Warrior:
+                    _execute
+                        .Add(new Attack7FinalSplashAttackForPlayerFromMainWeaponSystem())
+                        .Add(new Attack7FinalSplashAttackForPlayerFromSecondWeaponSystem());
+                    break;
+
+                case CharacterClass.Rogue:
+                    _execute
+                        .Add(new Attack7FinalTargetAttackForPlayerFromMainWeaponSystem())
+                        .Add(new Attack7FinalTargetForPlayerFromSecondWeaponSystem());
+                    break;
+
+                case CharacterClass.Hunter:
+                    _execute
+                        .Add(new CreatePoolOfAmmunitionForRangeWeaponSystem(5))
+                        .Add(new Attack7StartRangeTargetAttackForPlayerFromMainWeaponSystem())
+                        .Add(new Attack8MoveBulletRangeTargetAttackForPlayerFromMainWeaponSystem());
+                    break;
+
+                case CharacterClass.Mage:
+                    _execute
+                        .Add(new CreatePoolOfAmmunitionForRangeWeaponSystem(5))
+                        .Add(new Attack7StartRangeTargetAttackForPlayerFromMainWeaponSystem())
+                        .Add(new Attack8MoveBulletRangeTargetAttackForPlayerFromMainWeaponSystem());
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
 
             _execute
                 .Add(new ApplyDamageInUnitSystem())
 
                 //Enemies
                 // .Add(new CreateEnemyEntitySystem())
-                .Add(new RotateUiHeathBarsToCameraSystem())
+                // .Add(new RotateUiHeathBarsToCameraSystem())
                 //Ui Enemies
-                .Add(new UpdateEnemiesCurrentHealthPointsSystem())
-                .Add(new ShowUiMessageByDamageSystem())
+                // .Add(new UpdateEnemiesCurrentHealthPointsSystem())
+                // .Add(new ShowUiMessageByDamageSystem())
 
                 //     //Death Units
                 .Add(new ProcessingUnitEventDeathSystem())

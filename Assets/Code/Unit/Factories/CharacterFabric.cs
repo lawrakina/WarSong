@@ -14,9 +14,12 @@ namespace Code.Unit
         private readonly ResourceFactory _resourceFactory;
         private readonly HealthFactory _healthFactory;
         private readonly CharacteristicsFactory _characteristicsFactory;
+        private readonly VisionFactory _visionFactory;
+        private readonly ReputationFactory _reputationFactory;
 
         public CharacterFabric(IPlayerFactory playerFactory, CharacterClassesFactory classesFactory,
-            LevelFactory levelFactory, ResourceFactory resourceFactory, CharacteristicsFactory characteristicsFactory, HealthFactory healthFactory)
+            LevelFactory levelFactory, ResourceFactory resourceFactory, CharacteristicsFactory characteristicsFactory,
+            HealthFactory healthFactory, VisionFactory visionFactory, ReputationFactory reputationFactory)
         {
             _playerFactory = playerFactory;
             _classesFactory = classesFactory;
@@ -24,6 +27,8 @@ namespace Code.Unit
             _resourceFactory = resourceFactory;
             _characteristicsFactory = characteristicsFactory;
             _healthFactory = healthFactory;
+            _visionFactory = visionFactory;
+            _reputationFactory = reputationFactory;
         }
 
         public IPlayerView CreatePlayer(CharacterSettings item)
@@ -46,6 +51,8 @@ namespace Code.Unit
             character.UnitEquipment.RebuildEquipment();
             character.AnimatorParameters.WeaponType = character.UnitEquipment.GetWeaponType();
 
+            character.UnitVision = _visionFactory.GenerateVision();
+            character.UnitReputation = _reputationFactory.GeneratePlayerReputation();
             character.UnitLevel = _levelFactory.GenerateLevel(character.UnitLevel, value);
             character.CharacterClass = _classesFactory.GenerateClass(character.CharacterClass, value);
             character.UnitCharacteristics = _characteristicsFactory.GenerateCharacteristics(character.UnitCharacteristics, character.UnitEquipment, character.UnitLevel, value);

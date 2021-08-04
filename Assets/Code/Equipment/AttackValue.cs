@@ -21,6 +21,12 @@ namespace Code.Equipment
         [SerializeField]
         private float _attackSpeed = 2.0f;
 
+        public AttackValue(float min, float max)
+        {
+            _minAttackValue = min;
+            _maxAttackValue = max;
+        }
+
         #endregion
 
 

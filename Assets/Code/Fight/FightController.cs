@@ -64,7 +64,7 @@ namespace Code.Fight
             
             //insert in this InputController
 
-            _ecsBattleController = new EcsBattleController(_profilePlayer.Settings.EcsBattleData);
+            _ecsBattleController = new EcsBattleController(_profilePlayer);
             _controllers.Add(_ecsBattleController);
             AddController(_ecsBattleController);
             _ecsBattleController.OffExecute();

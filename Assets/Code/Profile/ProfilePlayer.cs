@@ -1,11 +1,8 @@
-﻿using System.Linq;
-using Code.Data;
+﻿using Code.Data;
 using Code.Data.Unit;
 using Code.Data.Unit.Player;
 using Code.Extension;
-using Code.GameCamera;
 using Code.Profile.Models;
-using Code.UI.Adventure;
 using Code.Unit;
 using Code.Unit.Factories;
 using Profile.Analytic;
@@ -50,6 +47,8 @@ namespace Code.Profile
             var resourceFactory = new ResourceFactory(Settings.PlayerClassesData);
             var characteristicsFactory = new CharacteristicsFactory(Settings.PlayerClassesData);
             var healthFactory = new HealthFactory(Settings.PlayerClassesData);
+            var visionFactory = new VisionFactory(Settings.PlayerClassesData);
+            var reputationFactory = new ReputationFactory();
 
             //контроллер активного персонажа (отвечает за модификацию внешного вида, одетых вещей в реалтайме)
             return new CharacterFabric(
@@ -58,7 +57,9 @@ namespace Code.Profile
                 levelFactory,
                 resourceFactory,
                 characteristicsFactory,
-                healthFactory);
+                healthFactory,
+                visionFactory,
+                reputationFactory);
         }
         
         public void BuildPlayer()
