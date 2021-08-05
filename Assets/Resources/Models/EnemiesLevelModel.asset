@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c1555a54cf4aacb8eed6be8631d0ca, type: 3}
   m_Name: EnemiesLevelModel
   m_EditorClassIdentifier: 
+  _enemies: []

@@ -6,6 +6,7 @@ using Unit;
 using Unit.Enemies;
 using UnityEngine;
 using AnimatorParameters = Code.Unit.AnimatorParameters;
+using HealthBarView = Code.Unit.HealthBarView;
 using UnitHealth = Code.Data.Unit.UnitHealth;
 using UnitLevel = Code.Data.Unit.UnitLevel;
 using UnitVision = Code.Data.Unit.UnitVision;

@@ -1,6 +1,9 @@
-﻿using Code.Data.Dungeon;
-using Code.Data.Unit;
-using Code.Data.Unit.Player;
+﻿using Code.Data.Unit.Player;
+using CharacterData = Code.Data.Unit.CharacterData;
+using DungeonGeneratorData = Code.Data.Dungeon.DungeonGeneratorData;
+using PlayerClassesData = Code.Data.Unit.Player.PlayerClassesData;
+using PlayerData = Code.Data.Unit.Player.PlayerData;
+using EnemiesData = Data; 
 
 
 namespace Code.Data
@@ -15,5 +18,7 @@ namespace Code.Data
         public PlayerClassesData PlayerClassesData { get; set; }
         public PlayerData PlayerData { get; set; }
         public EcsBattleData EcsBattleData { get; set; }
+        
+        public EnemiesData EnemiesData { get; set; }
     }
 }

@@ -9,28 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a0832dd8f9f412f8aae8d8cc7890c26, type: 3}
+  m_Script: {fileID: 11500000, guid: 42cffd2aea384ba98e588615a7b027cd, type: 3}
   m_Name: EnemiesData
   m_EditorClassIdentifier: 
   Enemies:
-    ListEnemies:
-    - EnemyView: {fileID: 5437079356858987363, guid: fd8a32711d273fb4180f89bdefd2eacf,
+  - EnemyView: {fileID: 5437079356858987363, guid: fd8a32711d273fb4180f89bdefd2eacf,
+      type: 3}
+    EnemyType: 0
+    unitVisionComponent:
+      distanceDetection: 10
+      maxCountTargets: 2
+      offsetHead: {x: 0, y: 1.5, z: 0}
+    MaxHp: 100
+    unitEquipment:
+      Weapon: {fileID: 0}
+    uiElement:
+      UiView: {fileID: 5632589081180970477, guid: d2ddcf18dfa38624791d2fecc565e2a3,
         type: 3}
       EnemyType: 0
-      unitVisionComponent:
-        distanceDetection: 10
-        maxCountTargets: 2
-        offsetHead: {x: 0, y: 1.5, z: 0}
-      MaxHp: 50
-      unitAttributes:
-        Name: SimpleDude
-        CharacterGender: 0
-        CharacterRace: 3
-      unitBattle:
-        Weapon: {fileID: 4791450294888299635, guid: d3687d2aa11ee35489e653ed8b436246,
-          type: 3}
-      uiElement:
-        UiView: {fileID: 5632589081180970477, guid: d2ddcf18dfa38624791d2fecc565e2a3,
-          type: 3}
-        EnemyType: 0
-        Offset: {x: 0, y: 2.1, z: 0}
+      Offset: {x: 0, y: 2.1, z: 0}
