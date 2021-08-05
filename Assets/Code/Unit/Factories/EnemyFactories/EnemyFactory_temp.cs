@@ -23,20 +23,30 @@ namespace Code.Unit.Factories.EnemyFactories
             Debug.LogError(_settings.Enemies[0].EnemyView);
             //тут количество врагов на уровне???
             //вот это вот тоже хз
-            var enemyList = new List<EnemyView>();
+            
+            //TODO: дебаги убрать нахер когда закончишь!!
             Debug.LogError("Here");
             var enemyObject = GameObject.Instantiate(_settings.Enemies[0].EnemyView);
             var enemyObjectView = enemyObject.AddComponent<EnemyView>();
 
             enemyObjectView.Transform = enemyObject.transform;
             enemyObjectView.Animator = enemyObject.GetComponent<Animator>();
-            enemyObjectView.Collider = enemyObject.AddComponent<CapsuleCollider>();
+            enemyObjectView.AnimatorParameters = new AnimatorParameters(enemyObjectView.Animator);
             
+            //Можно вынести в отдельный класс-фабрику
+            CapsuleCollider EnemyCollider = enemyObject.AddComponent(typeof(CapsuleCollider)) as CapsuleCollider;
+            EnemyCollider.height = 2.0f;
+            EnemyCollider.radius = 0.33f;
+            EnemyCollider.center = new Vector3(0.0f, 1.0f, 0.0f);
+            enemyObjectView.Collider = EnemyCollider;
+
             enemyObjectView.Rigidbody = enemyObject.GetComponentInChildren<Rigidbody>();
             enemyObjectView.MeshRenderer = enemyObject.GetComponentInChildren<MeshRenderer>();
             enemyObjectView.HealthBar = _settings.Enemies[0].uiElement.UiView.GetComponent<HealthBarView>();
             //Не оч понятно что конкретно нужно заполнять во вью врага??
             //Не оч понятно где взять список точек спавна чтоб расставить их на уровне???
+            
+            //Как отсюда получить тот самый геймобжект Dungeon с его детьми??
             return enemyObjectView;
         }
     }

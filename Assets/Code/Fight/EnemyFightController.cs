@@ -24,14 +24,13 @@ namespace Code.Fight
             _enemySettings = settings;
             _enemyFactory = new EnemyFactory_temp(_enemySettings);
             //цифра временная для теста
-            for (int i = 0; i < 20; i++)
-            {
-                
-                Debug.LogError(_enemiesLevelModel.Enemies[i]);
-            }
+            // for (int i = 0; i < 20; i++)
+            // {
+            //     
+            //     Debug.LogError(_enemiesLevelModel.Enemies[i]);
+            // }
 
             Debug.LogError("EnemyFightController");
-            
             
             AddController(_enemyFactory);
         }
