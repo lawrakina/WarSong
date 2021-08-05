@@ -2,7 +2,7 @@
 using Code.Data.Unit.Player;
 
 
-namespace Code.Unit
+namespace Code.Unit.Factories
 {
     public sealed class LevelFactory
     {

@@ -21,7 +21,9 @@ namespace Code.Data.Unit.Player
         public float MoveSpeed = 7.0f;
         [Range(90f,200f)]
         public float RotateSpeed = 120.0f;
-
+        [SerializeField]
+        public UnitVision UnitVision;
+        
         [Header("Classes start value")]
         [SerializeField]
         public UnitCharacteristics[] _classesStartCharacteristics;
@@ -29,5 +31,6 @@ namespace Code.Data.Unit.Player
         [Header("Presets list characters")]
         [SerializeField]
         public PresetCharacters _presetCharacters;
+
     }
 }

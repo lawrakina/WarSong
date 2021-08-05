@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82810ef862b846ceb1564b3e40ec1101, type: 3}
   m_Name: CharacterData
   m_EditorClassIdentifier: 
-  StoragePlayerPrefab: {fileID: 1588895830433058, guid: 5f160eebd5f55fb4d8187a5e697e1088,
+  StoragePlayerPrefab: {fileID: 1588895830433058, guid: 7d60f1fafb258734ca534d15b95ed5c7,
     type: 3}
   ListAttachPoints:
   - Name: LeftOneHandWeapon

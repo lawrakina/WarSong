@@ -1,4 +1,5 @@
 ﻿using Code.Extension;
+using Code.GameCamera;
 using Code.Profile;
 using Code.UI;
 using Code.UI.BottomNavigation;
@@ -13,7 +14,7 @@ namespace Code
         private readonly ProfilePlayer _profilePlayer;
         private MainMenuView _view;
 
-        public MainMenuController(Transform placeForUi, ProfilePlayer profilePlayer)
+        public MainMenuController(Transform placeForUi, ProfilePlayer profilePlayer, CameraController cameraController)
         {
             _profilePlayer = profilePlayer;
             _view = ResourceLoader.InstantiateObject(

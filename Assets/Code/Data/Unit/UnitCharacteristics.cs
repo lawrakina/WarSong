@@ -1,4 +1,5 @@
 ﻿using System;
+using Code.Equipment;
 using UnityEngine;
 
 
@@ -6,6 +7,10 @@ namespace Code.Data.Unit
 {
     [Serializable] public class UnitCharacteristics : BasicCharacteristics
     {
+        [SerializeField]
+        public float Speed = 8.0f;
+        [SerializeField]
+        public float RotateSpeedPlayer = 120.0f;
         [SerializeField] [Range(0f,1f)]
         private float _minCritChance = 0.05f;
         [SerializeField] [Range(0f,1f)]
@@ -70,6 +75,18 @@ namespace Code.Data.Unit
                     result = _minArmorValue;
                 return result;
             }
+        }
+
+        public AttackValue GetAttackMainWeaponValue()
+        {
+            var result = new AttackValue(MinAttack, MaxAttack);
+            return result;
+        }
+
+        public AttackValue GetAttackSecondWeaponValue()
+        {
+            var result = new AttackValue(1,2);
+            return result;
         }
     }
 }

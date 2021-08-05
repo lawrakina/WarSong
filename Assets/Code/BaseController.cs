@@ -21,7 +21,7 @@ namespace Code
         private List<(bool, GameObject)> _enabledGameObjects = null;
         private List<(bool, BaseController)> _enabledControllers = null;
 
-        public Action<Guid> On;
+        public event Action<Guid> On;
 
         #endregion
 

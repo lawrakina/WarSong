@@ -1,5 +1,6 @@
 ﻿using Code.Extension;
 using Code.Fight;
+using Code.GameCamera;
 using Code.Profile;
 using Code.UI.CharacterList;
 using UniRx;
@@ -20,6 +21,7 @@ namespace Code
 
         private readonly CommandManager _commandManager;
         private GameState _oldState = GameState.None;
+        private CameraController _cameraController;
 
         public MainController(Controllers controllers, Transform placeForUi, ProfilePlayer profilePlayer)
         {
@@ -28,6 +30,7 @@ namespace Code
             _placeForUi = placeForUi;
             OnChangeGameState(_profilePlayer.CurrentState.Value);
             profilePlayer.CurrentState.Subscribe(OnChangeGameState).AddTo(_subscriptions);
+            _cameraController = new CameraController(_profilePlayer.Settings);
         }
 
         private void OnChangeGameState(GameState state)
@@ -38,21 +41,21 @@ namespace Code
             switch (state)
             {
                 case GameState.ListOfCharacter:
-                    _characterListController = new CharacterListController(_placeForUi, _profilePlayer);
+                    _characterListController = new CharacterListController(_placeForUi, _profilePlayer,_cameraController);
                     _mainMenuController?.Dispose();
                     _fightController?.Dispose();
                     break;
                 
                 case GameState.Menu:
                     _characterListController?.Dispose();
-                    _mainMenuController = new MainMenuController(_placeForUi, _profilePlayer);
+                    _mainMenuController = new MainMenuController(_placeForUi, _profilePlayer,_cameraController);
                     _fightController?.Dispose();
                     break;
 
                 case GameState.Fight:
                     _characterListController?.Dispose();
                     _mainMenuController?.Dispose();
-                    _fightController = new FightController(_controllers, _placeForUi, _profilePlayer);
+                    _fightController = new FightController(_controllers, _placeForUi, _profilePlayer,_cameraController);
                     break;
 
                 default:

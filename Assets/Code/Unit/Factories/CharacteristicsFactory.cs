@@ -1,10 +1,9 @@
 ﻿using System.Linq;
 using Code.Data.Unit;
 using Code.Data.Unit.Player;
-using Code.Extension;
 
 
-namespace Code.Profile
+namespace Code.Unit.Factories
 {
     public sealed class CharacteristicsFactory
     {

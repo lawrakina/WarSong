@@ -1,11 +1,8 @@
-﻿using System.Linq;
-using Code.Data;
+﻿using Code.Data;
 using Code.Data.Unit;
 using Code.Data.Unit.Player;
 using Code.Extension;
-using Code.GameCamera;
 using Code.Profile.Models;
-using Code.UI.Adventure;
 using Code.Unit;
 using Code.Unit.Factories;
 using Profile.Analytic;
@@ -18,7 +15,6 @@ namespace Code.Profile
     {
         private readonly DataSettings _dataSettings;
         private readonly MvcModels _models;
-        private readonly CameraController _cameraController;
         public MvcModels Models => _models;
         public DataSettings Settings => _dataSettings;
         public IAnalyticTools AnalyticTools { get; }
@@ -30,12 +26,10 @@ namespace Code.Profile
         public ReactiveProperty<InfoAboutCharacter> InfoAboutCurrentPlayer { get; }
 
         public ProfilePlayer(CommandManager commandManager, DataSettings dataSettings, MvcModels models,
-            IAnalyticTools analyticTools,
-            CameraController cameraController)
+            IAnalyticTools analyticTools)
         {
             _dataSettings = dataSettings;
             _models = models;
-            _cameraController = cameraController;
             CommandManager = commandManager;
             CurrentState = new ReactiveProperty<GameState>();
             InfoAboutCurrentPlayer = new ReactiveProperty<InfoAboutCharacter>(new InfoAboutCharacter(null));
@@ -53,6 +47,8 @@ namespace Code.Profile
             var resourceFactory = new ResourceFactory(Settings.PlayerClassesData);
             var characteristicsFactory = new CharacteristicsFactory(Settings.PlayerClassesData);
             var healthFactory = new HealthFactory(Settings.PlayerClassesData);
+            var visionFactory = new VisionFactory(Settings.PlayerClassesData);
+            var reputationFactory = new ReputationFactory();
 
             //контроллер активного персонажа (отвечает за модификацию внешного вида, одетых вещей в реалтайме)
             return new CharacterFabric(
@@ -61,7 +57,9 @@ namespace Code.Profile
                 levelFactory,
                 resourceFactory,
                 characteristicsFactory,
-                healthFactory);
+                healthFactory,
+                visionFactory,
+                reputationFactory);
         }
         
         public void BuildPlayer()

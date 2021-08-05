@@ -1,10 +1,8 @@
-﻿using System.Linq;
-using Code.Data.Unit;
+﻿using Code.Data.Unit;
 using Code.Data.Unit.Player;
-using Code.Extension;
 
 
-namespace Code.Unit
+namespace Code.Unit.Factories
 {
     public sealed class HealthFactory
     {
