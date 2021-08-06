@@ -1,4 +1,6 @@
-﻿using Code.Data.Dungeon;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Code.Data.Dungeon;
 using Code.Data.Marker;
 using Code.Extension;
 using Code.Profile;
@@ -51,8 +53,16 @@ namespace Code.Fight
                 _fightModel.FightState.Value = FightState.BuildingComplete;
                 _fightModel.InfoState.Value = StringManager.INFO_BUILDING_STATE_BUILDING_COMPLETE_START_SPAWN_OBJECTS;
                 _fightModel.OnChangePlayerPosition?.Invoke(GetPlayerPosition());
+                _fightModel.OnChangeEnemiesPositions?.Invoke(GetEnemiesPositions());
                 _timerCheckBuildState.RemoveTimeRemaining();
             }
+        }
+
+        private SpawnMarkerEnemyInDungeon[] GetEnemiesPositions()
+        {
+            var result = _dungeon.GetComponentsInChildren<SpawnMarkerEnemyInDungeon>();
+            Dbg.Log($"GetListOfEnemies:{result}");
+            return result ?? null;
         }
 
         private Transform GetPlayerPosition()

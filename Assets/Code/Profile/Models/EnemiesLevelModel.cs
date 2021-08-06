@@ -18,7 +18,7 @@ namespace Code.Profile.Models
     public class EnemiesLevelModel : ScriptableObject
     {
         [SerializeField] private List<EnemyView> _enemies;
-        public List<EnemyView> Enemies { get; set; }
+        public List<EnemyView> Enemies => _enemies;
     }
     
     public class EnemyView : MonoBehaviour

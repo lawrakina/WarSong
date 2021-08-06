@@ -1,9 +1,13 @@
 using System.Collections.Generic;
+using System.Linq;
 using Code.Profile.Models;
 using Code.Data;
+using Code.Data.Marker;
+using Code.Extension;
 using JetBrains.Annotations;
-using Unit;
 using UnityEngine;
+using EnemyType = Enums.EnemyType;
+
 
 namespace Code.Unit.Factories.EnemyFactories
 {
@@ -20,12 +24,13 @@ namespace Code.Unit.Factories.EnemyFactories
         [ItemCanBeNull]
         public EnemyView CreateEnemy()
         {
-            Debug.LogError(_settings.Enemies[0].EnemyView);
+            Dbg.Log($"{_settings.Enemies}");
             //тут количество врагов на уровне???
             //вот это вот тоже хз
             
             //TODO: дебаги убрать нахер когда закончишь!!
-            Debug.LogError("Here");
+            // Debug.LogError("Here");
+            
             var enemyObject = GameObject.Instantiate(_settings.Enemies[0].EnemyView);
             var enemyObjectView = enemyObject.AddComponent<EnemyView>();
 
@@ -48,6 +53,31 @@ namespace Code.Unit.Factories.EnemyFactories
             
             //Как отсюда получить тот самый геймобжект Dungeon с его детьми??
             return enemyObjectView;
+        }
+
+        public EnemyView CreateEnemy(SpawnMarkerEnemyInDungeon marker)
+        {
+            var item = _settings.Enemies.FirstOrDefault(x => x.EnemyType == marker._type);
+            var enemy = Object.Instantiate(item.EnemyView);
+             enemy.name = $"Enemy.{item.EnemyType.ToString()}.{item.EnemyView.name}";
+             var enemyView = enemy.AddCode<EnemyView>();
+             enemyView.Animator = enemy.GetComponent<Animator>();
+             enemyView.Transform = enemy.transform;
+             enemyView.Rigidbody = enemy.AddRigidBody(80, CollisionDetectionMode.ContinuousSpeculative,
+                 false, true,
+                 RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |
+                 RigidbodyConstraints.FreezeRotationZ);
+             enemyView.Collider = enemy.AddCapsuleCollider(0.5f, false,
+                 new Vector3(0.0f, 0.9f, 0.0f),
+                 1.8f);
+             enemyView.MeshRenderer = enemy.GetComponent<MeshRenderer>();
+             enemyView.AnimatorParameters = new AnimatorParameters(enemyView.Animator);
+             
+             enemyView.Transform.SetParent(marker.Transform);
+             enemyView.Transform.localPosition = Vector3.zero;
+             enemyView.Transform.rotation = Quaternion.identity;
+             
+             return enemyView;
         }
     }
 }
