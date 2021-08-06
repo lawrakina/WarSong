@@ -12,6 +12,7 @@ namespace Code.Fight
 {
     public sealed class EcsBattleController : BaseController
     {
+        private readonly Controllers _controllers;
         private readonly ProfilePlayer _profilePlayer;
         private EcsBattle.EcsBattle _ecsBattle;
         private FightCamera _camera;
@@ -19,11 +20,16 @@ namespace Code.Fight
         private DungeonParams _dungeonParams;
         private InOutControlFightModel _inOutControlFightModel;
 
-        public EcsBattleController(ProfilePlayer profilePlayer)
+        public EcsBattleController(Controllers controllers, ProfilePlayer profilePlayer)
         {
+            _controllers = controllers;
             _profilePlayer = profilePlayer;
-            _ecsBattle = Object.Instantiate(_profilePlayer.Settings.EcsBattleData.EcsBattle);
-            _ecsBattle.gameObject.name = StringManager.ECS_BATTLE_GO_NAME;
+            _ecsBattle = new EcsBattle.EcsBattle();
+            // _ecsBattle = Object.Instantiate(_profilePlayer.Settings.EcsBattleData.EcsBattle);
+            // _ecsBattle.gameObject.name = StringManager.ECS_BATTLE_GO_NAME;
+            
+            _controllers.Add(_ecsBattle);
+            AddController(_ecsBattle);
         }
 
         public void StartFight()

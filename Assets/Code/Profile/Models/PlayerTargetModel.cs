@@ -6,8 +6,8 @@ namespace Code.Profile.Models
 {
     public class PlayerTargetModel
     {
-        public Action<IBaseUnitView> ChangeTarget;
-        public Action<int> ChangeMaxHp;
-        public Action<int> ChangeCurrentHp;
+        public Action<IBaseUnitView> ChangeTarget = view => { };
+        public Action<int> ChangeMaxHp = i => { };
+        public Action<int> ChangeCurrentHp = i => { };
     }
 }

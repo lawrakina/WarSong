@@ -15,5 +15,6 @@ namespace Code.Data
         public PlayerClassesData PlayerClassesData { get; set; }
         public PlayerData PlayerData { get; set; }
         public EcsBattleData EcsBattleData { get; set; }
+        public FightInputData FightInputData { get; set; }
     }
 }

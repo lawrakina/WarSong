@@ -1,4 +1,5 @@
-﻿using Code.Data;
+﻿using System;
+using Code.Data;
 using Code.Data.Unit;
 using Code.Data.Unit.Player;
 using Code.Extension;
@@ -25,6 +26,11 @@ namespace Code.Profile
         public UiWindowAfterStart WindowAfterStart { get; set; }
         public ReactiveProperty<InfoAboutCharacter> InfoAboutCurrentPlayer { get; }
 
+#if UNITY_EDITOR
+        public Action<IPlayerView> ChangePlayer_FOR_DEBUG_DONT_USE;
+#endif
+        
+        
         public ProfilePlayer(CommandManager commandManager, DataSettings dataSettings, MvcModels models,
             IAnalyticTools analyticTools)
         {
@@ -69,8 +75,13 @@ namespace Code.Profile
                     Settings.PlayerData.ListCharacters[Settings.PlayerData._numberActiveCharacter]);
             RebuildCurrentCharacter();
             InfoAboutCurrentPlayer.Value = new InfoAboutCharacter(CurrentPlayer);
+
+#if UNITY_EDITOR
+            ChangePlayer_FOR_DEBUG_DONT_USE?.Invoke(CurrentPlayer);
+#endif
         }
-        
+
+
         public void RebuildCurrentCharacter()
         {
             RebuildCharacter(Settings.PlayerData.ListCharacters[Settings.PlayerData._numberActiveCharacter]);
@@ -81,6 +92,9 @@ namespace Code.Profile
             Dbg.Log($"RebuildCharacter");
             CharacterFabric.RebuildCharacter(CurrentPlayer, value);
             InfoAboutCurrentPlayer.Value = new InfoAboutCharacter(CurrentPlayer);
+#if UNITY_EDITOR
+            ChangePlayer_FOR_DEBUG_DONT_USE?.Invoke(CurrentPlayer);
+#endif
         }
     }
 }

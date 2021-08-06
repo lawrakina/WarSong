@@ -6,6 +6,7 @@ using Code.Extension;
 using Code.GameCamera;
 using Code.Profile;
 using Code.Profile.Models;
+using Code.Unit;
 using Profile.Analytic;
 using UnityEngine;
 
@@ -22,6 +23,12 @@ namespace Code
 
         private MainController _mainController;
         private Controllers _controllers;
+        private ProfilePlayer _profilePlayer;
+#if UNITY_EDITOR
+        [SerializeField]
+        private GameObject _characterPlayer;
+
+#endif
 
         private void Awake()
         {
@@ -29,13 +36,27 @@ namespace Code
             var models = LoadAllModels();
             _controllers = new Controllers();
             var commandManager = new CommandManager();
-            var profilePlayer = new ProfilePlayer(commandManager, settings, models, new UnityAnalyticTools());
-            profilePlayer.CurrentState.Value = _gameStateAfterStart;
-            profilePlayer.WindowAfterStart = _showWindowAfterStart;
-            _mainController = new MainController(_controllers, _placeForUi, profilePlayer);
+            _profilePlayer = new ProfilePlayer(commandManager, settings, models, new UnityAnalyticTools());
+            _profilePlayer.CurrentState.Value = _gameStateAfterStart;
+            _profilePlayer.WindowAfterStart = _showWindowAfterStart;
+            _mainController = new MainController(_controllers, _placeForUi, _profilePlayer);
             _controllers.Init();
+            
+#if UNITY_EDITOR
+            _profilePlayer.ChangePlayer_FOR_DEBUG_DONT_USE += ChangePlayerForDebugDontUse;
+            _characterPlayer = _profilePlayer.CurrentPlayer.Transform.gameObject;
+#endif
         }
 
+#if UNITY_EDITOR
+        private void ChangePlayerForDebugDontUse(IPlayerView obj)
+        {
+            Dbg.Error($"Change Player");
+            _characterPlayer = _profilePlayer.CurrentPlayer.Transform.gameObject;
+            // _characterPlayer = obj.Transform.gameObject;
+        }
+#endif
+        
         private MvcModels LoadAllModels()
         {
             var result = new MvcModels();
@@ -60,7 +81,7 @@ namespace Code
             settings.DungeonGeneratorData = ResourceLoader.LoadConfig<DungeonGeneratorData>();
             settings.EcsBattleData = ResourceLoader.LoadConfig<EcsBattleData>();
             // Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(EcsBattleData)}:{_ecsBattleData}");
-            // settings.BattleInputData = ResourceLoader.LoadConfig<BattleInputData>("Configs/BattleInputData");
+            settings.FightInputData = ResourceLoader.LoadConfig<FightInputData>();
             // Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(BattleInputData)}:{_battleInputData}");
             // settings.BattleSettingsData = ResourceLoader.LoadConfig<BattleSettingsData>("Configs/BattleSettingsData");
             // Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(BattleSettingsData)}:{_battleSettingsData}");
@@ -76,6 +97,7 @@ namespace Code
 
         private void Update()
         {
+            // _characterPlayer = _profilePlayer.CurrentPlayer.Transform.gameObject;
             var deltaTime = Time.deltaTime;
             _controllers.Execute(deltaTime);
         }

@@ -6,7 +6,6 @@ using Code.Profile;
 using Code.Profile.Models;
 using UniRx;
 using UnityEngine;
-using EcsBattle = EcsBattle.EcsBattle;
 
 
 namespace Code.Fight
@@ -29,6 +28,7 @@ namespace Code.Fight
 
         private CameraController _cameraController;
         private EcsBattleController _ecsBattleController;
+        private InputController _inputController;
 
         public FightController(Controllers controllers, Transform placeForUi, ProfilePlayer profilePlayer,
             CameraController cameraController)
@@ -61,10 +61,12 @@ namespace Code.Fight
                 _profilePlayer.Models.EnemiesLevelModel);
             _controllers.Add(_enemyFightController);
             AddController(_enemyFightController);
-            
-            //insert in this InputController
 
-            _ecsBattleController = new EcsBattleController(_profilePlayer);
+            _inputController = new InputController(_placeForUi, _profilePlayer);
+            _controllers.Add(_inputController);
+            AddController(_inputController);
+
+            _ecsBattleController = new EcsBattleController(_controllers,_profilePlayer);
             _controllers.Add(_ecsBattleController);
             AddController(_ecsBattleController);
             _ecsBattleController.OffExecute();

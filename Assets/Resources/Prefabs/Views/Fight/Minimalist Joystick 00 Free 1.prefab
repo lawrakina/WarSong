@@ -339,7 +339,7 @@ MonoBehaviour:
   targetTapCount: 2
   useTouchInput: 0
   disableVisuals: 0
-  inputTransition: 1
+  inputTransition: 0
   transitionUntouchedDuration: 0.1
   transitionTouchedDuration: 0.1
   useFade: 1
@@ -399,7 +399,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8452176640803072342}
   m_Enabled: 1
-  m_Alpha: 0.181
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0

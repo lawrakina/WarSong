@@ -616,6 +616,7 @@ MonoBehaviour:
   _placeForUi: {fileID: 2038008266}
   _gameStateAfterStart: 1
   _showWindowAfterStart: 1
+  _characterPlayer: {fileID: 0}
 --- !u!4 &1420752722
 Transform:
   m_ObjectHideFlags: 0
@@ -855,7 +856,7 @@ PrefabInstance:
     - target: {fileID: 816068405298992718, guid: 03d9d70579f675647a9e2eee1b180545,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 816068405298992719, guid: 03d9d70579f675647a9e2eee1b180545,
         type: 3}
@@ -870,7 +871,7 @@ PrefabInstance:
     - target: {fileID: 816068405298992719, guid: 03d9d70579f675647a9e2eee1b180545,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 816068405298992719, guid: 03d9d70579f675647a9e2eee1b180545,
         type: 3}

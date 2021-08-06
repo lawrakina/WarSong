@@ -19,7 +19,7 @@ using UnityEngine;
 
 namespace Code.Fight.EcsBattle
 {
-    public sealed class EcsBattle : MonoBehaviour
+    public sealed class EcsBattle : BaseController, IExecute, ILateExecute, IFixedExecute
     {
         /// <summary>
         /// https://github.com/Leopotam/ecs
@@ -39,6 +39,9 @@ namespace Code.Fight.EcsBattle
         private ProfilePlayer _profilePlayer;
 
         #endregion
+        
+        
+        public Guid Id => Guid.Empty;
 
 
         public void Inject(object obj)
@@ -46,6 +49,16 @@ namespace Code.Fight.EcsBattle
             if (obj == null) return;
             _listForInject.Add(obj);
             Dbg.Log($"Inject object in EcsWorld:{obj}");
+        }
+        
+        public void OnExecute()
+        {
+            _enable = true;
+        }
+
+        public void OffExecute()
+        {
+            _enable = false;
         }
 
         public void DisposeWorld()
@@ -229,21 +242,24 @@ namespace Code.Fight.EcsBattle
             }
         }
 
-        public void Execute()
-        {
-            _execute?.Run();
-        }
+        #endregion
 
-        public void FixedExecute()
+
+
+        public bool IsOn => _enable;
+        public void FixedExecute(float deltaTime)
         {
             _fixedExecute?.Run();
         }
 
-        public void LateExecute()
+        public void LateExecute(float deltaTime)
         {
             _lateExecute?.Run();
         }
 
-        #endregion
+        public void Execute(float deltaTime)
+        {
+            _execute?.Run();
+        }
     }
 }

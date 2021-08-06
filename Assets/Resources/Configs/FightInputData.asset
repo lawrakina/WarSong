@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d50c64c9a3fa41ba85be328710370ad5, type: 3}
+  m_Name: FightInputData
+  m_EditorClassIdentifier: 
+  _maxPressTimeForClickButton: 0.5
+  _maxOffsetForClick: {x: 0.2, y: 0.2, z: 0.2}
+  _maxOffsetForMovement: {x: 0.2, y: 0.2, z: 0.2}
+  _joystick: {fileID: 8452176640792278200, guid: 99e763d76088cf34f9cb1577e08de7fc,
+    type: 3}
