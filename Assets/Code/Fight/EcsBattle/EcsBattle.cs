@@ -196,7 +196,6 @@ namespace Code.Fight.EcsBattle
             // .Inject (new NavMeshSupport ())
             foreach (var obj in _listForInject)
             {
-                Debug.Log(obj);
                 _execute.Inject(obj);
             }
 

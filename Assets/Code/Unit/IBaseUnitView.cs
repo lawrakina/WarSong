@@ -1,7 +1,5 @@
 ﻿using System;
-using Code.Data;
 using Code.Data.Unit;
-using Unit;
 using UnityEngine;
 using UnitCharacteristics = Code.Data.Unit.UnitCharacteristics;
 using UnitHealth = Code.Data.Unit.UnitHealth;

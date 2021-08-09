@@ -9445,7 +9445,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3324268041959420721}
-  - component: {fileID: 5700169565236940926}
   - component: {fileID: 417677038772102725}
   - component: {fileID: 8729394181540579567}
   m_Layer: 5
@@ -9476,19 +9475,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5700169565236940926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8135289228329941033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43f522aa2f0743b89787e3ce30c4e3e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _particleSystem: {fileID: 284558013256887885}
 --- !u!222 &417677038772102725
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9506,21 +9492,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8135289228329941033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16f0b0b6d0b7542bfbd20a3e05b04ff1, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d640950b2dd4069bcd60f778375021e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_IsTrail: 0
-  m_IgnoreCanvasScaler: 1
-  m_Scale: 100
-  m_Scale3D: {x: 100, y: 100, z: 100}
-  m_AnimatableProperties: []
-  m_Particles:
-  - {fileID: 284558013256887885}
-  m_ShrinkByMaterial: 0
+  _particleSystem: {fileID: 284558013256887885}

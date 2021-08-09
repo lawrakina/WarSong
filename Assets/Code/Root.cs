@@ -3,7 +3,6 @@ using Code.Data.Dungeon;
 using Code.Data.Unit;
 using Code.Data.Unit.Player;
 using Code.Extension;
-using Code.GameCamera;
 using Code.Profile;
 using Code.Profile.Models;
 using Code.Unit;
@@ -26,6 +25,7 @@ namespace Code
         private ProfilePlayer _profilePlayer;
 #if UNITY_EDITOR
         [SerializeField]
+        [Header("DON SET VALUE - IT`S FOR DEBUG, LINK to PlayerChar")]
         private GameObject _characterPlayer;
 
 #endif

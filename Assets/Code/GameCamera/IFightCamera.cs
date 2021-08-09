@@ -14,7 +14,6 @@ namespace Code.GameCamera
         CameraSettings Settings { get; set; }
         UltimateTextDamageManager UiTextManager { get; set; }
         Camera Camera { get; set; }
-        Vector3 OffsetTopPosition();
-        Vector3 OffsetThirdPosition();
+        Vector3 OffsetThirdPosition { get; }
     }
 }
