@@ -1,4 +1,5 @@
 ﻿using System;
+using Code.Data.Marker;
 using Code.Fight;
 using UniRx;
 using UnityEngine;
@@ -19,5 +20,6 @@ namespace Code.Profile.Models
         public ReactiveProperty<FightState> FightState => _fightState;
 
         public Action<Transform> OnChangePlayerPosition;
+        public Action<SpawnMarkerEnemyInDungeon[]> OnChangeEnemiesPositions;
     }
 }

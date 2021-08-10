@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Code.Unit;
 using UnityEngine;
 
 
@@ -9,9 +10,5 @@ namespace Code.Profile.Models
     {
         [SerializeField] private List<EnemyView> _enemies;
         public List<EnemyView> Enemies => _enemies;
-    }
-    
-    public class EnemyView
-    {
     }
 }

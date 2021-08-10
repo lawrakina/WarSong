@@ -1465,8 +1465,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1155.5728
     y: 392.07068
-    width: 344.94238
-    height: 47.276184
+    width: 334
+    height: 47
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
@@ -2162,8 +2162,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1785.7375
     y: 698.134
-    width: 463.5345
-    height: 47.276184
+    width: 443
+    height: 47
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
@@ -3298,8 +3298,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1590.1335
     y: 786.7798
-    width: 282.08856
-    height: 47.276184
+    width: 276
+    height: 47
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
@@ -3652,7 +3652,7 @@ MonoBehaviour:
   indexCounter:
     index: 88
   topZIndex:
-    index: 1110
+    index: 1111
   nodes:
   - {fileID: -7613491649348855151}
   - {fileID: 3185520184091121584}
@@ -4056,8 +4056,8 @@ MonoBehaviour:
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
-  selected: 0
-  zIndex: 1046
+  selected: 1
+  zIndex: 1111
   inputPins:
   - {fileID: 63552543951881144}
   outputPins:
@@ -5600,8 +5600,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1599.2083
     y: 395.1467
-    width: 315.29434
-    height: 47.276184
+    width: 307
+    height: 47
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
@@ -6626,8 +6626,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 402.25018
     y: 385.75574
-    width: 488.43884
-    height: 47.276184
+    width: 478
+    height: 47
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1

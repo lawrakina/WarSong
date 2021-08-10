@@ -81,6 +81,13 @@
         simple
     }
 
+    public enum GoalType
+    {
+        Final,
+        Secret,
+        ToHome
+    }
+
     public enum UiWindowAfterStart
     {
         Adventure,

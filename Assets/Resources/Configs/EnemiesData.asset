@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42cffd2aea384ba98e588615a7b027cd, type: 3}
+  m_Name: EnemiesData
+  m_EditorClassIdentifier: 
+  Enemies:
+  - EnemyView: {fileID: 2194302051238080810, guid: f4b0da07ccc3d164caf26dcebbead390,
+      type: 3}
+    EnemyType: 0
+    unitVisionComponent:
+      distanceDetection: 20
+      maxCountTargets: 1
+      offsetHead: {x: 0, y: 2, z: 0}
+    MaxHp: 100
+    unitEquipment:
+      Weapon: {fileID: 9024842520586543348, guid: b42a483ee5137f843929c77d6f537502,
+        type: 3}
+    uiElement:
+      UiView: {fileID: 0}
+      EnemyType: 0
+      Offset: {x: 0, y: 0, z: 0}
+  - EnemyView: {fileID: 2194302051238080810, guid: f4b0da07ccc3d164caf26dcebbead390,
+      type: 3}
+    EnemyType: 0
+    unitVisionComponent:
+      distanceDetection: 30
+      maxCountTargets: 1
+      offsetHead: {x: 0, y: 2, z: 0}
+    MaxHp: 70
+    unitEquipment:
+      Weapon: {fileID: -6049655489026514482, guid: a86d9763462c31640b33721b9ee09be7,
+        type: 3}
+    uiElement:
+      UiView: {fileID: 0}
+      EnemyType: 0
+      Offset: {x: 0, y: 0, z: 0}
+  - EnemyView: {fileID: 2194302051238080810, guid: f4b0da07ccc3d164caf26dcebbead390,
+      type: 3}
+    EnemyType: 0
+    unitVisionComponent:
+      distanceDetection: 20
+      maxCountTargets: 1
+      offsetHead: {x: 0, y: 2, z: 0}
+    MaxHp: 70
+    unitEquipment:
+      Weapon: {fileID: -8844724956590295038, guid: 9e80f1214d24de448b17ab3d2302eb1a,
+        type: 3}
+    uiElement:
+      UiView: {fileID: 0}
+      EnemyType: 0
+      Offset: {x: 0, y: 0, z: 0}

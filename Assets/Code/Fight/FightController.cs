@@ -57,8 +57,10 @@ namespace Code.Fight
             AddController(_playerFightController);
 
             _enemyFightController = new EnemyFightController(
+                _model,
                 _profilePlayer.Models.DungeonGeneratorModel,
-                _profilePlayer.Models.EnemiesLevelModel);
+                _profilePlayer.Models.EnemiesLevelModel,
+                _profilePlayer.Settings.EnemiesData);
             _controllers.Add(_enemyFightController);
             AddController(_enemyFightController);
 
@@ -96,7 +98,6 @@ namespace Code.Fight
                     break;
                 case FightState.BuildingComplete:
                     _loadingController.UpdateInfo();
-                    _enemyFightController.SpawnEnemies();
                     // _inputController.ShowFightInterface();
                     _model.FightState.Value = FightState.Fight;
                     break;
