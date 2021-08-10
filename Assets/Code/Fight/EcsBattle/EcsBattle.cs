@@ -13,8 +13,9 @@ using Code.Fight.EcsBattle.Unit.Move;
 using Code.Fight.EcsBattle.Unit.Vision;
 using Code.Profile;
 using Leopotam.Ecs;
+#if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
-using UnityEngine;
+#endif
 
 
 namespace Code.Fight.EcsBattle

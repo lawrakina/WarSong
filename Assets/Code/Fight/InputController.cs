@@ -16,13 +16,19 @@ namespace Code.Fight
         {
             _placeForUi = placeForUi;
             _profilePlayer = profilePlayer;
+            
+            var inputModel = _profilePlayer.Models.InOutControlFightModel.InputControl;
+            var inputSettings = _profilePlayer.Settings.FightInputData;
 
-            _joystick = Object.Instantiate(_profilePlayer.Settings.FightInputData.Joystick,_placeForUi);
+            _joystick = Object.Instantiate(inputSettings.Joystick,_placeForUi);
             AddGameObjects(_joystick.gameObject);
             
             _profilePlayer.Models.FightModel.FightState.Subscribe(ShowJoystick).AddTo(_subscriptions);
 
-            _profilePlayer.Models.InOutControlFightModel.InputControl.Joystick = _joystick;
+            inputModel.Joystick = _joystick;
+            inputModel.MaxOffsetForClick = inputSettings.MaxOffsetForClick;
+            inputModel.MaxOffsetForMovement = inputSettings.MaxOffsetForMovement;
+            inputModel.MaxPressTimeForClickButton = inputSettings.MaxPressTimeForClickButton;
         }
 
         private void ShowJoystick(FightState state)

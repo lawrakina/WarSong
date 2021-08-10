@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8761174804215584566}
   - component: {fileID: 8761174804215584567}
   - component: {fileID: 8761174804215584564}
+  - component: {fileID: -3237318165767900082}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -64,11 +65,11 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
+  m_HDR: 0
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
@@ -83,3 +84,99 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8761174804215584565}
   m_Enabled: 1
+--- !u!114 &-3237318165767900082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8761174804215584565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b60f63e53b2d1d84e9c2d816371d7334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  follow: {fileID: 0}
+  inverseXAxis: 1
+  inverseYAxis: 0
+  mouseInputX: Mouse X
+  mouseInputY: Mouse Y
+  rightStickX: RightStickX
+  rightStickY: RightStickY
+  enableLockOn: 0
+  enableCamReset: 0
+  enableChangeTarget: 0
+  cameraInputType: 0
+  cameraResetKeyCodes: 7400000067010000
+  lockOnKeyCodes: 3001000063010000
+  changeTargetKeyCodes: 3201000066010000
+  previousTargetKeyCodes: 34010000
+  cameraResetButton: CamReset
+  lockOnButton: LockOn
+  changeTargetsButton: ChangeTargets
+  previousTargetButton: ChangeTargets
+  dynamicControlTypeDetection: 0
+  usingController: 0
+  usingMouse: 0
+  defaultYAngle: 12
+  distance: 15
+  xSpeed: 1
+  ySpeed: 1
+  lockCameraYDuringCollision: 1
+  lerpCameraToDefault: 1
+  yLerpSpeed: 100
+  yMinLimit: -10
+  yMaxLimit: 50
+  useSoftLimits: 0
+  yMinSoftLimit: 20
+  yMaxSoftLimit: 20
+  lookoffset: {x: 0, y: 2.5, z: 0}
+  thirdPersonLookSpeed: 100
+  camSmoothDampTime: 0
+  camClippingSmoothDampTime: 0.1
+  collisionMargin: 1
+  camObstacle:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  lockOnTargetsTag: LockOnTarget
+  lockOnToggle: 1
+  lockOnManualControl: 1
+  experimentalTurnOffAutomaticDistanceCalculation: 0
+  experimentalLockOnDisingageOnSteepAngle: 0
+  experimentalLockOnDisingageMinAngle: -10
+  experimentalLockOnDisingageMaxAngle: 50
+  lockOnFollowToTargetRatio: 0.5
+  lockOnDistanceLimit: 0
+  breakLockOnWhenOutOfRange: 0
+  disallowLockingOnToTargetBehindWall: 1
+  lockOnReticle: {fileID: 0}
+  lockOnReticleWorksWithOffMode: 0
+  lockonAnimSpeed: 30
+  lockOnLookSpeed: 5
+  lockOnCameraFullRotationMaxDistance: 16
+  farCamTransitionSpeed: 1000
+  lockOnCoolDownTime: 0.5
+  lockOnScreenBottomMargin: 0.6
+  lockOnRotationRangePercent: 40
+  stopCameraFollowingYWhenPlayerIsJumping: 1
+  cameraFadeObjects: 1
+  cameraFadeLayer:
+    serializedVersion: 2
+    m_Bits: 2
+  fadeObjectsSpherecastRadius: 1
+  alwaysFullyTransparent: 1
+  fullTransparencyDistance: 2
+  fadeInSpeed: 1
+  fadeOutSpeed: 1
+  fadePlayerWhenClose: 1
+  playerFadeDistance: 1
+  fadeShader: {fileID: 4800000, guid: 05974290369b335478edf5737ad9fd8c, type: 3}
+  debugOn: 0
+  debugThirdPersonMode: 0
+  debugCamFade: 0
+  debugCollision: 0
+  debugLockOn: 0
+  debugCameraVerticalMovement: 0
+  debugLockOnCameraDistanceBehaviour: 0
+  debugCameraLockOnCalculations: 0
+  debugCameraLookingUpDown: 0

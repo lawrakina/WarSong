@@ -30,7 +30,7 @@ namespace Code
             _placeForUi = placeForUi;
             OnChangeGameState(_profilePlayer.CurrentState.Value);
             profilePlayer.CurrentState.Subscribe(OnChangeGameState).AddTo(_subscriptions);
-            _cameraController = new CameraController(_profilePlayer.Settings);
+            _cameraController = new CameraController(_profilePlayer);
         }
 
         private void OnChangeGameState(GameState state)

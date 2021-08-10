@@ -1,5 +1,7 @@
 ﻿using Code.Data;
 using Code.Extension;
+using Code.Profile;
+using ThirdPersonCameraWithLockOn;
 using UnityEngine;
 
 
@@ -7,41 +9,37 @@ namespace Code.GameCamera
 {
     public class CameraController : BaseController
     {
-        private readonly DataSettings _settings;
+        private readonly ProfilePlayer _profilePlayer;
         private Camera _camera;
-        private IFightCamera _fightCamera;
-        public IFightCamera FightCamera => _fightCamera;
-
-        public CameraController(DataSettings settings)
+        private ThirdPersonCamera _fightCamera;
+        public ThirdPersonCamera FightCamera => _fightCamera;
+        
+        public CameraController(ProfilePlayer profilePlayer)
         {
-            _settings = settings;
+            _profilePlayer = profilePlayer;
             _camera = Camera.main;
 
             if (_camera == null)
             {
-                Dbg.Log($"cameraSettings - {settings}");
-                _camera = Object.Instantiate(settings.CameraSettings.CameraPrefab, settings.CameraSettings.CameraStartPosition,
-                    Quaternion.Euler(settings.CameraSettings.CameraStartRotation));
+                _camera = Object.Instantiate(profilePlayer.Settings.CameraSettings.CameraPrefab);
                 _fightCamera = CreateCamera(_camera);
-            }
-            else
-            {
-                _camera.transform.position = settings.CameraSettings.CameraStartPosition;
-                _camera.transform.rotation = Quaternion.Euler(settings.CameraSettings.CameraStartRotation);
             }
         }
 
-        private IFightCamera CreateCamera(Camera baseCamera)
+
+        private ThirdPersonCamera CreateCamera(Camera baseCamera)
         {
-            var component = baseCamera.gameObject.AddCode<FightCamera>();
-            var camera = component.GetComponent<IFightCamera>();
-            camera.Camera = baseCamera;
-            
+            baseCamera.fieldOfView = 60.0f;
+            // var component = baseCamera.gameObject.AddCode<ThirdPersonCamera>();
+            var camera = baseCamera.GetComponent<ThirdPersonCamera>();
+            camera.Follow = _profilePlayer.CurrentPlayer.Transform;
+            camera.UsingMouse = false;
+            camera.DefaultYAngle = 12.0f;
+            camera.Distance = 15.0f;
             // camera.UiTextManager = Object.Instantiate(_settings.CameraSettings._textDamageManager, camera.Transform);
             // camera.UiTextManager.canvas.worldCamera = camera.Transform.GetComponent<Camera>();
             // camera.UiTextManager.theCamera = camera.Transform.GetComponent<Camera>();
             
-            camera.Settings = _settings.CameraSettings;
             return camera;
         }
     }
