@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Code.Data.Marker;
+using Code.Data.Unit;
 using Code.Data.Unit.Enemy;
 using Code.Extension;
 using UnityEngine;
@@ -35,7 +36,17 @@ namespace Code.Unit.Factories
                 1.8f);
             enemyView.MeshRenderer = enemy.GetComponent<MeshRenderer>();
             enemyView.AnimatorParameters = new AnimatorParameters(enemyView.Animator);
-             
+            
+            Требуется определится с видами врагов и их иерархией
+            var equipmentPoints = new EquipmentPoints(enemyView.Transform.gameObject, item);
+            equipmentPoints.GenerateAllPoints();
+            enemyView.UnitEquipment = new UnitEquipment(equipmentPoints,item.unitEquipment);
+
+
+            var healthBarSettings = _settings.uiElement.First(x => (x.EnemyType == marker._type));
+            enemyView.HealthBar = Object.Instantiate(healthBarSettings.UiView, enemyView.Transform, false);
+            enemyView.HealthBar.transform.localPosition = healthBarSettings.Offset;
+
             enemyView.Transform.SetParent(marker.Transform);
             enemyView.Transform.localPosition = Vector3.zero;
             enemyView.Transform.rotation = Quaternion.identity;

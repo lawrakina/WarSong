@@ -24,10 +24,6 @@ MonoBehaviour:
     unitEquipment:
       Weapon: {fileID: 9024842520586543348, guid: b42a483ee5137f843929c77d6f537502,
         type: 3}
-    uiElement:
-      UiView: {fileID: 0}
-      EnemyType: 0
-      Offset: {x: 0, y: 0, z: 0}
   - EnemyView: {fileID: 2194302051238080810, guid: f4b0da07ccc3d164caf26dcebbead390,
       type: 3}
     EnemyType: 0
@@ -39,10 +35,6 @@ MonoBehaviour:
     unitEquipment:
       Weapon: {fileID: -6049655489026514482, guid: a86d9763462c31640b33721b9ee09be7,
         type: 3}
-    uiElement:
-      UiView: {fileID: 0}
-      EnemyType: 0
-      Offset: {x: 0, y: 0, z: 0}
   - EnemyView: {fileID: 2194302051238080810, guid: f4b0da07ccc3d164caf26dcebbead390,
       type: 3}
     EnemyType: 0
@@ -54,7 +46,8 @@ MonoBehaviour:
     unitEquipment:
       Weapon: {fileID: -8844724956590295038, guid: 9e80f1214d24de448b17ab3d2302eb1a,
         type: 3}
-    uiElement:
-      UiView: {fileID: 0}
-      EnemyType: 0
-      Offset: {x: 0, y: 0, z: 0}
+  uiElement:
+  - UiView: {fileID: 2970395066935538298, guid: d2ddcf18dfa38624791d2fecc565e2a3,
+      type: 3}
+    EnemyType: 0
+    Offset: {x: 0, y: 2.1, z: 0}

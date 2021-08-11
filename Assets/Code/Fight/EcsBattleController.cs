@@ -6,6 +6,7 @@ using Code.GameCamera;
 using Code.Profile;
 using Code.Profile.Models;
 using Code.Unit;
+using ThirdPersonCameraWithLockOn;
 using UnityEngine;
 
 
@@ -16,7 +17,7 @@ namespace Code.Fight
         private readonly Controllers _controllers;
         private readonly ProfilePlayer _profilePlayer;
         private EcsBattle.EcsBattle _ecsBattle;
-        private FightCamera _camera;
+        private ThirdPersonCamera _camera;
         private IPlayerView _player;
         private DungeonParams _dungeonParams;
         private EnemiesLevelModel _listEnemiesLevelModel;
@@ -71,7 +72,7 @@ namespace Code.Fight
         
         public void Inject(object obj)
         {
-            if (obj is FightCamera camera)
+            if (obj is ThirdPersonCamera camera)
                 _camera = camera;
             if (obj is IPlayerView view)
                 _player = view;

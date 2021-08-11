@@ -1,4 +1,5 @@
 ﻿using System;
+using Code.Unit;
 using UnityEngine;
 
 
@@ -8,7 +9,7 @@ namespace Code.Data.Unit.Enemy
     public sealed class UiEnemySettings
     {
         [SerializeField]
-        public GameObject UiView;
+        public HealthBarView UiView;
         [SerializeField]
         public EnemyType EnemyType;
         [SerializeField]

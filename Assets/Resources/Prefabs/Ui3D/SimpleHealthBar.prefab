@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2307479259161386577}
   - component: {fileID: 8414187488283614673}
   - component: {fileID: 8896943204047648381}
+  - component: {fileID: 2970395066935538298}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -79,3 +80,15 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2970395066935538298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5632589081180970477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c5ae7c30f1749c7acdd774792cc1e93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
