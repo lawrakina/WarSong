@@ -18,8 +18,6 @@ namespace Code.Data.Unit.Enemy
         [SerializeField]
         public UnitEnemyEquipment unitEquipment;
         [SerializeField]
-        public UiEnemySettings uiElement;
-        [SerializeField]
         public UnitLevel unitLevel;
     }
 }

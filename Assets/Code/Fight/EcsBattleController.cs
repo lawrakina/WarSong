@@ -1,4 +1,5 @@
-﻿using Code.Data;
+﻿using System.Collections.Generic;
+using Code.Data;
 using Code.Data.Dungeon;
 using Code.Extension;
 using Code.GameCamera;
@@ -18,6 +19,7 @@ namespace Code.Fight
         private FightCamera _camera;
         private IPlayerView _player;
         private DungeonParams _dungeonParams;
+        private EnemiesLevelModel _listEnemiesLevelModel;
         private InOutControlFightModel _inOutControlFightModel;
 
         public EcsBattleController(Controllers controllers, ProfilePlayer profilePlayer)
@@ -39,7 +41,11 @@ namespace Code.Fight
             _ecsBattle.Inject(_camera);
             _ecsBattle.Inject(_inOutControlFightModel);
             _ecsBattle.Inject(_dungeonParams);
+            _ecsBattle.Inject(_listEnemiesLevelModel);
             _ecsBattle.Inject(_player);
+            
+            Dbg.Log($"1MODEL :{_listEnemiesLevelModel}");
+            Dbg.Log($"1LISTLIST :{_listEnemiesLevelModel.Enemies.Count}");
             
             // _listEnemies =
             // _enemiesInitialization.GetListEnemies(_generatorDungeon.GetEnemiesMarkers(),
@@ -73,6 +79,8 @@ namespace Code.Fight
                 _dungeonParams = dunParams;
             if (obj is InOutControlFightModel inputModel)
                 _inOutControlFightModel = inputModel;
+            if (obj is EnemiesLevelModel listEnemies)
+                _listEnemiesLevelModel = listEnemies;
         }
     }
 }

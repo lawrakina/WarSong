@@ -155,7 +155,7 @@ namespace Code.Fight.EcsBattle
                 .Add(new ApplyDamageInUnitSystem())
 
                 //Enemies
-                // .Add(new CreateEnemyEntitySystem())
+                .Add(new CreateEnemyEntitySystem())
                 // .Add(new RotateUiHeathBarsToCameraSystem())
                 //Ui Enemies
                 // .Add(new UpdateEnemiesCurrentHealthPointsSystem())

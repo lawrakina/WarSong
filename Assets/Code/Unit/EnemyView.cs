@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Code.Unit
 {
-    public class EnemyView : MonoBehaviour, IBaseUnitView
+    public class EnemyView : MonoBehaviour, IEnemyView
     {
         public Transform Transform { get; set; }
         public Transform TransformModel { get; set; }

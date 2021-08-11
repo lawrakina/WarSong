@@ -8,5 +8,8 @@ namespace Code.Data.Unit.Enemy
     {
         [SerializeField]
         public EnemySettings[] Enemies;
+        
+        [SerializeField]
+        public UiEnemySettings[] uiElement;
     }
 }

@@ -16,10 +16,22 @@ namespace Code.Profile.Models
         [SerializeField]
         private ReactiveProperty<string> _infoState = new ReactiveProperty<string>($"");
 
+        private Action<Transform> _onChangePlayerPosition;
+        
+        private Action<SpawnMarkerEnemyInDungeon[]> _onChangeEnemiesPositions;
+        
         public ReactiveProperty<string> InfoState => _infoState;
         public ReactiveProperty<FightState> FightState => _fightState;
+        public Action<Transform> OnChangePlayerPosition
+        {
+            get => _onChangePlayerPosition;
+            set => _onChangePlayerPosition = value;
+        }
 
-        public Action<Transform> OnChangePlayerPosition;
-        public Action<SpawnMarkerEnemyInDungeon[]> OnChangeEnemiesPositions;
+        public Action<SpawnMarkerEnemyInDungeon[]> OnChangeEnemiesPositions
+        {
+            get => _onChangeEnemiesPositions;
+            set => _onChangeEnemiesPositions = value;
+        }
     }
 }

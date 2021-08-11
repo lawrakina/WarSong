@@ -8,7 +8,7 @@ namespace Code.Profile.Models
     [CreateAssetMenu(fileName = nameof(EnemiesLevelModel), menuName = "Models/" + nameof(EnemiesLevelModel))]
     public class EnemiesLevelModel : ScriptableObject
     {
-        [SerializeField] private List<EnemyView> _enemies;
-        public List<EnemyView> Enemies => _enemies;
+        private List<IEnemyView> _enemies = new List<IEnemyView>(); 
+        public List<IEnemyView> Enemies => _enemies;
     }
 }
