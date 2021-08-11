@@ -1,17 +1,23 @@
-﻿using Code.Profile;
+﻿using System;
+using Code.Profile;
 using Code.Profile.Models;
 using UnityEngine;
 
 
-namespace Code.Fight
+namespace Code.Fight.BuildingDungeon
 {
-    public sealed class PlayerFightController: BaseController
+    public sealed class PlayerFightController : BaseController, IVerifiable
     {
         private readonly ProfilePlayer _profilePlayer;
         private readonly FightDungeonModel _model;
 
+        public BuildStatus Status { get; set; }
+    
+        public event Action<IVerifiable> Complete = verifiable => { verifiable.Status = BuildStatus.Complete;};
+
         public PlayerFightController(ProfilePlayer profilePlayer, FightDungeonModel model)
         {
+            Status = BuildStatus.Passive;
             _profilePlayer = profilePlayer;
             _model = model;
             _model.OnChangePlayerPosition += SpawnPlayer;
@@ -19,8 +25,11 @@ namespace Code.Fight
 
         private void SpawnPlayer(Transform spawnTransform)
         {
+            Status = BuildStatus.Process;
             _profilePlayer.CurrentPlayer.Transform.SetParent(spawnTransform);
             _profilePlayer.CurrentPlayer.Transform.localPosition = Vector3.zero;
+
+            Complete?.Invoke(this);
         }
 
         protected override void OnDispose()

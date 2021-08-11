@@ -1,5 +1,6 @@
 ﻿using System;
 using Code.Extension;
+using Code.Fight.BuildingDungeon;
 using Code.GameCamera;
 using Code.Loading;
 using Code.Profile;
@@ -10,22 +11,19 @@ using UnityEngine;
 
 namespace Code.Fight
 {
-    public sealed class FightController: BaseController
+    public sealed class FightController : BaseController
     {
         private readonly Controllers _controllers;
         private readonly Transform _placeForUi;
         private readonly ProfilePlayer _profilePlayer;
         private LoadingView _loadingView;
         private FightDungeonModel _model;
-        
-        private LevelGeneratorController _generator;
 
+        private BuildStatusCheckerController _buildStatusCheckerController;
         private LoadingController _loadingController;
-
+        private LevelGeneratorController _generator;
         private PlayerFightController _playerFightController;
-
         private EnemyFightController _enemyFightController;
-
         private CameraController _cameraController;
         private EcsBattleController _ecsBattleController;
         private InputController _inputController;
@@ -46,15 +44,26 @@ namespace Code.Fight
             AddController(_loadingController);
             _controllers.Add(_loadingController);
 
+            _buildStatusCheckerController = new BuildStatusCheckerController();
+            _controllers.Add(_buildStatusCheckerController);
+            AddController(_buildStatusCheckerController);
+            _buildStatusCheckerController.OffExecute();
+            _buildStatusCheckerController.CompleteCommand.Subscribe(x =>
+            {
+                _model.FightState.Value = FightState.Fight;
+            }).AddTo(_subscriptions);
+
             _generator = new LevelGeneratorController(_controllers,
                 _profilePlayer.Settings.DungeonGeneratorData, _model);
             _controllers.Add(_generator);
             AddController(_generator);
+            _buildStatusCheckerController.AddToQueue(_generator);
 
             _playerFightController = new PlayerFightController(
                 _profilePlayer, _model);
             _controllers.Add(_playerFightController);
             AddController(_playerFightController);
+            _buildStatusCheckerController.AddToQueue(_playerFightController);
 
             _enemyFightController = new EnemyFightController(
                 _model,
@@ -63,12 +72,13 @@ namespace Code.Fight
                 _profilePlayer.Settings.EnemiesData);
             _controllers.Add(_enemyFightController);
             AddController(_enemyFightController);
+            _buildStatusCheckerController.AddToQueue(_enemyFightController);
 
             _inputController = new InputController(_placeForUi, _profilePlayer);
             _controllers.Add(_inputController);
             AddController(_inputController);
 
-            _ecsBattleController = new EcsBattleController(_controllers,_profilePlayer);
+            _ecsBattleController = new EcsBattleController(_controllers, _profilePlayer);
             _controllers.Add(_ecsBattleController);
             AddController(_ecsBattleController);
             _ecsBattleController.OffExecute();
@@ -77,8 +87,10 @@ namespace Code.Fight
             _ecsBattleController.Inject(_cameraController.FightCamera);
             _ecsBattleController.Inject(_profilePlayer.Models.InOutControlFightModel);
             _ecsBattleController.Inject(_profilePlayer.Models.DungeonGeneratorModel.ActiveLevel);
+            _ecsBattleController.Inject(_profilePlayer.Models.EnemiesLevelModel);
 
             _model.FightState.Subscribe(OnChangeFightState).AddTo(_subscriptions);
+            _buildStatusCheckerController.OnExecute();
             OnChangeFightState(FightState.BuildingStart);
         }
 
@@ -98,8 +110,6 @@ namespace Code.Fight
                     break;
                 case FightState.BuildingComplete:
                     _loadingController.UpdateInfo();
-                    // _inputController.ShowFightInterface();
-                    _model.FightState.Value = FightState.Fight;
                     break;
                 case FightState.Fight:
                     _ecsBattleController.StartFight();

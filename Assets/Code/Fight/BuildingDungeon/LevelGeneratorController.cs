@@ -1,20 +1,19 @@
-﻿using Code.Data.Dungeon;
+﻿using System;
+using Code.Data.Dungeon;
 using Code.Data.Marker;
 using Code.Extension;
-using Code.Profile;
 using Code.Profile.Models;
 using Code.TimeRemaining;
 using DungeonArchitect;
 using DungeonArchitect.Builders.GridFlow;
-using UniRx;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 
-namespace Code.Fight
+namespace Code.Fight.BuildingDungeon
 {
-    public class LevelGeneratorController : BaseController
+    public class LevelGeneratorController : BaseController, IVerifiable
     {
         private readonly Controllers _controllers;
         private readonly DungeonGeneratorData _settings;
@@ -28,6 +27,9 @@ namespace Code.Fight
         private static bool _isOn = false;
         private TimeRemaining.TimeRemaining _timerCheckBuildState;
 
+        public BuildStatus Status { get; set; }
+
+        public event Action<IVerifiable> Complete = verifiable => { verifiable.Status = BuildStatus.Complete;};
 
         public static bool IsOn
         {
@@ -59,14 +61,12 @@ namespace Code.Fight
         private SpawnMarkerEnemyInDungeon[] GetEnemiesPositions()
         {
             var result = _dungeon.GetComponentsInChildren<SpawnMarkerEnemyInDungeon>();
-            Dbg.Log($"GetListOfEnemies:{result}");
             return result ?? null;
         }
 
         private Transform GetPlayerPosition()
         {
             var result = _dungeon.GetComponentInChildren<SpawnMarkerCharacterInDungeon>();
-            Dbg.Log($"GetPlayerPosition:{result}");
             if (result != null)
                 return result.transform;
             return null;
@@ -76,6 +76,7 @@ namespace Code.Fight
             FightDungeonModel fightModel)
         {
             _isOn = true;
+            Status = BuildStatus.Passive;
             _controllers = controllers;
             _settings = settings;
             _fightModel = fightModel;
@@ -92,16 +93,20 @@ namespace Code.Fight
             _pooledSceneProvider = gameObjectGenerator.GetComponent<PooledDungeonSceneProvider>();
             _pooledSceneProvider.itemParent = _dungeon;
             _builder.asyncBuild = true;
+
         }
 
         public void BuildDungeon()
         {
+            Status = BuildStatus.Process;
             GenerateDemoLevel();
             _generator.Build();
             _fightModel.FightState.Value = FightState.BuildingProcess;
             _fightModel.InfoState.Value = StringManager.INFO_BULDING_STATE_START_PROCESS;
             _timerCheckBuildState = new TimeRemaining.TimeRemaining(CheckBuildDungeon, 1f, true);
             _timerCheckBuildState.AddTimeRemaining();
+            
+            Complete?.Invoke(this);
         }
 
         private void GenerateDemoLevel()
@@ -112,6 +117,7 @@ namespace Code.Fight
         private void DestroyDungeon()
         {
             _generator.DestroyDungeon();
+            Status = BuildStatus.Passive;
         }
 
         protected override void OnDispose()
