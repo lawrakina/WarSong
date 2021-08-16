@@ -21,10 +21,14 @@ namespace Code.Equipment
         [SerializeField]
         private float _attackSpeed = 2.0f;
 
-        public AttackValue(float min, float max)
+        [SerializeField] 
+        private float _attackDistance = 1.0f;
+        
+        public AttackValue(float min, float max, float attackDistance)
         {
             _minAttackValue = min;
             _maxAttackValue = max;
+            _attackDistance = attackDistance;
         }
 
         #endregion
@@ -45,6 +49,11 @@ namespace Code.Equipment
         public float GetAttackSpeed()
         {
             return _attackSpeed;
+        }
+
+        public float GetAttackDistance()
+        {
+            return _attackDistance;
         }
 
         #endregion

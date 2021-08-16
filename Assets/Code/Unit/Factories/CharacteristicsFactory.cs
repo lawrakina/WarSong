@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using Code.Data;
 using Code.Data.Unit;
 using Code.Data.Unit.Player;
 
@@ -35,6 +37,26 @@ namespace Code.Unit.Factories
                                              characteristics.ForOneLevel.Stamina * level.CurrentLevel;
             characteristics.Values.Strength = equipment.FullStrength +characteristics.Start.Strength +
                                               characteristics.ForOneLevel.Strength * level.CurrentLevel;
+
+            switch (value.CharacterClass)
+            {
+                case CharacterClass.None:
+                    break;
+                case CharacterClass.Warrior:
+                    characteristics.Distance = equipment.MainWeapon.AttackValue.GetAttackDistance();
+                    // characteristics.SetAttackValue = equipment.MainWeapon.AttackValue;
+                    break;
+                case CharacterClass.Rogue:
+                    break;
+                case CharacterClass.Hunter:
+                    break;
+                case CharacterClass.Mage:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
+            // characteristics.
             
             return characteristics;
         }

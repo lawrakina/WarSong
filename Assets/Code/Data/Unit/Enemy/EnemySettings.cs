@@ -1,4 +1,5 @@
 ﻿using System;
+using Code.Equipment;
 using UnityEngine;
 
 
@@ -16,7 +17,7 @@ namespace Code.Data.Unit.Enemy
         [SerializeField]
         public float MaxHp;
         [SerializeField]
-        public UnitEnemyEquipment unitEquipment;
+        public AttackValue AttackValue;
         [SerializeField]
         public UnitLevel unitLevel;
     }

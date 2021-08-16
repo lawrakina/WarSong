@@ -27,11 +27,13 @@ namespace Code.Data.Unit
 
         private int _minAttack;
         private int _maxAttack;
+        private float _distance;
 
         [SerializeField]
         private float _minArmorValue = 0.0f;
         [SerializeField]
         private float _maxArmorValue = 0.75f;
+
 
         public float DodgeChance
         {
@@ -59,8 +61,17 @@ namespace Code.Data.Unit
             set => _critChance = value;
         }
 
-        public int MinAttack => _minAttack;
-        public int MaxAttack => _maxAttack;
+        public int MinAttack
+        {
+            get => _minAttack;
+            set => _minAttack = value;
+        }
+
+        public int MaxAttack
+        {
+            get => _maxAttack;
+            set => _maxAttack = value;
+        }
 
         public float ArmorValue
         {
@@ -79,13 +90,19 @@ namespace Code.Data.Unit
 
         public AttackValue GetAttackMainWeaponValue()
         {
-            var result = new AttackValue(MinAttack, MaxAttack);
+            var result = new AttackValue(MinAttack, MaxAttack, Distance);
             return result;
+        }
+
+        public float Distance
+        {
+            get => _distance;
+            set => _distance = value;
         }
 
         public AttackValue GetAttackSecondWeaponValue()
         {
-            var result = new AttackValue(1,2);
+            var result = new AttackValue(1,2, Distance);
             return result;
         }
     }

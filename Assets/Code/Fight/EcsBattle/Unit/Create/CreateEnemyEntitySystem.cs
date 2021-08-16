@@ -39,9 +39,8 @@ namespace Code.Fight.EcsBattle.Unit.Create
                 entity.Get<UnitComponent>()._health = view.UnitHealth;
                 entity.Get<UiEnemyHealthBarComponent>()._value = view.HealthBar;
                 
-                if(view.UnitEquipment == null) throw new System.NotImplementedException("view.UnitBattle: NULL");
-                entity.Get<BattleInfoMainWeaponComponent>()._attackValue = view.UnitEquipment.MainWeapon.AttackValue;
-                entity.Get<BattleInfoMainWeaponComponent>()._bullet = view.UnitEquipment.MainWeapon.StandardBullet;
+                // entity.Get<BattleInfoMainWeaponComponent>()._attackValue = view.a.UnitEquipment.MainWeapon.AttackValue;
+                // entity.Get<BattleInfoMainWeaponComponent>()._bullet = view.UnitEquipment.MainWeapon.StandardBullet;
                 
                 //Ragdoll
                 SearchNodesOfRagdoll(entity, view);

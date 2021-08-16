@@ -9,7 +9,6 @@ namespace Code.Unit
     public class EnemyView : MonoBehaviour, IEnemyView
     {
         public Transform Transform { get; set; }
-        public Transform TransformModel { get; set; }
         public Collider Collider { get; set; }
         public Rigidbody Rigidbody { get; set; }
         public MeshRenderer MeshRenderer { get; set; }

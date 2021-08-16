@@ -1,4 +1,5 @@
 ﻿using Code.Data;
+using Code.Data.Unit;
 using UnityEngine;
 
 namespace Code.Equipment
@@ -7,5 +8,6 @@ namespace Code.Equipment
     {
         public abstract InventoryItemType ItemType { get; }
         public abstract int ItemLevel { get; }
+        public abstract Characteristics Characteristics { get; }
     }
 }

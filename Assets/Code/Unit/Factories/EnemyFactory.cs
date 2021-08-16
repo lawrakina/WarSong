@@ -37,11 +37,14 @@ namespace Code.Unit.Factories
             enemyView.MeshRenderer = enemy.GetComponent<MeshRenderer>();
             enemyView.AnimatorParameters = new AnimatorParameters(enemyView.Animator);
             
-            Требуется определится с видами врагов и их иерархией
-            var equipmentPoints = new EquipmentPoints(enemyView.Transform.gameObject, item);
-            equipmentPoints.GenerateAllPoints();
-            enemyView.UnitEquipment = new UnitEquipment(equipmentPoints,item.unitEquipment);
+            // var equipmentPoints = new EquipmentPoints(enemyView.Transform.gameObject, item);
+            // equipmentPoints.GenerateAllPoints();
+            // enemyView.UnitEquipment = new UnitEquipment(equipmentPoints,item.unitEquipment);
 
+            // var characteristics = new UnitCharacteristics();
+            // characteristics.Speed = item.MoveSpeed;
+            // characteristics.MinAttack = item.AttackValue..MoveSpeed;
+            // characteristics.MaxAttack = item.MoveSpeed;
 
             var healthBarSettings = _settings.uiElement.First(x => (x.EnemyType == marker._type));
             enemyView.HealthBar = Object.Instantiate(healthBarSettings.UiView, enemyView.Transform, false);

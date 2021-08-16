@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Code.Equipment;
 using UnityEngine;
 
 
@@ -40,9 +42,16 @@ namespace Code.Data.Unit
             public bool RangeTwoHandCrossbowWeapon;
             [Header("Shield in Left hand")]
             public bool Shield;
+            [Header("Heavy armor")]
+            public bool HeavyArmor;
+            [Header("MediumArmor")]
+            public bool MediumArmor;
+            [Header("Leght Armor")]
+            public bool LightArmor;
         }
 
         [SerializeField] public PermissionToCarryEquipment permissionForEquipment;
-        [SerializeField] public GameObject[] Slots;
+        [SerializeField] public List<BaseEquipItem> Equipment;
+        [SerializeField] public List<BaseEquipItem> Inventory;
     }
 }

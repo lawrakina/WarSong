@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Code.Equipment;
 using Code.Extension;
@@ -18,6 +19,12 @@ namespace Code.Data.Unit
         public BaseWeapon SecondWeapon = null;
         public BaseShield Shield = null;
         public ActiveWeapons ActiveWeapons;
+
+        private float _fullAgility = 0f;
+        private float _fullIntellect = 0f;
+        private float _fullSpirit = 0f;
+        private float _fullStamina = 0f;
+        private float _fullStrength = 0f;
 
         public UnitEquipment(EquipmentPoints equipmentPoints, CharacterEquipment characterEquipment)
         {
@@ -57,17 +64,130 @@ namespace Code.Data.Unit
             }
         }
 
-        //ToDo сделать рассчет по каждой характеристике по всем одетым предметам
-        public float FullAgility { get; set; }
-        public float FullIntellect { get; set; }
-        public float FullSpirit { get; set; }
-        public float FullStamina { get; set; }
-        public float FullStrength { get; set; }
+        public float FullAgility => _fullAgility;
+        public float FullIntellect => _fullIntellect;
+        public float FullSpirit => _fullSpirit;
+        public float FullStamina => _fullStamina;
+        public float FullStrength => _fullStrength;
 
         public void RebuildEquipment()
         {
             ClearAllSlots();
-            EquipItems(_characterEquipment.Slots);
+            foreach (var item in _characterEquipment.Equipment)
+            {
+                var ifEquipItem = false;
+                switch (item.ItemType)
+                {
+                    case InventoryItemType.Weapon:
+                        PutOnWeapon(item);
+                        ifEquipItem = true;
+                        break;
+                    case InventoryItemType.Armor:
+                        PutOnArmor(item);
+                        ifEquipItem = true;
+                        break;
+                    case InventoryItemType.QuestItem:
+                        //ToDo тут можно сделать новый квест при старте уровня. Например: "На вас черная метка, охотник уже идет по следу..."
+                        ifEquipItem = false;
+                        break;
+                    case InventoryItemType.Trash:
+                        ifEquipItem = false;
+                        break;
+                    case InventoryItemType.Food:
+                        ifEquipItem = false;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                if (!ifEquipItem)
+                {
+                    _characterEquipment.Equipment.Remove(item);
+                    _characterEquipment.Inventory.Add(item);
+                }
+            }
+        }
+
+        private void PutOnArmor(BaseEquipItem item)
+        {
+            if (item is IBaseShield shield)
+            {
+                if (_characterEquipment.permissionForEquipment.Shield && ActiveWeapons == ActiveWeapons.RightHand)
+                {
+                    Shield = Object.Instantiate(shield.GameObject, Vector3.zero, Quaternion.identity)
+                        .GetComponent<BaseShield>();
+                    Shield.transform.SetParent(_equipmentPoints._leftShildAttachPoint, false);
+                    ActiveWeapons = ActiveWeapons.RightAndShield;
+                }
+
+                return;
+            }
+
+            if (item is IBaseArmor)
+            {
+                // добавить слоты армора и рассортировать по одежке
+            }
+        }
+
+        private void PutOnWeapon(BaseEquipItem item)
+        {
+            AddCharacteristics(item);
+            var weapon = item as BaseWeapon;
+            switch (weapon.WeaponType)
+            {
+                case WeaponItemType.OneHandWeapon:
+                    if (_characterEquipment.permissionForEquipment.OneHandWeapon)
+                    {
+                        if (!MainWeapon)
+                            SetWeapon(weapon.Inst(), out MainWeapon,
+                                _equipmentPoints._rightWeaponAttachPoint, ActiveWeapons.RightHand);
+                        else if (!SecondWeapon && _characterEquipment.permissionForEquipment.TwoOneHandWeapon)
+                            SetWeapon(weapon.Inst(), out SecondWeapon,
+                                _equipmentPoints._leftWeaponAttachPoint, ActiveWeapons.RightAndLeft);
+                    }
+
+                    break;
+                case WeaponItemType.TwoHandSwordWeapon:
+                    if (_characterEquipment.permissionForEquipment.TwoHandSwordWeapon)
+                        SetWeapon(weapon.Inst(), out MainWeapon,
+                            _equipmentPoints._rightWeaponAttachPoint, ActiveWeapons.TwoHand);
+
+                    break;
+                case WeaponItemType.TwoHandSpearWeapon:
+                    if (_characterEquipment.permissionForEquipment.TwoHandSpearWeapon)
+                        SetWeapon(weapon.Inst(), out MainWeapon,
+                            _equipmentPoints._rightWeaponAttachPoint, ActiveWeapons.TwoHand);
+
+                    break;
+                case WeaponItemType.TwoHandStaffWeapon:
+                    if (_characterEquipment.permissionForEquipment.TwoHandStaffWeapon)
+                        SetWeapon(weapon.Inst(), out MainWeapon,
+                            _equipmentPoints._rightWeaponAttachPoint, ActiveWeapons.TwoHand);
+
+                    break;
+                case WeaponItemType.RangeTwoHandBowWeapon:
+                    if (_characterEquipment.permissionForEquipment.RangeTwoHandBowWeapon)
+                        SetWeapon(weapon.Inst(), out MainWeapon,
+                            _equipmentPoints._leftWeaponAttachPoint, ActiveWeapons.TwoHand);
+
+                    break;
+                case WeaponItemType.RangeTwoHandCrossbowWeapon:
+                    if (_characterEquipment.permissionForEquipment.RangeTwoHandCrossbowWeapon)
+                        SetWeapon(weapon.Inst(), out MainWeapon,
+                            _equipmentPoints._rightWeaponAttachPoint, ActiveWeapons.TwoHand);
+
+                    break;
+            }
+        }
+
+        private void AddCharacteristics(BaseEquipItem item)
+        {
+            _fullStrength += item.Characteristics.Strength;
+            _fullAgility += item.Characteristics.Agility;
+            _fullIntellect += item.Characteristics.Intellect;
+            _fullSpirit += item.Characteristics.Spirit;
+            _fullStamina += item.Characteristics.Stamina;
+            _listEquipmentItems.Add(item);
         }
 
         private void ClearAllSlots()
@@ -100,76 +220,6 @@ namespace Code.Data.Unit
             _listEquipmentItems = new List<BaseEquipItem>();
         }
 
-        private void EquipItems(IEnumerable<GameObject> slots)
-        {
-            foreach (var item in slots)
-            {
-                EquipItem(item);
-            }
-        }
-
-        private void EquipItem(GameObject item)
-        {
-            if (item.TryGetComponent(out BaseWeapon componentWeapon))
-            {
-                switch (componentWeapon.itemType)
-                {
-                    case WeaponItemType.OneHandWeapon:
-                        if (_characterEquipment.permissionForEquipment.OneHandWeapon)
-                        {
-                            if (!MainWeapon)
-                                SetWeapon(componentWeapon.Inst(), out MainWeapon,
-                                    _equipmentPoints._rightWeaponAttachPoint, ActiveWeapons.RightHand);
-                            else if (!SecondWeapon && _characterEquipment.permissionForEquipment.TwoOneHandWeapon)
-                                SetWeapon(componentWeapon.Inst(), out SecondWeapon,
-                                    _equipmentPoints._leftWeaponAttachPoint, ActiveWeapons.RightAndLeft);
-                        }
-
-                        break;
-                    case WeaponItemType.TwoHandSwordWeapon:
-                        if (_characterEquipment.permissionForEquipment.TwoHandSwordWeapon)
-                            SetWeapon(componentWeapon.Inst(), out MainWeapon,
-                                _equipmentPoints._rightWeaponAttachPoint, ActiveWeapons.TwoHand);
-
-                        break;
-                    case WeaponItemType.TwoHandSpearWeapon:
-                        if (_characterEquipment.permissionForEquipment.TwoHandSpearWeapon)
-                            SetWeapon(componentWeapon.Inst(), out MainWeapon,
-                                _equipmentPoints._rightWeaponAttachPoint, ActiveWeapons.TwoHand);
-
-                        break;
-                    case WeaponItemType.TwoHandStaffWeapon:
-                        if (_characterEquipment.permissionForEquipment.TwoHandStaffWeapon)
-                            SetWeapon(componentWeapon.Inst(), out MainWeapon,
-                                _equipmentPoints._rightWeaponAttachPoint, ActiveWeapons.TwoHand);
-
-                        break;
-                    case WeaponItemType.RangeTwoHandBowWeapon:
-                        if (_characterEquipment.permissionForEquipment.RangeTwoHandBowWeapon)
-                            SetWeapon(componentWeapon.Inst(), out MainWeapon,
-                                _equipmentPoints._leftWeaponAttachPoint, ActiveWeapons.TwoHand);
-
-                        break;
-                    case WeaponItemType.RangeTwoHandCrossbowWeapon:
-                        if (_characterEquipment.permissionForEquipment.RangeTwoHandCrossbowWeapon)
-                            SetWeapon(componentWeapon.Inst(), out MainWeapon,
-                                _equipmentPoints._rightWeaponAttachPoint, ActiveWeapons.TwoHand);
-
-                        break;
-                }
-            }
-
-            if (item.TryGetComponent(out BaseShield componentShield))
-            {
-                if (_characterEquipment.permissionForEquipment.Shield && ActiveWeapons == ActiveWeapons.RightHand)
-                {
-                    Shield = Object.Instantiate(componentShield, Vector3.zero, Quaternion.identity);
-                    Shield.transform.SetParent(_equipmentPoints._leftShildAttachPoint, false);
-                    ActiveWeapons = ActiveWeapons.RightAndShield;
-                }
-            }
-        }
-
         private void SetWeapon(BaseWeapon weapon, out BaseWeapon currentWeapon, Transform attachPoint,
             ActiveWeapons activeWeapons)
         {
@@ -188,7 +238,7 @@ namespace Code.Data.Unit
             if (MainWeapon == null)
                 return 0; //Unarmed
 
-            switch (MainWeapon.itemType)
+            switch (MainWeapon.WeaponType)
             {
                 case WeaponItemType.OneHandWeapon:
                     return 1;
@@ -219,8 +269,8 @@ namespace Code.Data.Unit
                 //     break; 
             }
 
-            if (MainWeapon.itemType == WeaponItemType.OneHandWeapon &&
-                SecondWeapon.itemType == WeaponItemType.OneHandWeapon)
+            if (MainWeapon.WeaponType == WeaponItemType.OneHandWeapon &&
+                SecondWeapon.WeaponType == WeaponItemType.OneHandWeapon)
                 return 5; //DualWeapons
             return 0;
         }

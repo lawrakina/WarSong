@@ -12,39 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f06c46282a4905beaf44c25204526e, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  ListCharacters:
-  - CharacterClass: 1
-    CharacterGender: 1
-    CharacterRace: 0
-    Equipment:
-      permissionForEquipment:
-        OneHandWeapon: 1
-        TwoOneHandWeapon: 1
-        TwoHandSwordWeapon: 1
-        TwoHandSpearWeapon: 1
-        TwoHandStaffWeapon: 1
-        RangeTwoHandBowWeapon: 0
-        RangeTwoHandCrossbowWeapon: 0
-        Shield: 1
-      Slots:
-      - {fileID: 6217818179488472574, guid: b42a483ee5137f843929c77d6f537502, type: 3}
-      - {fileID: 6217818179488472574, guid: b42a483ee5137f843929c77d6f537502, type: 3}
-      - {fileID: 6217818179488472574, guid: b42a483ee5137f843929c77d6f537502, type: 3}
-    ExperiencePoints: 1
-  - CharacterClass: 3
-    CharacterGender: 0
-    CharacterRace: 0
-    Equipment:
-      permissionForEquipment:
-        OneHandWeapon: 0
-        TwoOneHandWeapon: 0
-        TwoHandSwordWeapon: 0
-        TwoHandSpearWeapon: 0
-        TwoHandStaffWeapon: 0
-        RangeTwoHandBowWeapon: 1
-        RangeTwoHandCrossbowWeapon: 1
-        Shield: 0
-      Slots:
-      - {fileID: 2584729198991652442, guid: a86d9763462c31640b33721b9ee09be7, type: 3}
-    ExperiencePoints: 1
+  ListCharacters: []
   _numberActiveCharacter: 0

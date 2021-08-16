@@ -42,7 +42,7 @@ namespace Code.Fight.EcsBattle.Unit.Create
 
             void SetBattleInfoForMainWeapon(ref BattleInfoMainWeaponComponent weapon)
             {
-                weapon._attackDistance = _view.UnitEquipment.MainWeapon.AttackDistance;
+                weapon._attackDistance = _view.UnitEquipment.MainWeapon.AttackValue.GetAttackDistance();
                 weapon._bullet = _view.UnitEquipment.MainWeapon.StandardBullet;
                 weapon._attackValue = _view.UnitCharacteristics.GetAttackMainWeaponValue();
                 weapon._weaponTypeAnimation = _view.AnimatorParameters.WeaponType;
@@ -64,7 +64,7 @@ namespace Code.Fight.EcsBattle.Unit.Create
 
                 case ActiveWeapons.RightAndLeft:
                     //right
-                    mainWeapon._attackDistance = _view.UnitEquipment.MainWeapon.AttackDistance;
+                    mainWeapon._attackDistance = _view.UnitEquipment.MainWeapon.AttackValue.GetAttackDistance();
                     mainWeapon._bullet = _view.UnitEquipment.MainWeapon.StandardBullet;
                     mainWeapon._attackValue = _view.UnitCharacteristics.GetAttackMainWeaponValue();
                     //todo убрать магические числа, но это не обязательно  //_view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
@@ -73,7 +73,7 @@ namespace Code.Fight.EcsBattle.Unit.Create
                     mainWeapon._attackMaxValueAnimation = 4;
                     //left
                     ref var secondWeapon = ref entity.Get<BattleInfoSecondWeaponComponent>();
-                    secondWeapon._attackDistance = _view.UnitEquipment.SecondWeapon.AttackDistance;
+                    secondWeapon._attackDistance = _view.UnitEquipment.SecondWeapon.AttackValue.GetAttackDistance();
                     secondWeapon._bullet = _view.UnitEquipment.SecondWeapon.StandardBullet;
                     secondWeapon._attackValue = _view.UnitCharacteristics.GetAttackSecondWeaponValue();
                     //todo убрать магические числа, но это не обязательно  //_view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
