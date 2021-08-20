@@ -41,13 +41,14 @@ namespace Code.Unit.Factories
             var person = new PersonCharacter(player.TransformModel.gameObject, _settings);
             person.CharacterRace = settings.CharacterRace;
             person.CharacterGender = settings.CharacterGender;
-            person.Generate();
+            // person.Regenerate();
+            // person.Generate();
             player.PersonCharacter = person;
 
             var equipmentPoints = new EquipmentPoints(player.TransformModel.gameObject, _settings);
             equipmentPoints.GenerateAllPoints();
 
-            player.UnitEquipment = new UnitEquipment(equipmentPoints, settings.Equipment);
+            player.UnitEquipment = new UnitEquipment(equipmentPoints, settings.Equipment, person);
             
             // player.CharacterClass = new BaseCharacterClass();
             

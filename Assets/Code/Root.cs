@@ -52,7 +52,7 @@ namespace Code
 #if UNITY_EDITOR
         private void ChangePlayerForDebugDontUse(IPlayerView obj)
         {
-            Dbg.Error($"Change Player");
+            // Dbg.Error($"Change Player");
             _characterPlayer = _profilePlayer.CurrentPlayer.Transform.gameObject;
             // _characterPlayer = obj.Transform.gameObject;
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Code.CharacterCustomizing;
 using Code.Equipment;
 using Code.Extension;
 using Code.Unit;
@@ -14,11 +15,28 @@ namespace Code.Data.Unit
     {
         private readonly EquipmentPoints _equipmentPoints;
         private CharacterEquipment _characterEquipment;
-        private List<BaseEquipItem> _listEquipmentItems = new List<BaseEquipItem>();
+        private readonly PersonCharacter _personCharacter;
+        private List<BaseArmorItem> _listEquipmentItems = new List<BaseArmorItem>();
         public BaseWeapon MainWeapon = null;
         public BaseWeapon SecondWeapon = null;
-        public BaseShield Shield = null;
+        public ShieldEquip ShieldEquip = null;
         public ActiveWeapons ActiveWeapons;
+
+        public HeadEquip HeadEquip = null;
+        public NeckEquip NeckEquip = null;
+        public ShoulderEquip ShoulderEquip = null;
+        public BodyEquip BodyEquip = null;
+        public CloakEquip CloakEquip = null;
+        public BraceletEquip BraceletEquip = null;
+        public GlovesEquip GlovesEquip = null;
+        public BeltEquip BeltEquip = null;
+        public PantsEquip PantsEquip = null;
+        public ShoesEquip ShoesEquip = null;
+        public RingEquip Ring1Equip = null;
+        public RingEquip Ring2Equip = null;
+        public EarringEquip Earring1Equip = null;
+        public EarringEquip Earring2Equip = null;
+
 
         private float _fullAgility = 0f;
         private float _fullIntellect = 0f;
@@ -26,10 +44,12 @@ namespace Code.Data.Unit
         private float _fullStamina = 0f;
         private float _fullStrength = 0f;
 
-        public UnitEquipment(EquipmentPoints equipmentPoints, CharacterEquipment characterEquipment)
+        public UnitEquipment(EquipmentPoints equipmentPoints, CharacterEquipment characterEquipment,
+            PersonCharacter personCharacter)
         {
             _equipmentPoints = equipmentPoints;
             _characterEquipment = characterEquipment;
+            _personCharacter = personCharacter;
 
             RebuildEquipment();
         }
@@ -43,8 +63,8 @@ namespace Code.Data.Unit
                     result += MainWeapon.ItemLevel;
                 if (SecondWeapon)
                     result += SecondWeapon.ItemLevel;
-                if (Shield)
-                    result += Shield.ItemLevel;
+                if (ShieldEquip)
+                    result += ShieldEquip.ItemLevel;
                 //ToDo need add all slots
 
                 return result;
@@ -56,8 +76,8 @@ namespace Code.Data.Unit
             get
             {
                 var result = 0;
-                if (Shield)
-                    result += Shield.ArmorValue;
+                if (ShieldEquip)
+                    result += ShieldEquip.ArmorValue;
                 //ToDo need add all armors 
 
                 return result;
@@ -73,6 +93,7 @@ namespace Code.Data.Unit
         public void RebuildEquipment()
         {
             ClearAllSlots();
+            _personCharacter.Regenerate();
             foreach (var item in _characterEquipment.Equipment)
             {
                 var ifEquipItem = false;
@@ -83,7 +104,7 @@ namespace Code.Data.Unit
                         ifEquipItem = true;
                         break;
                     case InventoryItemType.Armor:
-                        PutOnArmor(item);
+                        PutOnArmor(item as BaseArmorItem);
                         ifEquipItem = true;
                         break;
                     case InventoryItemType.QuestItem:
@@ -100,33 +121,213 @@ namespace Code.Data.Unit
                         throw new ArgumentOutOfRangeException();
                 }
 
+                PutAllEquip();
+
                 if (!ifEquipItem)
                 {
-                    _characterEquipment.Equipment.Remove(item);
-                    _characterEquipment.Inventory.Add(item);
+                    SentToInventory(item);
+                }
+            }
+
+        }
+
+        public void PutAllEquip()
+        {
+            if (HeadEquip)
+            {
+                foreach (var view in HeadEquip.ListViews)
+                {
+                    view.SetActive(true);
+                    view.active = true;
                 }
             }
         }
 
-        private void PutOnArmor(BaseEquipItem item)
-        {
-            if (item is IBaseShield shield)
-            {
-                if (_characterEquipment.permissionForEquipment.Shield && ActiveWeapons == ActiveWeapons.RightHand)
-                {
-                    Shield = Object.Instantiate(shield.GameObject, Vector3.zero, Quaternion.identity)
-                        .GetComponent<BaseShield>();
-                    Shield.transform.SetParent(_equipmentPoints._leftShildAttachPoint, false);
-                    ActiveWeapons = ActiveWeapons.RightAndShield;
-                }
 
+        private void PutOnArmor(BaseArmorItem item)
+        {
+            Dbg.Log($"PuOnArmor:{item.NameInHierarchy}");
+            if(!item)
+                return;
+            if (!CheckPermissionForEquipment(item))
+            {
+                SentToInventory(item);
                 return;
             }
-
-            if (item is IBaseArmor)
+            List<GameObject> listOfGameObjectsViews = new List<GameObject>();
+            switch (item)
             {
-                // добавить слоты армора и рассортировать по одежке
+                case ShieldEquip shield:
+                {
+                    if (ActiveWeapons == ActiveWeapons.RightHand)
+                    {
+                        ShieldEquip = Object.Instantiate(shield.GameObject, Vector3.zero, Quaternion.identity)
+                            .GetComponent<ShieldEquip>();
+                        ShieldEquip.transform.SetParent(_equipmentPoints._leftShildAttachPoint, false);
+                        ActiveWeapons = ActiveWeapons.RightAndShield;
+                    }
+                    return;
+                }
+                case HeadEquip head:
+                {
+                    if (!HeadEquip && _personCharacter.PutOnArmor(head, ref listOfGameObjectsViews))
+                    {
+                        AddCharacteristics(head);
+                        HeadEquip = head;
+                        HeadEquip.ListViews = listOfGameObjectsViews;
+                    }
+
+                    break;
+                }
+                case NeckEquip neck:
+                {
+                    if (!NeckEquip)
+                    {
+                        AddCharacteristics(neck);
+                        NeckEquip = neck;
+                    }
+
+                    break;
+                }
+                case ShoulderEquip shoulder:
+                {
+                    if (!ShoulderEquip && _personCharacter.PutOnArmor(shoulder, ref listOfGameObjectsViews))
+                    {
+                        AddCharacteristics(shoulder);
+                        ShoulderEquip = shoulder;
+                        ShoulderEquip.ListViews = listOfGameObjectsViews;
+                    }
+
+                    break;
+                }
+                case BodyEquip body:
+                {
+                    if (!BodyEquip && _personCharacter.PutOnArmor(body, ref listOfGameObjectsViews))
+                    {
+                        AddCharacteristics(body);
+                        BodyEquip = body;
+                        BodyEquip.ListViews = listOfGameObjectsViews;
+                    }
+
+                    break;
+                }
+                case CloakEquip cloak:
+                {
+                    if (!CloakEquip && _personCharacter.PutOnArmor(cloak, ref listOfGameObjectsViews))
+                    {
+                        AddCharacteristics(cloak);
+                        CloakEquip = cloak;
+                        CloakEquip.ListViews = listOfGameObjectsViews;
+                    }
+
+                    break;
+                }
+                case BraceletEquip bracelet:
+                {
+                    if (!BraceletEquip && _personCharacter.PutOnArmor(bracelet, ref listOfGameObjectsViews))
+                    {
+                        AddCharacteristics(bracelet);
+                        BraceletEquip = bracelet;
+                        BraceletEquip.ListViews = listOfGameObjectsViews;
+                    }
+
+                    break;
+                }
+                case GlovesEquip gloves:
+                {
+                    if (!GlovesEquip && _personCharacter.PutOnArmor(gloves, ref listOfGameObjectsViews))
+                    {
+                        AddCharacteristics(gloves);
+                        GlovesEquip = gloves;
+                        GlovesEquip.ListViews = listOfGameObjectsViews;
+                    }
+
+                    break;
+                }
+                case BeltEquip belt:
+                {
+                    if (!BeltEquip && _personCharacter.PutOnArmor(belt, ref listOfGameObjectsViews))
+                    {
+                        AddCharacteristics(belt);
+                        BeltEquip = belt;
+                        BeltEquip.ListViews = listOfGameObjectsViews;
+                    }
+
+                    break;
+                }
+                case PantsEquip pants:
+                {
+                    if (!PantsEquip && _personCharacter.PutOnArmor(pants, ref listOfGameObjectsViews))
+                    {
+                        AddCharacteristics(pants);
+                        PantsEquip = pants;
+                        PantsEquip.ListViews = listOfGameObjectsViews;
+                    }
+
+                    break;
+                }
+                case ShoesEquip shoes:
+                {
+                    if (!ShoesEquip && _personCharacter.PutOnArmor(shoes, ref listOfGameObjectsViews))
+                    {
+                        AddCharacteristics(shoes);
+                        ShoesEquip = shoes;
+                        ShoesEquip.ListViews = listOfGameObjectsViews;
+                    }
+
+                    break;
+                }
+                case RingEquip ring:
+                {
+                    if (!Ring1Equip)
+                    {
+                        AddCharacteristics(ring);
+                        Ring1Equip = ring;
+                    }
+
+                    if (!Ring2Equip)
+                    {
+                        AddCharacteristics(ring);
+                        Ring2Equip = ring;
+                    }
+
+                    break;
+                }
+                case EarringEquip earring:
+                {
+                    if (!Earring1Equip)
+                    {
+                        AddCharacteristics(earring);
+                        Earring1Equip = earring;
+                    }
+
+                    if (!Earring2Equip)
+                    {
+                        AddCharacteristics(earring);
+                        Earring2Equip = earring;
+                    }
+
+                    break;
+                }
             }
+        }
+
+
+        private bool CheckPermissionForEquipment(BaseArmorItem item)
+        {
+            var result = false;
+            
+            if (_characterEquipment.permissionForEquipment.Shield && item.ArmorItemType == ArmorItemType.Shield)
+                result = true;
+
+            if (_characterEquipment.permissionForEquipment.HeavyArmor && item.HvMdLt == HeavyLightMedium.Heavy)
+                result = true;
+            if (_characterEquipment.permissionForEquipment.MediumArmor && item.HvMdLt == HeavyLightMedium.Medium)
+                result = true;
+            if (_characterEquipment.permissionForEquipment.LightArmor && item.HvMdLt == HeavyLightMedium.Light)
+                result = true;
+
+            return result;
         }
 
         private void PutOnWeapon(BaseEquipItem item)
@@ -187,11 +388,17 @@ namespace Code.Data.Unit
             _fullIntellect += item.Characteristics.Intellect;
             _fullSpirit += item.Characteristics.Spirit;
             _fullStamina += item.Characteristics.Stamina;
-            _listEquipmentItems.Add(item);
+            if(item is BaseArmorItem armor)
+                _listEquipmentItems.Add(armor);
         }
 
         private void ClearAllSlots()
         {
+            foreach (var view in _listEquipmentItems.SelectMany(equipItem => equipItem.ListViews))
+            {
+                view.SetActive(false);
+            }
+            _listEquipmentItems.Clear();
             if (MainWeapon)
             {
                 Object.Destroy(MainWeapon);
@@ -217,20 +424,17 @@ namespace Code.Data.Unit
             children.ForEach(Object.Destroy);
             children = null;
 
-            _listEquipmentItems = new List<BaseEquipItem>();
         }
 
-        private void SetWeapon(BaseWeapon weapon, out BaseWeapon currentWeapon, Transform attachPoint,
-            ActiveWeapons activeWeapons)
-        {
-            currentWeapon = weapon;
-            currentWeapon.transform.SetParent(attachPoint, false);
-            ActiveWeapons = activeWeapons;
-        }
+        
 
         public void SetEquipment(CharacterEquipment equipment)
         {
             _characterEquipment = equipment;
+            foreach (var item in equipment.Equipment)
+            {
+                Dbg.Log($"NewEquipment.Item :{item.name}");
+            }
         }
 
         public int GetWeaponType()
@@ -273,6 +477,20 @@ namespace Code.Data.Unit
                 SecondWeapon.WeaponType == WeaponItemType.OneHandWeapon)
                 return 5; //DualWeapons
             return 0;
+        }
+        
+         private void SetWeapon(BaseWeapon weapon, out BaseWeapon currentWeapon, Transform attachPoint,
+            ActiveWeapons activeWeapons)
+        {
+            currentWeapon = weapon;
+            currentWeapon.transform.SetParent(attachPoint, false);
+            ActiveWeapons = activeWeapons;
+        }
+        
+        private void SentToInventory(BaseEquipItem item)
+        {
+            _characterEquipment.Equipment.Remove(item);
+            _characterEquipment.Inventory.Add(item);
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Code.Extension;
 using UnityEngine;
 
 
@@ -23,5 +25,36 @@ namespace Code.CharacterCustomizing
         public List<GameObject> knee_Attachement_Right = new List<GameObject>();
         public List<GameObject> shoulder_Attachment_Left = new List<GameObject>();
         public List<GameObject> shoulder_Attachment_Right = new List<GameObject>();
+
+        public List<GameObject> SearchByName(string listNames)
+        {
+            Dbg.Log($"Search item: {listNames}");
+            var names = listNames.Split(new char[]{'|'});
+            var results = new List<GameObject>();
+            results.AddRange(SearchByName(names, all_12_Extra));
+            results.AddRange(SearchByName(names, all_Hair));
+            results.AddRange(SearchByName(names, all_Head_Attachment));
+            results.AddRange(SearchByName(names, back_Attachment));
+            results.AddRange(SearchByName(names, chest_Attachment));
+            results.AddRange(SearchByName(names, elbow_Attachment_Left));
+            results.AddRange(SearchByName(names, elbow_Attachment_Right));
+            results.AddRange(SearchByName(names, elf_Ear));
+            results.AddRange(SearchByName(names, headCoverings_Base_Hair));
+            results.AddRange(SearchByName(names, headCoverings_No_FacialHair));
+            results.AddRange(SearchByName(names, headCoverings_No_Hair));
+            results.AddRange(SearchByName(names, hips_Attachment));
+            results.AddRange(SearchByName(names, knee_Attachement_Left));
+            results.AddRange(SearchByName(names, knee_Attachement_Right));
+            results.AddRange(SearchByName(names, shoulder_Attachment_Left));
+            results.AddRange(SearchByName(names, shoulder_Attachment_Right));
+
+            Dbg.Log($"Result of search:{results}, counts:{results.Count}");
+            return results;
+        }
+
+        private static IEnumerable<GameObject> SearchByName(string[] listNames, List<GameObject> source)
+        {
+            return listNames.Select(name => source.FirstOrDefault(x => x.name == name)).Where(item => item != null).AsEnumerable();
+        }
     }
 }

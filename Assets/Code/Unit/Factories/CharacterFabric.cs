@@ -38,15 +38,11 @@ namespace Code.Unit
 
         public void RebuildCharacter(IPlayerView character, CharacterSettings value)
         {
-            var settings = character.PersonCharacter;
-            settings.CharacterGender = value.CharacterGender;
-            settings.CharacterRace = value.CharacterRace;
-            settings.Generate();
+            var personCharacter = character.PersonCharacter;
+            personCharacter.CharacterGender = value.CharacterGender;
+            personCharacter.CharacterRace = value.CharacterRace;
+            personCharacter.ClearAll();
 
-            //ToDo переделать эквип на новый стиль:
-            // 1) инвентарь со списоком всех предметов
-            // 2) эквипмент это класс в котором есть список одетых предметов(не одетые вещи отправляются назад в инвентарь)
-            // все запросы (GetItemLevel,GetCharacteristics.Agility,...)делаются через linq к списку. Кроме специфичных вроде аниатора.
             character.UnitEquipment.SetEquipment(value.Equipment);
             character.UnitEquipment.RebuildEquipment();
             character.AnimatorParameters.WeaponType = character.UnitEquipment.GetWeaponType();
@@ -58,6 +54,7 @@ namespace Code.Unit
             character.UnitCharacteristics = _characteristicsFactory.GenerateCharacteristics(character.UnitCharacteristics, character.UnitEquipment, character.UnitLevel, value);
             character.UnitResource = _resourceFactory.GenerateResource(character.UnitResource, character.UnitCharacteristics, character.UnitLevel, value);
             character.UnitHealth = _healthFactory.GenerateHealth(character.UnitHealth, character.UnitCharacteristics);
+            // character.UnitEquipment.PutAllEquip();
         }
     }
 }

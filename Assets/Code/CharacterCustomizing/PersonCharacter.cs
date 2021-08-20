@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Code.Data;
 using Code.Data.Unit;
+using Code.Equipment;
 using Code.Extension;
 using PsychoticLab;
 using UnityEngine;
@@ -117,9 +118,65 @@ namespace Code.CharacterCustomizing
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            
         }
-
+        
+        
+        public void Regenerate()
+        {
+            // BuildLists();
+            ClearAll();
+            switch (CharacterRace)
+            {
+                case CharacterRace.Human:
+                    SkinColor = SkinColor.Human;
+                    break;
+                case CharacterRace.NightElf:
+                    SkinColor = SkinColor.Elf;
+                    break;
+                case CharacterRace.BloodElf:
+                    SkinColor = SkinColor.Elf;
+                    break;
+                case CharacterRace.Orc:
+                    SkinColor = SkinColor.Orc;
+                    break;
+            }
+            
+            switch (CharacterGender)
+            {
+                case CharacterGender.Male:
+                    ActivateItem(_maleObjectGroups.headAllElements[0]);
+                    ActivateItem(_maleObjectGroups.eyebrow[0]);
+                    ActivateItem(_maleObjectGroups.facialHair[0]);
+                    ActivateItem(_maleObjectGroups.torso[0]);
+                    ActivateItem(_maleObjectGroups.arm_Upper_Right[0]);
+                    ActivateItem(_maleObjectGroups.arm_Upper_Left[0]);
+                    ActivateItem(_maleObjectGroups.arm_Lower_Right[0]);
+                    ActivateItem(_maleObjectGroups.arm_Lower_Left[0]);
+                    ActivateItem(_maleObjectGroups.hand_Right[0]);
+                    ActivateItem(_maleObjectGroups.hand_Left[0]);
+                    ActivateItem(_maleObjectGroups.hips[0]);
+                    ActivateItem(_maleObjectGroups.leg_Right[0]);
+                    ActivateItem(_maleObjectGroups.leg_Left[0]);
+                    break;
+                case CharacterGender.Female:
+                    ActivateItem(_femaleObjectGroups.headAllElements[0]);
+                    ActivateItem(_femaleObjectGroups.eyebrow[0]);
+                    ActivateItem(_femaleObjectGroups.torso[0]);
+                    ActivateItem(_femaleObjectGroups.arm_Upper_Right[0]);
+                    ActivateItem(_femaleObjectGroups.arm_Upper_Left[0]);
+                    ActivateItem(_femaleObjectGroups.arm_Lower_Right[0]);
+                    ActivateItem(_femaleObjectGroups.arm_Lower_Left[0]);
+                    ActivateItem(_femaleObjectGroups.hand_Right[0]);
+                    ActivateItem(_femaleObjectGroups.hand_Left[0]);
+                    ActivateItem(_femaleObjectGroups.hips[0]);
+                    ActivateItem(_femaleObjectGroups.leg_Right[0]);
+                    ActivateItem(_femaleObjectGroups.leg_Left[0]);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+        
         void RandomizeByVariable(CharacterObjectGroups cog, CharacterGender gender, Elements elements, CharacterRace race, FacialHair facialHair, SkinColor skinColor, HeadCovering headCovering)
         {
             // if facial elements are enabled
@@ -432,6 +489,17 @@ namespace Code.CharacterCustomizing
             // clears targeted list of all objects
             targetList.Clear();
 
+            // var _list = targetRoot.GetComponentsInChildren<Transform>(true);
+            // foreach (var item in _list)
+            // {
+            //     item.gameObject.SetActive(false);
+            //     targetList.Add(item.gameObject);
+            //     if (item.TryGetComponent(out SkinnedMeshRenderer skin))
+            //     {
+            //         skin.material = _material;
+            //     }
+            // }
+            // return;
             // cycle through all child objects of the parent object
             for (int i = 0; i < targetRoot.childCount; i++)
             {
@@ -455,6 +523,46 @@ namespace Code.CharacterCustomizing
                 //         _material = item.GetComponent<SkinnedMeshRenderer>().material;
                 // }
             }
+        }
+
+        public bool PutOnArmor(BaseArmorItem equip, ref List<GameObject> gameObjects)
+        {
+            var result = false;
+            foreach (var gameObj in _femaleObjectGroups.SearchByName(equip.NameInHierarchy))
+            {
+                ActivateItem(gameObj);
+                result = true;
+                gameObjects.Add(gameObj);
+            }
+
+            foreach (var gameObj in _maleObjectGroups.SearchByName(equip.NameInHierarchy))
+            {
+                ActivateItem(gameObj);
+                result = true;
+            }
+
+            foreach (var gameObj in _allGenderObjectGroups.SearchByName(equip.NameInHierarchy))
+            {
+                ActivateItem(gameObj);
+                result = true;
+            }
+
+            return result;
+        }
+
+        public void ClearAll()
+        {
+            Dbg.Log($"ClearALl.Count:{_enabledObjects.Count}");
+            if (_enabledObjects.Count != 0)
+            {
+                foreach (GameObject item in _enabledObjects)
+                {
+                    Dbg.Log($"clear item: {item}");
+                    item.SetActive(false);
+                }
+            }
+
+            _enabledObjects.Clear();
         }
     }
     public enum SkinColor { Human, Elf, Orc }

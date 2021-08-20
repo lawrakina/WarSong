@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using Code.Equipment;
+using PsychoticLab;
 using UnityEngine;
 
 
@@ -9,49 +8,32 @@ namespace Code.Data.Unit
     [Serializable]
     public class CharacterSettings
     {
-        [SerializeField] public CharacterClass CharacterClass;
+        [SerializeField]
+        public CharacterClass CharacterClass;
         
-        [SerializeField] public CharacterGender CharacterGender;
+        [SerializeField]
+        public CharacterGender CharacterGender;
 
-        [SerializeField] public CharacterRace CharacterRace;
+        [SerializeField]
+        public CharacterRace CharacterRace;
 
-        [SerializeField] public CharacterEquipment Equipment;
+        [SerializeField] 
+        public CharacterEquipment Equipment;
 
-        [SerializeField] public int ExperiencePoints = 1;
+        [SerializeField] 
+        public int ExperiencePoints = 1;
+
+        // [SerializeField] public PersonSettings PersonSettings;
     }
 
-    [Serializable]
-    public sealed class CharacterEquipment
-    {
-        [Serializable]
-        public class PermissionToCarryEquipment
-        {
-            [Header("One Handed")]
-            public bool OneHandWeapon;
-            [Header("Two One-Handed")]
-            public bool TwoOneHandWeapon;
-            [Header("Two-Handed Sword")]
-            public bool TwoHandSwordWeapon;
-            [Header("Two-HandedSpear")]
-            public bool TwoHandSpearWeapon;
-            [Header("Two-HandedStaff")]
-            public bool TwoHandStaffWeapon;
-            [Header("Range Two-Handed Bow")]
-            public bool RangeTwoHandBowWeapon;
-            [Header("Range Two-Handed Crossbow")]
-            public bool RangeTwoHandCrossbowWeapon;
-            [Header("Shield in Left hand")]
-            public bool Shield;
-            [Header("Heavy armor")]
-            public bool HeavyArmor;
-            [Header("MediumArmor")]
-            public bool MediumArmor;
-            [Header("Leght Armor")]
-            public bool LightArmor;
-        }
-
-        [SerializeField] public PermissionToCarryEquipment permissionForEquipment;
-        [SerializeField] public List<BaseEquipItem> Equipment;
-        [SerializeField] public List<BaseEquipItem> Inventory;
-    }
+    // [Serializable]
+    // public class PersonSettings
+    // {
+    //     [SerializeField] private Elements _elements = Elements.Yes;
+    //     [SerializeField] private HeadCovering _headCovering = HeadCovering.HeadCoverings_No_Hair;
+    //     [SerializeField] private FacialHair _facialHair = FacialHair.Yes;
+    //     public Elements Elements => _elements;
+    //     public HeadCovering HeadCovering => _headCovering;
+    //     public FacialHair FacialHair => _facialHair;
+    // }
 }

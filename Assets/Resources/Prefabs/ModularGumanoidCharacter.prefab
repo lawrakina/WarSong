@@ -40677,7 +40677,7 @@ GameObject:
   - component: {fileID: 95241917264262668}
   - component: {fileID: 114847229407519648}
   m_Layer: 0
-  m_Name: ModularCharacters 1
+  m_Name: ModularGumanoidCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
