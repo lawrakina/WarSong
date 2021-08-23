@@ -4,6 +4,7 @@ using Code.Data;
 using Code.Data.Unit;
 using Code.Equipment;
 using Code.Extension;
+using Code.Unit;
 using PsychoticLab;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -36,6 +37,8 @@ namespace Code.CharacterCustomizing
         private SkinColor SkinColor{ get; set; }
         public CharacterRace CharacterRace { get; set; }
         public CharacterGender CharacterGender{ get; set; }
+        public EquipmentPoints EquipmentPoints { get; set; }
+
         [SerializeField] private Elements _elements = Elements.Yes;
         [SerializeField] private HeadCovering _headCovering = HeadCovering.HeadCoverings_No_Hair;
         [SerializeField] private FacialHair _facialHair = FacialHair.Yes;
@@ -92,16 +95,16 @@ namespace Code.CharacterCustomizing
             switch (CharacterRace)
             {
                 case CharacterRace.Human:
-                    SkinColor = SkinColor.Human;
+                    SkinColor = SkinColor.White;
                     break;
-                case CharacterRace.NightElf:
+                case CharacterRace.Elf:
                     SkinColor = SkinColor.Elf;
                     break;
-                case CharacterRace.BloodElf:
-                    SkinColor = SkinColor.Elf;
+                case CharacterRace.Gnome:
+                    SkinColor = SkinColor.Black;
                     break;
                 case CharacterRace.Orc:
-                    SkinColor = SkinColor.Orc;
+                    SkinColor = SkinColor.Brown;
                     break;
             }
             
@@ -128,16 +131,16 @@ namespace Code.CharacterCustomizing
             switch (CharacterRace)
             {
                 case CharacterRace.Human:
-                    SkinColor = SkinColor.Human;
+                    SkinColor = SkinColor.White;
                     break;
-                case CharacterRace.NightElf:
+                case CharacterRace.Elf:
                     SkinColor = SkinColor.Elf;
                     break;
-                case CharacterRace.BloodElf:
-                    SkinColor = SkinColor.Elf;
+                case CharacterRace.Gnome:
+                    SkinColor = SkinColor.Black;
                     break;
                 case CharacterRace.Orc:
-                    SkinColor = SkinColor.Orc;
+                    SkinColor = SkinColor.Brown;
                     break;
             }
             
@@ -292,7 +295,7 @@ namespace Code.CharacterCustomizing
             // set skin and hair colors based on skin color roll
             switch (skinColor)
             {
-                case SkinColor.Human:
+                case SkinColor.White:
                     RandomizeAndSetHairSkinColors("Human", _characterData.humanSkin,  _characterData.allHairAndSubble, _characterData.allHairAndSubble, _characterData.allHairAndSubble);
                     break;
 
@@ -300,7 +303,7 @@ namespace Code.CharacterCustomizing
                     RandomizeAndSetHairSkinColors("Elf", _characterData.elfSkin,  _characterData.allHairAndSubble, _characterData.allHairAndSubble, _characterData.allHairAndSubble);
                     break;
                 
-                case SkinColor.Orc:
+                case SkinColor.Brown:
                     RandomizeAndSetHairSkinColors("Orc", _characterData.orcSkin,   _characterData.allHairAndSubble, _characterData.allHairAndSubble, _characterData.allHairAndSubble);
                     break;
             }
@@ -565,5 +568,5 @@ namespace Code.CharacterCustomizing
             _enabledObjects.Clear();
         }
     }
-    public enum SkinColor { Human, Elf, Orc }
+    
 }

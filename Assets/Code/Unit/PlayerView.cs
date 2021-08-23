@@ -1,7 +1,7 @@
 ﻿using System;
-using Code.CharacterCustomizing;
 using Code.Data.Unit;
 using Code.Extension;
+using Code.Unit.Factories;
 using UnityEngine;
 
 
@@ -20,11 +20,11 @@ namespace Code.Unit
         public UnitResource UnitResource { get; set; }
         public UnitCharacteristics UnitCharacteristics { get; set; }
         public BaseCharacterClass CharacterClass { get; set; }
-        public PersonCharacter PersonCharacter { get; set; }
         public UnitLevel UnitLevel { get; set; }
         public UnitHealth UnitHealth { get; set; }
         public UnitVision UnitVision { get; set; }
         public UnitEquipment UnitEquipment { get; set; }
+        public UnitPerson UnitPerson { get; set; }
 
         public event Action<InfoCollision> OnApplyDamageChange;
         

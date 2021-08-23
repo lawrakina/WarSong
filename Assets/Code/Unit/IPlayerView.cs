@@ -1,5 +1,5 @@
-﻿using Code.CharacterCustomizing;
-using Code.Data.Unit;
+﻿using Code.Data.Unit;
+using Code.Unit.Factories;
 using UnityEngine;
 
 
@@ -10,6 +10,6 @@ namespace Code.Unit
         Transform TransformModel { get; set; }
         UnitEquipment UnitEquipment { get; set; }
         BaseCharacterClass CharacterClass { get; set; }
-        PersonCharacter PersonCharacter { get;  }
+        UnitPerson UnitPerson { get; set; }
     }
 }

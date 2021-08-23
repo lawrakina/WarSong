@@ -55,6 +55,7 @@ namespace Code.Profile
             var healthFactory = new HealthFactory(Settings.PlayerClassesData);
             var visionFactory = new VisionFactory(Settings.PlayerClassesData);
             var reputationFactory = new ReputationFactory();
+            var equipmentFactory = new EquipmentFactory();
 
             //контроллер активного персонажа (отвечает за модификацию внешного вида, одетых вещей в реалтайме)
             return new CharacterFabric(
@@ -65,7 +66,8 @@ namespace Code.Profile
                 characteristicsFactory,
                 healthFactory,
                 visionFactory,
-                reputationFactory);
+                reputationFactory,
+                equipmentFactory);
         }
         
         public void BuildPlayer()

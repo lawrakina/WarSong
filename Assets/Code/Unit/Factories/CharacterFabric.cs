@@ -1,10 +1,7 @@
 ﻿using Code.Data.Unit;
-using Code.Extension;
-using Code.Profile;
-using Code.Unit.Factories;
 
 
-namespace Code.Unit
+namespace Code.Unit.Factories
 {
     public sealed class CharacterFabric
     {
@@ -16,10 +13,12 @@ namespace Code.Unit
         private readonly CharacteristicsFactory _characteristicsFactory;
         private readonly VisionFactory _visionFactory;
         private readonly ReputationFactory _reputationFactory;
+        private readonly EquipmentFactory _equipmentFactory;
 
         public CharacterFabric(IPlayerFactory playerFactory, CharacterClassesFactory classesFactory,
             LevelFactory levelFactory, ResourceFactory resourceFactory, CharacteristicsFactory characteristicsFactory,
-            HealthFactory healthFactory, VisionFactory visionFactory, ReputationFactory reputationFactory)
+            HealthFactory healthFactory, VisionFactory visionFactory, ReputationFactory reputationFactory,
+            EquipmentFactory equipmentFactory)
         {
             _playerFactory = playerFactory;
             _classesFactory = classesFactory;
@@ -29,6 +28,7 @@ namespace Code.Unit
             _healthFactory = healthFactory;
             _visionFactory = visionFactory;
             _reputationFactory = reputationFactory;
+            _equipmentFactory = equipmentFactory;
         }
 
         public IPlayerView CreatePlayer(CharacterSettings item)
@@ -38,15 +38,8 @@ namespace Code.Unit
 
         public void RebuildCharacter(IPlayerView character, CharacterSettings value)
         {
-            var personCharacter = character.PersonCharacter;
-            personCharacter.CharacterGender = value.CharacterGender;
-            personCharacter.CharacterRace = value.CharacterRace;
-            personCharacter.ClearAll();
-
-            character.UnitEquipment.SetEquipment(value.Equipment);
-            character.UnitEquipment.RebuildEquipment();
-            character.AnimatorParameters.WeaponType = character.UnitEquipment.GetWeaponType();
-
+            character.UnitEquipment = _equipmentFactory.GenerateEquip(character, value);
+            // character.AnimatorParameters.WeaponType = character.UnitEquipment.GetWeaponType();
             character.UnitVision = _visionFactory.GenerateVision();
             character.UnitReputation = _reputationFactory.GeneratePlayerReputation();
             character.UnitLevel = _levelFactory.GenerateLevel(character.UnitLevel, value);
@@ -54,7 +47,6 @@ namespace Code.Unit
             character.UnitCharacteristics = _characteristicsFactory.GenerateCharacteristics(character.UnitCharacteristics, character.UnitEquipment, character.UnitLevel, value);
             character.UnitResource = _resourceFactory.GenerateResource(character.UnitResource, character.UnitCharacteristics, character.UnitLevel, value);
             character.UnitHealth = _healthFactory.GenerateHealth(character.UnitHealth, character.UnitCharacteristics);
-            // character.UnitEquipment.PutAllEquip();
         }
     }
 }

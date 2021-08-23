@@ -58,11 +58,11 @@ namespace Code.UI.CharacterList
             });
             _raceNightElfToggle.onValueChanged.AddListener(value =>
             {
-                if (value) changeRace(CharacterRace.NightElf);
+                if (value) changeRace(CharacterRace.Elf);
             });
             _raceBloodElfToggle.onValueChanged.AddListener(value =>
             {
-                if (value) changeRace(CharacterRace.BloodElf);
+                if (value) changeRace(CharacterRace.Gnome);
             });
             _raceOrcToggle.onValueChanged.AddListener(value =>
             {

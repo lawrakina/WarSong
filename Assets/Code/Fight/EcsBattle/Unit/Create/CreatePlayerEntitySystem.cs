@@ -50,8 +50,8 @@ namespace Code.Fight.EcsBattle.Unit.Create
                 weapon._attackMaxValueAnimation = 3;
             }
 
-            Dbg.Log($"_view.UnitPlayerBattle.ActiveWeapons:{_view.UnitEquipment.ActiveWeapons}");
-            switch (_view.UnitEquipment.ActiveWeapons)
+            Dbg.Log($"_view.UnitPlayerBattle.ActiveWeapons:{_view.UnitPerson.ActiveWeapons}");
+            switch (_view.UnitPerson.ActiveWeapons)
             {
                 case ActiveWeapons.RightHand:
                     SetBattleInfoForMainWeapon(ref mainWeapon);

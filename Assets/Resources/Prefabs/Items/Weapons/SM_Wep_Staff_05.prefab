@@ -107,16 +107,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f160d77af64abb926916feec15f6a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _standardBullet: {fileID: -6047091618391902694, guid: 7a523132aa6c0a34a9aae889cddf5cc9,
+  _standardBullet: {fileID: 1562005690058727108, guid: 9702ab3d6a5bf9740916787bd05380f7,
     type: 3}
   _weaponType: 4
   _attackDistanceOffset: 1
   _attackValue:
-    _maxAttackValue: 0
-    _minAttackValue: 0
-    _timeDelayBeforeAttack: 0
-    _attackSpeed: 0
-    _attackDistance: 0
+    _maxAttackValue: 12
+    _minAttackValue: 10
+    _timeDelayBeforeAttack: 0.5
+    _attackSpeed: 2
+    _attackDistance: 10
   _itemLevel: 1
   _characteristics:
     Strength: 0

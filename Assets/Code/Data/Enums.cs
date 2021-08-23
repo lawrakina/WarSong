@@ -18,8 +18,8 @@
     public enum CharacterRace
     {
         Human,
-        NightElf,
-        BloodElf,
+        Elf,
+        Gnome,
         Orc
     }
 

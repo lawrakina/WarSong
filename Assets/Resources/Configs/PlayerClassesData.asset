@@ -137,7 +137,8 @@ MonoBehaviour:
         Equipment:
         - {fileID: 9024842520586543348, guid: b42a483ee5137f843929c77d6f537502, type: 3}
         - {fileID: 2791158550610320276, guid: 25e580736c5a51f4f88d4148267d74a7, type: 3}
-        - {fileID: 381132802092769579, guid: 1d954276bb5ffa145a93eb77bfa76b1e, type: 3}
+        - {fileID: 381132802092769579, guid: dbadde02d65be1d45953bb9271cd35fa, type: 3}
+        - {fileID: 381132802092769579, guid: 8674f259d13229642920d211b6bb5282, type: 3}
         Inventory: []
       ExperiencePoints: 1
       UiBadge: {fileID: 7179238373803716959, guid: 6e176475ef69b424383f4798114d2236,
@@ -162,9 +163,8 @@ MonoBehaviour:
           LightArmor: 1
         Equipment:
         - {fileID: 9024842520586543348, guid: b42a483ee5137f843929c77d6f537502, type: 3}
-        - {fileID: 9024842520586543348, guid: 9576cb1abacfefe4ca575a086ff8f0de, type: 3}
-        Inventory:
-        - {fileID: 381132802092769579, guid: 57a43347cf9b6954992a127e50c37c4d, type: 3}
+        - {fileID: 9024842520586543348, guid: b42a483ee5137f843929c77d6f537502, type: 3}
+        Inventory: []
       ExperiencePoints: 1
       UiBadge: {fileID: 4157712349263451614, guid: 3ae8e235f392ef14cbdbe6d052fcc930,
         type: 3}
@@ -188,8 +188,7 @@ MonoBehaviour:
           LightArmor: 1
         Equipment:
         - {fileID: -6049655489026514482, guid: a86d9763462c31640b33721b9ee09be7, type: 3}
-        Inventory:
-        - {fileID: 381132802092769579, guid: 8674f259d13229642920d211b6bb5282, type: 3}
+        Inventory: []
       ExperiencePoints: 1
       UiBadge: {fileID: 4319355777000030377, guid: 34c4793f6cdb64447b65c81c9844499b,
         type: 3}

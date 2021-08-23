@@ -20,7 +20,7 @@ namespace Code.Unit
         public UnitResource UnitResource { get; set; }
         public UnitLevel UnitLevel { get; set; }
         public UnitCharacteristics UnitCharacteristics { get; set; }
-        public UnitEquipment UnitEquipment { get; set; }
+        // public UnitEquipmentOld unitEquipmentOld { get; set; }
         public HealthBarView HealthBar { get; set; }
 
         public event Action<InfoCollision> OnApplyDamageChange;

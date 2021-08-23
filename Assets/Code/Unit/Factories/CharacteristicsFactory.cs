@@ -16,8 +16,8 @@ namespace Code.Unit.Factories
             _settings = settings;
         }
 
-        public UnitCharacteristics GenerateCharacteristics(UnitCharacteristics characteristics, UnitEquipment equipment,
-            UnitLevel level, CharacterSettings value)
+        public UnitCharacteristics GenerateCharacteristics(UnitCharacteristics characteristics, 
+            UnitEquipment equipment, UnitLevel level, CharacterSettings value)
         {
             if (characteristics == null)
             {

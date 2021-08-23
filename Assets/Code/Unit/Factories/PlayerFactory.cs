@@ -1,5 +1,4 @@
-﻿using Code.CharacterCustomizing;
-using Code.Data.Unit;
+﻿using Code.Data.Unit;
 using Code.Extension;
 using UnityEngine;
 
@@ -8,24 +7,26 @@ namespace Code.Unit.Factories
 {
     public sealed class PlayerFactory : IPlayerFactory
     {
-        private readonly CharacterData _settings;
+        private readonly CharacterData _data;
+        private CharacterSettings _settings;
 
-        public PlayerFactory(CharacterData settings)
+        public PlayerFactory(CharacterData data)
         {
-            _settings = settings;
+            _data = data;
         }
 
         public IPlayerView CreatePlayer(CharacterSettings settings)
         {
-            var playerPrefab = Object.Instantiate(_settings.StoragePlayerPrefab);
+            _settings = settings;
+            var playerPrefab = Object.Instantiate(_data.StoragePlayerPrefab);
             playerPrefab.name = $"Prefab.Model";
-                
+
             var rootPlayer = Object.Instantiate(new GameObject());
             rootPlayer.name = $"PlayerCharacter";
-                
+
             var player = rootPlayer.AddCode<PlayerView>();
             player.Transform = rootPlayer.transform;
-            player.TransformModel = playerPrefab.transform;//prefab transform
+            player.TransformModel = playerPrefab.transform; //prefab transform
             player.Rigidbody = rootPlayer.AddRigidBody(80, CollisionDetectionMode.ContinuousDynamic,
                 false, true,
                 RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |
@@ -37,24 +38,9 @@ namespace Code.Unit.Factories
             player.Animator = playerPrefab.GetComponent<Animator>();
             player.AnimatorParameters = new AnimatorParameters(player.Animator);
             playerPrefab.transform.SetParent(rootPlayer.transform);
-            
-            var person = new PersonCharacter(player.TransformModel.gameObject, _settings);
-            person.CharacterRace = settings.CharacterRace;
-            person.CharacterGender = settings.CharacterGender;
-            // person.Regenerate();
-            // person.Generate();
-            player.PersonCharacter = person;
 
-            var equipmentPoints = new EquipmentPoints(player.TransformModel.gameObject, _settings);
-            equipmentPoints.GenerateAllPoints();
+            player.UnitPerson = new UnitPerson(player.TransformModel.gameObject, _settings, _data);
 
-            player.UnitEquipment = new UnitEquipment(equipmentPoints, settings.Equipment, person);
-            
-            // player.CharacterClass = new BaseCharacterClass();
-            
-            // player.UnitLevel = new UnitLevel();
-            // player.UnitCharacteristics = new UnitCharacteristics();
-            
             return player;
         }
     }

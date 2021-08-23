@@ -97,11 +97,11 @@ MonoBehaviour:
   _weaponType: 1
   _attackDistanceOffset: 1
   _attackValue:
-    _maxAttackValue: 0
-    _minAttackValue: 0
-    _timeDelayBeforeAttack: 0
-    _attackSpeed: 0
-    _attackDistance: 0
+    _maxAttackValue: 7
+    _minAttackValue: 8
+    _timeDelayBeforeAttack: 0.5
+    _attackSpeed: 2
+    _attackDistance: 1
   _itemLevel: 1
   _characteristics:
     Strength: 0
