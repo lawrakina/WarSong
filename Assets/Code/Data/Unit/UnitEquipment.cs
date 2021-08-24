@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Code.Equipment;
 using Code.Unit.Factories;
@@ -32,5 +33,7 @@ namespace Code.Data.Unit
         public int GetEquipmentItemsLevel => _list.Sum(item => item.ItemLevel);
         public BaseWeapon MainWeapon => _person.MainWeapon;
         public BaseWeapon SecondWeapon => _person.SecondWeapon;
+        public List<BaseArmorItem> ListArmor => _listArmor;
+        public ActiveWeapons ActiveWeapons => _person.ActiveWeapons;
     }
 }

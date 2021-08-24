@@ -25,6 +25,7 @@
 
     public enum InventoryItemType
     {
+        None,
         Weapon,
         Armor,
         QuestItem,

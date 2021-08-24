@@ -28,6 +28,8 @@ MonoBehaviour:
     type: 3}
   CharacterView: {fileID: 3781639543975599055, guid: 03d9d70579f675647a9e2eee1b180545,
     type: 3}
+  Equipment_ClearSell: {fileID: 3879315333051062325, guid: 30f2860e0430f1745a8a70fce0fa7ae8,
+    type: 3}
   Inventory: {fileID: 2885591622095069151, guid: 2ffa27a83e7ee1a4b8b6653ba278a2d1,
     type: 3}
   TavernView: {fileID: 1470198044735619993, guid: b168be17943b2394c8e83b2eead08ab3,
