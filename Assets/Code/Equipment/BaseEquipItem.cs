@@ -1,13 +1,19 @@
-﻿using Code.Data;
+﻿using System;
+using Code.Data;
 using Code.Data.Unit;
 using UnityEngine;
 
+
 namespace Code.Equipment
 {
-    public abstract class BaseEquipItem : MonoBehaviour
+    [Serializable]
+    public abstract class BaseEquipItem : MonoBehaviour, IUiEquipItem
     {
+        [SerializeField]
+        private UiInfo _uiInfo;
         public abstract InventoryItemType ItemType { get; }
         public abstract int ItemLevel { get; }
         public abstract Characteristics Characteristics { get; }
+        public UiInfo UiInfo => _uiInfo;
     }
 }
