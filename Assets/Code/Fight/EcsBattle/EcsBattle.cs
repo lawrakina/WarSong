@@ -9,6 +9,7 @@ using Code.Fight.EcsBattle.Unit;
 using Code.Fight.EcsBattle.Unit.Animation;
 using Code.Fight.EcsBattle.Unit.Attack;
 using Code.Fight.EcsBattle.Unit.Create;
+using Code.Fight.EcsBattle.Unit.EnemyHealthBars;
 using Code.Fight.EcsBattle.Unit.Move;
 using Code.Fight.EcsBattle.Unit.Vision;
 using Code.Profile;
@@ -156,9 +157,9 @@ namespace Code.Fight.EcsBattle
 
                 //Enemies
                 .Add(new CreateEnemyEntitySystem())
-                // .Add(new RotateUiHeathBarsToCameraSystem())
+                .Add(new RotateUiHeathBarsToCameraSystem())
                 //Ui Enemies
-                // .Add(new UpdateEnemiesCurrentHealthPointsSystem())
+                .Add(new UpdateEnemiesCurrentHealthPointsSystem())
                 // .Add(new ShowUiMessageByDamageSystem())
 
                 //     //Death Units

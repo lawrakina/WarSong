@@ -37,6 +37,12 @@ namespace Code.Unit.Factories
             enemyView.MeshRenderer = enemy.GetComponent<MeshRenderer>();
             enemyView.AnimatorParameters = new AnimatorParameters(enemyView.Animator);
             
+            //test
+            enemyView.UnitHealth = new UnitHealth();
+            enemyView.UnitHealth.MaxHp = 100;
+            enemyView.UnitHealth.CurrentHp = 100;
+            //test
+            
             // var equipmentPoints = new EquipmentPoints(enemyView.Transform.gameObject, item);
             // equipmentPoints.GenerateAllPoints();
             // enemyView.UnitEquipment = new UnitEquipment(equipmentPoints,item.unitEquipment);

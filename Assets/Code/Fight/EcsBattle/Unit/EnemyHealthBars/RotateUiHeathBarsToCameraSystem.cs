@@ -1,24 +1,19 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Code.Fight.EcsBattle;
-using Code.Fight.EcsBattle.CustomEntities;
-using Code.Unit;
-using UnityEngine;
 using Leopotam.Ecs;
-using UniRx;
 
-public class RotateUiHeathBarsToCameraSystem : IEcsRunSystem
+namespace Code.Fight.EcsBattle.Unit.EnemyHealthBars
 {
-    private EcsFilter<UiEnemyHealthBarComponent> _filter;
-    
-    public void Run()
+    public class RotateUiHeathBarsToCameraSystem : IEcsRunSystem
     {
-        foreach (var i in _filter)
+        private EcsFilter<UiEnemyHealthBarComponent> _filter;
+    
+        public void Run()
         {
-            ref var enemyEntity = ref _filter.GetEntity(i);
-            enemyEntity.Get<UiEnemyHealthBarComponent>()._value.AlignCamera();
-        }
+            foreach (var i in _filter)
+            {
+                ref var enemyEntity = ref _filter.GetEntity(i);
+                enemyEntity.Get<UiEnemyHealthBarComponent>()._value.AlignCamera();
+            }
         
+        }
     }
 }
