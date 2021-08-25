@@ -57,6 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -81,6 +82,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &2229978566127506629
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -107,6 +109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f160d77af64abb926916feec15f6a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uiInfo:
+    _icon: {fileID: 21300000, guid: c916a59fe80984446ac16ed97e360d31, type: 3}
+    _title: Super Staff
+    _description: 'fhnldskj fsdlkf sldkd fksldjh fgkdfng def ghldfk gj;dlfjg dlsfkjg
+      lkdfg '
   _standardBullet: {fileID: 1562005690058727108, guid: 9702ab3d6a5bf9740916787bd05380f7,
     type: 3}
   _weaponType: 4

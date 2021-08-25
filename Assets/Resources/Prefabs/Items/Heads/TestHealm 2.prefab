@@ -43,6 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41e7cf8b4be48ada5fcf8dc3420015c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uiInfo:
+    _icon: {fileID: 21300000, guid: 0bf1459df4ed927458e1a0fac0df0735, type: 3}
+    _title: "\u0428\u043B\u044F\u043F\u0430 \u2116588"
+    _description: "234  \u043A\u0440\u0432\u0446\u044B\u0443\u0448\u0433\u0430 \u044B\u04328\u0433\u0430\u0442
+      \u0446\u0443\u0435 \u0430\u043D\u0440\u0433\u0437\u0443\u0432\u0430 \u0440\u043C\u0448\u0432\u0430\u0443\u0433\u043F\u0430\u0440\u0445\u0448\u044B\u0432\u0449
+      \u0430\u0440\u043E\u0449\u0443\u044B\u0444\u0432\u0430\u0448\u0430 \u0432\u044B"
   _itemLevel: 1
   _armorValue: 1
   _characteristics:

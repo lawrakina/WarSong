@@ -15,8 +15,7 @@ namespace Code.Equipment
         [SerializeField] private float _attackDistanceOffset = 1.0f;
         [SerializeField] private AttackValue _attackValue;
         [SerializeField] private int _itemLevel = 1;
-        [SerializeField] private Characteristics _characteristics;
-
+        [SerializeField] private Characteristics _characteristics; 
         public GameObject GameObject => gameObject;
         public WeaponBullet StandardBullet => _standardBullet;
         public WeaponItemType WeaponType => _weaponType;

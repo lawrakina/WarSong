@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 6213627897216566208}
   - component: {fileID: 6204337052345053622}
   - component: {fileID: 9024842520586543348}
-  - component: {fileID: 3199390600195832335}
-  - component: {fileID: 769296427953803311}
   m_Layer: 0
   m_Name: SM_Wep_Sword_14
   m_TagString: Untagged
@@ -63,6 +61,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -87,6 +86,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &9024842520586543348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f160d77af64abb926916feec15f6a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uiInfo:
+    _icon: {fileID: 21300000, guid: dc8f2b99d0cf73f4f851f40a48fedb97, type: 3}
+    _title: Super Sword
+    _description: uryfwreiuj rfiupjsd hkjdf ghyfdugh okijdfg jdkfg jpdfkgj dfgj pfdgj
+      dfljkg
   _standardBullet: {fileID: -6047091618391902694, guid: 7a523132aa6c0a34a9aae889cddf5cc9,
     type: 3}
   _weaponType: 1
@@ -116,40 +121,3 @@ MonoBehaviour:
     Stamina: 0
     Intellect: 0
     Spirit: 0
---- !u!222 &3199390600195832335
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6217818179488472574}
-  m_CullTransparentMesh: 0
---- !u!114 &769296427953803311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6217818179488472574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1

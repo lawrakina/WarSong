@@ -43,8 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41e7cf8b4be48ada5fcf8dc3420015c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uiInfo:
+    _icon: {fileID: 21300000, guid: 4a7961c1e3bada248bdf156ca1a78718, type: 3}
+    _title: Fucking Helm
+    _description: 53ferfgwer dsg dfg sdf sdff dgfd g
   _itemLevel: 1
-  _armorValue: 1
+  _armorValue: 1000
   _characteristics:
     Strength: 0
     Agility: 0

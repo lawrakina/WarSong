@@ -57,6 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -81,6 +82,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &2539355544607047882
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -107,6 +109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f160d77af64abb926916feec15f6a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uiInfo:
+    _icon: {fileID: 21300000, guid: 87aaf0dcbda25384eb53a503e4dce73b, type: 3}
+    _title: Super Bow
+    _description: ioldshf sdhf jsdfh kjdsahf j sdefoipsd foidsfh sdlkfh dsfkfh osdpfh
+      sodfh pdsioh foidfejh goidf hfgodfshgf sdof sdpoif hsdo[fjdso hf sdok
   _standardBullet: {fileID: -2986585216715960006, guid: f3c2a8319fa3c8240840d5b06552c746,
     type: 3}
   _weaponType: 5

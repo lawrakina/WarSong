@@ -106,7 +106,7 @@ namespace Code.UI.Character
         private void Instant(GameObject parent, SellEquipment sellEquipment)
         {
             var sell = Instantiate(_listObjects.TemplateSellEquipmentHandler, parent.transform, false);
-            sell.Body = sellEquipment;
+            sell.Init(sellEquipment);
         }
     }
 }

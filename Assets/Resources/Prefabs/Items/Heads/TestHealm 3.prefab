@@ -43,6 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41e7cf8b4be48ada5fcf8dc3420015c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uiInfo:
+    _icon: {fileID: 21300000, guid: 7978df3a4d37685469c97ea45893ce11, type: 3}
+    _title: Helm 55
+    _description: 'fdosufh s9fh 324-98 fhklsdjf oaisdf hgfjefds''lk;f psdf '
   _itemLevel: 1
   _armorValue: 1
   _characteristics:
