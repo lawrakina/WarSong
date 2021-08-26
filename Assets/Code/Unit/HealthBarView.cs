@@ -44,6 +44,13 @@ namespace Code.Unit
 
 
         #region Methods
+        
+        //TODO включение/выключение объекта
+
+        public void SetOnOff(bool value)
+        {
+            gameObject.SetActive(value);
+        }
 
         public void SetCamera(Transform camera)
         {

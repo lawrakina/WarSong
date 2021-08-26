@@ -160,6 +160,11 @@ namespace Code.Fight.EcsBattle
                 .Add(new RotateUiHeathBarsToCameraSystem())
                 //Ui Enemies
                 .Add(new UpdateEnemiesCurrentHealthPointsSystem())
+                
+                //оно крашит всё
+                //.Add(new CheckForEnemyInSightSystem())
+                
+                .Add(new ShowHealthBarForEnemiesInSightSystem())
                 // .Add(new ShowUiMessageByDamageSystem())
 
                 //     //Death Units
@@ -172,6 +177,7 @@ namespace Code.Fight.EcsBattle
                 //Vision
                 .Add(new TimerForCheckVisionForUnitsSystem(2.0f))
                 .Add(new SearchClosesTargetForUnitsSystem())
+                
                 //Moving
                 .Add(new CalculateStepForUnitsToTargetSystem())
                 .Add(new AnimationMoveSystemByStepSystem());
