@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Code.Fight.EcsBattle.Unit.EnemyHealthBars;
+using TMPro;
+using UnityEngine;
 
 
 namespace Code.Unit
@@ -10,6 +12,8 @@ namespace Code.Unit
         private MaterialPropertyBlock _matBlock;
         private MeshRenderer _meshRenderer;
         private Transform _camera;
+        private TMP_Text _enemyLvl;
+        private TMP_Text _enemyName;
 
         #endregion
 
@@ -20,6 +24,8 @@ namespace Code.Unit
         {
             _meshRenderer = GetComponent<MeshRenderer>();
             _matBlock = new MaterialPropertyBlock();
+            _enemyName = GetComponentInChildren<EnemyNameUiView>().enemyName;
+            _enemyLvl = GetComponentInChildren<EnemyLvlUiView>().enemyLvl;
         }
 
         #endregion
@@ -58,6 +64,16 @@ namespace Code.Unit
             _meshRenderer.GetPropertyBlock(_matBlock);
             _matBlock.SetFloat("_Fill", currentValue / maxValue);
             _meshRenderer.SetPropertyBlock(_matBlock);
+        }
+
+        public void SetEnemyName(string name)
+        {
+            _enemyName.text = name;
+        }
+
+        public void SetEnemyLvl(int lvl)
+        {
+            _enemyLvl.text = lvl.ToString();
         }
 
         #endregion

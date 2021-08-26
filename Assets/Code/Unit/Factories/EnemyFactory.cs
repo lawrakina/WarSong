@@ -41,6 +41,8 @@ namespace Code.Unit.Factories
             enemyView.UnitHealth = new UnitHealth();
             enemyView.UnitHealth.MaxHp = 100;
             enemyView.UnitHealth.CurrentHp = 100;
+            
+            
             //test
             
             // var equipmentPoints = new EquipmentPoints(enemyView.Transform.gameObject, item);
@@ -55,6 +57,13 @@ namespace Code.Unit.Factories
             var healthBarSettings = _settings.uiElement.First(x => (x.EnemyType == marker._type));
             enemyView.HealthBar = Object.Instantiate(healthBarSettings.UiView, enemyView.Transform, false);
             enemyView.HealthBar.transform.localPosition = healthBarSettings.Offset;
+            
+            //test name and level
+            enemyView.HealthBar.SetEnemyName("Рандомный бомжик");
+
+            var enemyLvl = Random.Range(1, 4);
+            enemyView.HealthBar.SetEnemyLvl(enemyLvl);
+            //test
 
             enemyView.Transform.SetParent(marker.Transform);
             enemyView.Transform.localPosition = Vector3.zero;
