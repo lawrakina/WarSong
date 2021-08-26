@@ -162,9 +162,11 @@ namespace Code.Fight.EcsBattle
                 .Add(new UpdateEnemiesCurrentHealthPointsSystem())
                 
                 //оно крашит всё
-                //.Add(new CheckForEnemyInSightSystem())
+                .Add(new CheckForEnemyInSightSystem())
                 
-                .Add(new ShowHealthBarForEnemiesInSightSystem())
+                
+                //Включить чтоб здоровье отображалось только на виду у игрока
+                //.Add(new ShowHealthBarForEnemiesInSightSystem())
                 // .Add(new ShowUiMessageByDamageSystem())
 
                 //     //Death Units
