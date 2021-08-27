@@ -40,7 +40,12 @@ namespace Code.UI.Character
                 _listItems.Add(sell);
             }
 
-            _view.Init(_listItems, PutonOrTakeoffItem);
+            _view.Init(_listItems, PutonOrTakeoffItem, CloseView);
+        }
+
+        private void CloseView()
+        {
+            OffExecute();
         }
 
         private void ShowInfoAboutSelectedItem(CellEquipment value)
