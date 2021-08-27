@@ -70,12 +70,19 @@ namespace Code.UI.Character
             AddController(_equipReplacementController);
             _equipReplacementController.OffExecute();
 
+            var toggleGroup = new ToggleControllerGroup();
+            toggleGroup.SetRoot(this);
+            toggleGroup.Add(_equipReplacementController);
+            toggleGroup.Init();
+            
+            OnExecute();
+            
             _view.Init(listObjects);
         }
 
         private void SellExecute(CellEquipment value)
         {
-            _view.Hide();
+            // _view.Hide();
             _equipReplacementController.ShowReplacementVariants(value);
             Dbg.Log($"{value}. Command Execute");
         }

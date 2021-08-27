@@ -22,6 +22,7 @@ namespace Code
         private List<(bool, BaseController)> _enabledControllers = null;
 
         public event Action<Guid> On;
+        public event Action<Guid> Off;
 
         #endregion
 
@@ -46,6 +47,7 @@ namespace Code
         {
             _subscriptions?.Dispose();
             On = null;
+            Off = null;
         }
 
         public void Dispose()
@@ -141,6 +143,7 @@ namespace Code
         {
             if (_isEnabled)
             {
+                Off?.Invoke(_id);
                 _isEnabled = false;
 
                 _enabledControllers = new List<(bool, BaseController)>();
