@@ -9,9 +9,9 @@ namespace Code.UI
     {
         #region Fields
 
-        private GameObject _gameObject;
+        // private GameObject _gameObject;
 
-        private Transform _transform;
+        // private Transform _transform;
 
         // private Guid _id = Guid.NewGuid();
         protected CompositeDisposable _subscriptions;
@@ -25,19 +25,19 @@ namespace Code.UI
 
         #region Properties
 
-        public GameObject GameObject => _gameObject;
-        public Transform Transform => _transform;
+        public GameObject GameObject => gameObject;
+        public Transform Transform => transform;
 
         #endregion
 
 
         #region ClassLiveCycles
 
-        private void Start()
-        {
-            _gameObject = GetComponent<GameObject>();
-            _transform = GetComponent<Transform>();
-        }
+        // private void Start()
+        // {
+            // _gameObject = GetComponent<GameObject>();
+            // _transform = GetComponent<Transform>();
+        // }
 
         public virtual void Init()
         {

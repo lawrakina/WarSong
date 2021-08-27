@@ -268,7 +268,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: -14.179985, y: -14.179985}
+  m_CellSize: {x: -14.179985, y: -28.35997}
   m_Spacing: {x: 28.36, y: 18.83}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expand: 0
   ratioMode: 1
-  cellRatio: 1
+  cellRatio: 2
   grid: {fileID: 8173811679015036686}
 --- !u!1 &816068406152031592
 GameObject:
