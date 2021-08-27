@@ -34,7 +34,8 @@ namespace Code.Data
         
         [Header("Character tab")]
         public CharacterView CharacterView;
-        public SellEquipmentHandler Equipment_ClearSell;
+        public CellEquipmentHandler Equipment_ClearCell;
+        public PanelEquipReplacementVariantsView PanelEquipReplacementVariantsView;
         [Space] 
         
         [Header("Inventory tab")] 
@@ -50,6 +51,5 @@ namespace Code.Data
 
         [Header("Modals windows")]
         public LoadingView LoadingView;
-
     }
 }

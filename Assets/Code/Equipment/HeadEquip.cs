@@ -9,6 +9,6 @@ namespace Code.Equipment
     [Serializable]
     public class HeadEquip : BaseArmorItem, IHeadEquip
     {
-        public override ArmorItemType ArmorItemType => ArmorItemType.Head;
+        public override int SubItemType => (int)ArmorItemType.Head;
     }
 }

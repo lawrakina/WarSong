@@ -7,6 +7,6 @@ namespace Code.Equipment
     [Serializable]
     public class BraceletEquip : BaseArmorItem, IBraceletEquip
     {
-        public override ArmorItemType ArmorItemType => ArmorItemType.Bracelet;
+        public override int SubItemType => (int)ArmorItemType.Bracelet;
     }
 }

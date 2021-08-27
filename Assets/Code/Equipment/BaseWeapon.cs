@@ -22,6 +22,7 @@ namespace Code.Equipment
         public float AttackDistanceOffset => _attackDistanceOffset;
         public AttackValue AttackValue => _attackValue;
         public override InventoryItemType ItemType => InventoryItemType.Weapon;
+        public override int SubItemType => -1;
         public override int ItemLevel => _itemLevel;
         public override Characteristics Characteristics => _characteristics;
     }

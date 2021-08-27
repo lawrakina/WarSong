@@ -317,7 +317,7 @@ namespace Code.Data.Unit
         {
             var result = false;
             
-            if (_characterEquipment.permissionForEquipment.Shield && item.ArmorItemType == ArmorItemType.Shield)
+            if (_characterEquipment.permissionForEquipment.Shield && item.SubItemType == (int)ArmorItemType.Shield)
                 result = true;
 
             if (_characterEquipment.permissionForEquipment.HeavyArmor && item.HvMdLt == HeavyLightMedium.Heavy)

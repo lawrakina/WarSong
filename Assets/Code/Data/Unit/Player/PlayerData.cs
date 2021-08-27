@@ -12,5 +12,7 @@ namespace Code.Data.Unit.Player
 
         [SerializeField]
         public int _numberActiveCharacter;
+
+        public CharacterSettings ActiveCharacter => ListCharacters[_numberActiveCharacter];
     }
 }

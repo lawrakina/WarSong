@@ -40,6 +40,7 @@ namespace Code.Equipment
             set => _listOfGameObjectsInViews = value;
         }
 
-        public abstract ArmorItemType ArmorItemType { get; }
+        public override int SubItemType { get; }
+        // int ArmorItemType { get; }
     }
 }

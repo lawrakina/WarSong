@@ -7,6 +7,6 @@ namespace Code.Equipment
     [Serializable]
     public class CloakEquip : BaseArmorItem, ICloakEquip
     {
-        public override ArmorItemType ArmorItemType => ArmorItemType.Cloak;
+        public override int SubItemType => (int)ArmorItemType.Cloak;
     }
 }

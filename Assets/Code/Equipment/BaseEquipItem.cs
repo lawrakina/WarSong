@@ -12,6 +12,7 @@ namespace Code.Equipment
         [SerializeField]
         private UiInfo _uiInfo;
         public abstract InventoryItemType ItemType { get; }
+        public abstract int SubItemType { get; }
         public abstract int ItemLevel { get; }
         public abstract Characteristics Characteristics { get; }
         public UiInfo UiInfo => _uiInfo;

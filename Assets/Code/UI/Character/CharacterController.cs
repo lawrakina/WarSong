@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Code.Data;
-using Code.Data.Unit;
-using Code.Equipment;
 using Code.Extension;
 using Code.Profile;
 using UniRx;
@@ -17,6 +14,8 @@ namespace Code.UI.Character
         private readonly Transform _placeForUi;
         private readonly ProfilePlayer _profilePlayer;
         private CharacterView _view;
+        
+        private EquipReplacementController _equipReplacementController;
 
         public CharacterController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
@@ -24,35 +23,35 @@ namespace Code.UI.Character
             _profilePlayer = profilePlayer;
             _view = ResourceLoader.InstantiateObject(
                 _profilePlayer.Settings.UiViews.CharacterView, _placeForUi, false);
-            AddGameObjects(_view.gameObject);
+            AddGameObjects(_view.GameObject);
             _profilePlayer.InfoAboutCurrentPlayer
                 .Subscribe(info => _view.InfoFormatted = info.AllCharacteristics).AddTo(_subscriptions);
 
             var equipment = _profilePlayer.CurrentPlayer.UnitEquipment;
-            var listObjects = new ListOfSellsEquipment
+            var listObjects = new ListOfCellsEquipment
             {
-                TemplateSellEquipmentHandler = _profilePlayer.Settings.UiViews.Equipment_ClearSell,
+                TemplateCellEquipmentHandler = _profilePlayer.Settings.UiViews.Equipment_ClearCell,
                 ActiveWeapons = equipment.ActiveWeapons
             };
             switch (equipment.ActiveWeapons)
             {
                 case ActiveWeapons.RightHand:
-                    listObjects.MainWeapon = new SellEquipment(equipment.MainWeapon);
+                    listObjects.MainWeapon = new CellEquipment(equipment.MainWeapon);
                     listObjects.MainWeapon.Command.Subscribe(SellExecute).AddTo(_subscriptions);
                     break;
                 case ActiveWeapons.TwoHand:
-                    listObjects.MainWeapon = new SellEquipment(equipment.MainWeapon);
+                    listObjects.MainWeapon = new CellEquipment(equipment.MainWeapon);
                     listObjects.MainWeapon.Command.Subscribe(SellExecute).AddTo(_subscriptions);
                     break;
                 case ActiveWeapons.RightAndLeft:
-                    listObjects.MainWeapon = new SellEquipment(equipment.MainWeapon, (int )equipment.ActiveWeapons);
+                    listObjects.MainWeapon = new CellEquipment(equipment.MainWeapon, (int )equipment.ActiveWeapons);
                     listObjects.MainWeapon.Command.Subscribe(SellExecute).AddTo(_subscriptions);
 
-                    listObjects.SecondWeapon = new SellEquipment(equipment.SecondWeapon, (int )equipment.ActiveWeapons);
+                    listObjects.SecondWeapon = new CellEquipment(equipment.SecondWeapon, (int )equipment.ActiveWeapons);
                     listObjects.SecondWeapon.Command.Subscribe(SellExecute).AddTo(_subscriptions);
                     break;
                 case ActiveWeapons.RightAndShield:
-                    listObjects.MainWeapon = new SellEquipment(equipment.MainWeapon, (int )equipment.ActiveWeapons);
+                    listObjects.MainWeapon = new CellEquipment(equipment.MainWeapon, (int )equipment.ActiveWeapons);
                     listObjects.MainWeapon.Command.Subscribe(SellExecute).AddTo(_subscriptions);
                     break;
                 default:
@@ -61,42 +60,24 @@ namespace Code.UI.Character
             
             foreach (ArmorItemType type in Enum.GetValues(typeof(ArmorItemType)))
             {
-                var item = equipment.ListArmor.FirstOrDefault(x => x.ArmorItemType == type);
-                var sell = item == null ? new SellEquipment(null, (int)type) : new SellEquipment(item, (int)type);
+                var item = equipment.ListArmor.FirstOrDefault(x => x.SubItemType == (int)type);
+                var sell = item == null ? new CellEquipment(null, (int)type) : new CellEquipment(item, (int)type);
                 sell.Command.Subscribe(SellExecute).AddTo(_subscriptions);
                 listObjects.Add(sell);
             }
 
+            _equipReplacementController = new EquipReplacementController(_placeForUi, _profilePlayer);
+            AddController(_equipReplacementController);
+            _equipReplacementController.OffExecute();
+
             _view.Init(listObjects);
         }
 
-        private void SellExecute(SellEquipment value)
+        private void SellExecute(CellEquipment value)
         {
-            Dbg.Log($"{value.EquipmentItem.name}. Command Execute");
-        }
-    }
-
-
-    public class ListOfSellsEquipment : List<SellEquipment>
-    {
-        public SellEquipmentHandler TemplateSellEquipmentHandler { get; set; }
-        public SellEquipment MainWeapon { get; set; }
-        public SellEquipment SecondWeapon { get; set; }
-        public ActiveWeapons ActiveWeapons { get; set; }
-    }
-    
-    public class SellEquipment
-    {
-        public InventoryItemType ItemType { get; }
-        public int SubItemType { get; }
-        public ReactiveCommand<SellEquipment> Command { get; } = new ReactiveCommand<SellEquipment>();
-        public BaseEquipItem EquipmentItem { get; }
-        
-        public SellEquipment(BaseEquipItem equip, int subType = -1)
-        {
-            ItemType = equip == null ? InventoryItemType.None : equip.ItemType;
-            SubItemType = subType;
-            EquipmentItem = equip;
+            _view.Hide();
+            _equipReplacementController.ShowReplacementVariants(value);
+            Dbg.Log($"{value}. Command Execute");
         }
     }
 }

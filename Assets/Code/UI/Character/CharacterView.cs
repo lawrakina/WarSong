@@ -25,14 +25,14 @@ namespace Code.UI.Character
         [SerializeField] private GameObject _ringSlot;
         [SerializeField] private GameObject _earringSlot;
 
-        private ListOfSellsEquipment _listObjects;
+        private ListOfCellsEquipment _listObjects;
 
         public string InfoFormatted
         {
             set => _info.text = value;
         }
 
-        public void Init(ListOfSellsEquipment listObjects)
+        public void Init(ListOfCellsEquipment listObjects)
         {
             _listObjects = listObjects;
             switch (listObjects.ActiveWeapons)
@@ -103,10 +103,10 @@ namespace Code.UI.Character
             }
         }
 
-        private void Instant(GameObject parent, SellEquipment sellEquipment)
+        private void Instant(GameObject parent, CellEquipment cellEquipment)
         {
-            var sell = Instantiate(_listObjects.TemplateSellEquipmentHandler, parent.transform, false);
-            sell.Init(sellEquipment);
+            var sell = Instantiate(_listObjects.TemplateCellEquipmentHandler, parent.transform, false);
+            sell.Init(cellEquipment);
         }
     }
 }

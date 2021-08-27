@@ -7,6 +7,6 @@ namespace Code.Equipment
     [Serializable]
     public class BeltEquip : BaseArmorItem, IBeltEquip
     {
-        public override ArmorItemType ArmorItemType => ArmorItemType.Belt;
+        public override int SubItemType => (int)ArmorItemType.Belt;
     }
 }

@@ -10,7 +10,6 @@ namespace Code.Equipment
     {
         GameObject GameObject { get; }
         int ArmorValue { get; }
-        ArmorItemType ArmorItemType { get; }
         string NameInHierarchy { get; }
         List<GameObject> ListViews { get; }
     }

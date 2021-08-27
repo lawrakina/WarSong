@@ -255,7 +255,7 @@ namespace Code.Unit.Factories
         {
             var result = false;
 
-            if (_settings.Equipment.permissionForEquipment.Shield && item.ArmorItemType == ArmorItemType.Shield)
+            if (_settings.Equipment.permissionForEquipment.Shield && item.SubItemType == (int)ArmorItemType.Shield)
                 result = true;
 
             if (_settings.Equipment.permissionForEquipment.HeavyArmor && item.HvMdLt == HeavyLightMedium.Heavy)

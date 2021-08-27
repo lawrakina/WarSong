@@ -7,6 +7,6 @@ namespace Code.Equipment
     [Serializable]
     public class ShoulderEquip : BaseArmorItem, IShoulderEquip
     {
-        public override ArmorItemType ArmorItemType => ArmorItemType.Shoulder;
+        public override int SubItemType => (int)ArmorItemType.Shoulder;
     }
 }

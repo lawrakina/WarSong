@@ -7,6 +7,6 @@ namespace Code.Equipment
     [Serializable]
     public class RingEquip : BaseArmorItem, IRingEquip
     {
-        public override ArmorItemType ArmorItemType => ArmorItemType.Ring;
+        public override int SubItemType => (int)ArmorItemType.Ring;
     }
 }

@@ -7,6 +7,6 @@ namespace Code.Equipment
     [Serializable]
     public class ShieldEquip : BaseArmorItem, IShieldEquip
     {
-        public override ArmorItemType ArmorItemType => ArmorItemType.Shield;
+        public override int SubItemType => (int)ArmorItemType.Shield;
     }
 }
