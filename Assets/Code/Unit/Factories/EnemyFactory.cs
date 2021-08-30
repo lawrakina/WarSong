@@ -13,10 +13,12 @@ namespace Code.Unit.Factories
     {
         private readonly EnemiesData _settings;
         private List<EnemyView> listOfEnemies = new List<EnemyView>();
+        private ReputationFactory _reputationFactory;
+
         public EnemyFactory(EnemiesData settings)
         {
             _settings = settings;
-          
+            _reputationFactory = new ReputationFactory();
         }
 
         public EnemyView CreateEnemy(SpawnMarkerEnemyInDungeon marker)
@@ -36,7 +38,8 @@ namespace Code.Unit.Factories
                 1.8f);
             enemyView.MeshRenderer = enemy.GetComponent<MeshRenderer>();
             enemyView.AnimatorParameters = new AnimatorParameters(enemyView.Animator);
-            
+
+            enemyView.UnitReputation = _reputationFactory.GenerateEnemyReputation();
             //test
             enemyView.UnitHealth = new UnitHealth();
             enemyView.UnitHealth.MaxHp = 100;

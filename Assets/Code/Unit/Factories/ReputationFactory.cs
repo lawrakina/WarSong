@@ -15,5 +15,15 @@ namespace Code.Unit.Factories
             result.EnemyAttackLayer = LayerManager.EnemyAttackLayer;
             return result;
         }
+
+        public UnitReputation GenerateEnemyReputation()
+        {
+            var result = new UnitReputation();
+            result.FriendLayer = LayerManager.EnemyLayer;
+            result.EnemyLayer = LayerManager.PlayerLayer;
+            result.FriendAttackLayer = LayerManager.EnemyAttackLayer;
+            result.EnemyAttackLayer = LayerManager.PlayerAttackLayer;
+            return result;
+        }
     }
 }

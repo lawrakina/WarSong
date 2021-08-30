@@ -18,7 +18,7 @@ namespace Code.Fight.EcsBattle.Unit.EnemyHealthBars
             {
                 ref var playerEntity = ref _playerFilter.GetEntity(i);
                 ref var playerVision = ref _playerFilter.Get2(i)._vision;
-                ref var playerTransform = ref _playerFilter.Get2(i)._modelTransform;
+                ref var playerTransform = ref _playerFilter.Get2(i)._rootTransform;
                 var playerPosition = playerTransform.position;
                 ref var distanceDetection = ref _playerFilter.Get2(i)._vision.distanceDetection;
                 ref var reputation = ref _playerFilter.Get2(i)._reputation;
