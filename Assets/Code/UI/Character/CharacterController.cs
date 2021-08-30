@@ -83,7 +83,7 @@ namespace Code.UI.Character
         private void SellExecute(CellEquipment value)
         {
             // _view.Hide();
-            _equipReplacementController.ShowReplacementVariants(value);
+            _equipReplacementController.Show(value);
             Dbg.Log($"{value}. Command Execute");
         }
     }

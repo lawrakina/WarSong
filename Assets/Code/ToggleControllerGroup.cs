@@ -22,6 +22,7 @@ namespace Code
             {
                 controller.On += On;
                 controller.Off += Off;
+                // controller.ActionDispose += DisposeExecute;
             }
         }
 
@@ -33,6 +34,7 @@ namespace Code
             {
                 controller.On -= On;
                 controller.Off -= Off;
+                // controller.ActionDispose -= DisposeExecute;
             }
 
             _listToggle.Clear();
@@ -69,6 +71,15 @@ namespace Code
             {
                 if(id != _rootController.Id)
                     _rootController.OnExecute();
+            }
+        }
+
+        private void DisposeExecute(Guid id)
+        {
+            foreach (var controller in _listToggle)
+            {
+                if (controller.Id == id)
+                    _listToggle.Remove(controller);
             }
         }
 

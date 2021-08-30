@@ -27,7 +27,7 @@ namespace Code.UI.Character
             AddGameObjects(_view.GameObject);
         }
 
-        public void ShowReplacementVariants(CellEquipment value)
+        public void Show(CellEquipment value)
         {
             OnExecute();
             _listItems = new ListOfCellsReplacementVariants(
@@ -45,7 +45,10 @@ namespace Code.UI.Character
 
         private void CloseView()
         {
+            _listItems.Clear();
+            _view.Clear();
             OffExecute();
+            OnDispose();
         }
 
         private void ShowInfoAboutSelectedItem(CellEquipment value)

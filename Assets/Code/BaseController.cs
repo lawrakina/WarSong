@@ -23,6 +23,7 @@ namespace Code
 
         public event Action<Guid> On;
         public event Action<Guid> Off;
+        public event Action<Guid> ActionDispose;
 
         #endregion
 
@@ -48,6 +49,7 @@ namespace Code
             _subscriptions?.Dispose();
             On = null;
             Off = null;
+            ActionDispose = null;
         }
 
         public void Dispose()
@@ -55,6 +57,7 @@ namespace Code
             if (!_isDisposed)
             {
                 _isDisposed = true;
+                ActionDispose?.Invoke(Id);
                 if (_baseControllers != null)
                 {
                     foreach (BaseController baseController in _baseControllers)
