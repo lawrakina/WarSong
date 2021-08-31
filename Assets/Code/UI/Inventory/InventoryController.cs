@@ -11,7 +11,7 @@ namespace Code.UI.Inventory
         private readonly ProfilePlayer _profilePlayer;
         private InventoryView _view;
 
-        public InventoryController(Transform placeForUi, ProfilePlayer profilePlayer)
+        public InventoryController(bool activate, Transform placeForUi, ProfilePlayer profilePlayer): base(activate)
         {
             _placeForUi = placeForUi;
             _profilePlayer = profilePlayer;
@@ -19,6 +19,8 @@ namespace Code.UI.Inventory
             _view = ResourceLoader.InstantiateObject(_profilePlayer.Settings.UiViews.Inventory, _placeForUi, false);
             AddGameObjects(_view.gameObject);
             _view.Init();
+            
+            Init(activate);
         }
     }
 }

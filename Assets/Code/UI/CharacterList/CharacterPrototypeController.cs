@@ -55,7 +55,8 @@ namespace Code.UI.CharacterList
 
         #region Class live cycles
 
-        public CharacterPrototypeController(Transform placeForUi, ProfilePlayer profilePlayer)
+        public CharacterPrototypeController(bool activate, Transform placeForUi, ProfilePlayer profilePlayer)
+            : base(activate)
         {
             _placeForUi = placeForUi;
             _profilePlayer = profilePlayer;
@@ -98,7 +99,7 @@ namespace Code.UI.CharacterList
             _createPrototypeView.Hide();
             _editPrototypeView.Hide();
 
-            OffExecute();
+            OnDeactivate();
         }
 
         #endregion
@@ -109,7 +110,7 @@ namespace Code.UI.CharacterList
         public void Init()
         {
             _init = true;
-            base.OnExecute();
+            base.OnActivate();
             _createPrototypeView.Show();
         }
 
@@ -166,11 +167,12 @@ namespace Code.UI.CharacterList
             }
         }
 
-        protected override void OnDispose()
+
+        public override void Dispose()
         {
             OnPrototypeChange = null;
             _listPresetCharacter?.Clear();
-            base.OnDispose();
+            base.Dispose();
         }
 
         #endregion

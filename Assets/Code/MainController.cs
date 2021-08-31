@@ -68,12 +68,12 @@ namespace Code
             _oldState = state;
         }
 
-        protected override void OnDispose()
+        public override void Dispose()
         {
             _commandManager?.Dispose();
             _mainMenuController?.Dispose();
             _fightController?.Dispose();
-            base.OnDispose();
+            base.Dispose();
         }
     }
 }

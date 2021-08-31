@@ -37,12 +37,12 @@ namespace Code.UI.CursorParticleSystem
         }
 
         public Guid Id { get; }
-        public void OnExecute()
+        public void OnActivate()
         {
             throw new NotImplementedException();
         }
 
-        public void OffExecute()
+        public void OnDeactivate()
         {
             throw new NotImplementedException();
         }

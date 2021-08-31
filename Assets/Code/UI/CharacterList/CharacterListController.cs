@@ -24,16 +24,17 @@ namespace Code.UI.CharacterList
         private DataSettings _settings;
 
         public CharacterListController(Transform placeForUi, ProfilePlayer profilePlayer,
-            CameraController cameraController)
+            CameraController cameraController): base(true)
         {
             _placeForUi = placeForUi;
             _profilePlayer = profilePlayer;
             _settings = profilePlayer.Settings;
 
-            _createPrototypeController = new CharacterPrototypeController(_placeForUi, _profilePlayer);
+            _createPrototypeController = new CharacterPrototypeController(false, _placeForUi, _profilePlayer);
             _createPrototypeController.OnPrototypeChange += _profilePlayer.RebuildCharacter;
             _createPrototypeController.OnCreateCharacter += OnCreateCharacter;
-            AddController(_createPrototypeController);
+            AddController(_createPrototypeController, true);
+            AddController(this, true, true);
 
             _view = ResourceLoader.InstantiateObject(
                 _profilePlayer.Settings.UiViews.Create_CharacterList, placeForUi, false);
@@ -42,7 +43,7 @@ namespace Code.UI.CharacterList
                 .Subscribe(info => _view.InfoFormatted = info.FullInfo).AddTo(_subscriptions);
 
             _view.Init(MovePrev, MoveNext, SelectCurrentCharacter, CreateNewPrototype);
-            OffExecute();
+            OnDeactivate();
 
             if (_settings.PlayerData.ListCharacters.Count <= 0)
             {
@@ -50,7 +51,7 @@ namespace Code.UI.CharacterList
             }
             else
             {
-                OnExecute();
+                OnActivate();
                 if (_profilePlayer.CurrentPlayer == null)
                 {
                     _profilePlayer.BuildPlayer();
@@ -60,7 +61,7 @@ namespace Code.UI.CharacterList
 
         private void CreateNewPrototype()
         {
-            OffExecute();
+            OnDeactivate();
             _createPrototypeController.Init();
             _createPrototypeController.CreateNewPrototype();
         }
@@ -90,15 +91,15 @@ namespace Code.UI.CharacterList
 
         private void OnCreateCharacter()
         {
-            _createPrototypeController.OffExecute();
-            OnExecute();
+            _createPrototypeController.OnDeactivate();
+            OnActivate();
         }
 
-        protected override void OnDispose()
+        public override void Dispose()
         {
             _createPrototypeController.OnPrototypeChange -= _profilePlayer.RebuildCharacter;
             _createPrototypeController.OnCreateCharacter -= OnCreateCharacter;
-            base.OnDispose();
+            base.Dispose();
         }
     }
 }

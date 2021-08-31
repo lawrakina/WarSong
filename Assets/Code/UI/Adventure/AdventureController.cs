@@ -13,7 +13,7 @@ namespace Code.UI.Adventure
         private readonly ProfilePlayer _profilePlayer;
         private AdventureView _view;
 
-        public AdventureController(Transform placeForUi, ProfilePlayer profilePlayer)
+        public AdventureController(bool activate, Transform placeForUi, ProfilePlayer profilePlayer): base(activate)
         {
             _placeForUi = placeForUi;
             _profilePlayer = profilePlayer;
@@ -21,6 +21,8 @@ namespace Code.UI.Adventure
             _view = ResourceLoader.InstantiateObject(_profilePlayer.Settings.UiViews.AdventureView, _placeForUi,false);
             AddGameObjects(_view.gameObject);
             _view.Init(StartBattle);
+            
+            Init(activate);
         }
 
         private void StartBattle()

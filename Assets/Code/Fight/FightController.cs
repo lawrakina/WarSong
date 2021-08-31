@@ -47,7 +47,7 @@ namespace Code.Fight
             _buildStatusCheckerController = new BuildStatusCheckerController();
             _controllers.Add(_buildStatusCheckerController);
             AddController(_buildStatusCheckerController);
-            _buildStatusCheckerController.OffExecute();
+            _buildStatusCheckerController.OnDeactivate();
             _buildStatusCheckerController.CompleteCommand.Subscribe(x =>
             {
                 _model.FightState.Value = FightState.Fight;
@@ -81,7 +81,7 @@ namespace Code.Fight
             _ecsBattleController = new EcsBattleController(_controllers, _profilePlayer);
             _controllers.Add(_ecsBattleController);
             AddController(_ecsBattleController);
-            _ecsBattleController.OffExecute();
+            _ecsBattleController.OnDeactivate();
 
             _ecsBattleController.Inject(_profilePlayer.CurrentPlayer);
             _ecsBattleController.Inject(_cameraController.FightCamera);
@@ -90,7 +90,7 @@ namespace Code.Fight
             _ecsBattleController.Inject(_profilePlayer.Models.EnemiesLevelModel);
 
             _model.FightState.Subscribe(OnChangeFightState).AddTo(_subscriptions);
-            _buildStatusCheckerController.OnExecute();
+            _buildStatusCheckerController.OnActivate();
             OnChangeFightState(FightState.BuildingStart);
         }
 
@@ -129,14 +129,14 @@ namespace Code.Fight
             }
         }
 
-        protected override void OnDispose()
+        public override void Dispose()
         {
             _controllers.Remove(_generator);
             _controllers.Remove(_loadingController);
             _controllers.Remove(_playerFightController);
             _controllers.Remove(_enemyFightController);
             _controllers.Remove(this);
-            base.OnDispose();
+            base.Dispose();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Code.UI.Character
         
         private EquipReplacementController _equipReplacementController;
 
-        public CharacterController(Transform placeForUi, ProfilePlayer profilePlayer)
+        public CharacterController(bool activate, Transform placeForUi, ProfilePlayer profilePlayer): base(activate)
         {
             _placeForUi = placeForUi;
             _profilePlayer = profilePlayer;
@@ -66,18 +66,21 @@ namespace Code.UI.Character
                 listObjects.Add(sell);
             }
 
-            _equipReplacementController = new EquipReplacementController(_placeForUi, _profilePlayer);
-            AddController(_equipReplacementController);
-            _equipReplacementController.OffExecute();
+            _equipReplacementController = new EquipReplacementController(false, _placeForUi, _profilePlayer);
+            AddController(_equipReplacementController, true);
+            AddController(this, true, true);
+            // _equipReplacementController.OnDeactivate();
 
-            var toggleGroup = new ToggleControllerGroup();
-            toggleGroup.SetRoot(this);
-            toggleGroup.Add(_equipReplacementController);
-            toggleGroup.Init();
+            // var toggleGroup = new ToggleControllerGroup();
+            // toggleGroup.SetRoot(this);
+            // toggleGroup.Add(_equipReplacementController);
+            // toggleGroup.Init();
             
-            OnExecute();
+            // OnActivate();
             
             _view.Init(listObjects);
+            
+            Init(true);
         }
 
         private void SellExecute(CellEquipment value)

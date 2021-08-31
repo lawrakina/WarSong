@@ -52,12 +52,12 @@ namespace Code.Fight.EcsBattle
             Dbg.Log($"Inject object in EcsWorld:{obj}");
         }
         
-        public void OnExecute()
+        public void OnActivate()
         {
             _enable = true;
         }
 
-        public void OffExecute()
+        public void OnDeactivate()
         {
             _enable = false;
         }

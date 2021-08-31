@@ -52,11 +52,11 @@ namespace Code.Fight.BuildingDungeon
             }
             Complete?.Invoke(this);
         }
-        
-        protected override void OnDispose()
+
+        public override void Dispose()
         {
             _generatorModel.OnChangeEnemiesPositions -= SpawnEnemies;
-            base.OnDispose();
+            base.Dispose();
         }
 
     }

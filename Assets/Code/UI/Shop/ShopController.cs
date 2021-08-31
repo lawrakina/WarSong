@@ -11,7 +11,7 @@ namespace Code.UI.Shop
         private readonly ProfilePlayer _profilePlayer;
         private ShopView _view;
 
-        public ShopController(Transform placeForUi, ProfilePlayer profilePlayer)
+        public ShopController(bool activate, Transform placeForUi, ProfilePlayer profilePlayer): base(activate)
         {
             _placeForUi = placeForUi;
             _profilePlayer = profilePlayer;
@@ -19,6 +19,8 @@ namespace Code.UI.Shop
             _view = ResourceLoader.InstantiateObject(_profilePlayer.Settings.UiViews.Shop, _placeForUi, false);
             AddGameObjects(_view.gameObject);
             _view.Init();
+            
+            Init(activate);
         }
     }
 }

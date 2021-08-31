@@ -120,10 +120,10 @@ namespace Code.Fight.BuildingDungeon
             Status = BuildStatus.Passive;
         }
 
-        protected override void OnDispose()
+        public override void Dispose()
         {
             DestroyDungeon();
-            base.OnDispose();
+            base.Dispose();
         }
     }
 }

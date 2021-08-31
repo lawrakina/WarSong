@@ -37,7 +37,7 @@ namespace Code.Fight
 
         public void StartFight()
         {
-            OnExecute();
+            OnActivate();
             
             _ecsBattle.Inject(_camera);
             _ecsBattle.Inject(_inOutControlFightModel);
@@ -69,7 +69,13 @@ namespace Code.Fight
             // _generatorDungeon.DestroyDungeon();
             _ecsBattle.DisposeWorld();
         }
-        
+
+        public override void Dispose()
+        {
+            _ecsBattle.DisposeWorld();
+            base.Dispose();
+        }
+
         public void Inject(object obj)
         {
             if (obj is ThirdPersonCamera camera)

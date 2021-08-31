@@ -30,12 +30,12 @@ namespace Code
 
         public Guid Id { get; }
 
-        public void OnExecute()
+        public void OnActivate()
         {
             
         }
 
-        public void OffExecute()
+        public void OnDeactivate()
         {
             
         }

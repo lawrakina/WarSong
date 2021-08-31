@@ -32,10 +32,10 @@ namespace Code.Fight.BuildingDungeon
             Complete?.Invoke(this);
         }
 
-        protected override void OnDispose()
+        public override void Dispose()
         {
             _model.OnChangePlayerPosition -= SpawnPlayer;
-            base.OnDispose();
+            base.Dispose();
         }
     }
 }

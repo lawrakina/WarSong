@@ -16,7 +16,8 @@ namespace Code.UI.Character
         private List<BaseEquipItem> _inventory;
         private ListOfCellsReplacementVariants _listItems;
 
-        public EquipReplacementController(Transform placeForUi, ProfilePlayer profilePlayer)
+        public EquipReplacementController(
+            bool activate, Transform placeForUi, ProfilePlayer profilePlayer) : base(activate)
         {
             _placeForUi = placeForUi;
             _profilePlayer = profilePlayer;
@@ -25,14 +26,16 @@ namespace Code.UI.Character
             _view = ResourceLoader.InstantiateObject(_profilePlayer.Settings.UiViews.PanelEquipReplacementVariantsView,
                 _placeForUi, false);
             AddGameObjects(_view.GameObject);
+            
+            Init(activate);
         }
 
         public void Show(CellEquipment value)
         {
-            OnExecute();
+            OnActivate();
             _listItems = new ListOfCellsReplacementVariants(
                 _inventory, _profilePlayer.Settings.UiViews.Equipment_ClearCell, value);
-            
+
             foreach (var item in _listItems.GetListByType)
             {
                 var sell = new CellEquipment(item, value.SubItemType);
@@ -47,8 +50,8 @@ namespace Code.UI.Character
         {
             _listItems.Clear();
             _view.Clear();
-            OffExecute();
-            OnDispose();
+            OnDeactivate();
+            // Dispose();
         }
 
         private void ShowInfoAboutSelectedItem(CellEquipment value)

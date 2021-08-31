@@ -41,14 +41,14 @@ namespace Code.Fight.BuildingDungeon
             // Dbg.Log($"finish checking");
         }
 
-        protected override void OnDispose()
+        public override void Dispose()
         {
             foreach (var item in _queue)
             {
                 item.Complete -= VerifiableOnComplete;
             }
             _queue.Clear();
-            base.OnDispose();
+            base.Dispose();
         }
     }
 }
