@@ -8,6 +8,9 @@ using Object = UnityEngine.Object;
 
 namespace Code
 {
+    /// <summary>
+    /// Базовый класс для всех контроллеров.
+    /// </summary>
     public abstract class BaseController : IController, IDisposable
     {
         // Activated
@@ -16,6 +19,10 @@ namespace Code
         private Guid _id = Guid.NewGuid();
         private bool _isDisposed = false;
         private bool _isEnabled = false;
+        
+        /// <summary>
+        /// публичные события, можно подписаться
+        /// </summary>
         public event Action<Guid> Create;
         public event Action<Guid> Activate;
         public event Action<Guid> Deactivate;
@@ -37,6 +44,11 @@ namespace Code
         private BaseController _toggleRootController;
         private readonly List<BaseController> _listToggle = new List<BaseController>();
 
+        /// <summary>
+        /// Родительский конструктор, вызывается самым первым, до создания всех объектов.
+        /// Вызывает всех подписавшихся на event Create
+        /// </summary>
+        /// <param name="activate">Показать после создания зависимые вьюшки?</param>
         protected BaseController(bool activate = false)
         {
             Create?.Invoke(Id);
@@ -52,6 +64,10 @@ namespace Code
             }
         }
         
+        /// <summary>
+        /// Вызывать в конструкторе после добавления всех дочерних контроллеров и GameObject`ов
+        /// </summary>
+        /// <param name="activate">Показать дочерние объекты?</param>
         protected void Init(bool activate)
         {
             if (activate)
@@ -64,11 +80,7 @@ namespace Code
                 _isEnabled = true;
                 OnDeactivate();
             }
-            Init();
-        }
-
-        private void Init()
-        {
+            
             if (_toggleIs)
             {
                 foreach (var controller in _listToggle)
@@ -85,7 +97,18 @@ namespace Code
                 }
             }
         }
+
         
+        /// <summary>
+        /// Добавление контроллера в список дочерних,
+        /// если isToggle то активен только один из детей
+        /// если isRoot то при отключении всех детей активируется rootController
+        /// rootController может быть только один
+        /// можно добавить самого себя AddController(this,true,true);
+        /// </summary>
+        /// <param name="baseController">добавляемый контроллер</param>
+        /// <param name="isToggle">включение и добавление к Toggle Group</param>
+        /// <param name="isRoot">корневой контроллер, включается когда выключаются все дочерние</param>
         protected void AddController(BaseController baseController, bool isToggle = false, bool isRoot = false)
         {
             if(baseController == null)
@@ -107,6 +130,10 @@ namespace Code
             }
         }
 
+        /// <summary>
+        /// Добавление GameObject`s, оспользуется "в основном" для View
+        /// </summary>
+        /// <param name="gameObject">зависивый GameObject</param>
         protected void AddGameObjects(GameObject gameObject)
         {
             if (_gameObjects == null)
@@ -125,6 +152,9 @@ namespace Code
             }
         }
         
+        /// <summary>
+        /// Активировать себя и ранее включенное дерево объектов и дерево контроллеров
+        /// </summary>
         public void OnActivate()
         {
             if (!_isEnabled)
@@ -169,6 +199,9 @@ namespace Code
             }
         }
         
+        /// <summary>
+        /// Отключить себя, дерево дочерних элементов и дерево зависимых контроллеров
+        /// </summary>
         public void OnDeactivate()
         {
             if (_isEnabled)
@@ -198,6 +231,11 @@ namespace Code
             }
         }
 
+        /// <summary>
+        /// Выпилиться из памяти
+        /// проблема с GC.SuppressFinalize(this);
+        /// возможны утечки памяти
+        /// </summary>
         public virtual void Dispose()
         {
             Dispose(true);
@@ -255,7 +293,6 @@ namespace Code
                 }
                 // освобождаем неуправляемые объекты
                 _isDisposed = true;
-                
             }
         }
         
