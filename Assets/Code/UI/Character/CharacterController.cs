@@ -37,22 +37,22 @@ namespace Code.UI.Character
             {
                 case ActiveWeapons.RightHand:
                     listObjects.MainWeapon = new CellEquipment(equipment.MainWeapon);
-                    listObjects.MainWeapon.Command.Subscribe(SellExecute).AddTo(_subscriptions);
+                    listObjects.MainWeapon.Command.Subscribe(CellExecute).AddTo(_subscriptions);
                     break;
                 case ActiveWeapons.TwoHand:
                     listObjects.MainWeapon = new CellEquipment(equipment.MainWeapon);
-                    listObjects.MainWeapon.Command.Subscribe(SellExecute).AddTo(_subscriptions);
+                    listObjects.MainWeapon.Command.Subscribe(CellExecute).AddTo(_subscriptions);
                     break;
                 case ActiveWeapons.RightAndLeft:
                     listObjects.MainWeapon = new CellEquipment(equipment.MainWeapon, (int )equipment.ActiveWeapons);
-                    listObjects.MainWeapon.Command.Subscribe(SellExecute).AddTo(_subscriptions);
+                    listObjects.MainWeapon.Command.Subscribe(CellExecute).AddTo(_subscriptions);
 
                     listObjects.SecondWeapon = new CellEquipment(equipment.SecondWeapon, (int )equipment.ActiveWeapons);
-                    listObjects.SecondWeapon.Command.Subscribe(SellExecute).AddTo(_subscriptions);
+                    listObjects.SecondWeapon.Command.Subscribe(CellExecute).AddTo(_subscriptions);
                     break;
                 case ActiveWeapons.RightAndShield:
                     listObjects.MainWeapon = new CellEquipment(equipment.MainWeapon, (int )equipment.ActiveWeapons);
-                    listObjects.MainWeapon.Command.Subscribe(SellExecute).AddTo(_subscriptions);
+                    listObjects.MainWeapon.Command.Subscribe(CellExecute).AddTo(_subscriptions);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -62,32 +62,24 @@ namespace Code.UI.Character
             {
                 var item = equipment.ListArmor.FirstOrDefault(x => x.SubItemType == (int)type);
                 var sell = item == null ? new CellEquipment(null, (int)type) : new CellEquipment(item, (int)type);
-                sell.Command.Subscribe(SellExecute).AddTo(_subscriptions);
+                sell.Command.Subscribe(CellExecute).AddTo(_subscriptions);
                 listObjects.Add(sell);
             }
 
             _equipReplacementController = new EquipReplacementController(false, _placeForUi, _profilePlayer);
             AddController(_equipReplacementController, true);
             AddController(this, true, true);
-            // _equipReplacementController.OnDeactivate();
 
-            // var toggleGroup = new ToggleControllerGroup();
-            // toggleGroup.SetRoot(this);
-            // toggleGroup.Add(_equipReplacementController);
-            // toggleGroup.Init();
-            
-            // OnActivate();
-            
             _view.Init(listObjects);
             
             Init(true);
         }
 
-        private void SellExecute(CellEquipment value)
+        private void CellExecute(CellEquipment value)
         {
-            // _view.Hide();
+            Dbg.Log($"{value}. Command start");
             _equipReplacementController.Show(value);
-            Dbg.Log($"{value}. Command Execute");
+            Dbg.Log($"{value}. Command finish");
         }
     }
 }

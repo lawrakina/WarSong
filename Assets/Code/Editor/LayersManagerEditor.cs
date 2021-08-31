@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace Code.Editor
 {
-    [CustomEditor(typeof(LayerManager))]
+    [CustomEditor(typeof(LayersManager))]
     public class LayersManagerEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
 
-            var layersScripts = (LayerManager) target;
+            var layersScripts = (LayersManager) target;
             if (GUILayout.Button(@"Check Layers"))
             {
                 layersScripts.CheckLayers();

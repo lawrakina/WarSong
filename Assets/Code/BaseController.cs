@@ -233,13 +233,11 @@ namespace Code
 
         /// <summary>
         /// Выпилиться из памяти
-        /// проблема с GC.SuppressFinalize(this);
-        /// возможны утечки памяти
         /// </summary>
         public virtual void Dispose()
         {
             Dispose(true);
-            // GC.SuppressFinalize(this);
+            GC.SuppressFinalize(this);
         }
         
         protected void Dispose(bool disposing)
@@ -296,9 +294,9 @@ namespace Code
             }
         }
         
-        // ~BaseController()
-        // {
-        //     Dispose(false);
-        // }
+        ~BaseController()
+        {
+            Dispose(false);
+        }
     }
 }

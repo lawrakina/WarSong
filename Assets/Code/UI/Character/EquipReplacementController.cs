@@ -36,6 +36,12 @@ namespace Code.UI.Character
             _listItems = new ListOfCellsReplacementVariants(
                 _inventory, _profilePlayer.Settings.UiViews.Equipment_ClearCell, value);
 
+            if (value.EquipmentItem)
+            {
+                var sourceItem = new CellEquipment(value.EquipmentItem, value.SubItemType);
+                sourceItem.Command.Subscribe(ShowInfoAboutSelectedItem).AddTo(_subscriptions);
+                _listItems.Add(sourceItem);
+            }
             foreach (var item in _listItems.GetListByType)
             {
                 var sell = new CellEquipment(item, value.SubItemType);

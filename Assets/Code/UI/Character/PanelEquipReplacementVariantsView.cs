@@ -26,9 +26,10 @@ namespace Code.UI.Character
 
         public void Clear()
         {
+            _close.onClick.RemoveAllListeners();
             var children = new List<GameObject>();
             foreach (Transform child in _grid.transform) children.Add(child.gameObject);
-            children.ForEach(child => Destroy(child));
+            children.ForEach(Destroy);
         }
     }
 }

@@ -12,5 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f06c46282a4905beaf44c25204526e, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  ListCharacters: []
+  ListCharacters:
+  - CharacterClass: 1
+    CharacterGender: 1
+    CharacterRace: 0
+    Equipment:
+      permissionForEquipment:
+        OneHandWeapon: 1
+        TwoOneHandWeapon: 1
+        TwoHandSwordWeapon: 1
+        TwoHandSpearWeapon: 1
+        TwoHandStaffWeapon: 1
+        RangeTwoHandBowWeapon: 0
+        RangeTwoHandCrossbowWeapon: 0
+        Shield: 1
+        HeavyArmor: 1
+        MediumArmor: 1
+        LightArmor: 1
+      Equipment:
+      - {fileID: 9024842520586543348, guid: b42a483ee5137f843929c77d6f537502, type: 3}
+      - {fileID: 2791158550610320276, guid: 25e580736c5a51f4f88d4148267d74a7, type: 3}
+      - {fileID: 381132802092769579, guid: dbadde02d65be1d45953bb9271cd35fa, type: 3}
+      Inventory:
+      - {fileID: 381132802092769579, guid: 8674f259d13229642920d211b6bb5282, type: 3}
+      - {fileID: 381132802092769579, guid: 8674f259d13229642920d211b6bb5282, type: 3}
+      - {fileID: -8844724956590295038, guid: 9e80f1214d24de448b17ab3d2302eb1a, type: 3}
+      - {fileID: -6049655489026514482, guid: a86d9763462c31640b33721b9ee09be7, type: 3}
+      - {fileID: 2791158550610320276, guid: 25e580736c5a51f4f88d4148267d74a7, type: 3}
+      - {fileID: -8844724956590295038, guid: 9e80f1214d24de448b17ab3d2302eb1a, type: 3}
+      - {fileID: 9024842520586543348, guid: 9576cb1abacfefe4ca575a086ff8f0de, type: 3}
+      - {fileID: 9024842520586543348, guid: b42a483ee5137f843929c77d6f537502, type: 3}
+      - {fileID: 2870572659378946510, guid: 5bff37198511ee046b74477da90a1374, type: 3}
+    ExperiencePoints: 1
   _numberActiveCharacter: 0
