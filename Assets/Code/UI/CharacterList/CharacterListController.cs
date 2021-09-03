@@ -31,7 +31,7 @@ namespace Code.UI.CharacterList
             _settings = profilePlayer.Settings;
 
             _createPrototypeController = new CharacterPrototypeController(false, _placeForUi, _profilePlayer);
-            _createPrototypeController.OnPrototypeChange += _profilePlayer.RebuildCharacter;
+            _createPrototypeController.OnPrototypeChange += _profilePlayer.RebuildCharacter.Invoke;
             _createPrototypeController.OnCreateCharacter += OnCreateCharacter;
             AddController(_createPrototypeController, true);
             AddController(this, true, true);
@@ -54,7 +54,7 @@ namespace Code.UI.CharacterList
                 OnActivate();
                 if (_profilePlayer.CurrentPlayer == null)
                 {
-                    _profilePlayer.BuildPlayer();
+                    _profilePlayer.BuildCharacter.Invoke();
                 }
             }
         }
@@ -71,7 +71,7 @@ namespace Code.UI.CharacterList
             if (Position < _settings.PlayerData.ListCharacters.Count - 1)
             {
                 Position++;
-                _profilePlayer.RebuildCurrentCharacter();
+                _profilePlayer.RebuildCurrentCharacter.Invoke();
             }
         }
 
@@ -85,7 +85,7 @@ namespace Code.UI.CharacterList
             if (Position > 0)
             {
                 Position--;
-                _profilePlayer.RebuildCurrentCharacter();
+                _profilePlayer.RebuildCurrentCharacter.Invoke();
             }
         }
 
@@ -97,7 +97,7 @@ namespace Code.UI.CharacterList
 
         public override void Dispose()
         {
-            _createPrototypeController.OnPrototypeChange -= _profilePlayer.RebuildCharacter;
+            _createPrototypeController.OnPrototypeChange -= _profilePlayer.RebuildCharacter.Invoke;
             _createPrototypeController.OnCreateCharacter -= OnCreateCharacter;
             base.Dispose();
         }

@@ -196,7 +196,7 @@ namespace Code.UI.CharacterList
             }
             else
             {
-                _profilePlayer.RebuildCharacter(CurrentPresetSetting);
+                _profilePlayer.RebuildCharacter.Invoke(CurrentPresetSetting);
             }
         }
     }

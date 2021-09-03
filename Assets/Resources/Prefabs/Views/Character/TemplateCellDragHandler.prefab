@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3520965029829679227}
   - component: {fileID: 570093165118824197}
   - component: {fileID: 4943442613101800437}
-  - component: {fileID: 3879315333051062325}
+  - component: {fileID: 300707324756723959}
+  - component: {fileID: 4821152485402190865}
   m_Layer: 5
-  m_Name: TemplateSellEquipmentHandler
+  m_Name: TemplateCellDragHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ad4de47d32a9301458e3a1123459a41a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a421dd7d1da10234696af38cf2bd89e8, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -76,7 +77,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3879315333051062325
+--- !u!114 &300707324756723959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +86,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4031764363553072005}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e7a7d05dd4540df9e484ec68f3fed8a, type: 3}
+  m_Script: {fileID: 11500000, guid: db810d69dfbd42afa8feebcc820baf8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _image: {fileID: 4943442613101800437}
+--- !u!225 &4821152485402190865
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4031764363553072005}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Code.Data.Unit;
 using Code.Equipment;
 using Code.Extension;
 using Code.Profile;
@@ -12,16 +13,18 @@ namespace Code.UI.Character
     {
         private readonly Transform _placeForUi;
         private readonly ProfilePlayer _profilePlayer;
-        private PanelEquipReplacementVariantsView _view;
-        private List<BaseEquipItem> _inventory;
         private ListOfCellsReplacementVariants _listItems;
+        private PanelEquipReplacementVariantsView _view;
+        private UnitInventory _inventory;
+        private UnitEquipment _equipment;
 
         public EquipReplacementController(
             bool activate, Transform placeForUi, ProfilePlayer profilePlayer) : base(activate)
         {
             _placeForUi = placeForUi;
             _profilePlayer = profilePlayer;
-            _inventory = _profilePlayer.Settings.PlayerData.ActiveCharacter.Equipment.Inventory;
+            _inventory = _profilePlayer.CurrentPlayer.UnitInventory;
+            _equipment = _profilePlayer.CurrentPlayer.UnitEquipment;
 
             _view = ResourceLoader.InstantiateObject(_profilePlayer.Settings.UiViews.PanelEquipReplacementVariantsView,
                 _placeForUi, false);
@@ -30,23 +33,24 @@ namespace Code.UI.Character
             Init(activate);
         }
 
-        public void Show(CellEquipment value)
+        public void Show(SlotEquipment value)
         {
             OnActivate();
             _listItems = new ListOfCellsReplacementVariants(
-                _inventory, _profilePlayer.Settings.UiViews.Equipment_ClearCell, value);
+                _inventory.List, _profilePlayer.Settings.UiViews.CellTemplateDragAndDropEquipment,
+                _profilePlayer.Settings.UiViews.SlotDropHandler, value);
 
             if (value.EquipmentItem)
             {
-                var sourceItem = new CellEquipment(value.EquipmentItem, value.SubItemType);
+                var sourceItem = new SlotEquipment(value.EquipmentItem, value.SubItemType);
                 sourceItem.Command.Subscribe(ShowInfoAboutSelectedItem).AddTo(_subscriptions);
-                _listItems.Add(sourceItem);
+                _listItems.ActiveSlot = sourceItem;
             }
             foreach (var item in _listItems.GetListByType)
             {
-                var sell = new CellEquipment(item, value.SubItemType);
-                sell.Command.Subscribe(ShowInfoAboutSelectedItem).AddTo(_subscriptions);
-                _listItems.Add(sell);
+                var cell = new SlotEquipment(item, value.SubItemType);
+                cell.Command.Subscribe(ShowInfoAboutSelectedItem).AddTo(_subscriptions);
+                _listItems.Add(cell);
             }
 
             _view.Init(_listItems, PutonOrTakeoffItem, CloseView);
@@ -57,20 +61,24 @@ namespace Code.UI.Character
             _listItems.Clear();
             _view.Clear();
             OnDeactivate();
-            // Dispose();
         }
 
-        private void ShowInfoAboutSelectedItem(CellEquipment value)
+        private void ShowInfoAboutSelectedItem(SlotEquipment value)
         {
             Dbg.Log($"Selected info: {value.EquipmentItem}");
-            // сделать выбранный элемент - value
-            // показать инфу о выбранном итеме
+            _listItems.ActiveSlot = value;
         }
 
-        private void PutonOrTakeoffItem(CellEquipment value)
+        private void PutonOrTakeoffItem(SlotEquipment value)
         {
-            Dbg.Log($"PutonOrTakeoffItem.{value.EquipmentItem}");
-            // снять или одеть вещь (отправить в инвентарь или достать из него и отправить в UnitEquipment)
+            if (value == null) return;
+            
+            var item = _equipment.TakeOff(value.EquipmentItem);
+            _inventory.Put(item);
+            if (value != _listItems.ActiveSlot)
+                _equipment.PutOn(value.EquipmentItem);
+            
+            _profilePlayer.RebuildCurrentCharacter.Invoke();
         }
     }
 }

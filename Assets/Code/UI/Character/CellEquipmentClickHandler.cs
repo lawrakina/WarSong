@@ -6,14 +6,14 @@ using UnityEngine.UI;
 
 namespace Code.UI.Character
 {
-    public class CellEquipmentHandler : MonoBehaviour, IPointerDownHandler
+    public class CellEquipmentClickHandler : MonoBehaviour, IPointerDownHandler
     {
         [SerializeField] private Image _image;
-        private CellEquipment Body { get; set; }
+        private SlotEquipment Body { get; set; }
 
-        public void Init(CellEquipment cellEquipment)
+        public void Init(SlotEquipment slotEquipment)
         {
-            Body = cellEquipment;
+            Body = slotEquipment;
             if(Body.EquipmentItem)
                 _image.sprite = Body.EquipmentItem.UiInfo.Icon;
         }

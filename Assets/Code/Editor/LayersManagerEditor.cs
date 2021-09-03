@@ -11,7 +11,7 @@ namespace Code.Editor
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
-
+   
             var layersScripts = (LayersManager) target;
             if (GUILayout.Button(@"Check Layers"))
             {

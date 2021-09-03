@@ -103,10 +103,11 @@ namespace Code.UI.Character
             }
         }
 
-        private void Instant(GameObject parent, CellEquipment cellEquipment)
+        private void Instant(GameObject parent, SlotEquipment slotEquipment)
         {
-            var sell = Instantiate(_listObjects.TemplateCellEquipmentHandler, parent.transform, false);
-            sell.Init(cellEquipment);
+            var sell = Instantiate(
+                _listObjects.TemplateCellEquipmentClickHandler, parent.transform, false);
+            sell.Init(slotEquipment);
         }
     }
 }

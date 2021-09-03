@@ -20,7 +20,7 @@ namespace Code.Unit.Factories
             //Create Person Appearance
             _person.Generate(_settings);
             
-            var equip = new UnitEquipment(_person);
+            var equip = new UnitEquipment(_settings, _person);
 
             return equip;
         }

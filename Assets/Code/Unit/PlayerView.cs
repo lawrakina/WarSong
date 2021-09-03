@@ -25,6 +25,7 @@ namespace Code.Unit
         public UnitVision UnitVision { get; set; }
         public UnitEquipment UnitEquipment { get; set; }
         public UnitPerson UnitPerson { get; set; }
+        public UnitInventory UnitInventory { get; set; }
 
         public event Action<InfoCollision> OnApplyDamageChange;
         

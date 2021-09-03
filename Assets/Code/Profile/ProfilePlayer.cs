@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using Code.Data;
 using Code.Data.Unit;
 using Code.Data.Unit.Player;
+using Code.Equipment;
 using Code.Extension;
 using Code.Profile.Models;
 using Code.Unit;
@@ -26,6 +28,10 @@ namespace Code.Profile
         public UiWindowAfterStart WindowAfterStart { get; set; }
         public ReactiveProperty<InfoAboutCharacter> InfoAboutCurrentPlayer { get; }
 
+        public Action BuildCharacter;
+        public Action RebuildCurrentCharacter;
+        public Action<CharacterSettings> RebuildCharacter;
+        
 #if UNITY_EDITOR
         public Action<IPlayerView> ChangePlayer_FOR_DEBUG_DONT_USE;
 #endif
@@ -40,6 +46,10 @@ namespace Code.Profile
             CurrentState = new ReactiveProperty<GameState>();
             InfoAboutCurrentPlayer = new ReactiveProperty<InfoAboutCharacter>(new InfoAboutCharacter(null));
             AnalyticTools = analyticTools;
+
+            BuildCharacter += OnBuildCharacter;
+            RebuildCurrentCharacter += OnRebuildCurrentCharacter;
+            RebuildCharacter += OnRebuildCharacter;
 
             CharacterFabric = ConstructCharacterFabric();
         }
@@ -56,6 +66,7 @@ namespace Code.Profile
             var visionFactory = new VisionFactory(Settings.PlayerClassesData);
             var reputationFactory = new ReputationFactory();
             var equipmentFactory = new EquipmentFactory();
+            var inventoryFactory = new InventoryFactory();
 
             //контроллер активного персонажа (отвечает за модификацию внешного вида, одетых вещей в реалтайме)
             return new CharacterFabric(
@@ -67,15 +78,16 @@ namespace Code.Profile
                 healthFactory,
                 visionFactory,
                 reputationFactory,
-                equipmentFactory);
+                equipmentFactory,
+                inventoryFactory);
         }
         
-        public void BuildPlayer()
+        private void OnBuildCharacter()
         {
             CurrentPlayer =
                 CharacterFabric.CreatePlayer(
                     Settings.PlayerData.ListCharacters[Settings.PlayerData._numberActiveCharacter]);
-            RebuildCurrentCharacter();
+            OnRebuildCurrentCharacter();
             InfoAboutCurrentPlayer.Value = new InfoAboutCharacter(CurrentPlayer);
 
 #if UNITY_EDITOR
@@ -84,12 +96,12 @@ namespace Code.Profile
         }
 
 
-        public void RebuildCurrentCharacter()
+        private void OnRebuildCurrentCharacter()
         {
-            RebuildCharacter(Settings.PlayerData.ListCharacters[Settings.PlayerData._numberActiveCharacter]);
+            OnRebuildCharacter(Settings.PlayerData.ListCharacters[Settings.PlayerData._numberActiveCharacter]);
         }
 
-        public void RebuildCharacter(CharacterSettings value)
+        private void OnRebuildCharacter(CharacterSettings value)
         {
             Dbg.Log($"RebuildCharacter");
             CharacterFabric.RebuildCharacter(CurrentPlayer, value);
@@ -98,5 +110,13 @@ namespace Code.Profile
             ChangePlayer_FOR_DEBUG_DONT_USE?.Invoke(CurrentPlayer);
 #endif
         }
+
+        ~ProfilePlayer()
+        {
+            BuildCharacter = null;
+            RebuildCurrentCharacter = null;
+            RebuildCharacter = null;
+        }
     }
+
 }

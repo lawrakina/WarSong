@@ -11,5 +11,6 @@ namespace Code.Unit
         UnitEquipment UnitEquipment { get; set; }
         BaseCharacterClass CharacterClass { get; set; }
         UnitPerson UnitPerson { get; set; }
+        UnitInventory UnitInventory { get; set; }
     }
 }

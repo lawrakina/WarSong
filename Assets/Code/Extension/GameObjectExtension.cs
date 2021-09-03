@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Code.Equipment;
 using UnityEngine;
 
 
@@ -52,5 +51,14 @@ namespace Code.Extension
         {
             return Object.Instantiate(original as T, Vector3.zero, Quaternion.identity).GetComponent<T>();
         }
+
+        public static void DestroyAllChildren(this GameObject original)
+        {
+            var children = new List<GameObject>();
+            foreach (Transform child in original.transform) children.Add(child.gameObject);
+            children.ForEach(Object.Destroy);
+            // return original;
+        }
+        
     }
 }

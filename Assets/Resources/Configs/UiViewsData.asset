@@ -28,7 +28,11 @@ MonoBehaviour:
     type: 3}
   CharacterView: {fileID: 3781639543975599055, guid: 03d9d70579f675647a9e2eee1b180545,
     type: 3}
-  Equipment_ClearCell: {fileID: 3879315333051062325, guid: 30f2860e0430f1745a8a70fce0fa7ae8,
+  CellTemplateClickEquipment: {fileID: 3879315333051062325, guid: 30f2860e0430f1745a8a70fce0fa7ae8,
+    type: 3}
+  CellTemplateDragAndDropEquipment: {fileID: 300707324756723959, guid: 8c1f03406e8268b4d91d3b590e103a26,
+    type: 3}
+  SlotDropHandler: {fileID: 2389152780380992024, guid: 0d890106758e32a469319f94f930b301,
     type: 3}
   PanelEquipReplacementVariantsView: {fileID: 8401495890577193933, guid: 7e071977e34fa2342871bf2c59da7f37,
     type: 3}

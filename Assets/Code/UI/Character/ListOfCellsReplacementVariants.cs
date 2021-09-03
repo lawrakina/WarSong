@@ -1,26 +1,38 @@
 ﻿using System.Collections.Generic;
 using Code.Equipment;
+using UnityEngine;
 
 
 namespace Code.UI.Character
 {
-    public class ListOfCellsReplacementVariants : List<CellEquipment>
+    public class ListOfCellsReplacementVariants : List<SlotEquipment>
     {
-        private CellEquipment _activeCell;
+        private SlotEquipment _activeSlot;
         private List<BaseEquipItem> _source;
-        private CellEquipmentHandler _cellTemplate;
-        
-        public CellEquipmentHandler CellTemplate => _cellTemplate;
+        private CellEquipmentDragAndDropHandler _cellTemplate;
+        private SlotDropHandler _slotDropHandler;
 
-        public IEnumerable<BaseEquipItem> GetListByType => _source.FindAll(x =>
-            x.ItemType == _activeCell.ItemType && x.SubItemType == _activeCell.SubItemType);
+        public CellEquipmentDragAndDropHandler CellTemplate => _cellTemplate;
+
+        public SlotEquipment ActiveSlot
+        {
+            get => _activeSlot;
+            set => _activeSlot = value;
+        }
         
-        public ListOfCellsReplacementVariants(List<BaseEquipItem> inventory, CellEquipmentHandler cellTemplate,
-            CellEquipment activeCell)
+        public IEnumerable<BaseEquipItem> GetListByType => _source.FindAll(x =>
+            x.ItemType == _activeSlot.ItemType && x.SubItemType == _activeSlot.SubItemType);
+
+        public SlotDropHandler SlotHandler => _slotDropHandler;
+
+        public ListOfCellsReplacementVariants(
+            List<BaseEquipItem> inventory, CellEquipmentDragAndDropHandler cellTemplate, 
+            SlotDropHandler slotDropHandler, SlotEquipment activeSlot)
         {
             _source = inventory;
-            _activeCell = activeCell;
+            _activeSlot = activeSlot;
             _cellTemplate = cellTemplate;
+            _slotDropHandler = slotDropHandler;
         }
     }
 }

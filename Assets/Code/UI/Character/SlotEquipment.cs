@@ -5,14 +5,14 @@ using UniRx;
 
 namespace Code.UI.Character
 {
-    public class CellEquipment
+    public class SlotEquipment
     {
         public InventoryItemType ItemType { get; }
         public int SubItemType { get; }
-        public ReactiveCommand<CellEquipment> Command { get; } = new ReactiveCommand<CellEquipment>();
+        public ReactiveCommand<SlotEquipment> Command { get; } = new ReactiveCommand<SlotEquipment>();
         public BaseEquipItem EquipmentItem { get; }
         
-        public CellEquipment(BaseEquipItem equip, int subType = -1)
+        public SlotEquipment(BaseEquipItem equip, int subType = -1)
         {
             ItemType = equip == null ? InventoryItemType.None : equip.ItemType;
             SubItemType = subType;

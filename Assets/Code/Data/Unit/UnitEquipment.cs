@@ -9,12 +9,14 @@ namespace Code.Data.Unit
 {
     public sealed class UnitEquipment
     {
+        private readonly CharacterSettings _settings;
         private readonly UnitPerson _person;
         private readonly List<BaseEquipItem> _list;
         private List<BaseArmorItem> _listArmor;
 
-        public UnitEquipment(UnitPerson person)
+        public UnitEquipment(CharacterSettings settings, UnitPerson person)
         {
+            _settings = settings;
             _person = person;
             _list = _person.ListEquipmentItems;
             _listArmor = new List<BaseArmorItem>();
@@ -35,5 +37,32 @@ namespace Code.Data.Unit
         public BaseWeapon SecondWeapon => _person.SecondWeapon;
         public List<BaseArmorItem> ListArmor => _listArmor;
         public ActiveWeapons ActiveWeapons => _person.ActiveWeapons;
+
+        public BaseEquipItem TakeOff(BaseEquipItem removableItem)
+        {
+            return _list.Remove(removableItem) ? removableItem : null;
+        }
+
+        public void PutOn(BaseEquipItem equipmentItem)
+        {
+            _settings.Equipment.Equipment.Add(equipmentItem);
+        }
+    }
+
+    public sealed class UnitInventory
+    {
+        private readonly CharacterEquipment _inventory;
+
+        public UnitInventory(CharacterEquipment inventory)
+        {
+            _inventory = inventory;
+        }
+
+        public List<BaseEquipItem> List => _inventory.Inventory;
+
+        public void Put(BaseEquipItem item)
+        {
+            _inventory.Inventory.Add(item);
+        }
     }
 }

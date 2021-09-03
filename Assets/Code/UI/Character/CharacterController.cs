@@ -30,28 +30,28 @@ namespace Code.UI.Character
             var equipment = _profilePlayer.CurrentPlayer.UnitEquipment;
             var listObjects = new ListOfCellsEquipment
             {
-                TemplateCellEquipmentHandler = _profilePlayer.Settings.UiViews.Equipment_ClearCell,
+                TemplateCellEquipmentClickHandler = _profilePlayer.Settings.UiViews.CellTemplateClickEquipment,
                 ActiveWeapons = equipment.ActiveWeapons
             };
             switch (equipment.ActiveWeapons)
             {
                 case ActiveWeapons.RightHand:
-                    listObjects.MainWeapon = new CellEquipment(equipment.MainWeapon);
+                    listObjects.MainWeapon = new SlotEquipment(equipment.MainWeapon);
                     listObjects.MainWeapon.Command.Subscribe(CellExecute).AddTo(_subscriptions);
                     break;
                 case ActiveWeapons.TwoHand:
-                    listObjects.MainWeapon = new CellEquipment(equipment.MainWeapon);
+                    listObjects.MainWeapon = new SlotEquipment(equipment.MainWeapon);
                     listObjects.MainWeapon.Command.Subscribe(CellExecute).AddTo(_subscriptions);
                     break;
                 case ActiveWeapons.RightAndLeft:
-                    listObjects.MainWeapon = new CellEquipment(equipment.MainWeapon, (int )equipment.ActiveWeapons);
+                    listObjects.MainWeapon = new SlotEquipment(equipment.MainWeapon, (int )equipment.ActiveWeapons);
                     listObjects.MainWeapon.Command.Subscribe(CellExecute).AddTo(_subscriptions);
 
-                    listObjects.SecondWeapon = new CellEquipment(equipment.SecondWeapon, (int )equipment.ActiveWeapons);
+                    listObjects.SecondWeapon = new SlotEquipment(equipment.SecondWeapon, (int )equipment.ActiveWeapons);
                     listObjects.SecondWeapon.Command.Subscribe(CellExecute).AddTo(_subscriptions);
                     break;
                 case ActiveWeapons.RightAndShield:
-                    listObjects.MainWeapon = new CellEquipment(equipment.MainWeapon, (int )equipment.ActiveWeapons);
+                    listObjects.MainWeapon = new SlotEquipment(equipment.MainWeapon, (int )equipment.ActiveWeapons);
                     listObjects.MainWeapon.Command.Subscribe(CellExecute).AddTo(_subscriptions);
                     break;
                 default:
@@ -61,7 +61,7 @@ namespace Code.UI.Character
             foreach (ArmorItemType type in Enum.GetValues(typeof(ArmorItemType)))
             {
                 var item = equipment.ListArmor.FirstOrDefault(x => x.SubItemType == (int)type);
-                var sell = item == null ? new CellEquipment(null, (int)type) : new CellEquipment(item, (int)type);
+                var sell = item == null ? new SlotEquipment(null, (int)type) : new SlotEquipment(item, (int)type);
                 sell.Command.Subscribe(CellExecute).AddTo(_subscriptions);
                 listObjects.Add(sell);
             }
@@ -75,11 +75,9 @@ namespace Code.UI.Character
             Init(true);
         }
 
-        private void CellExecute(CellEquipment value)
+        private void CellExecute(SlotEquipment value)
         {
-            Dbg.Log($"{value}. Command start");
             _equipReplacementController.Show(value);
-            Dbg.Log($"{value}. Command finish");
         }
     }
 }

@@ -34,7 +34,9 @@ namespace Code.Data
         
         [Header("Character tab")]
         public CharacterView CharacterView;
-        public CellEquipmentHandler Equipment_ClearCell;
+        public CellEquipmentClickHandler CellTemplateClickEquipment;
+        public CellEquipmentDragAndDropHandler CellTemplateDragAndDropEquipment;
+        public SlotDropHandler SlotDropHandler;
         public PanelEquipReplacementVariantsView PanelEquipReplacementVariantsView;
         [Space] 
         
@@ -51,5 +53,6 @@ namespace Code.Data
 
         [Header("Modals windows")]
         public LoadingView LoadingView;
+
     }
 }

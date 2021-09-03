@@ -4,11 +4,11 @@ using Code.Data;
 
 namespace Code.UI.Character
 {
-    public class ListOfCellsEquipment : List<CellEquipment>
+    public class ListOfCellsEquipment : List<SlotEquipment>
     {
-        public CellEquipmentHandler TemplateCellEquipmentHandler { get; set; }
-        public CellEquipment MainWeapon { get; set; }
-        public CellEquipment SecondWeapon { get; set; }
+        public CellEquipmentClickHandler TemplateCellEquipmentClickHandler { get; set; }
+        public SlotEquipment MainWeapon { get; set; }
+        public SlotEquipment SecondWeapon { get; set; }
         public ActiveWeapons ActiveWeapons { get; set; }
     }
 }
