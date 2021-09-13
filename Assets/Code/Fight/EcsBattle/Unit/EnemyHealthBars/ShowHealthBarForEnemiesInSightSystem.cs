@@ -1,3 +1,4 @@
+using Code.Extension;
 using Leopotam.Ecs;
 
 namespace Code.Fight.EcsBattle.Unit.EnemyHealthBars

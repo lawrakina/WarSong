@@ -164,9 +164,9 @@ namespace Code.Fight.EcsBattle
                 //оно крашит всё
                 .Add(new CheckForEnemyInSightSystem())
                 
-                
                 //Включить чтоб здоровье отображалось только на виду у игрока
-                //.Add(new ShowHealthBarForEnemiesInSightSystem())
+                .Add(new ShowHealthBarForEnemiesInSightSystem())
+                
                 // .Add(new ShowUiMessageByDamageSystem())
 
                 //     //Death Units

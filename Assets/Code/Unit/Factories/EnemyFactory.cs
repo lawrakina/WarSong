@@ -36,10 +36,12 @@ namespace Code.Unit.Factories
             enemyView.Collider = enemy.AddCapsuleCollider(0.5f, false,
                 new Vector3(0.0f, 0.9f, 0.0f),
                 1.8f);
+            
             enemyView.MeshRenderer = enemy.GetComponent<MeshRenderer>();
             enemyView.AnimatorParameters = new AnimatorParameters(enemyView.Animator);
 
             enemyView.UnitReputation = _reputationFactory.GenerateEnemyReputation();
+            enemyView.gameObject.layer = enemyView.UnitReputation.FriendLayer;
             //test
             enemyView.UnitHealth = new UnitHealth();
             enemyView.UnitHealth.MaxHp = 100;
