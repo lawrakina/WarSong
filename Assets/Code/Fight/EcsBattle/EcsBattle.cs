@@ -9,6 +9,7 @@ using Code.Fight.EcsBattle.Unit;
 using Code.Fight.EcsBattle.Unit.Animation;
 using Code.Fight.EcsBattle.Unit.Attack;
 using Code.Fight.EcsBattle.Unit.Create;
+using Code.Fight.EcsBattle.Unit.EnemyHealthBars;
 using Code.Fight.EcsBattle.Unit.Move;
 using Code.Fight.EcsBattle.Unit.Vision;
 using Code.Profile;
@@ -156,9 +157,16 @@ namespace Code.Fight.EcsBattle
 
                 //Enemies
                 .Add(new CreateEnemyEntitySystem())
-                // .Add(new RotateUiHeathBarsToCameraSystem())
+                .Add(new RotateUiHeathBarsToCameraSystem())
                 //Ui Enemies
-                // .Add(new UpdateEnemiesCurrentHealthPointsSystem())
+                .Add(new UpdateEnemiesCurrentHealthPointsSystem())
+                
+                //оно крашит всё
+                .Add(new CheckForEnemyInSightSystem())
+                
+                //Включить чтоб здоровье отображалось только на виду у игрока
+                .Add(new ShowHealthBarForEnemiesInSightSystem())
+                
                 // .Add(new ShowUiMessageByDamageSystem())
 
                 //     //Death Units
@@ -171,6 +179,7 @@ namespace Code.Fight.EcsBattle
                 //Vision
                 .Add(new TimerForCheckVisionForUnitsSystem(2.0f))
                 .Add(new SearchClosesTargetForUnitsSystem())
+                
                 //Moving
                 .Add(new CalculateStepForUnitsToTargetSystem())
                 .Add(new AnimationMoveSystemByStepSystem());

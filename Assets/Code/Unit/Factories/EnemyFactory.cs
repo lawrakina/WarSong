@@ -13,10 +13,12 @@ namespace Code.Unit.Factories
     {
         private readonly EnemiesData _settings;
         private List<EnemyView> listOfEnemies = new List<EnemyView>();
+        private ReputationFactory _reputationFactory;
+
         public EnemyFactory(EnemiesData settings)
         {
             _settings = settings;
-          
+            _reputationFactory = new ReputationFactory();
         }
 
         public EnemyView CreateEnemy(SpawnMarkerEnemyInDungeon marker)
@@ -34,8 +36,21 @@ namespace Code.Unit.Factories
             enemyView.Collider = enemy.AddCapsuleCollider(0.5f, false,
                 new Vector3(0.0f, 0.9f, 0.0f),
                 1.8f);
+            
             enemyView.MeshRenderer = enemy.GetComponent<MeshRenderer>();
             enemyView.AnimatorParameters = new AnimatorParameters(enemyView.Animator);
+
+            enemyView.UnitReputation = _reputationFactory.GenerateEnemyReputation();
+            enemyView.gameObject.layer = enemyView.UnitReputation.FriendLayer;
+            //test
+            enemyView.UnitHealth = new UnitHealth();
+            enemyView.UnitHealth.MaxHp = 100;
+            enemyView.UnitHealth.CurrentHp = 100;
+
+            enemyView.UnitVision = new UnitVision();
+            enemyView.UnitVision.distanceDetection = 15.0f;
+            
+            //test
             
             // var equipmentPoints = new EquipmentPoints(enemyView.Transform.gameObject, item);
             // equipmentPoints.GenerateAllPoints();
@@ -49,6 +64,13 @@ namespace Code.Unit.Factories
             var healthBarSettings = _settings.uiElement.First(x => (x.EnemyType == marker._type));
             enemyView.HealthBar = Object.Instantiate(healthBarSettings.UiView, enemyView.Transform, false);
             enemyView.HealthBar.transform.localPosition = healthBarSettings.Offset;
+            
+            //test name and level
+            enemyView.HealthBar.SetEnemyName("Рандомный бомжик");
+
+            var enemyLvl = Random.Range(1, 4);
+            enemyView.HealthBar.SetEnemyLvl(enemyLvl);
+            //test
 
             enemyView.Transform.SetParent(marker.Transform);
             enemyView.Transform.localPosition = Vector3.zero;
