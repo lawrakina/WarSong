@@ -63,6 +63,7 @@ namespace Code.Fight.EcsBattle
     {
         public WeaponBullet _value;
         public InfoCollision _collision;
+        public float _bulletTargetSqrtDistance;
     }
     public struct DisableComponent
     {

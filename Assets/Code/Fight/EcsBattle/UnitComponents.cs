@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Code.Data;
 using Code.Data.Unit;
+using Code.Fight.EcsBattle.Unit.Attack;
 using Code.Unit;
 using Guirao.UltimateTextDamage;
 using Leopotam.Ecs;
@@ -154,4 +155,12 @@ namespace Code.Fight.EcsBattle
     public struct FinalAttackFromSecondWeaponComponent
     {
     }
+    
+    public struct WaitingForAttackEffectComponent {
+        public List<IAttackEffect> AttackEffects;
+    }
+
+    public struct ReadyForAttackEffectComponent {
+    }
+
 }

@@ -137,6 +137,11 @@ namespace Code.Fight.EcsBattle
                 case CharacterClass.Hunter:
                     _execute
                         .Add(new CreatePoolOfAmmunitionForRangeWeaponSystem(5))
+                        // MaxG.Begin
+                        .Add(new Attack7ShootFromMainWeaponSystem())
+                        .Add(new Attack8BulletFlightToTargetFromMainWeaponSystem())
+                        .Add(new Attack9AttackOnTargetHitHandlerSystem())
+                        // MaxG.End
                         .Add(new Attack7StartRangeTargetAttackForPlayerFromMainWeaponSystem())
                         .Add(new Attack8MoveBulletRangeTargetAttackForPlayerFromMainWeaponSystem());
                     break;
