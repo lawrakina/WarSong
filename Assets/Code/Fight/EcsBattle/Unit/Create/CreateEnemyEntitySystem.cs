@@ -23,7 +23,7 @@ namespace Code.Fight.EcsBattle.Unit.Create
             Dbg.Log($"LIST ENEMIES: {_enemiesModel.Enemies}");
             foreach (var view in _enemiesModel.Enemies)
             {
-                Dbg.Error($"view.HealthBar:{view.HealthBar}. _camera:{_camera}");
+                //Dbg.Error($"view.HealthBar:{view.HealthBar}. _camera:{_camera}");
                 view.HealthBar.SetCamera(_camera.transform);
 
                 var entity = _world.NewEntity();

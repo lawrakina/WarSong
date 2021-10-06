@@ -5,6 +5,7 @@ using Code.Extension;
 using Code.Fight.EcsBattle.Input;
 using Code.Fight.EcsBattle.Out.Gui;
 using Code.Fight.EcsBattle.Statistics;
+using Code.Fight.EcsBattle.TargetEnemySystems;
 using Code.Fight.EcsBattle.Unit;
 using Code.Fight.EcsBattle.Unit.Animation;
 using Code.Fight.EcsBattle.Unit.Attack;
@@ -154,18 +155,19 @@ namespace Code.Fight.EcsBattle
 
             _execute
                 .Add(new ApplyDamageInUnitSystem())
+                
+                //Enemies in sight and target enemies
+                .Add(new CheckForEnemyInSightSystem())
+                .Add(new SetPreTargetListToPlayerSystem())
+                .Add(new SelectCurrentOrNearestTargetSystem())
 
                 //Enemies
                 .Add(new CreateEnemyEntitySystem())
                 .Add(new RotateUiHeathBarsToCameraSystem())
                 //Ui Enemies
                 .Add(new UpdateEnemiesCurrentHealthPointsSystem())
-                
-                //оно крашит всё
-                .Add(new CheckForEnemyInSightSystem())
-                
-                //Включить чтоб здоровье отображалось только на виду у игрока
                 .Add(new ShowHealthBarForEnemiesInSightSystem())
+                
                 
                 // .Add(new ShowUiMessageByDamageSystem())
 
