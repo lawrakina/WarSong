@@ -2,6 +2,7 @@
 using Code.Data;
 using Code.Extension;
 using Code.Fight.EcsBattle.CustomEntities;
+using Code.Fight.EcsBattle.TargetEnemySystems;
 using Code.Profile.Models;
 using Code.Unit;
 using Leopotam.Ecs;
@@ -33,6 +34,8 @@ namespace Code.Fight.EcsBattle.Unit.Create
             entity.Get<UnitComponent>()._animator = _view.AnimatorParameters;
             entity.Get<UnitComponent>()._health = _view.UnitHealth;
             entity.Get<UnitComponent>()._characteristics = _view.UnitCharacteristics;
+            entity.Get<PreTargetEnemyListComponent>().preTargetsSqrDistances = new float[5];
+            entity.Get<PreTargetEnemyListComponent>().preTargetsUnitComponents = new UnitComponent[5];
             //ui
             _model.PlayerStats.MaxHp = Mathf.RoundToInt(_view.UnitHealth.CurrentHp);
             _model.PlayerStats.CurrentHp = Mathf.RoundToInt(_view.UnitHealth.CurrentHp);

@@ -6,7 +6,8 @@ namespace Code.Fight.EcsBattle.TargetEnemySystems
 {
     public struct PreTargetEnemyListComponent
     {
-        public Dictionary<UnitComponent, float> preTargets;
+        public UnitComponent[] preTargetsUnitComponents;
+        public float[] preTargetsSqrDistances;
         public UnitComponent currentTarget;
     }
 }

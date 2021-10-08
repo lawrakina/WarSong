@@ -158,7 +158,9 @@ namespace Code.Fight.EcsBattle
                 
                 //Enemies in sight and target enemies
                 .Add(new CheckForEnemyInSightSystem())
-                .Add(new SetPreTargetListToPlayerSystem())
+                //
+                //.Add(new SetPreTargetListToPlayerSystem())
+                //
                 .Add(new SelectCurrentOrNearestTargetSystem())
 
                 //Enemies
