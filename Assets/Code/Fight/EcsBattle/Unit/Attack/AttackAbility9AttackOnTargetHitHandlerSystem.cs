@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Code.Fight.EcsBattle {
 
-	public class Attack9AttackOnTargetHitHandlerSystem : IEcsRunSystem {
+	public class AttackAbility9AttackOnTargetHitHandlerSystem : IEcsRunSystem {
 		
 		private EcsFilter<
 					WeaponBulletComponent,

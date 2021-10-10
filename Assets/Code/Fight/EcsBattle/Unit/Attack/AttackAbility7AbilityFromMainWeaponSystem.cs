@@ -7,10 +7,10 @@ using Object = UnityEngine.Object;
 
 namespace Code.Fight.EcsBattle.Unit.Attack {
 
-	public sealed class Attack7ShootFromMainWeaponSystem : IEcsRunSystem {
+	public sealed class AttackAbility7AbilityFromMainWeaponSystem : IEcsRunSystem {
 
 		private EcsFilter<
-					FinalAttackFromMainWeaponComponent,
+					FinalKnockbackAbilityFromMainWeaponComponent,
 					UnitComponent,
 					CurrentTargetComponent,
 					BattleInfoMainWeaponComponent> _attackers;
@@ -47,9 +47,9 @@ namespace Code.Fight.EcsBattle.Unit.Attack {
 				var targetDirection = target.Transform.position - bulletStartPosition;
 				firedBulletComponent._bulletTargetSqrtDistance = (targetDirection).sqrMagnitude;
 				
-				attackerEntity.Del<FinalAttackFromMainWeaponComponent>();
+				attackerEntity.Del<FinalKnockbackAbilityFromMainWeaponComponent>();
 				ref var attackEffect = ref bulletEntity.Get<WaitingForAttackEffectComponent>();
-				attackEffect.AttackEffects ??= new List<IAttackEffect>();
+				attackEffect.AttackEffects ??= new List<AttackEffect>();
 				
 				// TODO. Перенести в модели эффектов от абилок
 				attackEffect.AttackEffects.Add(new AttackEffect(AttackEffectType.KnockBack, 200f, direction: targetDirection));

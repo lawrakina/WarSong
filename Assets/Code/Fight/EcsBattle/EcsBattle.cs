@@ -6,6 +6,7 @@ using Code.Fight.EcsBattle.Input;
 using Code.Fight.EcsBattle.Out.Gui;
 using Code.Fight.EcsBattle.Statistics;
 using Code.Fight.EcsBattle.Unit;
+using Code.Fight.EcsBattle.Unit.Ability;
 using Code.Fight.EcsBattle.Unit.Animation;
 using Code.Fight.EcsBattle.Unit.Attack;
 using Code.Fight.EcsBattle.Unit.Create;
@@ -113,13 +114,16 @@ namespace Code.Fight.EcsBattle
                 //Attack
                 .Add(new TimerForGettingPermissionAttackFromMainWeaponSystem())
                 .Add(new TimerForGettingPermissionAttackFromSecondWeaponSystem())
+                .Add(new TimerForGettingPermissionAbilitySystem())
                 .Add(new Attack1StartProcessSystem())
+                .Add(new AttackAbility1StartProcessSystem())
                 .Add(new Attack2StartGetTargetSystem())
                 .Add(new Attack3LookAtTargetSystem())
                 .Add(new Attack4MoveToTargetSystem())
                 // .Add(new Attack5StartAnimationStrikeSystem())
                 .Add(new Attack6StartTimerLagBeforeAttackFromMainWeaponSystem())
-                .Add(new Attack6StartTimerLagBeforeAttackFromSecondWeaponSystem());
+                .Add(new Attack6StartTimerLagBeforeAttackFromSecondWeaponSystem())
+                .Add(new AttackAbility6StartTimerLagBeforeAbilitySystem());
             switch (_profilePlayer.CurrentPlayer.CharacterClass.Class)
             {
                 case CharacterClass.Warrior:
@@ -138,9 +142,9 @@ namespace Code.Fight.EcsBattle
                     _execute
                         .Add(new CreatePoolOfAmmunitionForRangeWeaponSystem(5))
                         // MaxG.Begin
-                        .Add(new Attack7ShootFromMainWeaponSystem())
-                        .Add(new Attack8BulletFlightToTargetFromMainWeaponSystem())
-                        .Add(new Attack9AttackOnTargetHitHandlerSystem())
+                        .Add(new AttackAbility7AbilityFromMainWeaponSystem())
+                        .Add(new AttackAbility8BulletFlightToTargetFromMainWeaponSystem())
+                        .Add(new AttackAbility9AttackOnTargetHitHandlerSystem())
                         // MaxG.End
                         .Add(new Attack7StartRangeTargetAttackForPlayerFromMainWeaponSystem())
                         .Add(new Attack8MoveBulletRangeTargetAttackForPlayerFromMainWeaponSystem());
@@ -276,4 +280,5 @@ namespace Code.Fight.EcsBattle
             _execute?.Run();
         }
     }
+
 }

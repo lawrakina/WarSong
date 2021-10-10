@@ -3,7 +3,7 @@
 
 namespace Code.Fight.EcsBattle.Unit.Attack {
 
-	public class AttackEffect : IAttackEffect {
+	public struct AttackEffect {
 		public AttackEffectType AttackEffectType { get; }
 		public float Power { get; }
 		public Vector3 Direction { get; }

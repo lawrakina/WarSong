@@ -131,6 +131,9 @@ namespace Code.Fight.EcsBattle
     {
     }
 
+    public struct NeedKnockbackAbilityComponent {
+    }
+
     public struct NeedStartAnimationAttackFromSecondWeaponComponent
     {
         public float _currentTimeForLag;
@@ -157,10 +160,13 @@ namespace Code.Fight.EcsBattle
     }
     
     public struct WaitingForAttackEffectComponent {
-        public List<IAttackEffect> AttackEffects;
+        public List<AttackEffect> AttackEffects;
     }
 
     public struct ReadyForAttackEffectComponent {
+    }
+
+    public struct FinalKnockbackAbilityFromMainWeaponComponent {
     }
 
 }

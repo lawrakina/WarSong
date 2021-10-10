@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace Code.Fight.EcsBattle {
 
-	public class Attack8BulletFlightToTargetFromMainWeaponSystem : IEcsRunSystem {
+	public class AttackAbility8BulletFlightToTargetFromMainWeaponSystem : IEcsRunSystem {
 
-		private EcsFilter<WeaponBulletComponent>.Exclude<DisableComponent> _aimedBullets;
+		private EcsFilter<WeaponBulletComponent, WaitingForAttackEffectComponent>.Exclude<DisableComponent> _aimedBullets;
 
 		public void Run() {
 			foreach (var aimedBullet in _aimedBullets) {
