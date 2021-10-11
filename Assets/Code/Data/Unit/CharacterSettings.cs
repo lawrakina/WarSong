@@ -1,5 +1,4 @@
 ﻿using System;
-using PsychoticLab;
 using UnityEngine;
 
 
@@ -8,22 +7,15 @@ namespace Code.Data.Unit
     [Serializable]
     public class CharacterSettings
     {
-        [SerializeField]
         public CharacterClass CharacterClass;
-        
-        [SerializeField]
         public CharacterGender CharacterGender;
-
-        [SerializeField]
         public CharacterRace CharacterRace;
-
-        [SerializeField] 
-        public CharacterEquipment Equipment;
-
-        [SerializeField] 
+        public int CharacterSkin;
         public int ExperiencePoints = 1;
-
-        // [SerializeField] public PersonSettings PersonSettings;
+        public int CharacterHair;
+        public int CharacterStubble;
+        public int CharacterScar;
+        public CharacterEquipment Equipment;
     }
 
     // [Serializable]

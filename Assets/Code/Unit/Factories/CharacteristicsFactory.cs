@@ -43,7 +43,9 @@ namespace Code.Unit.Factories
                 case CharacterClass.None:
                     break;
                 case CharacterClass.Warrior:
-                    characteristics.Distance = equipment.MainWeapon.AttackValue.GetAttackDistance();
+                    var listWeapons = equipment.GetWeapons();
+                    if (listWeapons.Count >= 1)
+                        characteristics.Distance = listWeapons[0].AttackValue.GetAttackDistance();
                     // characteristics.SetAttackValue = equipment.MainWeapon.AttackValue;
                     break;
                 case CharacterClass.Rogue:

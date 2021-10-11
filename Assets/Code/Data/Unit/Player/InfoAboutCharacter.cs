@@ -35,12 +35,13 @@ namespace Code.Data.Unit.Player
 
         public string AllCharacteristics =>
             $"Level: {_unit.UnitLevel.CurrentLevel}\n" +
-            $"Equip level: {_unit.UnitEquipment.GetEquipmentItemsLevel}\n" +
+            $"Equip level: {_unit.UnitEquipment.GetFullEquipmentItemsLevel}\n" +
             $"Attack: {_unit.UnitCharacteristics.MinAttack}-{_unit.UnitCharacteristics.MaxAttack}\n" +
             $"Armor: {_unit.UnitEquipment.FullArmor}({_unit.UnitCharacteristics.ArmorValue}%)\n" +
             $"HP: {_unit.UnitHealth.MaxHp}\n" +
             $"{_unit.UnitResource.ResourceType}: {_unit.UnitResource.MaxValue}\n" +
             $"Crit: {_unit.UnitCharacteristics.CritChance * 100f}%\n" +
             $"Dodge: {_unit.UnitCharacteristics.DodgeChance * 100f}%";
+
     }
 }

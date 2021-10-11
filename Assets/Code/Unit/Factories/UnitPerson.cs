@@ -1,414 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Code.CharacterCustomizing;
 using Code.Data;
 using Code.Data.Unit;
 using Code.Equipment;
 using Code.Extension;
 using UnityEngine;
-using CharacterObjectGroups = Code.CharacterCustomizing.CharacterObjectGroups;
-using CharacterObjectListsAllGender = Code.CharacterCustomizing.CharacterObjectListsAllGender;
 using Object = UnityEngine.Object;
-
 
 namespace Code.Unit.Factories
 {
-    public sealed class UnitPerson
+    public class UnitPerson
     {
-        private readonly GameObject _gameObject;
-        private CharacterSettings _settings;
-        private CharacterData _data;
-        private EquipmentPoints _equipmentPoints;
-        private Material _material;
-
-        public BaseWeapon MainWeapon = null;
-        public BaseWeapon SecondWeapon = null;
-        public ShieldEquip ShieldEquip = null;
-        public ActiveWeapons ActiveWeapons;
+        private readonly GameObject _root;
+        private readonly CharacterSettings _settings;
+        private readonly Material _rootMaterial;
+        private readonly CharacterData _data;
+        private readonly RaceCharacteristics _raceCharacteristics;
+        private readonly EquipmentPoints _equipmentPoints;
 
         private List<GameObject> _enabledObjects = new List<GameObject>();
         private CharacterObjectGroups _maleObjectGroups = new CharacterObjectGroups();
         private CharacterObjectGroups _femaleObjectGroups = new CharacterObjectGroups();
         private CharacterObjectListsAllGender _allGenderObjectGroups = new CharacterObjectListsAllGender();
 
-        List<BaseEquipItem> _listEquipmentItems = new List<BaseEquipItem>();
-
-        public BaseArmorItem HeadEquip = null;
-        public BaseArmorItem NeckEquip = null;
-        public BaseArmorItem ShoulderEquip = null;
-        public BaseArmorItem BodyEquip = null;
-        public BaseArmorItem CloakEquip = null;
-        public BaseArmorItem BraceletEquip = null;
-        public BaseArmorItem GlovesEquip = null;
-        public BaseArmorItem BeltEquip = null;
-        public BaseArmorItem PantsEquip = null;
-        public BaseArmorItem ShoesEquip = null;
-        public BaseArmorItem Ring1Equip = null;
-        public BaseArmorItem Ring2Equip = null;
-        public BaseArmorItem Earring1Equip = null;
-        public BaseArmorItem Earring2Equip = null;
-
-        public EquipmentPoints EquipmentPoints => _equipmentPoints;
-        public List<BaseEquipItem> ListEquipmentItems => _listEquipmentItems;
-
-
-        public UnitPerson(GameObject gameObject, CharacterSettings settings, CharacterData data)
+        public UnitPerson(GameObject root, CharacterSettings settings, CharacterData data,
+            RaceCharacteristics raceCharacteristics)
         {
-            _gameObject = gameObject;
+            _root = root;
             _settings = settings;
             _data = data;
-            _material = _data.material;
+            _raceCharacteristics = raceCharacteristics;
+            _rootMaterial = new Material(_data.material);
 
-            _equipmentPoints = new EquipmentPoints(_gameObject, _data);
+            _equipmentPoints = new EquipmentPoints(_root, _data);
             _equipmentPoints.GenerateAllPoints();
 
             BuildLists();
             ConstructClearPerson();
         }
 
-        public void Generate(CharacterSettings settings)
-        {
-            _settings = settings;
-            ClearEnabledObjects();
-            ConstructClearPerson();
-            ConstructEquipPerson();
-        }
-
-        private void ConstructEquipPerson()
-        {
-            var listForSendToInventory = new List<BaseEquipItem>();
-            foreach (var item in _settings.Equipment.Equipment)
-            {
-                var ifEquipItem = false;
-                switch (item.ItemType)
-                {
-                    case InventoryItemType.Weapon:
-                        ifEquipItem = PutOnWeapon(item);
-                        break;
-                    case InventoryItemType.Armor:
-                        ifEquipItem = PutOnArmor(item as BaseArmorItem);
-                        break;
-                    case InventoryItemType.QuestItem:
-                        //ToDo тут можно сделать новый квест при старте уровня. Например: "На вас черная метка, охотник уже идет по следу..."
-                        ifEquipItem = false;
-                        break;
-                    case InventoryItemType.Trash:
-                        ifEquipItem = false;
-                        break;
-                    case InventoryItemType.Food:
-                        ifEquipItem = false;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
-                if (!ifEquipItem)
-                {
-                    listForSendToInventory.Add(item);
-                }
-            }
-
-            foreach (var item in listForSendToInventory)
-            {
-                SentToInventory(item);
-            }
-        }
-
-        private bool PutOnArmor(BaseArmorItem item)
-        {
-            Dbg.Log($"PuOnArmor:{item.NameInHierarchy}");
-            if (!item)
-                return false;
-            if (!CheckPermissionForEquipment(item))
-            {
-                return false;
-            }
-
-            switch (item)
-            {
-                case ShieldEquip shield:
-                {
-                    if (ActiveWeapons == ActiveWeapons.RightHand)
-                    {
-                        ShieldEquip = Object.Instantiate(shield.GameObject, Vector3.zero, Quaternion.identity)
-                            .GetComponent<ShieldEquip>();
-                        ShieldEquip.transform.SetParent(_equipmentPoints._leftShildAttachPoint, false);
-                        ActiveWeapons = ActiveWeapons.RightAndShield;
-
-                        _listEquipmentItems.Add(shield);
-                        return true;
-                    }
-
-                    break;
-                }
-                case HeadEquip head:
-                {
-                    return Put(ref HeadEquip, head);
-                    break;
-                }
-                case NeckEquip neck:
-                {
-                    return Put(ref NeckEquip, neck);
-                    break;
-                }
-                case ShoulderEquip shoulder:
-                {
-                    return Put(ref ShoulderEquip, shoulder);
-                    break;
-                }
-                case BodyEquip body:
-                {
-                    return Put(ref BodyEquip, body);
-                    break;
-                }
-                case CloakEquip cloak:
-                {
-                    return Put(ref CloakEquip, cloak);
-                    break;
-                }
-                case BraceletEquip bracelet:
-                {
-                    return Put(ref BraceletEquip, bracelet);
-                    break;
-                }
-                case GlovesEquip gloves:
-                {
-                    return Put(ref GlovesEquip, gloves);
-                    break;
-                }
-                case BeltEquip belt:
-                {
-                    return Put(ref BeltEquip, belt);
-                    break;
-                }
-                case PantsEquip pants:
-                {
-                    return Put(ref PantsEquip, pants);
-                    break;
-                }
-                case ShoesEquip shoes:
-                {
-                    return Put(ref ShoesEquip, shoes);
-                    break;
-                }
-                case RingEquip ring:
-                {
-                    if (!Ring1Equip)
-                    {
-                        return Put(ref Ring1Equip, ring);
-                    }
-
-                    if (!Ring2Equip)
-                    {
-                        return Put(ref Ring2Equip, ring);
-                    }
-
-                    break;
-                }
-                case EarringEquip earring:
-                {
-                    if (!Earring1Equip)
-                    {
-                        return Put(ref Earring1Equip, earring);
-                    }
-
-                    if (!Earring2Equip)
-                    {
-                        return Put(ref Earring2Equip, earring);
-                    }
-
-                    break;
-                }
-            }
-
-            return false;
-        }
-
-        private bool Put(ref BaseArmorItem target, BaseArmorItem source)
-        {
-            Dbg.Log($"Put new Armor. Target = {target}; Source = {source};");
-            if (target)
-            {
-                return false;
-            }
-
-            target = source;
-            if (target.NameInHierarchy != string.Empty)
-            {
-                SearchViewsOnBaseArmor(target);
-                ActivateItem(target.ListViews);
-            }
-
-            _listEquipmentItems.Add(target);
-            return true;
-        }
-
-        private void SearchViewsOnBaseArmor(BaseArmorItem armor)
-        {
-            var list = _femaleObjectGroups.SearchByName(armor.NameInHierarchy).ToList();
-            list.AddRange(_maleObjectGroups.SearchByName(armor.NameInHierarchy));
-            list.AddRange(_allGenderObjectGroups.SearchByName(armor.NameInHierarchy));
-            armor.ListViews = list;
-        }
-
-        private bool CheckPermissionForEquipment(BaseArmorItem item)
-        {
-            var result = false;
-
-            if (_settings.Equipment.permissionForEquipment.Shield && item.SubItemType == (int)ArmorItemType.Shield)
-                result = true;
-
-            if (_settings.Equipment.permissionForEquipment.HeavyArmor && item.HvMdLt == HeavyLightMedium.Heavy)
-                result = true;
-            if (_settings.Equipment.permissionForEquipment.MediumArmor && item.HvMdLt == HeavyLightMedium.Medium)
-                result = true;
-            if (_settings.Equipment.permissionForEquipment.LightArmor && item.HvMdLt == HeavyLightMedium.Light)
-                result = true;
-
-            return result;
-        }
-
-        private bool PutOnWeapon(BaseEquipItem item)
-        {
-            var weapon = item as BaseWeapon;
-            switch (weapon.WeaponType)
-            {
-                case WeaponItemType.OneHandWeapon:
-                    if (_settings.Equipment.permissionForEquipment.OneHandWeapon)
-                    {
-                        if (!MainWeapon)
-                        {
-                            SetWeapon(weapon.Inst(), out MainWeapon,
-                                _equipmentPoints._rightWeaponAttachPoint, ActiveWeapons.RightHand);
-                            return true;
-                        }
-
-                        if (!SecondWeapon && _settings.Equipment.permissionForEquipment.TwoOneHandWeapon)
-                        {
-                            SetWeapon(weapon.Inst(), out SecondWeapon,
-                                _equipmentPoints._leftWeaponAttachPoint, ActiveWeapons.RightAndLeft);
-                            return true;
-                        }
-                    }
-
-                    break;
-                case WeaponItemType.TwoHandSwordWeapon:
-                    if (_settings.Equipment.permissionForEquipment.TwoHandSwordWeapon)
-                    {
-                        SetWeapon(weapon.Inst(), out MainWeapon,
-                            _equipmentPoints._rightWeaponAttachPoint, ActiveWeapons.TwoHand);
-                        return true;
-                    }
-
-                    break;
-                case WeaponItemType.TwoHandSpearWeapon:
-                    if (_settings.Equipment.permissionForEquipment.TwoHandSpearWeapon)
-                    {
-                        SetWeapon(weapon.Inst(), out MainWeapon,
-                            _equipmentPoints._rightWeaponAttachPoint, ActiveWeapons.TwoHand);
-                        return true;
-                    }
-
-                    break;
-                case WeaponItemType.TwoHandStaffWeapon:
-                    if (_settings.Equipment.permissionForEquipment.TwoHandStaffWeapon)
-                    {
-                        SetWeapon(weapon.Inst(), out MainWeapon,
-                            _equipmentPoints._rightWeaponAttachPoint, ActiveWeapons.TwoHand);
-                        return true;
-                    }
-
-                    break;
-                case WeaponItemType.RangeTwoHandBowWeapon:
-                    if (_settings.Equipment.permissionForEquipment.RangeTwoHandBowWeapon)
-                    {
-                        SetWeapon(weapon.Inst(), out MainWeapon,
-                            _equipmentPoints._leftWeaponAttachPoint, ActiveWeapons.TwoHand);
-                        return true;
-                    }
-
-                    break;
-                case WeaponItemType.RangeTwoHandCrossbowWeapon:
-                    if (_settings.Equipment.permissionForEquipment.RangeTwoHandCrossbowWeapon)
-                    {
-                        SetWeapon(weapon.Inst(), out MainWeapon,
-                            _equipmentPoints._rightWeaponAttachPoint, ActiveWeapons.TwoHand);
-                        return true;
-                    }
-
-                    break;
-            }
-
-            return false;
-        }
-
-        private void SetWeapon(BaseWeapon weapon, out BaseWeapon currentWeapon, Transform attachPoint,
-            ActiveWeapons activeWeapons)
-        {
-            currentWeapon = weapon;
-            currentWeapon.transform.SetParent(attachPoint, false);
-            ActiveWeapons = activeWeapons;
-            ActivateItem(currentWeapon.GameObject);
-        }
-
-        private void SentToInventory(BaseEquipItem item)
-        {
-            Dbg.Log($"------------------- SentToInventory:{item.name}");
-            _settings.Equipment.Equipment.Remove(item);
-            _settings.Equipment.Inventory.Add(item);
-        }
-
-        private void ConstructClearPerson()
-        {
-            switch (_settings.CharacterGender)
-            {
-                case CharacterGender.Male:
-                    ActivateItem(_maleObjectGroups.headAllElements[0]);
-                    ActivateItem(_maleObjectGroups.eyebrow[0]);
-                    ActivateItem(_maleObjectGroups.facialHair[0]);
-                    ActivateItem(_maleObjectGroups.torso[0]);
-                    ActivateItem(_maleObjectGroups.arm_Upper_Right[0]);
-                    ActivateItem(_maleObjectGroups.arm_Upper_Left[0]);
-                    ActivateItem(_maleObjectGroups.arm_Lower_Right[0]);
-                    ActivateItem(_maleObjectGroups.arm_Lower_Left[0]);
-                    ActivateItem(_maleObjectGroups.hand_Right[0]);
-                    ActivateItem(_maleObjectGroups.hand_Left[0]);
-                    ActivateItem(_maleObjectGroups.hips[0]);
-                    ActivateItem(_maleObjectGroups.leg_Right[0]);
-                    ActivateItem(_maleObjectGroups.leg_Left[0]);
-                    break;
-                case CharacterGender.Female:
-                    ActivateItem(_femaleObjectGroups.headAllElements[0]);
-                    ActivateItem(_femaleObjectGroups.eyebrow[0]);
-                    ActivateItem(_femaleObjectGroups.torso[0]);
-                    ActivateItem(_femaleObjectGroups.arm_Upper_Right[0]);
-                    ActivateItem(_femaleObjectGroups.arm_Upper_Left[0]);
-                    ActivateItem(_femaleObjectGroups.arm_Lower_Right[0]);
-                    ActivateItem(_femaleObjectGroups.arm_Lower_Left[0]);
-                    ActivateItem(_femaleObjectGroups.hand_Right[0]);
-                    ActivateItem(_femaleObjectGroups.hand_Left[0]);
-                    ActivateItem(_femaleObjectGroups.hips[0]);
-                    ActivateItem(_femaleObjectGroups.leg_Right[0]);
-                    ActivateItem(_femaleObjectGroups.leg_Left[0]);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
-        private void ActivateItem(List<GameObject> list)
-        {
-            foreach (var item in list)
-            {
-                ActivateItem(item);
-            }
-        }
-
-        private void ActivateItem(GameObject gameObject)
-        {
-            gameObject.SetActive(true);
-            _enabledObjects.Add(gameObject);
-        }
+        #region BuildLists
 
         private void BuildLists()
         {
@@ -464,139 +97,155 @@ namespace Code.Unit.Factories
 
         private void BuildList(List<GameObject> targetList, string characterPart)
         {
-            Transform[] rootTransform = _gameObject.GetComponentsInChildren<Transform>();
-            // declare target root transform
-            Transform targetRoot = null;
-            // find character parts parent object in the scene
-            foreach (Transform item in rootTransform)
-            {
-                if (item.gameObject.name == characterPart)
-                {
-                    targetRoot = item;
-                    break;
-                }
-            }
+            var rootTransform = _root.GetComponentsInChildren<Transform>();
+            var targetRoot = rootTransform.FirstOrDefault(item => item.gameObject.name == characterPart);
 
-            // clears targeted list of all objects
             targetList.Clear();
-            // cycle through all child objects of the parent object
-            for (int i = 0; i < targetRoot.childCount; i++)
+            for (var i = 0; i < targetRoot.childCount; i++)
             {
-                // get child gameobject index i
-                GameObject item = targetRoot.GetChild(i).gameObject;
-                // disable child object
+                var item = targetRoot.GetChild(i).gameObject;
                 item.SetActive(false);
-                // add object to the targeted object list
                 targetList.Add(item);
                 if (item.TryGetComponent(out SkinnedMeshRenderer skin))
                 {
-                    skin.material = _material;
+                    skin.material = _rootMaterial;
                 }
-
-                // collect the material for the random character, only if null in the inspector;
-                // if (!_material)
-                // {
-                //     if (item.GetComponent<SkinnedMeshRenderer>())
-                //         _material = item.GetComponent<SkinnedMeshRenderer>().material;
-                // }
             }
         }
 
-        private void ClearEnabledObjects()
+        #endregion
+
+        private void ConstructClearPerson()
         {
-            if (_enabledObjects.Count != 0)
-                foreach (GameObject item in _enabledObjects)
-                    item.SetActive(false);
-
-            _enabledObjects.Clear();
-
-            if (MainWeapon)
+            switch (_settings.CharacterGender)
             {
-                Object.Destroy(MainWeapon.GameObject);
-                MainWeapon = null;
+                case CharacterGender.Male:
+                    ActivateItem(_maleObjectGroups.headAllElements[0]);
+                    ActivateItem(_maleObjectGroups.eyebrow[0]);
+                    ActivateItem(_maleObjectGroups.facialHair[0]);
+                    ActivateItem(_maleObjectGroups.torso[0]);
+                    ActivateItem(_maleObjectGroups.arm_Upper_Right[0]);
+                    ActivateItem(_maleObjectGroups.arm_Upper_Left[0]);
+                    ActivateItem(_maleObjectGroups.arm_Lower_Right[0]);
+                    ActivateItem(_maleObjectGroups.arm_Lower_Left[0]);
+                    ActivateItem(_maleObjectGroups.hand_Right[0]);
+                    ActivateItem(_maleObjectGroups.hand_Left[0]);
+                    ActivateItem(_maleObjectGroups.hips[0]);
+                    ActivateItem(_maleObjectGroups.leg_Right[0]);
+                    ActivateItem(_maleObjectGroups.leg_Left[0]);
+                    break;
+                case CharacterGender.Female:
+                    ActivateItem(_femaleObjectGroups.headAllElements[0]);
+                    ActivateItem(_femaleObjectGroups.eyebrow[0]);
+                    ActivateItem(_femaleObjectGroups.torso[0]);
+                    ActivateItem(_femaleObjectGroups.arm_Upper_Right[0]);
+                    ActivateItem(_femaleObjectGroups.arm_Upper_Left[0]);
+                    ActivateItem(_femaleObjectGroups.arm_Lower_Right[0]);
+                    ActivateItem(_femaleObjectGroups.arm_Lower_Left[0]);
+                    ActivateItem(_femaleObjectGroups.hand_Right[0]);
+                    ActivateItem(_femaleObjectGroups.hand_Left[0]);
+                    ActivateItem(_femaleObjectGroups.hips[0]);
+                    ActivateItem(_femaleObjectGroups.leg_Right[0]);
+                    ActivateItem(_femaleObjectGroups.leg_Left[0]);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
-            if (SecondWeapon)
-            {
-                Object.Destroy(SecondWeapon.GameObject);
-                SecondWeapon = null;
-            }
+            _rootMaterial.SetColor("_Color_Skin", _data.GetColorSkin(_settings.CharacterRace, _settings.CharacterSkin));
+            _rootMaterial.SetColor("_Color_Hair", _data.GetColorHair(_settings.CharacterHair));
+            _rootMaterial.SetColor("_Color_Stubble", _data.GetColorStubble(_settings.CharacterStubble));
+            _rootMaterial.SetColor("_Color_Scar", _data.GetColorScar(_settings.CharacterScar));
 
-            if (ShieldEquip)
-            {
-                Object.Destroy(ShieldEquip.GameObject);
-                ShieldEquip = null;
-            }
-            if (HeadEquip)
-            {
-                HeadEquip = null;
-            }
+            _root.transform.localScale = _raceCharacteristics.ScaleModelByRace;
+        }
 
-            if (NeckEquip)
-            {
-                NeckEquip = null;
-            }
+        private void ActivateItem(GameObject gameObject)
+        {
+            gameObject.SetActive(true);
+            _enabledObjects.Add(gameObject);
+        }
 
-            if (ShoulderEquip)
+        public void PutOn(BaseEquipItem equipItem, EquipCellType targetIsMainOrSecondHand)
+        {
+            //Если объект внешний то инстанцируем его в AttachPoint
+            if (equipItem.IsNeedInstantiate)
             {
-                ShoulderEquip = null;
-            }
+                if (equipItem.EquipType == EquipItemType.Weapon)
+                {
+                    var weapon = equipItem as WeaponEquipItem;
+                    switch (weapon.WeaponType)
+                    {
+                        case WeaponItemType.OneHandWeapon:
+                            if (targetIsMainOrSecondHand == EquipCellType.MainHand)
+                                Object.Instantiate(weapon.GameObject, _equipmentPoints._rightWeaponAttachPoint);
+                            if (targetIsMainOrSecondHand == EquipCellType.SecondHand)
+                                Object.Instantiate(weapon.GameObject, _equipmentPoints._leftWeaponAttachPoint);
+                            break;
+                        case WeaponItemType.TwoHandSwordWeapon:
+                            Object.Instantiate(weapon.GameObject, _equipmentPoints._rightWeaponAttachPoint);
+                            break;
+                        case WeaponItemType.TwoHandSpearWeapon:
+                            Object.Instantiate(weapon.GameObject, _equipmentPoints._rightWeaponAttachPoint);
+                            break;
+                        case WeaponItemType.TwoHandStaffWeapon:
+                            Object.Instantiate(weapon.GameObject, _equipmentPoints._rightWeaponAttachPoint);
+                            break;
+                        case WeaponItemType.RangeTwoHandBowWeapon:
+                            Object.Instantiate(weapon.GameObject, _equipmentPoints._leftWeaponAttachPoint);
+                            break;
+                        case WeaponItemType.RangeTwoHandCrossbowWeapon:
+                            Object.Instantiate(weapon.GameObject, _equipmentPoints._leftWeaponAttachPoint);
+                            break;
+                    }
+                }
 
-            if (BodyEquip)
-            {
-                BodyEquip = null;
+                if (equipItem.EquipType == EquipItemType.Armor)
+                {
+                    var armor = equipItem as ArmorEquipItem;
+                    if (armor.TargetEquipCell == TargetEquipCell.Shield)
+                    {
+                        Object.Instantiate(armor.GameObject, _equipmentPoints._leftShildAttachPoint);
+                    }
+                    ////////////////////////////////////////////////
+                    //тут можно лепить на модель внешние объекты///
+                    //////////////////////////////////////////////
+                }
+                
             }
+            else // если объект внутренний то ищем по имени и активируем
+            {
+                foreach (var view in equipItem.Views)
+                {
+                    var name = view.name.Replace("_Static", "");
+                    name = name.Replace(" ", "");
+                    name = name.Replace("Variant", "");
+                    SearchAndActiveViewInHierarchy(name);
+                }
+            }
+        }
 
-            if (CloakEquip)
+        private void SearchAndActiveViewInHierarchy(string name)
+        {
+            var list = _femaleObjectGroups.SearchByName(name).ToList();
+            list.AddRange(_maleObjectGroups.SearchByName(name));
+            list.AddRange(_allGenderObjectGroups.SearchByName(name));
+            foreach (var item in list)
             {
-                CloakEquip = null;
+                ActivateItem(item);
             }
+        }
 
-            if (BraceletEquip)
-            {
-                BraceletEquip = null;
-            }
+        public void RemoveHiddenItems()
+        {
+            var listForRemove = _femaleObjectGroups.ListByActive(false).ToList();
+            listForRemove.AddRange(_maleObjectGroups.ListByActive(false));
+            listForRemove.AddRange(_allGenderObjectGroups.ListByActive(false));
 
-            if (GlovesEquip)
+            foreach (var item in listForRemove)
             {
-                GlovesEquip = null;
+                Object.Destroy(item);
             }
-
-            if (BeltEquip)
-            {
-                BeltEquip = null;
-            }
-
-            if (PantsEquip)
-            {
-                PantsEquip = null;
-            }
-
-            if (ShoesEquip)
-            {
-                ShoesEquip = null;
-            }
-
-            if (Ring1Equip)
-            {
-                Ring1Equip = null;
-            }
-
-            if (Ring2Equip)
-            {
-                Ring2Equip = null;
-            }
-
-            if (Earring1Equip)
-            {
-                Earring1Equip = null;
-            }
-
-            if (Earring2Equip)
-            {
-                Earring2Equip = null;
-            }
-            _listEquipmentItems.Clear();
         }
     }
 }

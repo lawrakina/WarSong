@@ -56,5 +56,32 @@ namespace Code.CharacterCustomizing
         {
             return listNames.Select(name => source.FirstOrDefault(x => x.name == name)).Where(item => item != null).AsEnumerable();
         }
+
+        public IEnumerable<GameObject> ListByActive(bool isActive)
+        {
+            var results = new List<GameObject>();
+            results.AddRange(SearchByActiveState(isActive, all_12_Extra));               
+            results.AddRange(SearchByActiveState(isActive, all_Hair));                   
+            results.AddRange(SearchByActiveState(isActive, all_Head_Attachment));        
+            results.AddRange(SearchByActiveState(isActive, back_Attachment));            
+            results.AddRange(SearchByActiveState(isActive, chest_Attachment));           
+            results.AddRange(SearchByActiveState(isActive, elbow_Attachment_Left));      
+            results.AddRange(SearchByActiveState(isActive, elbow_Attachment_Right));     
+            results.AddRange(SearchByActiveState(isActive, elf_Ear));                    
+            results.AddRange(SearchByActiveState(isActive, headCoverings_Base_Hair));    
+            results.AddRange(SearchByActiveState(isActive, headCoverings_No_FacialHair));
+            results.AddRange(SearchByActiveState(isActive, headCoverings_No_Hair));      
+            results.AddRange(SearchByActiveState(isActive, hips_Attachment));            
+            results.AddRange(SearchByActiveState(isActive, knee_Attachement_Left));      
+            results.AddRange(SearchByActiveState(isActive, knee_Attachement_Right));     
+            results.AddRange(SearchByActiveState(isActive, shoulder_Attachment_Left));   
+            results.AddRange(SearchByActiveState(isActive, shoulder_Attachment_Right));  
+            return results;
+        }
+
+        private IEnumerable<GameObject> SearchByActiveState(bool isActive, List<GameObject> source)
+        {
+            return source.Where(gameObject => gameObject.activeSelf == isActive).ToList();
+        }
     }
 }

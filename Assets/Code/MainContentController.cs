@@ -2,12 +2,12 @@
 using Code.Data;
 using Code.Profile;
 using Code.UI.Adventure;
+using Code.UI.Character;
 using Code.UI.Inventory;
 using Code.UI.Shop;
 using Code.UI.Tavern;
 using UniRx;
 using UnityEngine;
-using CharacterController = Code.UI.Character.CharacterController;
 
 
 namespace Code
@@ -16,7 +16,6 @@ namespace Code
     {
         private readonly Transform _placeForUi;
         private readonly ProfilePlayer _profilePlayer;
-        // private ToggleControllerGroup _navigationToggleGroupControllers;
 
         public MainContentController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
@@ -29,15 +28,6 @@ namespace Code
             var tavernController = ConfigureTavernController(_placeForUi, _profilePlayer);
             var shopController = ConfigureShopController(_placeForUi, _profilePlayer);
             Init(true);
-            // AddController(null, true,true);
-
-            // _navigationToggleGroupControllers = new ToggleControllerGroup();
-            // _navigationToggleGroupControllers.Add(adventureController);
-            // _navigationToggleGroupControllers.Add(characterController);
-            // _navigationToggleGroupControllers.Add(inventoryController);
-            // _navigationToggleGroupControllers.Add(tavernController);
-            // _navigationToggleGroupControllers.Add(shopController);
-            // _navigationToggleGroupControllers.Init();
 
             _profilePlayer.CommandManager.ShowAdventureWindow.Subscribe(_ => { adventureController.OnActivate(); });
             _profilePlayer.CommandManager.ShowCharacterWindow.Subscribe(_ => { characterController.OnActivate(); });
@@ -102,9 +92,9 @@ namespace Code
             return controller;
         }
 
-        private CharacterController ConfigureCharacterController(Transform placeForUi, ProfilePlayer profilePlayer)
+        private CharEditRootController ConfigureCharacterController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
-            var controller = new CharacterController(false, placeForUi.transform, profilePlayer);
+            var controller = new CharEditRootController(false, placeForUi.transform, profilePlayer);
             AddController(controller, true);
             return controller;
         }
@@ -115,12 +105,5 @@ namespace Code
             AddController(controller, true);
             return controller;
         }
-
-        // protected override void OnDispose()
-        // {
-        //     base.OnDispose();
-        //
-        //     _navigationToggleGroupControllers.Dispose();
-        // }
     }
 }

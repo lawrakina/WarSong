@@ -23,9 +23,9 @@ namespace Code.Unit
         public UnitLevel UnitLevel { get; set; }
         public UnitHealth UnitHealth { get; set; }
         public UnitVision UnitVision { get; set; }
-        public UnitEquipment UnitEquipment { get; set; }
-        public UnitPerson UnitPerson { get; set; }
         public UnitInventory UnitInventory { get; set; }
+        public UnitPerson UnitPerson { get; set; }
+        public UnitEquipment UnitEquipment { get; set; }
 
         public event Action<InfoCollision> OnApplyDamageChange;
         

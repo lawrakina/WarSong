@@ -23,6 +23,10 @@ namespace Code.Data.Unit.Player
         public float RotateSpeed = 120.0f;
         [SerializeField]
         public UnitVision UnitVision;
+
+        [Header("Race characteristics")]
+        [SerializeField]
+        public RaceCharacteristics[] _racesStartCharacteristics;
         
         [Header("Classes start value")]
         [SerializeField]

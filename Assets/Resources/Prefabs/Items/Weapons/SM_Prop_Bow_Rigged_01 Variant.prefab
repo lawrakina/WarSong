@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &942876046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4070594318367708431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a0e0f8d2cd45e490cbd9e67f7b4e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiInfo:
+    _icon: {fileID: 21300000, guid: 762a724da26284447a1c0d47f8ba6e13, type: 3}
+    _title: "\u0420\u0435\u0434\u043A\u0438\u0439 \u0434\u043B\u0438\u043D\u043D\u044B\u0439
+      \u043B\u0443\u043A"
+    _description: "\u041B\u0443\u043A \u043A\u0430\u043F\u0438\u0442\u0430\u043D\u0430"
+  _listOfDependentViews:
+  - {fileID: 4070594318367708431}
+  ItemLevel: 20
+  _armorValue: 0
+  _characteristics:
+    Strength: 5
+    Agility: 45
+    Stamina: 30
+    Intellect: 29
+    Spirit: 11
+  _targetEquipCell: 3
+  _isNeedInstantiate: 1
+  _standardBullet: {fileID: -2986585216715960006, guid: f3c2a8319fa3c8240840d5b06552c746,
+    type: 3}
+  _weaponType: 5
+  _attackDistanceOffset: 1
+  _attackValue:
+    _maxAttackValue: 49
+    _minAttackValue: 41
+    _timeDelayBeforeAttack: 0.5
+    _attackSpeed: 2.7
+    _attackDistance: 25
+--- !u!1001 &4069378679608967607
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1391629762286776, guid: cb6232a083cec354face1959a8bfa209, type: 3}
+      propertyPath: m_Name
+      value: SM_Prop_Bow_Rigged_01 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727226468280038, guid: cb6232a083cec354face1959a8bfa209, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727226468280038, guid: cb6232a083cec354face1959a8bfa209, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727226468280038, guid: cb6232a083cec354face1959a8bfa209, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727226468280038, guid: cb6232a083cec354face1959a8bfa209, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727226468280038, guid: cb6232a083cec354face1959a8bfa209, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727226468280038, guid: cb6232a083cec354face1959a8bfa209, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727226468280038, guid: cb6232a083cec354face1959a8bfa209, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727226468280038, guid: cb6232a083cec354face1959a8bfa209, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727226468280038, guid: cb6232a083cec354face1959a8bfa209, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727226468280038, guid: cb6232a083cec354face1959a8bfa209, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727226468280038, guid: cb6232a083cec354face1959a8bfa209, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cb6232a083cec354face1959a8bfa209, type: 3}
+--- !u!1 &4070594318367708431 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1391629762286776, guid: cb6232a083cec354face1959a8bfa209,
+    type: 3}
+  m_PrefabInstance: {fileID: 4069378679608967607}
+  m_PrefabAsset: {fileID: 0}

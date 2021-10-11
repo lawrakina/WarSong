@@ -16,6 +16,11 @@ namespace Code.Extension
             Debug.Log($"Console.{@enum.GetType()}:{@enum}");
         }
 
+        public static void Warning(string message)
+        {
+            Debug.LogWarning($"{message}");
+        }
+
         public static void Error(string message)
         {
             Debug.LogError($"{message}");

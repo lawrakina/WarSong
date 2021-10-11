@@ -30,22 +30,24 @@ namespace Code.Data
         
         [Header("Adventure tab")]
         public AdventureView AdventureView;
+
         [Space]
         
         [Header("Character tab")]
-        public CharacterView CharacterView;
-        public CellEquipmentClickHandler CellTemplateClickEquipment;
-        public CellEquipmentDragAndDropHandler CellTemplateDragAndDropEquipment;
-        public SlotDropHandler SlotDropHandler;
-        public PanelEquipReplacementVariantsView PanelEquipReplacementVariantsView;
+        public CharEditRootView CharEditRootView;
+        public CharEditReplacementEquipView CharEditReplacementEquipView;
+        public SelectableEquipCell TemplateCellClickAndSelectHandler;
+
         [Space] 
         
         [Header("Inventory tab")] 
         public InventoryView Inventory;
+
         [Space] 
         
         [Header("Tavern tab")] 
         public TavernView TavernView;
+
         [Space] 
         
         [Header("Shop tab")] 
@@ -53,6 +55,5 @@ namespace Code.Data
 
         [Header("Modals windows")]
         public LoadingView LoadingView;
-
     }
 }
