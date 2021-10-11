@@ -26,13 +26,59 @@
     public enum InventoryItemType
     {
         None,
-        Weapon,
-        Armor,
+        EquipItem,
         QuestItem,
         Trash,
         Food,
     }
 
+    public enum EquipCellType
+    {
+        MainHand,
+        SecondHand,
+        Head,
+        Neck,
+        Shoulder,
+        Body,
+        Cloak,
+        Bracelet,
+        Gloves,
+        Belt,
+        Pants,
+        Shoes,
+        Ring1,
+        Ring2,
+        Earring1,
+        Earring2
+    }
+
+    public enum TargetEquipCell
+    {
+        OneHand,
+        MainHand,
+        SecondHand,
+        TwoHand,
+        Shield,
+        Head,
+        Neck,
+        Shoulder,
+        Body,
+        Cloak,
+        Bracelet,
+        Gloves,
+        Belt,
+        Pants,
+        Shoes,
+        Ring,
+        Earring
+    }
+
+    public enum EquipItemType
+    {
+        Armor,
+        Weapon
+    }
+    
     public enum ArmorItemType
     {
         Shield,
@@ -61,6 +107,13 @@
         RangeTwoHandCrossbowWeapon,
         // RangeTwoHandGunWeapon,
         // ExtraWeapon,
+    }
+    public enum HeavyLightMedium
+    {
+        NoRequire,
+        Heavy,
+        Medium,
+        Light
     }
     public enum ActiveWeapons
     {

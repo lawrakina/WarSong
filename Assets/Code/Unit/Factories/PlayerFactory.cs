@@ -18,30 +18,39 @@ namespace Code.Unit.Factories
         public IPlayerView CreatePlayer(CharacterSettings settings)
         {
             _settings = settings;
-            var playerPrefab = Object.Instantiate(_data.StoragePlayerPrefab);
-            playerPrefab.name = $"Prefab.Model";
 
-            var rootPlayer = Object.Instantiate(new GameObject());
-            rootPlayer.name = $"PlayerCharacter";
-
+            var rootPlayer = new GameObject {name = $"-> PlayerCharacter <-"};
             var player = rootPlayer.AddCode<PlayerView>();
             player.Transform = rootPlayer.transform;
-            player.TransformModel = playerPrefab.transform; //prefab transform
-            player.Rigidbody = rootPlayer.AddRigidBody(80, CollisionDetectionMode.ContinuousDynamic,
-                false, true,
+            player.Rigidbody = rootPlayer.AddRigidBody(80, CollisionDetectionMode.ContinuousDynamic, false, true,
                 RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |
                 RigidbodyConstraints.FreezeRotationZ);
             player.Collider = rootPlayer.AddCapsuleCollider(0.5f, false,
                 new Vector3(0.0f, 0.9f, 0.0f),
                 1.8f);
-            player.MeshRenderer = playerPrefab.GetComponent<MeshRenderer>();
-            player.Animator = playerPrefab.GetComponent<Animator>();
-            player.AnimatorParameters = new AnimatorParameters(player.Animator);
-            playerPrefab.transform.SetParent(rootPlayer.transform);
-
-            player.UnitPerson = new UnitPerson(player.TransformModel.gameObject, _settings, _data);
 
             return player;
+        }
+
+        public IPlayerView RebuildModel(IPlayerView character, CharacterSettings settings,
+            RaceCharacteristics raceCharacteristics)
+        {
+            if (character.TransformModel)
+            {
+                var trash = character.TransformModel.gameObject;
+                trash.name = $"TRASH, Need destroy";
+                Object.Destroy(trash);
+            }
+
+            var playerPrefab = Object.Instantiate(_data.StoragePlayerPrefab, character.Transform, true);
+            playerPrefab.name = $"Prefab.Model";
+
+            character.TransformModel = playerPrefab.transform;
+            character.MeshRenderer = playerPrefab.GetComponent<MeshRenderer>();
+            character.Animator = playerPrefab.GetComponent<Animator>();
+            character.AnimatorParameters = new AnimatorParameters(character.Animator);
+            character.UnitPerson = new UnitPerson(playerPrefab, settings, _data, raceCharacteristics);
+            return character;
         }
     }
 }

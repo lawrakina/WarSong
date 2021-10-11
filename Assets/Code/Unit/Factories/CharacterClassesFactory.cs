@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Code.Data;
 using Code.Data.Unit;
 using Code.Data.Unit.Player;
 
@@ -26,6 +27,12 @@ namespace Code.Unit.Factories
             characterClass.Name = value.CharacterClass.ToString(); //ToDo need using Localization;
 
             return characterClass;
+        }
+
+        public RaceCharacteristics GetSettingsByRace(CharacterRace race)
+        {
+            return  _settings._racesStartCharacteristics.FirstOrDefault(
+                x => x.Race == race);
         }
     }
 }

@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &464531027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655313295020770274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a0e0f8d2cd45e490cbd9e67f7b4e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiInfo:
+    _icon: {fileID: 21300000, guid: 8773c44ecf518c542827ab2403351365, type: 3}
+    _title: "\u0418\u0437\u0443\u043C\u0440\u0443\u0434\u043D\u044B\u0439 \u043F\u043E\u0441\u043E\u0445"
+    _description: "\u0412\u043E\u043B\u0448\u0435\u0431\u043D\u044B\u0439 \u043F\u043E\u0441\u043E\u043A
+      \u0441 \u0438\u0437\u0443\u043C\u0440\u0443\u0434\u043E\u043C"
+  _listOfDependentViews:
+  - {fileID: 1655313295020770274}
+  ItemLevel: 10
+  _armorValue: 0
+  _characteristics:
+    Strength: 0
+    Agility: 0
+    Stamina: 20
+    Intellect: 100
+    Spirit: 70
+  _targetEquipCell: 3
+  _isNeedInstantiate: 1
+  _equipType: 1
+  _standardBullet: {fileID: 1562005690058727108, guid: 9702ab3d6a5bf9740916787bd05380f7,
+    type: 3}
+  _weaponType: 4
+  _attackDistanceOffset: 1
+  _attackValue:
+    _maxAttackValue: 40
+    _minAttackValue: 25
+    _timeDelayBeforeAttack: 0.5
+    _attackSpeed: 3
+    _attackDistance: 20
+--- !u!1001 &1655921213931248390
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1083267958053092, guid: d5535f7eb1bd7bf4da9e49a3964862b4, type: 3}
+      propertyPath: m_Name
+      value: SM_Wep_Staff_09 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011552640903790, guid: d5535f7eb1bd7bf4da9e49a3964862b4, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011552640903790, guid: d5535f7eb1bd7bf4da9e49a3964862b4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011552640903790, guid: d5535f7eb1bd7bf4da9e49a3964862b4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011552640903790, guid: d5535f7eb1bd7bf4da9e49a3964862b4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011552640903790, guid: d5535f7eb1bd7bf4da9e49a3964862b4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011552640903790, guid: d5535f7eb1bd7bf4da9e49a3964862b4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011552640903790, guid: d5535f7eb1bd7bf4da9e49a3964862b4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011552640903790, guid: d5535f7eb1bd7bf4da9e49a3964862b4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011552640903790, guid: d5535f7eb1bd7bf4da9e49a3964862b4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011552640903790, guid: d5535f7eb1bd7bf4da9e49a3964862b4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011552640903790, guid: d5535f7eb1bd7bf4da9e49a3964862b4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d5535f7eb1bd7bf4da9e49a3964862b4, type: 3}
+--- !u!1 &1655313295020770274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1083267958053092, guid: d5535f7eb1bd7bf4da9e49a3964862b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1655921213931248390}
+  m_PrefabAsset: {fileID: 0}

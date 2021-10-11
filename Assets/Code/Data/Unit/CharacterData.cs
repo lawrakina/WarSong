@@ -1,4 +1,5 @@
-﻿using Code.Extension;
+﻿using System;
+using Code.Extension;
 using Code.Unit;
 using UnityEngine;
 
@@ -44,8 +45,8 @@ namespace Code.Data.Unit
 
         [Header("Skin Colors")]
         public Color[] humanSkin = {new Color(1f, 0.8000001f, 0.682353f),new Color(1f, 0.8000001f, 0.682353f)};
-
         public Color[] elfSkin = {new Color(0.5882353f, 0.6274f, 0.73333f),new Color(0.5882353f, 0.6274f, 0.73333f)};
+        public Color[] gnomeSkin = {new Color(0.57f, 0.33f, 0.18f),new Color(0.64f, 0.29f, 0.33f),new Color(0.74f, 0.47f, 0.27f),new Color(0.23f, 0.19f, 0.09f),};
         public Color[] orcSkin = {new Color(0.23671f, 0.3294118f, 0.1843f),new Color(0.23671f, 0.3294118f, 0.1843f)};
 
         [Header("Hair Colors")]
@@ -108,5 +109,48 @@ namespace Code.Data.Unit
         };
 
         #endregion
+
+        public Color GetColorSkin(CharacterRace race, int numberSkin)
+        {
+            switch (race)
+            {
+                case CharacterRace.Human:
+                    return numberSkin > humanSkin.Length -1 ? humanSkin[humanSkin.Length - 1] : humanSkin[numberSkin];
+                    break;
+                case CharacterRace.Elf:
+                    return numberSkin > elfSkin.Length -1 ? elfSkin[elfSkin.Length - 1] : elfSkin[numberSkin];
+                    break;
+                case CharacterRace.Gnome:
+                    return numberSkin > gnomeSkin.Length -1 ? gnomeSkin[gnomeSkin.Length - 1] : gnomeSkin[numberSkin];
+                    break;
+                case CharacterRace.Orc:
+                    return numberSkin > orcSkin.Length -1 ? orcSkin[orcSkin.Length - 1] : orcSkin[numberSkin];
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(race), race, null);
+            }
+            return Color.clear;
+        }
+
+        public Color GetColorHair(int numberHair)
+        {
+            return numberHair > allHairAndSubble.Length - 1
+                ? allHairAndSubble[allHairAndSubble.Length - 1]
+                : allHairAndSubble[numberHair];
+        }
+
+        public Color GetColorStubble(int numberStubble)
+        {
+            return numberStubble > allHairAndSubble.Length - 1
+                ? allHairAndSubble[allHairAndSubble.Length - 1]
+                : allHairAndSubble[numberStubble];
+        }
+
+        public Color GetColorScar(int numberScar)
+        {
+            return numberScar > bodyArt.Length - 1
+            ? bodyArt[bodyArt.Length - 1]
+            : bodyArt[numberScar];
+        }
     }
 }

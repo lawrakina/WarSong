@@ -14,10 +14,16 @@ using UniRx;
 
 namespace Code.Profile
 {
-    public class ProfilePlayer
+    public class ProfilePlayer : IExecute
     {
         private readonly DataSettings _dataSettings;
         private readonly MvcModels _models;
+        private bool _isPlayerDirty = false;
+        
+        
+        public Guid Id => Guid.Empty;
+        public bool IsOn => true;
+        
         public MvcModels Models => _models;
         public DataSettings Settings => _dataSettings;
         public IAnalyticTools AnalyticTools { get; }
@@ -27,16 +33,23 @@ namespace Code.Profile
         public IPlayerView CurrentPlayer { get; set; }
         public UiWindowAfterStart WindowAfterStart { get; set; }
         public ReactiveProperty<InfoAboutCharacter> InfoAboutCurrentPlayer { get; }
-
-        public Action BuildCharacter;
-        public Action RebuildCurrentCharacter;
-        public Action<CharacterSettings> RebuildCharacter;
+        public Action BuildCharacter { get; private set; }
+        public Action RebuildCurrentCharacter { get; private set; }
+        
+        public Action OnCharacterBuildIsComplete = () => { };
+        public Action<CharacterSettings> RebuildCharacter { get; private set; }
+        
+        public bool IsPlayerDirty
+        {
+            get => _isPlayerDirty;
+            set => _isPlayerDirty = value;
+        }
         
 #if UNITY_EDITOR
         public Action<IPlayerView> ChangePlayer_FOR_DEBUG_DONT_USE;
 #endif
-        
-        
+
+
         public ProfilePlayer(CommandManager commandManager, DataSettings dataSettings, MvcModels models,
             IAnalyticTools analyticTools)
         {
@@ -52,6 +65,16 @@ namespace Code.Profile
             RebuildCharacter += OnRebuildCharacter;
 
             CharacterFabric = ConstructCharacterFabric();
+        }
+        
+        
+        public void Execute(float deltaTime)
+        {
+            if (IsPlayerDirty)
+            {
+                OnRebuildCurrentCharacter();
+                IsPlayerDirty = false;
+            }
         }
 
         private CharacterFabric ConstructCharacterFabric()
@@ -81,7 +104,7 @@ namespace Code.Profile
                 equipmentFactory,
                 inventoryFactory);
         }
-        
+
         private void OnBuildCharacter()
         {
             CurrentPlayer =
@@ -106,6 +129,7 @@ namespace Code.Profile
             Dbg.Log($"RebuildCharacter");
             CharacterFabric.RebuildCharacter(CurrentPlayer, value);
             InfoAboutCurrentPlayer.Value = new InfoAboutCharacter(CurrentPlayer);
+            OnCharacterBuildIsComplete?.Invoke();
 #if UNITY_EDITOR
             ChangePlayer_FOR_DEBUG_DONT_USE?.Invoke(CurrentPlayer);
 #endif
@@ -116,7 +140,7 @@ namespace Code.Profile
             BuildCharacter = null;
             RebuildCurrentCharacter = null;
             RebuildCharacter = null;
+            OnCharacterBuildIsComplete = null;
         }
     }
-
 }

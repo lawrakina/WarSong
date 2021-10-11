@@ -6,7 +6,7 @@ namespace Code.Unit.Factories
 {
     public sealed class CharacterFabric
     {
-        private IPlayerFactory _playerFactory;
+        private readonly IPlayerFactory _playerFactory;
         private readonly LevelFactory _levelFactory;
         private readonly CharacterClassesFactory _classesFactory;
         private readonly ResourceFactory _resourceFactory;
@@ -41,12 +41,13 @@ namespace Code.Unit.Factories
 
         public void RebuildCharacter(IPlayerView character, CharacterSettings value)
         {
-            character.UnitEquipment = _equipmentFactory.GenerateEquip(character, value);
+            character = _playerFactory.RebuildModel(character, value, _classesFactory.GetSettingsByRace(value.CharacterRace));
+            character.UnitLevel = _levelFactory.GenerateLevel(character.UnitLevel, value);
+            character.UnitEquipment = _equipmentFactory.GenerateEquip(character, value, character.UnitLevel.CurrentLevel);
             character.UnitInventory = _inventoryFactory.GenerateInventory(character, value);
             // character.AnimatorParameters.WeaponType = character.UnitEquipment.GetWeaponType();
             character.UnitVision = _visionFactory.GenerateVision();
             character.UnitReputation = _reputationFactory.GeneratePlayerReputation();
-            character.UnitLevel = _levelFactory.GenerateLevel(character.UnitLevel, value);
             character.CharacterClass = _classesFactory.GenerateClass(character.CharacterClass, value);
             character.UnitCharacteristics = _characteristicsFactory.GenerateCharacteristics(character.UnitCharacteristics, character.UnitEquipment, character.UnitLevel, value);
             character.UnitResource = _resourceFactory.GenerateResource(character.UnitResource, character.UnitCharacteristics, character.UnitLevel, value);

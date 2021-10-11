@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &940942210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8965791864931013166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a0e0f8d2cd45e490cbd9e67f7b4e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiInfo:
+    _icon: {fileID: 21300000, guid: 8773c44ecf518c542827ab2403351365, type: 3}
+    _title: "\u041F\u0438\u043A\u0430 \u0441\u0442\u0440\u0430\u0436\u043D\u0438\u043A\u0430"
+    _description: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u043E\u0435
+      \u043E\u0440\u0443\u0434\u0438\u0435 \u0440\u0435\u0433\u0443\u043B\u044F\u0440\u043D\u043E\u0439
+      \u0430\u0440\u043C\u0438\u0438"
+  _listOfDependentViews:
+  - {fileID: 8965791864931013166}
+  ItemLevel: 10
+  _armorValue: 0
+  _characteristics:
+    Strength: 15
+    Agility: 0
+    Stamina: 5
+    Intellect: 0
+    Spirit: 0
+  _targetEquipCell: 3
+  _isNeedInstantiate: 1
+  _equipType: 1
+  _standardBullet: {fileID: -6047091618391902694, guid: 7a523132aa6c0a34a9aae889cddf5cc9,
+    type: 3}
+  _weaponType: 3
+  _attackDistanceOffset: 1
+  _attackValue:
+    _maxAttackValue: 25
+    _minAttackValue: 15
+    _timeDelayBeforeAttack: 0.5
+    _attackSpeed: 3
+    _attackDistance: 1
+--- !u!1001 &8964686322615095110
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1146259679894888, guid: 582bf6a9e98f49b45ab001b684b0729e, type: 3}
+      propertyPath: m_Name
+      value: SM_Wep_Spear_07 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399618095799900, guid: 582bf6a9e98f49b45ab001b684b0729e, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399618095799900, guid: 582bf6a9e98f49b45ab001b684b0729e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399618095799900, guid: 582bf6a9e98f49b45ab001b684b0729e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399618095799900, guid: 582bf6a9e98f49b45ab001b684b0729e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399618095799900, guid: 582bf6a9e98f49b45ab001b684b0729e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399618095799900, guid: 582bf6a9e98f49b45ab001b684b0729e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399618095799900, guid: 582bf6a9e98f49b45ab001b684b0729e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399618095799900, guid: 582bf6a9e98f49b45ab001b684b0729e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399618095799900, guid: 582bf6a9e98f49b45ab001b684b0729e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399618095799900, guid: 582bf6a9e98f49b45ab001b684b0729e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399618095799900, guid: 582bf6a9e98f49b45ab001b684b0729e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 582bf6a9e98f49b45ab001b684b0729e, type: 3}
+--- !u!1 &8965791864931013166 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1146259679894888, guid: 582bf6a9e98f49b45ab001b684b0729e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8964686322615095110}
+  m_PrefabAsset: {fileID: 0}

@@ -7,6 +7,6 @@ namespace Code.Data.Unit.Enemy
     [Serializable]
     public class UnitEnemyEquipment
     {
-        public BaseWeapon Weapon;
+        public WeaponEquipItem Weapon;
     }
 }

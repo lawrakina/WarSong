@@ -26,15 +26,11 @@ MonoBehaviour:
     type: 3}
   AdventureView: {fileID: 2577582647268143949, guid: 839007054b6bb804793d187d2e0bf464,
     type: 3}
-  CharacterView: {fileID: 3781639543975599055, guid: 03d9d70579f675647a9e2eee1b180545,
+  CharEditRootView: {fileID: 3035584394720924771, guid: ed230a30a4c8a234ca53374ad8013268,
     type: 3}
-  CellTemplateClickEquipment: {fileID: 3879315333051062325, guid: 30f2860e0430f1745a8a70fce0fa7ae8,
+  CharEditReplacementEquipView: {fileID: 4872674155962846012, guid: 0ac408ce3dd952643890027abe24acb1,
     type: 3}
-  CellTemplateDragAndDropEquipment: {fileID: 300707324756723959, guid: 8c1f03406e8268b4d91d3b590e103a26,
-    type: 3}
-  SlotDropHandler: {fileID: 2389152780380992024, guid: 0d890106758e32a469319f94f930b301,
-    type: 3}
-  PanelEquipReplacementVariantsView: {fileID: 8401495890577193933, guid: 7e071977e34fa2342871bf2c59da7f37,
+  TemplateCellClickAndSelectHandler: {fileID: 3789403146363594235, guid: e364d1731e5b80b47b2fa4e3fd34f0df,
     type: 3}
   Inventory: {fileID: 2885591622095069151, guid: 2ffa27a83e7ee1a4b8b6653ba278a2d1,
     type: 3}

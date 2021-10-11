@@ -23,6 +23,15 @@ MonoBehaviour:
     distanceDetection: 15
     maxCountTargets: 5
     offsetHead: {x: 0, y: 1.5, z: 0}
+  _racesStartCharacteristics:
+  - _race: 0
+    _scaleModelByRace: {x: 1, y: 1, z: 1}
+  - _race: 1
+    _scaleModelByRace: {x: 0.9, y: 1.1, z: 0.9}
+  - _race: 2
+    _scaleModelByRace: {x: 1.2, y: 0.8, z: 1.2}
+  - _race: 3
+    _scaleModelByRace: {x: 1.2, y: 1, z: 1.2}
   _classesStartCharacteristics:
   - CharacterClass: 1
     Start:
@@ -119,8 +128,13 @@ MonoBehaviour:
   _presetCharacters:
     listPresetsSettings:
     - CharacterClass: 1
-      CharacterGender: 1
-      CharacterRace: 0
+      CharacterGender: 0
+      CharacterRace: 3
+      CharacterSkin: 0
+      ExperiencePoints: 1
+      CharacterHair: 0
+      CharacterStubble: 0
+      CharacterScar: 0
       Equipment:
         permissionForEquipment:
           OneHandWeapon: 1
@@ -135,21 +149,32 @@ MonoBehaviour:
           MediumArmor: 1
           LightArmor: 1
         Equipment:
-        - {fileID: 9024842520586543348, guid: b42a483ee5137f843929c77d6f537502, type: 3}
-        - {fileID: 2791158550610320276, guid: 25e580736c5a51f4f88d4148267d74a7, type: 3}
-        - {fileID: 381132802092769579, guid: dbadde02d65be1d45953bb9271cd35fa, type: 3}
-        - {fileID: 381132802092769579, guid: 8674f259d13229642920d211b6bb5282, type: 3}
-        - {fileID: 381132802092769579, guid: 8674f259d13229642920d211b6bb5282, type: 3}
-        - {fileID: 381132802092769579, guid: 8674f259d13229642920d211b6bb5282, type: 3}
-        Inventory: []
-      ExperiencePoints: 1
+        - {fileID: 2501935005879798763, guid: e81bc64cdac9006478bddb92f2082257, type: 3}
+        - {fileID: 909907770, guid: 7d780ad223b2abd47bb6036e62c9e1cf, type: 3}
+        - {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+        Inventory:
+        - {fileID: 942876046, guid: 7e0e90c4c2a11c54fb69cafd566722f4, type: 3}
+        - {fileID: 748792839, guid: ac8ebbbddc7c526478cb7c40c98f4bbb, type: 3}
+        - {fileID: 1286760890, guid: 38c4232aabedea7439f167a9484d0e10, type: 3}
+        - {fileID: 703089399, guid: c7d4224023b93cc43875289cd6ed4c8e, type: 3}
+        - {fileID: 1806047006, guid: 6f0b2f8181dd5a148b28ad711f21b5bf, type: 3}
+        - {fileID: 940942210, guid: 5aa1d16b7f8eb864bb3561d47afc0122, type: 3}
+        - {fileID: 2083474263, guid: 3c9485b5bcba11e4bbd0e4992a595994, type: 3}
+        - {fileID: 554395860, guid: f120e1ca134e6c24ba7da0ce3a81f1d6, type: 3}
+        - {fileID: 464531027, guid: 9b4002abc92e1e143a02221ef60adde9, type: 3}
+        - {fileID: 704246847, guid: 51cae927b7c12144cb5fe74c7961ca84, type: 3}
       UiBadge: {fileID: 7179238373803716959, guid: 6e176475ef69b424383f4798114d2236,
         type: 3}
       ResourceType: 0
       ResourceBaseValue: 100
     - CharacterClass: 2
-      CharacterGender: 0
-      CharacterRace: 0
+      CharacterGender: 1
+      CharacterRace: 1
+      CharacterSkin: 0
+      ExperiencePoints: 1
+      CharacterHair: 0
+      CharacterStubble: 0
+      CharacterScar: 0
       Equipment:
         permissionForEquipment:
           OneHandWeapon: 1
@@ -164,17 +189,47 @@ MonoBehaviour:
           MediumArmor: 1
           LightArmor: 1
         Equipment:
-        - {fileID: 9024842520586543348, guid: b42a483ee5137f843929c77d6f537502, type: 3}
-        - {fileID: 9024842520586543348, guid: b42a483ee5137f843929c77d6f537502, type: 3}
-        Inventory: []
-      ExperiencePoints: 1
+        - {fileID: 5957044301814547846, guid: 67ddaab1892295445aee6146fd36fa14, type: 3}
+        - {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+        - {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+        Inventory:
+        - {fileID: 942876046, guid: 7e0e90c4c2a11c54fb69cafd566722f4, type: 3}
+        - {fileID: 748792839, guid: ac8ebbbddc7c526478cb7c40c98f4bbb, type: 3}
+        - {fileID: 1286760890, guid: 38c4232aabedea7439f167a9484d0e10, type: 3}
+        - {fileID: 703089399, guid: c7d4224023b93cc43875289cd6ed4c8e, type: 3}
+        - {fileID: 1806047006, guid: 6f0b2f8181dd5a148b28ad711f21b5bf, type: 3}
+        - {fileID: 940942210, guid: 5aa1d16b7f8eb864bb3561d47afc0122, type: 3}
+        - {fileID: 2083474263, guid: 3c9485b5bcba11e4bbd0e4992a595994, type: 3}
+        - {fileID: 554395860, guid: f120e1ca134e6c24ba7da0ce3a81f1d6, type: 3}
+        - {fileID: 464531027, guid: 9b4002abc92e1e143a02221ef60adde9, type: 3}
+        - {fileID: 704246847, guid: 51cae927b7c12144cb5fe74c7961ca84, type: 3}
+        - {fileID: 1377199512, guid: 674871547e6e5024eb4913f95ea3e229, type: 3}
+        - {fileID: 640187368, guid: 1cbed63e6a1f615458ee7a12a6c00ba8, type: 3}
+        - {fileID: 1456652596, guid: 3e46d6572a0b4bb4aacc8e703c86a994, type: 3}
+        - {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+        - {fileID: 1694903566, guid: 44aefc9589919b843b0e8859ec3f43ed, type: 3}
+        - {fileID: 2146820331, guid: 41d2d5bc8843af447817dc751888129d, type: 3}
+        - {fileID: 2501935005879798763, guid: e81bc64cdac9006478bddb92f2082257, type: 3}
+        - {fileID: 6139579550530295796, guid: 2e4196d23647e8d469f100212fcf9f17, type: 3}
+        - {fileID: 9149584848536994170, guid: a4c1e5e4c99319445b9ddcd99ee4eba9, type: 3}
+        - {fileID: 7479299891347552179, guid: bd4489d7e1298a048927b1fa02c89434, type: 3}
+        - {fileID: 5957044301814547846, guid: 67ddaab1892295445aee6146fd36fa14, type: 3}
+        - {fileID: 1509372999, guid: c820f520a92a56e47ba233c1adcdff59, type: 3}
+        - {fileID: 1219641994701524370, guid: c2662404c8af1ae44a4a4a2f87985c40, type: 3}
+        - {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+        - {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
       UiBadge: {fileID: 4157712349263451614, guid: 3ae8e235f392ef14cbdbe6d052fcc930,
         type: 3}
       ResourceType: 1
       ResourceBaseValue: 100
     - CharacterClass: 3
-      CharacterGender: 1
-      CharacterRace: 0
+      CharacterGender: 0
+      CharacterRace: 2
+      CharacterSkin: 0
+      ExperiencePoints: 1
+      CharacterHair: 0
+      CharacterStubble: 0
+      CharacterScar: 0
       Equipment:
         permissionForEquipment:
           OneHandWeapon: 0
@@ -189,9 +244,34 @@ MonoBehaviour:
           MediumArmor: 1
           LightArmor: 1
         Equipment:
-        - {fileID: -6049655489026514482, guid: a86d9763462c31640b33721b9ee09be7, type: 3}
-        Inventory: []
-      ExperiencePoints: 1
+        - {fileID: 7479299891347552179, guid: bd4489d7e1298a048927b1fa02c89434, type: 3}
+        - {fileID: 942876046, guid: 7e0e90c4c2a11c54fb69cafd566722f4, type: 3}
+        Inventory:
+        - {fileID: 942876046, guid: 7e0e90c4c2a11c54fb69cafd566722f4, type: 3}
+        - {fileID: 748792839, guid: ac8ebbbddc7c526478cb7c40c98f4bbb, type: 3}
+        - {fileID: 1286760890, guid: 38c4232aabedea7439f167a9484d0e10, type: 3}
+        - {fileID: 703089399, guid: c7d4224023b93cc43875289cd6ed4c8e, type: 3}
+        - {fileID: 1806047006, guid: 6f0b2f8181dd5a148b28ad711f21b5bf, type: 3}
+        - {fileID: 940942210, guid: 5aa1d16b7f8eb864bb3561d47afc0122, type: 3}
+        - {fileID: 2083474263, guid: 3c9485b5bcba11e4bbd0e4992a595994, type: 3}
+        - {fileID: 554395860, guid: f120e1ca134e6c24ba7da0ce3a81f1d6, type: 3}
+        - {fileID: 464531027, guid: 9b4002abc92e1e143a02221ef60adde9, type: 3}
+        - {fileID: 704246847, guid: 51cae927b7c12144cb5fe74c7961ca84, type: 3}
+        - {fileID: 1377199512, guid: 674871547e6e5024eb4913f95ea3e229, type: 3}
+        - {fileID: 640187368, guid: 1cbed63e6a1f615458ee7a12a6c00ba8, type: 3}
+        - {fileID: 1456652596, guid: 3e46d6572a0b4bb4aacc8e703c86a994, type: 3}
+        - {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+        - {fileID: 1694903566, guid: 44aefc9589919b843b0e8859ec3f43ed, type: 3}
+        - {fileID: 2146820331, guid: 41d2d5bc8843af447817dc751888129d, type: 3}
+        - {fileID: 2501935005879798763, guid: e81bc64cdac9006478bddb92f2082257, type: 3}
+        - {fileID: 6139579550530295796, guid: 2e4196d23647e8d469f100212fcf9f17, type: 3}
+        - {fileID: 9149584848536994170, guid: a4c1e5e4c99319445b9ddcd99ee4eba9, type: 3}
+        - {fileID: 7479299891347552179, guid: bd4489d7e1298a048927b1fa02c89434, type: 3}
+        - {fileID: 5957044301814547846, guid: 67ddaab1892295445aee6146fd36fa14, type: 3}
+        - {fileID: 1509372999, guid: c820f520a92a56e47ba233c1adcdff59, type: 3}
+        - {fileID: 1219641994701524370, guid: c2662404c8af1ae44a4a4a2f87985c40, type: 3}
+        - {fileID: 942876046, guid: 7e0e90c4c2a11c54fb69cafd566722f4, type: 3}
+        - {fileID: 748792839, guid: ac8ebbbddc7c526478cb7c40c98f4bbb, type: 3}
       UiBadge: {fileID: 4319355777000030377, guid: 34c4793f6cdb64447b65c81c9844499b,
         type: 3}
       ResourceType: 2
@@ -199,6 +279,11 @@ MonoBehaviour:
     - CharacterClass: 4
       CharacterGender: 0
       CharacterRace: 0
+      CharacterSkin: 0
+      ExperiencePoints: 1
+      CharacterHair: 0
+      CharacterStubble: 0
+      CharacterScar: 0
       Equipment:
         permissionForEquipment:
           OneHandWeapon: 1
@@ -213,10 +298,36 @@ MonoBehaviour:
           MediumArmor: 0
           LightArmor: 1
         Equipment:
-        - {fileID: -8844724956590295038, guid: 9e80f1214d24de448b17ab3d2302eb1a, type: 3}
+        - {fileID: 1219641994701524370, guid: c2662404c8af1ae44a4a4a2f87985c40, type: 3}
+        - {fileID: 2083474263, guid: 3c9485b5bcba11e4bbd0e4992a595994, type: 3}
         Inventory:
-        - {fileID: 381132802092769579, guid: 1d954276bb5ffa145a93eb77bfa76b1e, type: 3}
-      ExperiencePoints: 1
+        - {fileID: 1219641994701524370, guid: c2662404c8af1ae44a4a4a2f87985c40, type: 3}
+        - {fileID: 942876046, guid: 7e0e90c4c2a11c54fb69cafd566722f4, type: 3}
+        - {fileID: 748792839, guid: ac8ebbbddc7c526478cb7c40c98f4bbb, type: 3}
+        - {fileID: 1286760890, guid: 38c4232aabedea7439f167a9484d0e10, type: 3}
+        - {fileID: 703089399, guid: c7d4224023b93cc43875289cd6ed4c8e, type: 3}
+        - {fileID: 1806047006, guid: 6f0b2f8181dd5a148b28ad711f21b5bf, type: 3}
+        - {fileID: 940942210, guid: 5aa1d16b7f8eb864bb3561d47afc0122, type: 3}
+        - {fileID: 2083474263, guid: 3c9485b5bcba11e4bbd0e4992a595994, type: 3}
+        - {fileID: 554395860, guid: f120e1ca134e6c24ba7da0ce3a81f1d6, type: 3}
+        - {fileID: 464531027, guid: 9b4002abc92e1e143a02221ef60adde9, type: 3}
+        - {fileID: 704246847, guid: 51cae927b7c12144cb5fe74c7961ca84, type: 3}
+        - {fileID: 1377199512, guid: 674871547e6e5024eb4913f95ea3e229, type: 3}
+        - {fileID: 640187368, guid: 1cbed63e6a1f615458ee7a12a6c00ba8, type: 3}
+        - {fileID: 1456652596, guid: 3e46d6572a0b4bb4aacc8e703c86a994, type: 3}
+        - {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+        - {fileID: 1694903566, guid: 44aefc9589919b843b0e8859ec3f43ed, type: 3}
+        - {fileID: 2146820331, guid: 41d2d5bc8843af447817dc751888129d, type: 3}
+        - {fileID: 2501935005879798763, guid: e81bc64cdac9006478bddb92f2082257, type: 3}
+        - {fileID: 6139579550530295796, guid: 2e4196d23647e8d469f100212fcf9f17, type: 3}
+        - {fileID: 9149584848536994170, guid: a4c1e5e4c99319445b9ddcd99ee4eba9, type: 3}
+        - {fileID: 7479299891347552179, guid: bd4489d7e1298a048927b1fa02c89434, type: 3}
+        - {fileID: 5957044301814547846, guid: 67ddaab1892295445aee6146fd36fa14, type: 3}
+        - {fileID: 1509372999, guid: c820f520a92a56e47ba233c1adcdff59, type: 3}
+        - {fileID: 1219641994701524370, guid: c2662404c8af1ae44a4a4a2f87985c40, type: 3}
+        - {fileID: 464531027, guid: 9b4002abc92e1e143a02221ef60adde9, type: 3}
+        - {fileID: 554395860, guid: f120e1ca134e6c24ba7da0ce3a81f1d6, type: 3}
+        - {fileID: 464531027, guid: 9b4002abc92e1e143a02221ef60adde9, type: 3}
       UiBadge: {fileID: 2264942570204359833, guid: aa4eb9bbd97dfc244936dfdca4f76bf5,
         type: 3}
       ResourceType: 3

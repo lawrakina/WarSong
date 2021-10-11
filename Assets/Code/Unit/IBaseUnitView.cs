@@ -15,9 +15,9 @@ namespace Code.Unit
         Transform Transform { get; set; }
         Collider Collider { get; set; }
         Rigidbody Rigidbody { get; set; }
-        MeshRenderer MeshRenderer { get; }
+        MeshRenderer MeshRenderer { get; set; }
         Animator Animator { get; set; }
-        AnimatorParameters AnimatorParameters { get; }
+        AnimatorParameters AnimatorParameters { get; set; }
         UnitHealth UnitHealth { get; set; }
         UnitVision UnitVision { get; set; }
         UnitReputation UnitReputation { get; set; }

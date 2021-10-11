@@ -41,6 +41,7 @@ namespace Code
             _profilePlayer.CurrentState.Value = _gameStateAfterStart;
             _profilePlayer.WindowAfterStart = _showWindowAfterStart;
             _mainController = new MainController(_controllers, _placeForUi, _profilePlayer);
+            _controllers.Add(_profilePlayer);
             _controllers.Init();
             
 #if UNITY_EDITOR
@@ -52,9 +53,7 @@ namespace Code
 #if UNITY_EDITOR
         private void ChangePlayerForDebugDontUse(IPlayerView obj)
         {
-            // Dbg.Error($"Change Player");
             _characterPlayer = _profilePlayer.CurrentPlayer.Transform.gameObject;
-            // _characterPlayer = obj.Transform.gameObject;
         }
 #endif
         
@@ -68,8 +67,7 @@ namespace Code
             return result;
         }
 
-        private DataSettings LoadAllResources()
-        {
+        private DataSettings LoadAllResources() {
             var settings = new DataSettings();
             settings.CharacterData = ResourceLoader.LoadConfig<CharacterData>();
             settings.UnitLevelData = ResourceLoader.LoadConfig<UnitLevelData>();
@@ -98,7 +96,6 @@ namespace Code
 
         private void Update()
         {
-            // _characterPlayer = _profilePlayer.CurrentPlayer.Transform.gameObject;
             var deltaTime = Time.deltaTime;
             _controllers.Execute(deltaTime);
         }

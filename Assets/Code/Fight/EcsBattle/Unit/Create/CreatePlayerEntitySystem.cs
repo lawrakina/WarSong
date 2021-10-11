@@ -40,59 +40,59 @@ namespace Code.Fight.EcsBattle.Unit.Create
             //battle
             ref var mainWeapon = ref entity.Get<BattleInfoMainWeaponComponent>();
 
-            void SetBattleInfoForMainWeapon(ref BattleInfoMainWeaponComponent weapon)
-            {
-                weapon._attackDistance = _view.UnitEquipment.MainWeapon.AttackValue.GetAttackDistance();
-                weapon._bullet = _view.UnitEquipment.MainWeapon.StandardBullet;
-                weapon._attackValue = _view.UnitCharacteristics.GetAttackMainWeaponValue();
-                weapon._weaponTypeAnimation = _view.AnimatorParameters.WeaponType;
-                //todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
-                weapon._attackMaxValueAnimation = 3;
-            }
+            // void SetBattleInfoForMainWeapon(ref BattleInfoMainWeaponComponent weapon)
+            // {
+                // weapon._attackDistance = _view.UnitEquipment.MainWeapon.AttackValue.GetAttackDistance();
+                // weapon._bullet = _view.UnitEquipment.MainWeapon.StandardBullet;
+                // weapon._attackValue = _view.UnitCharacteristics.GetAttackMainWeaponValue();
+                // weapon._weaponTypeAnimation = _view.AnimatorParameters.WeaponType;
+                // todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
+                // weapon._attackMaxValueAnimation = 3;
+            // }
 
-            Dbg.Log($"_view.UnitPlayerBattle.ActiveWeapons:{_view.UnitPerson.ActiveWeapons}");
-            switch (_view.UnitPerson.ActiveWeapons)
-            {
-                case ActiveWeapons.RightHand:
-                    SetBattleInfoForMainWeapon(ref mainWeapon);
-                    break;
-
-                case ActiveWeapons.RightAndShield:
-                    SetBattleInfoForMainWeapon(ref mainWeapon);
-                    break;
-
-
-                case ActiveWeapons.RightAndLeft:
-                    //right
-                    mainWeapon._attackDistance = _view.UnitEquipment.MainWeapon.AttackValue.GetAttackDistance();
-                    mainWeapon._bullet = _view.UnitEquipment.MainWeapon.StandardBullet;
-                    mainWeapon._attackValue = _view.UnitCharacteristics.GetAttackMainWeaponValue();
-                    //todo убрать магические числа, но это не обязательно  //_view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
-                    mainWeapon._weaponTypeAnimation = 1;
-                    //todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
-                    mainWeapon._attackMaxValueAnimation = 4;
-                    //left
-                    ref var secondWeapon = ref entity.Get<BattleInfoSecondWeaponComponent>();
-                    secondWeapon._attackDistance = _view.UnitEquipment.SecondWeapon.AttackValue.GetAttackDistance();
-                    secondWeapon._bullet = _view.UnitEquipment.SecondWeapon.StandardBullet;
-                    secondWeapon._attackValue = _view.UnitCharacteristics.GetAttackSecondWeaponValue();
-                    //todo убрать магические числа, но это не обязательно  //_view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
-                    secondWeapon._weaponTypeAnimation = 2;
-                    //todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
-                    secondWeapon._attackMaxValueAnimation = 4;
-                    //todo в глобальные настройки персонажа - лаг перед ударом левой рукой
-                    secondWeapon._lagBeforeAttack = 0.8f;
-                    //todo в глобальные настройки персонажа - коэффициент силы удара
-                    secondWeapon._powerFactor = 0.5f;
-                    break;
-
-                case ActiveWeapons.TwoHand:
-                    SetBattleInfoForMainWeapon(ref mainWeapon);
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            // Dbg.Log($"_view.UnitPlayerBattle.ActiveWeapons:{_view.UnitPersonOld.ActiveWeapons}");
+            // switch (_view.UnitPersonOld.ActiveWeapons)
+            // {
+            //     case ActiveWeapons.RightHand:
+            //         SetBattleInfoForMainWeapon(ref mainWeapon);
+            //         break;
+            //
+            //     case ActiveWeapons.RightAndShield:
+            //         SetBattleInfoForMainWeapon(ref mainWeapon);
+            //         break;
+            //
+            //
+            //     case ActiveWeapons.RightAndLeft:
+            //         //right
+            //         mainWeapon._attackDistance = _view.UnitEquipment.MainWeapon.AttackValue.GetAttackDistance();
+            //         mainWeapon._bullet = _view.UnitEquipment.MainWeapon.StandardBullet;
+            //         mainWeapon._attackValue = _view.UnitCharacteristics.GetAttackMainWeaponValue();
+            //         //todo убрать магические числа, но это не обязательно  //_view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
+            //         mainWeapon._weaponTypeAnimation = 1;
+            //         //todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
+            //         mainWeapon._attackMaxValueAnimation = 4;
+            //         //left
+            //         ref var secondWeapon = ref entity.Get<BattleInfoSecondWeaponComponent>();
+            //         secondWeapon._attackDistance = _view.UnitEquipment.SecondWeapon.AttackValue.GetAttackDistance();
+            //         secondWeapon._bullet = _view.UnitEquipment.SecondWeapon.StandardBullet;
+            //         secondWeapon._attackValue = _view.UnitCharacteristics.GetAttackSecondWeaponValue();
+            //         //todo убрать магические числа, но это не обязательно  //_view.AnimatorParameters.WeaponType; // (int) _view.UnitPlayerBattle.Weapon.Type;
+            //         secondWeapon._weaponTypeAnimation = 2;
+            //         //todo сделать отсылку в локальную БД и вытаскивать кол-во доступных анимаций по типу оружия
+            //         secondWeapon._attackMaxValueAnimation = 4;
+            //         //todo в глобальные настройки персонажа - лаг перед ударом левой рукой
+            //         secondWeapon._lagBeforeAttack = 0.8f;
+            //         //todo в глобальные настройки персонажа - коэффициент силы удара
+            //         secondWeapon._powerFactor = 0.5f;
+            //         break;
+            //
+            //     case ActiveWeapons.TwoHand:
+            //         SetBattleInfoForMainWeapon(ref mainWeapon);
+            //         break;
+            //
+            //     default:
+            //         throw new ArgumentOutOfRangeException();
+            // }
 
             var directionMovement = Object.Instantiate(new GameObject(), _view.Transform, true);
             directionMovement.name = "->DirectionMoving<-";

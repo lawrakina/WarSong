@@ -6,23 +6,17 @@ namespace Code.Unit.Factories
     public sealed class EquipmentFactory
     {
         private IPlayerView _character;
-        private CharacterSettings _settings;
-        private EquipmentPoints _equipPoints;
-        private UnitPerson _person;
 
-        public UnitEquipment GenerateEquip(IPlayerView character, CharacterSettings settings)
+        private CharacterSettings _settings;
+        private int _characterLevel;
+
+        public UnitEquipment GenerateEquip(IPlayerView character, CharacterSettings settings, int characterLevel)
         {
             _character = character;
             _settings = settings;
-            _person = character.UnitPerson;
-            _equipPoints = _person.EquipmentPoints;
+            _characterLevel = characterLevel;
 
-            //Create Person Appearance
-            _person.Generate(_settings);
-            
-            var equip = new UnitEquipment(_settings, _person);
-
-            return equip;
+            return new UnitEquipment(_character.UnitPerson, _settings.Equipment, _characterLevel);
         }
     }
 }

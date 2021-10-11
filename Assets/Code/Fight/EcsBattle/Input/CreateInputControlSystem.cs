@@ -8,7 +8,7 @@ namespace Code.Fight.EcsBattle.Input
     {
         private EcsWorld _world;
         private InOutControlFightModel _inputModel;
-        private EcsFilter<PlayerComponent> _playerFilter;
+        private EcsFilter<PlayerComponent,UnitComponent> _playerFilter;
 
         public void Init()
         {

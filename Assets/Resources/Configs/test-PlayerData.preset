@@ -1,0 +1,176 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: test-PlayerData
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: e0f06c46282a4905beaf44c25204526e,
+      type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].CharacterClass
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].CharacterGender
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].CharacterRace
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].CharacterSkin
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].ExperiencePoints
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].CharacterHair
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].CharacterStubble
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].CharacterScar
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.permissionForEquipment.OneHandWeapon
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.permissionForEquipment.TwoOneHandWeapon
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.permissionForEquipment.TwoHandSwordWeapon
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.permissionForEquipment.TwoHandSpearWeapon
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.permissionForEquipment.TwoHandStaffWeapon
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.permissionForEquipment.RangeTwoHandBowWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.permissionForEquipment.RangeTwoHandCrossbowWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.permissionForEquipment.Shield
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.permissionForEquipment.HeavyArmor
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.permissionForEquipment.MediumArmor
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.permissionForEquipment.LightArmor
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.Equipment.Array.size
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.Equipment.Array.data[0]
+    value: 
+    objectReference: {fileID: 2501935005879798763, guid: e81bc64cdac9006478bddb92f2082257,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.Equipment.Array.data[1]
+    value: 
+    objectReference: {fileID: 909907770, guid: 7d780ad223b2abd47bb6036e62c9e1cf, type: 3}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.Equipment.Array.data[2]
+    value: 
+    objectReference: {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.Inventory.Array.size
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.Inventory.Array.data[0]
+    value: 
+    objectReference: {fileID: 942876046, guid: 7e0e90c4c2a11c54fb69cafd566722f4, type: 3}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.Inventory.Array.data[1]
+    value: 
+    objectReference: {fileID: 748792839, guid: ac8ebbbddc7c526478cb7c40c98f4bbb, type: 3}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.Inventory.Array.data[2]
+    value: 
+    objectReference: {fileID: 1286760890, guid: 38c4232aabedea7439f167a9484d0e10,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.Inventory.Array.data[3]
+    value: 
+    objectReference: {fileID: 703089399, guid: c7d4224023b93cc43875289cd6ed4c8e, type: 3}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.Inventory.Array.data[4]
+    value: 
+    objectReference: {fileID: 1806047006, guid: 6f0b2f8181dd5a148b28ad711f21b5bf,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.Inventory.Array.data[5]
+    value: 
+    objectReference: {fileID: 940942210, guid: 5aa1d16b7f8eb864bb3561d47afc0122, type: 3}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.Inventory.Array.data[6]
+    value: 
+    objectReference: {fileID: 2083474263, guid: 3c9485b5bcba11e4bbd0e4992a595994,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.Inventory.Array.data[7]
+    value: 
+    objectReference: {fileID: 554395860, guid: f120e1ca134e6c24ba7da0ce3a81f1d6, type: 3}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.Inventory.Array.data[8]
+    value: 
+    objectReference: {fileID: 464531027, guid: 9b4002abc92e1e143a02221ef60adde9, type: 3}
+  - target: {fileID: 0}
+    propertyPath: ListCharacters.Array.data[0].Equipment.Inventory.Array.data[9]
+    value: 
+    objectReference: {fileID: 704246847, guid: 51cae927b7c12144cb5fe74c7961ca84, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _numberActiveCharacter
+    value: 0
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []
