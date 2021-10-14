@@ -1,4 +1,7 @@
-﻿namespace Code.Equipment
+﻿using Code.UI.UniversalTemplates;
+
+
+namespace Code.Equipment
 {
     public interface IUiEquipItem
     {

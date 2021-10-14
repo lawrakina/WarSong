@@ -90,6 +90,7 @@ namespace Code.Profile
             var reputationFactory = new ReputationFactory();
             var equipmentFactory = new EquipmentFactory();
             var inventoryFactory = new InventoryFactory();
+            var abilitiesFactory = new AbilitiesFactory(Settings.PlayerClassesData);
 
             //контроллер активного персонажа (отвечает за модификацию внешного вида, одетых вещей в реалтайме)
             return new CharacterFabric(
@@ -102,7 +103,8 @@ namespace Code.Profile
                 visionFactory,
                 reputationFactory,
                 equipmentFactory,
-                inventoryFactory);
+                inventoryFactory,
+                abilitiesFactory);
         }
 
         private void OnBuildCharacter()

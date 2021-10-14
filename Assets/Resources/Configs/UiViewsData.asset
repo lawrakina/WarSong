@@ -30,7 +30,11 @@ MonoBehaviour:
     type: 3}
   CharEditReplacementEquipView: {fileID: 4872674155962846012, guid: 0ac408ce3dd952643890027abe24acb1,
     type: 3}
-  TemplateCellClickAndSelectHandler: {fileID: 3789403146363594235, guid: e364d1731e5b80b47b2fa4e3fd34f0df,
+  EquipmentTemplateCellClickAndSelectHandler: {fileID: 3789403146363594235, guid: 30efe290e13ad434486fdccf39f6d558,
+    type: 3}
+  CharEditReplacementAbilitiesView: {fileID: 3084727725425975868, guid: 17192d801d9426f4eb234b7f8896acc0,
+    type: 3}
+  AbilityTemplateCellClickAndSelectHandler: {fileID: 107009224320756653, guid: e364d1731e5b80b47b2fa4e3fd34f0df,
     type: 3}
   Inventory: {fileID: 2885591622095069151, guid: 2ffa27a83e7ee1a4b8b6653ba278a2d1,
     type: 3}

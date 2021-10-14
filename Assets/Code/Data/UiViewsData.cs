@@ -3,6 +3,8 @@ using Code.UI;
 using Code.UI.Adventure;
 using Code.UI.BottomNavigation;
 using Code.UI.Character;
+using Code.UI.Character.Abilities;
+using Code.UI.Character.Equipment;
 using Code.UI.CharacterList;
 using Code.UI.Inventory;
 using Code.UI.Shop;
@@ -36,7 +38,9 @@ namespace Code.Data
         [Header("Character tab")]
         public CharEditRootView CharEditRootView;
         public CharEditReplacementEquipView CharEditReplacementEquipView;
-        public SelectableEquipCell TemplateCellClickAndSelectHandler;
+        public SelectableEquipCell EquipmentTemplateCellClickAndSelectHandler;
+        public CharEditReplacementAbilitiesView CharEditReplacementAbilitiesView;
+        public SelectableAbilityCell AbilityTemplateCellClickAndSelectHandler;
 
         [Space] 
         

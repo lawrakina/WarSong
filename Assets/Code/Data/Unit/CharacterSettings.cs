@@ -1,4 +1,5 @@
 ﻿using System;
+using Code.Data.Abilities;
 using UnityEngine;
 
 
@@ -16,6 +17,7 @@ namespace Code.Data.Unit
         public int CharacterStubble;
         public int CharacterScar;
         public CharacterEquipment Equipment;
+        public ClassAbilities Abilities;
     }
 
     // [Serializable]

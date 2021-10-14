@@ -78,22 +78,13 @@
         Armor,
         Weapon
     }
-    
-    public enum ArmorItemType
-    {
-        Shield,
-        Head,
-        Neck,
-        Shoulder,
-        Body,
-        Cloak,
-        Bracelet,
-        Gloves,
-        Belt,
-        Pants,
-        Shoes,
-        Ring,
-        Earring
+
+    public enum AbilityCellType{
+        Special,
+        Action1,
+        Action2,
+        Action3,
+        IsStock
     }
     
     public enum WeaponItemType

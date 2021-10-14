@@ -22,7 +22,9 @@ namespace Code.Data.Unit
                 CharacterGender = this.CharacterGender,
                 CharacterRace = this.CharacterRace,
                 ExperiencePoints = this.ExperiencePoints,
-                Equipment = this.Equipment//глубокое копирование не требуется
+                Equipment = this.Equipment,
+                Abilities = this.Abilities,
+                //глубокое копирование не требуется
             };
         }
 
