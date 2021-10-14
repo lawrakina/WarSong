@@ -1,7 +1,4 @@
-﻿using Code.UI.UniversalTemplates;
-
-
-namespace Code.Data.Abilities{
+﻿namespace Code.Data.Abilities{
     public class AbilityCell{
         private readonly AbilityCellType _abilityCellType;
         private readonly bool _enabled;

@@ -11,7 +11,7 @@ namespace Code.Unit.Factories{
         }
 
         public UnitAbilities GenerateAbilities(CharacterSettings settings, int currentLevel){
-            return new UnitAbilities(settings.Abilities, currentLevel);
+            return new UnitAbilities(_data, settings.Abilities, currentLevel);
         }
     }
 }

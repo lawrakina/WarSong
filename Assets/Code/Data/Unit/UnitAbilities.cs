@@ -2,11 +2,11 @@
 using System.Linq;
 using Code.Data.Abilities;
 using Code.Data.Unit.Player;
-using Code.Extension;
 
 
 namespace Code.Data.Unit{
     public class UnitAbilities{
+        private readonly PlayerClassesData _db;
         private ClassAbilities _settings;
         private int _currentLevel;
         private List<AbilityCell> _activeAbilities;
@@ -15,37 +15,27 @@ namespace Code.Data.Unit{
         public List<AbilityCell> ActiveAbilities => _activeAbilities;
         public List<AbilityCell> AllAbilities => _allAbilities;
 
-        public UnitAbilities(ClassAbilities settings, int currentLevel){
+        public UnitAbilities(PlayerClassesData db, ClassAbilities settings, int currentLevel){
+            _db = db;
             _settings = settings;
             _currentLevel = currentLevel;
-            
+
             _activeAbilities = new List<AbilityCell>();
             _allAbilities = new List<AbilityCell>();
-            
-            
-            var specialCell = new AbilityCell(AbilityCellType.Special);
-            if(currentLevel >= settings.activeAbilitiesFromCharacter.Special.requiredLevel)
-                specialCell.Body = _settings.activeAbilitiesFromCharacter.Special;
-            
-            var action1 = new AbilityCell(AbilityCellType.Action1);
-            if(currentLevel >= settings.activeAbilitiesFromCharacter.Action1.requiredLevel)
-                action1.Body = _settings.activeAbilitiesFromCharacter.Action1;
-            
-            var action2 = new AbilityCell(AbilityCellType.Action2);
-            if(currentLevel >= settings.activeAbilitiesFromCharacter.Action2.requiredLevel)
-                action2.Body = _settings.activeAbilitiesFromCharacter.Action2;
-            
-            var action3 = new AbilityCell(AbilityCellType.Action3);
-            if(currentLevel >= settings.activeAbilitiesFromCharacter.Action3.requiredLevel)
-                action3.Body = _settings.activeAbilitiesFromCharacter.Action3;
-            
+
+
+            var specialCell = GetOfCreateAbilityCell(AbilityCellType.Special);
+            var action1 = GetOfCreateAbilityCell(AbilityCellType.Action1);
+            var action2 = GetOfCreateAbilityCell(AbilityCellType.Action2);
+            var action3 = GetOfCreateAbilityCell(AbilityCellType.Action3);
+
             _activeAbilities.Add(specialCell);
             _activeAbilities.Add(action1);
             _activeAbilities.Add(action2);
             _activeAbilities.Add(action3);
 
             _allAbilities.AddRange(_activeAbilities);
-            
+
             foreach (var ability in _settings.ListOfAbilities){
                 AbilityCell abilityCell;
                 if (CheckAllPermissions(ability))
@@ -57,6 +47,19 @@ namespace Code.Data.Unit{
             }
         }
 
+        private AbilityCell GetOfCreateAbilityCell(AbilityCellType cellType){
+            var result = new AbilityCell(cellType);
+            var kvpFromDb = _settings.activeAbilitiesFromCharacter
+                .FirstOrDefault(x => x.CellType == cellType);
+            if (kvpFromDb != null){
+                result.Body = kvpFromDb.Ability;
+            } else{
+                _settings.activeAbilitiesFromCharacter.Add(new KvpAbilityAndCellType(null, cellType));
+            }
+
+            return result;
+        }
+
         private bool CheckAllPermissions(TemplateAbility ability){
             if (_currentLevel < ability.requiredLevel) return false;
             if (_settings.Owner != ability.requiredClass) return false;
@@ -66,8 +69,14 @@ namespace Code.Data.Unit{
             return true;
         }
 
-        public void ReplaceActiveAbility(TemplateAbility newAbility, AbilityCellType newElementCellType){
-            Dbg.Warning($"ReplaceActiveAbility.Name:{newAbility.uiInfo.Title}, from CellType:{newElementCellType}");
+        public void ReplaceActiveAbility(TemplateAbility newAbility, AbilityCellType newCellType){
+            var abilityInDb =
+                _settings.activeAbilitiesFromCharacter.FirstOrDefault(x => x.CellType == newCellType);
+            if (abilityInDb != null)
+                abilityInDb.Ability = newAbility;
+            else{
+                _settings.activeAbilitiesFromCharacter.Add(new KvpAbilityAndCellType(newAbility, newCellType));
+            }
         }
     }
 }

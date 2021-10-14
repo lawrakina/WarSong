@@ -52,6 +52,7 @@ namespace Code.UI.Character.Equipment{
         }
 
         private void Load(EquipCellType equipCellType, List<TargetEquipCell> targetEquipCells){
+            if(!IsOn) return;
             _listItems.Clear();
             _listItems = new ListSelectableItems<SelectableEquipCell>();
             _view.Clear();
@@ -91,7 +92,7 @@ namespace Code.UI.Character.Equipment{
         }
 
         private void OnObjectSelection(SelectableEquipCell obj){
-            Dbg.Log($"OnObjectSelection.{obj}");
+            if(obj == null) return;
             if (_listItems.SelectedItem == obj){
                 _listItems.SelectedItem = null;
                 obj.IsSelect = false;

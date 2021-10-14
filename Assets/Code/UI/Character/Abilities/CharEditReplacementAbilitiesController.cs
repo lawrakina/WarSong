@@ -49,58 +49,43 @@ namespace Code.UI.Character.Abilities{
         private void HasChanged(Transform sender, Transform dropped){
             var newElement = dropped.GetComponent<SelectableAbilityCell>();
             var cellSender = sender.GetComponent<SelectableAbilityCell>();
-            _profilePlayer.CurrentPlayer.UnitAbilities.ReplaceActiveAbility(newAbility: newElement.Body.Body, cellSender.CellType);
+            _profilePlayer.CurrentPlayer.UnitAbilities.ReplaceActiveAbility(newElement.Body.Body, cellSender.CellType);
+
+            _profilePlayer.RebuildCurrentCharacter?.Invoke();
         }
 
         private void Load(){
+            if (!IsOn) return;
             _listOfAbilities.Clear();
             _listOfAbilities = new ListOfAbilities();
             _view.Clear();
 
-            var specialCell = Object.Instantiate(_cellTemplate, _view.SelectedAbilities, false)
-                .GetComponent<SelectableAbilityCell>();
-            specialCell.Init(_activeAbilitiesFromDb.FirstOrDefault(x =>
-                x.AbilityCellType == AbilityCellType.Special), AbilityCellType.Special, OnObjectSelection);
-            _listOfAbilities.SelectedList.Add(specialCell);
+            _listOfAbilities.SelectedList.Add(ConfigureAbitilyCell(AbilityCellType.Special));
+            _listOfAbilities.SelectedList.Add(ConfigureAbitilyCell(AbilityCellType.Action1));
+            _listOfAbilities.SelectedList.Add(ConfigureAbitilyCell(AbilityCellType.Action2));
+            _listOfAbilities.SelectedList.Add(ConfigureAbitilyCell(AbilityCellType.Action3));
 
-            var actionCell1 = Object.Instantiate(_cellTemplate, _view.SelectedAbilities, false)
-                .GetComponent<SelectableAbilityCell>();
-            actionCell1.Init(_activeAbilitiesFromDb.FirstOrDefault(x =>
-                x.AbilityCellType == AbilityCellType.Action1), AbilityCellType.Action1, OnObjectSelection);
-            _listOfAbilities.SelectedList.Add(actionCell1);
-
-            var actionCell2 = Object.Instantiate(_cellTemplate, _view.SelectedAbilities, false)
-                .GetComponent<SelectableAbilityCell>();
-            actionCell2.Init(_activeAbilitiesFromDb.FirstOrDefault(x =>
-                x.AbilityCellType == AbilityCellType.Action2), AbilityCellType.Action2, OnObjectSelection);
-            _listOfAbilities.SelectedList.Add(actionCell2);
-
-            var actionCell3 = Object.Instantiate(_cellTemplate, _view.SelectedAbilities, false)
-                .GetComponent<SelectableAbilityCell>();
-            actionCell3.Init(_activeAbilitiesFromDb.FirstOrDefault(x =>
-                x.AbilityCellType == AbilityCellType.Action3), AbilityCellType.Action3, OnObjectSelection);
-            _listOfAbilities.SelectedList.Add(actionCell3);
-
-            //add Drag and Drop handler
-            specialCell.gameObject.AddCode<ReplaceSlotHandler>();
-            actionCell1.gameObject.AddCode<ReplaceSlotHandler>();
-            actionCell2.gameObject.AddCode<ReplaceSlotHandler>();
-            actionCell3.gameObject.AddCode<ReplaceSlotHandler>();
-            
             foreach (var cell in _allAbilitiesFromDb){
                 var cellCommand = Object.Instantiate(_cellTemplate, _view.ListOfAbilities, false)
                     .GetComponent<SelectableAbilityCell>();
                 cellCommand.Init(cell, AbilityCellType.IsStock, OnObjectSelection);
-                _listOfAbilities.SelectedList.Add(cellCommand);
                 cellCommand.gameObject.AddCode<DragHandler>();
                 cellCommand.gameObject.AddCode<CanvasGroup>();
             }
+        }
 
+        private SelectableAbilityCell ConfigureAbitilyCell(AbilityCellType cellType){
+            var result = Object.Instantiate(_cellTemplate, _view.SelectedAbilities, false)
+                .GetComponent<SelectableAbilityCell>();
+            result.Init(_profilePlayer.CurrentPlayer.UnitAbilities.ActiveAbilities.FirstOrDefault(x =>
+                x.AbilityCellType == cellType), cellType, OnObjectSelection);
+            result.gameObject.AddCode<ReplaceSlotHandler>();
+            return result;
         }
 
         private void OnObjectSelection(SelectableAbilityCell obj){
             if (obj == null) return;
-            if(_listOfAbilities.SelectedItem != null)
+            if (_listOfAbilities.SelectedItem != null)
                 _listOfAbilities.SelectedItem.IsSelect = false;
             _listOfAbilities.SelectedItem = obj;
             obj.IsSelect = true;

@@ -1,0 +1,2375 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PlayerClassesData
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 6028addb0f274cfd88b2e0f1238099a0,
+      type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: HealthPerStamina
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ManaPointsPerIntellect
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: MaxRageValue
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: MaxEnergyValue
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: MaxConcentrationValue
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: MoveSpeed
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: RotateSpeed
+    value: 120
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: UnitVision.distanceDetection
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: UnitVision.maxCountTargets
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: UnitVision.offsetHead.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: UnitVision.offsetHead.y
+    value: 1.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: UnitVision.offsetHead.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].Owner
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].activeAbilitiesFromCharacter.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].activeAbilitiesFromCharacter.Array.data[0]._cellType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].activeAbilitiesFromCharacter.Array.data[0]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].activeAbilitiesFromCharacter.Array.data[1]._cellType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].activeAbilitiesFromCharacter.Array.data[1]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].activeAbilitiesFromCharacter.Array.data[2]._cellType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].activeAbilitiesFromCharacter.Array.data[2]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].activeAbilitiesFromCharacter.Array.data[3]._cellType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].activeAbilitiesFromCharacter.Array.data[3]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.size
+    value: 22
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[1]
+    value: 
+    objectReference: {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[2]
+    value: 
+    objectReference: {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[3]
+    value: 
+    objectReference: {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[4]
+    value: 
+    objectReference: {fileID: 11400000, guid: 26f83e4767032f942bda2f94683c7ad0, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[5]
+    value: 
+    objectReference: {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[6]
+    value: 
+    objectReference: {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[7]
+    value: 
+    objectReference: {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[8]
+    value: 
+    objectReference: {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[9]
+    value: 
+    objectReference: {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[10]
+    value: 
+    objectReference: {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[11]
+    value: 
+    objectReference: {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[12]
+    value: 
+    objectReference: {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[13]
+    value: 
+    objectReference: {fileID: 11400000, guid: 67ed2512998236f429015bb328f9daab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[14]
+    value: 
+    objectReference: {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[15]
+    value: 
+    objectReference: {fileID: 11400000, guid: 1de312d7d322ea049885e2e3112549b7, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[16]
+    value: 
+    objectReference: {fileID: 11400000, guid: 4d361cf963ae3c2468f339f912dde518, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[17]
+    value: 
+    objectReference: {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[18]
+    value: 
+    objectReference: {fileID: 11400000, guid: b9ca1e873bab9454caf8b211f20ff7dd, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[19]
+    value: 
+    objectReference: {fileID: 11400000, guid: e3baac4fa23ae8845948a735a95fff72, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[20]
+    value: 
+    objectReference: {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[0].ListOfAbilities.Array.data[21]
+    value: 
+    objectReference: {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].Owner
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].activeAbilitiesFromCharacter.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].activeAbilitiesFromCharacter.Array.data[0]._cellType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].activeAbilitiesFromCharacter.Array.data[0]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].activeAbilitiesFromCharacter.Array.data[1]._cellType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].activeAbilitiesFromCharacter.Array.data[1]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].activeAbilitiesFromCharacter.Array.data[2]._cellType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].activeAbilitiesFromCharacter.Array.data[2]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].activeAbilitiesFromCharacter.Array.data[3]._cellType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].activeAbilitiesFromCharacter.Array.data[3]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.size
+    value: 22
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[1]
+    value: 
+    objectReference: {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[2]
+    value: 
+    objectReference: {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[3]
+    value: 
+    objectReference: {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[4]
+    value: 
+    objectReference: {fileID: 11400000, guid: 26f83e4767032f942bda2f94683c7ad0, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[5]
+    value: 
+    objectReference: {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[6]
+    value: 
+    objectReference: {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[7]
+    value: 
+    objectReference: {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[8]
+    value: 
+    objectReference: {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[9]
+    value: 
+    objectReference: {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[10]
+    value: 
+    objectReference: {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[11]
+    value: 
+    objectReference: {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[12]
+    value: 
+    objectReference: {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[13]
+    value: 
+    objectReference: {fileID: 11400000, guid: 67ed2512998236f429015bb328f9daab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[14]
+    value: 
+    objectReference: {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[15]
+    value: 
+    objectReference: {fileID: 11400000, guid: 1de312d7d322ea049885e2e3112549b7, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[16]
+    value: 
+    objectReference: {fileID: 11400000, guid: 4d361cf963ae3c2468f339f912dde518, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[17]
+    value: 
+    objectReference: {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[18]
+    value: 
+    objectReference: {fileID: 11400000, guid: b9ca1e873bab9454caf8b211f20ff7dd, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[19]
+    value: 
+    objectReference: {fileID: 11400000, guid: e3baac4fa23ae8845948a735a95fff72, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[20]
+    value: 
+    objectReference: {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[1].ListOfAbilities.Array.data[21]
+    value: 
+    objectReference: {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].Owner
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].activeAbilitiesFromCharacter.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].activeAbilitiesFromCharacter.Array.data[0]._cellType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].activeAbilitiesFromCharacter.Array.data[0]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].activeAbilitiesFromCharacter.Array.data[1]._cellType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].activeAbilitiesFromCharacter.Array.data[1]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].activeAbilitiesFromCharacter.Array.data[2]._cellType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].activeAbilitiesFromCharacter.Array.data[2]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].activeAbilitiesFromCharacter.Array.data[3]._cellType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].activeAbilitiesFromCharacter.Array.data[3]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.size
+    value: 22
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[1]
+    value: 
+    objectReference: {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[2]
+    value: 
+    objectReference: {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[3]
+    value: 
+    objectReference: {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[4]
+    value: 
+    objectReference: {fileID: 11400000, guid: 26f83e4767032f942bda2f94683c7ad0, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[5]
+    value: 
+    objectReference: {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[6]
+    value: 
+    objectReference: {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[7]
+    value: 
+    objectReference: {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[8]
+    value: 
+    objectReference: {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[9]
+    value: 
+    objectReference: {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[10]
+    value: 
+    objectReference: {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[11]
+    value: 
+    objectReference: {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[12]
+    value: 
+    objectReference: {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[13]
+    value: 
+    objectReference: {fileID: 11400000, guid: 67ed2512998236f429015bb328f9daab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[14]
+    value: 
+    objectReference: {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[15]
+    value: 
+    objectReference: {fileID: 11400000, guid: 1de312d7d322ea049885e2e3112549b7, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[16]
+    value: 
+    objectReference: {fileID: 11400000, guid: 4d361cf963ae3c2468f339f912dde518, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[17]
+    value: 
+    objectReference: {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[18]
+    value: 
+    objectReference: {fileID: 11400000, guid: b9ca1e873bab9454caf8b211f20ff7dd, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[19]
+    value: 
+    objectReference: {fileID: 11400000, guid: e3baac4fa23ae8845948a735a95fff72, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[20]
+    value: 
+    objectReference: {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[2].ListOfAbilities.Array.data[21]
+    value: 
+    objectReference: {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].Owner
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].activeAbilitiesFromCharacter.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].activeAbilitiesFromCharacter.Array.data[0]._cellType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].activeAbilitiesFromCharacter.Array.data[0]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].activeAbilitiesFromCharacter.Array.data[1]._cellType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].activeAbilitiesFromCharacter.Array.data[1]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].activeAbilitiesFromCharacter.Array.data[2]._cellType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].activeAbilitiesFromCharacter.Array.data[2]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].activeAbilitiesFromCharacter.Array.data[3]._cellType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].activeAbilitiesFromCharacter.Array.data[3]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.size
+    value: 22
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[1]
+    value: 
+    objectReference: {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[2]
+    value: 
+    objectReference: {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[3]
+    value: 
+    objectReference: {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[4]
+    value: 
+    objectReference: {fileID: 11400000, guid: 26f83e4767032f942bda2f94683c7ad0, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[5]
+    value: 
+    objectReference: {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[6]
+    value: 
+    objectReference: {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[7]
+    value: 
+    objectReference: {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[8]
+    value: 
+    objectReference: {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[9]
+    value: 
+    objectReference: {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[10]
+    value: 
+    objectReference: {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[11]
+    value: 
+    objectReference: {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[12]
+    value: 
+    objectReference: {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[13]
+    value: 
+    objectReference: {fileID: 11400000, guid: 67ed2512998236f429015bb328f9daab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[14]
+    value: 
+    objectReference: {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[15]
+    value: 
+    objectReference: {fileID: 11400000, guid: 1de312d7d322ea049885e2e3112549b7, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[16]
+    value: 
+    objectReference: {fileID: 11400000, guid: 4d361cf963ae3c2468f339f912dde518, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[17]
+    value: 
+    objectReference: {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[18]
+    value: 
+    objectReference: {fileID: 11400000, guid: b9ca1e873bab9454caf8b211f20ff7dd, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[19]
+    value: 
+    objectReference: {fileID: 11400000, guid: e3baac4fa23ae8845948a735a95fff72, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[20]
+    value: 
+    objectReference: {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _classAbilities.Array.data[3].ListOfAbilities.Array.data[21]
+    value: 
+    objectReference: {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _racesStartCharacteristics.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _racesStartCharacteristics.Array.data[0]._race
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _racesStartCharacteristics.Array.data[0]._scaleModelByRace.x
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _racesStartCharacteristics.Array.data[0]._scaleModelByRace.y
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _racesStartCharacteristics.Array.data[0]._scaleModelByRace.z
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _racesStartCharacteristics.Array.data[1]._race
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _racesStartCharacteristics.Array.data[1]._scaleModelByRace.x
+    value: 0.9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _racesStartCharacteristics.Array.data[1]._scaleModelByRace.y
+    value: 1.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _racesStartCharacteristics.Array.data[1]._scaleModelByRace.z
+    value: 0.9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _racesStartCharacteristics.Array.data[2]._race
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _racesStartCharacteristics.Array.data[2]._scaleModelByRace.x
+    value: 1.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _racesStartCharacteristics.Array.data[2]._scaleModelByRace.y
+    value: 0.8
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _racesStartCharacteristics.Array.data[2]._scaleModelByRace.z
+    value: 1.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _racesStartCharacteristics.Array.data[3]._race
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _racesStartCharacteristics.Array.data[3]._scaleModelByRace.x
+    value: 1.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _racesStartCharacteristics.Array.data[3]._scaleModelByRace.y
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _racesStartCharacteristics.Array.data[3]._scaleModelByRace.z
+    value: 1.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0].CharacterClass
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0].Start.Strength
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0].Start.Agility
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0].Start.Stamina
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0].Start.Intellect
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0].Start.Spirit
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0].ForOneLevel.Strength
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0].ForOneLevel.Agility
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0].ForOneLevel.Stamina
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0].ForOneLevel.Intellect
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0].ForOneLevel.Spirit
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0].Speed
+    value: 8
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0].RotateSpeedPlayer
+    value: 120
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0]._minCritChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0]._maxCritChance
+    value: 0.75
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0]._critChance
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0]._minDodgeChance
+    value: 0.05
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0]._maxDodgeChance
+    value: 0.75
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0]._dodgeChance
+    value: 0.05
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0]._minArmorValue
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0]._maxArmorValue
+    value: 1000000
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1].CharacterClass
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1].Start.Strength
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1].Start.Agility
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1].Start.Stamina
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1].Start.Intellect
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1].Start.Spirit
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1].ForOneLevel.Strength
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1].ForOneLevel.Agility
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1].ForOneLevel.Stamina
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1].ForOneLevel.Intellect
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1].ForOneLevel.Spirit
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1].Speed
+    value: 8
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1].RotateSpeedPlayer
+    value: 120
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1]._minCritChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1]._maxCritChance
+    value: 0.75
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1]._critChance
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1]._minDodgeChance
+    value: 0.05
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1]._maxDodgeChance
+    value: 0.75
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1]._dodgeChance
+    value: 0.05
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1]._minArmorValue
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1]._maxArmorValue
+    value: 1000000
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2].CharacterClass
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2].Start.Strength
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2].Start.Agility
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2].Start.Stamina
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2].Start.Intellect
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2].Start.Spirit
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2].ForOneLevel.Strength
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2].ForOneLevel.Agility
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2].ForOneLevel.Stamina
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2].ForOneLevel.Intellect
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2].ForOneLevel.Spirit
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2].Speed
+    value: 8
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2].RotateSpeedPlayer
+    value: 120
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2]._minCritChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2]._maxCritChance
+    value: 0.75
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2]._critChance
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2]._minDodgeChance
+    value: 0.05
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2]._maxDodgeChance
+    value: 0.75
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2]._dodgeChance
+    value: 0.05
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2]._minArmorValue
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2]._maxArmorValue
+    value: 1000000
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3].CharacterClass
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3].Start.Strength
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3].Start.Agility
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3].Start.Stamina
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3].Start.Intellect
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3].Start.Spirit
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3].ForOneLevel.Strength
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3].ForOneLevel.Agility
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3].ForOneLevel.Stamina
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3].ForOneLevel.Intellect
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3].ForOneLevel.Spirit
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3].Speed
+    value: 8
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3].RotateSpeedPlayer
+    value: 120
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3]._minCritChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3]._maxCritChance
+    value: 0.75
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3]._critChance
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3]._minDodgeChance
+    value: 0.05
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3]._maxDodgeChance
+    value: 0.75
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3]._dodgeChance
+    value: 0.05
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3]._minArmorValue
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3]._maxArmorValue
+    value: 1000000
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].CharacterClass
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].CharacterGender
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].CharacterRace
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].CharacterSkin
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].ExperiencePoints
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].CharacterHair
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].CharacterStubble
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].CharacterScar
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.permissionForEquipment.OneHandWeapon
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.permissionForEquipment.TwoOneHandWeapon
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.permissionForEquipment.TwoHandSwordWeapon
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.permissionForEquipment.TwoHandSpearWeapon
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.permissionForEquipment.TwoHandStaffWeapon
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.permissionForEquipment.RangeTwoHandBowWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.permissionForEquipment.RangeTwoHandCrossbowWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.permissionForEquipment.Shield
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.permissionForEquipment.HeavyArmor
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.permissionForEquipment.MediumArmor
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.permissionForEquipment.LightArmor
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.Equipment.Array.size
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.Equipment.Array.data[0]
+    value: 
+    objectReference: {fileID: 2501935005879798763, guid: e81bc64cdac9006478bddb92f2082257,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.Equipment.Array.data[1]
+    value: 
+    objectReference: {fileID: 909907770, guid: 7d780ad223b2abd47bb6036e62c9e1cf, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.Equipment.Array.data[2]
+    value: 
+    objectReference: {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.Inventory.Array.size
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.Inventory.Array.data[0]
+    value: 
+    objectReference: {fileID: 942876046, guid: 7e0e90c4c2a11c54fb69cafd566722f4, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.Inventory.Array.data[1]
+    value: 
+    objectReference: {fileID: 748792839, guid: ac8ebbbddc7c526478cb7c40c98f4bbb, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.Inventory.Array.data[2]
+    value: 
+    objectReference: {fileID: 1286760890, guid: 38c4232aabedea7439f167a9484d0e10,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.Inventory.Array.data[3]
+    value: 
+    objectReference: {fileID: 703089399, guid: c7d4224023b93cc43875289cd6ed4c8e, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.Inventory.Array.data[4]
+    value: 
+    objectReference: {fileID: 1806047006, guid: 6f0b2f8181dd5a148b28ad711f21b5bf,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.Inventory.Array.data[5]
+    value: 
+    objectReference: {fileID: 940942210, guid: 5aa1d16b7f8eb864bb3561d47afc0122, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.Inventory.Array.data[6]
+    value: 
+    objectReference: {fileID: 2083474263, guid: 3c9485b5bcba11e4bbd0e4992a595994,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.Inventory.Array.data[7]
+    value: 
+    objectReference: {fileID: 554395860, guid: f120e1ca134e6c24ba7da0ce3a81f1d6, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.Inventory.Array.data[8]
+    value: 
+    objectReference: {fileID: 464531027, guid: 9b4002abc92e1e143a02221ef60adde9, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Equipment.Inventory.Array.data[9]
+    value: 
+    objectReference: {fileID: 704246847, guid: 51cae927b7c12144cb5fe74c7961ca84, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.Owner
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.activeAbilitiesFromCharacter.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.activeAbilitiesFromCharacter.Array.data[0]._cellType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.activeAbilitiesFromCharacter.Array.data[0]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.activeAbilitiesFromCharacter.Array.data[1]._cellType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.activeAbilitiesFromCharacter.Array.data[1]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.activeAbilitiesFromCharacter.Array.data[2]._cellType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.activeAbilitiesFromCharacter.Array.data[2]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.activeAbilitiesFromCharacter.Array.data[3]._cellType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.activeAbilitiesFromCharacter.Array.data[3]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.size
+    value: 22
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[1]
+    value: 
+    objectReference: {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[2]
+    value: 
+    objectReference: {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[3]
+    value: 
+    objectReference: {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[4]
+    value: 
+    objectReference: {fileID: 11400000, guid: 26f83e4767032f942bda2f94683c7ad0, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[5]
+    value: 
+    objectReference: {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[6]
+    value: 
+    objectReference: {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[7]
+    value: 
+    objectReference: {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[8]
+    value: 
+    objectReference: {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[9]
+    value: 
+    objectReference: {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[10]
+    value: 
+    objectReference: {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[11]
+    value: 
+    objectReference: {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[12]
+    value: 
+    objectReference: {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[13]
+    value: 
+    objectReference: {fileID: 11400000, guid: 67ed2512998236f429015bb328f9daab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[14]
+    value: 
+    objectReference: {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[15]
+    value: 
+    objectReference: {fileID: 11400000, guid: 1de312d7d322ea049885e2e3112549b7, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[16]
+    value: 
+    objectReference: {fileID: 11400000, guid: 4d361cf963ae3c2468f339f912dde518, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[17]
+    value: 
+    objectReference: {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[18]
+    value: 
+    objectReference: {fileID: 11400000, guid: b9ca1e873bab9454caf8b211f20ff7dd, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[19]
+    value: 
+    objectReference: {fileID: 11400000, guid: e3baac4fa23ae8845948a735a95fff72, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[20]
+    value: 
+    objectReference: {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].Abilities.ListOfAbilities.Array.data[21]
+    value: 
+    objectReference: {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].UiBadge
+    value: 
+    objectReference: {fileID: 7179238373803716959, guid: 6e176475ef69b424383f4798114d2236,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].ResourceType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[0].ResourceBaseValue
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].CharacterClass
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].CharacterGender
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].CharacterRace
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].CharacterSkin
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].ExperiencePoints
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].CharacterHair
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].CharacterStubble
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].CharacterScar
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.permissionForEquipment.OneHandWeapon
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.permissionForEquipment.TwoOneHandWeapon
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.permissionForEquipment.TwoHandSwordWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.permissionForEquipment.TwoHandSpearWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.permissionForEquipment.TwoHandStaffWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.permissionForEquipment.RangeTwoHandBowWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.permissionForEquipment.RangeTwoHandCrossbowWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.permissionForEquipment.Shield
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.permissionForEquipment.HeavyArmor
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.permissionForEquipment.MediumArmor
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.permissionForEquipment.LightArmor
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Equipment.Array.size
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Equipment.Array.data[0]
+    value: 
+    objectReference: {fileID: 5957044301814547846, guid: 67ddaab1892295445aee6146fd36fa14,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Equipment.Array.data[1]
+    value: 
+    objectReference: {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Equipment.Array.data[2]
+    value: 
+    objectReference: {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.size
+    value: 25
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[0]
+    value: 
+    objectReference: {fileID: 942876046, guid: 7e0e90c4c2a11c54fb69cafd566722f4, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[1]
+    value: 
+    objectReference: {fileID: 748792839, guid: ac8ebbbddc7c526478cb7c40c98f4bbb, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[2]
+    value: 
+    objectReference: {fileID: 1286760890, guid: 38c4232aabedea7439f167a9484d0e10,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[3]
+    value: 
+    objectReference: {fileID: 703089399, guid: c7d4224023b93cc43875289cd6ed4c8e, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[4]
+    value: 
+    objectReference: {fileID: 1806047006, guid: 6f0b2f8181dd5a148b28ad711f21b5bf,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[5]
+    value: 
+    objectReference: {fileID: 940942210, guid: 5aa1d16b7f8eb864bb3561d47afc0122, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[6]
+    value: 
+    objectReference: {fileID: 2083474263, guid: 3c9485b5bcba11e4bbd0e4992a595994,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[7]
+    value: 
+    objectReference: {fileID: 554395860, guid: f120e1ca134e6c24ba7da0ce3a81f1d6, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[8]
+    value: 
+    objectReference: {fileID: 464531027, guid: 9b4002abc92e1e143a02221ef60adde9, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[9]
+    value: 
+    objectReference: {fileID: 704246847, guid: 51cae927b7c12144cb5fe74c7961ca84, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[10]
+    value: 
+    objectReference: {fileID: 1377199512, guid: 674871547e6e5024eb4913f95ea3e229,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[11]
+    value: 
+    objectReference: {fileID: 640187368, guid: 1cbed63e6a1f615458ee7a12a6c00ba8, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[12]
+    value: 
+    objectReference: {fileID: 1456652596, guid: 3e46d6572a0b4bb4aacc8e703c86a994,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[13]
+    value: 
+    objectReference: {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[14]
+    value: 
+    objectReference: {fileID: 1694903566, guid: 44aefc9589919b843b0e8859ec3f43ed,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[15]
+    value: 
+    objectReference: {fileID: 2146820331, guid: 41d2d5bc8843af447817dc751888129d,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[16]
+    value: 
+    objectReference: {fileID: 2501935005879798763, guid: e81bc64cdac9006478bddb92f2082257,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[17]
+    value: 
+    objectReference: {fileID: 6139579550530295796, guid: 2e4196d23647e8d469f100212fcf9f17,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[18]
+    value: 
+    objectReference: {fileID: 9149584848536994170, guid: a4c1e5e4c99319445b9ddcd99ee4eba9,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[19]
+    value: 
+    objectReference: {fileID: 7479299891347552179, guid: bd4489d7e1298a048927b1fa02c89434,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[20]
+    value: 
+    objectReference: {fileID: 5957044301814547846, guid: 67ddaab1892295445aee6146fd36fa14,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[21]
+    value: 
+    objectReference: {fileID: 1509372999, guid: c820f520a92a56e47ba233c1adcdff59,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[22]
+    value: 
+    objectReference: {fileID: 1219641994701524370, guid: c2662404c8af1ae44a4a4a2f87985c40,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[23]
+    value: 
+    objectReference: {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Equipment.Inventory.Array.data[24]
+    value: 
+    objectReference: {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.Owner
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.activeAbilitiesFromCharacter.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.activeAbilitiesFromCharacter.Array.data[0]._cellType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.activeAbilitiesFromCharacter.Array.data[0]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.activeAbilitiesFromCharacter.Array.data[1]._cellType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.activeAbilitiesFromCharacter.Array.data[1]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.activeAbilitiesFromCharacter.Array.data[2]._cellType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.activeAbilitiesFromCharacter.Array.data[2]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.activeAbilitiesFromCharacter.Array.data[3]._cellType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.activeAbilitiesFromCharacter.Array.data[3]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.size
+    value: 22
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[1]
+    value: 
+    objectReference: {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[2]
+    value: 
+    objectReference: {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[3]
+    value: 
+    objectReference: {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[4]
+    value: 
+    objectReference: {fileID: 11400000, guid: 26f83e4767032f942bda2f94683c7ad0, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[5]
+    value: 
+    objectReference: {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[6]
+    value: 
+    objectReference: {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[7]
+    value: 
+    objectReference: {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[8]
+    value: 
+    objectReference: {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[9]
+    value: 
+    objectReference: {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[10]
+    value: 
+    objectReference: {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[11]
+    value: 
+    objectReference: {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[12]
+    value: 
+    objectReference: {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[13]
+    value: 
+    objectReference: {fileID: 11400000, guid: 67ed2512998236f429015bb328f9daab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[14]
+    value: 
+    objectReference: {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[15]
+    value: 
+    objectReference: {fileID: 11400000, guid: 1de312d7d322ea049885e2e3112549b7, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[16]
+    value: 
+    objectReference: {fileID: 11400000, guid: 4d361cf963ae3c2468f339f912dde518, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[17]
+    value: 
+    objectReference: {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[18]
+    value: 
+    objectReference: {fileID: 11400000, guid: b9ca1e873bab9454caf8b211f20ff7dd, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[19]
+    value: 
+    objectReference: {fileID: 11400000, guid: e3baac4fa23ae8845948a735a95fff72, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[20]
+    value: 
+    objectReference: {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].Abilities.ListOfAbilities.Array.data[21]
+    value: 
+    objectReference: {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].UiBadge
+    value: 
+    objectReference: {fileID: 4157712349263451614, guid: 3ae8e235f392ef14cbdbe6d052fcc930,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].ResourceType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[1].ResourceBaseValue
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].CharacterClass
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].CharacterGender
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].CharacterRace
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].CharacterSkin
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].ExperiencePoints
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].CharacterHair
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].CharacterStubble
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].CharacterScar
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.permissionForEquipment.OneHandWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.permissionForEquipment.TwoOneHandWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.permissionForEquipment.TwoHandSwordWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.permissionForEquipment.TwoHandSpearWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.permissionForEquipment.TwoHandStaffWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.permissionForEquipment.RangeTwoHandBowWeapon
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.permissionForEquipment.RangeTwoHandCrossbowWeapon
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.permissionForEquipment.Shield
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.permissionForEquipment.HeavyArmor
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.permissionForEquipment.MediumArmor
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.permissionForEquipment.LightArmor
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Equipment.Array.size
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Equipment.Array.data[0]
+    value: 
+    objectReference: {fileID: 7479299891347552179, guid: bd4489d7e1298a048927b1fa02c89434,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Equipment.Array.data[1]
+    value: 
+    objectReference: {fileID: 942876046, guid: 7e0e90c4c2a11c54fb69cafd566722f4, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.size
+    value: 25
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[0]
+    value: 
+    objectReference: {fileID: 942876046, guid: 7e0e90c4c2a11c54fb69cafd566722f4, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[1]
+    value: 
+    objectReference: {fileID: 748792839, guid: ac8ebbbddc7c526478cb7c40c98f4bbb, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[2]
+    value: 
+    objectReference: {fileID: 1286760890, guid: 38c4232aabedea7439f167a9484d0e10,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[3]
+    value: 
+    objectReference: {fileID: 703089399, guid: c7d4224023b93cc43875289cd6ed4c8e, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[4]
+    value: 
+    objectReference: {fileID: 1806047006, guid: 6f0b2f8181dd5a148b28ad711f21b5bf,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[5]
+    value: 
+    objectReference: {fileID: 940942210, guid: 5aa1d16b7f8eb864bb3561d47afc0122, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[6]
+    value: 
+    objectReference: {fileID: 2083474263, guid: 3c9485b5bcba11e4bbd0e4992a595994,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[7]
+    value: 
+    objectReference: {fileID: 554395860, guid: f120e1ca134e6c24ba7da0ce3a81f1d6, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[8]
+    value: 
+    objectReference: {fileID: 464531027, guid: 9b4002abc92e1e143a02221ef60adde9, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[9]
+    value: 
+    objectReference: {fileID: 704246847, guid: 51cae927b7c12144cb5fe74c7961ca84, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[10]
+    value: 
+    objectReference: {fileID: 1377199512, guid: 674871547e6e5024eb4913f95ea3e229,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[11]
+    value: 
+    objectReference: {fileID: 640187368, guid: 1cbed63e6a1f615458ee7a12a6c00ba8, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[12]
+    value: 
+    objectReference: {fileID: 1456652596, guid: 3e46d6572a0b4bb4aacc8e703c86a994,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[13]
+    value: 
+    objectReference: {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[14]
+    value: 
+    objectReference: {fileID: 1694903566, guid: 44aefc9589919b843b0e8859ec3f43ed,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[15]
+    value: 
+    objectReference: {fileID: 2146820331, guid: 41d2d5bc8843af447817dc751888129d,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[16]
+    value: 
+    objectReference: {fileID: 2501935005879798763, guid: e81bc64cdac9006478bddb92f2082257,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[17]
+    value: 
+    objectReference: {fileID: 6139579550530295796, guid: 2e4196d23647e8d469f100212fcf9f17,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[18]
+    value: 
+    objectReference: {fileID: 9149584848536994170, guid: a4c1e5e4c99319445b9ddcd99ee4eba9,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[19]
+    value: 
+    objectReference: {fileID: 7479299891347552179, guid: bd4489d7e1298a048927b1fa02c89434,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[20]
+    value: 
+    objectReference: {fileID: 5957044301814547846, guid: 67ddaab1892295445aee6146fd36fa14,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[21]
+    value: 
+    objectReference: {fileID: 1509372999, guid: c820f520a92a56e47ba233c1adcdff59,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[22]
+    value: 
+    objectReference: {fileID: 1219641994701524370, guid: c2662404c8af1ae44a4a4a2f87985c40,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[23]
+    value: 
+    objectReference: {fileID: 942876046, guid: 7e0e90c4c2a11c54fb69cafd566722f4, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Equipment.Inventory.Array.data[24]
+    value: 
+    objectReference: {fileID: 748792839, guid: ac8ebbbddc7c526478cb7c40c98f4bbb, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.Owner
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.activeAbilitiesFromCharacter.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.activeAbilitiesFromCharacter.Array.data[0]._cellType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.activeAbilitiesFromCharacter.Array.data[0]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.activeAbilitiesFromCharacter.Array.data[1]._cellType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.activeAbilitiesFromCharacter.Array.data[1]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.activeAbilitiesFromCharacter.Array.data[2]._cellType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.activeAbilitiesFromCharacter.Array.data[2]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.activeAbilitiesFromCharacter.Array.data[3]._cellType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.activeAbilitiesFromCharacter.Array.data[3]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.size
+    value: 22
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[1]
+    value: 
+    objectReference: {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[2]
+    value: 
+    objectReference: {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[3]
+    value: 
+    objectReference: {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[4]
+    value: 
+    objectReference: {fileID: 11400000, guid: 26f83e4767032f942bda2f94683c7ad0, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[5]
+    value: 
+    objectReference: {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[6]
+    value: 
+    objectReference: {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[7]
+    value: 
+    objectReference: {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[8]
+    value: 
+    objectReference: {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[9]
+    value: 
+    objectReference: {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[10]
+    value: 
+    objectReference: {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[11]
+    value: 
+    objectReference: {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[12]
+    value: 
+    objectReference: {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[13]
+    value: 
+    objectReference: {fileID: 11400000, guid: 67ed2512998236f429015bb328f9daab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[14]
+    value: 
+    objectReference: {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[15]
+    value: 
+    objectReference: {fileID: 11400000, guid: 1de312d7d322ea049885e2e3112549b7, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[16]
+    value: 
+    objectReference: {fileID: 11400000, guid: 4d361cf963ae3c2468f339f912dde518, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[17]
+    value: 
+    objectReference: {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[18]
+    value: 
+    objectReference: {fileID: 11400000, guid: b9ca1e873bab9454caf8b211f20ff7dd, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[19]
+    value: 
+    objectReference: {fileID: 11400000, guid: e3baac4fa23ae8845948a735a95fff72, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[20]
+    value: 
+    objectReference: {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].Abilities.ListOfAbilities.Array.data[21]
+    value: 
+    objectReference: {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].UiBadge
+    value: 
+    objectReference: {fileID: 4319355777000030377, guid: 34c4793f6cdb64447b65c81c9844499b,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].ResourceType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[2].ResourceBaseValue
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].CharacterClass
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].CharacterGender
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].CharacterRace
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].CharacterSkin
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].ExperiencePoints
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].CharacterHair
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].CharacterStubble
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].CharacterScar
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.permissionForEquipment.OneHandWeapon
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.permissionForEquipment.TwoOneHandWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.permissionForEquipment.TwoHandSwordWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.permissionForEquipment.TwoHandSpearWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.permissionForEquipment.TwoHandStaffWeapon
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.permissionForEquipment.RangeTwoHandBowWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.permissionForEquipment.RangeTwoHandCrossbowWeapon
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.permissionForEquipment.Shield
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.permissionForEquipment.HeavyArmor
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.permissionForEquipment.MediumArmor
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.permissionForEquipment.LightArmor
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Equipment.Array.size
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Equipment.Array.data[0]
+    value: 
+    objectReference: {fileID: 1219641994701524370, guid: c2662404c8af1ae44a4a4a2f87985c40,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Equipment.Array.data[1]
+    value: 
+    objectReference: {fileID: 2083474263, guid: 3c9485b5bcba11e4bbd0e4992a595994,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.size
+    value: 27
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[0]
+    value: 
+    objectReference: {fileID: 1219641994701524370, guid: c2662404c8af1ae44a4a4a2f87985c40,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[1]
+    value: 
+    objectReference: {fileID: 942876046, guid: 7e0e90c4c2a11c54fb69cafd566722f4, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[2]
+    value: 
+    objectReference: {fileID: 748792839, guid: ac8ebbbddc7c526478cb7c40c98f4bbb, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[3]
+    value: 
+    objectReference: {fileID: 1286760890, guid: 38c4232aabedea7439f167a9484d0e10,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[4]
+    value: 
+    objectReference: {fileID: 703089399, guid: c7d4224023b93cc43875289cd6ed4c8e, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[5]
+    value: 
+    objectReference: {fileID: 1806047006, guid: 6f0b2f8181dd5a148b28ad711f21b5bf,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[6]
+    value: 
+    objectReference: {fileID: 940942210, guid: 5aa1d16b7f8eb864bb3561d47afc0122, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[7]
+    value: 
+    objectReference: {fileID: 2083474263, guid: 3c9485b5bcba11e4bbd0e4992a595994,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[8]
+    value: 
+    objectReference: {fileID: 554395860, guid: f120e1ca134e6c24ba7da0ce3a81f1d6, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[9]
+    value: 
+    objectReference: {fileID: 464531027, guid: 9b4002abc92e1e143a02221ef60adde9, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[10]
+    value: 
+    objectReference: {fileID: 704246847, guid: 51cae927b7c12144cb5fe74c7961ca84, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[11]
+    value: 
+    objectReference: {fileID: 1377199512, guid: 674871547e6e5024eb4913f95ea3e229,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[12]
+    value: 
+    objectReference: {fileID: 640187368, guid: 1cbed63e6a1f615458ee7a12a6c00ba8, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[13]
+    value: 
+    objectReference: {fileID: 1456652596, guid: 3e46d6572a0b4bb4aacc8e703c86a994,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[14]
+    value: 
+    objectReference: {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[15]
+    value: 
+    objectReference: {fileID: 1694903566, guid: 44aefc9589919b843b0e8859ec3f43ed,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[16]
+    value: 
+    objectReference: {fileID: 2146820331, guid: 41d2d5bc8843af447817dc751888129d,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[17]
+    value: 
+    objectReference: {fileID: 2501935005879798763, guid: e81bc64cdac9006478bddb92f2082257,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[18]
+    value: 
+    objectReference: {fileID: 6139579550530295796, guid: 2e4196d23647e8d469f100212fcf9f17,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[19]
+    value: 
+    objectReference: {fileID: 9149584848536994170, guid: a4c1e5e4c99319445b9ddcd99ee4eba9,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[20]
+    value: 
+    objectReference: {fileID: 7479299891347552179, guid: bd4489d7e1298a048927b1fa02c89434,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[21]
+    value: 
+    objectReference: {fileID: 5957044301814547846, guid: 67ddaab1892295445aee6146fd36fa14,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[22]
+    value: 
+    objectReference: {fileID: 1509372999, guid: c820f520a92a56e47ba233c1adcdff59,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[23]
+    value: 
+    objectReference: {fileID: 1219641994701524370, guid: c2662404c8af1ae44a4a4a2f87985c40,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[24]
+    value: 
+    objectReference: {fileID: 464531027, guid: 9b4002abc92e1e143a02221ef60adde9, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[25]
+    value: 
+    objectReference: {fileID: 554395860, guid: f120e1ca134e6c24ba7da0ce3a81f1d6, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Equipment.Inventory.Array.data[26]
+    value: 
+    objectReference: {fileID: 464531027, guid: 9b4002abc92e1e143a02221ef60adde9, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.Owner
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.activeAbilitiesFromCharacter.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.activeAbilitiesFromCharacter.Array.data[0]._cellType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.activeAbilitiesFromCharacter.Array.data[0]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.activeAbilitiesFromCharacter.Array.data[1]._cellType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.activeAbilitiesFromCharacter.Array.data[1]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.activeAbilitiesFromCharacter.Array.data[2]._cellType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.activeAbilitiesFromCharacter.Array.data[2]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.activeAbilitiesFromCharacter.Array.data[3]._cellType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.activeAbilitiesFromCharacter.Array.data[3]._ability
+    value: 
+    objectReference: {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.size
+    value: 22
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[1]
+    value: 
+    objectReference: {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[2]
+    value: 
+    objectReference: {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[3]
+    value: 
+    objectReference: {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[4]
+    value: 
+    objectReference: {fileID: 11400000, guid: 26f83e4767032f942bda2f94683c7ad0, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[5]
+    value: 
+    objectReference: {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[6]
+    value: 
+    objectReference: {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[7]
+    value: 
+    objectReference: {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[8]
+    value: 
+    objectReference: {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[9]
+    value: 
+    objectReference: {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[10]
+    value: 
+    objectReference: {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[11]
+    value: 
+    objectReference: {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[12]
+    value: 
+    objectReference: {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[13]
+    value: 
+    objectReference: {fileID: 11400000, guid: 67ed2512998236f429015bb328f9daab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[14]
+    value: 
+    objectReference: {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[15]
+    value: 
+    objectReference: {fileID: 11400000, guid: 1de312d7d322ea049885e2e3112549b7, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[16]
+    value: 
+    objectReference: {fileID: 11400000, guid: 4d361cf963ae3c2468f339f912dde518, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[17]
+    value: 
+    objectReference: {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[18]
+    value: 
+    objectReference: {fileID: 11400000, guid: b9ca1e873bab9454caf8b211f20ff7dd, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[19]
+    value: 
+    objectReference: {fileID: 11400000, guid: e3baac4fa23ae8845948a735a95fff72, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[20]
+    value: 
+    objectReference: {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].Abilities.ListOfAbilities.Array.data[21]
+    value: 
+    objectReference: {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].UiBadge
+    value: 
+    objectReference: {fileID: 2264942570204359833, guid: aa4eb9bbd97dfc244936dfdca4f76bf5,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].ResourceType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _presetCharacters.listPresetsSettings.Array.data[3].ResourceBaseValue
+    value: 1
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []
