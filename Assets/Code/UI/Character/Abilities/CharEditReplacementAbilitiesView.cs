@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
+using Code.Extension;
+using Code.UI.DragAndDrop;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 
 namespace Code.UI.Character.Abilities{
-    public sealed class CharEditReplacementAbilitiesView : UiWindow{
+    public sealed class CharEditReplacementAbilitiesView : UiWindow, IHasChanged{
         [SerializeField]
         private Button _close;
         [SerializeField]
@@ -22,6 +24,7 @@ namespace Code.UI.Character.Abilities{
         private Button _detailFromSelectedAbility;
         [SerializeField]
         private Button _improveSelectedAbility;
+        private UnityAction<Transform, Transform> _hasChanged;
         public string TitleSelectedAbility{
             set => _titleSelectedAbility.text = value;
         }
@@ -36,10 +39,11 @@ namespace Code.UI.Character.Abilities{
         public Transform ListOfAbilities => _listOfAbilities;
 
         public void Init(UnityAction detailFromSelectedAbility, UnityAction improveSelectedAbility,
-            UnityAction closeView){
+            UnityAction closeView, UnityAction<Transform, Transform> hasChanged){
             _detailFromSelectedAbility.onClick.AddListener(detailFromSelectedAbility);
             _improveSelectedAbility.onClick.AddListener(improveSelectedAbility);
             _close.onClick.AddListener(closeView);
+            _hasChanged = hasChanged;
         }
 
         ~CharEditReplacementAbilitiesView(){
@@ -53,6 +57,10 @@ namespace Code.UI.Character.Abilities{
             foreach (Transform child in _selectedAbilities) children.Add(child.gameObject);
             foreach (Transform child in _listOfAbilities) children.Add(child.gameObject);
             children.ForEach(Destroy);
+        }
+
+        public void HasChanged(Transform sender, Transform dropped){
+            _hasChanged?.Invoke(sender, dropped);
         }
     }
 }

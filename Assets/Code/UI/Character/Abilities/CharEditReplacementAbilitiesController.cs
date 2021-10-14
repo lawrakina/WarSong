@@ -4,6 +4,7 @@ using Code.Data;
 using Code.Data.Abilities;
 using Code.Extension;
 using Code.Profile;
+using Code.UI.DragAndDrop;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -35,7 +36,7 @@ namespace Code.UI.Character.Abilities{
 
             _profilePlayer.OnCharacterBuildIsComplete += Reload;
 
-            _view.Init(ShowDetailsFromSelectedAbility, ImproveSelectedAbility, CloseView);
+            _view.Init(ShowDetailsFromSelectedAbility, ImproveSelectedAbility, CloseView, HasChanged);
 
             Init(activate);
         }
@@ -43,6 +44,12 @@ namespace Code.UI.Character.Abilities{
         private void Reload(){
             _listOfAbilities.SelectedItem = null;
             Load();
+        }
+
+        private void HasChanged(Transform sender, Transform dropped){
+            var newElement = dropped.GetComponent<SelectableAbilityCell>();
+            var cellSender = sender.GetComponent<SelectableAbilityCell>();
+            _profilePlayer.CurrentPlayer.UnitAbilities.ReplaceActiveAbility(newAbility: newElement.Body.Body, cellSender.CellType);
         }
 
         private void Load(){
@@ -74,11 +81,19 @@ namespace Code.UI.Character.Abilities{
                 x.AbilityCellType == AbilityCellType.Action3), AbilityCellType.Action3, OnObjectSelection);
             _listOfAbilities.SelectedList.Add(actionCell3);
 
+            //add Drag and Drop handler
+            specialCell.gameObject.AddCode<ReplaceSlotHandler>();
+            actionCell1.gameObject.AddCode<ReplaceSlotHandler>();
+            actionCell2.gameObject.AddCode<ReplaceSlotHandler>();
+            actionCell3.gameObject.AddCode<ReplaceSlotHandler>();
+            
             foreach (var cell in _allAbilitiesFromDb){
                 var cellCommand = Object.Instantiate(_cellTemplate, _view.ListOfAbilities, false)
                     .GetComponent<SelectableAbilityCell>();
                 cellCommand.Init(cell, AbilityCellType.IsStock, OnObjectSelection);
                 _listOfAbilities.SelectedList.Add(cellCommand);
+                cellCommand.gameObject.AddCode<DragHandler>();
+                cellCommand.gameObject.AddCode<CanvasGroup>();
             }
 
         }

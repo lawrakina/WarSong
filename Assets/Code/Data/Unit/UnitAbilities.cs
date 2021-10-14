@@ -2,6 +2,7 @@
 using System.Linq;
 using Code.Data.Abilities;
 using Code.Data.Unit.Player;
+using Code.Extension;
 
 
 namespace Code.Data.Unit{
@@ -63,6 +64,10 @@ namespace Code.Data.Unit{
             /// проверка на возможность использовать способность
             /// 
             return true;
+        }
+
+        public void ReplaceActiveAbility(TemplateAbility newAbility, AbilityCellType newElementCellType){
+            Dbg.Warning($"ReplaceActiveAbility.Name:{newAbility.uiInfo.Title}, from CellType:{newElementCellType}");
         }
     }
 }
