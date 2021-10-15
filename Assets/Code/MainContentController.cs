@@ -10,15 +10,12 @@ using UniRx;
 using UnityEngine;
 
 
-namespace Code
-{
-    public sealed class MainContentController : BaseController
-    {
+namespace Code{
+    public sealed class MainContentController : BaseController{
         private readonly Transform _placeForUi;
         private readonly ProfilePlayer _profilePlayer;
 
-        public MainContentController(Transform placeForUi, ProfilePlayer profilePlayer)
-        {
+        public MainContentController(Transform placeForUi, ProfilePlayer profilePlayer){
             _placeForUi = placeForUi;
             _profilePlayer = profilePlayer;
 
@@ -34,9 +31,8 @@ namespace Code
             _profilePlayer.CommandManager.ShowInventoryWindow.Subscribe(_ => { inventoryController.OnActivate(); });
             _profilePlayer.CommandManager.ShowTavernWindow.Subscribe(_ => { tavernController.OnActivate(); });
             _profilePlayer.CommandManager.ShowShopWindow.Subscribe(_ => { shopController.OnActivate(); });
-            
-            switch (_profilePlayer.WindowAfterStart)
-            {
+
+            switch (_profilePlayer.WindowAfterStart){
                 case UiWindowAfterStart.Adventure:
                     adventureController.OnActivate();
                     break;
@@ -71,36 +67,31 @@ namespace Code
             }
         }
 
-        private InventoryController ConfigureInventoryController(Transform placeForUi, ProfilePlayer profilePlayer)
-        {
+        private InventoryController ConfigureInventoryController(Transform placeForUi, ProfilePlayer profilePlayer){
             var controller = new InventoryController(false, placeForUi.transform, profilePlayer);
             AddController(controller, true);
             return controller;
         }
 
-        private ShopController ConfigureShopController(Transform placeForUi, ProfilePlayer profilePlayer)
-        {
-            var controller = new ShopController(false,placeForUi.transform, profilePlayer);
+        private ShopController ConfigureShopController(Transform placeForUi, ProfilePlayer profilePlayer){
+            var controller = new ShopController(false, placeForUi.transform, profilePlayer);
             AddController(controller, true);
             return controller;
         }
 
-        private TavernController ConfigureTavernController(Transform placeForUi, ProfilePlayer profilePlayer)
-        {
+        private TavernController ConfigureTavernController(Transform placeForUi, ProfilePlayer profilePlayer){
             var controller = new TavernController(false, placeForUi.transform, profilePlayer);
             AddController(controller, true);
             return controller;
         }
 
-        private CharEditRootController ConfigureCharacterController(Transform placeForUi, ProfilePlayer profilePlayer)
-        {
+        private CharEditRootController ConfigureCharacterController(Transform placeForUi, ProfilePlayer profilePlayer){
             var controller = new CharEditRootController(false, placeForUi.transform, profilePlayer);
             AddController(controller, true);
             return controller;
         }
 
-        private AdventureController ConfigureAdventureController(Transform placeForUi, ProfilePlayer profilePlayer)
-        {
+        private AdventureController ConfigureAdventureController(Transform placeForUi, ProfilePlayer profilePlayer){
             var controller = new AdventureController(false, placeForUi.transform, profilePlayer);
             AddController(controller, true);
             return controller;

@@ -34,25 +34,29 @@ namespace Code.UI.Character{
             }
         }
 
-        public void Init(List<CellCommand<EquipCell>> listOfEquip, List<CellCommand<AbilityCell>> listOfAbilities, object test /*List<CellCommand<TalentCell>> listOfTalents*/){
+        public void Init(List<CellCommand<EquipCell>> listOfEquip, List<CellCommand<AbilityCell>> listOfAbilities,
+            object test /*List<CellCommand<TalentCell>> listOfTalents*/){
             //Equipment
             foreach (var equip in listOfEquip){
                 foreach (var targetEquipCell in equip.Body.TargetEquipCells){
                     foreach (var cellEquipClickHandler in _cells){
-                        if (cellEquipClickHandler.TargetTypesOfEquip.Any(x => x == targetEquipCell)){
+                        if (cellEquipClickHandler.TargetTypesOfEquip.Any(x =>
+                            (x == targetEquipCell) && (!cellEquipClickHandler.IsInitialized))){
                             cellEquipClickHandler.Init(equip.Body, equip.Command);
                             break;
                         }
                     }
                 }
             }
+
             //Abilities
             foreach (var ability in listOfAbilities){
                 foreach (var cellAbilityClickHandler in _abilities){
-                    if(cellAbilityClickHandler.TargetTypesOfAbility == ability.Body.AbilityCellType)
+                    if (cellAbilityClickHandler.TargetTypesOfAbility == ability.Body.AbilityCellType)
                         cellAbilityClickHandler.Init(ability.Body, ability.Command);
                 }
             }
+
             //Talents
             ///////
         }
