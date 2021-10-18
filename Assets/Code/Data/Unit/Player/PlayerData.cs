@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Code.Unit.Data;
 using UnityEngine;
 
 
@@ -12,6 +13,8 @@ namespace Code.Data.Unit.Player
 
         [SerializeField]
         public int _numberActiveCharacter;
+
+        public AttackCharacteristicCoeffsData AttackCharacteristicCoeffsData;
 
         public CharacterSettings ActiveCharacter => ListCharacters[_numberActiveCharacter];
     }

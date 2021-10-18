@@ -46,3 +46,5 @@ MonoBehaviour:
       - {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
       - {fileID: 909907770, guid: 7d780ad223b2abd47bb6036e62c9e1cf, type: 3}
   _numberActiveCharacter: 0
+  AttackCharacteristicCoeffsData: {fileID: 11400000, guid: f642a4c4fe2d4a54489820d67b2b4bd5,
+    type: 2}

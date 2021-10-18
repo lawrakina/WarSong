@@ -127,7 +127,7 @@ namespace Code.Profile
         private void OnRebuildCharacter(CharacterSettings value)
         {
             Dbg.Log($"RebuildCharacter");
-            CharacterFabric.RebuildCharacter(CurrentPlayer, value);
+            CharacterFabric.RebuildCharacter(CurrentPlayer, value, _dataSettings.PlayerData.AttackCharacteristicCoeffsData);
             InfoAboutCurrentPlayer.Value = new InfoAboutCharacter(CurrentPlayer);
             OnCharacterBuildIsComplete?.Invoke();
 #if UNITY_EDITOR
