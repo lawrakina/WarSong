@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Code.Data;
 using Code.Extension;
 using Code.Fight;
 using Code.Profile;
@@ -15,6 +14,7 @@ namespace Code.UI.Fight{
         private readonly ProfilePlayer _profilePlayer;
         private FightView _fightView;
         private InputControlModel _inputModel;
+        private PlayerStatsModel _playerModel;
         private List<Ability> _abilities = new List<Ability>();
 
         public UiFightController(Transform placeForUi, ProfilePlayer profilePlayer){
@@ -22,12 +22,14 @@ namespace Code.UI.Fight{
             _profilePlayer = profilePlayer;
 
             _inputModel = _profilePlayer.Models.InOutControlFightModel.InputControl;
+            _playerModel = _profilePlayer.Models.InOutControlFightModel.PlayerStats;
             var inputSettings = _profilePlayer.Settings.FightInputData;
 
             _fightView =
                 ResourceLoader.InstantiateObject(_profilePlayer.Settings.UiViews.FightView, _placeForUi, false);
             AddGameObjects(_fightView.GameObject);
-
+            
+            //Abilities
             foreach (var abilityCell in _profilePlayer.CurrentPlayer.UnitAbilities.ActiveAbilities){
                 var ability = new Ability(abilityCell);
                 var abilityButton =
@@ -39,6 +41,11 @@ namespace Code.UI.Fight{
                 }
                 _abilities.Add(ability);
             }
+
+            _playerModel.ChangeMaxHp += f => { _fightView.PlayerMaxHp = f;};
+            _playerModel.ChangeCurrentHp += f => { _fightView.PlayerCurrentHp = f;};
+            _playerModel.ChangeMaxResource += f => { _fightView.PlayerMaxResource = f;};
+            _playerModel.ChangeCurrentResource += f => { _fightView.PlayerCurrentResource = f;};
 
             _profilePlayer.Models.FightModel.FightState.Subscribe(ShowUiControls).AddTo(_subscriptions);
 
