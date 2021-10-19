@@ -1,5 +1,6 @@
 ﻿using Code.Data.Unit;
 using Code.Profile;
+using Code.Unit.Data;
 
 
 namespace Code.Unit.Factories
@@ -41,7 +42,7 @@ namespace Code.Unit.Factories
             return _playerFactory.CreatePlayer(item);
         }
 
-        public void RebuildCharacter(IPlayerView character, CharacterSettings value)
+        public void RebuildCharacter(IPlayerView character, CharacterSettings value, AttackCharacteristicCoeffsData attackCharacteristicCoeffsData)
         {
             character = _playerFactory.RebuildModel(character, value, _classesFactory.GetSettingsByRace(value.CharacterRace));
             character.UnitLevel = _levelFactory.GenerateLevel(character.UnitLevel, value);
@@ -55,6 +56,7 @@ namespace Code.Unit.Factories
             character.UnitCharacteristics = _characteristicsFactory.GenerateCharacteristics(character.UnitCharacteristics, character.UnitEquipment, character.UnitLevel, value);
             character.UnitResource = _resourceFactory.GenerateResource(character.UnitResource, character.UnitCharacteristics, character.UnitLevel, value);
             character.UnitHealth = _healthFactory.GenerateHealth(character.UnitHealth, character.UnitCharacteristics);
+            character.UnitBattle = new UnitBattle(character.UnitCharacteristics, attackCharacteristicCoeffsData);
         }
     }
 }

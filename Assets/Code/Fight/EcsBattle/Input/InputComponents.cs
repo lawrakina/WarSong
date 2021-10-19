@@ -33,4 +33,7 @@ namespace Code.Fight.EcsBattle.Input
     
     public struct StartAttackComponent { }
     public struct StartJumpComponent { }
+
+    public struct StartKnockbackAbilityComponent {
+    }
 }

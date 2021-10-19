@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ListCharacters: []
   _numberActiveCharacter: 0
+  AttackCharacteristicCoeffsData: {fileID: 11400000, guid: f642a4c4fe2d4a54489820d67b2b4bd5,
+    type: 2}

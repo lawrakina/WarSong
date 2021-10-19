@@ -28,10 +28,18 @@ namespace Code.Fight.EcsBattle
         public float _currentTime;
         public float _maxTime;
     }
+    public struct AwaitTimerForKnockbackAbilityComponent
+    {
+        public float _estimatedTime;
+    }
     public struct TimerTickForGetPermissionToAttackFromMainWeaponComponent
     {
         public float _currentTime;
         public float _maxTime;
+    }
+    
+    public struct TimerTickForGetPermissionToKnockbackAbilityComponent {
+        public float _estimatedTime;
     }
     public struct PermissionForAttackFromMainWeaponAllowedComponent
     {
@@ -59,10 +67,14 @@ namespace Code.Fight.EcsBattle
     {
     }
 
+    public struct PermissionForKnockbackAbilityAllowedComponent {
+    }
+
     public struct WeaponBulletComponent
     {
         public WeaponBullet _value;
         public InfoCollision _collision;
+        public float _bulletTargetSqrtDistance;
     }
     public struct DisableComponent
     {

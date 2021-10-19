@@ -26,6 +26,7 @@ namespace Code.Unit.Factories
                     x => x.CharacterClass == value.CharacterClass);
                 characteristics.Start = fromDataBase.Start;
                 characteristics.ForOneLevel = fromDataBase.ForOneLevel;
+                characteristics.CharacterClass = fromDataBase.CharacterClass;
             }
             characteristics.Values.Agility = equipment.FullAgility + characteristics.Start.Agility +
                                              characteristics.ForOneLevel.Agility * level.CurrentLevel;

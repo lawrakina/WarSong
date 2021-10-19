@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Code.Data;
 using Code.Data.Unit;
+using Code.Fight.EcsBattle.Unit.Attack;
 using Code.Unit;
 using Guirao.UltimateTextDamage;
 using Leopotam.Ecs;
@@ -130,6 +131,9 @@ namespace Code.Fight.EcsBattle
     {
     }
 
+    public struct NeedKnockbackAbilityComponent {
+    }
+
     public struct NeedStartAnimationAttackFromSecondWeaponComponent
     {
         public float _currentTimeForLag;
@@ -154,4 +158,15 @@ namespace Code.Fight.EcsBattle
     public struct FinalAttackFromSecondWeaponComponent
     {
     }
+    
+    public struct WaitingForAttackEffectComponent {
+        public List<AttackEffect> AttackEffects;
+    }
+
+    public struct ReadyForAttackEffectComponent {
+    }
+
+    public struct FinalKnockbackAbilityFromMainWeaponComponent {
+    }
+
 }

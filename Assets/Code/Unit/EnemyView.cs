@@ -20,6 +20,8 @@ namespace Code.Unit
         public UnitResource UnitResource { get; set; }
         public UnitLevel UnitLevel { get; set; }
         public UnitCharacteristics UnitCharacteristics { get; set; }
+        public UnitBattle UnitBattle { get; set; }
+
         // public UnitEquipmentOld unitEquipmentOld { get; set; }
         public HealthBarView HealthBar { get; set; }
 

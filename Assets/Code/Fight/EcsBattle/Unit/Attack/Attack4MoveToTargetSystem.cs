@@ -1,4 +1,5 @@
-﻿using Leopotam.Ecs;
+﻿using Code.Fight.EcsBattle.Input;
+using Leopotam.Ecs;
 using UnityEngine;
 
 
@@ -44,9 +45,15 @@ namespace Code.Fight.EcsBattle.Unit.Attack
                         entity.Get<NeedStartAnimationAttackFromSecondWeaponComponent>()._currentTimeForLag = 0.0f;
                         entity.Get<NeedStartAnimationAttackFromSecondWeaponComponent>()._maxTimeForLag = entity.Get<BattleInfoSecondWeaponComponent>()._lagBeforeAttack;
                     }
+                    if (entity.Has<StartKnockbackAbilityComponent>() && entity.Has<PermissionForKnockbackAbilityAllowedComponent>()) {
+                        entity.Del<PermissionForKnockbackAbilityAllowedComponent>();
+                        entity.Del<StartKnockbackAbilityComponent>();
+                        entity.Get<NeedKnockbackAbilityComponent>();
+                    }
                     entity.Del<NeedMoveToTargetAndAttackComponent>();
                 }
             }
         }
     }
+
 }
