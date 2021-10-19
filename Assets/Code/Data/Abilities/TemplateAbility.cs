@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 
 
-namespace Code.Data.Abilities
-{
-    public class TemplateAbility : ScriptableObject
-    {
-        public ItemConfig itemConfig;
-        
+namespace Code.Data.Abilities{
+    [CreateAssetMenu(fileName = nameof(TemplateAbility), menuName = "Abilities/" + nameof(TemplateAbility))]
+    public class TemplateAbility : ScriptableObject{
+        public UiInfo uiInfo;
+
         [Tooltip("Visual representation of the bullet")]
         public GameObject view;
 
@@ -27,7 +26,7 @@ namespace Code.Data.Abilities
         [Tooltip("Duration of the action")]
         [Range(0.0f, 24 * 60 * 60.0f)]
         public float timeOfAction = 0.0f;
-        
+
         [Tooltip("Speed of approach to the target. -1 momentum")]
         [Range(-1.0f, 24 * 60 * 60.0f)]
         public float bulletSpeed = 0.0f;
@@ -35,18 +34,18 @@ namespace Code.Data.Abilities
         [Tooltip("Numerical effect on the parameter")]
         [Range(0.0f, 100000.0f)]
         public float value = 0.0f;
-        
+
         [Tooltip("Ability full cooldown time")]
         [Range(0.0f, 60.0f)]
         public float cooldown = 0.0f;
-        
+
         [Tooltip("Add the attack value from the weapon multiplied by the coefficient\n300% = 3.0, 0 = Disabled")]
         [Range(0.0f, 10.0f)]
         public float weaponValueModifier = 0.0f;
 
         [Tooltip("Required resource")]
         public ResourceEnum requiredResource;
-        
+
         [Tooltip("Requires resource units")]
         [Range(0.0f, 10000.0f)]
         public float costResource = 10.0f;
@@ -54,24 +53,14 @@ namespace Code.Data.Abilities
         [Tooltip("Positive(x*1) or Negative(x*-1) effect")]
         public EffectValueType effectValueType = EffectValueType.Negative;
 
-        [Tooltip("Target class")]//\nNone = permission for all")]
+        [Tooltip("Target class")] //\nNone = permission for all")]
         public CharacterClass requiredClass;
-        
+
         [Tooltip("Minimum required unit level")]
         public int requiredLevel = 0;
-        
-        public int Id => itemConfig.id;
-    
     }
-    public class ItemConfig : ScriptableObject
-    {
-        public int id;
-        public string title;
-        public string description;
-        public Sprite icon;
-    }
-    public enum AbilityTargetType
-    {
+
+    public enum AbilityTargetType{
         None,
         OnlyMe,
         OnlyTargetEnemy,
@@ -80,8 +69,8 @@ namespace Code.Data.Abilities
         OnlyFriendlyWithMe,
         OnlyEnemies
     }
-    public enum ChangeableCharacteristicType
-    {
+
+    public enum ChangeableCharacteristicType{
         HealthPoints,
         RagePoints,
         EnergyPoints,
@@ -94,8 +83,8 @@ namespace Code.Data.Abilities
         IntellectPoints,
         SpiritPoints
     }
-    public enum EffectValueType
-    {
+
+    public enum EffectValueType{
         Negative = -1,
         Positive = 1
     }

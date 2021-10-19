@@ -5,6 +5,7 @@ using Code.GameCamera;
 using Code.Loading;
 using Code.Profile;
 using Code.Profile.Models;
+using Code.UI.Fight;
 using UniRx;
 using UnityEngine;
 
@@ -16,7 +17,6 @@ namespace Code.Fight
         private readonly Controllers _controllers;
         private readonly Transform _placeForUi;
         private readonly ProfilePlayer _profilePlayer;
-        private LoadingView _loadingView;
         private FightDungeonModel _model;
 
         private BuildStatusCheckerController _buildStatusCheckerController;
@@ -26,7 +26,7 @@ namespace Code.Fight
         private EnemyFightController _enemyFightController;
         private CameraController _cameraController;
         private EcsBattleController _ecsBattleController;
-        private InputController _inputController;
+        private UiFightController _uiFightController;
 
         public FightController(Controllers controllers, Transform placeForUi, ProfilePlayer profilePlayer,
             CameraController cameraController)
@@ -74,9 +74,9 @@ namespace Code.Fight
             AddController(_enemyFightController);
             _buildStatusCheckerController.AddToQueue(_enemyFightController);
 
-            _inputController = new InputController(_placeForUi, _profilePlayer);
-            _controllers.Add(_inputController);
-            AddController(_inputController);
+            _uiFightController = new UiFightController(_placeForUi, _profilePlayer);
+            _controllers.Add(_uiFightController);
+            AddController(_uiFightController);
 
             _ecsBattleController = new EcsBattleController(_controllers, _profilePlayer);
             _controllers.Add(_ecsBattleController);

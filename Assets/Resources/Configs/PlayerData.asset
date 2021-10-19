@@ -12,39 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f06c46282a4905beaf44c25204526e, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  ListCharacters:
-  - CharacterClass: 1
-    CharacterGender: 1
-    CharacterRace: 1
-    CharacterSkin: 0
-    ExperiencePoints: 1
-    CharacterHair: 0
-    CharacterStubble: 0
-    CharacterScar: 0
-    Equipment:
-      permissionForEquipment:
-        OneHandWeapon: 1
-        TwoOneHandWeapon: 1
-        TwoHandSwordWeapon: 1
-        TwoHandSpearWeapon: 1
-        TwoHandStaffWeapon: 1
-        RangeTwoHandBowWeapon: 0
-        RangeTwoHandCrossbowWeapon: 0
-        Shield: 1
-        HeavyArmor: 1
-        MediumArmor: 1
-        LightArmor: 1
-      Equipment:
-      - {fileID: 2501935005879798763, guid: e81bc64cdac9006478bddb92f2082257, type: 3}
-      - {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
-      - {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
-      Inventory:
-      - {fileID: 942876046, guid: 7e0e90c4c2a11c54fb69cafd566722f4, type: 3}
-      - {fileID: 703089399, guid: c7d4224023b93cc43875289cd6ed4c8e, type: 3}
-      - {fileID: 1806047006, guid: 6f0b2f8181dd5a148b28ad711f21b5bf, type: 3}
-      - {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
-      - {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
-      - {fileID: 909907770, guid: 7d780ad223b2abd47bb6036e62c9e1cf, type: 3}
+  ListCharacters: []
   _numberActiveCharacter: 0
   AttackCharacteristicCoeffsData: {fileID: 11400000, guid: f642a4c4fe2d4a54489820d67b2b4bd5,
     type: 2}

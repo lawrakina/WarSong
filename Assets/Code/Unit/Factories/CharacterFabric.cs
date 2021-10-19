@@ -17,11 +17,12 @@ namespace Code.Unit.Factories
         private readonly ReputationFactory _reputationFactory;
         private readonly EquipmentFactory _equipmentFactory;
         private readonly InventoryFactory _inventoryFactory;
+        private readonly AbilitiesFactory _abilitiesFactory;
 
         public CharacterFabric(IPlayerFactory playerFactory, CharacterClassesFactory classesFactory,
             LevelFactory levelFactory, ResourceFactory resourceFactory, CharacteristicsFactory characteristicsFactory,
             HealthFactory healthFactory, VisionFactory visionFactory, ReputationFactory reputationFactory,
-            EquipmentFactory equipmentFactory, InventoryFactory inventoryFactory)
+            EquipmentFactory equipmentFactory, InventoryFactory inventoryFactory, AbilitiesFactory abilitiesFactory)
         {
             _playerFactory = playerFactory;
             _classesFactory = classesFactory;
@@ -33,6 +34,7 @@ namespace Code.Unit.Factories
             _reputationFactory = reputationFactory;
             _equipmentFactory = equipmentFactory;
             _inventoryFactory = inventoryFactory;
+            _abilitiesFactory = abilitiesFactory;
         }
 
         public IPlayerView CreatePlayer(CharacterSettings item)
@@ -46,6 +48,7 @@ namespace Code.Unit.Factories
             character.UnitLevel = _levelFactory.GenerateLevel(character.UnitLevel, value);
             character.UnitEquipment = _equipmentFactory.GenerateEquip(character, value, character.UnitLevel.CurrentLevel);
             character.UnitInventory = _inventoryFactory.GenerateInventory(character, value);
+            character.UnitAbilities = _abilitiesFactory.GenerateAbilities(value, character.UnitLevel.CurrentLevel);
             // character.AnimatorParameters.WeaponType = character.UnitEquipment.GetWeaponType();
             character.UnitVision = _visionFactory.GenerateVision();
             character.UnitReputation = _reputationFactory.GeneratePlayerReputation();

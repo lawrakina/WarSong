@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Code.Data.Abilities;
+using UnityEngine;
 
 
 namespace Code.Data.Unit.Player
@@ -23,7 +24,11 @@ namespace Code.Data.Unit.Player
         public float RotateSpeed = 120.0f;
         [SerializeField]
         public UnitVision UnitVision;
-
+        
+        [Header("Class abilities")]
+        [SerializeField]
+        public ClassAbilities[] _classAbilities;
+        
         [Header("Race characteristics")]
         [SerializeField]
         public RaceCharacteristics[] _racesStartCharacteristics;

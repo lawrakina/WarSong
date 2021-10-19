@@ -12,12 +12,9 @@ namespace Code.Data
         private Vector3 _maxOffsetForClick = new Vector3(0.2f, 0.2f, 0.2f);
         [SerializeField]
         private Vector3 _maxOffsetForMovement = new Vector3(0.2f, 0.2f, 0.2f);
-        [SerializeField]
-        private UltimateJoystick _joystick;
-        
+
         public float MaxPressTimeForClickButton => _maxPressTimeForClickButton;
         public Vector3 MaxOffsetForClick => _maxOffsetForClick;
         public Vector3 MaxOffsetForMovement => _maxOffsetForMovement;
-        public UltimateJoystick Joystick => _joystick;
     }
 }

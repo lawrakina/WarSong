@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Code.UI.Fight;
 using UnityEngine;
 
 
@@ -17,5 +19,6 @@ namespace Code.Profile.Models
 
         public Vector3 MaxOffsetForClick { get; set; }
         public Vector3 MaxOffsetForMovement { get; set; }
+        public Queue<Ability> QueueOfAbilities = new Queue<Ability>();
     }
 }

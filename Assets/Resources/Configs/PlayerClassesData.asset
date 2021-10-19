@@ -23,6 +23,139 @@ MonoBehaviour:
     distanceDetection: 15
     maxCountTargets: 5
     offsetHead: {x: 0, y: 1.5, z: 0}
+  _classAbilities:
+  - Owner: 1
+    activeAbilitiesFromCharacter:
+    - _cellType: 0
+      _ability: {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
+    - _cellType: 1
+      _ability: {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+    - _cellType: 2
+      _ability: {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+    - _cellType: 3
+      _ability: {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+    ListOfAbilities:
+    - {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+    - {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+    - {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+    - {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+    - {fileID: 11400000, guid: 26f83e4767032f942bda2f94683c7ad0, type: 2}
+    - {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+    - {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+    - {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+    - {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+    - {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+    - {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+    - {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+    - {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+    - {fileID: 11400000, guid: 67ed2512998236f429015bb328f9daab, type: 2}
+    - {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+    - {fileID: 11400000, guid: 1de312d7d322ea049885e2e3112549b7, type: 2}
+    - {fileID: 11400000, guid: 4d361cf963ae3c2468f339f912dde518, type: 2}
+    - {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+    - {fileID: 11400000, guid: b9ca1e873bab9454caf8b211f20ff7dd, type: 2}
+    - {fileID: 11400000, guid: e3baac4fa23ae8845948a735a95fff72, type: 2}
+    - {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+    - {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
+  - Owner: 2
+    activeAbilitiesFromCharacter:
+    - _cellType: 0
+      _ability: {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+    - _cellType: 1
+      _ability: {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+    - _cellType: 2
+      _ability: {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+    - _cellType: 3
+      _ability: {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+    ListOfAbilities:
+    - {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+    - {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+    - {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+    - {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+    - {fileID: 11400000, guid: 26f83e4767032f942bda2f94683c7ad0, type: 2}
+    - {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+    - {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+    - {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+    - {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+    - {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+    - {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+    - {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+    - {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+    - {fileID: 11400000, guid: 67ed2512998236f429015bb328f9daab, type: 2}
+    - {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+    - {fileID: 11400000, guid: 1de312d7d322ea049885e2e3112549b7, type: 2}
+    - {fileID: 11400000, guid: 4d361cf963ae3c2468f339f912dde518, type: 2}
+    - {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+    - {fileID: 11400000, guid: b9ca1e873bab9454caf8b211f20ff7dd, type: 2}
+    - {fileID: 11400000, guid: e3baac4fa23ae8845948a735a95fff72, type: 2}
+    - {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+    - {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
+  - Owner: 3
+    activeAbilitiesFromCharacter:
+    - _cellType: 0
+      _ability: {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+    - _cellType: 1
+      _ability: {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+    - _cellType: 2
+      _ability: {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+    - _cellType: 3
+      _ability: {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+    ListOfAbilities:
+    - {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+    - {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+    - {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+    - {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+    - {fileID: 11400000, guid: 26f83e4767032f942bda2f94683c7ad0, type: 2}
+    - {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+    - {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+    - {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+    - {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+    - {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+    - {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+    - {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+    - {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+    - {fileID: 11400000, guid: 67ed2512998236f429015bb328f9daab, type: 2}
+    - {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+    - {fileID: 11400000, guid: 1de312d7d322ea049885e2e3112549b7, type: 2}
+    - {fileID: 11400000, guid: 4d361cf963ae3c2468f339f912dde518, type: 2}
+    - {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+    - {fileID: 11400000, guid: b9ca1e873bab9454caf8b211f20ff7dd, type: 2}
+    - {fileID: 11400000, guid: e3baac4fa23ae8845948a735a95fff72, type: 2}
+    - {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+    - {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
+  - Owner: 4
+    activeAbilitiesFromCharacter:
+    - _cellType: 0
+      _ability: {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+    - _cellType: 1
+      _ability: {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+    - _cellType: 2
+      _ability: {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+    - _cellType: 3
+      _ability: {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+    ListOfAbilities:
+    - {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+    - {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+    - {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+    - {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+    - {fileID: 11400000, guid: 26f83e4767032f942bda2f94683c7ad0, type: 2}
+    - {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+    - {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+    - {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+    - {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+    - {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+    - {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+    - {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+    - {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+    - {fileID: 11400000, guid: 67ed2512998236f429015bb328f9daab, type: 2}
+    - {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+    - {fileID: 11400000, guid: 1de312d7d322ea049885e2e3112549b7, type: 2}
+    - {fileID: 11400000, guid: 4d361cf963ae3c2468f339f912dde518, type: 2}
+    - {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+    - {fileID: 11400000, guid: b9ca1e873bab9454caf8b211f20ff7dd, type: 2}
+    - {fileID: 11400000, guid: e3baac4fa23ae8845948a735a95fff72, type: 2}
+    - {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+    - {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
   _racesStartCharacteristics:
   - _race: 0
     _scaleModelByRace: {x: 1, y: 1, z: 1}
@@ -128,7 +261,7 @@ MonoBehaviour:
   _presetCharacters:
     listPresetsSettings:
     - CharacterClass: 1
-      CharacterGender: 0
+      CharacterGender: 1
       CharacterRace: 3
       CharacterSkin: 0
       ExperiencePoints: 1
@@ -163,6 +296,40 @@ MonoBehaviour:
         - {fileID: 554395860, guid: f120e1ca134e6c24ba7da0ce3a81f1d6, type: 3}
         - {fileID: 464531027, guid: 9b4002abc92e1e143a02221ef60adde9, type: 3}
         - {fileID: 704246847, guid: 51cae927b7c12144cb5fe74c7961ca84, type: 3}
+      Abilities:
+        Owner: 1
+        activeAbilitiesFromCharacter:
+        - _cellType: 0
+          _ability: {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
+        - _cellType: 1
+          _ability: {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+        - _cellType: 2
+          _ability: {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+        - _cellType: 3
+          _ability: {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+        ListOfAbilities:
+        - {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+        - {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+        - {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+        - {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+        - {fileID: 11400000, guid: 26f83e4767032f942bda2f94683c7ad0, type: 2}
+        - {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+        - {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+        - {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+        - {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+        - {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+        - {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+        - {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+        - {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+        - {fileID: 11400000, guid: 67ed2512998236f429015bb328f9daab, type: 2}
+        - {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+        - {fileID: 11400000, guid: 1de312d7d322ea049885e2e3112549b7, type: 2}
+        - {fileID: 11400000, guid: 4d361cf963ae3c2468f339f912dde518, type: 2}
+        - {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+        - {fileID: 11400000, guid: b9ca1e873bab9454caf8b211f20ff7dd, type: 2}
+        - {fileID: 11400000, guid: e3baac4fa23ae8845948a735a95fff72, type: 2}
+        - {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+        - {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
       UiBadge: {fileID: 7179238373803716959, guid: 6e176475ef69b424383f4798114d2236,
         type: 3}
       ResourceType: 0
@@ -218,6 +385,40 @@ MonoBehaviour:
         - {fileID: 1219641994701524370, guid: c2662404c8af1ae44a4a4a2f87985c40, type: 3}
         - {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
         - {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+      Abilities:
+        Owner: 2
+        activeAbilitiesFromCharacter:
+        - _cellType: 0
+          _ability: {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+        - _cellType: 1
+          _ability: {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+        - _cellType: 2
+          _ability: {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+        - _cellType: 3
+          _ability: {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+        ListOfAbilities:
+        - {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+        - {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+        - {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+        - {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+        - {fileID: 11400000, guid: 26f83e4767032f942bda2f94683c7ad0, type: 2}
+        - {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+        - {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+        - {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+        - {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+        - {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+        - {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+        - {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+        - {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+        - {fileID: 11400000, guid: 67ed2512998236f429015bb328f9daab, type: 2}
+        - {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+        - {fileID: 11400000, guid: 1de312d7d322ea049885e2e3112549b7, type: 2}
+        - {fileID: 11400000, guid: 4d361cf963ae3c2468f339f912dde518, type: 2}
+        - {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+        - {fileID: 11400000, guid: b9ca1e873bab9454caf8b211f20ff7dd, type: 2}
+        - {fileID: 11400000, guid: e3baac4fa23ae8845948a735a95fff72, type: 2}
+        - {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+        - {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
       UiBadge: {fileID: 4157712349263451614, guid: 3ae8e235f392ef14cbdbe6d052fcc930,
         type: 3}
       ResourceType: 1
@@ -272,6 +473,40 @@ MonoBehaviour:
         - {fileID: 1219641994701524370, guid: c2662404c8af1ae44a4a4a2f87985c40, type: 3}
         - {fileID: 942876046, guid: 7e0e90c4c2a11c54fb69cafd566722f4, type: 3}
         - {fileID: 748792839, guid: ac8ebbbddc7c526478cb7c40c98f4bbb, type: 3}
+      Abilities:
+        Owner: 3
+        activeAbilitiesFromCharacter:
+        - _cellType: 0
+          _ability: {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+        - _cellType: 1
+          _ability: {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+        - _cellType: 2
+          _ability: {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+        - _cellType: 3
+          _ability: {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+        ListOfAbilities:
+        - {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+        - {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+        - {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+        - {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+        - {fileID: 11400000, guid: 26f83e4767032f942bda2f94683c7ad0, type: 2}
+        - {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+        - {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+        - {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+        - {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+        - {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+        - {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+        - {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+        - {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+        - {fileID: 11400000, guid: 67ed2512998236f429015bb328f9daab, type: 2}
+        - {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+        - {fileID: 11400000, guid: 1de312d7d322ea049885e2e3112549b7, type: 2}
+        - {fileID: 11400000, guid: 4d361cf963ae3c2468f339f912dde518, type: 2}
+        - {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+        - {fileID: 11400000, guid: b9ca1e873bab9454caf8b211f20ff7dd, type: 2}
+        - {fileID: 11400000, guid: e3baac4fa23ae8845948a735a95fff72, type: 2}
+        - {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+        - {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
       UiBadge: {fileID: 4319355777000030377, guid: 34c4793f6cdb64447b65c81c9844499b,
         type: 3}
       ResourceType: 2
@@ -328,6 +563,40 @@ MonoBehaviour:
         - {fileID: 464531027, guid: 9b4002abc92e1e143a02221ef60adde9, type: 3}
         - {fileID: 554395860, guid: f120e1ca134e6c24ba7da0ce3a81f1d6, type: 3}
         - {fileID: 464531027, guid: 9b4002abc92e1e143a02221ef60adde9, type: 3}
+      Abilities:
+        Owner: 4
+        activeAbilitiesFromCharacter:
+        - _cellType: 0
+          _ability: {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+        - _cellType: 1
+          _ability: {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+        - _cellType: 2
+          _ability: {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+        - _cellType: 3
+          _ability: {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+        ListOfAbilities:
+        - {fileID: 11400000, guid: fc1936d82b00d584c918d592b94b4de3, type: 2}
+        - {fileID: 11400000, guid: 78a4f454d92c9a64d923e00c1e8bcf04, type: 2}
+        - {fileID: 11400000, guid: 30284a05a486aba43af570b72b2a769e, type: 2}
+        - {fileID: 11400000, guid: 92b1eaa6be0891a48817532c640a65c8, type: 2}
+        - {fileID: 11400000, guid: 26f83e4767032f942bda2f94683c7ad0, type: 2}
+        - {fileID: 11400000, guid: e0f6493c7e8d53f4bb9b2e80f041de38, type: 2}
+        - {fileID: 11400000, guid: 3fca2d9171cebd342bd96962cc868923, type: 2}
+        - {fileID: 11400000, guid: 826b8b45d5cbd1e4a84dcfc86c58cff8, type: 2}
+        - {fileID: 11400000, guid: 28a152ee99b4ec24a9759c95669a1b51, type: 2}
+        - {fileID: 11400000, guid: 0324d4c986e4e5c4cb9c19352109a171, type: 2}
+        - {fileID: 11400000, guid: c221000b70d08944d9cac991afc35016, type: 2}
+        - {fileID: 11400000, guid: 844ee45df65662d4a9e5ec4d2bfacca1, type: 2}
+        - {fileID: 11400000, guid: 05529a55286b12a4c9abdf8115554655, type: 2}
+        - {fileID: 11400000, guid: 67ed2512998236f429015bb328f9daab, type: 2}
+        - {fileID: 11400000, guid: d66eb8a1c166f674d8d7f567ff9697c9, type: 2}
+        - {fileID: 11400000, guid: 1de312d7d322ea049885e2e3112549b7, type: 2}
+        - {fileID: 11400000, guid: 4d361cf963ae3c2468f339f912dde518, type: 2}
+        - {fileID: 11400000, guid: 0e43980d909c4f54f800342da9a2b769, type: 2}
+        - {fileID: 11400000, guid: b9ca1e873bab9454caf8b211f20ff7dd, type: 2}
+        - {fileID: 11400000, guid: e3baac4fa23ae8845948a735a95fff72, type: 2}
+        - {fileID: 11400000, guid: 79da69fa986011f45ae2d5c4d0e3e7da, type: 2}
+        - {fileID: 11400000, guid: 06e11f0e9f2fafd409c51bfbd31eb3ab, type: 2}
       UiBadge: {fileID: 2264942570204359833, guid: aa4eb9bbd97dfc244936dfdca4f76bf5,
         type: 3}
       ResourceType: 3

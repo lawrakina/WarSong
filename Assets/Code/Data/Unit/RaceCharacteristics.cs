@@ -1,13 +1,13 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Code.Data.Unit
-{
+
+namespace Code.Data.Unit{
     [Serializable]
-    public class RaceCharacteristics
-    {
-        [SerializeField] 
+    public class RaceCharacteristics{
+        [SerializeField]
         private CharacterRace _race;
+
         [SerializeField]
         private Vector3 _scaleModelByRace = Vector3.one;
 
