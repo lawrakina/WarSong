@@ -1,21 +1,25 @@
-﻿namespace Code.Data.Unit
-{
-    public class UnitLevel
-    {
+﻿using Code.Data.Unit.Player;
+
+
+namespace Code.Data.Unit{
+    public class UnitLevel{
+        private readonly LevelValue[] _levels;
         private int _currentLevel;
-        public int _currentExperiencePoints;
+        private int _currentExperiencePoints;
         public float _rewardForKilling;
-        
-        public int CurrentLevel
-        {
+
+        public int CurrentExperiencePoints{
+            get => _currentExperiencePoints;
+            set => _currentExperiencePoints = value;
+        }
+        public int CurrentLevel{
             get => _currentLevel;
             set => _currentLevel = value;
         }
+        public int MaximumPossibleCharacterLevel => _levels.Length;
 
-        public int CurrentExperiencePoints
-        {
-            get => _currentExperiencePoints;
-            set => _currentExperiencePoints = value;
+        public UnitLevel(LevelValue[] levels){
+            _levels = levels;
         }
     }
 }

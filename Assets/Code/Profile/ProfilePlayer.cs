@@ -91,6 +91,7 @@ namespace Code.Profile
             var equipmentFactory = new EquipmentFactory();
             var inventoryFactory = new InventoryFactory();
             var abilitiesFactory = new AbilitiesFactory(Settings.PlayerClassesData);
+            var battleFactory = new BattleFactory(Settings.PlayerClassesData);
 
             //контроллер активного персонажа (отвечает за модификацию внешного вида, одетых вещей в реалтайме)
             return new CharacterFabric(
@@ -104,7 +105,8 @@ namespace Code.Profile
                 reputationFactory,
                 equipmentFactory,
                 inventoryFactory,
-                abilitiesFactory);
+                abilitiesFactory,
+                battleFactory);
         }
 
         private void OnBuildCharacter()
@@ -143,6 +145,18 @@ namespace Code.Profile
             RebuildCurrentCharacter = null;
             RebuildCharacter = null;
             OnCharacterBuildIsComplete = null;
+        }
+    }
+
+    public sealed class BattleFactory{
+        private readonly PlayerClassesData _settings;
+
+        public BattleFactory(PlayerClassesData settings){
+            _settings = settings;
+        }
+
+        public UnitBattle GenerateBattle(UnitCharacteristics characteristics, UnitEquipment equip){
+            return new UnitBattle(characteristics, equip);
         }
     }
 }
