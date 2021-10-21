@@ -34,7 +34,7 @@ namespace Code.Fight.EcsBattle.Unit.Attack
                     var tempObj = hitColliders[index].gameObject.GetComponent<ICollision>();
                     if (tempObj != null)
                     {
-                        var collision = new InfoCollision(battleInfo._attackValue.GetAttack(), entity);
+                        var collision = new InfoCollision(battleInfo._attackValue.GetAttackAvarage(), entity);
                         tempObj.OnCollision(collision);
                     }
                 }

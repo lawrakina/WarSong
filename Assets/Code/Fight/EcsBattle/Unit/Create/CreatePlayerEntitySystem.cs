@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Code.Data;
+using Code.Data.Unit;
 using Code.Extension;
 using Code.Fight.EcsBattle.CustomEntities;
 using Code.Profile.Models;
@@ -38,7 +40,13 @@ namespace Code.Fight.EcsBattle.Unit.Create
             _model.PlayerStats.CurrentHp = Mathf.RoundToInt(_view.UnitHealth.CurrentHp);
 
             //battle
-            ref var mainWeapon = ref entity.Get<BattleInfoMainWeaponComponent>();
+            // ref var mainWeapon = ref entity.Get<BattleInfoMainWeaponComponent>();
+
+            ref var weapons =ref entity.Get<BattleWeaponsComponent>();
+            weapons.List = new List<Weapon>();
+            foreach (var weapon in _view.UnitBattle.Weapons){
+                weapons.List.Add(weapon);
+            }
 
             // void SetBattleInfoForMainWeapon(ref BattleInfoMainWeaponComponent weapon)
             // {

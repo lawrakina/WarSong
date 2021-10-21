@@ -1,12 +1,9 @@
 ﻿using System;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 
-namespace Code.Equipment
-{
-    [Serializable] public sealed class AttackValue
-    {
+namespace Code.Equipment{
+    [Serializable] public sealed class AttackValue{
         #region Fields
 
         [SerializeField]
@@ -21,14 +18,15 @@ namespace Code.Equipment
         [SerializeField]
         private float _attackSpeed = 2.0f;
 
-        [SerializeField] 
+        [SerializeField]
         private float _attackDistance = 1.0f;
-        
-        public AttackValue(float min, float max, float attackDistance)
-        {
-            _minAttackValue = min;
-            _maxAttackValue = max;
+
+        public AttackValue(Vector2 attackValue, float attackDistance, float attackSpeed, float lagBeforyAttack){
+            _minAttackValue = attackValue.x;
+            _maxAttackValue = attackValue.y;
             _attackDistance = attackDistance;
+            _attackSpeed = attackSpeed;
+            _timeDelayBeforeAttack = lagBeforyAttack;
         }
 
         #endregion
@@ -36,23 +34,23 @@ namespace Code.Equipment
 
         #region Properties
 
-        public float GetAttack()
-        {
-            return Random.Range(_minAttackValue, _maxAttackValue);
+        public Vector2 GetAttack(){
+            return new Vector2(_minAttackValue, _maxAttackValue);
         }
 
-        public float GetTimeLag()
-        {
+        public float GetAttackAvarage(){
+            return (_minAttackValue + _maxAttackValue) / 2;
+        }
+
+        public float GetTimeLag(){
             return _timeDelayBeforeAttack;
         }
 
-        public float GetAttackSpeed()
-        {
+        public float GetAttackSpeed(){
             return _attackSpeed;
         }
 
-        public float GetAttackDistance()
-        {
+        public float GetAttackDistance(){
             return _attackDistance;
         }
 

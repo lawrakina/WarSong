@@ -11,7 +11,6 @@ namespace Code.Equipment
     [Serializable]
     public abstract class BaseEquipItem : MonoBehaviour, IUiEquipItem
     {
-        private Guid _guid = Guid.NewGuid();
         [HideInInspector] private InventoryItemType _inventoryType = InventoryItemType.EquipItem;
         [SerializeField] private UiInfo _uiInfo;
         [SerializeField] private List<GameObject> _listOfDependentViews;
@@ -20,7 +19,6 @@ namespace Code.Equipment
         [SerializeField] private Characteristics _characteristics;
         [SerializeField] private TargetEquipCell _targetEquipCell;
 
-        public Guid Guid => _guid;
         public TargetEquipCell TargetEquipCell => _targetEquipCell;
         public InventoryItemType InventoryType => _inventoryType;
         public Characteristics Characteristics => _characteristics;

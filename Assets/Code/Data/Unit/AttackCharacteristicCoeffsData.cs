@@ -1,12 +1,12 @@
 ﻿using System;
-using Code.Data;
 using Code.Extension;
 using UnityEngine;
 
 
-namespace Code.Unit.Data {
+namespace Code.Data.Unit {
 
-	[CreateAssetMenu(fileName = nameof(AttackCharacteristicCoeffsData), menuName = "Configs/" + nameof(AttackCharacteristicCoeffsData))]
+	[Serializable]
+	// [CreateAssetMenu(fileName = nameof(AttackCharacteristicCoeffsData), menuName = "Configs/" + nameof(AttackCharacteristicCoeffsData))]
 	public class AttackCharacteristicCoeffsData : ScriptableObject {
 		[Header("Warrior")]
 		[SerializeField] private float _strenghtAttackWarriorCoeff;

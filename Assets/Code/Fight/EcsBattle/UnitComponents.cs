@@ -49,6 +49,9 @@ namespace Code.Fight.EcsBattle
     {
     }
 
+    public struct BattleWeaponsComponent{
+        public List<Weapon> List;
+    }
 
     public struct UnitComponent
     {

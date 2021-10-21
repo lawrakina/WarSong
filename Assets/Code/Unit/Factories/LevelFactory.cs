@@ -16,7 +16,7 @@ namespace Code.Unit.Factories
         public UnitLevel GenerateLevel(UnitLevel characterUnitLevel, CharacterSettings value)
         {
             if (characterUnitLevel == null)
-                characterUnitLevel = new UnitLevel();
+                characterUnitLevel = new UnitLevel(_settings.Levels);
             characterUnitLevel.CurrentLevel = 0;
             foreach (var level in _settings.Levels)
             {

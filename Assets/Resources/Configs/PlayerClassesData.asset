@@ -173,20 +173,23 @@ MonoBehaviour:
       Stamina: 1
       Intellect: 1
       Spirit: 1
+      CritChance: 0
+      DodgeChance: 0
     ForOneLevel:
       Strength: 3
       Agility: 1
       Stamina: 2
       Intellect: 1
       Spirit: 1
+      CritChance: 0
+      DodgeChance: 0
     Speed: 8
     RotateSpeedPlayer: 120
     _minCritChance: 0
     _maxCritChance: 0.75
-    _critChance: 0.1
+    _critAttackMultiplier: 2
     _minDodgeChance: 0.05
     _maxDodgeChance: 0.75
-    _dodgeChance: 0.05
     _minArmorValue: 5
     _maxArmorValue: 1000000
   - CharacterClass: 2
@@ -196,20 +199,23 @@ MonoBehaviour:
       Stamina: 1
       Intellect: 1
       Spirit: 1
+      CritChance: 0
+      DodgeChance: 0
     ForOneLevel:
       Strength: 1
       Agility: 3
       Stamina: 2
       Intellect: 1
       Spirit: 1
+      CritChance: 0
+      DodgeChance: 0
     Speed: 8
     RotateSpeedPlayer: 120
     _minCritChance: 0
     _maxCritChance: 0.75
-    _critChance: 0.1
+    _critAttackMultiplier: 2
     _minDodgeChance: 0.05
     _maxDodgeChance: 0.75
-    _dodgeChance: 0.05
     _minArmorValue: 1
     _maxArmorValue: 1000000
   - CharacterClass: 3
@@ -219,20 +225,23 @@ MonoBehaviour:
       Stamina: 1
       Intellect: 1
       Spirit: 1
+      CritChance: 0
+      DodgeChance: 0
     ForOneLevel:
       Strength: 2
       Agility: 2
       Stamina: 2
       Intellect: 1
       Spirit: 1
+      CritChance: 0
+      DodgeChance: 0
     Speed: 8
     RotateSpeedPlayer: 120
     _minCritChance: 0
     _maxCritChance: 0.75
-    _critChance: 0.1
+    _critAttackMultiplier: 2
     _minDodgeChance: 0.05
     _maxDodgeChance: 0.75
-    _dodgeChance: 0.05
     _minArmorValue: 1
     _maxArmorValue: 1000000
   - CharacterClass: 4
@@ -242,22 +251,510 @@ MonoBehaviour:
       Stamina: 1
       Intellect: 1
       Spirit: 1
+      CritChance: 0
+      DodgeChance: 0
     ForOneLevel:
       Strength: 1
       Agility: 1
       Stamina: 2
       Intellect: 3
       Spirit: 2
+      CritChance: 0
+      DodgeChance: 0
     Speed: 8
     RotateSpeedPlayer: 120
     _minCritChance: 0
     _maxCritChance: 0.75
-    _critChance: 0.1
+    _critAttackMultiplier: 2
     _minDodgeChance: 0.05
     _maxDodgeChance: 0.75
-    _dodgeChance: 0.05
     _minArmorValue: 5
     _maxArmorValue: 1000000
+  _characteristicsModifiers:
+  - Owner: 1
+    TargetParam: 0
+    _formula: StrR * StrV + AgiR * AgiV + IntR * IntV
+    Str:
+      V: 10
+      R: 0.5
+    Agi:
+      V: 0
+      R: 0
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 2
+    TargetParam: 0
+    _formula: StrR * StrV + AgiR * AgiV + IntR * IntV
+    Str:
+      V: 10
+      R: 0.5
+    Agi:
+      V: 10
+      R: 0.1
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 3
+    TargetParam: 0
+    _formula: StrR * StrV + AgiR * AgiV + IntR * IntV
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 10
+      R: 0.5
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 4
+    TargetParam: 0
+    _formula: StrR * StrV + AgiR * AgiV + IntR * IntV
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 0
+      R: 0
+    Int:
+      V: 10
+      R: 0.5
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 1
+    TargetParam: 1
+    _formula: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
+      * IntR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 10
+      R: 0.1
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0.99
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 2
+    TargetParam: 1
+    _formula: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
+      * IntR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 10
+      R: 0.1
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0.99
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 3
+    TargetParam: 1
+    _formula: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
+      * IntR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 10
+      R: 0.1
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0.99
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 4
+    TargetParam: 1
+    _formula: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
+      * IntR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 0
+      R: 0
+    Int:
+      V: 10
+      R: 0.1
+    LvlRatio: 0.99
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 1
+    TargetParam: 2
+    _formula: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
+      * IntR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 10
+      R: 0.1
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 2
+    TargetParam: 2
+    _formula: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
+      * IntR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 10
+      R: 0.1
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 3
+    TargetParam: 2
+    _formula: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
+      * IntR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 10
+      R: 0.1
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 4
+    TargetParam: 2
+    _formula: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
+      * IntR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 0
+      R: 0
+    Int:
+      V: 10
+      R: 0.1
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 1
+    TargetParam: 3
+    _formula: 1
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 0
+      R: 0
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 2
+    TargetParam: 3
+    _formula: 1
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 0
+      R: 0
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 3
+    TargetParam: 3
+    _formula: 1
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 0
+      R: 0
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 4
+    TargetParam: 3
+    _formula: 1
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 0
+      R: 0
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 1
+    TargetParam: 4
+    _formula: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 10
+      R: 0.1
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 2
+    TargetParam: 4
+    _formula: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 10
+      R: 0.1
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 3
+    TargetParam: 4
+    _formula: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 10
+      R: 0.1
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 4
+    TargetParam: 4
+    _formula: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 0
+      R: 0
+    Int:
+      V: 10
+      R: 0.1
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 1
+    TargetParam: 5
+    _formula: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 10
+      R: 0.1
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 2
+    TargetParam: 5
+    _formula: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 10
+      R: 0.1
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 3
+    TargetParam: 5
+    _formula: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 10
+      R: 0.1
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 4
+    TargetParam: 5
+    _formula: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 10
+      R: 0.1
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 1
+    TargetParam: 6
+    _formula: 1
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 0
+      R: 0
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 2
+    TargetParam: 6
+    _formula: 1
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 0
+      R: 0
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 3
+    TargetParam: 6
+    _formula: 1
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 0
+      R: 0
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
+  - Owner: 4
+    TargetParam: 6
+    _formula: 1
+    Str:
+      V: 0
+      R: 0
+    Agi:
+      V: 0
+      R: 0
+    Int:
+      V: 0
+      R: 0
+    LvlRatio: 0
+    Const1: 0
+    Const2: 0
+    Const3: 0
+    _typeOfModification: 0
   _presetCharacters:
     listPresetsSettings:
     - CharacterClass: 1

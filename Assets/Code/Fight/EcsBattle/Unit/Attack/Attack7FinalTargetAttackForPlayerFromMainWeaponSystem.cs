@@ -22,7 +22,7 @@ namespace Code.Fight.EcsBattle.Unit.Attack
 
                 var targetCollision = target._baseUnitView.Transform.GetComponent<ICollision>();
                 var collision =
-                    new InfoCollision(battleInfo._attackValue.GetAttack(), entity);
+                    new InfoCollision(battleInfo._attackValue.GetAttackAvarage(), entity);
                 targetCollision?.OnCollision(collision);
 
                 entity.Del<FinalAttackFromMainWeaponComponent>();

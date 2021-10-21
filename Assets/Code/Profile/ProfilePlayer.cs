@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using Code.Data;
 using Code.Data.Unit;
 using Code.Data.Unit.Player;
-using Code.Equipment;
 using Code.Extension;
 using Code.Profile.Models;
 using Code.Unit;
@@ -91,6 +89,8 @@ namespace Code.Profile
             var equipmentFactory = new EquipmentFactory();
             var inventoryFactory = new InventoryFactory();
             var abilitiesFactory = new AbilitiesFactory(Settings.PlayerClassesData);
+            var battleFactory = new BattleFactory(Settings.PlayerClassesData);
+            var animatorFactory = new AnimatorFactory(Settings.CharacterData);
 
             //контроллер активного персонажа (отвечает за модификацию внешного вида, одетых вещей в реалтайме)
             return new CharacterFabric(
@@ -104,7 +104,9 @@ namespace Code.Profile
                 reputationFactory,
                 equipmentFactory,
                 inventoryFactory,
-                abilitiesFactory);
+                abilitiesFactory,
+                battleFactory,
+                animatorFactory);
         }
 
         private void OnBuildCharacter()
@@ -129,7 +131,7 @@ namespace Code.Profile
         private void OnRebuildCharacter(CharacterSettings value)
         {
             Dbg.Log($"RebuildCharacter");
-            CharacterFabric.RebuildCharacter(CurrentPlayer, value, _dataSettings.PlayerData.AttackCharacteristicCoeffsData);
+            CharacterFabric.RebuildCharacter(CurrentPlayer, value);
             InfoAboutCurrentPlayer.Value = new InfoAboutCharacter(CurrentPlayer);
             OnCharacterBuildIsComplete?.Invoke();
 #if UNITY_EDITOR

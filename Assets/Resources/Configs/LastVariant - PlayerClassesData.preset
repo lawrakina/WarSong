@@ -6,7 +6,7 @@ Preset:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerClassesData
+  m_Name: LastVariant - PlayerClassesData
   m_TargetType:
     m_NativeTypeID: 114
     m_ManagedTypePPtr: {fileID: 11500000, guid: 6028addb0f274cfd88b2e0f1238099a0,
@@ -1012,6 +1012,1474 @@ Preset:
   - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[3]._maxArmorValue
     value: 1000000
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.size
+    value: 28
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[0].Owner
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[0].TargetParam
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[0]._formula
+    value: StrR * StrV + AgiR * AgiV + IntR * IntV
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[0].Str.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[0].Str.R
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[0].Agi.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[0].Agi.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[0].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[0].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[0].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[0].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[0].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[0].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[1].Owner
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[1].TargetParam
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[1]._formula
+    value: StrR * StrV + AgiR * AgiV + IntR * IntV
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[1].Str.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[1].Str.R
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[1].Agi.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[1].Agi.R
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[1].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[1].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[1].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[1].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[1].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[1].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[2].Owner
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[2].TargetParam
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[2]._formula
+    value: StrR * StrV + AgiR * AgiV + IntR * IntV
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[2].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[2].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[2].Agi.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[2].Agi.R
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[2].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[2].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[2].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[2].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[2].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[2].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[3].Owner
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[3].TargetParam
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[3]._formula
+    value: StrR * StrV + AgiR * AgiV + IntR * IntV
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[3].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[3].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[3].Agi.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[3].Agi.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[3].Int.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[3].Int.R
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[3].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[3].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[3].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[3].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[4].Owner
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[4].TargetParam
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[4]._formula
+    value: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
+      * IntR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[4].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[4].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[4].Agi.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[4].Agi.R
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[4].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[4].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[4].LvlRatio
+    value: 0.99
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[4].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[4].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[4].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[5].Owner
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[5].TargetParam
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[5]._formula
+    value: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
+      * IntR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[5].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[5].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[5].Agi.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[5].Agi.R
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[5].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[5].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[5].LvlRatio
+    value: 0.99
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[5].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[5].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[5].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[6].Owner
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[6].TargetParam
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[6]._formula
+    value: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
+      * IntR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[6].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[6].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[6].Agi.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[6].Agi.R
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[6].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[6].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[6].LvlRatio
+    value: 0.99
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[6].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[6].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[6].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[7].Owner
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[7].TargetParam
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[7]._formula
+    value: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
+      * IntR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[7].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[7].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[7].Agi.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[7].Agi.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[7].Int.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[7].Int.R
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[7].LvlRatio
+    value: 0.99
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[7].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[7].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[7].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[8].Owner
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[8].TargetParam
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[8]._formula
+    value: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
+      * IntR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[8].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[8].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[8].Agi.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[8].Agi.R
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[8].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[8].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[8].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[8].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[8].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[8].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[9].Owner
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[9].TargetParam
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[9]._formula
+    value: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
+      * IntR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[9].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[9].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[9].Agi.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[9].Agi.R
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[9].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[9].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[9].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[9].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[9].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[9].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[10].Owner
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[10].TargetParam
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[10]._formula
+    value: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
+      * IntR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[10].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[10].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[10].Agi.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[10].Agi.R
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[10].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[10].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[10].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[10].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[10].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[10].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[11].Owner
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[11].TargetParam
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[11]._formula
+    value: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
+      * IntR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[11].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[11].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[11].Agi.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[11].Agi.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[11].Int.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[11].Int.R
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[11].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[11].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[11].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[11].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[12].Owner
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[12].TargetParam
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[12]._formula
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[12].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[12].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[12].Agi.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[12].Agi.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[12].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[12].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[12].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[12].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[12].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[12].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[13].Owner
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[13].TargetParam
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[13]._formula
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[13].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[13].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[13].Agi.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[13].Agi.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[13].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[13].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[13].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[13].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[13].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[13].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[14].Owner
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[14].TargetParam
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[14]._formula
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[14].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[14].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[14].Agi.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[14].Agi.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[14].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[14].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[14].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[14].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[14].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[14].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[15].Owner
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[15].TargetParam
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[15]._formula
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[15].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[15].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[15].Agi.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[15].Agi.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[15].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[15].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[15].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[15].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[15].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[15].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[16].Owner
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[16].TargetParam
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[16]._formula
+    value: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[16].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[16].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[16].Agi.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[16].Agi.R
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[16].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[16].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[16].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[16].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[16].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[16].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[17].Owner
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[17].TargetParam
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[17]._formula
+    value: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[17].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[17].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[17].Agi.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[17].Agi.R
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[17].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[17].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[17].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[17].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[17].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[17].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[18].Owner
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[18].TargetParam
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[18]._formula
+    value: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[18].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[18].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[18].Agi.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[18].Agi.R
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[18].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[18].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[18].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[18].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[18].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[18].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[19].Owner
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[19].TargetParam
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[19]._formula
+    value: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[19].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[19].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[19].Agi.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[19].Agi.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[19].Int.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[19].Int.R
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[19].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[19].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[19].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[19].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[20].Owner
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[20].TargetParam
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[20]._formula
+    value: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[20].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[20].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[20].Agi.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[20].Agi.R
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[20].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[20].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[20].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[20].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[20].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[20].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[21].Owner
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[21].TargetParam
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[21]._formula
+    value: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[21].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[21].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[21].Agi.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[21].Agi.R
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[21].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[21].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[21].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[21].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[21].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[21].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[22].Owner
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[22].TargetParam
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[22]._formula
+    value: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[22].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[22].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[22].Agi.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[22].Agi.R
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[22].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[22].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[22].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[22].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[22].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[22].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[23].Owner
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[23].TargetParam
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[23]._formula
+    value: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[23].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[23].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[23].Agi.V
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[23].Agi.R
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[23].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[23].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[23].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[23].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[23].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[23].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[24].Owner
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[24].TargetParam
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[24]._formula
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[24].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[24].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[24].Agi.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[24].Agi.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[24].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[24].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[24].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[24].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[24].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[24].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[25].Owner
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[25].TargetParam
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[25]._formula
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[25].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[25].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[25].Agi.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[25].Agi.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[25].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[25].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[25].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[25].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[25].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[25].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[26].Owner
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[26].TargetParam
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[26]._formula
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[26].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[26].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[26].Agi.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[26].Agi.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[26].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[26].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[26].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[26].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[26].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[26].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[27].Owner
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[27].TargetParam
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[27]._formula
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[27].Str.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[27].Str.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[27].Agi.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[27].Agi.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[27].Int.V
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[27].Int.R
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[27].LvlRatio
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[27].Const1
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[27].Const2
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[27].Const3
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _presetCharacters.listPresetsSettings.Array.size

@@ -21,7 +21,7 @@ namespace Code.Fight.EcsBattle.Unit.Attack
 
                 var targetCollision = target._baseUnitView.Transform.GetComponent<ICollision>();
                 var collision =
-                    new InfoCollision(battleInfo._attackValue.GetAttack() * battleInfo._powerFactor, entity);
+                    new InfoCollision(battleInfo._attackValue.GetAttackAvarage() * battleInfo._powerFactor, entity);
                 targetCollision?.OnCollision(collision);
 
                 entity.Del<FinalAttackFromSecondWeaponComponent>();
