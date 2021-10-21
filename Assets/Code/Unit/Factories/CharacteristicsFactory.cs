@@ -62,7 +62,7 @@ namespace Code.Unit.Factories{
                 (x.Owner == _characterSettings.CharacterClass) && (x.TargetParam == param));
         }
 
-        private float Calculate(CharacteristicsModifier modifier){
+        private ModificationOfObjectOfParam Calculate(CharacteristicsModifier modifier){
             var example = "";
             example = ReplaceFormulaByValue(modifier.Formula, modifier.Str, nameof(modifier.Str));
             example = ReplaceFormulaByValue(example, modifier.Agi, nameof(modifier.Agi));
@@ -73,7 +73,7 @@ namespace Code.Unit.Factories{
             
             Dbg.Log($"Characteristics {modifier.TargetParam} is calculated:{result}");
 
-            return result;
+            return new ModificationOfObjectOfParam(result, modifier.TypeOfModification);
         }
 
         private string ReplaceLevelInFormula(string request, CharacteristicsModifier modifier, string lvlRatioName){

@@ -53,16 +53,6 @@ namespace Code.Fight.EcsBattle
             _listForInject.Add(obj);
             Dbg.Log($"Inject object in EcsWorld:{obj}");
         }
-        
-        public void OnActivate()
-        {
-            _enable = true;
-        }
-
-        public void OnDeactivate()
-        {
-            _enable = false;
-        }
 
         public void DisposeWorld()
         {
@@ -82,7 +72,7 @@ namespace Code.Fight.EcsBattle
             EcsSystemsObserver.Create(_fixedExecute);
             EcsSystemsObserver.Create(_lateExecute);
 #endif
-
+            
             _execute
                 //GameManager
                 .Add(new CreateTimerStatisticsObserverSystem())

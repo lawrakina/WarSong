@@ -1,26 +1,18 @@
-﻿namespace Code.Data.Unit {
-
-	public class UnitBattle {
-		// private readonly AttackCharacteristicCoeffsData _attackCharacteristicCoeffsData;
-		// public float AttackValue { get;  private set; }
+﻿using System.Collections.Generic;
+using Code.Equipment;
 
 
-		// public UnitBattle(BasicCharacteristics characteristics, AttackCharacteristicCoeffsData attackCharacteristicCoeffsData) {
-		// 	_attackCharacteristicCoeffsData = attackCharacteristicCoeffsData;
-		// 	UpdateAttackPower(characteristics);
-		// }
+namespace Code.Data.Unit{
+    public class UnitBattle{
+        private readonly List<Weapon> _weapons = new List<Weapon>();
+        public List<Weapon> Weapons => _weapons;
 
-		public UnitBattle(UnitCharacteristics characteristics, UnitEquipment equip){
-			
-		}
-
-		// public void UpdateAttackPower(BasicCharacteristics characteristics) {
-		// 	AttackValue = characteristics.Values.Strength * _attackCharacteristicCoeffsData.GetAttackCharacteristicCoeff(characteristics.CharacterClass, BasicCharacteristicType.Strength)
-		// 	              + characteristics.Values.Agility * _attackCharacteristicCoeffsData.GetAttackCharacteristicCoeff(characteristics.CharacterClass, BasicCharacteristicType.Agility)
-		// 	              + characteristics.Values.Stamina * _attackCharacteristicCoeffsData.GetAttackCharacteristicCoeff(characteristics.CharacterClass, BasicCharacteristicType.Stamina)
-		// 	              + characteristics.Values.Intellect * _attackCharacteristicCoeffsData.GetAttackCharacteristicCoeff(characteristics.CharacterClass, BasicCharacteristicType.Intelect)
-		// 	              + characteristics.Values.Spirit * _attackCharacteristicCoeffsData.GetAttackCharacteristicCoeff(characteristics.CharacterClass, BasicCharacteristicType.Spirit);
-		// }
-	}
-
+        public UnitBattle(UnitCharacteristics characteristics, UnitEquipment equip){
+            foreach (var equipCell in equip.GetWeapons()){
+                var weaponEquip = equipCell.Body as WeaponEquipItem;
+                var weapon = new Weapon(weaponEquip, equipCell.EquipCellType, characteristics);
+                _weapons.Add(weapon);
+            }
+        }
+    }
 }

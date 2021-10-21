@@ -38,7 +38,7 @@ namespace Code.Fight.EcsBattle.Unit.Attack
                     if (tempObj != null)
                     {
                         var collision =
-                            new InfoCollision(battleInfo._attackValue.GetAttack() * battleInfo._powerFactor, entity);
+                            new InfoCollision(battleInfo._attackValue.GetAttackAvarage() * battleInfo._powerFactor, entity);
                         tempObj.OnCollision(collision);
                     }
                 }

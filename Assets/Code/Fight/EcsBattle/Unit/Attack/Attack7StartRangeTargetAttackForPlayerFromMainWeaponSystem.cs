@@ -57,7 +57,7 @@ namespace Code.Fight.EcsBattle.Unit.Attack
 
                 bulletEntity.Get<WeaponBulletComponent>()._value = weaponBulletComponent._value;
                 bulletEntity.Get<WeaponBulletComponent>()._collision =
-                    new InfoCollision(battleInfo._attackValue.GetAttack(), entity);
+                    new InfoCollision(battleInfo._attackValue.GetAttackAvarage(), entity);
 
                 entity.Del<FinalAttackFromMainWeaponComponent>();
             }

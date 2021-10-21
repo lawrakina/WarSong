@@ -173,20 +173,23 @@ MonoBehaviour:
       Stamina: 1
       Intellect: 1
       Spirit: 1
+      CritChance: 0
+      DodgeChance: 0
     ForOneLevel:
       Strength: 3
       Agility: 1
       Stamina: 2
       Intellect: 1
       Spirit: 1
+      CritChance: 0
+      DodgeChance: 0
     Speed: 8
     RotateSpeedPlayer: 120
     _minCritChance: 0
     _maxCritChance: 0.75
-    _critChance: 0.1
+    _critAttackMultiplier: 2
     _minDodgeChance: 0.05
     _maxDodgeChance: 0.75
-    _dodgeChance: 0.05
     _minArmorValue: 5
     _maxArmorValue: 1000000
   - CharacterClass: 2
@@ -196,20 +199,23 @@ MonoBehaviour:
       Stamina: 1
       Intellect: 1
       Spirit: 1
+      CritChance: 0
+      DodgeChance: 0
     ForOneLevel:
       Strength: 1
       Agility: 3
       Stamina: 2
       Intellect: 1
       Spirit: 1
+      CritChance: 0
+      DodgeChance: 0
     Speed: 8
     RotateSpeedPlayer: 120
     _minCritChance: 0
     _maxCritChance: 0.75
-    _critChance: 0.1
+    _critAttackMultiplier: 2
     _minDodgeChance: 0.05
     _maxDodgeChance: 0.75
-    _dodgeChance: 0.05
     _minArmorValue: 1
     _maxArmorValue: 1000000
   - CharacterClass: 3
@@ -219,20 +225,23 @@ MonoBehaviour:
       Stamina: 1
       Intellect: 1
       Spirit: 1
+      CritChance: 0
+      DodgeChance: 0
     ForOneLevel:
       Strength: 2
       Agility: 2
       Stamina: 2
       Intellect: 1
       Spirit: 1
+      CritChance: 0
+      DodgeChance: 0
     Speed: 8
     RotateSpeedPlayer: 120
     _minCritChance: 0
     _maxCritChance: 0.75
-    _critChance: 0.1
+    _critAttackMultiplier: 2
     _minDodgeChance: 0.05
     _maxDodgeChance: 0.75
-    _dodgeChance: 0.05
     _minArmorValue: 1
     _maxArmorValue: 1000000
   - CharacterClass: 4
@@ -242,20 +251,23 @@ MonoBehaviour:
       Stamina: 1
       Intellect: 1
       Spirit: 1
+      CritChance: 0
+      DodgeChance: 0
     ForOneLevel:
       Strength: 1
       Agility: 1
       Stamina: 2
       Intellect: 3
       Spirit: 2
+      CritChance: 0
+      DodgeChance: 0
     Speed: 8
     RotateSpeedPlayer: 120
     _minCritChance: 0
     _maxCritChance: 0.75
-    _critChance: 0.1
+    _critAttackMultiplier: 2
     _minDodgeChance: 0.05
     _maxDodgeChance: 0.75
-    _dodgeChance: 0.05
     _minArmorValue: 5
     _maxArmorValue: 1000000
   _characteristicsModifiers:
@@ -275,6 +287,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 2
     TargetParam: 0
     _formula: StrR * StrV + AgiR * AgiV + IntR * IntV
@@ -291,6 +304,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 3
     TargetParam: 0
     _formula: StrR * StrV + AgiR * AgiV + IntR * IntV
@@ -307,6 +321,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 4
     TargetParam: 0
     _formula: StrR * StrV + AgiR * AgiV + IntR * IntV
@@ -323,6 +338,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 1
     TargetParam: 1
     _formula: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
@@ -340,6 +356,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 2
     TargetParam: 1
     _formula: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
@@ -357,6 +374,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 3
     TargetParam: 1
     _formula: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
@@ -374,6 +392,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 4
     TargetParam: 1
     _formula: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
@@ -391,6 +410,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 1
     TargetParam: 2
     _formula: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
@@ -408,6 +428,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 2
     TargetParam: 2
     _formula: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
@@ -425,6 +446,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 3
     TargetParam: 2
     _formula: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
@@ -442,6 +464,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 4
     TargetParam: 2
     _formula: 0 - ((AgiV * AgiR) * (LvlMax - LvlCurrent * LvlRatio)) / LvlMax + ((IntV
@@ -459,6 +482,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 1
     TargetParam: 3
     _formula: 1
@@ -475,6 +499,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 2
     TargetParam: 3
     _formula: 1
@@ -491,6 +516,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 3
     TargetParam: 3
     _formula: 1
@@ -507,6 +533,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 4
     TargetParam: 3
     _formula: 1
@@ -523,6 +550,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 1
     TargetParam: 4
     _formula: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
@@ -539,6 +567,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 2
     TargetParam: 4
     _formula: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
@@ -555,6 +584,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 3
     TargetParam: 4
     _formula: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
@@ -571,6 +601,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 4
     TargetParam: 4
     _formula: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
@@ -587,6 +618,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 1
     TargetParam: 5
     _formula: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
@@ -603,6 +635,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 2
     TargetParam: 5
     _formula: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
@@ -619,6 +652,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 3
     TargetParam: 5
     _formula: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
@@ -635,6 +669,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 4
     TargetParam: 5
     _formula: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax
@@ -651,6 +686,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 1
     TargetParam: 6
     _formula: 1
@@ -667,6 +703,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 2
     TargetParam: 6
     _formula: 1
@@ -683,6 +720,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 3
     TargetParam: 6
     _formula: 1
@@ -699,6 +737,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   - Owner: 4
     TargetParam: 6
     _formula: 1
@@ -715,6 +754,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
+    _typeOfModification: 0
   _presetCharacters:
     listPresetsSettings:
     - CharacterClass: 1

@@ -106,13 +106,6 @@
         Medium,
         Light
     }
-    public enum ActiveWeapons
-    {
-        RightHand,
-        TwoHand,
-        RightAndLeft,
-        RightAndShield
-    }
     public enum ResourceEnum
     {
         Rage,

@@ -21,10 +21,18 @@ namespace Code.Data.Unit{
         public float Const2;
         public float Const3;
 
+        [SerializeField]
+        private ArithmeticOperation _typeOfModification = ArithmeticOperation.Addition;
         public string Formula{
             get => _formula;
             set => _formula = value;
         }
+        public ArithmeticOperation TypeOfModification => _typeOfModification;
+    }
+
+    public enum ArithmeticOperation{
+        Addition,
+        Multiplication
     }
 
     public enum TargetParam{
@@ -40,5 +48,18 @@ namespace Code.Data.Unit{
     [Serializable] public struct KvpValueRatio{
         public float V;
         public float R;
+    }
+    
+    public sealed class ModificationOfObjectOfParam{
+        private readonly float _value;
+        private readonly ArithmeticOperation _modifierTypeOfModification;
+
+        public ArithmeticOperation TypeOfOperation => _modifierTypeOfModification;
+        public float Value => _value;
+
+        public ModificationOfObjectOfParam(float value, ArithmeticOperation modifierTypeOfModification){
+            _value = value;
+            _modifierTypeOfModification = modifierTypeOfModification;
+        }
     }
 }

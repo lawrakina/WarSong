@@ -312,26 +312,60 @@ namespace Code.Data.Unit
             _equipment.Inventory.Remove(item);
             _equipment.Equipment.Add(item);
             return;
-            foreach (var cell in _cells)
-            {
-                if (cell.EquipCellType == fromTypeCell)
-                {
-                    // cell.Body = item;
-                }
-            }
         }
 
-        public List<WeaponEquipItem> GetWeapons()
+        public List<EquipCell> GetWeapons()
         {
-            var result = new List<WeaponEquipItem>();
+            var result = new List<EquipCell>();
             foreach (var cell in _cells)
             {
                 if (cell.IsEmpty) continue;
                 if (cell.Body.EquipType == EquipItemType.Weapon)
-                    result.Add(cell.Body as WeaponEquipItem);
+                    result.Add(cell);
             }
 
             return result;
+        }
+
+        public int GetWeaponType(){
+            var list = GetWeapons();
+            if (list.Count == 0)
+                return 0;//Unarmed
+            if (list.Count >= 2)
+                return 5; //DualWeapons
+            
+            switch (((WeaponEquipItem)list[0].Body).WeaponType)
+            {
+                case WeaponItemType.OneHandWeapon:
+                    return 1;
+                    break;
+        
+                case WeaponItemType.TwoHandSwordWeapon:
+                    return 23;
+                    break;
+        
+                case WeaponItemType.TwoHandSpearWeapon:
+                    return 22;
+                    break;
+        
+                case WeaponItemType.TwoHandStaffWeapon:
+                    return 24;
+                    break;
+        
+                case WeaponItemType.RangeTwoHandBowWeapon:
+                    return 25;
+                    break;
+        
+                case WeaponItemType.RangeTwoHandCrossbowWeapon:
+                    return 26;
+                    break;
+        
+                //ToDo добавить анимации ружья
+                // case EquipmentType.RangeTwoHandGunWeapon:
+                //     break; 
+            }
+            
+            return 0;
         }
     }
 }
