@@ -5,6 +5,7 @@ using System.Text;
 
 
 namespace Code.Extension{
+    //ToDo реализовать Обратную Польскую Запись https://habr.com/ru/sandbox/56187/
     #region License agreement
 
     // This is light, fast and simple to understand mathematical parser 

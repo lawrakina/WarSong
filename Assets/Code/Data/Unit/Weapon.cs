@@ -14,6 +14,9 @@ namespace Code.Data.Unit{
         public EquipCellType EquipType => _equipCellEquipCellType;
         public WeaponItemType WeaponType => _weaponEquip.WeaponType;
 
+        public float Speed => _attackValue.GetAttackSpeed();
+        public WeaponBullet Bullet => _weaponEquip.StandardBullet;
+
         public Weapon(WeaponEquipItem weaponEquip, EquipCellType equipCellEquipCellType,
             UnitCharacteristics characteristics){
             _weaponEquip = weaponEquip;
@@ -35,5 +38,6 @@ namespace Code.Data.Unit{
                 attackValue *= _characteristics.CritAttackMultiplier;
             return attackValue;
         }
+        
     }
 }
