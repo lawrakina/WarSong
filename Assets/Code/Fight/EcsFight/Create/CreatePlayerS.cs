@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Code.Data;
-using Code.Data.Unit;
-using Code.Equipment;
-using Code.Extension;
+﻿using System.Collections.Generic;
 using Code.Fight.EcsFight.Battle;
 using Code.Profile.Models;
 using Code.Unit;
@@ -29,9 +24,9 @@ namespace Code.Fight.EcsFight.Create{
             unit.Characteristics = _player.UnitCharacteristics;
             unit.Health = _player.UnitHealth;
             unit.Resource = _player.UnitResource;
-            unit.Vision = _player.UnitVision;
+            unit.UnitVision = _player.UnitVision;
             unit.Reputation = _player.UnitReputation;
-
+            
             //weapons
             foreach (var unitBattleWeapon in _player.UnitBattle.Weapons){
                 var entityWeapon = _world.NewEntity();
@@ -50,6 +45,12 @@ namespace Code.Fight.EcsFight.Create{
             _model.PlayerStats.MaxResource = Mathf.RoundToInt(_player.UnitResource.ResourceBaseValue);
             _model.PlayerStats.CurrentResource = Mathf.RoundToInt(_player.UnitResource.ResourceBaseValue);
 
+            //SensorToolkit
+            unit.UnitVision.Sensor.enabled = true;
+            ref var targets = ref entity.Get<TargetListC>();
+            targets.Current = null;
+            targets.List = unit.UnitVision.Sensor.DetectedObjectsOrderedByDistance;
+            
             var directionMovement = new GameObject();
             directionMovement.transform.SetParent(_player.Transform, false);
             directionMovement.name = "->DirectionMoving<-";
@@ -57,4 +58,8 @@ namespace Code.Fight.EcsFight.Create{
         }
     }
 
+    public struct TargetListC{
+        public GameObject Current;
+        public List<GameObject> List;
+    }
 }

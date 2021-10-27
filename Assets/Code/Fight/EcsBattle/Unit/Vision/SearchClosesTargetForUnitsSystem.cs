@@ -18,8 +18,9 @@ namespace Code.Fight.EcsBattle.Unit.Vision
                 ref var entity = ref _filter.GetEntity(i);
                 ref var unit = ref _filter.Get2(i);
                 ref var transform = ref _filter.Get2(i)._rootTransform;
-                ref var vision = ref _filter.Get2(i)._vision;
-                ref var distanceDetection = ref _filter.Get2(i)._vision.distanceDetection;
+                ref var vision = ref _filter.Get2(i).VisionData; 
+                var distanceDetection = 5;
+                // ref var distanceDetection = ref _filter.Get2(i).VisionData.distanceDetection;
                 ref var reputation = ref _filter.Get2(i)._reputation;
                 var position = transform.position;
 
@@ -27,12 +28,14 @@ namespace Code.Fight.EcsBattle.Unit.Vision
                 {
                     ref var target = ref entity.Get<CurrentTargetComponent>();
                     target._sqrDistance = (target._baseUnitView.Transform.position - transform.position).sqrMagnitude;
-                    if (target._sqrDistance > Mathf.Pow(vision.distanceDetection, 2))
+                    if (target._sqrDistance > Mathf.Pow(15, 2))
+                    // if (target._sqrDistance > Mathf.Pow(vision.distanceDetection, 2))
                         entity.Del<CurrentTargetComponent>();
                 }
                 
                 //поиск всех целей
-                var colliders = new Collider[unit._vision.maxCountTargets];
+                var colliders = new Collider[5];
+                // var colliders = new Collider[unit.VisionData.maxCountTargets];
                 var countColliders =
                     Physics.OverlapSphereNonAlloc(position, distanceDetection, colliders, 1 << reputation.EnemyLayer);
                 // DebugExtension.DebugWireSphere(position, Color.red, distanceDetection, 1.0f);

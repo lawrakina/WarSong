@@ -22,7 +22,7 @@ namespace Code.Fight.EcsBattle.Unit.Attack {
 				ref var attackerEntity = ref _attackers.GetEntity(attacker);
 				ref var battleInfo = ref _attackers.Get4(attacker);
 				ref var attackerTransform = ref _attackers.Get2(attacker)._rootTransform;
-				ref var attackerVision = ref _attackers.Get2(attacker)._vision;
+				ref var attackerVision = ref _attackers.Get2(attacker).VisionData;
 				ref var target = ref _attackers.Get3(attacker)._baseUnitView;
 
 				var bulletStartPosition = attackerTransform.position + attackerVision.offsetHead;

@@ -5,7 +5,6 @@ using UnitCharacteristics = Code.Data.Unit.UnitCharacteristics;
 using UnitHealth = Code.Data.Unit.UnitHealth;
 using UnitLevel = Code.Data.Unit.UnitLevel;
 using UnitReputation = Code.Data.Unit.UnitReputation;
-using UnitVision = Code.Data.Unit.UnitVision;
 
 
 namespace Code.Unit

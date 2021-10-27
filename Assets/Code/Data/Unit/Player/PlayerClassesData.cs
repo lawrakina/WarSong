@@ -24,7 +24,7 @@ namespace Code.Data.Unit.Player
         [Range(90f,200f)]
         public float RotateSpeed = 120.0f;
         [SerializeField]
-        public UnitVision UnitVision;
+        public CharacterVisionData characterVisionData;
         [Space]
         [Header("Class abilities")]
         [SerializeField]

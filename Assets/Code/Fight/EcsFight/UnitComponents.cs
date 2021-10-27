@@ -55,7 +55,7 @@ namespace Code.Fight.EcsFight{
         public UnitCharacteristics Characteristics;
         public UnitHealth Health;
         public UnitResource Resource;
-        public UnitVision Vision;
+        public UnitVision UnitVision;
         public UnitReputation Reputation;
     }
 

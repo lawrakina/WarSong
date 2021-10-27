@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3354568}
   - component: {fileID: 2329340}
   - component: {fileID: 6544076}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,6 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -82,6 +83,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6544076
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -105,6 +107,10 @@ PrefabInstance:
     - target: {fileID: 1846860276035916, guid: 28d845fec1adc6a43ae6f59e5ca61e74, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Scarecrow_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1846860276035916, guid: 28d845fec1adc6a43ae6f59e5ca61e74, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4967167053135532, guid: 28d845fec1adc6a43ae6f59e5ca61e74, type: 3}
       propertyPath: m_RootOrder
@@ -168,6 +174,10 @@ PrefabInstance:
     - target: {fileID: 1293751319472132, guid: 311d013d1479c4c48b1dca6082bf01a6, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Beehive_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293751319472132, guid: 311d013d1479c4c48b1dca6082bf01a6, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4535049982927812, guid: 311d013d1479c4c48b1dca6082bf01a6, type: 3}
       propertyPath: m_RootOrder

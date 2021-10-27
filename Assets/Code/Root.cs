@@ -85,6 +85,7 @@ namespace Code
             // settings.BattleSettingsData = ResourceLoader.LoadConfig<BattleSettingsData>("Configs/BattleSettingsData");
             // Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(BattleSettingsData)}:{_battleSettingsData}");
 
+            LayerManager.Default = LayerMask.NameToLayer(StringManager.DEFAULT);
             LayerManager.EnemyLayer = LayerMask.NameToLayer(StringManager.ENEMY_LAYER);
             LayerManager.PlayerLayer = LayerMask.NameToLayer(StringManager.PLAYER_LAYER);
             LayerManager.PlayerAttackLayer = LayerMask.NameToLayer(StringManager.PLAYER_ATTACK_LAYER);

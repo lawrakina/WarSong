@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2374666}
   - component: {fileID: 9516436}
   - component: {fileID: 6514592}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,6 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -83,6 +84,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!95 &9516436
 Animator:
   serializedVersion: 3
@@ -126,6 +128,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Castle_DestroyedWall_Middle_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1757622067360200, guid: c6bf7ddd170356d42ab80fcfef09495c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4417328453171670, guid: c6bf7ddd170356d42ab80fcfef09495c, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4417328453171670, guid: c6bf7ddd170356d42ab80fcfef09495c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.64117
+      objectReference: {fileID: 0}
     - target: {fileID: 4417328453171670, guid: c6bf7ddd170356d42ab80fcfef09495c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.3511181
@@ -137,6 +151,10 @@ PrefabInstance:
     - target: {fileID: 4417328453171670, guid: c6bf7ddd170356d42ab80fcfef09495c, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.21795869
+      objectReference: {fileID: 0}
+    - target: {fileID: 4417328453171670, guid: c6bf7ddd170356d42ab80fcfef09495c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.000000104308114
       objectReference: {fileID: 0}
     - target: {fileID: 4417328453171670, guid: c6bf7ddd170356d42ab80fcfef09495c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -151,14 +169,6 @@ PrefabInstance:
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4417328453171670, guid: c6bf7ddd170356d42ab80fcfef09495c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.000000104308114
-      objectReference: {fileID: 0}
-    - target: {fileID: 4417328453171670, guid: c6bf7ddd170356d42ab80fcfef09495c, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4417328453171670, guid: c6bf7ddd170356d42ab80fcfef09495c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -169,10 +179,6 @@ PrefabInstance:
     - target: {fileID: 4417328453171670, guid: c6bf7ddd170356d42ab80fcfef09495c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4417328453171670, guid: c6bf7ddd170356d42ab80fcfef09495c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.64117
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6bf7ddd170356d42ab80fcfef09495c, type: 3}
@@ -193,6 +199,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Castle_DestroyedWall_Bottom_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1794436095879190, guid: d190cfce9a0fab04294be608816172c9, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858983194710742, guid: d190cfce9a0fab04294be608816172c9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4858983194710742, guid: d190cfce9a0fab04294be608816172c9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.481
@@ -206,6 +220,10 @@ PrefabInstance:
       value: -0.26
       objectReference: {fileID: 0}
     - target: {fileID: 4858983194710742, guid: d190cfce9a0fab04294be608816172c9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858983194710742, guid: d190cfce9a0fab04294be608816172c9, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -216,14 +234,6 @@ PrefabInstance:
     - target: {fileID: 4858983194710742, guid: d190cfce9a0fab04294be608816172c9, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4858983194710742, guid: d190cfce9a0fab04294be608816172c9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4858983194710742, guid: d190cfce9a0fab04294be608816172c9, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4858983194710742, guid: d190cfce9a0fab04294be608816172c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

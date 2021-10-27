@@ -47,8 +47,8 @@ namespace Code.Unit.Factories
             enemyView.UnitHealth.MaxHp = 100;
             enemyView.UnitHealth.CurrentHp = 100;
 
-            enemyView.UnitVision = new UnitVision();
-            enemyView.UnitVision.distanceDetection = 15.0f;
+            // enemyView.CharacterVisionData = new CharacterVisionData();
+            // enemyView.CharacterVisionData.distanceDetection = 15.0f;
             
             //test
             

@@ -2,6 +2,7 @@
 {
     public static class StringManager
     {
+        public const string DEFAULT = "Default";
         public const string INFO_BUILDING_STATE_BUILDING_COMPLETE_START_SPAWN_OBJECTS = "The level is built, let's spawn the objects";
         public const string INFO_BULDING_STATE_BUILDING_PROCESS = "Building a level in the process";
         public const string INFO_BULDING_STATE_START_PROCESS = "Start building level...";

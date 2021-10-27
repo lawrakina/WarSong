@@ -30,7 +30,7 @@ namespace Code.Fight.EcsBattle.Unit.Create
             entity.Get<UnitComponent>()._rootTransform = _view.Transform;
             entity.Get<UnitComponent>()._rigidBody = _view.Rigidbody;
             entity.Get<UnitComponent>()._reputation = _view.UnitReputation;
-            entity.Get<UnitComponent>()._vision = _view.UnitVision;
+            // entity.Get<UnitComponent>().VisionData = _view.UnitVision;
             // entity.Get<UnitComponent>()._attributes = _view.Attributes;
             entity.Get<UnitComponent>()._animator = _view.AnimatorParameters;
             entity.Get<UnitComponent>()._health = _view.UnitHealth;

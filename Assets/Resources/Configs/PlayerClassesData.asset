@@ -19,9 +19,9 @@ MonoBehaviour:
   MaxConcentrationValue: 100
   MoveSpeed: 7
   RotateSpeed: 120
-  UnitVision:
-    distanceDetection: 15
-    maxCountTargets: 5
+  characterVisionData:
+    _sensorToolkit: {fileID: 7267779563871891366, guid: 561fdd2078d8e37488f9a0a026018296,
+      type: 3}
     offsetHead: {x: 0, y: 1.5, z: 0}
   _classAbilities:
   - Owner: 1

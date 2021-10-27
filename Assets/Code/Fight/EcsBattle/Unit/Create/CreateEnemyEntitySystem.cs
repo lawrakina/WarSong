@@ -31,7 +31,7 @@ namespace Code.Fight.EcsBattle.Unit.Create
                 entity.Get<UnitComponent>()._collider = view.Collider;
                 entity.Get<UnitComponent>()._animator = view.AnimatorParameters;
                 entity.Get<UnitComponent>()._reputation = view.UnitReputation;
-                entity.Get<UnitComponent>()._vision = view.UnitVision;
+                // entity.Get<UnitComponent>().VisionData = view.UnitVision;
                 entity.Get<UnitComponent>()._level = view.UnitLevel;
                 entity.Get<UnitComponent>()._health = view.UnitHealth;
                 entity.Get<UiEnemyHealthBarComponent>()._value = view.HealthBar;
