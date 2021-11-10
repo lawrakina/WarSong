@@ -10,13 +10,13 @@ namespace Code.Equipment
         [HideInInspector] private EquipItemType _equipType = EquipItemType.Weapon;
         [SerializeField] private WeaponBullet _standardBullet;
         [SerializeField] private WeaponItemType _weaponType;
-        [SerializeField] private float _attackDistanceOffset = 1.0f;
+        [SerializeField] private float attackDistance = 1.0f;
         [SerializeField] private AttackValue _attackValue;
 
         public GameObject GameObject => gameObject;
         public WeaponBullet StandardBullet => _standardBullet;
         public WeaponItemType WeaponType => _weaponType;
-        public float AttackDistanceOffset => _attackDistanceOffset;
+        public float AttackDistance => attackDistance;
         public AttackValue AttackValue => _attackValue;
         public override EquipItemType EquipType => _equipType;
         public override bool IsNeedInstantiate => _isNeedInstantiate;

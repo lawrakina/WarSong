@@ -10,5 +10,6 @@ namespace Code.Fight.EcsFight.Battle{
         public float CurrentCooldownTime;
         public float MaxCooldownTime;
         public UnitC Owner;
+        public float AttackDistance;
     }
 }

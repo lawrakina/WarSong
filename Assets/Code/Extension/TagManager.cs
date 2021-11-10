@@ -6,6 +6,7 @@ namespace Code.Extension
     public class TagManager
     {
         public static string TAG_PLAYER = "Player";
+        public static string TAG_ENEMY = "Enemy";
 
         public static int ANIMATOR_PARAM_BATTLE = Animator.StringToHash("Battle");
         public static int ANIMATOR_PARAM_SPEED = Animator.StringToHash("Speed");

@@ -15,6 +15,7 @@ namespace Code.Data.Unit{
         public WeaponItemType WeaponType => _weaponEquip.WeaponType;
 
         public float Speed => _attackValue.GetAttackSpeed();
+        public float Distance => _attackValue.GetAttackDistance();
         public WeaponBullet Bullet => _weaponEquip.StandardBullet;
 
         public Weapon(WeaponEquipItem weaponEquip, EquipCellType equipCellEquipCellType,
@@ -25,7 +26,7 @@ namespace Code.Data.Unit{
 
             _attackValue = new AttackValue(
                 _weaponEquip.AttackValue.GetAttack().ArithOperation(characteristics.AttackModifier),
-                _weaponEquip.AttackDistanceOffset.ArithOperation(characteristics.DistanceModifier),
+                _weaponEquip.AttackDistance.ArithOperation(characteristics.DistanceModifier),
                 _weaponEquip.AttackValue.GetAttackSpeed().ArithOperation(characteristics.SpeedAttackModifier),
                 _weaponEquip.AttackValue.GetTimeLag().ArithOperation(characteristics.LagBeforeAttackModifier));
 

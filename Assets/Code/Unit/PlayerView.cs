@@ -2,6 +2,7 @@
 using Code.Data.Unit;
 using Code.Extension;
 using Code.Unit.Factories;
+using KinematicCharacterController;
 using UnityEngine;
 
 
@@ -9,10 +10,11 @@ namespace Code.Unit
 {
     public sealed class PlayerView : MonoBehaviour, IPlayerView
     {
+        public KinematicCharacterMotor Motor{ get; set; }
+        public UnitMovement UnitMovement{ get; set; }
         public Transform Transform { get; set; }
-        public Transform TransformModel { get; set; }
-        public Collider Collider { get; set; }
-        public Rigidbody Rigidbody { get; set; }
+        public Transform TransformModel{ get; set; }
+        public CapsuleCollider Collider { get; set; }
         public MeshRenderer MeshRenderer { get; set; }
         public Animator Animator { get; set; }
         public AnimatorParameters AnimatorParameters { get; set; }

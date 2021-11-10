@@ -28,7 +28,7 @@ namespace Code.Fight.EcsBattle.Unit.Create
             entity.Get<UnitComponent>()._view = _view;
             entity.Get<UnitComponent>()._modelTransform = _view.TransformModel;
             entity.Get<UnitComponent>()._rootTransform = _view.Transform;
-            entity.Get<UnitComponent>()._rigidBody = _view.Rigidbody;
+            // entity.Get<UnitComponent>()._rigidBody = _view.UnitMovement.Rigidbody;
             entity.Get<UnitComponent>()._reputation = _view.UnitReputation;
             // entity.Get<UnitComponent>().VisionData = _view.UnitVision;
             // entity.Get<UnitComponent>()._attributes = _view.Attributes;

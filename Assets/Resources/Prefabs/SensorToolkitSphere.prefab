@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IgnoreList: []
-  EnableTagFilter: 0
-  AllowedTags: []
+  EnableTagFilter: 1
+  AllowedTags:
+  - Enemy
   OnDetected:
     m_PersistentCalls:
       m_Calls: []
@@ -53,17 +54,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   DetectionMode: 0
-  RequiresLineOfSight: 0
+  RequiresLineOfSight: 1
   BlocksLineOfSight:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   TestLOSTargetsOnly: 0
   NumberOfRays: 1
   MinimumVisibility: 0.5
-  SensorRange: 10
+  SensorRange: 30
   DetectsOnLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   SensorUpdateMode: 0
   CheckInterval: 1
   InitialBufferSize: 20

@@ -13,18 +13,7 @@ MonoBehaviour:
   m_Name: CameraSettings
   m_EditorClassIdentifier: 
   _textDamageManager: {fileID: 0}
-  CameraPrefab: {fileID: 8761174804215584567, guid: af83d4fe7ccd5574a8c1068e2c152391,
+  CameraPrefab: {fileID: 8890342657681411235, guid: c0176fb4bd795064c990a0a4732f4456,
     type: 3}
   CameraStartPosition: {x: 0, y: 3.57, z: 9.15}
   CameraStartRotation: {x: 21.1, y: -180, z: 0}
-  _fightPositions:
-  - FightState: 4
-    Transform: {fileID: 0}
-  - FightState: 0
-    Transform: {fileID: 0}
-  - FightState: 0
-    Transform: {fileID: 0}
-  - FightState: 0
-    Transform: {fileID: 0}
-  - FightState: 0
-    Transform: {fileID: 0}

@@ -13,12 +13,18 @@ namespace Code.Unit.Factories{
 
         public UnitVision GenerateVision(IPlayerView character){
             var visionSensor = new UnitVision();
-            visionSensor.Sensor =
-                Object.Instantiate(_settings.characterVisionData.SensorToolkit, character.Transform, true);
-            visionSensor.Sensor.transform.localPosition = _settings.characterVisionData.offsetHead;
-            visionSensor.Sensor.name = $"-->Sensor<--";
-            visionSensor.Sensor.enabled = false;
+            visionSensor.Visor =
+                Object.Instantiate(_settings.characterVisionData.AngleSensor, character.Transform, true);
+            visionSensor.Visor.transform.localPosition = _settings.characterVisionData.offsetHead;
+            visionSensor.Visor.name = $"-->Visor<--";
+            visionSensor.Visor.enabled = false;
 
+            // visionSensor.Sensor =
+            //     Object.Instantiate(_settings.characterVisionData.SphereSensor, character.Transform, true);
+            // visionSensor.Sensor.transform.localPosition = _settings.characterVisionData.offsetHead;
+            // visionSensor.Sensor.name = $"-->Sensor<--";
+            // visionSensor.Sensor.enabled = false;
+            
             return visionSensor;
         }
     }

@@ -18,9 +18,9 @@ MonoBehaviour:
   MaxEnergyValue: 100
   MaxConcentrationValue: 100
   MoveSpeed: 7
-  RotateSpeed: 120
+  RotateSpeed: 90
   characterVisionData:
-    _sensorToolkit: {fileID: 7267779563871891366, guid: 561fdd2078d8e37488f9a0a026018296,
+    angleSensor: {fileID: 2347009024321003530, guid: f5e6914db97a8714b88183d87e1d87b5,
       type: 3}
     offsetHead: {x: 0, y: 1.5, z: 0}
   _classAbilities:

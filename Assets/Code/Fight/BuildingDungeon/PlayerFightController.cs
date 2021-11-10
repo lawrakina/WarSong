@@ -1,4 +1,5 @@
 ﻿using System;
+using Code.Extension;
 using Code.Profile;
 using Code.Profile.Models;
 using UnityEngine;
@@ -26,9 +27,8 @@ namespace Code.Fight.BuildingDungeon
         private void SpawnPlayer(Transform spawnTransform)
         {
             Status = BuildStatus.Process;
-            _profilePlayer.CurrentPlayer.Transform.SetParent(spawnTransform);
-            _profilePlayer.CurrentPlayer.Transform.localPosition = Vector3.zero;
-
+            _profilePlayer.CurrentPlayer.Motor.SetPosition(spawnTransform.position, false);
+            
             Complete?.Invoke(this);
         }
 

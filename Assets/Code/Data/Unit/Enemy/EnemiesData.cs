@@ -7,6 +7,8 @@ namespace Code.Data.Unit.Enemy
     public sealed class EnemiesData : ScriptableObject
     {
         [SerializeField]
+        public GameObject StorageRootPrefab;
+        [SerializeField]
         public EnemySettings[] Enemies;
         
         [SerializeField]

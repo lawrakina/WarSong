@@ -27,7 +27,7 @@ namespace Code.Fight.EcsBattle.Unit.Create
                 entity.Get<EnemyComponent>();
                 entity.Get<UnitComponent>()._view = view;
                 entity.Get<UnitComponent>()._rootTransform = view.Transform;
-                entity.Get<UnitComponent>()._rigidBody = view.Rigidbody;
+                // entity.Get<UnitComponent>()._rigidBody = view.Rigidbody;
                 entity.Get<UnitComponent>()._collider = view.Collider;
                 entity.Get<UnitComponent>()._animator = view.AnimatorParameters;
                 entity.Get<UnitComponent>()._reputation = view.UnitReputation;
@@ -56,7 +56,7 @@ namespace Code.Fight.EcsBattle.Unit.Create
                 rigidbody.isKinematic = true;
             foreach (var collider in entity.Get<ListRigidBAndCollidersComponent>()._colliders)
                 collider.enabled = false;
-            view.Rigidbody.isKinematic = false;
+            // view.Rigidbody.isKinematic = false;
             view.Collider.enabled = true;
         }
     }

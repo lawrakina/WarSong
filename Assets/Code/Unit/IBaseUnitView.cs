@@ -1,5 +1,6 @@
 ﻿using System;
 using Code.Data.Unit;
+using KinematicCharacterController;
 using UnityEngine;
 using UnitCharacteristics = Code.Data.Unit.UnitCharacteristics;
 using UnitHealth = Code.Data.Unit.UnitHealth;
@@ -11,9 +12,11 @@ namespace Code.Unit
 {
     public interface IBaseUnitView: ICollision
     {
-        Transform Transform { get; set; }
-        Collider Collider { get; set; }
-        Rigidbody Rigidbody { get; set; }
+        KinematicCharacterMotor Motor{ get; set; }
+        UnitMovement UnitMovement{ get; set; }
+        Transform Transform{ get; set; }
+        Transform TransformModel{ get; set; }
+        CapsuleCollider Collider { get; set; }
         MeshRenderer MeshRenderer { get; set; }
         Animator Animator { get; set; }
         AnimatorParameters AnimatorParameters { get; set; }

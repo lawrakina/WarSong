@@ -13,8 +13,7 @@ using UnityEngine;
 
 namespace Code
 {
-    public class Root : MonoBehaviour
-    {
+    public class Root : MonoBehaviour{
         [SerializeField] private Transform _placeForUi;
 
         [SerializeField] private GameState _gameStateAfterStart = GameState.ListOfCharacter;

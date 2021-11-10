@@ -1,5 +1,6 @@
 ﻿using Code.Data.Dungeon;
 using Code.Extension;
+using Code.GameCamera;
 using Code.Profile;
 using Code.Profile.Models;
 using Code.Unit;
@@ -11,7 +12,7 @@ namespace Code.Fight{
         private readonly Controllers _controllers;
         private readonly ProfilePlayer _profilePlayer;
         private EcsFight.EcsFight _ecsBattle;
-        private ThirdPersonCamera _camera;
+        private BattleCamera _camera;
         private IPlayerView _player;
         private DungeonParams _dungeonParams;
         private EnemiesLevelModel _listEnemiesLevelModel;
@@ -67,7 +68,7 @@ namespace Code.Fight{
         }
 
         public void Inject(object obj){
-            if (obj is ThirdPersonCamera camera)
+            if (obj is BattleCamera camera)
                 _camera = camera;
             if (obj is IPlayerView view)
                 _player = view;

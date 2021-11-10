@@ -1,4 +1,5 @@
 ﻿using Code.Extension;
+using Code.GameCamera;
 using Code.Profile.Models;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -8,9 +9,10 @@ namespace Code.Fight.EcsFight.Input{
     public class InputControlS : IEcsInitSystem, IEcsRunSystem{
         private EcsWorld _world = null;
         private InOutControlFightModel _model;
+        private BattleCamera _camera;
         private EcsFilter<PlayerTag, UnitC> _playerFilter;
-        private EcsFilter<InputControlC, TargetC> _inputFilter;
-        private EcsFilter<InputControlC, TargetC, UnpressJoystickC> _unpressJoystick;
+        private EcsFilter<InputControlC, TargetUnitC> _inputFilter;
+        private EcsFilter<InputControlC, TargetUnitC, UnpressJoystickC> _unpressJoystick;
 
         public void Init(){
             foreach (var i in _playerFilter){
@@ -22,7 +24,7 @@ namespace Code.Fight.EcsFight.Input{
                 input.TimeToClick = _model.InputControl.MaxPressTimeForClickButton;
                 input.MaxOffsetForClick = _model.InputControl.MaxOffsetForClick;
                 input.MaxOffsetForMovement = _model.InputControl.MaxOffsetForMovement;
-                entity.Get<TargetC>().Value = player;
+                entity.Get<TargetUnitC>().Value = player;
             }
         }
 
@@ -31,7 +33,7 @@ namespace Code.Fight.EcsFight.Input{
                 ref var entity = ref _inputFilter.GetEntity(i);
                 ref var input = ref _inputFilter.Get1(i);
                 ref var target = ref _unpressJoystick.Get2(i);
-                
+
                 //Get input events
                 if (input.joystick.GetJoystickState()){
                     var inputVector = new Vector3(
@@ -48,15 +50,16 @@ namespace Code.Fight.EcsFight.Input{
                     input.Time = 0.0f;
                     input.LastPosition = Vector3.zero;
                 }
-                
+
+                ref var moveEvent = ref target.Value.Get<ManualMoveEventC>();
                 // create event movement
-                if (input.LastPosition.sqrMagnitude > input.MaxOffsetForMovement.sqrMagnitude){
-                    target.Value.Get<MovementEventC>().Value = input.LastPosition;
-                } else{
-                    ref var movement = ref target.Value.Get<MovementEventC>();
-                    if (movement.Value.sqrMagnitude > input.MaxOffsetForMovement.sqrMagnitude){
-                        movement.Value = Vector3.zero;
-                    }
+                if (input.joystick.GetJoystickState()){
+                    moveEvent.ControlType = ControlType.Manual;
+                    moveEvent.Vector = input.LastPosition;
+                    moveEvent.CameraRotation = _camera.Transform.rotation;
+                    target.Value.Del<NeedAttackTargetC>();
+                } else if(!input.joystick.GetJoystickState() && moveEvent.ControlType == ControlType.Manual){
+                    moveEvent.Vector = Vector3.zero;
                 }
             }
 
@@ -65,7 +68,7 @@ namespace Code.Fight.EcsFight.Input{
                 ref var joystick = ref _unpressJoystick.Get1(i);
                 ref var target = ref _unpressJoystick.Get2(i);
                 ref var lastState = ref _unpressJoystick.Get3(i);
-                
+
                 //create event Click. time hold lastState less than offset и offset less than MaxOffsetForClick
                 if (lastState.PressTime < joystick.TimeToClick &&
                     lastState.LastValueVector.sqrMagnitude <= joystick.MaxOffsetForClick.sqrMagnitude){
@@ -73,7 +76,7 @@ namespace Code.Fight.EcsFight.Input{
                     entity.Del<UnpressJoystickC>();
                     Dbg.Log($"joystick.Click");
                 }
-                
+
                 // create event swipe. time hold less и offset more than MaxOffsetForClick => SwipeEvent
                 if (lastState.PressTime < joystick.TimeToClick &&
                     lastState.LastValueVector.sqrMagnitude > joystick.MaxOffsetForClick.sqrMagnitude){
@@ -84,4 +87,6 @@ namespace Code.Fight.EcsFight.Input{
             }
         }
     }
+
+   
 }

@@ -2,13 +2,16 @@
 using Code.Extension;
 using Code.Fight.EcsFight.Animator;
 using Code.Fight.EcsFight.Battle;
+using Code.Fight.EcsFight.Camera;
 using Code.Fight.EcsFight.Create;
 using Code.Fight.EcsFight.Input;
 using Code.Fight.EcsFight.Movement;
+using Code.GameCamera;
 using Code.Profile;
 using Code.Profile.Models;
+using Code.Unit;
 using Leopotam.Ecs;
-using UnityEngine;
+using ThirdPersonCameraWithLockOn;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
 
@@ -57,22 +60,18 @@ namespace Code.Fight.EcsFight{
             EcsSystemsObserver.Create(_fixedExecute);
             EcsSystemsObserver.Create(_lateExecute);
 #endif
-
             _execute
                 .Add(new CreatePlayerS())
+                .Add(new CreateEnemiesS())
                 .Add(new InputControlS())
+                .Add(new AttackUnitS(5))
                 .Add(new UnitBehaviourSettingsS())
+                .Add(new CameraUpdateS())
                 .Add(new SearchTargetS())
-                .Add(new MovementExecuteUnitS());
-            _fixedExecute
-                .Add(new MovementFixedExecuteUnitS());
-            _execute
+                .Add(new MovementUnitS())
                 .Add(new WeaponsInUnitS())
-                // .Add(new AttackUnitS())
                 .Add(new AnimationUnitS())
                 ;
-
-            // register one-frame components (order is important), for example:
             // .OneFrame<TestComponent1> ()
             // .OneFrame<TestComponent2> ()
 
@@ -137,33 +136,54 @@ namespace Code.Fight.EcsFight{
         }
     }
 
-    public class SearchTargetS : IEcsInitSystem, IEcsRunSystem{
-        private EcsWorld _world = null;
+    public class CreateEnemiesS : IEcsInitSystem{
+        private EcsWorld _world;
+        private EnemiesLevelModel _enemiesModel;
+        private BattleCamera _camera;
         private InOutControlFightModel _model;
-        private EcsFilter<UnitC, NeedFindTargetTag> _searchFilter;
 
         public void Init(){
-            foreach (var i in _searchFilter){
-                ref var entity = ref _searchFilter.GetEntity(i);
-                ref var list =ref entity.Get<ListOfTargetsC>();
-                list.Value = new List<UnitC>();
+            foreach (var view in _enemiesModel.Enemies){
+                view.HealthBar.SetCamera(_camera.transform);
+
+                var entity = _world.NewEntity();
+                entity.Get<EnemyTag>();
+                entity.Get<AnimatorTag>();
+                ref var unit = ref entity.Get<UnitC>();
+                entity.Get<UnitC>().UnitMovement = view.UnitMovement;
+                entity.Get<UnitC>().Animator = view.AnimatorParameters;
+                entity.Get<UnitC>().Characteristics = view.UnitCharacteristics;
+                entity.Get<UnitC>().Health = view.UnitHealth;
+                entity.Get<UnitC>().Resource = view.UnitResource;
+                entity.Get<UnitC>().UnitVision = view.UnitVision;
+                entity.Get<UnitC>().Reputation = view.UnitReputation;
+                entity.Get<UnitC>().UnitLevel = view.UnitLevel;
+                entity.Get<UiEnemyHealthBarC>().value = view.HealthBar;
+
+                view.HealthBar.SetOnOff(false);
+                //Ragdoll
+                // SearchNodesOfRagdoll(entity, view);
+
+                var enemyEntity = new EnemyEntity(view, entity);
             }
         }
 
-        public void Run(){
-            foreach (var i in _searchFilter){
-                
-            }
-        }
+        /*        private static void SearchNodesOfRagdoll(EcsEntity entity, IBaseUnitView view)
+        {
+            entity.Get<ListRigidBAndCollidersComponent>()._rigidBodies
+                = new List<Rigidbody>(view.Transform.GetComponentsInChildren<Rigidbody>());
+            entity.Get<ListRigidBAndCollidersComponent>()._colliders
+                = new List<Collider>(view.Transform.GetComponentsInChildren<Collider>());
+            foreach (var rigidbody in entity.Get<ListRigidBAndCollidersComponent>()._rigidBodies)
+                rigidbody.isKinematic = true;
+            foreach (var collider in entity.Get<ListRigidBAndCollidersComponent>()._colliders)
+                collider.enabled = false;
+            // view.Rigidbody.isKinematic = false;
+            view.Collider.enabled = true;
+        }*/
     }
 
-    public struct ListOfTargetsC{
-        public List<UnitC> Value;
-    }
-
-    public struct NeedAttackTargetC{
-    }
-
-    public struct NeedFindTargetTag{
+    public struct UiEnemyHealthBarC{
+        public HealthBarView value;
     }
 }
