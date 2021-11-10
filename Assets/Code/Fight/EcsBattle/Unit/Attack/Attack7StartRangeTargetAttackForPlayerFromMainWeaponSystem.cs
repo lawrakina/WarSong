@@ -24,7 +24,7 @@ namespace Code.Fight.EcsBattle.Unit.Attack
             {
                 ref var entity = ref _filter.GetEntity(i);
                 ref var transform = ref _filter.Get3(i)._rootTransform;
-                ref var vision = ref _filter.Get3(i)._vision;
+                ref var vision = ref _filter.Get3(i).VisionData;
                 ref var target = ref _filter.Get4(i);
                 ref var battleInfo = ref _filter.Get5(i);
 

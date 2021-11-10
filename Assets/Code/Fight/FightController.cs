@@ -84,7 +84,7 @@ namespace Code.Fight
             _ecsBattleController.OnDeactivate();
 
             _ecsBattleController.Inject(_profilePlayer.CurrentPlayer);
-            _ecsBattleController.Inject(_cameraController.FightCamera);
+            _ecsBattleController.Inject(_cameraController.BattleCamera);
             _ecsBattleController.Inject(_profilePlayer.Models.InOutControlFightModel);
             _ecsBattleController.Inject(_profilePlayer.Models.DungeonGeneratorModel.ActiveLevel);
             _ecsBattleController.Inject(_profilePlayer.Models.EnemiesLevelModel);

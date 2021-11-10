@@ -4,6 +4,7 @@ using Code.Data.Marker;
 using Code.Data.Unit;
 using Code.Data.Unit.Enemy;
 using Code.Extension;
+using KinematicCharacterController;
 using UnityEngine;
 
 
@@ -23,32 +24,34 @@ namespace Code.Unit.Factories
 
         public EnemyView CreateEnemy(SpawnMarkerEnemyInDungeon marker)
         {
-            var item = _settings.Enemies.FirstOrDefault(x => x.EnemyType == marker._type);
-            var enemy = Object.Instantiate(item.EnemyView);
-            enemy.name = $"Enemy.{item.EnemyType.ToString()}.{item.EnemyView.name}";
-            var enemyView = enemy.AddCode<EnemyView>();
-            enemyView.Animator = enemy.GetComponent<Animator>();
-            enemyView.Transform = enemy.transform;
-            enemyView.Rigidbody = enemy.AddRigidBody(80, CollisionDetectionMode.ContinuousSpeculative,
-                false, true,
-                RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |
-                RigidbodyConstraints.FreezeRotationZ);
-            enemyView.Collider = enemy.AddCapsuleCollider(0.5f, false,
-                new Vector3(0.0f, 0.9f, 0.0f),
-                1.8f);
+            var enemySettings = _settings.Enemies.FirstOrDefault(x => x.EnemyType == marker._type);
+            var root = Object.Instantiate(_settings.StorageRootPrefab);
+            root.name = $"Enemy.{enemySettings.EnemyType.ToString()}.{enemySettings.EnemyView.name}";
+            var unit = root.AddCode<EnemyView>();
+            unit.Transform = root.transform;
+            unit.Motor = root.GetComponent<KinematicCharacterMotor>();
+            unit.UnitMovement = root.GetComponent<UnitMovement>();
+            unit.Collider = root.GetComponent<CapsuleCollider>();
+
+            var unitModel = Object.Instantiate(enemySettings.EnemyView, unit.UnitMovement.MeshRoot, true);
+            unitModel.name = $"Prefab.Model";
+
+            unit.TransformModel = unitModel.transform;
+            unit.MeshRenderer = unitModel.GetComponent<MeshRenderer>();
+            unit.Animator = unitModel.GetComponent<Animator>();
+            unit.Animator.enabled = true;
+            unit.AnimatorParameters = new AnimatorParameters(unit.Animator);
+
+            unit.UnitReputation = _reputationFactory.GenerateEnemyReputation();
+            unit.gameObject.layer = unit.UnitReputation.FriendLayer;
+            unit.tag = TagManager.TAG_ENEMY;
             
-            enemyView.MeshRenderer = enemy.GetComponent<MeshRenderer>();
-            enemyView.AnimatorParameters = new AnimatorParameters(enemyView.Animator);
+            unit.UnitHealth = new UnitHealth();
+            unit.UnitHealth.MaxHp = 100;
+            unit.UnitHealth.CurrentHp = 100;
 
-            enemyView.UnitReputation = _reputationFactory.GenerateEnemyReputation();
-            enemyView.gameObject.layer = enemyView.UnitReputation.FriendLayer;
-            //test
-            enemyView.UnitHealth = new UnitHealth();
-            enemyView.UnitHealth.MaxHp = 100;
-            enemyView.UnitHealth.CurrentHp = 100;
-
-            enemyView.UnitVision = new UnitVision();
-            enemyView.UnitVision.distanceDetection = 15.0f;
+            // enemyView.CharacterVisionData = new CharacterVisionData();
+            // enemyView.CharacterVisionData.distanceDetection = 15.0f;
             
             //test
             
@@ -62,21 +65,19 @@ namespace Code.Unit.Factories
             // characteristics.MaxAttack = item.MoveSpeed;
 
             var healthBarSettings = _settings.uiElement.First(x => (x.EnemyType == marker._type));
-            enemyView.HealthBar = Object.Instantiate(healthBarSettings.UiView, enemyView.Transform, false);
-            enemyView.HealthBar.transform.localPosition = healthBarSettings.Offset;
+            unit.HealthBar = Object.Instantiate(healthBarSettings.UiView, unit.Transform, false);
+            unit.HealthBar.transform.localPosition = healthBarSettings.Offset;
             
             //test name and level
-            enemyView.HealthBar.SetEnemyName("Рандомный бомжик");
+            unit.HealthBar.SetEnemyName("Рандомный бомжик");
 
             var enemyLvl = Random.Range(1, 4);
-            enemyView.HealthBar.SetEnemyLvl(enemyLvl);
+            unit.HealthBar.SetEnemyLvl(enemyLvl);
             //test
 
-            enemyView.Transform.SetParent(marker.Transform);
-            enemyView.Transform.localPosition = Vector3.zero;
-            enemyView.Transform.rotation = Quaternion.identity;
+            unit.Motor.SetPosition(marker.Transform.position, false);
              
-            return enemyView;
+            return unit;
         }
     }
 }

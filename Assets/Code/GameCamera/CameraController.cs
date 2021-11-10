@@ -11,8 +11,8 @@ namespace Code.GameCamera
     {
         private readonly ProfilePlayer _profilePlayer;
         private Camera _camera;
-        private ThirdPersonCamera _fightCamera;
-        public ThirdPersonCamera FightCamera => _fightCamera;
+        private BattleCamera _battleCamera;
+        public BattleCamera BattleCamera => _battleCamera;
         
         public CameraController(ProfilePlayer profilePlayer)
         {
@@ -22,20 +22,17 @@ namespace Code.GameCamera
             if (_camera == null)
             {
                 _camera = Object.Instantiate(profilePlayer.Settings.CameraSettings.CameraPrefab);
-                _fightCamera = CreateCamera(_camera);
+                _battleCamera = CreateCamera(_camera);
             }
         }
 
 
-        private ThirdPersonCamera CreateCamera(Camera baseCamera)
+        private BattleCamera CreateCamera(Camera baseCamera)
         {
             baseCamera.fieldOfView = 60.0f;
             // var component = baseCamera.gameObject.AddCode<ThirdPersonCamera>();
-            var camera = baseCamera.GetComponent<ThirdPersonCamera>();
-            camera.Follow = _profilePlayer.CurrentPlayer.Transform;
-            camera.UsingMouse = false;
-            camera.DefaultYAngle = 12.0f;
-            camera.Distance = 15.0f;
+            var camera = baseCamera.GetComponent<BattleCamera>();
+            
             // camera.UiTextManager = Object.Instantiate(_settings.CameraSettings._textDamageManager, camera.Transform);
             // camera.UiTextManager.canvas.worldCamera = camera.Transform.GetComponent<Camera>();
             // camera.UiTextManager.theCamera = camera.Transform.GetComponent<Camera>();

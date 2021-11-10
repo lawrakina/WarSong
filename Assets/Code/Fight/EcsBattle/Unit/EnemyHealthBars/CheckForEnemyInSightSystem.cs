@@ -16,13 +16,15 @@ namespace Code.Fight.EcsBattle.Unit.EnemyHealthBars
         {
             foreach (var i in _playerFilter)
             {
-                ref var playerVision = ref _playerFilter.Get2(i)._vision;
+                ref var playerVision = ref _playerFilter.Get2(i).VisionData;
                 ref var playerTransform = ref _playerFilter.Get2(i)._rootTransform;
-                ref var distanceDetection = ref _playerFilter.Get2(i)._vision.distanceDetection;
+                // ref var distanceDetection = ref _playerFilter.Get2(i).VisionData.distanceDetection;
                 ref var reputation = ref _playerFilter.Get2(i)._reputation;
 
-                var colliders = new Collider[playerVision.maxCountTargets];
-                Physics.OverlapSphereNonAlloc(playerTransform.position, distanceDetection, colliders,
+                var colliders = new Collider[5];
+                // var colliders = new Collider[playerVision.maxCountTargets];
+                Physics.OverlapSphereNonAlloc(playerTransform.position,15, colliders,
+                // Physics.OverlapSphereNonAlloc(playerTransform.position, distanceDetection, colliders,
                     1 << reputation.EnemyLayer);
 
                 foreach (var j in _enemyFilter)

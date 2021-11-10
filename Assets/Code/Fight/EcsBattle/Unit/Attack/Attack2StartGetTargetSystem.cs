@@ -22,16 +22,19 @@ namespace Code.Fight.EcsBattle.Unit.Attack
             {
                 ref var entity = ref _filter.GetEntity(i);
                 ref var transform = ref _filter.Get3(i)._rootTransform;
-                ref var vision = ref _filter.Get3(i)._vision;
+                ref var vision = ref _filter.Get3(i).VisionData;
                 ref var reputation = ref _filter.Get3(i)._reputation;
                 // ref var battleInfo = ref _filter.Get3(i);
 
                 //поиск всех целей
-                var colliders = new Collider[vision.maxCountTargets];
+                var colliders = new Collider[5];
+                // var colliders = new Collider[vision.maxCountTargets];
                 var countColliders =
-                    Physics.OverlapSphereNonAlloc(transform.position, vision.distanceDetection, colliders,
+                    Physics.OverlapSphereNonAlloc(transform.position,15, colliders,
+                    // Physics.OverlapSphereNonAlloc(transform.position, vision.distanceDetection, colliders,
                         1 << reputation.EnemyLayer);
-                DebugExtension.DebugWireSphere(transform.position, Color.green, vision.distanceDetection, 1.0f);
+                DebugExtension.DebugWireSphere(transform.position, Color.green,15, 1.0f);
+                // DebugExtension.DebugWireSphere(transform.position, Color.green, vision.distanceDetection, 1.0f);
                 var listEnemies = new List<GameObject>();
                 Dbg.Log($"countColliders:{countColliders}");
 

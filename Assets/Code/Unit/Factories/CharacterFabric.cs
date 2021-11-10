@@ -43,7 +43,9 @@ namespace Code.Unit.Factories
 
         public IPlayerView CreatePlayer(CharacterSettings item)
         {
-            return _playerFactory.CreatePlayer(item);
+            var character = _playerFactory.CreatePlayer(item);
+            character.UnitVision = _visionFactory.GenerateVision(character);
+            return character;
         }
 
         public void RebuildCharacter(IPlayerView character, CharacterSettings value)
@@ -53,7 +55,6 @@ namespace Code.Unit.Factories
             character.UnitEquipment = _equipmentFactory.GenerateEquip(character, value, character.UnitLevel.CurrentLevel);
             character.UnitInventory = _inventoryFactory.GenerateInventory(character, value);
             character.UnitAbilities = _abilitiesFactory.GenerateAbilities(value, character.UnitLevel.CurrentLevel);
-            character.UnitVision = _visionFactory.GenerateVision();
             character.UnitReputation = _reputationFactory.GeneratePlayerReputation();
             character.CharacterClass = _classesFactory.GenerateClass(character.CharacterClass, value);
             character.UnitCharacteristics = _characteristicsFactory.GenerateCharacteristics(character.UnitCharacteristics, character.UnitEquipment, character.UnitLevel, value);

@@ -6,6 +6,7 @@ namespace Code.Extension
     public static class LayerManager
     {
         public static LayerMask GroundLayer;
+        public static int Default;
         public static int EnemyLayer;
         public static int PlayerLayer;
         public static int PlayerAttackLayer;

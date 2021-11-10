@@ -25,7 +25,7 @@ namespace Code.Fight.EcsBattle {
 					foreach (var attackEffect in attackEffects) {
 						switch (attackEffect.AttackEffectType) {
 							case AttackEffectType.KnockBack:
-								targetView.Rigidbody.AddForce(attackEffect.Direction * attackEffect.Power, ForceMode.Impulse);
+								// targetView.Rigidbody.AddForce(attackEffect.Direction * attackEffect.Power, ForceMode.Impulse);
 								break;
 							case AttackEffectType.None:
 							default:

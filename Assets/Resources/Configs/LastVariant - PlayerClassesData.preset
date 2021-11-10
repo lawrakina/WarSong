@@ -54,24 +54,41 @@ Preset:
     value: 120
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: UnitVision.distanceDetection
+    propertyPath: characterVisionData._sensorToolkit
+    value: 
+    objectReference: {fileID: 2347009024321003530, guid: f5e6914db97a8714b88183d87e1d87b5,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: characterVisionData.distanceDetection
     value: 15
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: UnitVision.maxCountTargets
+    propertyPath: characterVisionData.maxCountTargets
     value: 5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: UnitVision.offsetHead.x
+    propertyPath: characterVisionData.offsetHead.x
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: UnitVision.offsetHead.y
+    propertyPath: characterVisionData.offsetHead.y
     value: 1.5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: UnitVision.offsetHead.z
+    propertyPath: characterVisionData.offsetHead.z
     value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: characterVisionData._checkInterval
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: characterVisionData._minimumVisibility
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: characterVisionData._detectionMode
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _classAbilities.Array.size
@@ -702,6 +719,14 @@ Preset:
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0].Start.CritChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0].Start.DodgeChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[0].ForOneLevel.Strength
     value: 3
     objectReference: {fileID: 0}
@@ -722,6 +747,14 @@ Preset:
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0].ForOneLevel.CritChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[0].ForOneLevel.DodgeChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[0].Speed
     value: 8
     objectReference: {fileID: 0}
@@ -738,8 +771,8 @@ Preset:
     value: 0.75
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: _classesStartCharacteristics.Array.data[0]._critChance
-    value: 0.1
+    propertyPath: _classesStartCharacteristics.Array.data[0]._critAttackMultiplier
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[0]._minDodgeChance
@@ -748,10 +781,6 @@ Preset:
   - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[0]._maxDodgeChance
     value: 0.75
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: _classesStartCharacteristics.Array.data[0]._dodgeChance
-    value: 0.05
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[0]._minArmorValue
@@ -786,6 +815,14 @@ Preset:
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1].Start.CritChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1].Start.DodgeChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[1].ForOneLevel.Strength
     value: 1
     objectReference: {fileID: 0}
@@ -806,6 +843,14 @@ Preset:
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1].ForOneLevel.CritChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[1].ForOneLevel.DodgeChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[1].Speed
     value: 8
     objectReference: {fileID: 0}
@@ -822,8 +867,8 @@ Preset:
     value: 0.75
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: _classesStartCharacteristics.Array.data[1]._critChance
-    value: 0.1
+    propertyPath: _classesStartCharacteristics.Array.data[1]._critAttackMultiplier
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[1]._minDodgeChance
@@ -832,10 +877,6 @@ Preset:
   - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[1]._maxDodgeChance
     value: 0.75
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: _classesStartCharacteristics.Array.data[1]._dodgeChance
-    value: 0.05
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[1]._minArmorValue
@@ -870,6 +911,14 @@ Preset:
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2].Start.CritChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2].Start.DodgeChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[2].ForOneLevel.Strength
     value: 2
     objectReference: {fileID: 0}
@@ -890,6 +939,14 @@ Preset:
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2].ForOneLevel.CritChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[2].ForOneLevel.DodgeChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[2].Speed
     value: 8
     objectReference: {fileID: 0}
@@ -906,8 +963,8 @@ Preset:
     value: 0.75
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: _classesStartCharacteristics.Array.data[2]._critChance
-    value: 0.1
+    propertyPath: _classesStartCharacteristics.Array.data[2]._critAttackMultiplier
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[2]._minDodgeChance
@@ -916,10 +973,6 @@ Preset:
   - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[2]._maxDodgeChance
     value: 0.75
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: _classesStartCharacteristics.Array.data[2]._dodgeChance
-    value: 0.05
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[2]._minArmorValue
@@ -954,6 +1007,14 @@ Preset:
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3].Start.CritChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3].Start.DodgeChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[3].ForOneLevel.Strength
     value: 1
     objectReference: {fileID: 0}
@@ -974,6 +1035,14 @@ Preset:
     value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3].ForOneLevel.CritChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _classesStartCharacteristics.Array.data[3].ForOneLevel.DodgeChance
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[3].Speed
     value: 8
     objectReference: {fileID: 0}
@@ -990,8 +1059,8 @@ Preset:
     value: 0.75
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: _classesStartCharacteristics.Array.data[3]._critChance
-    value: 0.1
+    propertyPath: _classesStartCharacteristics.Array.data[3]._critAttackMultiplier
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[3]._minDodgeChance
@@ -1000,10 +1069,6 @@ Preset:
   - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[3]._maxDodgeChance
     value: 0.75
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: _classesStartCharacteristics.Array.data[3]._dodgeChance
-    value: 0.05
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _classesStartCharacteristics.Array.data[3]._minArmorValue
@@ -1070,6 +1135,10 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[0]._typeOfModification
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[1].Owner
     value: 2
     objectReference: {fileID: 0}
@@ -1119,6 +1188,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[1].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[1]._typeOfModification
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -1174,6 +1247,10 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[2]._typeOfModification
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[3].Owner
     value: 4
     objectReference: {fileID: 0}
@@ -1223,6 +1300,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[3].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[3]._typeOfModification
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -1279,6 +1360,10 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[4]._typeOfModification
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[5].Owner
     value: 2
     objectReference: {fileID: 0}
@@ -1329,6 +1414,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[5].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[5]._typeOfModification
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -1385,6 +1474,10 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[6]._typeOfModification
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[7].Owner
     value: 4
     objectReference: {fileID: 0}
@@ -1435,6 +1528,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[7].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[7]._typeOfModification
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -1491,6 +1588,10 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[8]._typeOfModification
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[9].Owner
     value: 2
     objectReference: {fileID: 0}
@@ -1541,6 +1642,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[9].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[9]._typeOfModification
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -1597,6 +1702,10 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[10]._typeOfModification
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[11].Owner
     value: 4
     objectReference: {fileID: 0}
@@ -1647,6 +1756,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[11].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[11]._typeOfModification
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -1702,6 +1815,10 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[12]._typeOfModification
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[13].Owner
     value: 2
     objectReference: {fileID: 0}
@@ -1751,6 +1868,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[13].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[13]._typeOfModification
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -1806,6 +1927,10 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[14]._typeOfModification
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[15].Owner
     value: 4
     objectReference: {fileID: 0}
@@ -1855,6 +1980,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[15].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[15]._typeOfModification
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -1910,6 +2039,10 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[16]._typeOfModification
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[17].Owner
     value: 2
     objectReference: {fileID: 0}
@@ -1959,6 +2092,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[17].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[17]._typeOfModification
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -2014,6 +2151,10 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[18]._typeOfModification
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[19].Owner
     value: 4
     objectReference: {fileID: 0}
@@ -2063,6 +2204,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[19].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[19]._typeOfModification
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -2118,6 +2263,10 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[20]._typeOfModification
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[21].Owner
     value: 2
     objectReference: {fileID: 0}
@@ -2167,6 +2316,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[21].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[21]._typeOfModification
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -2222,6 +2375,10 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[22]._typeOfModification
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[23].Owner
     value: 4
     objectReference: {fileID: 0}
@@ -2271,6 +2428,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[23].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[23]._typeOfModification
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -2326,6 +2487,10 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[24]._typeOfModification
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[25].Owner
     value: 2
     objectReference: {fileID: 0}
@@ -2375,6 +2540,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[25].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[25]._typeOfModification
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -2430,6 +2599,10 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[26]._typeOfModification
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[27].Owner
     value: 4
     objectReference: {fileID: 0}
@@ -2479,6 +2652,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: _characteristicsModifiers.Array.data[27].Const3
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _characteristicsModifiers.Array.data[27]._typeOfModification
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
