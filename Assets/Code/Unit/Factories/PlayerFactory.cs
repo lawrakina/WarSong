@@ -1,56 +1,50 @@
 ﻿using Code.Data.Unit;
 using Code.Extension;
+using KinematicCharacterController;
 using UnityEngine;
 
 
-namespace Code.Unit.Factories
-{
-    public sealed class PlayerFactory : IPlayerFactory
-    {
+namespace Code.Unit.Factories{
+    public sealed class PlayerFactory : IPlayerFactory{
         private readonly CharacterData _data;
         private CharacterSettings _settings;
 
-        public PlayerFactory(CharacterData data)
-        {
+        public PlayerFactory(CharacterData data){
             _data = data;
         }
 
-        public IPlayerView CreatePlayer(CharacterSettings settings)
-        {
+        public IPlayerView CreatePlayer(CharacterSettings settings){
             _settings = settings;
 
-            var rootPlayer = new GameObject {name = $"-> PlayerCharacter <-"};
+            var rootPlayer = Object.Instantiate(_data.StorageRootPrefab);
+            rootPlayer.name = $"-> PlayerCharacter <-";
             var player = rootPlayer.AddCode<PlayerView>();
             player.Transform = rootPlayer.transform;
-            player.Rigidbody = rootPlayer.AddRigidBody(80, CollisionDetectionMode.ContinuousDynamic, false, true,
-                RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |
-                RigidbodyConstraints.FreezeRotationZ);
-            player.Collider = rootPlayer.AddCapsuleCollider(0.5f, false,
-                new Vector3(0.0f, 0.9f, 0.0f),
-                1.8f);
+            player.Motor = rootPlayer.GetComponent<KinematicCharacterMotor>();
+            player.UnitMovement = rootPlayer.GetComponent<UnitMovement>();
+            player.Collider = rootPlayer.GetComponent<CapsuleCollider>();
 
             return player;
         }
 
-        public IPlayerView RebuildModel(IPlayerView character, CharacterSettings settings,
-            RaceCharacteristics raceCharacteristics)
-        {
-            if (character.TransformModel)
-            {
-                var trash = character.TransformModel.gameObject;
+        public IPlayerView RebuildModel(IPlayerView player, CharacterSettings settings,
+            RaceCharacteristics raceCharacteristics){
+            if (player.TransformModel){
+                var trash = player.TransformModel.gameObject;
                 trash.name = $"TRASH, Need destroy";
                 Object.Destroy(trash);
             }
 
-            var playerPrefab = Object.Instantiate(_data.StoragePlayerPrefab, character.Transform, true);
+            var playerPrefab = Object.Instantiate(_data.StorageModelPrefab, player.UnitMovement.MeshRoot, true);
             playerPrefab.name = $"Prefab.Model";
 
-            character.TransformModel = playerPrefab.transform;
-            character.MeshRenderer = playerPrefab.GetComponent<MeshRenderer>();
-            character.Animator = playerPrefab.GetComponent<Animator>();
-            character.AnimatorParameters = new AnimatorParameters(character.Animator);
-            character.UnitPerson = new UnitPerson(playerPrefab, settings, _data, raceCharacteristics);
-            return character;
+            player.TransformModel = playerPrefab.transform;
+            player.MeshRenderer = playerPrefab.GetComponent<MeshRenderer>();
+            player.Animator = playerPrefab.GetComponent<Animator>();
+            player.Animator.enabled = true;
+            player.AnimatorParameters = new AnimatorParameters(player.Animator);
+            player.UnitPerson = new UnitPerson(playerPrefab, settings, _data, raceCharacteristics);
+            return player;
         }
     }
 }

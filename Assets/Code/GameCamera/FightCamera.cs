@@ -8,7 +8,7 @@ using UnityEngine.Rendering;
 
 namespace Code.GameCamera
 {
-    public sealed class FightCamera : MonoBehaviour, IFightCamera
+    public sealed class FightCamera : MonoBehaviour
     {
         [Header("Third person camera orientation")]
         [SerializeField]

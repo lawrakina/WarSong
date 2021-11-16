@@ -13,8 +13,7 @@ using UnityEngine;
 
 namespace Code
 {
-    public class Root : MonoBehaviour
-    {
+    public class Root : MonoBehaviour{
         [SerializeField] private Transform _placeForUi;
 
         [SerializeField] private GameState _gameStateAfterStart = GameState.ListOfCharacter;
@@ -85,6 +84,7 @@ namespace Code
             // settings.BattleSettingsData = ResourceLoader.LoadConfig<BattleSettingsData>("Configs/BattleSettingsData");
             // Dbg.Log($"{StringManager.RESULF_OF_LOADING_RESOURCES} - {nameof(BattleSettingsData)}:{_battleSettingsData}");
 
+            LayerManager.Default = LayerMask.NameToLayer(StringManager.DEFAULT);
             LayerManager.EnemyLayer = LayerMask.NameToLayer(StringManager.ENEMY_LAYER);
             LayerManager.PlayerLayer = LayerMask.NameToLayer(StringManager.PLAYER_LAYER);
             LayerManager.PlayerAttackLayer = LayerMask.NameToLayer(StringManager.PLAYER_ATTACK_LAYER);

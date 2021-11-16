@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4651812059541283996}
   - component: {fileID: 1419204532211931237}
   - component: {fileID: -7251026296987679597}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: BockadeTile8
   m_TagString: Untagged
   m_Icon: {fileID: 0}

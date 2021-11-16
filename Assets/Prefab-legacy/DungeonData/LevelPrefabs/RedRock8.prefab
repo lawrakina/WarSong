@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4651812059541283996}
   - component: {fileID: 1419204532211931237}
   - component: {fileID: 594387958424803620}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: RedRock8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 2634b14a13a6db2408c82333f3e78eae,
         type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2634b14a13a6db2408c82333f3e78eae, type: 3}

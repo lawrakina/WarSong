@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2374666}
   - component: {fileID: 9516436}
   - component: {fileID: 6514592}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,6 +61,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -85,6 +86,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!95 &9516436
 Animator:
   serializedVersion: 3
@@ -127,6 +129,10 @@ PrefabInstance:
     - target: {fileID: 1807560842122822, guid: 9e8fe3b1e42204b48ad8924533d8933c, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Castle_Battlements_01_Half
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807560842122822, guid: 9e8fe3b1e42204b48ad8924533d8933c, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1807560842122822, guid: 9e8fe3b1e42204b48ad8924533d8933c, type: 3}
       propertyPath: m_IsActive
@@ -214,6 +220,10 @@ PrefabInstance:
       value: SM_Prop_StoneWall_01 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1436398286074176, guid: aa7a79e53bee7d64e9b1fb9894a773a5, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1436398286074176, guid: aa7a79e53bee7d64e9b1fb9894a773a5, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -288,6 +298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Castle_Wall_Cut_02
       objectReference: {fileID: 0}
+    - target: {fileID: 1848455675612600, guid: 031e6e30012afb745b0a530f980f6bc4, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4287472177597850, guid: 031e6e30012afb745b0a530f980f6bc4, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -359,6 +373,10 @@ PrefabInstance:
     - target: {fileID: 1436398286074176, guid: aa7a79e53bee7d64e9b1fb9894a773a5, type: 3}
       propertyPath: m_Name
       value: SM_Prop_StoneWall_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1436398286074176, guid: aa7a79e53bee7d64e9b1fb9894a773a5, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1436398286074176, guid: aa7a79e53bee7d64e9b1fb9894a773a5, type: 3}
       propertyPath: m_IsActive

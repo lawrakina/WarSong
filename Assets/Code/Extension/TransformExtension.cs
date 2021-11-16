@@ -17,5 +17,8 @@ namespace Code.Extension
             original.rotation = newValue.rotation;
             return original;
         }
+        public static float SqrDistance(this Transform position, Transform target){
+            return (position.position - target.position).sqrMagnitude;
+        }
     }
 }

@@ -20,7 +20,7 @@ namespace Code.Fight.EcsBattle.Unit.Attack
                 ref var entity = ref _filter.GetEntity(i);
                 ref var modelTransform = ref _filter.Get3(i)._modelTransform;
                 ref var reputation = ref _filter.Get3(i)._reputation;
-                ref var vision = ref _filter.Get3(i)._vision;
+                ref var vision = ref _filter.Get3(i).VisionData;
                 ref var battleInfo = ref _filter.Get5(i);
 
                 var attackPositionCenter =

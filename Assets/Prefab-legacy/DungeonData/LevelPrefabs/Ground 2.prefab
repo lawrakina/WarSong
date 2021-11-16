@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3354568}
   - component: {fileID: 2329340}
   - component: {fileID: 6544076}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,6 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -83,6 +84,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6544076
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -103,9 +105,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 480892}
     m_Modifications:
+    - target: {fileID: 1108337065115358, guid: 94f55021adc743447972e33009b6eda2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1584481546719536, guid: 94f55021adc743447972e33009b6eda2, type: 3}
       propertyPath: m_Name
       value: FX_Fire_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584481546719536, guid: 94f55021adc743447972e33009b6eda2, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4577017063040302, guid: 94f55021adc743447972e33009b6eda2, type: 3}
       propertyPath: m_RootOrder
@@ -170,6 +180,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Dead_Body_Pile_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1152765526948104, guid: f0f746eb62ee88047b57e42dd06ecbf8, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4264825688478686, guid: f0f746eb62ee88047b57e42dd06ecbf8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -232,6 +246,10 @@ PrefabInstance:
     - target: {fileID: 1630371618896570, guid: 0251ffe8d14a3ab42b7e74d9265ca3c7, type: 3}
       propertyPath: m_Name
       value: FX_Fog_Small_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630371618896570, guid: 0251ffe8d14a3ab42b7e74d9265ca3c7, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4578585652623186, guid: 0251ffe8d14a3ab42b7e74d9265ca3c7, type: 3}
       propertyPath: m_RootOrder

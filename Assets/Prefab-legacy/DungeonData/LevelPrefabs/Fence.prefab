@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2373806}
   - component: {fileID: 9553884}
   - component: {fileID: 6531648}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,6 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -82,6 +83,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!95 &9553884
 Animator:
   serializedVersion: 3
@@ -125,6 +127,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Bridge_Railing_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1453259325020162, guid: 1e99866fc4043f645a165bf26230ebb6, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705479547501320, guid: 1e99866fc4043f645a165bf26230ebb6, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705479547501320, guid: 1e99866fc4043f645a165bf26230ebb6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.90172
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705479547501320, guid: 1e99866fc4043f645a165bf26230ebb6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.90172
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705479547501320, guid: 1e99866fc4043f645a165bf26230ebb6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.78911316
+      objectReference: {fileID: 0}
     - target: {fileID: 4705479547501320, guid: 1e99866fc4043f645a165bf26230ebb6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.04
@@ -136,6 +158,10 @@ PrefabInstance:
     - target: {fileID: 4705479547501320, guid: 1e99866fc4043f645a165bf26230ebb6, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705479547501320, guid: 1e99866fc4043f645a165bf26230ebb6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4705479547501320, guid: 1e99866fc4043f645a165bf26230ebb6, type: 3}
       propertyPath: m_LocalRotation.x
@@ -150,14 +176,6 @@ PrefabInstance:
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4705479547501320, guid: 1e99866fc4043f645a165bf26230ebb6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705479547501320, guid: 1e99866fc4043f645a165bf26230ebb6, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705479547501320, guid: 1e99866fc4043f645a165bf26230ebb6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -168,18 +186,6 @@ PrefabInstance:
     - target: {fileID: 4705479547501320, guid: 1e99866fc4043f645a165bf26230ebb6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705479547501320, guid: 1e99866fc4043f645a165bf26230ebb6, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.90172
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705479547501320, guid: 1e99866fc4043f645a165bf26230ebb6, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.90172
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705479547501320, guid: 1e99866fc4043f645a165bf26230ebb6, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.78911316
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e99866fc4043f645a165bf26230ebb6, type: 3}

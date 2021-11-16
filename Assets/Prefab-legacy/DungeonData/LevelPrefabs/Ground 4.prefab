@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3354568}
   - component: {fileID: 2329340}
   - component: {fileID: 6544076}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,6 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -81,6 +82,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6544076
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -101,9 +103,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 480892}
     m_Modifications:
+    - target: {fileID: 1146056504847856, guid: 7f687487d4bbab24fb547dc9af8ed83f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164509696534288, guid: 7f687487d4bbab24fb547dc9af8ed83f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1297885529879400, guid: 7f687487d4bbab24fb547dc9af8ed83f, type: 3}
       propertyPath: m_Name
       value: SM_Env_Fountain_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1297885529879400, guid: 7f687487d4bbab24fb547dc9af8ed83f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535879142961500, guid: 7f687487d4bbab24fb547dc9af8ed83f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1925008817987644, guid: 7f687487d4bbab24fb547dc9af8ed83f, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4646077494656590, guid: 7f687487d4bbab24fb547dc9af8ed83f, type: 3}
       propertyPath: m_RootOrder

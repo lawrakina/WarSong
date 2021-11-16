@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82810ef862b846ceb1564b3e40ec1101, type: 3}
   m_Name: CharacterData
   m_EditorClassIdentifier: 
-  StoragePlayerPrefab: {fileID: 1588895830433058, guid: 7d60f1fafb258734ca534d15b95ed5c7,
+  StorageRootPrefab: {fileID: 686997688615928582, guid: 32b697eadfb0b3a41b3a26afa41fc881,
+    type: 3}
+  StorageModelPrefab: {fileID: 1588895830433058, guid: 7d60f1fafb258734ca534d15b95ed5c7,
     type: 3}
   ListAttachPoints:
   - Name: LeftOneHandWeapon
@@ -39,6 +41,11 @@ MonoBehaviour:
   - {r: 0.5882353, g: 0.6274, b: 0.73333, a: 1}
   - {r: 0.8392157, g: 0.8392157, b: 0.8392157, a: 1}
   - {r: 0.39607844, g: 0.7294118, b: 0.78431374, a: 1}
+  gnomeSkin:
+  - {r: 0.57, g: 0.33, b: 0.18, a: 1}
+  - {r: 0.64, g: 0.29, b: 0.33, a: 1}
+  - {r: 0.74, g: 0.47, b: 0.27, a: 1}
+  - {r: 0.23, g: 0.19, b: 0.09, a: 1}
   orcSkin:
   - {r: 0.23671, g: 0.3294118, b: 0.1843, a: 1}
   - {r: 0.24705882, g: 0.35686275, b: 0.09803922, a: 1}

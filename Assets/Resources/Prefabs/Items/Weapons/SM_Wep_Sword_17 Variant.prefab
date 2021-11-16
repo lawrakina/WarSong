@@ -26,13 +26,14 @@ MonoBehaviour:
     Stamina: 40
     Intellect: 2
     Spirit: 1
+    CritChance: 0
+    DodgeChance: 0
   _targetEquipCell: 1
   _isNeedInstantiate: 1
-  _equipType: 1
   _standardBullet: {fileID: -6047091618391902694, guid: 7a523132aa6c0a34a9aae889cddf5cc9,
     type: 3}
   _weaponType: 1
-  _attackDistanceOffset: 1
+  attackDistance: 1
   _attackValue:
     _maxAttackValue: 45
     _minAttackValue: 31
@@ -92,6 +93,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4573766209329876, guid: d97af9500bf6b8643ae184f668c1630c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64347935935826136, guid: d97af9500bf6b8643ae184f668c1630c,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

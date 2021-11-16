@@ -12,6 +12,9 @@ namespace Code.Data.Unit{
         private Vector3 _scaleModelByRace = Vector3.one;
 
         public CharacterRace Race => _race;
-        public Vector3 ScaleModelByRace => _scaleModelByRace;
+        public Vector3 ScaleModelByRace{
+            get => _scaleModelByRace;
+            set => _scaleModelByRace = value;
+        }
     }
 }

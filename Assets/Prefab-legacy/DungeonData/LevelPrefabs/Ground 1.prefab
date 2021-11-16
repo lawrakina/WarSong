@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3354568}
   - component: {fileID: 2329340}
   - component: {fileID: 6544076}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,6 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -83,6 +84,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6544076
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -106,6 +108,10 @@ PrefabInstance:
     - target: {fileID: 1670545419382430, guid: 26e65da649f426646ab18c0142ae7edc, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Dead_Head_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670545419382430, guid: 26e65da649f426646ab18c0142ae7edc, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4712184222136700, guid: 26e65da649f426646ab18c0142ae7edc, type: 3}
       propertyPath: m_RootOrder
@@ -175,6 +181,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Dead_Knight_07
       objectReference: {fileID: 0}
+    - target: {fileID: 1808099143250284, guid: dede0d5496022c2498a5a0c9b9fb92c2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4720418609215382, guid: dede0d5496022c2498a5a0c9b9fb92c2, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -234,9 +244,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 480892}
     m_Modifications:
+    - target: {fileID: 1180919978974022, guid: 9a94463ff51c26a4f83b4252d8dc9ab2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1209038160472064, guid: 9a94463ff51c26a4f83b4252d8dc9ab2, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Guillotine_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209038160472064, guid: 9a94463ff51c26a4f83b4252d8dc9ab2, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4239916230843214, guid: 9a94463ff51c26a4f83b4252d8dc9ab2, type: 3}
       propertyPath: m_RootOrder

@@ -13,7 +13,7 @@ namespace Code.Data.Unit.Enemy
         [SerializeField]
         public EnemyType EnemyType;
         [SerializeField]
-        public UnitVision unitVisionComponent;
+        public CharacterVisionData characterVisionDataComponent;
         [SerializeField]
         public float MaxHp;
         [SerializeField]

@@ -63,7 +63,7 @@ namespace Code.Fight.EcsBattle
         public AnimatorParameters _animator;
         public UnitReputation _reputation;
         // public UnitAttributes _attributes;
-        public UnitVision _vision;
+        public CharacterVisionData VisionData;
         public UnitLevel _level;
         public UnitHealth _health;
         public UnitCharacteristics _characteristics;

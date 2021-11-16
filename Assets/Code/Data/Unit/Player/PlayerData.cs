@@ -2,18 +2,14 @@
 using UnityEngine;
 
 
-namespace Code.Data.Unit.Player
-{
+namespace Code.Data.Unit.Player{
     [CreateAssetMenu(fileName = nameof(PlayerData), menuName = "Configs/" + nameof(PlayerData))]
-    public sealed class PlayerData : ScriptableObject
-    {
+    public sealed class PlayerData : ScriptableObject{
         [SerializeField]
         public List<CharacterSettings> ListCharacters;
 
         [SerializeField]
         public int _numberActiveCharacter;
-
-        public AttackCharacteristicCoeffsData AttackCharacteristicCoeffsData;
 
         public CharacterSettings ActiveCharacter => ListCharacters[_numberActiveCharacter];
     }

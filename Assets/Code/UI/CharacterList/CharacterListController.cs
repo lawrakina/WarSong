@@ -6,17 +6,14 @@ using UniRx;
 using UnityEngine;
 
 
-namespace Code.UI.CharacterList
-{
-    public sealed class CharacterListController : BaseController
-    {
+namespace Code.UI.CharacterList{
+    public sealed class CharacterListController : BaseController{
         private readonly Transform _placeForUi;
         private readonly ProfilePlayer _profilePlayer;
         private CharacterPrototypeController _createPrototypeController;
         private CharacterListView _view;
 
-        private int Position
-        {
+        private int Position{
             get => _settings.PlayerData._numberActiveCharacter;
             set => _settings.PlayerData._numberActiveCharacter = value;
         }
@@ -24,8 +21,7 @@ namespace Code.UI.CharacterList
         private DataSettings _settings;
 
         public CharacterListController(Transform placeForUi, ProfilePlayer profilePlayer,
-            CameraController cameraController): base(true)
-        {
+            CameraController cameraController) : base(true){
             _placeForUi = placeForUi;
             _profilePlayer = profilePlayer;
             _settings = profilePlayer.Settings;
@@ -45,58 +41,46 @@ namespace Code.UI.CharacterList
             _view.Init(MovePrev, MoveNext, SelectCurrentCharacter, CreateNewPrototype);
             OnDeactivate();
 
-            if (_settings.PlayerData.ListCharacters.Count <= 0)
-            {
+            if (_settings.PlayerData.ListCharacters.Count <= 0){
                 CreateNewPrototype();
-            }
-            else
-            {
+            } else{
                 OnActivate();
-                if (_profilePlayer.CurrentPlayer == null)
-                {
+                if (_profilePlayer.CurrentPlayer == null){
                     _profilePlayer.BuildCharacter.Invoke();
                 }
             }
         }
 
-        private void CreateNewPrototype()
-        {
+        private void CreateNewPrototype(){
             OnDeactivate();
             _createPrototypeController.Init();
             _createPrototypeController.CreateNewPrototype();
         }
 
-        private void MoveNext()
-        {
-            if (Position < _settings.PlayerData.ListCharacters.Count - 1)
-            {
+        private void MoveNext(){
+            if (Position < _settings.PlayerData.ListCharacters.Count - 1){
                 Position++;
                 _profilePlayer.RebuildCurrentCharacter.Invoke();
             }
         }
 
-        private void SelectCurrentCharacter()
-        {
+        private void SelectCurrentCharacter(){
             _profilePlayer.CurrentState.Value = GameState.Menu;
         }
 
-        private void MovePrev()
-        {
-            if (Position > 0)
-            {
+        private void MovePrev(){
+            if (Position > 0){
                 Position--;
                 _profilePlayer.RebuildCurrentCharacter.Invoke();
             }
         }
 
-        private void OnCreateCharacter()
-        {
+        private void OnCreateCharacter(){
             _createPrototypeController.OnDeactivate();
             OnActivate();
         }
 
-        public override void Dispose()
-        {
+        public override void Dispose(){
             _createPrototypeController.OnPrototypeChange -= _profilePlayer.RebuildCharacter.Invoke;
             _createPrototypeController.OnCreateCharacter -= OnCreateCharacter;
             base.Dispose();
