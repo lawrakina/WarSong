@@ -8,6 +8,7 @@ namespace Code.Unit
 {
     public class EnemyView : MonoBehaviour, IEnemyView
     {
+        public GameObject GameObject { get; set; }
         public Transform Transform { get; set; }
         public Collider Collider { get; set; }
         public Rigidbody Rigidbody { get; set; }

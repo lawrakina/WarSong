@@ -28,6 +28,7 @@ namespace Code.Unit.Factories
             enemy.name = $"Enemy.{item.EnemyType.ToString()}.{item.EnemyView.name}";
             var enemyView = enemy.AddCode<EnemyView>();
             enemyView.Animator = enemy.GetComponent<Animator>();
+            enemyView.GameObject = enemy.gameObject;
             enemyView.Transform = enemy.transform;
             enemyView.Rigidbody = enemy.AddRigidBody(80, CollisionDetectionMode.ContinuousSpeculative,
                 false, true,
@@ -75,7 +76,7 @@ namespace Code.Unit.Factories
             enemyView.Transform.SetParent(marker.Transform);
             enemyView.Transform.localPosition = Vector3.zero;
             enemyView.Transform.rotation = Quaternion.identity;
-             
+
             return enemyView;
         }
     }

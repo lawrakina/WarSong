@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Pathfinding;
 using UnityEngine;
 
 
@@ -15,5 +16,8 @@ namespace Code.Data.Dungeon
 
         [SerializeField]
         public List<DungeonParams> BdLevels;
+        
+        [SerializeField]
+        public PathfindingConfig PathfindingConfig;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Code.Data.Dungeon;
 using Code.Data.Marker;
 using Code.Extension;
@@ -6,6 +7,7 @@ using Code.Profile.Models;
 using Code.TimeRemaining;
 using DungeonArchitect;
 using DungeonArchitect.Builders.GridFlow;
+using Pathfinding;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -61,7 +63,29 @@ namespace Code.Fight.BuildingDungeon
         private SpawnMarkerEnemyInDungeon[] GetEnemiesPositions()
         {
             var result = _dungeon.GetComponentsInChildren<SpawnMarkerEnemyInDungeon>();
+            InstantiateWaypoints();
             return result ?? null;
+
+            
+            void InstantiateWaypoints() {
+                foreach (var enemySpawn in result) {
+                    if (_settings.PathfindingConfig.WaypointsPositions.Length < 2) {
+                        var waypointTransform = new GameObject($"{_settings.PathfindingConfig.WaypointsName}").transform;
+                        waypointTransform.parent = enemySpawn.Transform;
+                        waypointTransform.localPosition = Vector3.zero;
+                        enemySpawn.Waypoints = new Transform[1];
+                        enemySpawn.Waypoints[0] = waypointTransform;
+                    } else {
+                        enemySpawn.Waypoints = new Transform[_settings.PathfindingConfig.WaypointsPositions.Length];
+                        for (var index = 0; index < _settings.PathfindingConfig.WaypointsPositions.Length; index++) {
+                            var waypointTransform = new GameObject($"{_settings.PathfindingConfig.WaypointsName}{index}").transform;
+                            waypointTransform.parent = enemySpawn.Transform;
+                            waypointTransform.localPosition = _settings.PathfindingConfig.WaypointsPositions[index];
+                            enemySpawn.Waypoints[index] = waypointTransform;
+                        }
+                    }
+                }
+            }
         }
 
         private Transform GetPlayerPosition()
@@ -93,7 +117,7 @@ namespace Code.Fight.BuildingDungeon
             _pooledSceneProvider = gameObjectGenerator.GetComponent<PooledDungeonSceneProvider>();
             _pooledSceneProvider.itemParent = _dungeon;
             _builder.asyncBuild = true;
-
+            
         }
 
         public void BuildDungeon()
@@ -105,8 +129,21 @@ namespace Code.Fight.BuildingDungeon
             _fightModel.InfoState.Value = StringManager.INFO_BULDING_STATE_START_PROCESS;
             _timerCheckBuildState = new TimeRemaining.TimeRemaining(CheckBuildDungeon, 1f, true);
             _timerCheckBuildState.AddTimeRemaining();
-            
+
+            InstantiateAstarGrid();
+
             Complete?.Invoke(this);
+
+            
+            void InstantiateAstarGrid() {
+                var astarPath = Object.Instantiate(_settings.PathfindingConfig.AstarGrid, _dungeon.transform);
+                astarPath.StartCoroutine(ScanGrid());
+            }
+
+            IEnumerator ScanGrid() {
+                yield return new WaitForSeconds(2);
+                AstarPathEditor.MenuScan();
+            }
         }
 
         private void GenerateDemoLevel()
