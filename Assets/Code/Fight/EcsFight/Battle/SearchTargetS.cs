@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Code.Fight.EcsFight.Settings;
 using Code.Profile.Models;
 using Leopotam.Ecs;
 using UnityEngine;

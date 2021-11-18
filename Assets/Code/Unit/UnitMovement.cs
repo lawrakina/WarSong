@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Code.Fight.EcsFight;
+using Code.Fight.EcsFight.Settings;
 using KinematicCharacterController;
 using UnityEngine;
 
@@ -95,7 +96,7 @@ namespace Code.Unit{
         /// <summary>
         /// This is called every frame by ExamplePlayer in order to tell the character what its inputs are
         /// </summary>
-        public void SetInputs(ref MovementInputsC inputsC){
+        public void SetInputs( MovementInputsC inputsC){
             // Clamp input
             Vector3 moveInputVector =
                 Vector3.ClampMagnitude(new Vector3(inputsC.MoveVector.x, 0f, inputsC.MoveVector.z), 1f);
@@ -452,7 +453,7 @@ namespace Code.Unit{
         public void OnDiscreteCollisionDetected(Collider hitCollider){
         }
 
-        public void SetInputs(ref ManualMoveEventC inputs){
+        public void SetInputs( ManualMoveEventC inputs){
             var move = new MovementInputsC{
                 MoveVector = new Vector3(
                     inputs.Vector.x,
@@ -461,7 +462,7 @@ namespace Code.Unit{
                 ),
                 CameraRotation = inputs.CameraRotation
             };
-            SetInputs(ref move);
+            SetInputs( move);
         }
     }
 

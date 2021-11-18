@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
-using Code.Data;
-using Code.Data.Unit;
+﻿using Code.Data;
 using Code.Fight.EcsFight.Battle;
+using Code.Fight.EcsFight.Settings;
 using Code.GameCamera;
 using Code.Profile.Models;
 using Code.Unit;
 using Leopotam.Ecs;
 using SensorToolkit;
 using UnityEngine;
-using UnityEngine.Events;
 
 
 namespace Code.Fight.EcsFight.Create{
@@ -25,8 +23,6 @@ namespace Code.Fight.EcsFight.Create{
             entity.Get<AnimatorTag>();
             ref var unit = ref entity.Get<UnitC>();
             unit.UnitMovement = _player.UnitMovement;
-            // unit.RootTransform = _player.Transform;
-            // unit.ModelTransform = _player.TransformModel;
             unit.Animator = _player.AnimatorParameters;
             unit.Characteristics = _player.UnitCharacteristics;
             unit.Health = _player.UnitHealth;
@@ -34,23 +30,42 @@ namespace Code.Fight.EcsFight.Create{
             unit.UnitVision = _player.UnitVision;
             unit.Reputation = _player.UnitReputation;
             unit.UnitLevel = _player.UnitLevel;
-            unit.Weapons = new ListWeapons();
-            //Weapons
+
+            //Weapon
+            unit.InfoAboutWeapons = new ListWeapons();
+            unit.InfoAboutWeapons.WeaponTypeAnimation = _player.UnitEquipment.GetWeaponType();
+            // unit.InfoAboutWeapons.MeleeRangeSplash = _player.UnitBattle.MeleeRangeSplash();
             foreach (var unitBattleWeapon in _player.UnitBattle.Weapons){
-                if(unitBattleWeapon.EquipType == EquipCellType.MainHand)
-                    unit.Weapons.AddMain(unitBattleWeapon);
-                if (unitBattleWeapon.EquipType == EquipCellType.SecondHand)
-                    unit.Weapons.AddSecond(unitBattleWeapon);
+                if (unitBattleWeapon.EquipType == EquipCellType.MainHand){
+                    ref var mainWeapon = ref entity.Get<MainWeaponC>();
+                    mainWeapon.Value = unitBattleWeapon;
+                    mainWeapon.Speed = unitBattleWeapon.Speed;
+                    mainWeapon.Distance = unitBattleWeapon.Distance;
+                    mainWeapon.LagBefAttack = Mathf.Abs(unitBattleWeapon.LagBeforeAttack);
+
+                    unit.InfoAboutWeapons.AddMain(unitBattleWeapon);
+                }
+
+                if (unitBattleWeapon.EquipType == EquipCellType.SecondHand){
+                    ref var secondWeapon = ref entity.Get<SecondWeaponC>();
+                    secondWeapon.Value = unitBattleWeapon;
+                    secondWeapon.Speed = unitBattleWeapon.Speed;
+                    secondWeapon.Distance = unitBattleWeapon.Distance;
+                    secondWeapon.LagBefAttack = unitBattleWeapon.LagBeforeAttack;
+
+                    unit.InfoAboutWeapons.AddSecond(unitBattleWeapon);
+                }
             }
+
             //Ui
             _model.PlayerStats.MaxHp = Mathf.RoundToInt(_player.UnitHealth.CurrentHp);
             _model.PlayerStats.CurrentHp = Mathf.RoundToInt(_player.UnitHealth.CurrentHp);
             _model.PlayerStats.MaxResource = Mathf.RoundToInt(_player.UnitResource.ResourceBaseValue);
             _model.PlayerStats.CurrentResource = Mathf.RoundToInt(_player.UnitResource.ResourceBaseValue);
-            
+
             //for collision 
             var playerEntity = new PlayerEntity(_player, entity);
-            
+
             //SensorToolkit
             unit.UnitVision.Visor.enabled = true;
             ref var targets = ref entity.Get<TargetListC>();
@@ -79,34 +94,6 @@ namespace Code.Fight.EcsFight.Create{
                 enemy.HealthBar.SetOnOff(false);
                 _player.UnitVision.DelEnemy(enemy);
             }
-        }
-    }
-
-
-    public class ListWeapons : List<Weapon>{
-        private Weapon _main;
-        private Weapon _second;
-        public float SqrDistance{
-            get{
-                if (!Equals(_main, null)){
-                    return _main.Distance * _main.Distance;
-                }
-                if (!Equals(_second, null)){
-                    return _second.Distance * _second.Distance;
-                }
-
-                return 1.0f;
-            }
-        }
-
-        public void AddMain(Weapon weapon){
-            _main = weapon;
-            Add(weapon);
-        }
-
-        public void AddSecond(Weapon weapon){
-            _second = weapon;
-            Add(weapon);
         }
     }
 }

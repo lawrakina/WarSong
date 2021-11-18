@@ -13,10 +13,10 @@ namespace Code.Data.Unit{
 
         public EquipCellType EquipType => _equipCellEquipCellType;
         public WeaponItemType WeaponType => _weaponEquip.WeaponType;
-
         public float Speed => _attackValue.GetAttackSpeed();
         public float Distance => _attackValue.GetAttackDistance();
         public WeaponBullet Bullet => _weaponEquip.StandardBullet;
+        public float LagBeforeAttack => _attackValue.GetTimeLag();
 
         public Weapon(WeaponEquipItem weaponEquip, EquipCellType equipCellEquipCellType,
             UnitCharacteristics characteristics){
@@ -33,12 +33,15 @@ namespace Code.Data.Unit{
             _critChance = _weaponEquip.Characteristics.CritChance + characteristics.CritChance;
         }
 
-        public float GetAttack(){
+        public Attack GetDamage(){
             var attackValue = Random.Range(_attackValue.GetAttack().x, _attackValue.GetAttack().y);
-            if (Random.Range(0.0f, 1.0f) < _critChance) //critical attack
+            var damageType = DamageType.Default;
+            if (Random.Range(0.0f, 1.0f) < _critChance){ //critical attack
+                damageType = DamageType.Critical;
                 attackValue *= _characteristics.CritAttackMultiplier;
-            return attackValue;
+            }
+
+            return new Attack(attackValue, damageType);
         }
-        
     }
 }

@@ -105,11 +105,13 @@ MonoBehaviour:
   ItemLevel: 1
   _armorValue: 100
   _characteristics:
-    Strength: 100
-    Agility: 5
-    Stamina: 20
-    Intellect: -50
+    Strength: 1
+    Agility: 1
+    Stamina: 1
+    Intellect: 0
     Spirit: 0
+    CritChance: 0
+    DodgeChance: 0
   _targetEquipCell: 5
   _isNeedInstantiate: 0
   _heavyLightMedium: 1

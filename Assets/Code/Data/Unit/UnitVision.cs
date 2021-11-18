@@ -1,20 +1,22 @@
 ﻿using System.Collections.Generic;
 using Code.Unit;
 using SensorToolkit;
+using UnityEngine;
 
 
 namespace Code.Data.Unit{
     public class UnitVision{
         private bool _needUpdateList;
         private List<IEnemyView> _list = new List<IEnemyView>();
-        public bool NeedUpdateList{
-            get{
-                if (_needUpdateList) _needUpdateList = false;
-                return _needUpdateList;
-            }
-        }
+        // public bool NeedUpdateList{
+            // get{
+                // if (_needUpdateList) _needUpdateList = false;
+                // return _needUpdateList;
+            // }
+        // }
         public Sensor Visor{ get; set; }
         public List<IEnemyView> List => _list;
+        public Vector3 OffsetHead => Visor.transform.localPosition;
 
         public void AddEnemy(EnemyView enemy){
             ListChanged();

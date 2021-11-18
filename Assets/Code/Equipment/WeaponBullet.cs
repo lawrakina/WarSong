@@ -19,6 +19,7 @@ namespace Code.Equipment
 
         private TrailRenderer Trail { get; set; }
         private ParticleSystem[] ParticleSystems { get; set; }
+        public GameObject TargetGameObject { get; set; }
         public IBaseUnitView Target { get; set; }
 
         #endregion

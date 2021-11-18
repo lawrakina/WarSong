@@ -1,4 +1,5 @@
-﻿using Leopotam.Ecs;
+﻿using Code.Fight.EcsFight.Settings;
+using Leopotam.Ecs;
 using UnityEngine;
 
 

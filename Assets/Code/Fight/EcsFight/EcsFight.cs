@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Code.Extension;
 using Code.Fight.EcsFight.Animator;
 using Code.Fight.EcsFight.Battle;
@@ -6,9 +7,9 @@ using Code.Fight.EcsFight.Camera;
 using Code.Fight.EcsFight.Create;
 using Code.Fight.EcsFight.Input;
 using Code.Fight.EcsFight.Movement;
-using Code.GameCamera;
+using Code.Fight.EcsFight.Settings;
+using Code.Fight.EcsFight.Timer;
 using Code.Profile;
-using Code.Profile.Models;
 using Code.Unit;
 using Leopotam.Ecs;
 using ThirdPersonCameraWithLockOn;
@@ -59,19 +60,22 @@ namespace Code.Fight.EcsFight{
             EcsSystemsObserver.Create(_execute);
             EcsSystemsObserver.Create(_fixedExecute);
             EcsSystemsObserver.Create(_lateExecute);
-#endif
             _execute
                 .Add(new CreatePlayerS())
                 .Add(new CreateEnemiesS())
                 .Add(new InputControlS())
-                .Add(new AttackUnitS(5))
                 .Add(new UnitBehaviourSettingsS())
+                .Add(new AttackS(5))
                 .Add(new CameraUpdateS())
                 .Add(new SearchTargetS())
                 .Add(new MovementUnitS())
-                .Add(new WeaponsInUnitS())
                 .Add(new AnimationUnitS())
+                //Timers
+                .Add(new TimerS<LagBeforeWeapon1>())
+                .Add(new TimerS<Reload1WeaponTag>())
+                .Add(new TimerS<AttackBannedWeapon1Tag>())
                 ;
+#endif
             // .OneFrame<TestComponent1> ()
             // .OneFrame<TestComponent2> ()
 
@@ -134,53 +138,6 @@ namespace Code.Fight.EcsFight{
         public void Execute(float deltaTime){
             _execute?.Run();
         }
-    }
-
-    public class CreateEnemiesS : IEcsInitSystem{
-        private EcsWorld _world;
-        private EnemiesLevelModel _enemiesModel;
-        private BattleCamera _camera;
-        private InOutControlFightModel _model;
-
-        public void Init(){
-            foreach (var view in _enemiesModel.Enemies){
-                view.HealthBar.SetCamera(_camera.transform);
-
-                var entity = _world.NewEntity();
-                entity.Get<EnemyTag>();
-                entity.Get<AnimatorTag>();
-                ref var unit = ref entity.Get<UnitC>();
-                entity.Get<UnitC>().UnitMovement = view.UnitMovement;
-                entity.Get<UnitC>().Animator = view.AnimatorParameters;
-                entity.Get<UnitC>().Characteristics = view.UnitCharacteristics;
-                entity.Get<UnitC>().Health = view.UnitHealth;
-                entity.Get<UnitC>().Resource = view.UnitResource;
-                entity.Get<UnitC>().UnitVision = view.UnitVision;
-                entity.Get<UnitC>().Reputation = view.UnitReputation;
-                entity.Get<UnitC>().UnitLevel = view.UnitLevel;
-                entity.Get<UiEnemyHealthBarC>().value = view.HealthBar;
-
-                view.HealthBar.SetOnOff(false);
-                //Ragdoll
-                // SearchNodesOfRagdoll(entity, view);
-
-                var enemyEntity = new EnemyEntity(view, entity);
-            }
-        }
-
-        /*        private static void SearchNodesOfRagdoll(EcsEntity entity, IBaseUnitView view)
-        {
-            entity.Get<ListRigidBAndCollidersComponent>()._rigidBodies
-                = new List<Rigidbody>(view.Transform.GetComponentsInChildren<Rigidbody>());
-            entity.Get<ListRigidBAndCollidersComponent>()._colliders
-                = new List<Collider>(view.Transform.GetComponentsInChildren<Collider>());
-            foreach (var rigidbody in entity.Get<ListRigidBAndCollidersComponent>()._rigidBodies)
-                rigidbody.isKinematic = true;
-            foreach (var collider in entity.Get<ListRigidBAndCollidersComponent>()._colliders)
-                collider.enabled = false;
-            // view.Rigidbody.isKinematic = false;
-            view.Collider.enabled = true;
-        }*/
     }
 
     public struct UiEnemyHealthBarC{
