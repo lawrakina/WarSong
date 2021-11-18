@@ -24,12 +24,12 @@ MonoBehaviour:
   ItemLevel: 20
   _armorValue: 0
   _characteristics:
-    Strength: 20
-    Agility: 20
-    Stamina: 10
-    Intellect: 2
+    Strength: 1
+    Agility: 1
+    Stamina: 1
+    Intellect: 1
     Spirit: 1
-    CritChance: 0
+    CritChance: 0.3
     DodgeChance: 0
   _targetEquipCell: 0
   _isNeedInstantiate: 1

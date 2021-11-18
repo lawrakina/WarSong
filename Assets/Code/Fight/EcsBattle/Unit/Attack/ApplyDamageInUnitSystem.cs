@@ -23,7 +23,7 @@ namespace Code.Fight.EcsBattle.Unit.Attack
 
                 if (unit._health.CurrentHp <= 0.0f)
                 {
-                    entity.Get<DeathEventComponent>()._killer = infoCollision._value._attacker;
+                    // entity.Get<DeathEventComponent>()._killer = infoCollision._value.Attacker;
                 }
 
                 entity.Del<AttackCollisionComponent>();

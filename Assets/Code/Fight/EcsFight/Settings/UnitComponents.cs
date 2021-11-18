@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Code.Data.Unit;
+using Code.Fight.EcsFight.Battle;
 using Code.Fight.EcsFight.Create;
-using Code.Fight.EcsFight.Input;
 using Code.GameCamera;
 using Code.Unit;
 using Leopotam.Ecs;
-using SensorToolkit;
 using UnityEngine;
 
 
-namespace Code.Fight.EcsFight{
+namespace Code.Fight.EcsFight.Settings{
     public struct NeedAttackTargetC{
     }
 
@@ -54,7 +52,7 @@ namespace Code.Fight.EcsFight{
         public UnitResource Resource;
         public UnitVision UnitVision;
         public UnitReputation Reputation;
-        public ListWeapons Weapons;
+        public ListWeapons InfoAboutWeapons;
         public UnitLevel UnitLevel;
     }
 
@@ -65,7 +63,7 @@ namespace Code.Fight.EcsFight{
     public struct ManualMoveEventC{
         public Vector3 Vector;
         public Quaternion CameraRotation;
-        public ControlType ControlType;
+        // public ControlType ControlType;
     }
 
     public struct AutoMoveEventC{
