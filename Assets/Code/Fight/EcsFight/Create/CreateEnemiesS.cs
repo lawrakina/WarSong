@@ -1,4 +1,5 @@
 ﻿using Code.Fight.EcsFight.Battle;
+using Code.Fight.EcsFight.Output;
 using Code.Fight.EcsFight.Settings;
 using Code.GameCamera;
 using Code.Profile.Models;
