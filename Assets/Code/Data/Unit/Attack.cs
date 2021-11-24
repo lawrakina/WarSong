@@ -1,12 +1,11 @@
 ﻿namespace Code.Data.Unit{
     public class Attack{
-        private readonly float _attackValue;
-        private readonly DamageType _type;
-        public float Damage => _attackValue;
+        public float Damage{ get; }
+        public DamageType DamageType{ get; }
 
         public Attack(float attackValue, DamageType type){
-            _attackValue = attackValue;
-            _type = type;
+            Damage = attackValue;
+            DamageType = type;
         }
     }
 }

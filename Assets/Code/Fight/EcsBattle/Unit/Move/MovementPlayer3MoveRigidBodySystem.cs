@@ -15,7 +15,7 @@ namespace Code.Fight.EcsBattle.Unit.Move
                 ref var needStep = ref _filter.Get1(i);
                 ref var transform = ref _filter.Get3(i)._rootTransform;
                 ref var rigidBody = ref _filter.Get3(i)._rigidBody;
-                ref var moveSpeed = ref _filter.Get3(i)._characteristics.Speed;
+                ref var moveSpeed = ref _filter.Get3(i)._characteristics.MoveSpeed;
                 
                 rigidBody.MovePosition(transform.position - (needStep._value * (moveSpeed * Time.fixedDeltaTime)));
 

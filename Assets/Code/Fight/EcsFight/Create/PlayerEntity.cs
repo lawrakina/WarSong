@@ -1,4 +1,5 @@
 ﻿using Code.Fight.EcsBattle;
+using Code.Fight.EcsFight.Battle;
 using Code.Unit;
 using Leopotam.Ecs;
 
@@ -38,7 +39,7 @@ namespace Code.Fight.EcsFight.Create{
 
         private void ViewOnApplyDamageChange(InfoCollision collision)
         {
-            _entity.Get<AttackCollisionComponent>()._value = collision;
+            _entity.Get<AttackCollisionC>().Value = collision;
         }
 
         #endregion

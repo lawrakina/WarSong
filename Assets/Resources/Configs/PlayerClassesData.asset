@@ -20,7 +20,7 @@ MonoBehaviour:
   MoveSpeed: 7
   RotateSpeed: 90
   characterVisionData:
-    angleSensor: {fileID: 2347009024321003530, guid: f5e6914db97a8714b88183d87e1d87b5,
+    visionSensor: {fileID: 2347009024321003530, guid: f5e6914db97a8714b88183d87e1d87b5,
       type: 3}
     offsetHead: {x: 0, y: 1.5, z: 0}
   _classAbilities:
@@ -183,7 +183,7 @@ MonoBehaviour:
       Spirit: 1
       CritChance: 0
       DodgeChance: 0
-    Speed: 8
+    MoveSpeed: 8
     RotateSpeedPlayer: 120
     _minCritChance: 0
     _maxCritChance: 0.75
@@ -209,7 +209,7 @@ MonoBehaviour:
       Spirit: 1
       CritChance: 0
       DodgeChance: 0
-    Speed: 8
+    MoveSpeed: 8
     RotateSpeedPlayer: 120
     _minCritChance: 0
     _maxCritChance: 0.75
@@ -235,7 +235,7 @@ MonoBehaviour:
       Spirit: 1
       CritChance: 0
       DodgeChance: 0
-    Speed: 8
+    MoveSpeed: 8
     RotateSpeedPlayer: 120
     _minCritChance: 0
     _maxCritChance: 0.75
@@ -261,7 +261,7 @@ MonoBehaviour:
       Spirit: 2
       CritChance: 0
       DodgeChance: 0
-    Speed: 8
+    MoveSpeed: 8
     RotateSpeedPlayer: 120
     _minCritChance: 0
     _maxCritChance: 0.75
