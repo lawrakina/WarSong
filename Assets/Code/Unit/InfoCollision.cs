@@ -47,6 +47,8 @@ namespace Code.Unit
         // public Vector3 Direction => _direction;
 
         public float Damage => _attack.Damage;
+        public DamageType DamageType => _attack.DamageType;
+        public UnitC Attacker => _attacker;
 
         // public ContactPoint Contact => _contact;
         //

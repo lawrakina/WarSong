@@ -6,7 +6,7 @@ namespace Code.Data.Unit{
         private readonly LevelValue[] _levels;
         private int _currentLevel;
         private int _currentExperiencePoints;
-        public float _rewardForKilling;
+        private float _rewardForKilling;
 
         public int CurrentExperiencePoints{
             get => _currentExperiencePoints;
@@ -17,6 +17,10 @@ namespace Code.Data.Unit{
             set => _currentLevel = value;
         }
         public int MaximumPossibleCharacterLevel => _levels.Length;
+        public int RewardForKilling{
+            get => (int) _rewardForKilling;
+            set => _rewardForKilling = value;
+        }
 
         public UnitLevel(LevelValue[] levels){
             _levels = levels;

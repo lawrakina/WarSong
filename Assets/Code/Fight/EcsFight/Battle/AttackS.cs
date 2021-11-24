@@ -1,4 +1,5 @@
-﻿using Code.Extension;
+﻿using Code.Data.Unit;
+using Code.Extension;
 using Code.Fight.EcsFight.Settings;
 using Code.Fight.EcsFight.Timer;
 using Code.Unit;
@@ -16,6 +17,8 @@ namespace Code.Fight.EcsFight.Battle{
 
         private EcsFilter<WeaponBulletC, DisableTag> _poolBullets;
 
+        private EcsFilter<UnitC, AttackCollisionC> _applyDamage;
+        
         public AttackS(int bulletCapacity){
             _bulletCapacity = bulletCapacity;
         }
@@ -111,6 +114,26 @@ namespace Code.Fight.EcsFight.Battle{
                     }
                 }
             }
+            
+            foreach (var i in _applyDamage)
+            {
+                ref var entity = ref _applyDamage.GetEntity(i);
+                ref var unit = ref _applyDamage.Get1(i);
+                ref var infoCollision = ref _applyDamage.Get2(i);
+
+                var damage = infoCollision.Value.Damage;
+                unit.Health.CurrentHp -= damage;
+                
+                entity.Get<NeedShowUiEventC>().PointsDamage = damage;
+                entity.Get<NeedShowUiEventC>().DamageType = infoCollision.Value.DamageType;
+
+                if (unit.Health.CurrentHp <= 0.0f)
+                {
+                    entity.Get<DeathEventC>().Killer = infoCollision.Value.Attacker;
+                }
+
+                entity.Del<AttackCollisionC>();
+            }
         }
 
         private void SingleMomentumAttack(TargetListC target, MainWeaponC weapon, UnitC unit){
@@ -164,5 +187,14 @@ namespace Code.Fight.EcsFight.Battle{
                 }
             }
         }
+    }
+
+    public struct DeathEventC{
+        public UnitC Killer;
+    }
+
+    public struct NeedShowUiEventC{
+        public DamageType DamageType;
+        public float PointsDamage;
     }
 }

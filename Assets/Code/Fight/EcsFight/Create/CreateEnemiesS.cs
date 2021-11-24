@@ -1,7 +1,9 @@
-﻿using Code.Fight.EcsFight.Settings;
+﻿using Code.Fight.EcsFight.Battle;
+using Code.Fight.EcsFight.Settings;
 using Code.GameCamera;
 using Code.Profile.Models;
 using Leopotam.Ecs;
+using UnityEngine;
 
 
 namespace Code.Fight.EcsFight.Create{
@@ -19,16 +21,27 @@ namespace Code.Fight.EcsFight.Create{
                 entity.Get<EnemyTag>();
                 entity.Get<AnimatorTag>();
                 ref var unit = ref entity.Get<UnitC>();
-                entity.Get<UnitC>().UnitMovement = view.UnitMovement;
-                entity.Get<UnitC>().Animator = view.AnimatorParameters;
-                entity.Get<UnitC>().Characteristics = view.UnitCharacteristics;
-                entity.Get<UnitC>().Health = view.UnitHealth;
-                entity.Get<UnitC>().Resource = view.UnitResource;
-                entity.Get<UnitC>().UnitVision = view.UnitVision;
-                entity.Get<UnitC>().Reputation = view.UnitReputation;
-                entity.Get<UnitC>().UnitLevel = view.UnitLevel;
+                unit.UnitMovement = view.UnitMovement;
+                unit.Animator = view.AnimatorParameters;
+                unit.Characteristics = view.UnitCharacteristics;
+                unit.Health = view.UnitHealth;
+                unit.Resource = view.UnitResource;
+                unit.UnitVision = view.UnitVision;
+                unit.Reputation = view.UnitReputation;
+                unit.UnitLevel = view.UnitLevel;
+                unit.InfoAboutWeapons = new ListWeapons();
+                unit.InfoAboutWeapons.WeaponTypeAnimation = view.UnitBattle.GetMainWeaponType();
+                
+                ref var weapon = ref entity.Get<MainWeaponC>();
+                var unitBattleWeapon = view.UnitBattle.Weapons[0]; 
+                weapon.Value = unitBattleWeapon;
+                weapon.Speed = unitBattleWeapon.Speed;
+                weapon.Distance = unitBattleWeapon.Distance;
+                weapon.LagBefAttack = Mathf.Abs(unitBattleWeapon.LagBeforeAttack);
+                unit.InfoAboutWeapons.AddMain(unitBattleWeapon);
+                
                 entity.Get<UiEnemyHealthBarC>().value = view.HealthBar;
-
+                
                 view.HealthBar.SetOnOff(false);
                 //Ragdoll
                 // SearchNodesOfRagdoll(entity, view);
