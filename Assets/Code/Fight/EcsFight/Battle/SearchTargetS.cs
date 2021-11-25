@@ -27,14 +27,18 @@ namespace Code.Fight.EcsFight.Battle{
                 ref var unit = ref _searchFilter.Get1(i);
                 ref var targets = ref _searchFilter.Get2(i);
                 // ref var currentTarget = ref entity.Get<CurrentTargetC>();
+                unit.UnitVision.Visor.Pulse();
                 targets.List = unit.UnitVision.Visor.DetectedObjectsOrderedByDistance;
                 var listOfTargets = unit.UnitVision.Visor.DetectedObjectsOrderedByDistance;
                 targets.Current = listOfTargets.Count > 0 ? listOfTargets.First() : null;
-                if (targets.IsExist){
-                    targets.SqrDistance =
-                        (targets.Current.transform.position - unit.Transform.position).sqrMagnitude;
-                    // currentTarget.Value.transform.localScale = Vector3.one * 2;
-                }
+                
+                
+                // if (targets.IsExist){
+                //     targets.SqrDistance =
+                //         (targets.Current.transform.position - unit.Transform.position).sqrMagnitude;
+                //         
+                //     // currentTarget.Value.transform.localScale = Vector3.one * 2;
+                // }
 
                 entity.Del<NeedFindTargetTag>();
             }

@@ -14,5 +14,9 @@
             MaxHp = hp;
             _currentHp = hp;
         }
+
+        public override string ToString(){
+            return $"Health points: {CurrentHp}/{MaxHp}";
+        }
     }
 }

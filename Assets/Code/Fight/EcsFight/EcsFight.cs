@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Code.Extension;
 using Code.Fight.EcsFight.Animator;
 using Code.Fight.EcsFight.Battle;
@@ -11,9 +10,7 @@ using Code.Fight.EcsFight.Output;
 using Code.Fight.EcsFight.Settings;
 using Code.Fight.EcsFight.Timer;
 using Code.Profile;
-using Code.Unit;
 using Leopotam.Ecs;
-using ThirdPersonCameraWithLockOn;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
 
@@ -69,12 +66,13 @@ namespace Code.Fight.EcsFight{
                 .Add(new CreateEnemiesS())
                 .Add(new InputControlS())
                 .Add(new UnitBehaviourSettingsS())
+                .Add(new SearchTargetS())
                 .Add(new AttackS(5))
                 .Add(new CameraUpdateS())
-                .Add(new SearchTargetS())
                 .Add(new MovementUnitS())
                 .Add(new AnimationUnitS())
                 .Add(new DisplayEffectsS())
+                .Add(new DeathS())
                 //Timers
                 .Add(new TimerS<LagBeforeWeapon1>())
                 .Add(new TimerS<Reload1WeaponTag>())
@@ -141,6 +139,39 @@ namespace Code.Fight.EcsFight{
 
         public void Execute(float deltaTime){
             _execute?.Run();
+        }
+    }
+
+    public class DeathS : IEcsRunSystem{
+        private EcsFilter<UnitC, DeathEventC, ListRigidBAndCollidersC> _deathEvent;
+        public void Run(){
+            foreach (var i in _deathEvent){
+                ref var entity = ref _deathEvent.GetEntity(i);
+                ref var unit = ref _deathEvent.Get1(i);
+                ref var death = ref _deathEvent.Get2(i);
+                ref var listBodies = ref _deathEvent.Get3(i);
+                
+                //Enable Ragdoll
+                for (int j = 0; j < listBodies.RigidBodies.Count; j++)
+                {
+                    listBodies.RigidBodies[j].isKinematic = false;
+                    listBodies.Colliders[j].enabled = true;
+                }
+
+                unit.Transform.gameObject.tag = TagManager.TAG_OFF;//.layer = 1 << LayerManager.GroundLayer;
+                death.Killer.Get<NeedFindTargetTag>();
+                unit.Animator.SetDeathTrigger();//.Off();
+                unit.UnitMovement.Motor.enabled = false;//.AttachedRigidbody.isKinematic = true;
+                // unit.UnitMovement.Motor.Capsule.enabled = false;
+                // unit.Collider.enabled = false;
+                // unit._rigidBody.isKinematic = true;
+                entity.Del<UnitC>();
+
+                if (entity.Has<UiEnemyHealthBarC>()){
+                    ref var infoBar = ref entity.Get<UiEnemyHealthBarC>();
+                    infoBar.value.SetActive(false);
+                }
+            }
         }
     }
 }

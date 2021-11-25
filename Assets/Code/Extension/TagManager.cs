@@ -7,6 +7,7 @@ namespace Code.Extension
     {
         public static string TAG_PLAYER = "Player";
         public static string TAG_ENEMY = "Enemy";
+        public static string TAG_OFF = "Off";
 
         public static int ANIMATOR_PARAM_BATTLE = Animator.StringToHash("Battle");
         public static int ANIMATOR_PARAM_SPEED = Animator.StringToHash("Speed");
@@ -22,5 +23,6 @@ namespace Code.Extension
         public static int ANIMATOR_PARAM_FLY = Animator.StringToHash("State_Fly");
         public static int ANIMATOR_PARAM_STUNNED = Animator.StringToHash("State_Stunned");
         public static int ANIMATOR_PARAM_STATE_UNIT = Animator.StringToHash("StateUnit");
+        public static int ANIMATOR_PARAM_DEATH_TRIGGER = Animator.StringToHash("Death");
     }
 }

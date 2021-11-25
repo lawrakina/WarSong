@@ -18,7 +18,7 @@ namespace Code.Fight.EcsFight.Battle{
         private EcsFilter<WeaponBulletC, DisableTag> _poolBullets;
 
         private EcsFilter<UnitC, AttackCollisionC> _applyDamage;
-        
+
         public AttackS(int bulletCapacity){
             _bulletCapacity = bulletCapacity;
         }
@@ -107,28 +107,35 @@ namespace Code.Fight.EcsFight.Battle{
                         }
                     } else{
                         if (!entity.Has<Timer<LagBeforeWeapon1>>()){
-                            SingleMomentumAttack(target, weapon, unit);
+                            if ((target.Current.transform.position - unit.Transform.position).sqrMagnitude <
+                                unit.InfoAboutWeapons.SqrDistance){
+                                unit.UnitMovement.Motor.SetRotation(
+                                    Quaternion.LookRotation(target.Current.transform.position -
+                                                            unit.Transform.position));
+                                SingleMomentumAttack(target, weapon, entity);
+                            } else{
+                                entity.Get<NeedAttackTargetC>();
+                            }
+
                             entity.Get<Timer<AttackBannedWeapon1Tag>>().TimeLeftSec =
                                 entity.Get<Timer<Reload1WeaponTag>>().TimeLeftSec;
                         }
                     }
                 }
             }
-            
-            foreach (var i in _applyDamage)
-            {
+
+            foreach (var i in _applyDamage){
                 ref var entity = ref _applyDamage.GetEntity(i);
                 ref var unit = ref _applyDamage.Get1(i);
                 ref var infoCollision = ref _applyDamage.Get2(i);
 
                 var damage = infoCollision.Value.Damage;
                 unit.Health.CurrentHp -= damage;
-                
+
                 entity.Get<NeedShowUiEventC>().PointsDamage = damage;
                 entity.Get<NeedShowUiEventC>().DamageType = infoCollision.Value.DamageType;
 
-                if (unit.Health.CurrentHp <= 0.0f)
-                {
+                if (unit.Health.CurrentHp <= 0.0f){
                     entity.Get<DeathEventC>().Killer = infoCollision.Value.Attacker;
                 }
 
@@ -136,61 +143,61 @@ namespace Code.Fight.EcsFight.Battle{
             }
         }
 
-        private void SingleMomentumAttack(TargetListC target, MainWeaponC weapon, UnitC unit){
+        private void SingleMomentumAttack(TargetListC target, MainWeaponC weapon, EcsEntity unit){
             var targetCollision = target.Current.transform.GetComponent<ICollision>();
             var collision =
                 new InfoCollision(weapon.Value.GetDamage(), unit);
             targetCollision?.OnCollision(collision);
         }
 
-        private void RangeShotAttack(TargetListC target, MainWeaponC weapon, UnitC unit){
-            var startPosition =
-                unit.Transform.position + unit.UnitVision.OffsetHead;
-
-            EcsEntity bulletEntity = EcsEntity.Null;
-            foreach (var b in _poolBullets){
-                bulletEntity = _poolBullets.GetEntity(b);
-                break;
-            }
-
-            var weaponBulletComponent = bulletEntity.Get<WeaponBulletC>();
-            if (bulletEntity == EcsEntity.Null){
-                weaponBulletComponent.Value = Object.Instantiate(weapon.Value.Bullet, unit.Transform, true);
-            } else{
-                bulletEntity.Del<DisableTag>();
-            }
-
-            weaponBulletComponent.Value.gameObject.SetActive(true);
-            weaponBulletComponent.Value.transform.position = startPosition;
-            weaponBulletComponent.Value.TargetGameObject = target.Current; //.GetComponent<IBaseUnitView>();
-            weaponBulletComponent.Value.Clear();
-
-
-            bulletEntity.Get<WeaponBulletC>().Value = weaponBulletComponent.Value;
-            bulletEntity.Get<WeaponBulletC>().Collision =
-                new InfoCollision(weapon.Value.GetDamage(), unit);
-        }
-
-        private void SplashMomentumAttack(MainWeaponC weapon, UnitC unit){
-            var attackPositionCenter =
-                unit.Transform.position + unit.UnitMovement.MeshRoot.forward + unit.UnitVision.OffsetHead;
-            var maxColliders = 10;
-            var hitColliders = new Collider[maxColliders];
-            var numColliders = Physics.OverlapSphereNonAlloc(attackPositionCenter,
-                1.0f, hitColliders, 1 << unit.Reputation.EnemyLayer);
-
-            for (int index = 0; index < numColliders; index++){
-                var tempObj = hitColliders[index].gameObject.GetComponent<ICollision>();
-                if (tempObj != null){
-                    var collision = new InfoCollision(weapon.Value.GetDamage(), unit);
-                    tempObj.OnCollision(collision);
-                }
-            }
-        }
+        // private void RangeShotAttack(TargetListC target, MainWeaponC weapon, UnitC unit){
+        //     var startPosition =
+        //         unit.Transform.position + unit.UnitVision.OffsetHead;
+        //
+        //     EcsEntity bulletEntity = EcsEntity.Null;
+        //     foreach (var b in _poolBullets){
+        //         bulletEntity = _poolBullets.GetEntity(b);
+        //         break;
+        //     }
+        //
+        //     var weaponBulletComponent = bulletEntity.Get<WeaponBulletC>();
+        //     if (bulletEntity == EcsEntity.Null){
+        //         weaponBulletComponent.Value = Object.Instantiate(weapon.Value.Bullet, unit.Transform, true);
+        //     } else{
+        //         bulletEntity.Del<DisableTag>();
+        //     }
+        //
+        //     weaponBulletComponent.Value.gameObject.SetActive(true);
+        //     weaponBulletComponent.Value.transform.position = startPosition;
+        //     weaponBulletComponent.Value.TargetGameObject = target.Current; //.GetComponent<IBaseUnitView>();
+        //     weaponBulletComponent.Value.Clear();
+        //
+        //
+        //     bulletEntity.Get<WeaponBulletC>().Value = weaponBulletComponent.Value;
+        //     bulletEntity.Get<WeaponBulletC>().Collision =
+        //         new InfoCollision(weapon.Value.GetDamage(), unit);
+        // }
+        //
+        // private void SplashMomentumAttack(MainWeaponC weapon, UnitC unit){
+        //     var attackPositionCenter =
+        //         unit.Transform.position + unit.UnitMovement.MeshRoot.forward + unit.UnitVision.OffsetHead;
+        //     var maxColliders = 10;
+        //     var hitColliders = new Collider[maxColliders];
+        //     var numColliders = Physics.OverlapSphereNonAlloc(attackPositionCenter,
+        //         1.0f, hitColliders, 1 << unit.Reputation.EnemyLayer);
+        //
+        //     for (int index = 0; index < numColliders; index++){
+        //         var tempObj = hitColliders[index].gameObject.GetComponent<ICollision>();
+        //         if (tempObj != null){
+        //             var collision = new InfoCollision(weapon.Value.GetDamage(), unit);
+        //             tempObj.OnCollision(collision);
+        //         }
+        //     }
+        // }
     }
 
     public struct DeathEventC{
-        public UnitC Killer;
+        public EcsEntity Killer;
     }
 
     public struct NeedShowUiEventC{

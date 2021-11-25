@@ -82,6 +82,10 @@ namespace Code.Unit
         {
             _enemyLvl.text = lvl.ToString();
         }
+        
+        public void SetActive(bool state){
+                _meshRenderer.enabled = state;
+        }
 
         #endregion
     }

@@ -1,8 +1,11 @@
-﻿using Code.Fight.EcsFight.Battle;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Code.Fight.EcsFight.Battle;
 using Code.Fight.EcsFight.Output;
 using Code.Fight.EcsFight.Settings;
 using Code.GameCamera;
 using Code.Profile.Models;
+using Code.Unit;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -45,24 +48,29 @@ namespace Code.Fight.EcsFight.Create{
                 
                 view.HealthBar.SetOnOff(false);
                 //Ragdoll
-                // SearchNodesOfRagdoll(entity, view);
+                SearchNodesOfRagdoll(entity, view);
 
                 var enemyEntity = new EnemyEntity(view, entity);
             }
         }
 
-        /*        private static void SearchNodesOfRagdoll(EcsEntity entity, IBaseUnitView view)
+                private static void SearchNodesOfRagdoll(EcsEntity entity, IBaseUnitView view)
         {
-            entity.Get<ListRigidBAndCollidersComponent>()._rigidBodies
+            entity.Get<ListRigidBAndCollidersC>().RigidBodies
                 = new List<Rigidbody>(view.Transform.GetComponentsInChildren<Rigidbody>());
-            entity.Get<ListRigidBAndCollidersComponent>()._colliders
+            entity.Get<ListRigidBAndCollidersC>().Colliders
                 = new List<Collider>(view.Transform.GetComponentsInChildren<Collider>());
-            foreach (var rigidbody in entity.Get<ListRigidBAndCollidersComponent>()._rigidBodies)
+            foreach (var rigidbody in entity.Get<ListRigidBAndCollidersC>().RigidBodies)
                 rigidbody.isKinematic = true;
-            foreach (var collider in entity.Get<ListRigidBAndCollidersComponent>()._colliders)
+            foreach (var collider in entity.Get<ListRigidBAndCollidersC>().Colliders)
                 collider.enabled = false;
             // view.Rigidbody.isKinematic = false;
             view.Collider.enabled = true;
-        }*/
+        }
+    }
+
+    internal struct ListRigidBAndCollidersC{
+        public List<Rigidbody> RigidBodies;
+        public List<Collider> Colliders;
     }
 }

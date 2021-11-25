@@ -88,8 +88,19 @@ namespace Code.Fight.EcsFight.Settings{
         }
         public List<GameObject> List;
         public bool IsExist;
+        private Transform _tempTarget;
+        private Transform _tempUnit;
+
         public float SqrDistance;
         // public Action<GameObject, Sensor> OnDetected;
         // public Action<GameObject, Sensor> OnLostDetection;
+        // public void SetSqrDistance(Transform target, Transform unit){
+        //     _tempTarget = target;
+        //     _tempUnit = unit;
+        // }
+        //
+        // public float GetSqrDistance(){
+        //     if()
+        // }
     }
 }
