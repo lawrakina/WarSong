@@ -100,6 +100,7 @@ namespace Code.Fight.EcsFight.Battle{
                 if (!entity.Has<Timer<AttackBannedWeapon1Tag>>()){
                     if (!entity.Has<Timer<Reload1WeaponTag>>()){
                         if (!entity.Has<Timer<LagBeforeWeapon1>>()){
+                            Dbg.Log($"Animator.SetTriggerAttack");
                             unit.Animator.SetTriggerAttack();
                             entity.Get<Timer<LagBeforeWeapon1>>().TimeLeftSec = weapon.LagBefAttack;
                         } else{
@@ -109,6 +110,7 @@ namespace Code.Fight.EcsFight.Battle{
                         if (!entity.Has<Timer<LagBeforeWeapon1>>()){
                             if ((target.Current.transform.position - unit.Transform.position).sqrMagnitude <
                                 unit.InfoAboutWeapons.SqrDistance){
+                                Dbg.Log($"SingleMomentumAttack");
                                 unit.UnitMovement.Motor.SetRotation(
                                     Quaternion.LookRotation(target.Current.transform.position -
                                                             unit.Transform.position));

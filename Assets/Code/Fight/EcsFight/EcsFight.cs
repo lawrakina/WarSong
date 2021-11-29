@@ -143,28 +143,17 @@ namespace Code.Fight.EcsFight{
     }
 
     public class DeathS : IEcsRunSystem{
-        private EcsFilter<UnitC, DeathEventC, ListRigidBAndCollidersC> _deathEvent;
+        private EcsFilter<UnitC, DeathEventC> _deathEvent;
         public void Run(){
             foreach (var i in _deathEvent){
                 ref var entity = ref _deathEvent.GetEntity(i);
                 ref var unit = ref _deathEvent.Get1(i);
                 ref var death = ref _deathEvent.Get2(i);
-                ref var listBodies = ref _deathEvent.Get3(i);
-                
-                //Enable Ragdoll
-                for (int j = 0; j < listBodies.RigidBodies.Count; j++)
-                {
-                    listBodies.RigidBodies[j].isKinematic = false;
-                    listBodies.Colliders[j].enabled = true;
-                }
 
-                unit.Transform.gameObject.tag = TagManager.TAG_OFF;//.layer = 1 << LayerManager.GroundLayer;
+                unit.Transform.gameObject.tag = TagManager.TAG_OFF;
                 death.Killer.Get<NeedFindTargetTag>();
-                unit.Animator.SetDeathTrigger();//.Off();
-                unit.UnitMovement.Motor.enabled = false;//.AttachedRigidbody.isKinematic = true;
-                // unit.UnitMovement.Motor.Capsule.enabled = false;
-                // unit.Collider.enabled = false;
-                // unit._rigidBody.isKinematic = true;
+                unit.Animator.SetDeathTrigger();
+                unit.UnitMovement.Motor.enabled = false;
                 entity.Del<UnitC>();
 
                 if (entity.Has<UiEnemyHealthBarC>()){

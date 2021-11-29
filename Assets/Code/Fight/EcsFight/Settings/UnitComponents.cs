@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Code.Data.Unit;
 using Code.Fight.EcsFight.Battle;
-using Code.Fight.EcsFight.Create;
 using Code.GameCamera;
 using Code.Unit;
 using Leopotam.Ecs;
@@ -63,18 +62,11 @@ namespace Code.Fight.EcsFight.Settings{
     public struct ManualMoveEventC{
         public Vector3 Vector;
         public Quaternion CameraRotation;
-        // public ControlType ControlType;
     }
 
     public struct AutoMoveEventC{
         public Vector3 Vector;
         public Quaternion CameraRotation;
-        public ControlType ControlType;
-    }
-
-    public enum ControlType{
-        Manual,
-        AutoAttack
     }
 
     public struct TargetListC{
@@ -88,19 +80,5 @@ namespace Code.Fight.EcsFight.Settings{
         }
         public List<GameObject> List;
         public bool IsExist;
-        private Transform _tempTarget;
-        private Transform _tempUnit;
-
-        public float SqrDistance;
-        // public Action<GameObject, Sensor> OnDetected;
-        // public Action<GameObject, Sensor> OnLostDetection;
-        // public void SetSqrDistance(Transform target, Transform unit){
-        //     _tempTarget = target;
-        //     _tempUnit = unit;
-        // }
-        //
-        // public float GetSqrDistance(){
-        //     if()
-        // }
     }
 }
