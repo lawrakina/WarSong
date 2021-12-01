@@ -2,6 +2,7 @@
 using Code.Data.Unit;
 using Code.Extension;
 using KinematicCharacterController;
+using Pathfinding;
 using UnityEngine;
 
 
@@ -25,6 +26,9 @@ namespace Code.Unit
         public UnitLevel UnitLevel { get; set; }
         public UnitCharacteristics UnitCharacteristics { get; set; }
         public UnitBattle UnitBattle { get; set; }
+        public AIPath AIPath { get; set; }
+        public AIDestinationSetter AIDestinationSetter { get; set; }
+
 
         // public UnitEquipmentOld unitEquipmentOld { get; set; }
         public HealthBarView HealthBar { get; set; }

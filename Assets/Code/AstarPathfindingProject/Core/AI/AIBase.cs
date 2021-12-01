@@ -290,6 +290,13 @@ namespace Pathfinding {
 				return Time.time - lastRepath >= repathRate && !waitingForPathCalculation && canSearch && !float.IsPositiveInfinity(destination.x);
 			}
 		}
+	
+		public Vector3 NextPosition { get; private set; }
+
+		/// <summary>
+		/// Position of the agent.
+		/// If <see cref="updatePosition"/> is true then this value will be synchronized every frame with Transform.position.
+		/// </summary>
 
 		protected AIBase () {
 			// Note that this needs to be set here in the constructor and not in e.g Awake
@@ -617,11 +624,13 @@ namespace Pathfinding {
 				// Check the Unity documentation for the special cases.
 				if (rigid != null) rigid.MovePosition(currentPosition);
 				else if (rigid2D != null) rigid2D.MovePosition(currentPosition);
-				else tr.position = currentPosition;
+				// else tr.position = currentPosition;
 			}
 
 			accumulatedMovementDelta = Vector3.zero;
 			simulatedPosition = currentPosition;
+			NextPosition = currentPosition;
+			
 			UpdateVelocity();
 		}
 

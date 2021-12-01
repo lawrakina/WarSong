@@ -27,6 +27,7 @@ namespace Code.Fight.EcsFight.Create{
                 entity.Get<UnitC>().UnitVision = view.UnitVision;
                 entity.Get<UnitC>().Reputation = view.UnitReputation;
                 entity.Get<UnitC>().UnitLevel = view.UnitLevel;
+                entity.Get<UnitC>().AIPath = view.AIPath;
                 entity.Get<UiEnemyHealthBarC>().value = view.HealthBar;
 
                 view.HealthBar.SetOnOff(false);

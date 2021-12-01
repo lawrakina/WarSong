@@ -62,12 +62,9 @@ namespace Code.Fight.BuildingDungeon
             Complete?.Invoke(this);
 
             
-            IEnumerator AddPathfindingComponents(EnemyView enemy, SpawnMarkerEnemyInDungeon marker) {
+            IEnumerator AddPathfindingComponents(IEnemyView enemy, SpawnMarkerEnemyInDungeon marker) {
                 yield return new WaitForSeconds(2);
-                enemy.GameObject.AddComponent<Seeker>();
-                enemy.GameObject.AddComponent<AIPath>();
-                var aiDestinationSetter = enemy.GameObject.AddComponent<AIDestinationSetter>();
-                var pathsController = new PathsController(aiDestinationSetter);
+                var pathsController = new PathsController(enemy.AIDestinationSetter);
                 pathsController.StartPath(marker.Waypoints, _pathfindingConfig);
             }
         }

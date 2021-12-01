@@ -5,6 +5,7 @@ using Code.Data.Unit;
 using Code.Data.Unit.Enemy;
 using Code.Extension;
 using KinematicCharacterController;
+using Pathfinding;
 using UnityEngine;
 
 
@@ -33,7 +34,7 @@ namespace Code.Unit.Factories
             unit.UnitMovement = root.GetComponent<UnitMovement>();
             unit.Collider = root.GetComponent<CapsuleCollider>();
 
-            enemyView.GameObject = enemy.gameObject;
+            unit.GameObject = root.gameObject;
             
             var unitModel = Object.Instantiate(enemySettings.EnemyView, unit.UnitMovement.MeshRoot, true);
             unitModel.name = $"Prefab.Model";
@@ -78,8 +79,17 @@ namespace Code.Unit.Factories
             //test
 
             unit.Motor.SetPosition(marker.Transform.position, false);
+            
+            AddPathfindingComponents(unit);
              
             return unit;
+            
+            
+            void AddPathfindingComponents(EnemyView enemy) {
+                enemy.GameObject.AddComponent<Seeker>();
+                enemy.AIPath = enemy.GameObject.AddComponent<AIPath>();
+                enemy.AIDestinationSetter = enemy.GameObject.AddComponent<AIDestinationSetter>();
+            }
         }
     }
 }

@@ -162,6 +162,7 @@ namespace Pathfinding {
 		/// <summary>Helper which calculates points along the current path</summary>
 		protected PathInterpolator interpolator = new PathInterpolator();
 
+
 		#region IAstarAI implementation
 
 		/// <summary>\copydoc Pathfinding::IAstarAI::Teleport</summary>
