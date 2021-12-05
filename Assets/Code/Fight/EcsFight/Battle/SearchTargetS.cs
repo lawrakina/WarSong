@@ -51,7 +51,7 @@ namespace Code.Fight.EcsFight.Battle{
 
                 if (!Equals(unit.AIPath.destination, Vector3.positiveInfinity)) {
                     ref var move = ref entity.Get<AutoMoveEventC>();
-                    move.Vector = unit.AIPath.NextPosition;
+                    move.Vector = unit.AIPath.NextPosition - unit.Transform.position;
                     entity.Del<NeedPatrol>();
                 }
             }

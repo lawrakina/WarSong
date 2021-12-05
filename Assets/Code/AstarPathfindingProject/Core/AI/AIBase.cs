@@ -109,7 +109,7 @@ namespace Pathfinding {
 		/// If true, the AI will rotate to face the movement direction.
 		/// See: <see cref="orientation"/>
 		/// </summary>
-		public bool enableRotation = true;
+		public bool enableRotation = false;
 
 		/// <summary>
 		/// Position of the agent.
