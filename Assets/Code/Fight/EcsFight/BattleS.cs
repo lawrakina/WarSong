@@ -8,14 +8,14 @@ using UnityEngine;
 
 
 namespace Code.Fight.EcsFight{
-    public class BattleS : IEcsInitSystem, IEcsRunSystem{
+    public class BattleS<T> : IEcsInitSystem, IEcsRunSystem{
         private EcsFilter<UnitC> _units;
         private readonly int _bulletCapacity;
         private EcsWorld _world = null;
-        private EcsFilter<MainWeaponC>.Exclude<Timer<PermisAttack1Weapon>, PermisAttack1Weapon> _permission1W;
+        private EcsFilter<Weapon<T>>.Exclude<Timer<PermisAttackWeapon<T>>, PermisAttackWeapon<T>> _permission1W;
         private EcsFilter<UnitC, FoundTargetC, NeedAttackTargetCommand> _gotoTarget;
-        private EcsFilter<UnitC, FoundTargetC, StartAttackCommand, MainWeaponC,PermisAttack1Weapon> _startAttack;
-        private EcsFilter<UnitC, FoundTargetC, AttackEvent1W, MainWeaponC>.Exclude<Timer<LagBeforeAttack1W>>
+        private EcsFilter<UnitC, FoundTargetC, StartAttackCommand, Weapon<T>,PermisAttackWeapon<T>> _startAttack;
+        private EcsFilter<UnitC, FoundTargetC, AttackEventWeapon<T>, Weapon<T>>.Exclude<Timer<LagBeforeAttackWeapon<T>>>
             _attackEvent;
         private EcsFilter<UnitC, AttackCollisionC> _applyDamage;
         private EcsFilter<UnitC, Timer<BattleTag>, FoundTargetC> _battleState;
@@ -30,19 +30,8 @@ namespace Code.Fight.EcsFight{
                 ref var unit = ref _units.Get1(i);
                 if (Equals(unit.InfoAboutWeapons, null)) continue;
                 if (unit.InfoAboutWeapons.WeaponRange > 2f){
-                    if (entity.Has<MainWeaponC>()){
-                        ref var weapon = ref entity.Get<MainWeaponC>();
-                        for (int j = 0; j < _bulletCapacity; j++){
-                            var go = Object.Instantiate(weapon.Value.Bullet, unit.Transform, true);
-                            go.gameObject.SetActive(false);
-                            var entityBullet = _world.NewEntity();
-                            entityBullet.Get<WeaponBulletC>().Value = go;
-                            entityBullet.Get<DisableTag>();
-                        }
-                    }
-
-                    if (entity.Has<SecondWeaponC>()){
-                        ref var weapon = ref entity.Get<SecondWeaponC>();
+                    if (entity.Has<Weapon<T>>()){
+                        ref var weapon = ref entity.Get<Weapon<T>>();
                         for (int j = 0; j < _bulletCapacity; j++){
                             var go = Object.Instantiate(weapon.Value.Bullet, unit.Transform, true);
                             go.gameObject.SetActive(false);
@@ -59,10 +48,10 @@ namespace Code.Fight.EcsFight{
             foreach (var i in _permission1W){
                 ref var entity = ref _permission1W.GetEntity(i);
                 ref var weapon = ref _permission1W.Get1(i);
-                entity.Get<Timer<PermisAttack1Weapon>>().TimeLeftSec = weapon.Speed;
+                entity.Get<Timer<PermisAttackWeapon<T>>>().TimeLeftSec = weapon.Speed;
 
                 var timer = _world.NewEntity();
-                timer.Get<PermisAttack1Weapon>();
+                timer.Get<PermisAttackWeapon<T>>();
                 timer.Get<TimerForAdd>().TargetEntity = entity;
                 timer.Get<TimerForAdd>().TimeLeftSec = weapon.Speed;
             }
@@ -108,10 +97,10 @@ namespace Code.Fight.EcsFight{
                                             unit.Transform.position));
 
                 unit.Animator.SetTriggerAttack();
-                entity.Get<Timer<LagBeforeAttack1W>>().TimeLeftSec = weapon.LagBefAttack;
-                entity.Get<AttackEvent1W>();
+                entity.Get<Timer<LagBeforeAttackWeapon<T>>>().TimeLeftSec = weapon.LagBefAttack;
+                entity.Get<AttackEventWeapon<T>>();
 
-                entity.Del<PermisAttack1Weapon>();
+                entity.Del<PermisAttackWeapon<T>>();
                 entity.Del<StartAttackCommand>();
             }
 
@@ -131,7 +120,7 @@ namespace Code.Fight.EcsFight{
                     continue;
                     
                 SingleMomentumAttack(target.Value, weapon, entity);
-                entity.Del<AttackEvent1W>();
+                entity.Del<AttackEventWeapon<T>>();
 
                 entity.Get<Timer<BattleTag>>().TimeLeftSec = 5f;
             }
@@ -162,7 +151,7 @@ namespace Code.Fight.EcsFight{
             }
         }
 
-        private void SingleMomentumAttack(GameObject target, MainWeaponC weapon, EcsEntity unit){
+        private void SingleMomentumAttack(GameObject target, Weapon<T> weapon, EcsEntity unit){
             var targetCollision = target.transform.GetComponent<ICollision>();
             var collision =
                 new InfoCollision(weapon.Value.GetDamage(), unit);

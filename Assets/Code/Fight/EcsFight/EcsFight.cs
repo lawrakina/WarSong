@@ -68,19 +68,20 @@ namespace Code.Fight.EcsFight{
                 .Add(new InputControlS())
                 .Add(new UnitBehaviourSettingsS())
                 .Add(new SearchTargetS())
-                .Add(new BattleS(5))
-                // .Add(new AttackS(5))
+                .Add(new BattleS<MainHand>(5))
+                .Add(new BattleS<SecondHand>(5))
                 .Add(new CameraUpdateS())
                 .Add(new MovementUnitS())
                 .Add(new AnimationUnitS())
                 .Add(new DisplayEffectsS())
                 .Add(new DeathS())
+                
                 //Timers
                 .Add(new UniversalTimerS())
-                .Add(new TimerS<PermisAttack1Weapon>())
-                .Add(new TimerS<LagBeforeAttack1W>())
-                .Add(new TimerS<Reload1WeaponTag>())
-                .Add(new TimerS<AttackBannedWeapon1Tag>())
+                .Add(new TimerS<PermisAttackWeapon<MainHand>>())
+                .Add(new TimerS<PermisAttackWeapon<SecondHand>>())
+                .Add(new TimerS<LagBeforeAttackWeapon<MainHand>>())
+                .Add(new TimerS<LagBeforeAttackWeapon<SecondHand>>())
                 ;
             // .OneFrame<TestComponent1> ()
             // .OneFrame<TestComponent2> ()
@@ -144,19 +145,5 @@ namespace Code.Fight.EcsFight{
         public void Execute(float deltaTime){
             _execute?.Run();
         }
-    }
-
-    public struct AttackEvent1W{
-    }
-
-    public struct StartAttackCommand{
-    }
-
-    public struct TimerForAdd{
-        public float TimeLeftSec;
-        public EcsEntity TargetEntity;
-    }
-
-    public struct PermisAttack1Weapon{
     }
 }

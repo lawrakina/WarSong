@@ -1,4 +1,7 @@
-﻿namespace Code.Fight.EcsFight.Timer{
+﻿using Leopotam.Ecs;
+
+
+namespace Code.Fight.EcsFight.Timer{
     public struct ClearTimer{
     }
 
@@ -6,12 +9,14 @@
         public float TimeLeftSec;
     }
 
-    public struct LagBeforeAttack1W{
-    }
-
-    public struct Reload1WeaponTag{
+    public struct LagBeforeAttackWeapon<T>{
     }
 
     public struct BattleTag{
+    }
+    
+    public struct TimerForAdd{
+        public float TimeLeftSec;
+        public EcsEntity TargetEntity;
     }
 }

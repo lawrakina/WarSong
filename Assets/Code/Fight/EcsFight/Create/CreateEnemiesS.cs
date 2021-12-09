@@ -33,7 +33,7 @@ namespace Code.Fight.EcsFight.Create{
                 unit.InfoAboutWeapons = new ListWeapons();
                 unit.InfoAboutWeapons.WeaponTypeAnimation = view.UnitBattle.GetMainWeaponType();
                 
-                ref var weapon = ref entity.Get<MainWeaponC>();
+                ref var weapon = ref entity.Get<Weapon<MainHand>>();
                 var unitBattleWeapon = view.UnitBattle.Weapons[0]; 
                 weapon.Value = unitBattleWeapon;
                 weapon.Speed = unitBattleWeapon.Speed;
