@@ -1,5 +1,5 @@
-﻿using Code.Data.Unit;
-using Code.Extension;
+﻿using Code.Extension;
+using Code.Fight.EcsFight.Battle;
 using Code.Fight.EcsFight.Settings;
 using Code.Fight.EcsFight.Timer;
 using Code.Unit;
@@ -7,22 +7,23 @@ using Leopotam.Ecs;
 using UnityEngine;
 
 
-namespace Code.Fight.EcsFight.Battle{
-    public sealed class AttackS : IEcsInitSystem, IEcsRunSystem{
+namespace Code.Fight.EcsFight{
+    public class BattleS : IEcsInitSystem, IEcsRunSystem{
         private EcsFilter<UnitC> _units;
         private readonly int _bulletCapacity;
         private EcsWorld _world = null;
-        private EcsFilter<UnitC, NeedAttackTargetC, TargetListC> _needAttackBehaviour;
-        private EcsFilter<UnitC, AutoAttackTag, TargetListC, MainWeaponC> _autoAttack;
-
-        private EcsFilter<WeaponBulletC, DisableTag> _poolBullets;
-
+        private EcsFilter<MainWeaponC>.Exclude<Timer<PermisAttack1Weapon>, PermisAttack1Weapon> _permission1W;
+        private EcsFilter<UnitC, FoundTargetC, NeedAttackTargetCommand> _gotoTarget;
+        private EcsFilter<UnitC, FoundTargetC, StartAttackCommand, MainWeaponC,PermisAttack1Weapon> _startAttack;
+        private EcsFilter<UnitC, FoundTargetC, AttackEvent1W, MainWeaponC>.Exclude<Timer<LagBeforeAttack1W>>
+            _attackEvent;
         private EcsFilter<UnitC, AttackCollisionC> _applyDamage;
+        private EcsFilter<UnitC, Timer<BattleTag>, FoundTargetC> _battleState;
 
-        public AttackS(int bulletCapacity){
+        public BattleS(int bulletCapacity){
             _bulletCapacity = bulletCapacity;
         }
-
+        
         public void Init(){
             foreach (var i in _units){
                 ref var entity = ref _units.GetEntity(i);
@@ -53,77 +54,86 @@ namespace Code.Fight.EcsFight.Battle{
                 }
             }
         }
-
+        
         public void Run(){
-            foreach (var i in _needAttackBehaviour){
-                ref var entity = ref _needAttackBehaviour.GetEntity(i);
-                ref var unit = ref _needAttackBehaviour.Get1(i);
-                ref var target = ref _needAttackBehaviour.Get3(i);
-                if (target.IsExist){
-                    ref var moveEvent = ref entity.Get<AutoMoveEventC>();
+            foreach (var i in _permission1W){
+                ref var entity = ref _permission1W.GetEntity(i);
+                ref var weapon = ref _permission1W.Get1(i);
+                entity.Get<Timer<PermisAttack1Weapon>>().TimeLeftSec = weapon.Speed;
 
-                    //бежим к цели
-                    if (target.Current.transform.SqrDistance(unit.Transform) >= unit.InfoAboutWeapons.SqrDistance){
-                        var direction = target.Current.transform.position - unit.Transform.position;
-                        moveEvent.Vector = direction;
-                        // DebugExtension.DebugArrow(unit.Transform.position, direction, Color.red);
-                        if (entity.Has<CameraC>()){
-                            var camera = entity.Get<CameraC>();
-                            moveEvent.CameraRotation = camera.Value.Transform.rotation;
-                        }
+                var timer = _world.NewEntity();
+                timer.Get<PermisAttack1Weapon>();
+                timer.Get<TimerForAdd>().TargetEntity = entity;
+                timer.Get<TimerForAdd>().TimeLeftSec = weapon.Speed;
+            }
 
-                        var move = new AutoMoveEventC{
-                            Vector = new Vector3(
-                                direction.x,
-                                direction.y,
-                                direction.z
-                            ),
-                        };
-                        entity.Get<AutoMoveEventC>() = move;
-                    } else{
-                        moveEvent.Vector = Vector3.zero;
-                        //ударить
-                        entity.Get<AutoAttackTag>();
-                        entity.Del<NeedAttackTargetC>();
+            foreach (var i in _gotoTarget){
+                ref var entity = ref _gotoTarget.GetEntity(i);
+                ref var unit = ref _gotoTarget.Get1(i);
+                ref var target = ref _gotoTarget.Get2(i);
+                ref var moveEvent = ref entity.Get<AutoMoveEventC>();
+
+                if (target.Value.transform.SqrDistance(unit.Transform) > unit.InfoAboutWeapons.SqrDistance){
+                    //если дальше чем дистанция атаки то бежим в направлении цели
+                    var direction = target.Value.transform.position - unit.Transform.position;
+                    moveEvent.Vector = direction;
+
+                    if (entity.Has<CameraC>()){
+                        moveEvent.CameraRotation = entity.Get<CameraC>().Value.Transform.rotation;
                     }
+
+                    var move = new AutoMoveEventC{
+                        Vector = new Vector3(
+                            direction.x,
+                            direction.y,
+                            direction.z
+                        ),
+                    };
+                    entity.Get<AutoMoveEventC>() = move;
                 } else{
-                    entity.Del<NeedAttackTargetC>();
+                    //если на дистанции атаки то бьем
+                    entity.Del<NeedAttackTargetCommand>();
+                    entity.Get<StartAttackCommand>();
                 }
             }
 
-            foreach (var i in _autoAttack){
-                ref var entity = ref _autoAttack.GetEntity(i);
-                ref var unit = ref _autoAttack.Get1(i);
-                ref var target = ref _autoAttack.Get3(i);
-                ref var weapon = ref _autoAttack.Get4(i);
+            foreach (var i in _startAttack){
+                ref var entity = ref _startAttack.GetEntity(i);
+                ref var unit = ref _startAttack.Get1(i);
+                ref var target = ref _startAttack.Get2(i);
+                ref var weapon = ref _startAttack.Get4(i);
 
-                if (!entity.Has<Timer<AttackBannedWeapon1Tag>>()){
-                    if (!entity.Has<Timer<Reload1WeaponTag>>()){
-                        if (!entity.Has<Timer<LagBeforeWeapon1>>()){
-                            Dbg.Log($"Animator.SetTriggerAttack");
-                            unit.Animator.SetTriggerAttack();
-                            entity.Get<Timer<LagBeforeWeapon1>>().TimeLeftSec = weapon.LagBefAttack;
-                        } else{
-                            entity.Get<Timer<Reload1WeaponTag>>().TimeLeftSec = weapon.Speed;
-                        }
-                    } else{
-                        if (!entity.Has<Timer<LagBeforeWeapon1>>()){
-                            if ((target.Current.transform.position - unit.Transform.position).sqrMagnitude <
-                                unit.InfoAboutWeapons.SqrDistance){
-                                Dbg.Log($"SingleMomentumAttack");
-                                unit.UnitMovement.Motor.SetRotation(
-                                    Quaternion.LookRotation(target.Current.transform.position -
-                                                            unit.Transform.position));
-                                SingleMomentumAttack(target, weapon, entity);
-                            } else{
-                                entity.Get<NeedAttackTargetC>();
-                            }
+                unit.UnitMovement.Motor.SetRotation(
+                    Quaternion.LookRotation(target.Value.transform.position -
+                                            unit.Transform.position));
 
-                            entity.Get<Timer<AttackBannedWeapon1Tag>>().TimeLeftSec =
-                                entity.Get<Timer<Reload1WeaponTag>>().TimeLeftSec;
-                        }
-                    }
-                }
+                unit.Animator.SetTriggerAttack();
+                entity.Get<Timer<LagBeforeAttack1W>>().TimeLeftSec = weapon.LagBefAttack;
+                entity.Get<AttackEvent1W>();
+
+                entity.Del<PermisAttack1Weapon>();
+                entity.Del<StartAttackCommand>();
+            }
+
+            foreach (var i in _attackEvent){
+                ref var entity = ref _attackEvent.GetEntity(i);
+                ref var unit = ref _attackEvent.Get1(i);
+                ref var target = ref _attackEvent.Get2(i);
+                ref var weapon = ref _attackEvent.Get4(i);
+
+                // switch (weapon.Value.AttackType(Splash, SingleTarget, Range, Magic,...)){
+                // case "Splash":
+                // case "SingleTarget":
+                // case "Range":
+                // case "Magic":
+                // }
+                if(target.Value.transform.SqrDistance(unit.Transform) > unit.InfoAboutWeapons.SqrDistance)
+                    continue;
+                    
+                SingleMomentumAttack(target.Value, weapon, entity);
+                entity.Del<AttackEvent1W>();
+
+                entity.Get<Timer<BattleTag>>().TimeLeftSec = 5f;
             }
 
             foreach (var i in _applyDamage){
@@ -143,10 +153,17 @@ namespace Code.Fight.EcsFight.Battle{
 
                 entity.Del<AttackCollisionC>();
             }
+
+            foreach (var i in _battleState){
+                ref var entity = ref _battleState.GetEntity(i);
+                
+                entity.Get<NeedFindTargetCommand>();
+                entity.Get<NeedAttackTargetCommand>();
+            }
         }
 
-        private void SingleMomentumAttack(TargetListC target, MainWeaponC weapon, EcsEntity unit){
-            var targetCollision = target.Current.transform.GetComponent<ICollision>();
+        private void SingleMomentumAttack(GameObject target, MainWeaponC weapon, EcsEntity unit){
+            var targetCollision = target.transform.GetComponent<ICollision>();
             var collision =
                 new InfoCollision(weapon.Value.GetDamage(), unit);
             targetCollision?.OnCollision(collision);
@@ -196,14 +213,5 @@ namespace Code.Fight.EcsFight.Battle{
         //         }
         //     }
         // }
-    }
-
-    public struct DeathEventC{
-        public EcsEntity Killer;
-    }
-
-    public struct NeedShowUiEventC{
-        public DamageType DamageType;
-        public float PointsDamage;
     }
 }

@@ -8,7 +8,7 @@ using UnityEngine;
 
 
 namespace Code.Fight.EcsFight.Settings{
-    public struct NeedAttackTargetC{
+    public struct NeedAttackTargetTag{
     }
 
     public struct NeedFindTargetTag{

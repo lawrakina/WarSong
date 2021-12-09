@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Code.Extension;
 using Code.Fight.EcsFight.Animator;
 using Code.Fight.EcsFight.Battle;
@@ -60,21 +61,24 @@ namespace Code.Fight.EcsFight{
             EcsSystemsObserver.Create(_fixedExecute);
             EcsSystemsObserver.Create(_lateExecute);
 #endif
-            
+
             _execute
                 .Add(new CreatePlayerS())
                 .Add(new CreateEnemiesS())
                 .Add(new InputControlS())
                 .Add(new UnitBehaviourSettingsS())
                 .Add(new SearchTargetS())
-                .Add(new AttackS(5))
+                .Add(new BattleS(5))
+                // .Add(new AttackS(5))
                 .Add(new CameraUpdateS())
                 .Add(new MovementUnitS())
                 .Add(new AnimationUnitS())
                 .Add(new DisplayEffectsS())
                 .Add(new DeathS())
                 //Timers
-                .Add(new TimerS<LagBeforeWeapon1>())
+                .Add(new UniversalTimerS())
+                .Add(new TimerS<PermisAttack1Weapon>())
+                .Add(new TimerS<LagBeforeAttack1W>())
                 .Add(new TimerS<Reload1WeaponTag>())
                 .Add(new TimerS<AttackBannedWeapon1Tag>())
                 ;
@@ -142,25 +146,17 @@ namespace Code.Fight.EcsFight{
         }
     }
 
-    public class DeathS : IEcsRunSystem{
-        private EcsFilter<UnitC, DeathEventC> _deathEvent;
-        public void Run(){
-            foreach (var i in _deathEvent){
-                ref var entity = ref _deathEvent.GetEntity(i);
-                ref var unit = ref _deathEvent.Get1(i);
-                ref var death = ref _deathEvent.Get2(i);
+    public struct AttackEvent1W{
+    }
 
-                unit.Transform.gameObject.tag = TagManager.TAG_OFF;
-                death.Killer.Get<NeedFindTargetTag>();
-                unit.Animator.SetDeathTrigger();
-                unit.UnitMovement.Motor.enabled = false;
-                entity.Del<UnitC>();
+    public struct StartAttackCommand{
+    }
 
-                if (entity.Has<UiEnemyHealthBarC>()){
-                    ref var infoBar = ref entity.Get<UiEnemyHealthBarC>();
-                    infoBar.value.SetActive(false);
-                }
-            }
-        }
+    public struct TimerForAdd{
+        public float TimeLeftSec;
+        public EcsEntity TargetEntity;
+    }
+
+    public struct PermisAttack1Weapon{
     }
 }

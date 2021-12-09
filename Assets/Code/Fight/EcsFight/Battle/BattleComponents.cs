@@ -2,6 +2,7 @@
 using Code.Data.Unit;
 using Code.Equipment;
 using Code.Unit;
+using Leopotam.Ecs;
 
 
 namespace Code.Fight.EcsFight.Battle{
@@ -10,8 +11,6 @@ namespace Code.Fight.EcsFight.Battle{
         public InfoCollision Collision;
     }
 
-    public struct AutoAttackTag{
-    }
     public struct SecondWeaponC{
         public float LagBefAttack;
         public float Distance;
@@ -30,5 +29,13 @@ namespace Code.Fight.EcsFight.Battle{
 
     public struct AttackCollisionC{
         public InfoCollision Value;
+    }
+    public struct DeathEventC{
+        public EcsEntity Killer;
+    }
+
+    public struct NeedShowUiEventC{
+        public DamageType DamageType;
+        public float PointsDamage;
     }
 }

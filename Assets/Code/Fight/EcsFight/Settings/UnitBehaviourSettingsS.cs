@@ -1,4 +1,5 @@
-﻿using Leopotam.Ecs;
+﻿using Code.Fight.EcsFight.Timer;
+using Leopotam.Ecs;
 
 
 namespace Code.Fight.EcsFight.Settings{
@@ -10,8 +11,9 @@ namespace Code.Fight.EcsFight.Settings{
         public void Run(){
             foreach (var i in _clickFilter){
                 ref var entity = ref _clickFilter.GetEntity(i);
-                entity.Get<NeedFindTargetTag>();
-                entity.Get<NeedAttackTargetC>();
+                entity.Get<Timer<BattleTag>>().TimeLeftSec = 5f;
+                entity.Get<NeedFindTargetCommand>();
+                entity.Get<NeedAttackTargetCommand>();
                 entity.Del<ClickEventC>();
             }
 
@@ -20,5 +22,11 @@ namespace Code.Fight.EcsFight.Settings{
                 entity.Del<SwipeEventC>();
             }
         }
+    }
+    
+    public struct NeedAttackTargetCommand{
+    }
+    
+    public struct NeedFindTargetCommand{
     }
 }

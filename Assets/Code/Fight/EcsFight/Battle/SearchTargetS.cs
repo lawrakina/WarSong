@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Code.Fight.EcsFight.Settings;
+using Code.Fight.EcsFight.Timer;
 using Code.Profile.Models;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Code.Fight.EcsFight.Battle{
         private InOutControlFightModel _model;
         private EcsFilter<UnitC> _searchInitFilter;
         private EcsFilter<UnitC, TargetListC, NeedFindTargetTag> _searchFilter;
+        private EcsFilter<UnitC, NeedFindTargetCommand> _findFilter;
 
         public void Init(){
             foreach (var i in _searchInitFilter){
@@ -22,6 +24,23 @@ namespace Code.Fight.EcsFight.Battle{
         }
 
         public void Run(){
+            foreach (var i in _findFilter){
+                ref var entity = ref _findFilter.GetEntity(i);
+                ref var unit = ref _findFilter.Get1(i);
+                
+                unit.UnitVision.Visor.Pulse();
+                var near = unit.UnitVision.Visor.GetNearest();
+                if (near){
+                    entity.Get<FoundTargetC>().Value = near;
+                    // entity.Get<Timer<BattleTag>>().TimeLeftSec = 4f;
+                } else{
+                    entity.Del<FoundTargetC>();
+                }
+                entity.Del<NeedFindTargetCommand>();
+            }
+            
+            
+            
             foreach (var i in _searchFilter){
                 ref var entity = ref _searchInitFilter.GetEntity(i);
                 ref var unit = ref _searchFilter.Get1(i);
@@ -43,5 +62,9 @@ namespace Code.Fight.EcsFight.Battle{
                 entity.Del<NeedFindTargetTag>();
             }
         }
+    }
+
+    public struct FoundTargetC{
+        public GameObject Value;
     }
 }
