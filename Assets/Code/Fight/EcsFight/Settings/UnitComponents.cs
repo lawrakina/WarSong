@@ -8,11 +8,8 @@ using UnityEngine;
 
 
 namespace Code.Fight.EcsFight.Settings{
-    public struct NeedAttackTargetTag{
-    }
-
-    public struct NeedFindTargetTag{
-    }
+    // public struct NeedFindTargetTag{
+    // }
 
     public struct SwipeEventC{
         public Vector3 Value;

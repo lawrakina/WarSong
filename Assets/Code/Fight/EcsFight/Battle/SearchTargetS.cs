@@ -12,7 +12,7 @@ namespace Code.Fight.EcsFight.Battle{
         private EcsWorld _world = null;
         private InOutControlFightModel _model;
         private EcsFilter<UnitC> _searchInitFilter;
-        private EcsFilter<UnitC, TargetListC, NeedFindTargetTag> _searchFilter;
+        // private EcsFilter<UnitC, TargetListC, NeedFindTargetTag> _searchFilter;
         private EcsFilter<UnitC, NeedFindTargetCommand> _findFilter;
 
         public void Init(){
@@ -41,26 +41,26 @@ namespace Code.Fight.EcsFight.Battle{
             
             
             
-            foreach (var i in _searchFilter){
-                ref var entity = ref _searchInitFilter.GetEntity(i);
-                ref var unit = ref _searchFilter.Get1(i);
-                ref var targets = ref _searchFilter.Get2(i);
-                // ref var currentTarget = ref entity.Get<CurrentTargetC>();
-                unit.UnitVision.Visor.Pulse();
-                targets.List = unit.UnitVision.Visor.DetectedObjectsOrderedByDistance;
-                var listOfTargets = unit.UnitVision.Visor.DetectedObjectsOrderedByDistance;
-                targets.Current = listOfTargets.Count > 0 ? listOfTargets.First() : null;
-                
-                
-                // if (targets.IsExist){
-                //     targets.SqrDistance =
-                //         (targets.Current.transform.position - unit.Transform.position).sqrMagnitude;
-                //         
-                //     // currentTarget.Value.transform.localScale = Vector3.one * 2;
-                // }
-
-                entity.Del<NeedFindTargetTag>();
-            }
+            // foreach (var i in _searchFilter){
+            //     ref var entity = ref _searchInitFilter.GetEntity(i);
+            //     ref var unit = ref _searchFilter.Get1(i);
+            //     ref var targets = ref _searchFilter.Get2(i);
+            //     // ref var currentTarget = ref entity.Get<CurrentTargetC>();
+            //     unit.UnitVision.Visor.Pulse();
+            //     targets.List = unit.UnitVision.Visor.DetectedObjectsOrderedByDistance;
+            //     var listOfTargets = unit.UnitVision.Visor.DetectedObjectsOrderedByDistance;
+            //     targets.Current = listOfTargets.Count > 0 ? listOfTargets.First() : null;
+            //     
+            //     
+            //     // if (targets.IsExist){
+            //     //     targets.SqrDistance =
+            //     //         (targets.Current.transform.position - unit.Transform.position).sqrMagnitude;
+            //     //         
+            //     //     // currentTarget.Value.transform.localScale = Vector3.one * 2;
+            //     // }
+            //
+            //     entity.Del<NeedFindTargetTag>();
+            // }
         }
     }
 

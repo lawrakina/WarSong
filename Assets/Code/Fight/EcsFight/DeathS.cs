@@ -15,7 +15,7 @@ namespace Code.Fight.EcsFight{
                 ref var death = ref _deathEvent.Get2(i);
 
                 unit.Transform.gameObject.tag = TagManager.TAG_OFF;
-                death.Killer.Get<NeedFindTargetTag>();
+                // death.Killer.Get<NeedFindTargetTag>();
                 unit.Animator.SetDeathTrigger();
                 unit.UnitMovement.Motor.enabled = false;
                 entity.Del<UnitC>();

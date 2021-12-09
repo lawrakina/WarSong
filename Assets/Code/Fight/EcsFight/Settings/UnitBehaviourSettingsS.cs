@@ -7,6 +7,7 @@ namespace Code.Fight.EcsFight.Settings{
         private EcsWorld _world = null;
         private EcsFilter<PlayerTag, ClickEventC> _clickFilter;
         private EcsFilter<PlayerTag, SwipeEventC> _swipeFilter;
+        private EcsFilter<EnemyTag>.Exclude<Timer<BattleTag>> _enemiesBattle;
 
         public void Run(){
             foreach (var i in _clickFilter){
@@ -20,6 +21,13 @@ namespace Code.Fight.EcsFight.Settings{
             foreach (var i in _swipeFilter){
                 ref var entity = ref _swipeFilter.GetEntity(i);
                 entity.Del<SwipeEventC>();
+            }
+
+            foreach (var i in _enemiesBattle){
+                ref var entity = ref _enemiesBattle.GetEntity(i);
+                entity.Get<NeedFindTargetCommand>();
+                entity.Get<NeedAttackTargetCommand>();
+                entity.Get<Timer<BattleTag>>().TimeLeftSec = 5f;
             }
         }
     }

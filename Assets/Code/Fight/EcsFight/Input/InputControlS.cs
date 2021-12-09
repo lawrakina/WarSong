@@ -60,7 +60,7 @@ namespace Code.Fight.EcsFight.Input{
                 if (input.joystick.GetJoystickState()){
                     moveEvent.Vector = input.LastPosition;
                     moveEvent.CameraRotation = _camera.Transform.rotation;
-                    target.Value.Del<NeedAttackTargetTag>();
+                    target.Value.Del<NeedAttackTargetCommand>();
                     target.Value.Del<Timer<BattleTag>>();
                 } else if(!input.joystick.GetJoystickState() ){
                     moveEvent.Vector = Vector3.zero;
