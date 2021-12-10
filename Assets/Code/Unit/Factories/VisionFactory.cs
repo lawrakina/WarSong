@@ -14,7 +14,7 @@ namespace Code.Unit.Factories{
         public UnitVision GenerateVision(IPlayerView character){
             var visionSensor = new UnitVision();
             visionSensor.Visor =
-                Object.Instantiate(_settings.characterVisionData.AngleSensor, character.Transform, true);
+                Object.Instantiate(_settings.characterVisionData.VisionSensor, character.Transform, true);
             visionSensor.Visor.transform.localPosition = _settings.characterVisionData.offsetHead;
             visionSensor.Visor.name = $"-->Visor<--";
             visionSensor.Visor.enabled = false;

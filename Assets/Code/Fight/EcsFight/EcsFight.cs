@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Code.Extension;
 using Code.Fight.EcsFight.Animator;
 using Code.Fight.EcsFight.Battle;
@@ -7,12 +6,11 @@ using Code.Fight.EcsFight.Camera;
 using Code.Fight.EcsFight.Create;
 using Code.Fight.EcsFight.Input;
 using Code.Fight.EcsFight.Movement;
+using Code.Fight.EcsFight.Output;
 using Code.Fight.EcsFight.Settings;
 using Code.Fight.EcsFight.Timer;
 using Code.Profile;
-using Code.Unit;
 using Leopotam.Ecs;
-using ThirdPersonCameraWithLockOn;
 #if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
 
@@ -55,27 +53,31 @@ namespace Code.Fight.EcsFight{
             _execute = new EcsSystems(_world);
             _fixedExecute = new EcsSystems(_world);
             _lateExecute = new EcsSystems(_world);
+
 #if UNITY_EDITOR
             EcsWorldObserver.Create(_world);
             EcsSystemsObserver.Create(_execute);
             EcsSystemsObserver.Create(_fixedExecute);
             EcsSystemsObserver.Create(_lateExecute);
+#endif
+            
             _execute
                 .Add(new CreatePlayerS())
                 .Add(new CreateEnemiesS())
                 .Add(new InputControlS())
                 .Add(new UnitBehaviourSettingsS())
+                .Add(new SearchTargetS())
                 .Add(new AttackS(5))
                 .Add(new CameraUpdateS())
-                .Add(new SearchTargetS())
                 .Add(new MovementUnitS())
                 .Add(new AnimationUnitS())
+                .Add(new DisplayEffectsS())
+                .Add(new DeathS())
                 //Timers
                 .Add(new TimerS<LagBeforeWeapon1>())
                 .Add(new TimerS<Reload1WeaponTag>())
                 .Add(new TimerS<AttackBannedWeapon1Tag>())
                 ;
-#endif
             // .OneFrame<TestComponent1> ()
             // .OneFrame<TestComponent2> ()
 
@@ -140,7 +142,25 @@ namespace Code.Fight.EcsFight{
         }
     }
 
-    public struct UiEnemyHealthBarC{
-        public HealthBarView value;
+    public class DeathS : IEcsRunSystem{
+        private EcsFilter<UnitC, DeathEventC> _deathEvent;
+        public void Run(){
+            foreach (var i in _deathEvent){
+                ref var entity = ref _deathEvent.GetEntity(i);
+                ref var unit = ref _deathEvent.Get1(i);
+                ref var death = ref _deathEvent.Get2(i);
+
+                unit.Transform.gameObject.tag = TagManager.TAG_OFF;
+                death.Killer.Get<NeedFindTargetTag>();
+                unit.Animator.SetDeathTrigger();
+                unit.UnitMovement.Motor.enabled = false;
+                entity.Del<UnitC>();
+
+                if (entity.Has<UiEnemyHealthBarC>()){
+                    ref var infoBar = ref entity.Get<UiEnemyHealthBarC>();
+                    infoBar.value.SetActive(false);
+                }
+            }
+        }
     }
 }

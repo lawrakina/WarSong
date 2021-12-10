@@ -8,7 +8,7 @@ namespace Code.Unit
     public struct InfoCollision
     {
         private readonly Attack _attack;
-        private readonly UnitC _attacker;
+        private readonly EcsEntity _attacker;
 
 
         #region Fields
@@ -26,10 +26,10 @@ namespace Code.Unit
         //ToDo Need remove after removing EcsBattle
         public InfoCollision(float damage, EcsEntity attacker){
             _attack = new Attack(damage, DamageType.Default);
-            _attacker = new UnitC();
+            _attacker = attacker;
         }
 
-        public InfoCollision(Attack attack, UnitC attacker){
+        public InfoCollision(Attack attack, EcsEntity attacker){
             _attack = attack;
             _attacker = attacker;
         }
@@ -47,6 +47,8 @@ namespace Code.Unit
         // public Vector3 Direction => _direction;
 
         public float Damage => _attack.Damage;
+        public DamageType DamageType => _attack.DamageType;
+        public EcsEntity Attacker => _attacker;
 
         // public ContactPoint Contact => _contact;
         //

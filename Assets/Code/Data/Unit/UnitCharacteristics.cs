@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Code.Data.Unit{
     [Serializable] public class UnitCharacteristics : BasicCharacteristics{
         [SerializeField]
-        public float Speed = 8.0f;
+        public float MoveSpeed = 8.0f;
         [SerializeField]
         public float RotateSpeedPlayer = 120.0f;
         [SerializeField]

@@ -14,46 +14,70 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StorageRootPrefab: {fileID: 686997688615928582, guid: 32b697eadfb0b3a41b3a26afa41fc881,
     type: 3}
+  DefaultSensor: {fileID: 2347009024321003530, guid: e9e33c6cbf313f546a18eb4bfc3a24bb,
+    type: 3}
+  _baseMoveSpeed: 5
+  _baseAttackValue:
+    _maxAttackValue: 8
+    _minAttackValue: 4
+    _timeDelayBeforeAttack: 0.5
+    _attackSpeed: 2
+    _attackDistance: 2
+  DefaultWeapons:
+  - {fileID: 2146820331, guid: 41d2d5bc8843af447817dc751888129d, type: 3}
+  - {fileID: 1286760890, guid: 38c4232aabedea7439f167a9484d0e10, type: 3}
+  - {fileID: 703089399, guid: c7d4224023b93cc43875289cd6ed4c8e, type: 3}
+  - {fileID: 1806047006, guid: 6f0b2f8181dd5a148b28ad711f21b5bf, type: 3}
+  - {fileID: 940942210, guid: 5aa1d16b7f8eb864bb3561d47afc0122, type: 3}
+  - {fileID: 2083474263, guid: 3c9485b5bcba11e4bbd0e4992a595994, type: 3}
+  - {fileID: 554395860, guid: f120e1ca134e6c24ba7da0ce3a81f1d6, type: 3}
+  - {fileID: 464531027, guid: 9b4002abc92e1e143a02221ef60adde9, type: 3}
+  - {fileID: 704246847, guid: 51cae927b7c12144cb5fe74c7961ca84, type: 3}
+  - {fileID: 1377199512, guid: 674871547e6e5024eb4913f95ea3e229, type: 3}
+  - {fileID: 640187368, guid: 1cbed63e6a1f615458ee7a12a6c00ba8, type: 3}
+  - {fileID: 1456652596, guid: 3e46d6572a0b4bb4aacc8e703c86a994, type: 3}
+  - {fileID: 264781411, guid: df58e04433e68bd408901100f93d8d17, type: 3}
+  - {fileID: 1694903566, guid: 44aefc9589919b843b0e8859ec3f43ed, type: 3}
+  _baseHp: 10
+  _hpForLevel: 17
+  DefaultRewardForKillind: 1
   Enemies:
   - EnemyView: {fileID: 2194302051238080810, guid: f4b0da07ccc3d164caf26dcebbead390,
       type: 3}
     EnemyType: 0
+    DisplayName: "\u0412\u0440\u0430\u0436\u0438\u043D\u0430"
     characterVisionDataComponent:
-      angleSensor: {fileID: 0}
+      visionSensor: {fileID: 0}
       offsetHead: {x: 0, y: 1.5, z: 0}
-    MaxHp: 100
-    AttackValue:
-      _maxAttackValue: 0
-      _minAttackValue: 0
-      _timeDelayBeforeAttack: 0
-      _attackSpeed: 0
-      _attackDistance: 0
+    AdditionalHp: 0
+    SpeedModifier: 1
+    LevelOffset: 1
+    Weapon: {fileID: 0}
+    RewardForKillingModifier: 4
   - EnemyView: {fileID: 2194302051238080810, guid: f4b0da07ccc3d164caf26dcebbead390,
       type: 3}
     EnemyType: 0
+    DisplayName: "\u0412\u0440\u0430\u0436\u0438\u043D\u0430"
     characterVisionDataComponent:
-      angleSensor: {fileID: 0}
+      visionSensor: {fileID: 0}
       offsetHead: {x: 0, y: 1.5, z: 0}
-    MaxHp: 70
-    AttackValue:
-      _maxAttackValue: 0
-      _minAttackValue: 0
-      _timeDelayBeforeAttack: 0
-      _attackSpeed: 0
-      _attackDistance: 0
+    AdditionalHp: 0
+    SpeedModifier: 1
+    LevelOffset: 1
+    Weapon: {fileID: 0}
+    RewardForKillingModifier: 4
   - EnemyView: {fileID: 2194302051238080810, guid: f4b0da07ccc3d164caf26dcebbead390,
       type: 3}
     EnemyType: 0
+    DisplayName: "\u0412\u0440\u0430\u0436\u0438\u043D\u0430"
     characterVisionDataComponent:
-      angleSensor: {fileID: 0}
+      visionSensor: {fileID: 0}
       offsetHead: {x: 0, y: 1.5, z: 0}
-    MaxHp: 70
-    AttackValue:
-      _maxAttackValue: 0
-      _minAttackValue: 0
-      _timeDelayBeforeAttack: 0
-      _attackSpeed: 0
-      _attackDistance: 0
+    AdditionalHp: 0
+    SpeedModifier: 1
+    LevelOffset: 1
+    Weapon: {fileID: 0}
+    RewardForKillingModifier: 4
   uiElement:
   - UiView: {fileID: 2970395066935538298, guid: d2ddcf18dfa38624791d2fecc565e2a3,
       type: 3}

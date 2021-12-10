@@ -27,4 +27,8 @@ namespace Code.Fight.EcsFight.Battle{
     }
     public struct AttackBannedWeapon1Tag{
     }
+
+    public struct AttackCollisionC{
+        public InfoCollision Value;
+    }
 }

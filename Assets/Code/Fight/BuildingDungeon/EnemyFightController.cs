@@ -20,6 +20,7 @@ namespace Code.Fight.BuildingDungeon
         private readonly EnemiesLevelModel _enemiesLevelModel;
         private readonly EnemiesData _enemySettings;
         private readonly PathfindingConfig _pathfindingConfig;
+        private readonly IPlayerView _currentPlayer;
 
         private EnemyFactory _enemyFactory;
         private BuildStatus _status;
@@ -33,17 +34,17 @@ namespace Code.Fight.BuildingDungeon
         public event Action<IVerifiable> Complete = verifiable => { verifiable.Status = BuildStatus.Complete;};
 
         public EnemyFightController(FightDungeonModel generatorModel, DungeonGeneratorModel dungeonGeneratorModel,
-            EnemiesLevelModel enemiesLevelModel, EnemiesData settings, PathfindingConfig pathfindingConfig)
-        {
+                EnemiesLevelModel enemiesLevelModel, EnemiesData settings, IPlayerView currentPlayer, PathfindingConfig pathfindingConfig) {
             _generatorModel = generatorModel;
             _dungeonGeneratorModel = dungeonGeneratorModel;
             _enemiesLevelModel = enemiesLevelModel;
             _enemySettings = settings;
             _pathfindingConfig = pathfindingConfig;
+            _currentPlayer = currentPlayer;
 
             _status = BuildStatus.Passive;
             _generatorModel.OnChangeEnemiesPositions += SpawnEnemies;
-            _enemyFactory = new EnemyFactory(_enemySettings);
+            _enemyFactory = new EnemyFactory(_enemySettings, _currentPlayer.UnitLevel.CurrentLevel);
             AddController(_enemyFactory);
         }
 

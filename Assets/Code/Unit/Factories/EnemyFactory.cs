@@ -1,32 +1,40 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Code.Data.Marker;
-using Code.Data.Unit;
 using Code.Data.Unit.Enemy;
+using Code.Equipment;
 using Code.Extension;
 using KinematicCharacterController;
 using Pathfinding;
 using UnityEngine;
 
 
-namespace Code.Unit.Factories
-{
-    public class EnemyFactory : BaseController
-    {
-        private readonly EnemiesData _settings;
+namespace Code.Unit.Factories{
+    public class EnemyFactory : BaseController{
+        private readonly EnemiesData _data;
+        private int _baseLevel;
         private List<EnemyView> listOfEnemies = new List<EnemyView>();
         private ReputationFactory _reputationFactory;
+        private NpcCharacteristicsFactory _chatacteristicFactory;
+        private NpsHealthFactory _healthFactory;
+        private NpsVisionFactory _visionFactory;
+        private NpsBattleFactory _battleFactory;
+        private NpsLevelFactory _levelFactory;
 
-        public EnemyFactory(EnemiesData settings)
-        {
-            _settings = settings;
+        public EnemyFactory(EnemiesData data, int baseLevel){
+            _data = data;
+            _baseLevel = baseLevel;
             _reputationFactory = new ReputationFactory();
+            _chatacteristicFactory = new NpcCharacteristicsFactory(_data);
+            _healthFactory = new NpsHealthFactory(_data);
+            _visionFactory = new NpsVisionFactory(_data);
+            _battleFactory = new NpsBattleFactory(_data);
+            _levelFactory = new NpsLevelFactory(_data);
         }
 
-        public EnemyView CreateEnemy(SpawnMarkerEnemyInDungeon marker)
-        {
-            var enemySettings = _settings.Enemies.FirstOrDefault(x => x.EnemyType == marker._type);
-            var root = Object.Instantiate(_settings.StorageRootPrefab);
+        public EnemyView CreateEnemy(SpawnMarkerEnemyInDungeon marker){
+            var enemySettings = _data.Enemies.FirstOrDefault(x => x.EnemyType == marker._type);
+            var root = Object.Instantiate(_data.StorageRootPrefab);
             root.name = $"Enemy.{enemySettings.EnemyType.ToString()}.{enemySettings.EnemyView.name}";
             var unit = root.AddCode<EnemyView>();
             unit.Transform = root.transform;
@@ -48,35 +56,22 @@ namespace Code.Unit.Factories
             unit.UnitReputation = _reputationFactory.GenerateEnemyReputation();
             unit.gameObject.layer = unit.UnitReputation.FriendLayer;
             unit.tag = TagManager.TAG_ENEMY;
-            
-            unit.UnitHealth = new UnitHealth();
-            unit.UnitHealth.MaxHp = 100;
-            unit.UnitHealth.CurrentHp = 100;
 
-            // enemyView.CharacterVisionData = new CharacterVisionData();
-            // enemyView.CharacterVisionData.distanceDetection = 15.0f;
-            
-            //test
-            
-            // var equipmentPoints = new EquipmentPoints(enemyView.Transform.gameObject, item);
-            // equipmentPoints.GenerateAllPoints();
-            // enemyView.UnitEquipment = new UnitEquipment(equipmentPoints,item.unitEquipment);
+            _baseLevel += Random.Range(0, enemySettings.LevelOffset);
 
-            // var characteristics = new UnitCharacteristics();
-            // characteristics.Speed = item.MoveSpeed;
-            // characteristics.MinAttack = item.AttackValue..MoveSpeed;
-            // characteristics.MaxAttack = item.MoveSpeed;
+            unit.UnitCharacteristics = _chatacteristicFactory.GenerateCharacteristics(enemySettings, _baseLevel);
 
-            var healthBarSettings = _settings.uiElement.First(x => (x.EnemyType == marker._type));
+            unit.UnitHealth = _healthFactory.GenerateHealth(enemySettings, _baseLevel);
+            unit.UnitVision = _visionFactory.GenerateVision(enemySettings, unit.TransformModel);
+            unit.UnitBattle = _battleFactory.GenerateBattle(enemySettings, unit.UnitCharacteristics);
+            unit.UnitLevel = _levelFactory.GenerateLevel(enemySettings, _baseLevel);
+
+            var healthBarSettings = _data.uiElement.First(x => (x.EnemyType == marker._type));
             unit.HealthBar = Object.Instantiate(healthBarSettings.UiView, unit.Transform, false);
             unit.HealthBar.transform.localPosition = healthBarSettings.Offset;
-            
-            //test name and level
-            unit.HealthBar.SetEnemyName("Рандомный бомжик");
 
-            var enemyLvl = Random.Range(1, 4);
-            unit.HealthBar.SetEnemyLvl(enemyLvl);
-            //test
+            unit.HealthBar.SetEnemyName(enemySettings.DisplayName);
+            unit.HealthBar.SetEnemyLvl(_baseLevel);
 
             unit.Motor.SetPosition(marker.Transform.position, false);
             

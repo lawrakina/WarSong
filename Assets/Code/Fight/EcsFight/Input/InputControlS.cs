@@ -1,4 +1,5 @@
 ﻿using Code.Extension;
+using Code.Fight.EcsFight.Battle;
 using Code.Fight.EcsFight.Settings;
 using Code.GameCamera;
 using Code.Profile.Models;
@@ -56,10 +57,10 @@ namespace Code.Fight.EcsFight.Input{
                 ref var moveEvent = ref target.Value.Get<ManualMoveEventC>();
                 // create event movement
                 if (input.joystick.GetJoystickState()){
-                    // moveEvent.ControlType = ControlType.Manual;
                     moveEvent.Vector = input.LastPosition;
                     moveEvent.CameraRotation = _camera.Transform.rotation;
                     target.Value.Del<NeedAttackTargetC>();
+                    target.Value.Del<AutoAttackTag>();
                 } else if(!input.joystick.GetJoystickState() ){
                     moveEvent.Vector = Vector3.zero;
                 }

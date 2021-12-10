@@ -93,6 +93,17 @@ namespace Code.Unit
             Attack = true;
         }
 
+        public void SetDeathTrigger(){
+            Death = true;
+        }
+
+        private bool Death{
+            set{
+                if(value)
+                    _animator.SetTrigger(TagManager.ANIMATOR_PARAM_DEATH_TRIGGER);
+            }
+        }
+
         public void Off()
         {
             _animator.enabled = false;
