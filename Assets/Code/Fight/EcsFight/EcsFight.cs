@@ -82,6 +82,7 @@ namespace Code.Fight.EcsFight{
                 .Add(new TimerS<PermisAttackWeapon<SecondHand>>())
                 .Add(new TimerS<LagBeforeAttackWeapon<MainHand>>())
                 .Add(new TimerS<LagBeforeAttackWeapon<SecondHand>>())
+                .Add(new TimerS<CheckVisionTag>())
                 ;
             // .OneFrame<TestComponent1> ()
             // .OneFrame<TestComponent2> ()

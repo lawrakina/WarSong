@@ -122,7 +122,7 @@ namespace Code.Fight.BuildingDungeon
 
         public override void Dispose()
         {
-            DestroyDungeon();
+            // DestroyDungeon();
             base.Dispose();
         }
     }

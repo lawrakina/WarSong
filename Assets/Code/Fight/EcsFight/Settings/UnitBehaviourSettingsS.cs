@@ -1,13 +1,23 @@
 ﻿using Code.Fight.EcsFight.Timer;
 using Leopotam.Ecs;
+using UnityEngine;
 
 
 namespace Code.Fight.EcsFight.Settings{
-    public class UnitBehaviourSettingsS : IEcsRunSystem{
+    public class UnitBehaviourSettingsS : IEcsInitSystem, IEcsRunSystem{
         private EcsWorld _world = null;
         private EcsFilter<PlayerTag, ClickEventC> _clickFilter;
         private EcsFilter<PlayerTag, SwipeEventC> _swipeFilter;
-        private EcsFilter<EnemyTag>.Exclude<Timer<BattleTag>> _enemiesBattle;
+
+        private EcsFilter<EnemyTag, Timer<CheckVisionTag>> _enemiesWithTimer;
+        private EcsFilter<EnemyTag>.Exclude<Timer<CheckVisionTag>> _enemiesBattleWithoutTimer;
+
+        public void Init(){
+            foreach (var i in _enemiesBattleWithoutTimer){
+                ref var entity = ref _enemiesBattleWithoutTimer.GetEntity(i);
+                entity.Get<Timer<CheckVisionTag>>().TimeLeftSec = 3 + Random.Range(-2f, 1f);
+            }
+        }
 
         public void Run(){
             foreach (var i in _clickFilter){
@@ -23,15 +33,18 @@ namespace Code.Fight.EcsFight.Settings{
                 entity.Del<SwipeEventC>();
             }
 
-            foreach (var i in _enemiesBattle){
-                ref var entity = ref _enemiesBattle.GetEntity(i);
+            foreach (var i in _enemiesBattleWithoutTimer){
+                ref var entity = ref _enemiesBattleWithoutTimer.GetEntity(i);
                 entity.Get<NeedFindTargetCommand>();
                 entity.Get<NeedAttackTargetCommand>();
-                entity.Get<Timer<BattleTag>>().TimeLeftSec = 5f;
+                entity.Get<Timer<CheckVisionTag>>().TimeLeftSec = 3 + Random.Range(-2f, 1f);
             }
         }
     }
-    
+
+    public struct CheckVisionTag{
+    }
+
     public struct NeedAttackTargetCommand{
     }
     

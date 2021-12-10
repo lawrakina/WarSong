@@ -61,5 +61,9 @@ namespace Code.Data.Unit{
             _value = value;
             _modifierTypeOfModification = modifierTypeOfModification;
         }
+
+        public override string ToString(){
+            return $"TypeOfOperation:{_modifierTypeOfModification}; Value:{_value}";
+        }
     }
 }

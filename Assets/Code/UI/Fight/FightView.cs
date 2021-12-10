@@ -39,7 +39,7 @@ namespace Code.UI.Fight{
         public float PlayerCurrentHp{
             get{ return _playerCurrentHp; }
             set{
-                _playerMaxHp = value;
+                _playerCurrentHp = value;
                 _healthCountByPlayer.text = $"{_playerCurrentHp}/{_playerMaxHp}";
                 _healthBar.fillAmount = _playerCurrentHp / _playerMaxHp;
             }
@@ -47,7 +47,7 @@ namespace Code.UI.Fight{
         public float PlayerMaxHp{
             get{ return _playerMaxHp; }
             set{
-                _playerCurrentHp = value;
+                _playerMaxHp = value;
                 _healthCountByPlayer.text = $"{_playerCurrentHp}/{_playerMaxHp}";
                 _healthBar.fillAmount = _playerCurrentHp / _playerMaxHp;
             }
@@ -55,7 +55,7 @@ namespace Code.UI.Fight{
         public float PlayerCurrentResource{
             get{ return _playerCurrentResource; }
             set{
-                _playerMaxResource = value;
+                _playerCurrentResource = value;
                 _resourceCountByPlayer.text = $"{_playerCurrentResource}/{_playerMaxResource}";
                 _resourceBar.fillAmount = _playerCurrentResource / _playerCurrentHp;
             }
@@ -63,7 +63,7 @@ namespace Code.UI.Fight{
         public float PlayerMaxResource{
             get{ return _playerMaxResource; }
             set{
-                _playerCurrentResource = value;
+                _playerMaxResource = value;
                 _resourceCountByPlayer.text = $"{_playerCurrentResource}/{_playerMaxResource}";
                 _resourceBar.fillAmount = _playerCurrentResource / _playerMaxResource;
             }

@@ -36,13 +36,12 @@ MonoBehaviour:
   _standardBullet: {fileID: -6047091618391902694, guid: 7a523132aa6c0a34a9aae889cddf5cc9,
     type: 3}
   _weaponType: 1
-  attackDistance: 1
   _attackValue:
-    _maxAttackValue: 25
-    _minAttackValue: 17
+    _maxAttackValue: 7
+    _minAttackValue: 3
     _timeDelayBeforeAttack: 0.5
     _attackSpeed: 2
-    _attackDistance: 1
+    _attackDistance: 2
 --- !u!1001 &4611660260060979704
 PrefabInstance:
   m_ObjectHideFlags: 0
