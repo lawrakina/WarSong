@@ -1,4 +1,5 @@
-﻿using Code.Fight.EcsFight.Battle;
+﻿using Code.Extension;
+using Code.Fight.EcsFight.Battle;
 using Code.Fight.EcsFight.Output;
 using Code.Fight.EcsFight.Settings;
 using Code.GameCamera;
@@ -45,10 +46,11 @@ namespace Code.Fight.EcsFight.Create{
                 unit.InfoAboutWeapons.WeaponTypeAnimation = view.UnitBattle.GetMainWeaponType();
                 unit.AIPath = view.AIPath;
                 
-                ref var weapon = ref entity.Get<MainWeaponC>();
+                ref var weapon = ref entity.Get<Weapon<MainHand>>();
                 var unitBattleWeapon = view.UnitBattle.Weapons[0]; 
                 weapon.Value = unitBattleWeapon;
                 weapon.Speed = unitBattleWeapon.Speed;
+                Dbg.Log($"CreateEnemiesSystem - unitBattleWeapon.Distance:{unitBattleWeapon.Distance}");
                 weapon.Distance = unitBattleWeapon.Distance;
                 weapon.LagBefAttack = Mathf.Abs(unitBattleWeapon.LagBeforeAttack);
                 unit.InfoAboutWeapons.AddMain(unitBattleWeapon);

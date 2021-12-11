@@ -28,16 +28,16 @@ MonoBehaviour:
     Stamina: 12
     Intellect: 100
     Spirit: 70
+    CritChance: 0
+    DodgeChance: 0
   _targetEquipCell: 3
   _isNeedInstantiate: 1
-  _equipType: 1
   _standardBullet: {fileID: 1562005690058727108, guid: 9702ab3d6a5bf9740916787bd05380f7,
     type: 3}
   _weaponType: 4
-  _attackDistanceOffset: 1
   _attackValue:
-    _maxAttackValue: 75
-    _minAttackValue: 10
+    _maxAttackValue: 15
+    _minAttackValue: 8
     _timeDelayBeforeAttack: 0.5
     _attackSpeed: 3
     _attackDistance: 20

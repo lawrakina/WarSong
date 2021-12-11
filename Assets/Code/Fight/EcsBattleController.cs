@@ -8,7 +8,7 @@ using ThirdPersonCameraWithLockOn;
 
 
 namespace Code.Fight{
-    public sealed class EcsBattleController : BaseController{
+    public sealed class EcsBattleController : BaseController, IBattleController{
         private readonly Controllers _controllers;
         private readonly ProfilePlayer _profilePlayer;
         private EcsFight.EcsFight _ecsBattle;

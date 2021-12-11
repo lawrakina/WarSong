@@ -52,7 +52,7 @@ MonoBehaviour:
     AdditionalHp: 0
     SpeedModifier: 1
     LevelOffset: 1
-    Weapon: {fileID: 0}
+    Weapon: {fileID: 704246847, guid: 51cae927b7c12144cb5fe74c7961ca84, type: 3}
     RewardForKillingModifier: 4
   - EnemyView: {fileID: 2194302051238080810, guid: f4b0da07ccc3d164caf26dcebbead390,
       type: 3}

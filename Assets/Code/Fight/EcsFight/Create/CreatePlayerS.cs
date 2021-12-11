@@ -1,4 +1,5 @@
 ﻿using Code.Data;
+using Code.Extension;
 using Code.Fight.EcsFight.Battle;
 using Code.Fight.EcsFight.Settings;
 using Code.GameCamera;
@@ -37,7 +38,7 @@ namespace Code.Fight.EcsFight.Create{
             // unit.InfoAboutWeapons.MeleeRangeSplash = _player.UnitBattle.MeleeRangeSplash();
             foreach (var unitBattleWeapon in _player.UnitBattle.Weapons){
                 if (unitBattleWeapon.EquipType == EquipCellType.MainHand){
-                    ref var mainWeapon = ref entity.Get<MainWeaponC>();
+                    ref var mainWeapon = ref entity.Get<Weapon<MainHand>>();
                     mainWeapon.Value = unitBattleWeapon;
                     mainWeapon.Speed = unitBattleWeapon.Speed;
                     mainWeapon.Distance = unitBattleWeapon.Distance;
@@ -47,7 +48,7 @@ namespace Code.Fight.EcsFight.Create{
                 }
 
                 if (unitBattleWeapon.EquipType == EquipCellType.SecondHand){
-                    ref var secondWeapon = ref entity.Get<SecondWeaponC>();
+                    ref var secondWeapon = ref entity.Get<Weapon<SecondHand>>();
                     secondWeapon.Value = unitBattleWeapon;
                     secondWeapon.Speed = unitBattleWeapon.Speed;
                     secondWeapon.Distance = unitBattleWeapon.Distance;

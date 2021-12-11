@@ -25,7 +25,7 @@ namespace Code.Fight
         private PlayerFightController _playerFightController;
         private EnemyFightController _enemyFightController;
         private CameraController _cameraController;
-        private EcsBattleController _ecsBattleController;
+        private IBattleController _battleController;
         private UiFightController _uiFightController;
 
         public FightController(Controllers controllers, Transform placeForUi, ProfilePlayer profilePlayer,
@@ -80,16 +80,16 @@ namespace Code.Fight
             _controllers.Add(_uiFightController);
             AddController(_uiFightController);
 
-            _ecsBattleController = new EcsBattleController(_controllers, _profilePlayer);
-            _controllers.Add(_ecsBattleController);
-            AddController(_ecsBattleController);
-            _ecsBattleController.OnDeactivate();
+            _battleController = new EcsBattleController(_controllers, _profilePlayer);
+            _controllers.Add(_battleController as BaseController);
+            AddController(_battleController as BaseController);
+            (_battleController as BaseController)?.OnDeactivate();
 
-            _ecsBattleController.Inject(_profilePlayer.CurrentPlayer);
-            _ecsBattleController.Inject(_cameraController.BattleCamera);
-            _ecsBattleController.Inject(_profilePlayer.Models.InOutControlFightModel);
-            _ecsBattleController.Inject(_profilePlayer.Models.DungeonGeneratorModel.ActiveLevel);
-            _ecsBattleController.Inject(_profilePlayer.Models.EnemiesLevelModel);
+            _battleController.Inject(_profilePlayer.CurrentPlayer);
+            _battleController.Inject(_cameraController.BattleCamera);
+            _battleController.Inject(_profilePlayer.Models.InOutControlFightModel);
+            _battleController.Inject(_profilePlayer.Models.DungeonGeneratorModel.ActiveLevel);
+            _battleController.Inject(_profilePlayer.Models.EnemiesLevelModel);
 
             _model.FightState.Subscribe(OnChangeFightState).AddTo(_subscriptions);
             _buildStatusCheckerController.OnActivate();
@@ -114,7 +114,7 @@ namespace Code.Fight
                     _loadingController.UpdateInfo();
                     break;
                 case FightState.Fight:
-                    _ecsBattleController.StartFight();
+                    _battleController.StartFight();
                     _loadingController.HideLoading();
                     break;
                 case FightState.Fail:
@@ -137,6 +137,7 @@ namespace Code.Fight
             _controllers.Remove(_loadingController);
             _controllers.Remove(_playerFightController);
             _controllers.Remove(_enemyFightController);
+            _controllers.Remove(_battleController as BaseController);
             _controllers.Remove(this);
             base.Dispose();
         }

@@ -21,8 +21,7 @@ namespace Code.Extension{
         public static Vector2 ArithOperation(this Vector2 vector, ModificationOfObjectOfParam modificator){
             return modificator.TypeOfOperation switch{
                 ArithmeticOperation.Addition => new Vector2(vector.x + modificator.Value, vector.y + modificator.Value),
-                ArithmeticOperation.Multiplication => new Vector2(vector.x * modificator.Value,
-                    vector.y * modificator.Value),
+                ArithmeticOperation.Multiplication => new Vector2(vector.x * modificator.Value, vector.y * modificator.Value),
                 _ => Vector2.zero
             };
         }

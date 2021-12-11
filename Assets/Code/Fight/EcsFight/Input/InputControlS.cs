@@ -1,6 +1,7 @@
 ﻿using Code.Extension;
 using Code.Fight.EcsFight.Battle;
 using Code.Fight.EcsFight.Settings;
+using Code.Fight.EcsFight.Timer;
 using Code.GameCamera;
 using Code.Profile.Models;
 using Code.Unit;
@@ -59,8 +60,8 @@ namespace Code.Fight.EcsFight.Input{
                 if (input.joystick.GetJoystickState()){
                     moveEvent.Vector = input.LastPosition;
                     moveEvent.CameraRotation = _camera.Transform.rotation;
-                    target.Value.Del<NeedAttackTargetC>();
-                    target.Value.Del<AutoAttackTag>();
+                    target.Value.Del<NeedAttackTargetCommand>();
+                    target.Value.Del<Timer<BattleTag>>();
                 } else if(!input.joystick.GetJoystickState() ){
                     moveEvent.Vector = Vector3.zero;
                 }

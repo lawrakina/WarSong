@@ -499,7 +499,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
-    _typeOfModification: 0
+    _typeOfModification: 1
   - Owner: 2
     TargetParam: 3
     _formula: 1
@@ -516,7 +516,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
-    _typeOfModification: 0
+    _typeOfModification: 1
   - Owner: 3
     TargetParam: 3
     _formula: 1
@@ -533,7 +533,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
-    _typeOfModification: 0
+    _typeOfModification: 1
   - Owner: 4
     TargetParam: 3
     _formula: 1
@@ -550,7 +550,7 @@ MonoBehaviour:
     Const1: 0
     Const2: 0
     Const3: 0
-    _typeOfModification: 0
+    _typeOfModification: 1
   - Owner: 1
     TargetParam: 4
     _formula: AgiV * AgiR *(LvlMax - LvlCurrent*LvlRatio) / LvlMax

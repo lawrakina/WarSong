@@ -23,6 +23,7 @@ namespace Code.Unit.Factories{
             player.Motor = rootPlayer.GetComponent<KinematicCharacterMotor>();
             player.UnitMovement = rootPlayer.GetComponent<UnitMovement>();
             player.Collider = rootPlayer.GetComponent<CapsuleCollider>();
+            player.Transform.gameObject.tag = TagManager.TAG_PLAYER;
 
             return player;
         }
