@@ -23,6 +23,17 @@ namespace Code.Fight.EcsFight.Create{
                 entity.Get<EnemyTag>();
                 entity.Get<AnimatorTag>();
                 ref var unit = ref entity.Get<UnitC>();
+// <<<<<<< HEAD
+//                 entity.Get<UnitC>().UnitMovement = view.UnitMovement;
+//                 entity.Get<UnitC>().Animator = view.AnimatorParameters;
+//                 entity.Get<UnitC>().Characteristics = view.UnitCharacteristics;
+//                 entity.Get<UnitC>().Health = view.UnitHealth;
+//                 entity.Get<UnitC>().Resource = view.UnitResource;
+//                 entity.Get<UnitC>().UnitVision = view.UnitVision;
+//                 entity.Get<UnitC>().Reputation = view.UnitReputation;
+//                 entity.Get<UnitC>().UnitLevel = view.UnitLevel;
+//                 entity.Get<UnitC>().AIPath = view.AIPath;
+// =======
                 unit.UnitMovement = view.UnitMovement;
                 unit.Animator = view.AnimatorParameters;
                 unit.Characteristics = view.UnitCharacteristics;
@@ -33,6 +44,7 @@ namespace Code.Fight.EcsFight.Create{
                 unit.UnitLevel = view.UnitLevel;
                 unit.InfoAboutWeapons = new ListWeapons();
                 unit.InfoAboutWeapons.WeaponTypeAnimation = view.UnitBattle.GetMainWeaponType();
+                unit.AIPath = view.AIPath;
                 
                 ref var weapon = ref entity.Get<Weapon<MainHand>>();
                 var unitBattleWeapon = view.UnitBattle.Weapons[0]; 
@@ -43,6 +55,7 @@ namespace Code.Fight.EcsFight.Create{
                 weapon.LagBefAttack = Mathf.Abs(unitBattleWeapon.LagBeforeAttack);
                 unit.InfoAboutWeapons.AddMain(unitBattleWeapon);
                 
+// >>>>>>> main
                 entity.Get<UiEnemyHealthBarC>().value = view.HealthBar;
                 
                 view.HealthBar.SetOnOff(false);

@@ -27,6 +27,7 @@ namespace Code.Unit
         UnitLevel UnitLevel { get; set; }
         UnitCharacteristics UnitCharacteristics { get; set; }
         UnitBattle UnitBattle { get; set; }
+
         event Action<InfoCollision> OnApplyDamageChange;
     }
 }

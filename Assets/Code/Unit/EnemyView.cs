@@ -2,6 +2,7 @@
 using Code.Data.Unit;
 using Code.Extension;
 using KinematicCharacterController;
+using Pathfinding;
 using UnityEngine;
 
 
@@ -9,6 +10,7 @@ namespace Code.Unit
 {
     public class EnemyView : MonoBehaviour, IEnemyView
     {
+        public GameObject GameObject { get; set; }
         public KinematicCharacterMotor Motor{ get; set; }
         public UnitMovement UnitMovement{ get; set; }
         public Transform Transform { get; set; }
@@ -24,6 +26,9 @@ namespace Code.Unit
         public UnitLevel UnitLevel { get; set; }
         public UnitCharacteristics UnitCharacteristics { get; set; }
         public UnitBattle UnitBattle { get; set; }
+        public AIPath AIPath { get; set; }
+        public AIDestinationSetter AIDestinationSetter { get; set; }
+
 
         // public UnitEquipmentOld unitEquipmentOld { get; set; }
         public HealthBarView HealthBar { get; set; }
