@@ -23,6 +23,7 @@ namespace Code.Fight.EcsFight.Create{
                 entity.Get<EnemyTag>();
                 entity.Get<AnimatorTag>();
                 ref var unit = ref entity.Get<UnitC>();
+                unit.Transform = view.Transform;
                 unit.UnitMovement = view.UnitMovement;
                 unit.Animator = view.AnimatorParameters;
                 unit.Characteristics = view.UnitCharacteristics;

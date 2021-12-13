@@ -7,7 +7,7 @@ using Leopotam.Ecs;
 
 namespace Code.Fight.EcsFight{
     public class DeathS : IEcsRunSystem{
-        private EcsFilter<UnitC, DeathEventC> _deathEvent;
+        private EcsFilter<UnitC, DeathEventC>.Exclude<DeathTag> _deathEvent;
         public void Run(){
             foreach (var i in _deathEvent){
                 ref var entity = ref _deathEvent.GetEntity(i);
@@ -18,13 +18,25 @@ namespace Code.Fight.EcsFight{
                 // death.Killer.Get<NeedFindTargetTag>();
                 unit.Animator.SetDeathTrigger();
                 unit.UnitMovement.Motor.enabled = false;
-                entity.Del<UnitC>();
-
+                // entity.Del<UnitC>();
+                // entity.Del<EnemyTag>();
+                // entity.Del<AnimatorTag>();
+                // entity.Del<Weapon<MainHand>>();
+                // entity.Del<TargetListC>();
+                // entity.Del<AutoMoveEventC>();
+                // entity.Del<FoundTargetC>();
+                // entity.Del<StartAttackCommand>();
+                // entity.Del<NeedAttackTargetCommand>();
+                entity.Get<DeathTag>();
+                
                 if (entity.Has<UiEnemyHealthBarC>()){
                     ref var infoBar = ref entity.Get<UiEnemyHealthBarC>();
                     infoBar.value.SetActive(false);
                 }
             }
         }
+    }
+
+    public struct DeathTag{
     }
 }

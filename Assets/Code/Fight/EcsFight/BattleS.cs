@@ -13,12 +13,13 @@ namespace Code.Fight.EcsFight{
         private readonly int _bulletCapacity;
         private EcsWorld _world = null;
         private EcsFilter<Weapon<T>>.Exclude<Timer<PermisAttackWeapon<T>>, PermisAttackWeapon<T>> _permission1W;
-        private EcsFilter<UnitC, FoundTargetC, NeedAttackTargetCommand> _gotoTarget;
-        private EcsFilter<UnitC, FoundTargetC, StartAttackCommand, Weapon<T>,PermisAttackWeapon<T>> _startAttack;
+        private EcsFilter<UnitC, FoundTargetC, NeedAttackTargetCommand>.Exclude<DeathTag> _gotoTarget;
+        private EcsFilter<UnitC, FoundTargetC, StartAttackCommand, Weapon<T>,PermisAttackWeapon<T>>.Exclude<DeathTag> _startAttack;
         private EcsFilter<UnitC, FoundTargetC, AttackEventWeapon<T>, Weapon<T>>.Exclude<Timer<LagBeforeAttackWeapon<T>>>
             _attackEvent;
-        private EcsFilter<UnitC, AttackCollisionC> _applyDamage;
-        private EcsFilter<UnitC, Timer<BattleTag>, FoundTargetC> _battleState;
+        private EcsFilter<UnitC, AttackCollisionC>.Exclude<DeathTag> _applyDamage;
+        private EcsFilter<UnitC, Timer<BattleTag>, FoundTargetC>.Exclude<DeathTag> _battleState;
+        private EcsFilter<UnitC, LastAttacker>.Exclude<FoundTargetC> _behaviourOnAttack;
 
         public BattleS(int bulletCapacity){
             _bulletCapacity = bulletCapacity;
@@ -62,6 +63,12 @@ namespace Code.Fight.EcsFight{
                 ref var target = ref _gotoTarget.Get2(i);
                 ref var moveEvent = ref entity.Get<AutoMoveEventC>();
 
+                if (unit.Transform == null || target.Value == null){
+                    Dbg.Error($"Transform = null");
+                    entity.Del<FoundTargetC>();
+                    break;
+                }
+                
                 if (target.Value.transform.SqrDistance(unit.Transform) > unit.InfoAboutWeapons.SqrDistance){
                     //если дальше чем дистанция атаки то бежим в направлении цели
                     var direction = target.Value.transform.position - unit.Transform.position;
@@ -136,12 +143,27 @@ namespace Code.Fight.EcsFight{
                 entity.Get<NeedShowUiEventC>().PointsDamage = damage;
                 entity.Get<NeedShowUiEventC>().DamageType = infoCollision.Value.DamageType;
 
+                entity.Get<LastAttacker>().NewAttacker = infoCollision.Value.Attacker;
+                
                 if (unit.Health.CurrentHp <= 0.0f){
                     entity.Get<DeathEventC>().Killer = infoCollision.Value.Attacker;
                 }
 
                 entity.Del<AttackCollisionC>();
             }
+            
+            foreach (var i in _behaviourOnAttack){
+                ref var entity = ref _behaviourOnAttack.GetEntity(i);
+                ref var unit = ref _behaviourOnAttack.Get1(i);
+                ref var attacker = ref _behaviourOnAttack.Get2(i);
+
+                var unitAttacker = attacker.NewAttacker.Get<UnitC>();
+
+                if (unitAttacker.UnitMovement != null)
+                    entity.Get<FoundTargetC>().Value = unitAttacker.UnitMovement.gameObject;
+                entity.Del<LastAttacker>();
+            }
+            
 
             foreach (var i in _battleState){
                 ref var entity = ref _battleState.GetEntity(i);
@@ -202,5 +224,9 @@ namespace Code.Fight.EcsFight{
         //         }
         //     }
         // }
+    }
+
+    public struct LastAttacker{
+        public EcsEntity NewAttacker;
     }
 }

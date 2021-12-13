@@ -7,8 +7,8 @@ using UnityEngine;
 
 namespace Code.Fight.EcsFight.Movement{
     public class MovementUnitS : IEcsRunSystem{
-        private EcsFilter<UnitC, ManualMoveEventC> _manualMoveEvent;
-        private EcsFilter<UnitC, AutoMoveEventC> _autoMoveEvent;
+        private EcsFilter<UnitC, ManualMoveEventC>.Exclude<DeathTag> _manualMoveEvent;
+        private EcsFilter<UnitC, AutoMoveEventC>.Exclude<DeathTag> _autoMoveEvent;
 
         public void Run(){
             foreach (var i in _manualMoveEvent){

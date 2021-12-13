@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Code.Fight.EcsFight.Animator{
     public class AnimationUnitS : IEcsRunSystem{
-        private EcsFilter<UnitC, AnimatorTag> _filter;
+        private EcsFilter<UnitC, AnimatorTag>.Exclude<DeathTag> _filter;
 
         public void Run(){
             foreach (var i in _filter){

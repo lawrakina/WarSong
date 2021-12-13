@@ -13,7 +13,7 @@ namespace Code.Fight.EcsFight.Battle{
         private InOutControlFightModel _model;
         private EcsFilter<UnitC> _searchInitFilter;
         // private EcsFilter<UnitC, TargetListC, NeedFindTargetTag> _searchFilter;
-        private EcsFilter<UnitC, NeedFindTargetCommand> _findFilter;
+        private EcsFilter<UnitC, NeedFindTargetCommand>.Exclude<DeathTag> _findFilter;
 
         public void Init(){
             foreach (var i in _searchInitFilter){

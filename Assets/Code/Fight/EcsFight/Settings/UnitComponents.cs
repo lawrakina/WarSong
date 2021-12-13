@@ -40,8 +40,8 @@ namespace Code.Fight.EcsFight.Settings{
     }
 
     public struct UnitC{
+        public Transform Transform;
         public UnitMovement UnitMovement;
-        public Transform Transform => UnitMovement.transform;
         public AnimatorParameters Animator;
         public UnitCharacteristics Characteristics;
         public UnitHealth Health;
