@@ -74,7 +74,6 @@ namespace Code.UI.Character{
 
         private void FillInListOfAbilities(){
             foreach (var abilityCell in _profilePlayer.CurrentPlayer.UnitAbilities.ActiveAbilities){
-                Dbg.Log($"----------- Ability:{abilityCell.AbilityCellType},{abilityCell.Body.uiInfo.Title}");
                 var cellCommand = new CellCommand<AbilityCell>(abilityCell);
                 cellCommand.Command.Subscribe(CellAbilityClickHandler).AddTo(_subscriptions);
                 _abilitiesCommands.Add(cellCommand);

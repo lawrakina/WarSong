@@ -18,6 +18,8 @@ namespace Code.Fight.EcsFight.Create{
         public void Init(){
             foreach (var view in _enemiesModel.Enemies){
                 view.HealthBar.SetCamera(_camera.transform);
+                
+                _camera.IgnoredColliders.AddRange(view.Transform.GetComponentsInChildren<Collider>());
 
                 var entity = _world.NewEntity();
                 entity.Get<EnemyTag>();
@@ -39,7 +41,6 @@ namespace Code.Fight.EcsFight.Create{
                 var unitBattleWeapon = view.UnitBattle.Weapons[0]; 
                 weapon.Value = unitBattleWeapon;
                 weapon.Speed = unitBattleWeapon.Speed;
-                Dbg.Log($"CreateEnemiesSystem - unitBattleWeapon.Distance:{unitBattleWeapon.Distance}");
                 weapon.Distance = unitBattleWeapon.Distance;
                 weapon.LagBefAttack = Mathf.Abs(unitBattleWeapon.LagBeforeAttack);
                 unit.InfoAboutWeapons.AddMain(unitBattleWeapon);
