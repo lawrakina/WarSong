@@ -18,5 +18,3 @@ MonoBehaviour:
   BdLevels:
   - _name: Demo
     _type: 0
-    _maxTimeForReward: 120
-  PathfindingConfig: {fileID: 11400000, guid: 4857b4d14b541364ca3971356ba193da, type: 2}

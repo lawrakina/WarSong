@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections;
-using Code.Data.Dungeon;
 using Code.Data.Marker;
 using Code.Data.Unit.Enemy;
 using Code.Extension;
 using Code.Profile.Models;
 using Code.Unit;
 using Code.Unit.Factories;
-using Pathfinding;
-using UnityEngine;
 
 
 namespace Code.Fight.BuildingDungeon
@@ -19,7 +15,6 @@ namespace Code.Fight.BuildingDungeon
         private readonly DungeonGeneratorModel _dungeonGeneratorModel;
         private readonly EnemiesLevelModel _enemiesLevelModel;
         private readonly EnemiesData _enemySettings;
-        private readonly PathfindingConfig _pathfindingConfig;
         private readonly IPlayerView _currentPlayer;
 
         private EnemyFactory _enemyFactory;
@@ -34,12 +29,12 @@ namespace Code.Fight.BuildingDungeon
         public event Action<IVerifiable> Complete = verifiable => { verifiable.Status = BuildStatus.Complete;};
 
         public EnemyFightController(FightDungeonModel generatorModel, DungeonGeneratorModel dungeonGeneratorModel,
-                EnemiesLevelModel enemiesLevelModel, EnemiesData settings, IPlayerView currentPlayer, PathfindingConfig pathfindingConfig) {
+            EnemiesLevelModel enemiesLevelModel, EnemiesData settings, IPlayerView currentPlayer)
+        {
             _generatorModel = generatorModel;
             _dungeonGeneratorModel = dungeonGeneratorModel;
             _enemiesLevelModel = enemiesLevelModel;
             _enemySettings = settings;
-            _pathfindingConfig = pathfindingConfig;
             _currentPlayer = currentPlayer;
 
             _status = BuildStatus.Passive;
@@ -56,18 +51,9 @@ namespace Code.Fight.BuildingDungeon
             {
                 var enemy = _enemyFactory.CreateEnemy(marker);
                 _enemiesLevelModel.Enemies.Add(enemy);
-                enemy.StartCoroutine(AddPathfindingComponents(enemy, marker));
-
                 // Dbg.Log($"markers:{listEnemies.Length}, enemies:{_enemiesLevelModel.Enemies.Count}. {enemy.name}");
             }
             Complete?.Invoke(this);
-
-            
-            IEnumerator AddPathfindingComponents(IEnemyView enemy, SpawnMarkerEnemyInDungeon marker) {
-                yield return new WaitForSeconds(2);
-                var pathsController = new PathsController(enemy.AIDestinationSetter);
-                pathsController.StartPath(marker.Waypoints, _pathfindingConfig);
-            }
         }
 
         public override void Dispose()

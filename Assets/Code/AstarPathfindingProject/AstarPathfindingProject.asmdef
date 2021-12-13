@@ -1,8 +1,0 @@
-{
-    "name": "AstarPathfindingProject",
-    "references": ["Assembly-CSharp"],
-    "optionalUnityReferences": [],
-    "includePlatforms": [],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false
-}
