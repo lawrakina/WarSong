@@ -18,12 +18,12 @@ namespace Code.Unit.Factories
             if (characterUnitLevel == null)
                 characterUnitLevel = new UnitLevel(_settings.Levels);
             characterUnitLevel.CurrentLevel = 0;
-            foreach (var level in _settings.Levels)
-            {
-                if (value.ExperiencePoints - level.MaxiPointsExperience >= 0)
+            foreach (var level in _settings.Levels){
+                var experiencePoints = value.ExperiencePoints;
+                if (experiencePoints - level.MaxiPointsExperience >= 0)
                 {
-                    value.ExperiencePoints -= level.MaxiPointsExperience;
-                    characterUnitLevel.CurrentExperiencePoints = value.ExperiencePoints;
+                    experiencePoints -= level.MaxiPointsExperience;
+                    characterUnitLevel.CurrentExperiencePoints = experiencePoints;
                     characterUnitLevel.CurrentLevel++;
                 }
             }
