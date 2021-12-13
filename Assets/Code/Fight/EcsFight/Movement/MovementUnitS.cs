@@ -32,7 +32,7 @@ namespace Code.Fight.EcsFight.Movement{
                 ref var entity = ref _autoMoveEvent.GetEntity(i);
                 ref var unit = ref _autoMoveEvent.Get1(i);
                 ref var inputs = ref _autoMoveEvent.Get2(i);
-            
+
                 var move = new MovementInputsC{
                     MoveVector = new Vector3(
                         inputs.Vector.x,
@@ -43,9 +43,6 @@ namespace Code.Fight.EcsFight.Movement{
                 };
                 unit.UnitMovement.SetInputs( move);
                 entity.Del<AutoMoveEventC>();
-                if (!Equals(unit.AIPath, null)) {
-                    entity.Get<NeedPatrol>();
-                }
             }
         }
     }

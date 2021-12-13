@@ -4,16 +4,12 @@ using Code.Fight.EcsFight.Battle;
 using Code.GameCamera;
 using Code.Unit;
 using Leopotam.Ecs;
-using Pathfinding;
 using UnityEngine;
 
 
 namespace Code.Fight.EcsFight.Settings{
     // public struct NeedFindTargetTag{
     // }
-
-    public struct NeedPatrol{
-    }
 
     public struct SwipeEventC{
         public Vector3 Value;
@@ -54,7 +50,6 @@ namespace Code.Fight.EcsFight.Settings{
         public UnitReputation Reputation;
         public ListWeapons InfoAboutWeapons;
         public UnitLevel UnitLevel;
-        public AIPath AIPath;
     }
 
     public struct CameraC{

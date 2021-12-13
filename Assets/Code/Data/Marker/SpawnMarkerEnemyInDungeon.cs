@@ -7,6 +7,5 @@ namespace Code.Data.Marker
     {
         public Transform Transform => transform;
         public EnemyType _type;
-        public Transform[] Waypoints { get; set; }
     }
 }

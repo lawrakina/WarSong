@@ -70,8 +70,7 @@ namespace Code.Fight
                 _profilePlayer.Models.DungeonGeneratorModel,
                 _profilePlayer.Models.EnemiesLevelModel,
                 _profilePlayer.Settings.EnemiesData,
-                _profilePlayer.CurrentPlayer,
-                _profilePlayer.Settings.DungeonGeneratorData.PathfindingConfig);
+                _profilePlayer.CurrentPlayer);
             _controllers.Add(_enemyFightController);
             AddController(_enemyFightController);
             _buildStatusCheckerController.AddToQueue(_enemyFightController);

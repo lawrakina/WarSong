@@ -14,18 +14,12 @@ namespace Code.Fight.EcsFight.Battle{
         private EcsFilter<UnitC> _searchInitFilter;
         // private EcsFilter<UnitC, TargetListC, NeedFindTargetTag> _searchFilter;
         private EcsFilter<UnitC, NeedFindTargetCommand> _findFilter;
-        private EcsFilter<UnitC, NeedPatrol> _searchPatrolFilter;
-      
+
         public void Init(){
             foreach (var i in _searchInitFilter){
                 ref var entity = ref _searchInitFilter.GetEntity(i);
                 ref var list = ref entity.Get<TargetListC>();
                 list.List = new List<GameObject>();
-
-                ref var unit = ref _searchInitFilter.Get1(i);
-                if (!Equals(unit.AIPath, null)) {
-                    entity.Get<NeedPatrol>();
-                }
             }
         }
 
@@ -44,18 +38,9 @@ namespace Code.Fight.EcsFight.Battle{
                 }
                 entity.Del<NeedFindTargetCommand>();
             }
-
-            foreach (var i in _searchPatrolFilter) {
-                ref var entity = ref _searchPatrolFilter.GetEntity(i);
-                ref var unit = ref _searchPatrolFilter.Get1(i);
-
-                if (!Equals(unit.AIPath.destination, Vector3.positiveInfinity)) {
-                    ref var move = ref entity.Get<AutoMoveEventC>();
-                    move.Vector = unit.AIPath.NextPosition - unit.Transform.position;
-                    entity.Del<NeedPatrol>();
-                }
-            }          
-                      
+            
+            
+            
             // foreach (var i in _searchFilter){
             //     ref var entity = ref _searchInitFilter.GetEntity(i);
             //     ref var unit = ref _searchFilter.Get1(i);
