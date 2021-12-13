@@ -12,10 +12,11 @@ namespace Code.Data
     [CreateAssetMenu(fileName = nameof(CameraSettings), menuName = "Configs/" + nameof(CameraSettings))]
     public class CameraSettings : ScriptableObject
     {
-        [SerializeField] public UltimateTextDamageManager _textDamageManager;
-
         public Camera CameraPrefab;
-        [SerializeField] public Vector3 CameraStartPosition = new Vector3(0f, 3.57f, 9.15f);
-        [SerializeField] public Vector3 CameraStartRotation = new Vector3(21.1f, -180f, 0);
+        public Vector3 CameraStartPosition = new Vector3(0f, 3.57f, 9.15f);
+        public Vector3 CameraStartRotation = new Vector3(21.1f, -180f, 0);
+        public UltimateTextDamageManager _textDamageManager;
+        public FadeObstructionsManager FaderManager;
+        //We need Shader render mode - Fade
     }
 }

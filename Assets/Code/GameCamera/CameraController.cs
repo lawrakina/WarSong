@@ -32,12 +32,24 @@ namespace Code.GameCamera
             baseCamera.fieldOfView = 60.0f;
             // var component = baseCamera.gameObject.AddCode<ThirdPersonCamera>();
             var camera = baseCamera.GetComponent<BattleCamera>();
-            
+
+            var hider = Object.Instantiate(_profilePlayer.Settings.CameraSettings.FaderManager);
+            hider.Camera = _camera;
+
             // camera.UiTextManager = Object.Instantiate(_settings.CameraSettings._textDamageManager, camera.Transform);
             // camera.UiTextManager.canvas.worldCamera = camera.Transform.GetComponent<Camera>();
             // camera.UiTextManager.theCamera = camera.Transform.GetComponent<Camera>();
             
             return camera;
+        }
+
+        public void StartFight(){
+            var player = _profilePlayer.CurrentPlayer;
+            if (!player.Transform.TryGetComponent<FadeToMe>(out var fide)){
+                player.Transform.gameObject.AddCode<FadeToMe>();
+            } else{
+                fide.enabled = true;
+            }
         }
     }
 }

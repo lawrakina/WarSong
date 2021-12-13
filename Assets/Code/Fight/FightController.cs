@@ -113,6 +113,7 @@ namespace Code.Fight
                     _loadingController.UpdateInfo();
                     break;
                 case FightState.Fight:
+                    _cameraController.StartFight();
                     _battleController.StartFight();
                     _loadingController.HideLoading();
                     break;
