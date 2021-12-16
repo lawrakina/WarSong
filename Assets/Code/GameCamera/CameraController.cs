@@ -1,8 +1,12 @@
-﻿using Code.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Code.Data;
 using Code.Extension;
 using Code.Profile;
-using ThirdPersonCameraWithLockOn;
+using Code.UI.CharacterList;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 
 namespace Code.GameCamera
@@ -12,8 +16,9 @@ namespace Code.GameCamera
         private readonly ProfilePlayer _profilePlayer;
         private Camera _camera;
         private BattleCamera _battleCamera;
+
         public BattleCamera BattleCamera => _battleCamera;
-        
+
         public CameraController(ProfilePlayer profilePlayer)
         {
             _profilePlayer = profilePlayer;
@@ -26,19 +31,22 @@ namespace Code.GameCamera
             }
         }
 
-
         private BattleCamera CreateCamera(Camera baseCamera)
         {
             baseCamera.fieldOfView = 60.0f;
-            // var component = baseCamera.gameObject.AddCode<ThirdPersonCamera>();
             var camera = baseCamera.GetComponent<BattleCamera>();
 
             var hider = Object.Instantiate(_profilePlayer.Settings.CameraSettings.FaderManager);
             hider.Camera = _camera;
 
-            // camera.UiTextManager = Object.Instantiate(_settings.CameraSettings._textDamageManager, camera.Transform);
-            // camera.UiTextManager.canvas.worldCamera = camera.Transform.GetComponent<Camera>();
-            // camera.UiTextManager.theCamera = camera.Transform.GetComponent<Camera>();
+            var manager = Object.Instantiate(_profilePlayer.Settings.CameraSettings.TextDamageManager, camera.Transform);
+            manager.canvas.worldCamera = camera.Transform.GetComponent<Camera>();
+            manager.theCamera = camera.Transform.GetComponent<Camera>();
+            
+            camera.UiTextManager = new UiTextManager{
+                Manager = manager,
+                Offset = _profilePlayer.Settings.CameraSettings.OffsetForDamageText
+            };
             
             return camera;
         }
@@ -49,6 +57,34 @@ namespace Code.GameCamera
                 player.Transform.gameObject.AddCode<FadeToMe>();
             } else{
                 fide.enabled = true;
+            }
+        }
+
+        public void UpdatePosition(CameraAngles position){
+            var angle= _profilePlayer.Settings.CameraSettings.CameraAngles.FirstOrDefault(x => x.Angle == position);
+            if (angle != null)
+                _camera.transform.SetPositionAndRotation(angle.Position, Quaternion.Euler(angle.Rotation));
+
+
+            return;
+            switch (position){
+                case CameraAngles.BeforePlayer:
+                    _battleCamera.enabled = false;
+                    _camera.transform.position = _profilePlayer.CurrentPlayer.Transform.position - new Vector3(0,0,2f);
+                    _camera.transform.RotateAround(
+                        _profilePlayer.CurrentPlayer.Transform.position,
+                        Vector3.up, 
+                        180f);
+                    break;
+                case CameraAngles.AfterPlayer:
+                    _battleCamera.enabled = true;
+                    break;
+                case CameraAngles.InTheFace:
+                    _battleCamera.enabled = false;
+                    _camera.transform.position = _profilePlayer.CurrentPlayer.Transform.position + new Vector3(0,0,2f);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(position), position, null);
             }
         }
     }

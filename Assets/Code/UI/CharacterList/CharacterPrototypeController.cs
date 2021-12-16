@@ -4,6 +4,7 @@ using System.Linq;
 using Code.Data;
 using Code.Data.Unit;
 using Code.Extension;
+using Code.GameCamera;
 using Code.Profile;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -15,6 +16,7 @@ namespace Code.UI.CharacterList
     {
         private readonly Transform _placeForUi;
         private readonly ProfilePlayer _profilePlayer;
+        private readonly CameraController _cameraController;
 
         private CreatePrototypeView _createPrototypeView;
         private List<PresetCharacterSettings> _listPresetCharacter;
@@ -55,11 +57,13 @@ namespace Code.UI.CharacterList
 
         #region Class live cycles
 
-        public CharacterPrototypeController(bool activate, Transform placeForUi, ProfilePlayer profilePlayer)
+        public CharacterPrototypeController(bool activate, Transform placeForUi, ProfilePlayer profilePlayer,
+            CameraController cameraController)
             : base(activate)
         {
             _placeForUi = placeForUi;
             _profilePlayer = profilePlayer;
+            _cameraController = cameraController;
             _settings = profilePlayer.Settings;
 
             //Change class
@@ -112,6 +116,8 @@ namespace Code.UI.CharacterList
             _init = true;
             base.OnActivate();
             _createPrototypeView.Show();
+            
+            _cameraController.UpdatePosition(CameraAngles.InTheFace);
         }
 
         private void GoToSettingChar()
@@ -146,6 +152,8 @@ namespace Code.UI.CharacterList
             _settings.PlayerData._numberActiveCharacter =
                 _settings.PlayerData.ListCharacters.Count - 1;
             OnCreateCharacter?.Invoke();
+            
+            _cameraController.UpdatePosition(CameraAngles.BeforePlayer);
         }
 
 

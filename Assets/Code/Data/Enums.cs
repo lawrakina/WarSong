@@ -137,12 +137,9 @@
         FuckOff
     }
 
-    public enum BasicCharacteristicType {
-        None = 0,
-        Strength = 1,
-        Agility = 2,
-        Stamina = 3,
-        Intelect = 4,
-        Spirit = 5,
+    public enum CameraAngles{
+        BeforePlayer,
+        AfterPlayer,
+        InTheFace
     }
 }

@@ -10,6 +10,7 @@ namespace Code.UI.CharacterList{
     public sealed class CharacterListController : BaseController{
         private readonly Transform _placeForUi;
         private readonly ProfilePlayer _profilePlayer;
+        private readonly CameraController _cameraController;
         private CharacterPrototypeController _createPrototypeController;
         private CharacterListView _view;
 
@@ -24,9 +25,11 @@ namespace Code.UI.CharacterList{
             CameraController cameraController) : base(true){
             _placeForUi = placeForUi;
             _profilePlayer = profilePlayer;
-            _settings = profilePlayer.Settings;
+            _cameraController = cameraController;
+            _settings = profilePlayer.Settings; ;
 
-            _createPrototypeController = new CharacterPrototypeController(false, _placeForUi, _profilePlayer);
+            _createPrototypeController =
+                new CharacterPrototypeController(false, _placeForUi, _profilePlayer, _cameraController);
             _createPrototypeController.OnPrototypeChange += _profilePlayer.RebuildCharacter.Invoke;
             _createPrototypeController.OnCreateCharacter += OnCreateCharacter;
             AddController(_createPrototypeController, true);
@@ -49,6 +52,8 @@ namespace Code.UI.CharacterList{
                     _profilePlayer.BuildCharacter.Invoke();
                 }
             }
+            
+            _cameraController.UpdatePosition(CameraAngles.BeforePlayer);
         }
 
         private void CreateNewPrototype(){

@@ -142,6 +142,7 @@ namespace Code.Fight.EcsFight{
 
                 entity.Get<NeedShowUiEventC>().PointsDamage = damage;
                 entity.Get<NeedShowUiEventC>().DamageType = infoCollision.Value.DamageType;
+                entity.Get<NeedShowUiEventC>().Position = unit.Transform.position;
 
                 entity.Get<LastAttacker>().NewAttacker = infoCollision.Value.Attacker;
                 

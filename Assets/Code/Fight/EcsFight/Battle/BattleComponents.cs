@@ -3,6 +3,7 @@ using Code.Data.Unit;
 using Code.Equipment;
 using Code.Unit;
 using Leopotam.Ecs;
+using UnityEngine;
 
 
 namespace Code.Fight.EcsFight.Battle{
@@ -11,19 +12,6 @@ namespace Code.Fight.EcsFight.Battle{
         public InfoCollision Collision;
     }
 
-    // public struct SecondWeaponC{
-    //     public float LagBefAttack;
-    //     public float Distance;
-    //     public float Speed;
-    //     public Weapon Value;
-    // }
-    //
-    // public struct MainWeaponC{
-    //     public Weapon Value;
-    //     public float Distance;
-    //     public float LagBefAttack;
-    //     public float Speed;
-    // }
     public struct Weapon<T>{
         public Weapon Value;
         public float Distance;
@@ -40,6 +28,7 @@ namespace Code.Fight.EcsFight.Battle{
     }
 
     public struct NeedShowUiEventC{
+        public Vector3 Position;
         public DamageType DamageType;
         public float PointsDamage;
     }

@@ -12,10 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828248feb3164d8cb8579765dd6815ea, type: 3}
   m_Name: CameraSettings
   m_EditorClassIdentifier: 
+  _textDamageManager: {fileID: 7001744315511358866, guid: 799139f5a6d1e8347899b2345572229f,
+    type: 3}
+  _offsetForDamageManager: {x: 0, y: 2, z: 0}
   CameraPrefab: {fileID: 8890342657681411235, guid: c0176fb4bd795064c990a0a4732f4456,
     type: 3}
   CameraStartPosition: {x: 0, y: 3.57, z: 9.15}
   CameraStartRotation: {x: 21.1, y: -180, z: 0}
-  _textDamageManager: {fileID: 0}
   FaderManager: {fileID: 4355232176193922669, guid: afc2c1f0113e5b1408a72d801cf54ad2,
     type: 3}
+  CameraAngles:
+  - Angle: 0
+    Position: {x: 0, y: 1.1, z: 5.2}
+    Rotation: {x: 11.6, y: -180, z: 0}
+  - Angle: 1
+    Position: {x: 0, y: 3.5, z: 9}
+    Rotation: {x: 0, y: 0, z: 0}
+  - Angle: 2
+    Position: {x: 0, y: 1.24, z: 2}
+    Rotation: {x: 0, y: -180, z: 0}

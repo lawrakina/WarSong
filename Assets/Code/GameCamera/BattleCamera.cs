@@ -40,7 +40,8 @@ namespace Code.GameCamera{
 
         public Vector3 PlanarDirection { get; set; }
         public float TargetDistance { get; set; }
-
+        public UiTextManager UiTextManager{ get; set; }
+        
         private bool _distanceIsObstructed;
         private float _currentDistance;
         private float _targetVerticalAngle;

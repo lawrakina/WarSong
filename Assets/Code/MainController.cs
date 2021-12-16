@@ -28,9 +28,9 @@ namespace Code
             _controllers = controllers;
             _profilePlayer = profilePlayer;
             _placeForUi = placeForUi;
+            _cameraController = new CameraController(_profilePlayer);
             OnChangeGameState(_profilePlayer.CurrentState.Value);
             profilePlayer.CurrentState.Subscribe(OnChangeGameState).AddTo(_subscriptions);
-            _cameraController = new CameraController(_profilePlayer);
         }
 
         private void OnChangeGameState(GameState state)
