@@ -1,11 +1,10 @@
 ﻿using Code.Extension;
-using Code.Fight.EcsFight.Battle;
 using Code.Fight.EcsFight.Output;
 using Code.Fight.EcsFight.Settings;
 using Leopotam.Ecs;
 
 
-namespace Code.Fight.EcsFight{
+namespace Code.Fight.EcsFight.Battle{
     public class DeathS : IEcsRunSystem{
         private EcsFilter<UnitC, DeathEventC>.Exclude<DeathTag> _deathEvent;
         public void Run(){
@@ -35,8 +34,5 @@ namespace Code.Fight.EcsFight{
                 }
             }
         }
-    }
-
-    public struct DeathTag{
     }
 }

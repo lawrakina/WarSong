@@ -29,7 +29,7 @@ namespace Code
 
         private MainContentController ConfigureContentController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
-            var controller = new MainContentController(placeForUi.transform, profilePlayer);
+            var controller = new MainContentController(placeForUi, profilePlayer);
             AddController(controller);
             return controller;
         }
@@ -37,14 +37,14 @@ namespace Code
         private BottomNavigationController ConfigureBottomNavController(Transform placeForUi,
             ProfilePlayer profilePlayer)
         {
-            var controller = new BottomNavigationController(placeForUi.transform, profilePlayer);
+            var controller = new BottomNavigationController(placeForUi, profilePlayer);
             AddController(controller);
             return controller;
         }
 
         private TopNavigationController ConfigureTopNavController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
-            var controller = new TopNavigationController(placeForUi.transform, profilePlayer);
+            var controller = new TopNavigationController(placeForUi, profilePlayer);
             AddController(controller);
             return controller;
         }

@@ -1,4 +1,5 @@
 ﻿using Code.Extension;
+using Code.Fight.EcsFight.Battle;
 using Code.Fight.EcsFight.Settings;
 using Code.Unit;
 using Leopotam.Ecs;

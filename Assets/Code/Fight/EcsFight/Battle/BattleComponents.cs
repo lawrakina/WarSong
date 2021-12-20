@@ -40,4 +40,7 @@ namespace Code.Fight.EcsFight.Battle{
 
     public struct PermisAttackWeapon<T>{
     }
+    
+    public struct DeathTag{
+    }
 }

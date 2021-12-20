@@ -1,5 +1,4 @@
 ﻿using Code.Extension;
-using Code.Fight.EcsFight.Battle;
 using Code.Fight.EcsFight.Settings;
 using Code.Fight.EcsFight.Timer;
 using Code.Unit;
@@ -7,7 +6,7 @@ using Leopotam.Ecs;
 using UnityEngine;
 
 
-namespace Code.Fight.EcsFight{
+namespace Code.Fight.EcsFight.Battle{
     public class BattleS<T> : IEcsInitSystem, IEcsRunSystem{
         private EcsFilter<UnitC> _units;
         private readonly int _bulletCapacity;
