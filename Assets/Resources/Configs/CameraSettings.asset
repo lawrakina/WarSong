@@ -23,7 +23,7 @@ MonoBehaviour:
     type: 3}
   CameraAngles:
   - Angle: 0
-    Position: {x: 0, y: 1.1, z: 5.2}
+    Position: {x: 0, y: 0.6, z: 3}
     Rotation: {x: 11.6, y: -180, z: 0}
   - Angle: 1
     Position: {x: 0, y: 3.5, z: 9}

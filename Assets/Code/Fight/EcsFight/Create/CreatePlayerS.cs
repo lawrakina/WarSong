@@ -1,5 +1,5 @@
 ﻿using Code.Data;
-using Code.Extension;
+using Code.Fight.EcsFight.Abilities;
 using Code.Fight.EcsFight.Battle;
 using Code.Fight.EcsFight.Settings;
 using Code.GameCamera;
@@ -22,6 +22,7 @@ namespace Code.Fight.EcsFight.Create{
             var entity = _world.NewEntity();
             entity.Get<PlayerTag>();
             entity.Get<AnimatorTag>();
+            entity.Get<PermissionForAbilitiesTag>();
             ref var unit = ref entity.Get<UnitC>();
             unit.Transform = _player.Transform;
             unit.UnitMovement = _player.UnitMovement;

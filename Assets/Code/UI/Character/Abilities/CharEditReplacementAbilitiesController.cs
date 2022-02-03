@@ -126,6 +126,8 @@ namespace Code.UI.Character.Abilities{
 
         private void CloseView(){
             _view.Clear();
+            _listOfAbilities.OnSelectItem -= OnObjectSelection;
+            _profilePlayer.OnCharacterBuildIsComplete -= Reload;
             OnDeactivate();
         }
     }

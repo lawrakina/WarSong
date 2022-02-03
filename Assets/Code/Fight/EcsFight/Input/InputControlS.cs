@@ -15,8 +15,8 @@ namespace Code.Fight.EcsFight.Input{
         private InOutControlFightModel _model;
         private BattleCamera _camera;
         private EcsFilter<PlayerTag, UnitC> _playerFilter;
-        private EcsFilter<InputControlC, TargetUnitC> _inputFilter;
-        private EcsFilter<InputControlC, TargetUnitC, UnpressJoystickC> _unpressJoystick;
+        private EcsFilter<InputControlC, ControlOfThisTargetC> _inputFilter;
+        private EcsFilter<InputControlC, ControlOfThisTargetC, UnpressJoystickC> _unpressJoystick;
 
         public void Init(){
             foreach (var i in _playerFilter){
@@ -28,7 +28,7 @@ namespace Code.Fight.EcsFight.Input{
                 input.TimeToClick = _model.InputControl.MaxPressTimeForClickButton;
                 input.MaxOffsetForClick = _model.InputControl.MaxOffsetForClick;
                 input.MaxOffsetForMovement = _model.InputControl.MaxOffsetForMovement;
-                entity.Get<TargetUnitC>().Value = player;
+                entity.Get<ControlOfThisTargetC>().Value = player;
             }
         }
 

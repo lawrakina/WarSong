@@ -33,7 +33,7 @@ namespace Code.GameCamera
 
         private BattleCamera CreateCamera(Camera baseCamera)
         {
-            baseCamera.fieldOfView = 60.0f;
+            baseCamera.fieldOfView = 100.0f;
             var camera = baseCamera.GetComponent<BattleCamera>();
 
             var hider = Object.Instantiate(_profilePlayer.Settings.CameraSettings.FaderManager);

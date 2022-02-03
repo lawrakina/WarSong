@@ -15,7 +15,7 @@ namespace Code.Unit
         private bool _jump;
         private float _speed;
         private int _weaponType;
-
+        private bool _spell;
 
         public AnimatorParameters(Animator animator)
         {
@@ -58,6 +58,15 @@ namespace Code.Unit
             }
         }
 
+        public bool Spell{
+            get => _spell;
+            set{
+                _spell = value;
+                // _animator.SetTrigger(TagManager.ANIMATOR_PARAM_SPELL_TRIGGER); ToDo replace to Spell in animator
+                _animator.SetTrigger(TagManager.ANIMATOR_PARAM_ATTACK_TRIGGER);
+                _spell = !value;
+            }
+        }
         public int WeaponType
         {
             get => _weaponType;
@@ -91,6 +100,10 @@ namespace Code.Unit
         public void SetTriggerAttack()
         {
             Attack = true;
+        }
+
+        public void SetTriggerSpell(){
+            Spell = true;
         }
 
         public void SetDeathTrigger(){

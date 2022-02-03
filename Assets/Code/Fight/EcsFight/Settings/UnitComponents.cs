@@ -32,7 +32,7 @@ namespace Code.Fight.EcsFight.Settings{
         public Vector3 LastPosition;
     }
 
-    public struct TargetUnitC{
+    public struct ControlOfThisTargetC{
         public EcsEntity Value;
     }
 

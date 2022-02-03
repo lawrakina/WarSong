@@ -15,6 +15,10 @@ namespace Code.Data.Abilities{
         [Tooltip("What characteristic does it affect?")]
         public ChangeableCharacteristicType changeableCharacteristicType;
 
+        [Tooltip("Required distance to action og spell\n2 = melee Attack")]
+        [Range(2.0f, 100.0f)]
+        public float distance = 2.0f;
+
         [Tooltip("Lag before apply ability")]
         [Range(0.0f, 1.0f)]
         public float timeLagBeforeAction = 0.5f;
@@ -87,5 +91,12 @@ namespace Code.Data.Abilities{
     public enum EffectValueType{
         Negative = -1,
         Positive = 1
+    }
+
+    public enum AbilityState{
+        Start,
+        Process,
+        Complete,
+        Cancel
     }
 }

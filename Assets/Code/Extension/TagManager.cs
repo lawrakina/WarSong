@@ -24,5 +24,6 @@ namespace Code.Extension
         public static int ANIMATOR_PARAM_STUNNED = Animator.StringToHash("State_Stunned");
         public static int ANIMATOR_PARAM_STATE_UNIT = Animator.StringToHash("StateUnit");
         public static int ANIMATOR_PARAM_DEATH_TRIGGER = Animator.StringToHash("Death");
+        public static int ANIMATOR_PARAM_SPELL_TRIGGER = Animator.StringToHash("Spell");
     }
 }
