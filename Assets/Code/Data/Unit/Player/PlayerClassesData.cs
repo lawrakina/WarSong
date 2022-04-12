@@ -26,9 +26,9 @@ namespace Code.Data.Unit.Player
         [SerializeField]
         public CharacterVisionData characterVisionData;
         [Space]
-        [Header("Class abilities")]
-        [SerializeField]
-        public ClassAbilities[] _classAbilities;
+        // [Header("Class abilities")]
+        // [SerializeField]
+        // public ClassAbilities[] _classAbilities;
         [Space]
         
         [Header("Race characteristics")]

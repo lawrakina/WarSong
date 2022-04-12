@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ead76573834f9b9148601a544c515e, type: 3}
+  m_Name: RoqueInfo 5
+  m_EditorClassIdentifier: 
+  _title: Silence 5
+  _description: "\u0422\u0438\u0448\u0438\u043D\u0430, \u0437\u0430\u043F\u0440\u0435\u0442
+    \u043D\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435
+    \u043C\u0430\u0433\u0438\u0438"
+  _icon: {fileID: 21300000, guid: fd5ad93a7414c8c488692dd6c318bd02, type: 3}

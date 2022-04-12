@@ -10,7 +10,7 @@ namespace Code.Fight.EcsFight.Abilities{
     public struct HubOfAbilitiesTag{
         public UnitC Owner;
         public Queue<Ability> Source;
-        public Action<AbilityState> ChangeStateOfLastAbility;
+        // public Action<AbilityState> ChangeStateOfLastAbility;
     }
     
     public struct PermissionForAbilitiesTag{

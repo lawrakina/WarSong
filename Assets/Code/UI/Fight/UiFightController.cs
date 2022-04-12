@@ -9,7 +9,7 @@ using UnityEngine;
 
 
 namespace Code.UI.Fight{
-    public class UiFightController : BaseController, IFixedExecute{
+    public class UiFightController : BaseController, IExecute{
         private readonly Transform _placeForUi;
         private readonly ProfilePlayer _profilePlayer;
         private FightView _fightView;
@@ -57,8 +57,9 @@ namespace Code.UI.Fight{
 
         private void ActionOfAbility(Ability ability){
             // Dbg.Log($"ActionOfAbility:{ability}");
-            if (ability.IsEnable){
-                _inputModel.QueueOfAbilities.Enqueue(ability.Start());
+            if (ability.IsOn){
+                _inputModel.QueueOfAbilities.Enqueue(ability.OnAwake());
+                // _inputModel.QueueOfAbilities.Enqueue(ability.Start());
             }
         }
 
@@ -70,20 +71,19 @@ namespace Code.UI.Fight{
             }
         }
 
-        public void FixedExecute(float deltaTime){
-            foreach (var ability in _abilities){
-                if (!ability.IsEnable){
-                    // Dbg.Log($"Ability is Recharged: {ability.Cell.Body.uiInfo.Title}");
-                    ability.OnRecharge(deltaTime);
-                }
-            }
-        }
-
         public override void Dispose(){
             foreach (var ability in _abilities){
                 ability.Recharge = null;
             }
             base.Dispose();
+        }
+
+        public void Execute(float deltaTime){
+            foreach (var ability in _abilities){
+                if (!ability.IsOn){
+                    ability.Execute(deltaTime);
+                }
+            }
         }
     }
 }

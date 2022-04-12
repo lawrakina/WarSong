@@ -17,6 +17,7 @@ using Code.Fight.EcsFight.Settings;
 using Code.Fight.EcsFight.Timer;
 using Code.Profile;
 using Code.Profile.Models;
+using Code.UI.Fight;
 using Leopotam.Ecs;
 using UnityEngine;
 #if UNITY_EDITOR
@@ -175,7 +176,7 @@ namespace Code.Fight.EcsFight{
                 var abilities = _world.NewEntity();
                 abilities.Get<HubOfAbilitiesTag>().Owner = unit;
                 abilities.Get<HubOfAbilitiesTag>().Source = _model.InputControl.QueueOfAbilities;
-                abilities.Get<HubOfAbilitiesTag>().ChangeStateOfLastAbility = state => { };
+                // abilities.Get<HubOfAbilitiesTag>().ChangeStateOfLastAbility = state => { };
             }
         }
 
@@ -185,12 +186,12 @@ namespace Code.Fight.EcsFight{
                 ref var hub = ref _hubOfAbilitiesForPlayer.Get1(i);
 
                 while (hub.Source.Count != 0){
-                    var ability = hub.Source.Dequeue().Cell.Body;
+                    var ability = hub.Source.Dequeue();
 
-                    if (0 < (hub.Owner.Resource.ResourceBaseValue - ability.costResource)){
-                        hub.Owner.Resource.ResourceBaseValue -= ability.costResource;
+                    if (0 < (hub.Owner.Resource.ResourceBaseValue - ability.CostResource)){
+                        hub.Owner.Resource.ResourceBaseValue -= ability.CostResource;
                         
-                        switch (ability.abilityTargetType){
+                        switch (ability.AbilityTargetType){
                             case AbilityTargetType.None:
                                 break;
                             case AbilityTargetType.OnlyMe:
@@ -213,12 +214,12 @@ namespace Code.Fight.EcsFight{
                             default:
                                 throw new ArgumentOutOfRangeException();
                         }
-                        hub.ChangeStateOfLastAbility?.Invoke(AbilityState.Start);
+                        // hub.ChangeStateOfLastAbility?.Invoke(AbilityState.Start);
                     } else{
-                        hub.ChangeStateOfLastAbility?.Invoke(AbilityState.Cancel);
+                        // hub.ChangeStateOfLastAbility?.Invoke(AbilityState.Cancel);
                     }
 
-                    Dbg.Log($"New Ability Dequeue - {ability.uiInfo.Title}");
+                    Dbg.Log($"New Ability Dequeue - {ability.UiInfo.Title}");
                 }
             }
 
@@ -236,7 +237,7 @@ namespace Code.Fight.EcsFight{
                 }
 
                 if (target.Value.transform.SqrDistance(unit.Transform) >
-                    ability.Value.distance * ability.Value.distance){
+                    ability.Value.Distance * ability.Value.Distance){
                     var direction = target.Value.transform.position - unit.Transform.position;
                     moveEvent.Vector = direction;
 
@@ -271,7 +272,7 @@ namespace Code.Fight.EcsFight{
 
                 unit.Animator.SetTriggerSpell();
 
-                entity.Get<Timer<LagBeforeAttackWeapon<T>>>().TimeLeftSec = ability.Value.timeLagBeforeAction;
+                entity.Get<Timer<LagBeforeAttackWeapon<T>>>().TimeLeftSec = ability.Value.TimeLagBeforeAction;
                 entity.Get<AttackEventWeapon<T>>();
 
                 entity.Del<StartAbilityCommand>();
@@ -286,13 +287,16 @@ namespace Code.Fight.EcsFight{
                 ref var hub = ref _processAbilityFromMeToUnit.Get6(i);
 
                 entity.Del<AttackEventWeapon<T>>();
-                hub.ChangeStateOfLastAbility?.Invoke(AbilityState.Process);
+
+                ability.Value.StartReload();
+                Dbg.Log($"asklfdjosalikdjoikasjd aiksdj lkasjd aslkdjas");
+                // hub.ChangeStateOfLastAbility?.Invoke(AbilityState.Process);
                 ///
                 ///
                 ///
                 /// 
 
-                hub.ChangeStateOfLastAbility?.Invoke(AbilityState.Complete);
+                // hub.ChangeStateOfLastAbility?.Invoke(AbilityState.Complete);
             }
         }
     }
@@ -304,7 +308,7 @@ namespace Code.Fight.EcsFight{
     }
 
     public struct AbilityC{
-        public TemplateAbility Value;
+        public Ability Value;
     }
 
     public struct NeedStartAbilityFromMeToTargetCommand{

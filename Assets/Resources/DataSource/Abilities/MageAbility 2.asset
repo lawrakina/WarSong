@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06707d5684ad40e8b8a2b04dc2234f7f, type: 3}
   m_Name: MageAbility 2
   m_EditorClassIdentifier: 
-  uiInfo: {fileID: 11400000, guid: 4dee6bb96cc6e954899b8826c8e33997, type: 2}
+  uiInfo: {fileID: 11400000, guid: a015125b4b1564f41a458ff728e907d2, type: 2}
   view: {fileID: 0}
   abilityTargetType: 0
   changeableCharacteristicType: 0
+  distance: 2
   timeLagBeforeAction: 0.5
   castTime: 0
   timeOfAction: 0
