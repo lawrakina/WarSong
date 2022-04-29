@@ -1,8 +1,8 @@
-using System;
 using TMPro;
 using UnityEngine;
 
-namespace Code.Fight.EcsBattle.Unit.EnemyHealthBars
+
+namespace Code.Unit
 {
     public class EnemyLvlUiView : MonoBehaviour
     {
