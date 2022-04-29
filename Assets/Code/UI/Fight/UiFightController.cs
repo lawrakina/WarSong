@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Code.Data.Abilities;
 using Code.Extension;
 using Code.Fight;
 using Code.Profile;
@@ -56,11 +57,17 @@ namespace Code.UI.Fight{
         }
 
         private void ActionOfAbility(Ability ability){
-            // Dbg.Log($"ActionOfAbility:{ability}");
-            if (ability.IsOn){
-                _inputModel.QueueOfAbilities.Enqueue(ability.OnAwake());
-                // _inputModel.QueueOfAbilities.Enqueue(ability.Start());
+            if (ability.State == AbilityState.Ready){
+                ability.State = AbilityState.Started;
+                _inputModel.QueueOfAbilities.Enqueue(ability);
             }
+
+                // Dbg.Log($"ActionOfAbility:{ability}");
+            // if (ability.IsOn){
+                // Dbg.Log($"UI BUTTON CLICK");
+                // _inputModel.QueueOfAbilities.Enqueue(ability.OnAwake());
+                // _inputModel.QueueOfAbilities.Enqueue(ability.Start());
+            // }
         }
 
         private void ShowUiControls(FightState state){
@@ -80,9 +87,7 @@ namespace Code.UI.Fight{
 
         public void Execute(float deltaTime){
             foreach (var ability in _abilities){
-                if (!ability.IsOn){
-                    ability.Execute(deltaTime);
-                }
+                ability.Execute(deltaTime);
             }
         }
     }

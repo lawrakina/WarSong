@@ -1,5 +1,6 @@
 ﻿using System;
 using Code.Data;
+using Code.Extension;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -24,6 +25,7 @@ namespace Code.UI.Fight{
         }
 
         public void OnPointerDown(PointerEventData eventData){
+            Dbg.Log($"OnPointerDown.{this}");
             _actionOfAbility?.Invoke(_ability);
         }
 

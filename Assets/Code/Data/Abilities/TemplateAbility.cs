@@ -94,9 +94,11 @@ namespace Code.Data.Abilities{
     }
 
     public enum AbilityState{
-        Start,
-        Process,
-        Complete,
-        Cancel
+        Ready, //ready to use
+        Started, //task is created
+        InProgress, 
+        Completed,
+        Cooldown,
+        Canceled
     }
 }

@@ -12,8 +12,9 @@ namespace Code.UI.Fight{
         
         public Action<float> Recharge;
         private bool _illumination;
+        private AbilityState _state = AbilityState.Ready;
         public Guid Id{ get; }
-        public bool IsOn=> !(_cooldownCurrentTime < _cooldownMaxTime);
+        public bool IsOn=> true;
 
 
         public Ability(AbilityCell abilityCell){
@@ -29,6 +30,33 @@ namespace Code.UI.Fight{
         public float TimeLagBeforeAction => Cell.Body.timeLagBeforeAction;
         public UiInfo UiInfo => Cell.Body.uiInfo;
         public float Distance => Cell.Body.distance;
+        public AbilityState State{
+            get => _state;
+            set{
+                Dbg.Log($"Ability on '{_cell.AbilityCellType}' change state from {_state} to {value}");
+                _state = value;
+                return;
+                switch (_state){
+                    case AbilityState.Ready:
+                        if (value == AbilityState.Started) _state = value;
+                        break;
+                    case AbilityState.Started:
+                        if (value == AbilityState.Canceled) _state = value;
+                        break;
+                    case AbilityState.InProgress:
+                        if (value == AbilityState.Canceled) _state = value;
+                        break;
+                    case AbilityState.Completed:
+                        break;
+                    case AbilityState.Cooldown:
+                        break;
+                    case AbilityState.Canceled:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
 
         public Ability StartReload(){
             _cooldownCurrentTime = 0.0f;
