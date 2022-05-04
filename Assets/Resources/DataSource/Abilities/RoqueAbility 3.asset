@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiInfo: {fileID: 11400000, guid: 5df9874d7d422be448cfaca3f0038eb0, type: 2}
   view: {fileID: 0}
-  abilityTargetType: 0
+  abilityTargetType: 2
   changeableCharacteristicType: 0
   distance: 2
   timeLagBeforeAction: 0.5
