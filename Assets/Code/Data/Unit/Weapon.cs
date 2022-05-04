@@ -33,8 +33,8 @@ namespace Code.Data.Unit{
             _critChance = _weaponEquip.Characteristics.CritChance + characteristics.CritChance;
         }
 
-        public Attack GetDamage(){
-            var attackValue = Random.Range(_attackValue.GetAttack().x, _attackValue.GetAttack().y);
+        public Attack GetDamage(float modifier = 1){
+            var attackValue = Random.Range(_attackValue.GetAttack().x * modifier, _attackValue.GetAttack().y * modifier);
             var damageType = DamageType.Default;
             if (Random.Range(0.0f, 1.0f) < _critChance){ //critical attack
                 damageType = DamageType.Critical;

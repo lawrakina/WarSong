@@ -22,13 +22,6 @@ namespace Code.Unit
 
         #endregion
 
-
-        //ToDo Need remove after removing EcsBattle
-        public InfoCollision(float damage, EcsEntity attacker){
-            _attack = new Attack(damage, DamageType.Default);
-            _attacker = attacker;
-        }
-
         public InfoCollision(Attack attack, EcsEntity attacker){
             _attack = attack;
             _attacker = attacker;

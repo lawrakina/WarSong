@@ -11,7 +11,7 @@ namespace Code.UI.Fight{
         private AbilityCell _cell;
         
         public Action<float> Recharge;
-        private bool _illumination;
+        private bool _illumination => _state == AbilityState.Started;
         private AbilityState _state = AbilityState.Ready;
         public Guid Id{ get; }
         public bool IsOn=> true;
@@ -34,45 +34,26 @@ namespace Code.UI.Fight{
             get => _state;
             set{
                 Dbg.Log($"Ability on '{_cell.AbilityCellType}' change state from {_state} to {value}");
-                _state = value;
-                return;
-                switch (_state){
-                    case AbilityState.Ready:
-                        if (value == AbilityState.Started) _state = value;
-                        break;
-                    case AbilityState.Started:
-                        if (value == AbilityState.Canceled) _state = value;
-                        break;
-                    case AbilityState.InProgress:
-                        if (value == AbilityState.Canceled) _state = value;
-                        break;
-                    case AbilityState.Completed:
-                        break;
-                    case AbilityState.Cooldown:
-                        break;
-                    case AbilityState.Canceled:
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                if (_state == AbilityState.Started && value == AbilityState.InProgress)
+                    _cooldownCurrentTime = 0.0f;
+
+                if (_state == AbilityState.InProgress && value == AbilityState.Completed){
+                    _state = AbilityState.Cooldown;
+                    return;
                 }
+                
+                _state = value;
             }
-        }
-
-        public Ability StartReload(){
-            _cooldownCurrentTime = 0.0f;
-            return this;
-        }
-
-        public Ability OnAwake(){
-            _illumination = true;
-            return this;
         }
 
         public void Execute(float deltaTime){
             if (_cooldownCurrentTime < _cooldownMaxTime){
-                Dbg.Log($"111");
                 _cooldownCurrentTime += deltaTime;
                 Recharge?.Invoke(_cooldownCurrentTime/_cooldownMaxTime);
+            } else{
+                if (_state == AbilityState.Cooldown){
+                    _state = AbilityState.Ready;
+                }
             }
 
             if (_illumination){

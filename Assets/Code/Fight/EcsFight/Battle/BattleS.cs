@@ -125,7 +125,7 @@ namespace Code.Fight.EcsFight.Battle{
                 if(target.Value.transform.SqrDistance(unit.Transform) > unit.InfoAboutWeapons.SqrDistance)
                     continue;
                     
-                SingleMomentumAttack(target.Value, weapon, entity);
+                FightLibrary.SingleMomentumAttack(target.Value, weapon, entity);
                 entity.Del<AttackEventWeapon<T>>();
 
                 entity.Get<Timer<BattleTag>>().TimeLeftSec = 5f;
@@ -173,12 +173,7 @@ namespace Code.Fight.EcsFight.Battle{
             }
         }
 
-        private void SingleMomentumAttack(GameObject target, Weapon<T> weapon, EcsEntity unit){
-            var targetCollision = target.transform.GetComponent<ICollision>();
-            var collision =
-                new InfoCollision(weapon.Value.GetDamage(), unit);
-            targetCollision?.OnCollision(collision);
-        }
+        
 
         // private void RangeShotAttack(TargetListC target, MainWeaponC weapon, UnitC unit){
         //     var startPosition =

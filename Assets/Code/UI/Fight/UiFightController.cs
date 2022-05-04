@@ -54,6 +54,8 @@ namespace Code.UI.Fight{
             _inputModel.MaxOffsetForClick = inputSettings.MaxOffsetForClick;
             _inputModel.MaxOffsetForMovement = inputSettings.MaxOffsetForMovement;
             _inputModel.MaxPressTimeForClickButton = inputSettings.MaxPressTimeForClickButton;
+            
+            Init(true);
         }
 
         private void ActionOfAbility(Ability ability){
@@ -61,13 +63,6 @@ namespace Code.UI.Fight{
                 ability.State = AbilityState.Started;
                 _inputModel.QueueOfAbilities.Enqueue(ability);
             }
-
-                // Dbg.Log($"ActionOfAbility:{ability}");
-            // if (ability.IsOn){
-                // Dbg.Log($"UI BUTTON CLICK");
-                // _inputModel.QueueOfAbilities.Enqueue(ability.OnAwake());
-                // _inputModel.QueueOfAbilities.Enqueue(ability.Start());
-            // }
         }
 
         private void ShowUiControls(FightState state){
