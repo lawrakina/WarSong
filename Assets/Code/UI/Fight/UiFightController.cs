@@ -65,6 +65,7 @@ namespace Code.UI.Fight{
             }
         }
 
+
         private void ShowUiControls(FightState state){
             if (state == FightState.Fight){
                 _fightView.Show();
