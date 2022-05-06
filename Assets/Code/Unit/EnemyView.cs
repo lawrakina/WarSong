@@ -29,11 +29,17 @@ namespace Code.Unit
         public HealthBarView HealthBar { get; set; }
 
         public event Action<InfoCollision> OnApplyDamageChange;
+        public event Action<InfoResource> OnApplyResourceChange;
 
         public void OnCollision(InfoCollision info)
         {
             Dbg.Log($"{gameObject.name} Attacked");
             OnApplyDamageChange?.Invoke(info);
+        }
+
+        public void OnCollision(InfoResource collision){
+            Dbg.Log($"Change resource: {collision.Value}, sender: {collision.Sender}");
+            OnApplyResourceChange?.Invoke(collision);
         }
     }
 }

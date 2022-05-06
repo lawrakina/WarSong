@@ -29,7 +29,7 @@ namespace Code.UI.Fight{
             _fightView =
                 ResourceLoader.InstantiateObject(_profilePlayer.Settings.UiViews.FightView, _placeForUi, false);
             AddGameObjects(_fightView.GameObject);
-            
+
             //Abilities
             foreach (var abilityCell in _profilePlayer.CurrentPlayer.UnitAbilities.ActiveAbilities){
                 var ability = new Ability(abilityCell);
@@ -38,15 +38,17 @@ namespace Code.UI.Fight{
                         x.AbilityCellType == abilityCell.AbilityCellType);
                 if (abilityButton != null){
                     abilityButton.Init(ability, ActionOfAbility);
-                    ability.Recharge += abilityButton.Recharge;
+                    ability.OnRecharge += abilityButton.Recharge;
+                    ability.OnSelected += abilityButton.Selected;
                 }
+
                 _abilities.Add(ability);
             }
 
-            _playerModel.ChangeMaxHp += f => { _fightView.PlayerMaxHp = f;};
-            _playerModel.ChangeCurrentHp += f => { _fightView.PlayerCurrentHp = f;};
-            _playerModel.ChangeMaxResource += f => { _fightView.PlayerMaxResource = f;};
-            _playerModel.ChangeCurrentResource += f => { _fightView.PlayerCurrentResource = f;};
+            _playerModel.ChangeMaxHp += f => { _fightView.PlayerMaxHp = f; };
+            _playerModel.ChangeCurrentHp += f => { _fightView.PlayerCurrentHp = f; };
+            _playerModel.ChangeMaxResource += f => { _fightView.PlayerMaxResource = f; };
+            _playerModel.ChangeCurrentResource += f => { _fightView.PlayerCurrentResource = f; };
 
             _profilePlayer.Models.FightModel.FightState.Subscribe(ShowUiControls).AddTo(_subscriptions);
 
@@ -54,17 +56,16 @@ namespace Code.UI.Fight{
             _inputModel.MaxOffsetForClick = inputSettings.MaxOffsetForClick;
             _inputModel.MaxOffsetForMovement = inputSettings.MaxOffsetForMovement;
             _inputModel.MaxPressTimeForClickButton = inputSettings.MaxPressTimeForClickButton;
-            
+
             Init(true);
         }
 
         private void ActionOfAbility(Ability ability){
-            if (ability.State == AbilityState.Ready){
-                ability.State = AbilityState.Started;
+            if (ability.State.Value == AbilityState.Ready){
+                ability.State.Value = AbilityState.Started;
                 _inputModel.QueueOfAbilities.Enqueue(ability);
             }
         }
-
 
         private void ShowUiControls(FightState state){
             if (state == FightState.Fight){
@@ -76,8 +77,11 @@ namespace Code.UI.Fight{
 
         public override void Dispose(){
             foreach (var ability in _abilities){
-                ability.Recharge = null;
+                ability.OnRecharge = null;
+                ability.OnSelected = null;
+                ability.Dispose();
             }
+
             base.Dispose();
         }
 

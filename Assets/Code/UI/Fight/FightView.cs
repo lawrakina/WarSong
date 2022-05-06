@@ -37,7 +37,7 @@ namespace Code.UI.Fight{
         public UltimateJoystick Joystick => _joystick;
 
         public float PlayerCurrentHp{
-            get{ return _playerCurrentHp; }
+            get => _playerCurrentHp;
             set{
                 _playerCurrentHp = value;
                 _healthCountByPlayer.text = $"{_playerCurrentHp}/{_playerMaxHp}";
@@ -45,7 +45,7 @@ namespace Code.UI.Fight{
             }
         }
         public float PlayerMaxHp{
-            get{ return _playerMaxHp; }
+            get => _playerMaxHp;
             set{
                 _playerMaxHp = value;
                 _healthCountByPlayer.text = $"{_playerCurrentHp}/{_playerMaxHp}";
@@ -53,15 +53,15 @@ namespace Code.UI.Fight{
             }
         }
         public float PlayerCurrentResource{
-            get{ return _playerCurrentResource; }
+            get => _playerCurrentResource;
             set{
                 _playerCurrentResource = value;
                 _resourceCountByPlayer.text = $"{_playerCurrentResource}/{_playerMaxResource}";
-                _resourceBar.fillAmount = _playerCurrentResource / _playerCurrentHp;
+                _resourceBar.fillAmount = _playerCurrentResource / _playerMaxResource;
             }
         }
         public float PlayerMaxResource{
-            get{ return _playerMaxResource; }
+            get => _playerMaxResource;
             set{
                 _playerMaxResource = value;
                 _resourceCountByPlayer.text = $"{_playerCurrentResource}/{_playerMaxResource}";

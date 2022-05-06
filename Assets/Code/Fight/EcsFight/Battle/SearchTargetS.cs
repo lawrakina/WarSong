@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Code.Data.Abilities;
+using Code.Fight.EcsFight.Abilities;
 using Code.Fight.EcsFight.Settings;
 using Code.Fight.EcsFight.Timer;
 using Code.Profile.Models;
@@ -27,7 +29,8 @@ namespace Code.Fight.EcsFight.Battle{
             foreach (var i in _findFilter){
                 ref var entity = ref _findFilter.GetEntity(i);
                 ref var unit = ref _findFilter.Get1(i);
-                
+
+                entity.Del<TargetNotFoundedTag>();
                 unit.UnitVision.Visor.Pulse();
                 var near = unit.UnitVision.Visor.GetNearest();
                 if (near){
@@ -35,12 +38,13 @@ namespace Code.Fight.EcsFight.Battle{
                     // entity.Get<Timer<BattleTag>>().TimeLeftSec = 4f;
                 } else{
                     entity.Del<FoundTargetC>();
+                    entity.Get<TargetNotFoundedTag>();
                 }
+
                 entity.Del<NeedFindTargetCommand>();
             }
-            
-            
-            
+
+
             // foreach (var i in _searchFilter){
             //     ref var entity = ref _searchInitFilter.GetEntity(i);
             //     ref var unit = ref _searchFilter.Get1(i);
@@ -62,9 +66,5 @@ namespace Code.Fight.EcsFight.Battle{
             //     entity.Del<NeedFindTargetTag>();
             // }
         }
-    }
-
-    public struct FoundTargetC{
-        public GameObject Value;
     }
 }

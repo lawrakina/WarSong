@@ -10,7 +10,7 @@ using UnitReputation = Code.Data.Unit.UnitReputation;
 
 namespace Code.Unit
 {
-    public interface IBaseUnitView: ICollision
+    public interface IBaseUnitView: ICollision, IResourceCollision
     {
         KinematicCharacterMotor Motor{ get; set; }
         UnitMovement UnitMovement{ get; set; }
@@ -28,5 +28,6 @@ namespace Code.Unit
         UnitCharacteristics UnitCharacteristics { get; set; }
         UnitBattle UnitBattle { get; set; }
         event Action<InfoCollision> OnApplyDamageChange;
+        event Action<InfoResource> OnApplyResourceChange;
     }
 }

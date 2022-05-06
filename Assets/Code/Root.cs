@@ -11,14 +11,16 @@ using Profile.Analytic;
 using UnityEngine;
 
 
-namespace Code
-{
+namespace Code{
     public class Root : MonoBehaviour{
-        [SerializeField] private Transform _placeForUi;
+        [SerializeField]
+        private Transform _placeForUi;
 
-        [SerializeField] private GameState _gameStateAfterStart = GameState.ListOfCharacter;
+        [SerializeField]
+        private GameState _gameStateAfterStart = GameState.ListOfCharacter;
 
-        [SerializeField] private UiWindowAfterStart _showWindowAfterStart = UiWindowAfterStart.Adventure;
+        [SerializeField]
+        private UiWindowAfterStart _showWindowAfterStart = UiWindowAfterStart.Adventure;
 
         private MainController _mainController;
         private Controllers _controllers;
@@ -30,10 +32,10 @@ namespace Code
 
 #endif
 
-        private void Awake()
-        {
+        private void Awake(){
             var settings = LoadAllResources();
             var models = LoadAllModels();
+            LoadGlobalSettings();
             _controllers = new Controllers();
             var commandManager = new CommandManager();
             _profilePlayer = new ProfilePlayer(commandManager, settings, models, new UnityAnalyticTools());
@@ -42,7 +44,7 @@ namespace Code
             _mainController = new MainController(_controllers, _placeForUi, _profilePlayer);
             _controllers.Add(_profilePlayer);
             _controllers.Init();
-            
+
 #if UNITY_EDITOR
             _profilePlayer.ChangePlayer_FOR_DEBUG_DONT_USE += ChangePlayerForDebugDontUse;
             _characterPlayer = _profilePlayer.CurrentPlayer.Transform.gameObject;
@@ -50,14 +52,13 @@ namespace Code
         }
 
 #if UNITY_EDITOR
-        private void ChangePlayerForDebugDontUse(IPlayerView obj)
-        {
+        private void ChangePlayerForDebugDontUse(IPlayerView obj){
             _characterPlayer = _profilePlayer.CurrentPlayer.Transform.gameObject;
         }
+
 #endif
-        
-        private MvcModels LoadAllModels()
-        {
+
+        private static MvcModels LoadAllModels(){
             var result = new MvcModels();
             result.DungeonGeneratorModel = ResourceLoader.LoadModel<DungeonGeneratorModel>();
             result.FightModel = ResourceLoader.LoadModel<FightDungeonModel>();
@@ -66,7 +67,7 @@ namespace Code
             return result;
         }
 
-        private DataSettings LoadAllResources() {
+        private static DataSettings LoadAllResources(){
             var settings = new DataSettings();
             settings.CharacterData = ResourceLoader.LoadConfig<CharacterData>();
             settings.UnitLevelData = ResourceLoader.LoadConfig<UnitLevelData>();
@@ -94,26 +95,29 @@ namespace Code
             return settings;
         }
 
-        private void Update()
-        {
+        private static void LoadGlobalSettings(){
+            var settings = ResourceLoader.LoadConfig<GlobalUiAnimationSettings>();
+            GlobalUiAnimationSettings.ABILITY_BUTTON_SHAKE_DURATION = settings.AbilButShakeDuration;
+            GlobalUiAnimationSettings.ABILITY_BUTTON_SHAKE_STRENGTH = settings.AbilButShakeStrength;
+            GlobalUiAnimationSettings.ABILITY_BUTTON_SHAKE_VIBRATO = settings.AbilButShakeVibrato;
+        }
+
+        private void Update(){
             var deltaTime = Time.deltaTime;
             _controllers.Execute(deltaTime);
         }
 
-        private void LateUpdate()
-        {
+        private void LateUpdate(){
             var deltaTime = Time.deltaTime;
             _controllers.LateExecute(deltaTime);
         }
 
-        private void FixedUpdate()
-        {
+        private void FixedUpdate(){
             var deltaTime = Time.fixedDeltaTime;
             _controllers.FixedExecute(deltaTime);
         }
 
-        protected void OnDestroy()
-        {
+        protected void OnDestroy(){
             _mainController?.Dispose();
         }
     }

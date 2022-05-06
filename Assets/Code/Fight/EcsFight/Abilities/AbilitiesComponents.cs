@@ -7,16 +7,15 @@ using Leopotam.Ecs;
 
 
 namespace Code.Fight.EcsFight.Abilities{
-    
     public struct HubOfAbilitiesTag{
         public EcsEntity OwnerEntity;
         public UnitC Owner;
         public Queue<Ability> Source;
-        // public Action<AbilityState> ChangeStateOfLastAbility;
     }
-    
+
     public struct PermissionForAbilitiesTag{
     }
+
     public struct StartAbilityCommand{
     }
 
@@ -28,5 +27,11 @@ namespace Code.Fight.EcsFight.Abilities{
     }
 
     public struct NeedStartAbilityFromMeToTargetCommand{
+    }
+    
+    public struct NeedCanceledAbilityTag{
+    }
+
+    public struct NeedCheckResource{
     }
 }

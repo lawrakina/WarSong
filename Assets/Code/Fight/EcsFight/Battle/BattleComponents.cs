@@ -43,4 +43,8 @@ namespace Code.Fight.EcsFight.Battle{
     
     public struct DeathTag{
     }
+    
+    public struct LastAttacker{
+        public EcsEntity NewAttacker;
+    }
 }

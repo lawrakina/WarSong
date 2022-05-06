@@ -36,7 +36,7 @@ namespace Code.Fight.EcsFight.Input{
             foreach (var i in _inputFilter){
                 ref var entity = ref _inputFilter.GetEntity(i);
                 ref var input = ref _inputFilter.Get1(i);
-                ref var target = ref _unpressJoystick.Get2(i);
+                ref var target = ref _inputFilter.Get2(i);
 
                 //Get input events
                 if (input.joystick.GetJoystickState()){

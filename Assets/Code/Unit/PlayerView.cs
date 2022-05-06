@@ -31,11 +31,17 @@ namespace Code.Unit
         public UnitBattle UnitBattle { get; set; }
         public UnitAbilities UnitAbilities{ get; set; }
         public event Action<InfoCollision> OnApplyDamageChange;
-        
+        public event Action<InfoResource> OnApplyResourceChange;
+
         public void OnCollision(InfoCollision info)
         {
             Dbg.Log($"{gameObject.name} Attacked");
             OnApplyDamageChange?.Invoke(info);
+        }
+
+        public void OnCollision(InfoResource collision){
+            Dbg.Log($"Change resource. {collision.Value} from: {collision.Sender}");
+            OnApplyResourceChange?.Invoke(collision);
         }
     }
 }

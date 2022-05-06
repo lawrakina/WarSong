@@ -220,8 +220,4 @@ namespace Code.Fight.EcsFight.Battle{
         //     }
         // }
     }
-
-    public struct LastAttacker{
-        public EcsEntity NewAttacker;
-    }
 }

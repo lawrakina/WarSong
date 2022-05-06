@@ -1,5 +1,4 @@
 ﻿using Code.Data.Unit;
-using Code.Fight.EcsFight.Settings;
 using Leopotam.Ecs;
 
 

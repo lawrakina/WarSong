@@ -6,8 +6,7 @@ using Leopotam.Ecs;
 
 
 namespace Code.Fight.EcsFight.Create{
-    public class PlayerEntity
-    {
+    public class PlayerEntity{
         #region Fields
 
         private readonly IPlayerView _view;
@@ -18,18 +17,18 @@ namespace Code.Fight.EcsFight.Create{
 
         #region ClassLiveCycles
 
-        public PlayerEntity(IPlayerView view, EcsEntity entity)
-        {
+        public PlayerEntity(IPlayerView view, EcsEntity entity){
             _view = view;
             _entity = entity;
 
             _view.OnApplyDamageChange += ViewOnApplyDamageChange;
+            _view.OnApplyResourceChange += ViewOnApplyResourceChange;
             // Dbg.Log($"Create EnemyEnity");
         }
 
-        ~PlayerEntity()
-        {
+        ~PlayerEntity(){
             _view.OnApplyDamageChange -= ViewOnApplyDamageChange;
+            _view.OnApplyResourceChange -= ViewOnApplyResourceChange;
             // Dbg.Log($"Destroy EnemyEnity");
         }
 
@@ -38,10 +37,13 @@ namespace Code.Fight.EcsFight.Create{
 
         #region Methods
 
-        private void ViewOnApplyDamageChange(InfoCollision collision)
-        {
+        private void ViewOnApplyDamageChange(InfoCollision collision){
             _entity.Get<AttackCollisionC>().Value = collision;
             _entity.Get<ChangeHpC>();
+        }
+
+        private void ViewOnApplyResourceChange(InfoResource resource){
+            _entity.Get<ChangeResourceC>();
         }
 
         #endregion
