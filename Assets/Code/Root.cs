@@ -23,7 +23,6 @@ namespace Code{
         private UiWindowAfterStart _showWindowAfterStart = UiWindowAfterStart.Adventure;
 
         private MainController _mainController;
-        private Controllers _controllers;
         private ProfilePlayer _profilePlayer;
 #if UNITY_EDITOR
         [SerializeField]
@@ -36,14 +35,13 @@ namespace Code{
             var settings = LoadAllResources();
             var models = LoadAllModels();
             LoadGlobalSettings();
-            _controllers = new Controllers();
             var commandManager = new CommandManager();
             _profilePlayer = new ProfilePlayer(commandManager, settings, models, new UnityAnalyticTools());
             _profilePlayer.CurrentState.Value = _gameStateAfterStart;
             _profilePlayer.WindowAfterStart = _showWindowAfterStart;
-            _mainController = new MainController(_controllers, _placeForUi, _profilePlayer);
-            _controllers.Add(_profilePlayer);
-            _controllers.Init();
+            _mainController = new MainController(_placeForUi, _profilePlayer);
+            Controllers.Add(_profilePlayer);
+            Controllers.Init();
 
 #if UNITY_EDITOR
             _profilePlayer.ChangePlayer_FOR_DEBUG_DONT_USE += ChangePlayerForDebugDontUse;
@@ -104,17 +102,17 @@ namespace Code{
 
         private void Update(){
             var deltaTime = Time.deltaTime;
-            _controllers.Execute(deltaTime);
+            Controllers.Execute(deltaTime);
         }
 
         private void LateUpdate(){
             var deltaTime = Time.deltaTime;
-            _controllers.LateExecute(deltaTime);
+            Controllers.LateExecute(deltaTime);
         }
 
         private void FixedUpdate(){
             var deltaTime = Time.fixedDeltaTime;
-            _controllers.FixedExecute(deltaTime);
+            Controllers.FixedExecute(deltaTime);
         }
 
         protected void OnDestroy(){

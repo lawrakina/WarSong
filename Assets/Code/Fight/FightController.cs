@@ -14,7 +14,6 @@ namespace Code.Fight
 {
     public sealed class FightController : BaseController
     {
-        private readonly Controllers _controllers;
         private readonly Transform _placeForUi;
         private readonly ProfilePlayer _profilePlayer;
         private FightDungeonModel _model;
@@ -28,41 +27,35 @@ namespace Code.Fight
         private IBattleController _battleController;
         private UiFightController _uiFightController;
 
-        public FightController(Controllers controllers, Transform placeForUi, ProfilePlayer profilePlayer,
+        public FightController(Transform placeForUi, ProfilePlayer profilePlayer,
             CameraController cameraController)
         {
-            _controllers = controllers;
             _placeForUi = placeForUi;
             _profilePlayer = profilePlayer;
             _model = _profilePlayer.Models.FightModel;
             _cameraController = cameraController;
 
-            _controllers.Add(this);
+            Controllers.Add(this);
 
             _loadingController = new LoadingController(
                 _profilePlayer.Settings.UiViews, _model.InfoState, _placeForUi);
-            AddController(_loadingController);
-            _controllers.Add(_loadingController);
+            Controllers.Add(_loadingController);
 
             _buildStatusCheckerController = new BuildStatusCheckerController();
-            _controllers.Add(_buildStatusCheckerController);
-            AddController(_buildStatusCheckerController);
+            Controllers.Add(_buildStatusCheckerController);
             _buildStatusCheckerController.OnDeactivate();
             _buildStatusCheckerController.CompleteCommand.Subscribe(x =>
             {
                 _model.FightState.Value = FightState.Fight;
             }).AddTo(_subscriptions);
 
-            _generator = new LevelGeneratorController(_controllers,
-                _profilePlayer.Settings.DungeonGeneratorData, _model);
-            _controllers.Add(_generator);
-            AddController(_generator);
+            _generator = new LevelGeneratorController(_profilePlayer.Settings.DungeonGeneratorData, _model);
+            Controllers.Add(_generator);
             _buildStatusCheckerController.AddToQueue(_generator);
 
             _playerFightController = new PlayerFightController(
                 _profilePlayer, _model);
-            _controllers.Add(_playerFightController);
-            AddController(_playerFightController);
+            Controllers.Add(_playerFightController);
             _buildStatusCheckerController.AddToQueue(_playerFightController);
 
             _enemyFightController = new EnemyFightController(
@@ -71,17 +64,14 @@ namespace Code.Fight
                 _profilePlayer.Models.EnemiesLevelModel,
                 _profilePlayer.Settings.EnemiesData,
                 _profilePlayer.CurrentPlayer);
-            _controllers.Add(_enemyFightController);
-            AddController(_enemyFightController);
+            Controllers.Add(_enemyFightController);
             _buildStatusCheckerController.AddToQueue(_enemyFightController);
 
             _uiFightController = new UiFightController(_placeForUi, _profilePlayer);
-            _controllers.Add(_uiFightController);
-            AddController(_uiFightController);
+            Controllers.Add(_uiFightController);
 
-            _battleController = new EcsBattleController(_controllers, _profilePlayer);
-            _controllers.Add(_battleController as BaseController);
-            AddController(_battleController as BaseController);
+            _battleController = new EcsBattleController( _profilePlayer);
+            Controllers.Add(_battleController as BaseController);
             (_battleController as BaseController)?.OnDeactivate();
 
             _battleController.Inject(_profilePlayer.CurrentPlayer);
@@ -133,12 +123,12 @@ namespace Code.Fight
 
         public override void Dispose()
         {
-            _controllers.Remove(_generator);
-            _controllers.Remove(_loadingController);
-            _controllers.Remove(_playerFightController);
-            _controllers.Remove(_enemyFightController);
-            _controllers.Remove(_battleController as BaseController);
-            _controllers.Remove(this);
+            Controllers.Remove(_generator);
+            Controllers.Remove(_loadingController);
+            Controllers.Remove(_playerFightController);
+            Controllers.Remove(_enemyFightController);
+            Controllers.Remove(_battleController as BaseController);
+            Controllers.Remove(this);
             base.Dispose();
         }
     }

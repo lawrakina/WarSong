@@ -15,7 +15,6 @@ namespace Code.Fight.BuildingDungeon
 {
     public class LevelGeneratorController : BaseController, IVerifiable
     {
-        private readonly Controllers _controllers;
         private readonly DungeonGeneratorData _settings;
         private readonly FightDungeonModel _fightModel;
         private GameObject _dungeon;
@@ -72,12 +71,11 @@ namespace Code.Fight.BuildingDungeon
             return null;
         }
 
-        public LevelGeneratorController(Controllers controllers, DungeonGeneratorData settings,
+        public LevelGeneratorController(DungeonGeneratorData settings,
             FightDungeonModel fightModel)
         {
             _isOn = true;
             Status = BuildStatus.Passive;
-            _controllers = controllers;
             _settings = settings;
             _fightModel = fightModel;
 

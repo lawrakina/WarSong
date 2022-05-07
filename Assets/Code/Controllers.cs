@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Code.Extension;
 using Code.TimeRemaining;
@@ -7,105 +8,100 @@ using Code.UI;
 
 namespace Code
 {
-    public sealed class Controllers :  IExecute, IFixedExecute, ILateExecute
-        //, IInitialization, ICleanup
-    {
-        public Controllers()
-        {
+    public static class Controllers{
+        static Controllers(){
             _initializeControllers = new List<IInitialization>();
-            _executeControllers = new List<IExecute>();
-            _executeControllers.Add(new TimeRemainingController());
+            _executeControllers = new List<IExecute>{new TimeRemainingController()};
             _lateControllers = new List<ILateExecute>();
             _fixedControllers = new List<IFixedExecute>();
-            // _cleanupControllers = new List<ICleanup>();
+            _disposablesControllers = new List<IDisposable>();
         }
+
+        private static readonly List<IInitialization> _initializeControllers;
+        private static readonly List<IExecute> _executeControllers;
+        private static readonly List<IFixedExecute> _fixedControllers;
+        private static readonly List<ILateExecute> _lateControllers;
+        private static readonly List<IDisposable> _disposablesControllers;
         
+        public static Root RootMonoBehaviour{ get; set; }
 
-        private readonly List<IInitialization> _initializeControllers;
-        private readonly List<IExecute> _executeControllers;
-        private readonly List<IFixedExecute> _fixedControllers;
-        private readonly List<ILateExecute> _lateControllers;
-        // private readonly List<ICleanup> _cleanupControllers;
+        public static void Add(IController controller){
+            if (controller is IInitialization initializeController){
+                Dbg.Log($"Controller |{controller}| added, is type: IInitialisation");
+                _initializeControllers.Add(initializeController);
+            }
 
+            if (controller is IExecute executeController){
+                Dbg.Log($"Controller |{controller}| added, is type: IExecute");
+                _executeControllers.Add(executeController);
+            }
 
-        public Guid Id { get; }
+            if (controller is IFixedExecute fixedExecuteController){
+                Dbg.Log($"Controller |{controller}| added, is type: IFixedExecute");
+                _fixedControllers.Add(fixedExecuteController);
+            }
 
-        public void OnActivate()
-        {
+            if (controller is ILateExecute lateExecuteController){
+                Dbg.Log($"Controller |{controller}| added, is type: ILateExecute");
+                _lateControllers.Add(lateExecuteController);
+            }
             
+            if (controller is IDisposable disposableController){
+                Dbg.Log($"Controller |{controller}| added, is type: IDisposable");
+                _disposablesControllers.Add(disposableController);
+            }
         }
 
-        public void OnDeactivate()
-        {
-            
-        }
-
-        public bool IsOn => true;
-
-        public void Add(IController controller)
-        {
-            // Dbg.Log($"controllers.add:{controller}");
-            if (controller is IInitialization initializeController) _initializeControllers.Add(initializeController);
-
-            if (controller is IExecute executeController) _executeControllers.Add(executeController);
-
-            if (controller is IFixedExecute fixedExecuteController) _fixedControllers.Add(fixedExecuteController);
-
-            if (controller is ILateExecute lateExecuteController) _lateControllers.Add(lateExecuteController);
-
-            // if (controller is ICleanup cleanupController) _cleanupControllers.Add(cleanupController);
-        }
-
-        public void Init()
-        {
+        public static void Init(){
             for (var index = 0; index < _initializeControllers.Count; ++index)
                 _initializeControllers[index].Init();
         }
 
-        public void Execute(float deltaTime)
-        {
-            for (var index = 0; index < _executeControllers.Count; ++index)
-            {
-                if(_executeControllers[index].IsOn)
+        public static void Execute(float deltaTime){
+            for (var index = 0; index < _executeControllers.Count; ++index){
+                if (_executeControllers[index].IsOn)
                     _executeControllers[index].Execute(deltaTime);
             }
         }
 
-        public void FixedExecute(float deltaTime)
-        {
+        public static void FixedExecute(float deltaTime){
             for (var index = 0; index < _fixedControllers.Count; ++index)
                 _fixedControllers[index].FixedExecute(deltaTime);
         }
 
-        public void LateExecute(float deltaTime)
-        {
-            for (var index = 0; index < _lateControllers.Count; ++index) 
+        public static void LateExecute(float deltaTime){
+            for (var index = 0; index < _lateControllers.Count; ++index)
                 _lateControllers[index].LateExecute(deltaTime);
         }
 
-        // public void Cleanup()
-        // {
-        //     for (var index = 0; index < _cleanupControllers.Count; ++index) 
-        //         _cleanupControllers[index].Cleanup();
-        // }
-        
-        public void Remove(IController controller)
-        {
-            for (var index = 0; index < _executeControllers.Count; ++index)
-            {
-                if(_executeControllers[index].Id == controller.Id)
+        public static void Dispose(){
+            for (var index = 0; index < _disposablesControllers.Count; ++index)
+                _disposablesControllers[index].Dispose();
+        }
+
+        public static void Remove(IController controller){
+            for (var index = 0; index < _executeControllers.Count; ++index){
+                if (_executeControllers[index].Id == controller.Id)
                     _executeControllers.RemoveAt(index);
             }
-            for (var index = 0; index < _fixedControllers.Count; ++index)
-            {
-                if(_fixedControllers[index].Id == controller.Id)
+
+            for (var index = 0; index < _fixedControllers.Count; ++index){
+                if (_fixedControllers[index].Id == controller.Id)
                     _fixedControllers.RemoveAt(index);
             }
-            for (var index = 0; index < _lateControllers.Count; ++index)
-            {
-                if(_lateControllers[index].Id == controller.Id)
+
+            for (var index = 0; index < _lateControllers.Count; ++index){
+                if (_lateControllers[index].Id == controller.Id)
                     _lateControllers.RemoveAt(index);
             }
+        }
+
+        public static void StartCoroutine(IEnumerator obj){
+            RootMonoBehaviour.StartCoroutine(obj);
+        }
+
+        public static void StopAllCoroutines(){
+            RootMonoBehaviour.StopAllCoroutines();
         }
     }
 }

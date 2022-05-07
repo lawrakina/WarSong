@@ -21,7 +21,7 @@ namespace Code.Data.Unit{
             get{ return _resourceBaseValue; }
             set{
                 _resourceBaseValue = value;
-                Dbg.Error($"Change resource value: {value}");
+                Dbg.Log($"Change resource value: {value}");
             }
         }
 

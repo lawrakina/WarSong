@@ -36,16 +36,16 @@ namespace Code.UI.Character{
             FillInLists();
 
             _equipReplaceController = new CharEditReplacementEquipController(false, _placeForUi, _profilePlayer);
-            AddController(_equipReplaceController, true);
-
+            AddAsManagedController(_equipReplaceController, true);
+            
             _abilitiesReplaceController =
                 new CharEditReplacementAbilitiesController(false, _placeForUi, _profilePlayer);
-            AddController(_abilitiesReplaceController, true);
+            AddAsManagedController(_abilitiesReplaceController, true);
 
             _talentsReplaceController = new CharEditReplacementTalentsController(false, _placeForUi, _profilePlayer);
-            AddController(_talentsReplaceController, true);
+            AddAsManagedController(_talentsReplaceController, true);
 
-            AddController(this, true, true);
+            AddAsManagedController(this, true, true);
 
             Init(activate);
         }

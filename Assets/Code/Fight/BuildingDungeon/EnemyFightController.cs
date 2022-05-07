@@ -40,7 +40,7 @@ namespace Code.Fight.BuildingDungeon
             _status = BuildStatus.Passive;
             _generatorModel.OnChangeEnemiesPositions += SpawnEnemies;
             _enemyFactory = new EnemyFactory(_enemySettings, _currentPlayer.UnitLevel.CurrentLevel);
-            AddController(_enemyFactory);
+            AddAsManagedController(_enemyFactory);
         }
 
         private void SpawnEnemies(SpawnMarkerEnemyInDungeon[] listEnemies)

@@ -32,8 +32,8 @@ namespace Code.UI.CharacterList{
                 new CharacterPrototypeController(false, _placeForUi, _profilePlayer, _cameraController);
             _createPrototypeController.OnPrototypeChange += _profilePlayer.RebuildCharacter.Invoke;
             _createPrototypeController.OnCreateCharacter += OnCreateCharacter;
-            AddController(_createPrototypeController, true);
-            AddController(this, true, true);
+            AddAsManagedController(_createPrototypeController, true);
+            AddAsManagedController(this, true, true);
 
             _view = ResourceLoader.InstantiateObject(
                 _profilePlayer.Settings.UiViews.Create_CharacterList, placeForUi, false);

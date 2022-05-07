@@ -51,6 +51,7 @@ namespace Code
         /// <param name="activate">Показать после создания зависимые вьюшки?</param>
         protected BaseController(bool activate = false)
         {
+            Controllers.Add(this);
             Create?.Invoke(Id);
             if (activate)
             {
@@ -109,7 +110,7 @@ namespace Code
         /// <param name="baseController">добавляемый контроллер</param>
         /// <param name="isToggle">включение и добавление к Toggle Group</param>
         /// <param name="isRoot">корневой контроллер, включается когда выключаются все дочерние</param>
-        protected void AddController(BaseController baseController, bool isToggle = false, bool isRoot = false)
+        protected void AddAsManagedController(BaseController baseController, bool isToggle = false, bool isRoot = false)
         {
             if(baseController == null)
                 return;
@@ -291,6 +292,7 @@ namespace Code
                 }
                 // освобождаем неуправляемые объекты
                 _isDisposed = true;
+                Controllers.Remove(this);
             }
         }
         

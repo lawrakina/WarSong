@@ -9,7 +9,6 @@ using ThirdPersonCameraWithLockOn;
 
 namespace Code.Fight{
     public sealed class EcsBattleController : BaseController, IBattleController{
-        private readonly Controllers _controllers;
         private readonly ProfilePlayer _profilePlayer;
         private EcsFight.EcsFight _ecsBattle;
         private BattleCamera _camera;
@@ -18,15 +17,13 @@ namespace Code.Fight{
         private EnemiesLevelModel _listEnemiesLevelModel;
         private InOutControlFightModel _inOutControlFightModel;
 
-        public EcsBattleController(Controllers controllers, ProfilePlayer profilePlayer){
-            _controllers = controllers;
+        public EcsBattleController(ProfilePlayer profilePlayer){
             _profilePlayer = profilePlayer;
             _ecsBattle = new EcsFight.EcsFight();
             // _ecsBattle = Object.Instantiate(_profilePlayer.Settings.EcsBattleData.EcsBattle);
             // _ecsBattle.gameObject.name = StringManager.ECS_BATTLE_GO_NAME;
 
-            _controllers.Add(_ecsBattle);
-            AddController(_ecsBattle);
+            Controllers.Add(_ecsBattle);
         }
 
         public void StartFight(){

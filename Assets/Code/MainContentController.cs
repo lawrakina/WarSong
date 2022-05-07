@@ -69,31 +69,31 @@ namespace Code{
 
         private InventoryController ConfigureInventoryController(Transform placeForUi, ProfilePlayer profilePlayer){
             var controller = new InventoryController(false, placeForUi.transform, profilePlayer);
-            AddController(controller, true);
+            AddAsManagedController(controller,true);
             return controller;
         }
 
         private ShopController ConfigureShopController(Transform placeForUi, ProfilePlayer profilePlayer){
             var controller = new ShopController(false, placeForUi.transform, profilePlayer);
-            AddController(controller, true);
+            AddAsManagedController(controller,true);
             return controller;
         }
 
         private TavernController ConfigureTavernController(Transform placeForUi, ProfilePlayer profilePlayer){
             var controller = new TavernController(false, placeForUi.transform, profilePlayer);
-            AddController(controller, true);
+            AddAsManagedController(controller,true);
             return controller;
         }
 
         private CharEditRootController ConfigureCharacterController(Transform placeForUi, ProfilePlayer profilePlayer){
             var controller = new CharEditRootController(false, placeForUi.transform, profilePlayer);
-            AddController(controller, true);
+            AddAsManagedController(controller,true);
             return controller;
         }
 
         private AdventureController ConfigureAdventureController(Transform placeForUi, ProfilePlayer profilePlayer){
             var controller = new AdventureController(false, placeForUi.transform, profilePlayer);
-            AddController(controller, true);
+            AddAsManagedController(controller,true);
             return controller;
         }
     }

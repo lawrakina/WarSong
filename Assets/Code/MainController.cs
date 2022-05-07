@@ -12,7 +12,6 @@ namespace Code
     public class MainController : BaseController
     {
         private readonly Transform _placeForUi;
-        private readonly Controllers _controllers;
         private readonly ProfilePlayer _profilePlayer;
 
         private CharacterListController _characterListController;
@@ -23,9 +22,8 @@ namespace Code
         private GameState _oldState = GameState.None;
         private CameraController _cameraController;
 
-        public MainController(Controllers controllers, Transform placeForUi, ProfilePlayer profilePlayer)
+        public MainController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
-            _controllers = controllers;
             _profilePlayer = profilePlayer;
             _placeForUi = placeForUi;
             _cameraController = new CameraController(_profilePlayer);
@@ -55,7 +53,7 @@ namespace Code
                 case GameState.Fight:
                     _characterListController?.Dispose();
                     _mainMenuController?.Dispose();
-                    _fightController = new FightController(_controllers, _placeForUi, _profilePlayer,_cameraController);
+                    _fightController = new FightController(_placeForUi, _profilePlayer,_cameraController);
                     break;
 
                 default:
